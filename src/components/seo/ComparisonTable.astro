@@ -61,7 +61,9 @@ function formatValue(value: string | number | boolean): { text: string; type: 't
       )}
 
       <div class="overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0">
-        <div class="rounded-xl overflow-hidden shadow-sm">
+        <!-- min-width here as well as on the table: overflow-hidden would otherwise clip the table
+             at narrow widths instead of letting .overflow-x-auto scroll it. -->
+        <div class="rounded-xl overflow-hidden shadow-sm" style="min-width: 560px;">
         <table class="w-full border-collapse bg-white text-sm md:text-base" role="table" style="min-width: 560px;">
           <thead>
             <tr>
