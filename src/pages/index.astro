@@ -243,44 +243,8 @@ const homeFaqs = [
     </div>
   </section>
 
-  <!-- §4 AI lesson briefings — the morning -->
-  <section id="know-what-to-teach" class="section bg-gray-50 border-t border-gray-100 scroll-mt-20">
-    <div class="container-custom">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="order-2 lg:order-1">
-          <ProductDemo
-            poster="/images/marketing/ai-briefing-mobile.webp"
-            width={640}
-            height={1308}
-            alt="A lesson card is opened and its AI briefing is already written: what was covered last time, what the pupil struggled with, and what to focus on today."
-            posterAlt="DriveSchoolPro on a phone: the Today view showing a 15:00 lesson with a suggested focus of Manoeuvres and an AI lesson briefing on roundabout lane discipline."
-            phone
-          />
-        </div>
-        <div class="order-1 lg:order-2">
-          <span class="badge-primary mb-4">AI · BUILT IN</span>
-          <p class="text-lg text-gray-500 italic mb-4">
-            You pull up outside their house trying to remember what went wrong at that
-            roundabout three weeks ago.
-          </p>
-          <h2 class="text-3xl md:text-4xl font-bold text-brand-navy mb-6">
-            Know exactly what to teach before you pull up.
-          </h2>
-          <p class="text-lg text-gray-600 mb-6">
-            Open the lesson and the briefing is already written: what you covered, what they
-            struggled with, what to work on today. Four sentences, ten seconds to read.
-            Written by Claude — and your data is never used to train it.
-          </p>
-          <a href="/features/lesson-briefings/" class="text-brand-red font-semibold hover:underline">
-            See how briefings work &rarr;
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- §5 Progress tracking — in the car -->
-  <section id="log-the-lesson" class="section bg-white border-t border-gray-100 scroll-mt-20">
+  <!-- §4 Progress tracking — in the car (DVSA readiness leads; see hero) -->
+  <section id="log-the-lesson" class="section bg-gray-50 border-t border-gray-100 scroll-mt-20">
     <div class="container-custom">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
@@ -313,6 +277,42 @@ const homeFaqs = [
             alt="A single DVSA competency is tapped in the progress grid and its proficiency level is set; the grid cell updates immediately."
             posterAlt="The DVSA competency grid showing 8 skill categories with proficiency levels from Not Started to Reflection."
           />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §5 AI lesson briefings — the morning (after the DVSA section: AI is the close, not the hook) -->
+  <section id="know-what-to-teach" class="section bg-white border-t border-gray-100 scroll-mt-20">
+    <div class="container-custom">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="order-2 lg:order-1">
+          <ProductDemo
+            poster="/images/marketing/ai-briefing-mobile.webp"
+            width={640}
+            height={1308}
+            alt="A lesson card is opened and its AI briefing is already written: what was covered last time, what the pupil struggled with, and what to focus on today."
+            posterAlt="DriveSchoolPro on a phone: the Today view showing a 15:00 lesson with a suggested focus of Manoeuvres and an AI lesson briefing on roundabout lane discipline."
+            phone
+          />
+        </div>
+        <div class="order-1 lg:order-2">
+          <span class="badge-primary mb-4">AI · BUILT IN</span>
+          <p class="text-lg text-gray-500 italic mb-4">
+            You pull up outside their house trying to remember what went wrong at that
+            roundabout three weeks ago.
+          </p>
+          <h2 class="text-3xl md:text-4xl font-bold text-brand-navy mb-6">
+            Know exactly what to teach before you pull up.
+          </h2>
+          <p class="text-lg text-gray-600 mb-6">
+            Open the lesson and the briefing is already written: what you covered, what they
+            struggled with, what to work on today. Four sentences, ten seconds to read.
+            Written by Claude — and your data is never used to train it.
+          </p>
+          <a href="/features/lesson-briefings/" class="text-brand-red font-semibold hover:underline">
+            See how briefings work &rarr;
+          </a>
         </div>
       </div>
     </div>
