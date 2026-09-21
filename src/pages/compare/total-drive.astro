@@ -1,292 +1,92 @@
 ---
-import { OFFER } from '../../config/offer';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import BreadcrumbsEnhanced from '../../components/seo/BreadcrumbsEnhanced.astro';
-import FeaturedAnswer from '../../components/seo/FeaturedAnswer.astro';
-import ComparisonTable from '../../components/seo/ComparisonTable.astro';
-import FAQEnhanced from '../../components/seo/FAQEnhanced.astro';
+import CompetitorComparison from '../../components/compare/CompetitorComparison.astro';
 
-const comparisonRows = [
-  { label: 'AI lesson briefings', values: [true, false], highlight: true },
-  { label: 'Full DVSA 8-category framework', values: [true, true] },
-  { label: 'Google review requests prompted at each pass', values: [true, false], highlight: true },
-  { label: 'WhatsApp reminders', values: ['Coming soon', false], highlight: true },
-  { label: 'Email reminders', values: [true, true] },
-  { label: 'Three-way conflict detection (pupil + instructor + vehicle)', values: [true, false] },
-  { label: 'Embeddable booking widget for your website', values: [true, false] },
-  { label: 'Stripe Connect payments', values: [true, false] },
-  { label: 'Pupil self-service portal', values: [true, true] },
-  { label: 'Test readiness scoring', values: [true, true] },
-  { label: 'Transparent public pricing', values: [true, true] },
-  { label: 'Month-to-month, no contract', values: [true, 'Unknown'] },
-  { label: 'Free to start (no card required)', values: ['Free until 31 Mar 2027', '30-day trial'] },
-  { label: 'Mobile-first web app', values: [true, true] },
+// Competitor cells reflect Total Drive's own public pages, checked 21 Sep 2026:
+//   /driving-instructor-app/ (Smart Gaps, migration support, syllabus, reminders)
+//   /knowledge-base/getting-started-for-instructors/ (syllabus pre-filled with DVSA syllabus)
+// "Not listed" = not found on those pages; never "No" unless the vendor says so.
+const rows = [
+  { label: 'AI lesson briefings', values: [true, 'Not listed'] },
+  { label: 'DVSA 27-skill, 8-category progress tracking', values: [true, 'Yes (customisable)'] },
+  { label: 'Google review requests at each test pass', values: [true, 'Not listed'] },
+  { label: 'Automatic lesson reminders', values: ['Email', 'Yes'] },
+  { label: 'WhatsApp reminders', values: ['Coming soon', 'Not listed'] },
+  { label: 'Booking widget for your own website', values: [true, 'Online booking listed'] },
+  { label: 'Clash checks across pupil, instructor and vehicle', values: [true, 'Not listed'] },
+  { label: 'Vehicle MOT, tax and insurance tracking', values: [true, 'Not listed'] },
+  { label: 'Pupil app or portal', values: ['Web portal', 'Yes'] },
+  { label: 'Multi-instructor schools', values: [true, true] },
+  { label: 'Test bookings and results recording (coming soon)', values: ['Coming soon', 'Yes'] },
+  { label: 'Cancellation-gap broadcast to pupils', values: [false, 'Yes (Smart Gaps)'] },
+  { label: 'Theory content', values: [false, 'Yes (Theory Suite)'] },
+  { label: 'Free migration of your existing records', values: [false, 'Migration support listed'] },
 ];
 
-const faqItems = [
+const faqs = [
   {
-    question: "Is DriveSchoolPro better than Total Drive?",
-    answer: "It depends what matters to you. On price, right now DriveSchoolPro wins: it's free until 31 March 2027 while we're in early access, against Total Drive's £18/month after its 30-day trial. On track record, Total Drive is the more established platform and we'd rather you knew that. Where DriveSchoolPro differs is the feature set: AI-generated lesson briefings, Google review requests prompted after each test pass, Stripe Connect payments and an embeddable booking widget. Pricing verified July 2026.",
-    links: [{ text: 'Get started free', url: OFFER.ctaPrimary.href }]
+    question: 'Does Total Drive use the DVSA syllabus?',
+    answer: "Yes. Total Drive's own help pages say its Progress Syllabus is pre-filled with the standard DVSA syllabus, and that you can add categories and skills of your own. DriveSchoolPro tracks the official 27 skills in 8 categories, so both start from the same framework.",
+    links: [{ text: 'How DriveSchoolPro tracks progress', url: '/how-progress-works/' }],
   },
   {
-    question: "How much does Total Drive cost compared to DriveSchoolPro?",
-    answer: "Total Drive publishes from £18/month for instructors, with discounts for multi-car instructors and a 30-day free trial with no payment details required. DriveSchoolPro is currently free — until 31 March 2027 — while we're in early access, with no card required; pricing will be announced well before 1 April 2027. Both publish their terms openly. Verified against vendor sites July 2026.",
-    links: [{ text: 'See DriveSchoolPro pricing', url: '/pricing/' }]
+    question: 'What if I want to move my data back?',
+    answer: "Your pupils and lessons are yours. DriveSchoolPro can export an individual pupil's progress record and their personal data. A one-click export of your whole account isn't something we advertise today, so if leaving cleanly matters to you, email info@driveschoolpro.com before you switch and we'll tell you exactly what you'd get.",
+    links: [{ text: 'Contact us', url: '/contact/' }],
   },
   {
-    question: "Does Total Drive have AI lesson briefings?",
-    answer: "No. Total Drive does not currently offer AI-generated lesson briefings. DriveSchoolPro uses Anthropic's Claude to generate a 3–4 sentence pre-lesson briefing based on your previous notes and the pupil's DVSA skill ratings. This is a DriveSchoolPro-exclusive feature.",
-    links: [{ text: 'How AI briefings work', url: '/how-progress-works/' }]
+    question: 'Is this a fair comparison?',
+    answer: "We've tried to make it one. The Total Drive column only records what Total Drive's own public website says, checked on 21 September 2026. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote Total Drive's prices because they change, so use their own pricing page. The gaps in DriveSchoolPro are set out above. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
+    links: [{ text: "Total Drive's current pricing", url: 'https://totaldrive.co.uk/instructor-software-pricing/' }],
   },
   {
-    question: "Does Total Drive prompt you for Google review requests?",
-    answer: "Not that we can find on their published feature list. In DriveSchoolPro, pupils who have just passed appear on your Today screen with a Google review request ready to send in one tap — you still press send, which keeps the ask personal. Asking on pass day is the most effective time, since that is when a pupil is most willing.",
-    links: []
-  },
-  {
-    question: "Which is better for a solo ADI?",
-    answer: "Both suit solo ADIs. On cost, DriveSchoolPro is currently free until 31 March 2027 (early access, no per-student limits), while Total Drive is from £18/month after its 30-day trial. On maturity, Total Drive is the more established platform. If AI lesson briefings, Google review requests prompted after each pass and Stripe Connect payments appeal, DriveSchoolPro is the better fit — and trying it costs nothing. Neither platform asks for a card to start.",
-    links: [{ text: 'Get started free', url: OFFER.ctaPrimary.href }]
-  },
-  {
-    question: "Is Total Drive a reliable platform?",
-    answer: "Yes — Total Drive is an established UK platform with an active customer base and a track record in the market. If you prioritise an established name over newer features, Total Drive is a reasonable choice. DriveSchoolPro is newer but built with modern infrastructure and adds AI capabilities that Total Drive doesn't currently offer.",
-    links: []
+    question: 'Do I have to switch all at once?',
+    answer: "No. Keep your current diary running alongside DriveSchoolPro until you're confident everything's in. There's no big switch-over day, and it's free until 31 March 2027 with no card required.",
+    links: [{ text: 'Get started free', url: 'https://app.driveschoolpro.com/signup' }],
   },
 ];
-
-const schemaMarkup = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "DriveSchoolPro vs Total Drive: Honest Comparison for UK ADIs",
-  "description": "Side-by-side comparison of DriveSchoolPro and Total Drive — features, pricing, AI capabilities, and which is better for solo ADIs and driving schools.",
-  "author": { "@type": "Organization", "name": "DriveSchoolPro" },
-  "publisher": { "@type": "Organization", "name": "DriveSchoolPro" },
-  "datePublished": "2026-04-19",
-  "dateModified": "2026-09-11"
-};
 ---
 
-<BaseLayout
-  title="DriveSchoolPro vs Total Drive: Honest Comparison | DriveSchoolPro"
-  description="Side-by-side comparison of DriveSchoolPro and Total Drive. Features, pricing, AI lesson briefings, automated reviews, and which platform suits UK ADIs best."
-  image="/images/marketing/dashboard-overview.webp"
->
-  <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
-
-  <BreadcrumbsEnhanced
-    site="driveschool"
-    items={[
-      { label: 'Home', href: '/' },
-      { label: 'Compare', href: '/compare/' },
-      { label: 'vs Total Drive', href: '/compare/total-drive/' }
-    ]}
-  />
-
-  <!-- Hero -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-brand-navy to-gray-900 text-white py-16">
-    <div class="container-custom relative">
-      <div class="max-w-3xl">
-        <span class="inline-block px-4 py-1 bg-brand-red/20 text-brand-red-light rounded-full text-sm font-medium mb-4">Platform Comparison</span>
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">DriveSchoolPro vs Total Drive</h1>
-        <p class="text-xl text-gray-300 mb-8">
-          An honest, feature-by-feature comparison. Total Drive is an established UK platform. DriveSchoolPro is built for ADIs who want AI lesson briefings, prompted Google review requests, and transparent pricing from day one.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">Try DriveSchoolPro Free</a>
-          <a href="#comparison" class="btn-secondary text-lg px-8 py-4">See Feature Table</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <FeaturedAnswer question="How does DriveSchoolPro compare to Total Drive?">
-    DriveSchoolPro and Total Drive are both UK driving school platforms with DVSA tracking, scheduling and openly published terms. Total Drive is the more established option, from £18/month with a 30-day free trial. DriveSchoolPro is free until 31 March 2027 while in early access — no card required — and adds AI-generated lesson briefings, Google review requests prompted after each test pass, Stripe Connect payments and an embeddable booking widget. Pricing verified July 2026.
-  </FeaturedAnswer>
-
-  <!-- Summary Cards -->
-  <section class="section bg-white">
-    <div class="container-custom">
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-
-        <!-- DriveSchoolPro -->
-        <div class="rounded-2xl border-2 border-brand-red p-8">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="text-xl font-bold text-brand-navy">DriveSchool<span class="text-brand-red">Pro</span></span>
-            <span class="text-xs font-semibold bg-brand-red text-white px-2 py-1 rounded-full">Recommended</span>
-          </div>
-          <div class="text-3xl font-bold text-brand-navy mb-1">£0<span class="text-base font-normal text-gray-500"> until 31 March 2027</span></div>
-          <div class="text-sm text-gray-500 mb-6">Early access · No setup fees · No contract</div>
-          <ul class="space-y-3 mb-8">
-            {[
-              'AI lesson briefings before every session',
-              'Full DVSA 8-category, 27-skill framework',
-              'Google review requests, prompted at each pass',
-              'Email reminders (WhatsApp coming soon)',
-              'Three-way conflict detection',
-              'Embeddable booking widget',
-              'Pupil self-service portal',
-              'Stripe Connect payments',
-              OFFER.short + ', no card required',
-            ].map(item => (
-              <li class="flex items-start gap-3 text-sm">
-                <svg class="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-                </svg>
-                <span class="text-gray-700">{item}</span>
-              </li>
-            ))}
-          </ul>
-          <a href={OFFER.ctaPrimary.href} class="btn-primary w-full text-center block">{OFFER.ctaPrimary.labelShort}</a>
-        </div>
-
-        <!-- Total Drive -->
-        <div class="rounded-2xl border-2 border-gray-200 p-8">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="text-xl font-bold text-gray-700">Total Drive</span>
-          </div>
-          <div class="text-3xl font-bold text-gray-700 mb-1">Pricing on request</div>
-          <div class="text-sm text-gray-500 mb-6">Contact for quote · Contract terms vary</div>
-          <ul class="space-y-3 mb-8">
-            {[
-              { text: 'No AI lesson briefings', has: false },
-              { text: 'DVSA progress tracking', has: true },
-              { text: 'No Google review prompts', has: false },
-              { text: 'No WhatsApp reminders', has: false },
-              { text: 'SMS and email reminders', has: true },
-              { text: 'No embeddable booking widget', has: false },
-              { text: 'Pupil portal included', has: true },
-              { text: '30-day free trial, no card required', has: true },
-              { text: 'Discounts for multi-car instructors', has: true },
-            ].map(({ text, has }) => (
-              <li class="flex items-start gap-3 text-sm">
-                <svg class={`w-4 h-4 flex-shrink-0 mt-0.5 ${has ? 'text-green-500' : 'text-gray-300'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d={has ? 'M5 13l4 4L19 7' : 'M6 18L18 6M6 6l12 12'} />
-                </svg>
-                <span class={has ? 'text-gray-700' : 'text-gray-400'}>{text}</span>
-              </li>
-            ))}
-          </ul>
-          <div class="w-full text-center text-sm text-gray-600 bg-gray-50 rounded-xl py-3">From <span class="font-bold text-brand-navy">£18</span>/month</div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Feature Table -->
-  <section id="comparison" class="section bg-gray-50">
-    <div class="container-custom">
-      <ComparisonTable
-        title="Full Feature Comparison"
-        description="Every feature, side by side. DriveSchoolPro column is highlighted."
-        headers={['DriveSchoolPro', 'Total Drive']}
-        rows={comparisonRows}
-        rowHeader="Feature"
-        highlightColumn={0}
-      />
-    </div>
-  </section>
-
-  <!-- Where Total Drive Wins -->
-  <section class="section bg-white">
-    <div class="container-custom max-w-3xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-6">Where Total Drive Has the Edge</h2>
-      <p class="text-gray-600 mb-6 leading-relaxed">
-        This comparison is honest — there are areas where Total Drive is the stronger choice.
-      </p>
-      <ul class="space-y-4">
-        {[
-          {
-            title: 'Established track record',
-            body: 'Total Drive has been in the UK market longer than DriveSchoolPro. For ADIs who weight platform history heavily, that matters.'
-          },
-          {
-            title: 'Existing customer community',
-            body: 'A larger installed base means more peer recommendations, forum discussions, and real-world feedback from other UK ADIs.'
-          },
-          {
-            title: 'May suit multi-instructor schools differently',
-            body: 'Total Drive\'s feature set for larger driving schools may differ. If you\'re running a school with 5+ instructors, request demos from both before deciding.'
-          },
-        ].map(({ title, body }) => (
-          <li class="flex items-start gap-4">
-            <div class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-3 h-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <div>
-              <div class="font-semibold text-gray-900 mb-1">{title}</div>
-              <div class="text-gray-600 text-sm">{body}</div>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
-
-  <!-- Where DriveSchoolPro Wins -->
-  <section class="section bg-gray-50">
-    <div class="container-custom max-w-3xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-6">Where DriveSchoolPro Has the Edge</h2>
-      <ul class="space-y-4">
-        {[
-          {
-            title: 'AI lesson briefings',
-            body: 'DriveSchoolPro generates a pre-lesson briefing before every session using your previous notes and DVSA skill ratings. Total Drive has no equivalent. Context carries between sessions, so a pupil handed between instructors does not spend the first ten minutes re-explaining their own history.'
-          },
-          {
-            title: 'Google review requests, prompted at each pass',
-            body: 'Pupils who have just passed surface on your Today screen with a Google review request ready to send. Asking on pass day is the single biggest lever on review volume, and the prompt means it stops depending on you remembering.'
-          },
-          {
-            title: 'WhatsApp reminders (coming soon)',
-            body: 'DriveSchoolPro sends automated email reminders today, and WhatsApp reminders are coming soon — UK pupils actually read WhatsApp. Total Drive doesn\'t offer WhatsApp reminders.'
-          },
-          {
-            title: 'Stripe Connect payments built in',
-            body: 'DriveSchoolPro takes card payments through Stripe Connect, so pupils can pay from an invoice pay-link and the money lands in your own account. We charge 3% on card payments collected through DriveSchoolPro; Stripe\'s own processing fee is separate.'
-          },
-          {
-            title: 'Free during early access — for any number of instructors',
-            body: 'DriveSchoolPro is free until 31 March 2027, including multi-instructor features, while Total Drive is from £18/month. Total Drive offers discounts for multi-car instructors but does not publish the tiers. Our pricing will be announced well before 1 April 2027, and nothing is charged automatically.'
-          },
-        ].map(({ title, body }) => (
-          <li class="flex items-start gap-4">
-            <div class="w-6 h-6 rounded-full bg-brand-red-light flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-3 h-3 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <div>
-              <div class="font-semibold text-gray-900 mb-1">{title}</div>
-              <div class="text-gray-600 text-sm">{body}</div>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section bg-brand-navy text-white text-center">
-    <div class="container-custom">
-      <h2 class="text-3xl font-bold mb-3">Try DriveSchoolPro — Free Until 31 March 2027</h2>
-      <p class="text-white/80 text-lg mb-8 max-w-xl mx-auto">No credit card. No demo call. Set up in five minutes and run a week of real lessons before deciding.</p>
-      <a href={OFFER.ctaPrimary.href} class="inline-block bg-brand-red text-white px-10 py-4 rounded-xl font-semibold text-lg hover:bg-red-700 transition-colors">
-        {OFFER.ctaPrimary.label} &rarr;
-      </a>
-      <p class="text-white/50 text-sm mt-3">{OFFER.short} &middot; No credit card required &middot; Cancel anytime</p>
-    </div>
-  </section>
-
-  <FAQEnhanced
-    faqs={faqItems}
-    title="DriveSchoolPro vs Total Drive — Common Questions"
-    site="driveschool"
-    pageUrl="https://driveschoolpro.com/compare/total-drive/"
-  />
-
-</BaseLayout>
+<CompetitorComparison
+  competitor={{ name: 'Total Drive', slug: 'total-drive', pricingUrl: 'https://totaldrive.co.uk/instructor-software-pricing/' }}
+  seo={{
+    title: 'DriveSchoolPro vs Total Drive: Honest Comparison | DriveSchoolPro',
+    description: 'Side-by-side comparison of DriveSchoolPro and Total Drive. Features, pricing, AI lesson briefings, automated reviews, and which platform suits UK ADIs best.',
+    schemaDescription: 'Feature-by-feature comparison of DriveSchoolPro and Total Drive for UK driving instructors, including what DriveSchoolPro does not do yet.',
+    datePublished: '2026-04-19',
+    dateModified: '2026-09-21',
+  }}
+  checkedOn="21 September 2026"
+  heroIntro="A plain, feature-by-feature comparison for instructors already using Total Drive. It covers what's different, and what DriveSchoolPro doesn't do yet."
+  featuredAnswer="DriveSchoolPro and Total Drive are both UK driving school platforms with DVSA-based progress tracking, diary, reminders and a pupil app. DriveSchoolPro adds AI lesson briefings, Google review requests at each test pass, clash checks across pupil, instructor and vehicle, and vehicle compliance tracking. Total Drive is the more established platform and lists a theory suite, cancellation-gap broadcasts and migration support that DriveSchoolPro doesn't have yet."
+  intro="This page is for an instructor who uses Total Drive today and is wondering whether DriveSchoolPro is worth a look. You don't have to leave: you can run both side by side and decide after a week of real lessons."
+  rows={rows}
+  switchHeading="Why some instructors try DriveSchoolPro"
+  switchIntro="These are the differences that exist today, from the table above. None of them is a reason to switch on its own."
+  switchItems={[
+    {
+      title: 'Lesson prep written for you',
+      body: "Before each lesson, DriveSchoolPro writes a short briefing from your last notes and the pupil's skill ratings, using Claude. We couldn't find an equivalent on Total Drive's site.",
+    },
+    {
+      title: 'Review requests at the right moment',
+      body: 'When a pupil passes, they appear on your Today screen with a Google review request ready to send. It is prompted, not automatic: you decide whether to send it.',
+    },
+    {
+      title: 'Clash checks and vehicle tracking',
+      body: 'Bookings are checked against the pupil, the instructor and the vehicle together, and MOT, tax and insurance dates are tracked with alerts.',
+    },
+    {
+      title: 'Free while in early access',
+      body: "DriveSchoolPro has no subscription fee until 31 March 2027 and doesn't ask for a card. Pricing will be announced well before 1 April 2027, and nothing is charged automatically.",
+    },
+  ]}
+  gapsHeading="What DriveSchoolPro doesn't do yet"
+  gapsBody="There's no theory content in DriveSchoolPro, and no way to broadcast a cancelled slot to your pupils. We don't offer free bulk migration of your records yet. Pupils use a web portal rather than a native app, lesson reminders go out by email only today (WhatsApp is coming soon), and recording test bookings and results is coming soon. Total Drive has also been in the UK market longer. If any of these decides it for you, that's a fair reason to stay where you are."
+  sources={[
+    { label: "Total Drive — app overview", url: 'https://totaldrive.co.uk/driving-instructor-app/' },
+    { label: "Total Drive — getting started for instructors", url: 'https://totaldrive.co.uk/knowledge-base/getting-started-for-instructors/' },
+    { label: "Total Drive — pricing", url: 'https://totaldrive.co.uk/instructor-software-pricing/' },
+  ]}
+  faqs={faqs}
+  faqTitle="DriveSchoolPro vs Total Drive — common questions"
+/>
