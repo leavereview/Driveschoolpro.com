@@ -20,12 +20,12 @@ const faqItems = [
   },
   {
     question: "Can pupils see their own progress?",
-    answer: "Yes. Every pupil gets access to a self-service portal where they can view their progress against each DVSA skill, see upcoming lessons, check their lesson package balance, and update their contact details. Parents can also be given separate portal access — particularly useful for learners under 18.",
+    answer: "Yes. Every pupil gets access to a self-service portal where they can view their progress against each DVSA skill, see upcoming lessons, check their lesson package balance, and update their contact details. A separate parent and guardian view is not available yet.",
     links: []
   },
   {
     question: "What does the AI lesson briefing contain?",
-    answer: "Before each lesson, DriveSchoolPro generates a 3–4 sentence briefing using Anthropic's Claude. It draws on your notes from the previous session and the pupil's current DVSA skill ratings. The briefing typically covers what was covered last time, what still needs work, and what to focus on today. It can be turned off per-pupil if you prefer not to use it.",
+    answer: "Before each lesson, DriveSchoolPro generates a 3–4 sentence briefing using Anthropic's Claude. It draws on your notes from the previous session and the pupil's current DVSA skill ratings. The briefing typically covers what was covered last time, what still needs work, and what to focus on today.",
     links: []
   },
   {
@@ -85,7 +85,7 @@ const schemaMarkup = {
   </section>
 
   <FeaturedAnswer question="How does DriveSchoolPro track driving progress?">
-    DriveSchoolPro tracks pupil progress against all 27 official DVSA driving skills across 8 categories, updated after every lesson. AI-generated briefings give instructors context before each session. A test readiness score updates automatically as skills improve. Pupils and parents can view progress through a self-service portal.
+    DriveSchoolPro tracks pupil progress against all 27 official DVSA driving skills across 8 categories, updated after every lesson. AI-generated briefings give instructors context before each session. A test readiness score updates automatically as skills improve. Pupils can view their own progress through a self-service portal.
   </FeaturedAnswer>
 
   <!-- The Framework -->
@@ -168,7 +168,7 @@ const schemaMarkup = {
         <p class="text-gray-600 leading-relaxed">
           The briefing is ready when you open the lesson card — you don't have to scroll back through previous notes or remember what happened last week. For multi-instructor schools, it means cover instructors arrive with full context without having to ask colleagues.
         </p>
-        <p class="text-gray-500 text-sm mt-4">AI briefings can be turned off per pupil. Pupil data is never used to train AI models.</p>
+        <p class="text-gray-500 text-sm mt-4">Pupil data is never used to train AI models.</p>
       </div>
     </div>
   </section>
@@ -201,7 +201,7 @@ const schemaMarkup = {
           ))}
         </ul>
         <p class="text-gray-600 leading-relaxed">
-          Parents can be given separate read-only portal access. This removes the need for progress update calls and gives parents objective data rather than a vague "coming along well".
+          Because pupils can see their own DVSA ratings in the portal, a parent asking how it's going gets objective data rather than a vague "coming along well" — the pupil can simply show them. A dedicated parent and guardian login is not available yet.
         </p>
       </div>
     </div>

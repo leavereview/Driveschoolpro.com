@@ -1,0 +1,160 @@
+---
+import { OFFER } from '../../config/offer';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BreadcrumbsEnhanced from '../../components/seo/BreadcrumbsEnhanced.astro';
+import FAQEnhanced from '../../components/seo/FAQEnhanced.astro';
+import ProductDemo from '../../components/ProductDemo.astro';
+
+const faqs = [
+  {
+    question: "Which framework does it use?",
+    answer: "The DVSA one — all 27 competencies across the 8 official categories, on a six-level scale from Not Started through to Reflection. Not a simplified version, and not our own invention. It is the framework examiners use, which is what makes the record meaningful to a pupil.",
+    links: [{ text: 'All 27 DVSA skills explained', url: '/dvsa-27-driving-skills/' }]
+  },
+  {
+    question: "How long does it take to log a lesson?",
+    answer: "A couple of taps per skill you worked on, on your phone, at the kerb. The point is that it happens before you drive off — notes written at eleven at night are notes half-remembered, and notes never written are the real problem.",
+    links: []
+  },
+  {
+    question: "Can pupils see their own progress?",
+    answer: "Yes. Every pupil gets a portal where they can see where they are against each DVSA skill, what is coming up, and their remaining lesson balance. In practice this is what stops the 'how am I doing?' texts — they can just look.",
+    links: []
+  },
+  {
+    question: "Can parents see it?",
+    answer: "Not yet. A separate parent and guardian login is not available. Pupils can show a parent their own portal in the meantime.",
+    links: []
+  },
+  {
+    question: "What happens if another instructor covers a lesson?",
+    answer: "They open the same record and see exactly where the pupil got to. That is the difference between a shared framework and a notebook in someone's glovebox — cover lessons stop costing the pupil ten minutes of re-explaining.",
+    links: []
+  },
+  {
+    question: "Does it track test results?",
+    answer: "You can record a pupil's test on their record and mark it passed. Pass-rate reporting across your whole school is coming soon. Alongside that, every pupil carries a test readiness view built from evidence in real lessons rather than a hunch.",
+    links: []
+  }
+];
+---
+
+<BaseLayout
+  title="DVSA Progress Tracking for Driving Instructors | DriveSchoolPro"
+  description="Log a lesson at the kerb in a couple of taps. All 27 DVSA competencies across 8 categories on a six-level scale, visible to your pupil in their own portal. Free until 31 March 2027."
+>
+  <BreadcrumbsEnhanced items={[{ label: 'Home', href: '/' }, { label: 'Features', href: '/features/' }, { label: 'Progress tracking' }]} site="driveschool" />
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-3xl mb-12">
+        <p class="text-sm uppercase tracking-wider text-gray-400 mb-3">In the car</p>
+        <h1 class="text-4xl md:text-5xl font-bold text-brand-navy leading-tight mb-6">
+          Logged before they've shut the door.
+        </h1>
+        <p class="text-xl text-gray-600 leading-relaxed">
+          Every instructor intends to write the lesson up. Then there is another pickup in ten
+          minutes, and then it is nine at night, and by the time you sit down you can remember four
+          of the seven lessons you taught. Progress is easy to feel and very hard to prove — which
+          becomes a problem the first time a pupil asks why they are not ready for test.
+        </p>
+      </div>
+
+      <ProductDemo
+        poster="/images/marketing/dvsa-progress-tracking.webp"
+        posterAlt="The DVSA competency grid showing 8 skill categories with proficiency levels from Not Started to Reflection."
+        alt="A single DVSA competency is tapped in the progress grid and its proficiency level is set; the grid cell updates immediately."
+        width={1440}
+        height={900}
+      />
+    </div>
+  </section>
+
+  <section class="section bg-gray-50 border-t border-gray-100">
+    <div class="container-custom max-w-4xl space-y-14">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">The framework examiners actually use</h2>
+        <p class="text-lg text-gray-600 mb-4">
+          27 competencies, 8 categories, six levels from Not Started to Reflection. Using the DVSA's
+          own structure rather than a homemade one has a practical consequence: when you tell a
+          pupil they are not ready, you are not offering an opinion. You are showing them which of
+          the 27 are still short, in the same language the examiner will use.
+        </p>
+        <p class="text-lg text-gray-600">
+          That turns the hardest conversation in the job — the one where someone wants to book a
+          test you know they will fail — from a disagreement into a look at the same screen.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Two taps, at the kerb, while it's fresh</h2>
+        <p class="text-lg text-gray-600">
+          The record is only worth having if it gets filled in, so logging is built for the thirty
+          seconds while a pupil is finding their bag: tap the skill, set the level, done. It works
+          on your phone, and it keeps working with no signal — the app runs offline and syncs when
+          you are back in coverage, which matters when half your lessons end on a country road.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Your pupils stop asking how they're doing</h2>
+        <p class="text-lg text-gray-600">
+          Pupils see their own record in their portal — where they are on each skill, what is
+          booked, what they have paid for. Instructors consistently report the same second-order
+          effect: the running commentary of 'how am I getting on?' messages drops away, because the
+          answer is somewhere the pupil can look at eleven at night without texting you.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white border-t border-gray-100">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-8">How it works</h2>
+      <ol class="space-y-6">
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">1</span>
+          <div>
+            <h3 class="font-bold text-brand-navy mb-1">Teach the lesson</h3>
+            <p class="text-gray-600">Nothing changes about the hour itself.</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">2</span>
+          <div>
+            <h3 class="font-bold text-brand-navy mb-1">Rate what you covered before you drive off</h3>
+            <p class="text-gray-600">Tap the skills, set the levels, add a line of notes if it is worth it.</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">3</span>
+          <div>
+            <h3 class="font-bold text-brand-navy mb-1">It feeds everything else</h3>
+            <p class="text-gray-600">The pupil's portal updates, their readiness view updates, and the next lesson's briefing is written from it.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <FAQEnhanced faqs={faqs} site="driveschool" pageUrl="https://driveschoolpro.com/features/progress-tracking/" title="Progress tracking questions" />
+
+  <section class="section bg-brand-navy text-white">
+    <div class="container-custom text-center max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Prove the progress you can already feel</h2>
+      <p class="text-lg text-gray-300 mb-8">Free until 31 March 2027. No card, no contract, cancel any time.</p>
+      <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label} &rarr;</a>
+    </div>
+  </section>
+
+  <section class="section bg-white border-t border-gray-100">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-xl font-bold text-brand-navy mb-6">Related</h2>
+      <ul class="space-y-3 text-lg">
+        <li><a href="/features/lesson-briefings/" class="text-brand-red font-semibold hover:underline">Lesson briefings &rarr;</a> <span class="text-gray-500">— written from these ratings</span></li>
+        <li><a href="/features/scheduling/" class="text-brand-red font-semibold hover:underline">Scheduling &rarr;</a> <span class="text-gray-500">— booking the lessons you are recording</span></li>
+        <li><a href="/dvsa-27-driving-skills/" class="text-brand-red font-semibold hover:underline">The 27 DVSA skills &rarr;</a> <span class="text-gray-500">— every competency explained</span></li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

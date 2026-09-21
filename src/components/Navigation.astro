@@ -6,6 +6,22 @@ const currentPath = Astro.url.pathname;
 // Log in and the primary CTA (Shopify-style). Sections drive the panel columns.
 const menuSections = [
   {
+    title: 'Features',
+    href: '/features/',
+    groups: [
+      [
+        { label: 'All features', href: '/features/' },
+        { label: 'Scheduling', href: '/features/scheduling/' },
+        { label: 'AI lesson briefings', href: '/features/lesson-briefings/' },
+      ],
+      [
+        { label: 'DVSA progress tracking', href: '/features/progress-tracking/' },
+        { label: 'Getting paid', href: '/features/getting-paid/' },
+        { label: 'Review collection', href: '/features/reviews/' },
+      ],
+    ],
+  },
+  {
     title: 'Software',
     href: '/driving-school-software/',
     groups: [

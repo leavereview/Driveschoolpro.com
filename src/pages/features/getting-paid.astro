@@ -1,0 +1,167 @@
+---
+import { OFFER } from '../../config/offer';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BreadcrumbsEnhanced from '../../components/seo/BreadcrumbsEnhanced.astro';
+import FAQEnhanced from '../../components/seo/FAQEnhanced.astro';
+import ProductDemo from '../../components/ProductDemo.astro';
+
+const faqs = [
+  {
+    question: "How do pupils pay?",
+    answer: "By card, through Stripe, either from their own portal or from a payment link you send them. The link opens the invoice directly — they do not need to log in or remember a password to pay you.",
+    links: []
+  },
+  {
+    question: "Do I need a Stripe account?",
+    answer: "Yes, and you connect it from your settings. The money goes to your account, not ours. Stripe handles the card details, so they never touch DriveSchoolPro or you.",
+    links: []
+  },
+  {
+    question: "Can I still take cash or bank transfer?",
+    answer: "Yes. Plenty of pupils still hand over cash, and you can record cash, bank transfer or cheque against a pupil's balance so the ledger stays right regardless of how the money arrived.",
+    links: []
+  },
+  {
+    question: "What is a lesson block?",
+    answer: "A package of lessons bought up front — ten hours, twenty hours, whatever you sell. You set them up once and pupils can buy them from their portal. The hours draw down as lessons are taken, and both of you can see the remaining balance.",
+    links: []
+  },
+  {
+    question: "Does this actually reduce no-shows?",
+    answer: "It changes the incentive. A pupil paying per lesson loses nothing by cancelling on a Sunday night; a pupil who has already bought ten hours is spending their own money by not turning up. It is not a guarantee, but it is a different conversation.",
+    links: [{ text: 'More on reducing no-shows', url: '/blog/reduce-driving-lesson-no-shows/' }]
+  },
+  {
+    question: "Can I set up an automatic monthly subscription?",
+    answer: "Not currently. Pupils pay per invoice or buy lesson blocks up front. Recurring lesson series is coming soon, which is the related piece most instructors ask about.",
+    links: []
+  }
+];
+---
+
+<BaseLayout
+  title="Getting Paid: Lesson Packages & Card Payments | DriveSchoolPro"
+  description="Pupils buy lesson blocks in their own portal and pay by card through Stripe. Balances update themselves and outstanding invoices get a tap-to-pay link. Free until 31 March 2027."
+>
+  <BreadcrumbsEnhanced items={[{ label: 'Home', href: '/' }, { label: 'Features', href: '/features/' }, { label: 'Getting paid' }]} site="driveschool" />
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-sm uppercase tracking-wider text-gray-400 mb-3">Before they turn up</p>
+          <h1 class="text-4xl md:text-5xl font-bold text-brand-navy leading-tight mb-6">
+            They've already paid before they open the door.
+          </h1>
+          <p class="text-xl text-gray-600 leading-relaxed">
+            Asking a 17-year-old for £35 at the kerb, in the rain, is nobody's favourite part of
+            this job. Neither is the message on Sunday evening saying they will settle up next week,
+            or the running total in the back of your head of who owes you what. Chasing money is
+            the least skilled thing an ADI does and it eats the most goodwill.
+          </p>
+        </div>
+        <div>
+          <ProductDemo
+            poster="/images/marketing/portal-dashboard-mobile.webp"
+            posterAlt="A pupil's student portal on a phone showing their next lesson, competencies covered, test readiness and remaining package hours."
+            alt="A pupil opens the package catalogue on their phone, buys a ten-lesson block by card, and books their first slots."
+            width={640}
+            height={1308}
+            phone
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50 border-t border-gray-100">
+    <div class="container-custom max-w-4xl space-y-14">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Pupils buy blocks themselves, on their phones</h2>
+        <p class="text-lg text-gray-600 mb-4">
+          You set up the packages you sell — ten hours, twenty, an intensive — and they appear in
+          your pupils' portal. A learner buys one on their phone, pays by card through Stripe, and
+          the hours land on their balance. You were not involved. You did not have to ask.
+        </p>
+        <p class="text-lg text-gray-600">
+          For a lot of instructors this is the single biggest change, and not for the reason they
+          expect. The money arriving earlier is useful. Never having to raise the subject is what
+          they actually notice.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">The pupil who has paid turns up</h2>
+        <p class="text-lg text-gray-600">
+          Pre-payment is usually sold as a cash-flow feature. Its more valuable effect is on
+          cancellations. Someone paying per lesson loses nothing by pulling out on a Sunday night —
+          someone who bought ten hours in advance is spending their own money by not being there.
+          A block booking quietly does the job that reminder texts are trying and mostly failing to
+          do.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">For everything else, a link they can tap</h2>
+        <p class="text-lg text-gray-600">
+          Not everyone will pre-pay, and some pupils will always pay in cash. Outstanding invoices
+          get a payment link that opens the invoice directly — no login, no password reset at 9pm,
+          no reason to put it off. Cash, bank transfer and cheque can be recorded against the
+          balance too, so the ledger reflects reality however the money turned up. Invoices,
+          payments, package balances and outstanding requests all sit in one view, which means
+          'who owes me what' stops being a thing you carry around in your head.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white border-t border-gray-100">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-8">How it works</h2>
+      <ol class="space-y-6">
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">1</span>
+          <div>
+            <h3 class="font-bold text-brand-navy mb-1">Connect Stripe</h3>
+            <p class="text-gray-600">From settings, once. The money goes to your account. Card details never touch you or us.</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">2</span>
+          <div>
+            <h3 class="font-bold text-brand-navy mb-1">Set up the blocks you sell</h3>
+            <p class="text-gray-600">Name them, price them, and they appear in every pupil's portal.</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">3</span>
+          <div>
+            <h3 class="font-bold text-brand-navy mb-1">Stop thinking about it</h3>
+            <p class="text-gray-600">Pupils buy, balances draw down as lessons are taken, and anything outstanding gets a link to tap.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <FAQEnhanced faqs={faqs} site="driveschool" pageUrl="https://driveschoolpro.com/features/getting-paid/" title="Questions about payments" />
+
+  <section class="section bg-brand-navy text-white">
+    <div class="container-custom text-center max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Never ask for money at the kerb again</h2>
+      <p class="text-lg text-gray-300 mb-8">Free until 31 March 2027. No card, no contract, cancel any time.</p>
+      <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label} &rarr;</a>
+    </div>
+  </section>
+
+  <section class="section bg-white border-t border-gray-100">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-xl font-bold text-brand-navy mb-6">Related</h2>
+      <ul class="space-y-3 text-lg">
+        <li><a href="/features/scheduling/" class="text-brand-red font-semibold hover:underline">Scheduling &rarr;</a> <span class="text-gray-500">— the lessons those hours get spent on</span></li>
+        <li><a href="/features/reviews/" class="text-brand-red font-semibold hover:underline">Reviews &rarr;</a> <span class="text-gray-500">— turning finished pupils into the next ones</span></li>
+        <li><a href="/driving-instructor-accounting-software/" class="text-brand-red font-semibold hover:underline">Accounting and invoicing &rarr;</a> <span class="text-gray-500">— the longer guide</span></li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

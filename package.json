@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
-    "postbuild": "node scripts/verify-seo.js && node scripts/verify-claims.js",
+    "postbuild": "node scripts/verify-seo.js && node scripts/verify-claims.js && node scripts/verify-demos.js",
     "preview": "astro preview",
     "astro": "astro"
   },

@@ -1,0 +1,128 @@
+---
+import { OFFER } from '../../config/offer';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BreadcrumbsEnhanced from '../../components/seo/BreadcrumbsEnhanced.astro';
+import ProductDemo from '../../components/ProductDemo.astro';
+
+// Ordered by the instructor's working week, not by feature category — the same
+// spine the homepage uses. See docs/superpowers/specs/2026-09-10-*-design.md.
+const moments = [
+  {
+    when: 'Sunday night',
+    href: '/features/scheduling/',
+    headline: 'Move a lesson. Everything else catches up.',
+    blurb: 'Drag-and-drop rescheduling with three-way conflict checking, so you never double-book a pupil, an instructor or a car.',
+    poster: '/images/marketing/calendar-week-view.webp',
+    posterAlt: 'A weekly calendar showing colour-coded lessons across several instructors.',
+    w: 1440, h: 900,
+  },
+  {
+    when: 'The morning',
+    href: '/features/lesson-briefings/',
+    headline: 'Know exactly what to teach before you pull up.',
+    blurb: 'Every lesson opens with a briefing already written — what you covered, what they struggled with, what to work on today.',
+    poster: '/images/marketing/ai-briefing-mobile.webp',
+    posterAlt: 'A phone showing the Today view with an AI lesson briefing on roundabout lane discipline.',
+    w: 640, h: 1308,
+  },
+  {
+    when: 'In the car',
+    href: '/features/progress-tracking/',
+    headline: "Logged before they've shut the door.",
+    blurb: 'All 27 DVSA competencies across 8 categories on a six-level scale, updated in a couple of taps at the kerb.',
+    poster: '/images/marketing/dvsa-progress-tracking.webp',
+    posterAlt: 'The DVSA competency grid showing 8 skill categories and proficiency levels.',
+    w: 1440, h: 900,
+  },
+  {
+    when: 'Before they turn up',
+    href: '/features/getting-paid/',
+    headline: "They've already paid before they open the door.",
+    blurb: 'Pupils buy lesson blocks in their own portal and pay by card. Balances keep themselves up to date.',
+    poster: '/images/marketing/portal-dashboard-mobile.webp',
+    posterAlt: "A pupil's portal on a phone showing their next lesson and remaining package hours.",
+    w: 640, h: 1308,
+  },
+  {
+    when: 'End of month',
+    href: '/features/reviews/',
+    headline: 'The reviews you meant to ask for, actually asked for.',
+    blurb: 'Pupils who have just passed appear on your Today screen with a Google review request ready to send, on the day they are happiest to write one.',
+    poster: '/images/marketing/dashboard-overview.webp',
+    posterAlt: 'The DriveSchoolPro dashboard overview showing the day and business metrics.',
+    w: 1440, h: 900,
+  },
+];
+
+const collectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "DriveSchoolPro features",
+  "description": "What DriveSchoolPro does, arranged by when in an instructor's week you would use it: scheduling, lesson briefings, DVSA progress tracking, getting paid, and review collection.",
+  "url": "https://driveschoolpro.com/features/",
+  "isPartOf": { "@type": "WebSite", "name": "DriveSchoolPro", "url": "https://driveschoolpro.com" }
+};
+---
+
+<BaseLayout
+  title="Features | DriveSchoolPro"
+  description="See what DriveSchoolPro does, arranged by when you would use it — Sunday-night scheduling, morning lesson briefings, progress logged at the kerb, pupils paying up front, and reviews that arrive on pass day."
+  schemaType="CollectionPage"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(collectionSchema)} />
+
+  <BreadcrumbsEnhanced items={[{ label: 'Home', href: '/' }, { label: 'Features' }]} site="driveschool" />
+
+  <section class="section bg-gradient-to-br from-brand-navy via-brand-navy to-gray-900 text-white">
+    <div class="container-custom">
+      <div class="max-w-3xl">
+        <span class="badge-primary mb-6">Features</span>
+        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+          Everything it does, in the order you'd use it.
+        </h1>
+        <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+          Most software lists features by category. Instructors don't work in categories — they
+          work in a week. So this is arranged by when it actually helps: the Sunday night
+          reshuffle, the drive to the first pickup, the two minutes at the kerb, and the month
+          end when you want the next pupil to find you.
+        </p>
+        <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label} &rarr;</a>
+        <p class="mt-6 text-sm text-gray-400">No credit card required &bull; {OFFER.short}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-custom space-y-20">
+      {moments.map((m, i) => (
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class={i % 2 === 1 ? 'order-2 lg:order-1' : ''}>
+            <ProductDemo poster={m.poster} posterAlt={m.posterAlt} width={m.w} height={m.h} alt={m.posterAlt} phone={m.w === 640} />
+          </div>
+          <div class={i % 2 === 1 ? 'order-1 lg:order-2' : ''}>
+            <p class="text-sm uppercase tracking-wider text-gray-400 mb-3">{m.when}</p>
+            <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">
+              <a href={m.href} class="hover:text-brand-red transition-colors">{m.headline}</a>
+            </h2>
+            <p class="text-lg text-gray-600 mb-4">{m.blurb}</p>
+            <a href={m.href} class="text-brand-red font-semibold hover:underline">Read more &rarr;</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section bg-gray-50 border-t border-gray-100">
+    <div class="container-custom text-center max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-brand-navy mb-4">Free until 31 March 2027</h2>
+      <p class="text-lg text-gray-600 mb-8">
+        Every feature on this page, for solo instructors and multi-car schools alike. No card,
+        no contract, cancel any time.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label} &rarr;</a>
+        <a href="/pricing/" class="btn-secondary text-lg px-8 py-4">See pricing</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

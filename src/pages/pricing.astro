@@ -56,7 +56,7 @@ const faqSchema = {
       "name": "Is DriveSchoolPro really free?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes — DriveSchoolPro is free until 31 March 2027 while we're in early access. No card is required, we take no commission on the payments your school collects, and nothing is ever charged automatically. Pricing will be announced well before 1 April 2027."
+        "text": "Yes — DriveSchoolPro is free until 31 March 2027 while we're in early access. No card is required and nothing is ever charged automatically. We charge 3% on card payments your school collects through DriveSchoolPro; Stripe's own processing fee is separate. Pricing will be announced well before 1 April 2027."
       }
     },
     {
@@ -88,7 +88,7 @@ const faqSchema = {
       "name": "How do my pupils pay me?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You can record cash, bank transfer, and cheque payments, and take card payments through Stripe pay-links on invoices. We take no commission on the payments you collect — Stripe's standard processing fee applies to card payments."
+        "text": "You can record cash, bank transfer, and cheque payments, and take card payments through Stripe pay-links on invoices. We charge 3% on card payments you collect through DriveSchoolPro, and Stripe's standard processing fee applies on top."
       }
     },
     {
@@ -112,7 +112,7 @@ const faqSchema = {
       "name": "I'm switching from paper, WhatsApp or a spreadsheet — is it hard?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Most instructors are set up in about 10 minutes, and you can keep your current diary running alongside until you're confident. DriveSchoolPro is free during early access and needs no card."
+        "text": "No. Most instructors are set up in about five minutes, and you can keep your current diary running alongside until you're confident. DriveSchoolPro is free during early access and needs no card."
       }
     },
     {
@@ -161,7 +161,7 @@ const faqSchema = {
       <div class="max-w-3xl text-center mx-auto">
         <span class="inline-block bg-brand-red/20 text-brand-red-light px-3 py-1 rounded-full text-sm mb-4">Early access</span>
         <h1 class="text-4xl md:text-5xl font-bold mb-4">Free until 31 March 2027</h1>
-        <p class="text-xl text-gray-300">We're in early access, building DriveSchoolPro with founding schools. The full product is free — no card required, no setup fees, and we take no commission on the payments you collect.</p>
+        <p class="text-xl text-gray-300">We're in early access, building DriveSchoolPro with founding schools. The full product is free — no card required and no setup fees. We charge 3% on card payments you collect; Stripe's own processing fee is separate.</p>
       </div>
     </div>
   </section>
@@ -199,7 +199,7 @@ const faqSchema = {
               <li>✓ Student self-service portal</li>
             </ul>
             <a href={OFFER.ctaPrimary.href} class="btn-primary w-full">{OFFER.ctaPrimary.label}</a>
-            <p class="text-center text-gray-500 text-xs mt-3">No card required · No commission on your payments · Cancel anytime</p>
+            <p class="text-center text-gray-500 text-xs mt-3">No card required · 3% on card payments you collect · Cancel anytime</p>
           </div>
         </div>
       </div>
@@ -287,7 +287,7 @@ const faqSchema = {
           Why free? Because it's early. We're building DriveSchoolPro with founding schools — your feedback shapes the product. Early users report saving 10+ hours of admin weekly, and during early access that saving costs you nothing. Pricing will be announced well before 1 April 2027, and with no card on file nothing is ever charged automatically.
         </p>
         <p class="text-gray-600">
-          There are no setup fees, no per-lesson charges, and no commission on the payments you collect (Stripe's standard processing fee applies to card payments on invoice pay-links). See <a href="/driving-school-software/" class="text-brand-red hover:underline">all driving school software features</a> included.
+          There are no setup fees and no per-lesson charges. We charge 3% on card payments you collect through invoice pay-links, and Stripe's standard processing fee applies on top. See <a href="/driving-school-software/" class="text-brand-red hover:underline">all driving school software features</a> included.
         </p>
       </div>
     </div>
@@ -301,7 +301,7 @@ const faqSchema = {
         <div class="space-y-4">
           <div class="card">
             <h3 class="font-bold text-brand-navy mb-2">Is DriveSchoolPro really free?</h3>
-            <p class="text-gray-600 text-sm">Yes — DriveSchoolPro is free until 31 March 2027 while we're in early access. No card is required, we take no commission on the payments your school collects, and nothing is ever charged automatically. Pricing will be announced well before 1 April 2027.</p>
+            <p class="text-gray-600 text-sm">Yes — DriveSchoolPro is free until 31 March 2027 while we're in early access. No card is required and nothing is ever charged automatically. We charge 3% on card payments your school collects through DriveSchoolPro; Stripe's own processing fee is separate. Pricing will be announced well before 1 April 2027.</p>
           </div>
           <div class="card">
             <h3 class="font-bold text-brand-navy mb-2">What happens after 31 March 2027?</h3>
@@ -313,7 +313,7 @@ const faqSchema = {
           </div>
           <div class="card">
             <h3 class="font-bold text-brand-navy mb-2">How do my pupils pay me?</h3>
-            <p class="text-gray-600 text-sm">You can record cash, bank transfer, and cheque payments, and take card payments through Stripe pay-links on invoices. We take no commission on the payments you collect — Stripe's standard processing fee applies to card payments.</p>
+            <p class="text-gray-600 text-sm">You can record cash, bank transfer, and cheque payments, and take card payments through Stripe pay-links on invoices. We charge 3% on card payments you collect through DriveSchoolPro, and Stripe's standard processing fee applies on top.</p>
           </div>
           <div class="card">
             <h3 class="font-bold text-brand-navy mb-2">How is my data kept secure, and where is it hosted?</h3>
@@ -325,7 +325,7 @@ const faqSchema = {
           </div>
           <div class="card">
             <h3 class="font-bold text-brand-navy mb-2">I'm switching from paper, WhatsApp or a spreadsheet — is it hard?</h3>
-            <p class="text-gray-600 text-sm">No. Most instructors are set up in about 10 minutes, and you can keep your current diary running alongside until you're confident. DriveSchoolPro is free during early access and needs no card.</p>
+            <p class="text-gray-600 text-sm">No. Most instructors are set up in about five minutes, and you can keep your current diary running alongside until you're confident. DriveSchoolPro is free during early access and needs no card.</p>
           </div>
           <div class="card">
             <h3 class="font-bold text-brand-navy mb-2">Which reminders can I send — email or WhatsApp?</h3>

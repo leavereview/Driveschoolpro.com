@@ -63,6 +63,48 @@ const FORBIDDEN = [
   ['parent portal', 'parentAccessFlag is off'],
   ['parent portals', 'parentAccessFlag is off'],
   ['parents their own portal', 'parentAccessFlag is off'],
+  // Found live on /how-progress-works/ 2026-09-10: the page sold parent access in
+  // three phrasings none of the rules above matched, while its own FAQ said the
+  // feature did not exist. These close that gap.
+  ['parents can also be given', 'parentAccessFlag is off'],
+  ['parents can be given', 'parentAccessFlag is off'],
+  ['pupils and parents can view', 'parentAccessFlag is off'],
+  ['parent and guardian access', 'parentAccessFlag is off'],
+  // Review collection is a NUDGE, not an automatic send: ReviewNudgePanel puts
+  // candidates (test passes + inactive pupils) on the Today screen and the
+  // instructor taps send. Copy claiming it sends by itself is false. Found and
+  // corrected 2026-09-10 after the first draft of /features/reviews/ shipped it.
+  ['review request goes out automatically', 'review collection is a nudge, not an automatic send'],
+  ['review requests go out automatically', 'review collection is a nudge, not an automatic send'],
+  ['requests go to your google business profile automatically', 'review collection is a nudge, not an automatic send'],
+  ['reviews are sent automatically', 'review collection is a nudge, not an automatic send'],
+  // Found 2026-09-10 by scanning every product claim against the app. The only
+  // text/calendar response in the whole app is the PUBLIC booking-management
+  // route (a pupil's own lesson); there is no instructor diary export or feed.
+  ['export lessons to google', 'no instructor-side calendar export exists'],
+  ['export your driveschoolpro diary', 'no instructor-side calendar export exists'],
+  ['one-way calendar file', 'no instructor-side calendar export exists'],
+  ['reads an ics feed', 'no instructor-side calendar export exists'],
+  // No per-pupil switch for AI briefings exists anywhere in validations, config
+  // or schema.prisma. Claimed on two pages before this scan.
+  ['turned off per pupil', 'no per-pupil briefing toggle exists'],
+  ['turned off per-pupil', 'no per-pupil briefing toggle exists'],
+  ['off per pupil', 'no per-pupil briefing toggle exists'],
+  // Review collection: six more pages carried the "automatic" framing.
+  ['triggers an automatic review', 'review collection is a nudge, not an automatic send'],
+  ['automatic review request', 'review collection is a nudge, not an automatic send'],
+  ['automated google review request', 'review collection is a nudge, not an automatic send'],
+  ['automatically sends a review', 'review collection is a nudge, not an automatic send'],
+  // PLATFORM COMMISSION IS 3%. driveschoolpro/src/lib/utils/connect-fees.ts:14-25
+  // (#1139, JP 2026-08-24: "3%, everyone, from launch") and schema.prisma:1081
+  // platformFeePercent @default(3). It applies to FOUNDING orgs too - the free
+  // launch is no SUBSCRIPTION fee, not no commission. The site claimed the
+  // opposite in 17 places across 8 pages until 2026-09-11, three of them inside
+  // FAQPage JSON-LD. The changelog's July 2026 entry is exempt below: it was
+  // accurate when written, since the 3% decision postdates it.
+  ['no commission', 'platform commission is 3% (connect-fees.ts, JP 2026-08-24)'],
+  ['0% of your payments', 'platform commission is 3% (connect-fees.ts, JP 2026-08-24)'],
+  ['take no commission', 'platform commission is 3% (connect-fees.ts, JP 2026-08-24)'],
   ['inc vat', 'LEAVE.REVIEW LTD is not VAT-registered'],
   ['including vat', 'LEAVE.REVIEW LTD is not VAT-registered'],
   ['#ff385c', 'not a brand token'],
@@ -130,6 +172,10 @@ const ALLOW = [
    'item in a checklist for evaluating any digital tracking system'],
   ['/blog/how-to-choose-driving-school-scheduling-software/', 'practical test booking',
    'UK regulatory context (test booking rules), not a product claim'],
+  ['/changelog/', 'no commission',
+   'dated historical record - the July 2026 entry was accurate when written; the 3% decision is dated 2026-08-24'],
+  ['/changelog/', 'take no commission',
+   'dated historical record - see above'],
 ];
 
 function allowed(page, rule) {

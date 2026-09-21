@@ -1,0 +1,167 @@
+---
+import { OFFER } from '../../config/offer';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BreadcrumbsEnhanced from '../../components/seo/BreadcrumbsEnhanced.astro';
+import FAQEnhanced from '../../components/seo/FAQEnhanced.astro';
+import ProductDemo from '../../components/ProductDemo.astro';
+
+const faqs = [
+  {
+    question: "What happens if I try to book two pupils into the same slot?",
+    answer: "It stops you. Every booking is checked three ways at once — the pupil, the instructor and the vehicle — so a clash is caught as you make it rather than discovered on the morning. You get told which of the three is already committed and when.",
+    links: []
+  },
+  {
+    question: "Can I move a lesson without telling the pupil separately?",
+    answer: "Yes. Rescheduling updates the lesson everywhere it appears — your diary, the pupil's portal, and the reminder that goes out before the lesson. You are not re-typing the change into WhatsApp afterwards.",
+    links: []
+  },
+  {
+    question: "Does it sync with Google Calendar or Apple Calendar?",
+    answer: "Not as a subscribed feed. DriveSchoolPro is where your diary lives, and keeping it the single source is what makes the conflict checking mean anything. Pupils booking through your public booking page do get an add-to-calendar link for their lesson, so it lands in whatever calendar they use.",
+    links: []
+  },
+  {
+    question: "Can I set up a repeating weekly slot for a regular pupil?",
+    answer: "Not yet — recurring lesson series is coming soon. For now, regular slots are booked individually, which takes a few seconds each from the calendar.",
+    links: []
+  },
+  {
+    question: "How do pupils get reminded about their lesson?",
+    answer: "An email reminder goes out automatically before every lesson, and you control how far in advance. WhatsApp reminders are coming soon.",
+    links: [{ text: 'Our messaging policy', url: '/whatsapp/' }]
+  },
+  {
+    question: "Can pupils book their own lessons?",
+    answer: "Yes. Pupils can book from their portal, and you can also embed a booking widget on your own website so new enquiries pick a slot without messaging you first. Your availability rules decide what they are offered.",
+    links: []
+  }
+];
+---
+
+<BaseLayout
+  title="Lesson Scheduling for Driving Instructors | DriveSchoolPro"
+  description="Drag-and-drop lesson scheduling with three-way conflict checking on pupil, instructor and vehicle. Move a lesson once and the diary, the pupil's portal and the reminder all catch up. Free until 31 March 2027."
+>
+  <BreadcrumbsEnhanced items={[{ label: 'Home', href: '/' }, { label: 'Features', href: '/features/' }, { label: 'Scheduling' }]} site="driveschool" />
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-3xl mb-12">
+        <p class="text-sm uppercase tracking-wider text-gray-400 mb-3">Sunday night</p>
+        <h1 class="text-4xl md:text-5xl font-bold text-brand-navy leading-tight mb-6">
+          Move a lesson. Everything else catches up.
+        </h1>
+        <p class="text-xl text-gray-600 leading-relaxed">
+          A diary is easy to keep and hard to change. One pupil moves their Tuesday, and suddenly
+          you are rubbing out pencil, checking whether the car is free, working out whether you
+          can get from Didsbury to Sale in twenty minutes, and then messaging three people. The
+          change takes a second. The consequences take twenty minutes.
+        </p>
+      </div>
+
+      <ProductDemo
+        poster="/images/marketing/calendar-week-view.webp"
+        posterAlt="A weekly calendar showing colour-coded lessons across several instructors, with booking, cancellation and utilisation totals along the top."
+        alt="A lesson is dragged from Tuesday to Thursday in the weekly calendar; a second drag onto a clashing slot raises a conflict warning."
+        width={1440}
+        height={900}
+      />
+    </div>
+  </section>
+
+  <section class="section bg-gray-50 border-t border-gray-100">
+    <div class="container-custom max-w-4xl space-y-14">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">You can't double-book. It won't let you.</h2>
+        <p class="text-lg text-gray-600 mb-4">
+          Most diary clashes are not carelessness. They happen because the thing you need to check
+          lives somewhere else — the pupil's last message, the other instructor's column, which car
+          is in for its MOT. Checking all three every time is the part nobody keeps up.
+        </p>
+        <p class="text-lg text-gray-600">
+          DriveSchoolPro checks all three on every booking: is this pupil free, is this instructor
+          free, is this vehicle free. If any one of them is not, you are told which, and when they
+          are committed, before the booking is saved. It is the difference between finding out now
+          and finding out at 9am on a Saturday with a learner on the doorstep.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">The whole week on one screen, colour-coded</h2>
+        <p class="text-lg text-gray-600 mb-4">
+          Day, week and month views. The week view is the one most instructors live in: every
+          lesson across every instructor, colour-coded, with the totals for bookings, cancellations
+          and utilisation along the top so you can see how the week is actually going without
+          adding anything up.
+        </p>
+        <p class="text-lg text-gray-600">
+          Rescheduling is a drag. Pick the lesson up, drop it where it belongs, and the pupil's
+          portal and their reminder move with it. You are not updating the same change in three
+          places and hoping you remembered the third.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">The month view shows you where the money isn't</h2>
+        <p class="text-lg text-gray-600">
+          The month view is a heatmap. Dense weeks look dense and thin weeks look thin, which makes
+          the gaps obvious — the Tuesday afternoons that never fill, the week in half term you
+          could have sold twice over. Most instructors find they are not short of demand so much as
+          short of visibility about where the holes are. Seeing a month at a glance is what turns
+          that into something you can actually sell into.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white border-t border-gray-100">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-8">How it works</h2>
+      <ol class="space-y-6">
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">1</span>
+          <div>
+            <h3 class="font-bold text-brand-navy mb-1">Set your hours and your cars</h3>
+            <p class="text-gray-600">Tell it when you work, where you pick up from, and which vehicles you use. This is the part that makes the conflict checking work, and it is a one-off.</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">2</span>
+          <div>
+            <h3 class="font-bold text-brand-navy mb-1">Book from the calendar</h3>
+            <p class="text-gray-600">Click a slot and book it. Pupils can book their own from the portal, or through a booking widget embedded on your website.</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">3</span>
+          <div>
+            <h3 class="font-bold text-brand-navy mb-1">Drag when things move</h3>
+            <p class="text-gray-600">Because they will. The diary, the portal and the reminder all follow the lesson.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <FAQEnhanced faqs={faqs} site="driveschool" pageUrl="https://driveschoolpro.com/features/scheduling/" title="Scheduling questions" />
+
+  <section class="section bg-brand-navy text-white">
+    <div class="container-custom text-center max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Get your Sunday night back</h2>
+      <p class="text-lg text-gray-300 mb-8">Free until 31 March 2027. No card, no contract, cancel any time.</p>
+      <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label} &rarr;</a>
+    </div>
+  </section>
+
+  <section class="section bg-white border-t border-gray-100">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-xl font-bold text-brand-navy mb-6">Related</h2>
+      <ul class="space-y-3 text-lg">
+        <li><a href="/features/getting-paid/" class="text-brand-red font-semibold hover:underline">Getting paid &rarr;</a> <span class="text-gray-500">— pupils who have paid up front don't cancel on Sunday night</span></li>
+        <li><a href="/features/progress-tracking/" class="text-brand-red font-semibold hover:underline">Progress tracking &rarr;</a> <span class="text-gray-500">— what to teach in the slot you just booked</span></li>
+        <li><a href="/driving-school-scheduling-software/" class="text-brand-red font-semibold hover:underline">Driving school scheduling software &rarr;</a> <span class="text-gray-500">— the longer guide</span></li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

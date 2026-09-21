@@ -22,7 +22,7 @@ const comparisonRows = [
   { label: 'Instructor expense tracking', values: [false, true] },
   { label: 'White-labelling / franchise management', values: [false, true] },
   { label: 'Native mobile app', values: ['Mobile-first web app', 'Mobile friendly'] },
-  { label: 'Automated Google review requests', values: [true, false], highlight: true },
+  { label: 'Google review requests prompted at each pass', values: [true, false], highlight: true },
   { label: 'Embeddable booking widget', values: [true, 'Not published'] },
   { label: 'Free to start', values: ['Free until 31 Mar 2027', 'First Instructor Free'] },
 ];
@@ -180,7 +180,7 @@ const schemaMarkup = {
         <a href="/how-progress-works/" class="text-brand-red hover:underline">How progress tracking works</a> covers the mechanism.
       </p>
       <p class="text-gray-700">
-        <strong>Automated Google review requests.</strong> Every test pass triggers a review request at the moment the pupil is happiest. For a school building local reputation, that compounds.
+        <strong>Google review requests, prompted.</strong> Pupils who have just passed appear on your Today screen with a request ready to send, at the moment they are happiest to write one. For a school building local reputation, that compounds.
       </p>
     </div>
   </section>
@@ -188,7 +188,7 @@ const schemaMarkup = {
   <section class="section bg-brand-navy text-white text-center">
     <div class="container-custom">
       <h2 class="text-3xl font-bold mb-3">Try DriveSchoolPro — Free Until 31 March 2027</h2>
-      <p class="text-white/80 text-lg mb-8 max-w-xl mx-auto">No credit card. No demo call. Set up in 3 minutes and run a week of real lessons before deciding.</p>
+      <p class="text-white/80 text-lg mb-8 max-w-xl mx-auto">No credit card. No demo call. Set up in five minutes and run a week of real lessons before deciding.</p>
       <a href={OFFER.ctaPrimary.href} class="inline-block bg-brand-red text-white px-10 py-4 rounded-xl font-semibold text-lg hover:bg-red-700 transition-colors">
         {OFFER.ctaPrimary.label} &rarr;
       </a>

@@ -30,7 +30,7 @@ const faqSchema = {
       "name": "Is DriveSchoolPro free?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": `${OFFER.long} — no credit card required, and we take no commission on the payments you collect. Pricing will be announced well before 1 April 2027, and nothing is charged automatically.`
+        "text": `${OFFER.long} — no credit card required. We charge 3% on card payments you collect, and Stripe's own processing fee is separate. Pricing will be announced well before 1 April 2027, and nothing is charged automatically.`
       }
     },
     {
@@ -54,7 +54,7 @@ const faqSchema = {
       "name": "Can I switch from my paper diary easily?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Most ADIs are fully set up within 10 minutes. Add your students and schedule your first lesson — you can run both systems in parallel until you're comfortable."
+        "text": "Most ADIs are fully set up within five minutes. Add your students and schedule your first lesson — you can run both systems in parallel until you're comfortable."
       }
     },
     {
@@ -88,7 +88,7 @@ const softwareSchema = {
 const features = [
   { name: 'AI lesson briefings', desc: 'Pre-generated for every lesson — saves 5–10 minutes' },
   { name: 'Full DVSA framework', desc: '8 categories, 27 skills, test readiness scoring' },
-  { name: 'Automated Google review requests', desc: 'Triggered automatically on every test pass' },
+  { name: 'Google review requests', desc: 'Prompted on your Today screen at every test pass' },
   { name: 'Email reminders (WhatsApp coming soon)', desc: 'Automated before every lesson, reduces no-shows' },
   { name: 'Three-way scheduling', desc: 'Pupil, instructor, and vehicle conflicts auto-detected' },
   { name: 'Embeddable booking widget', desc: 'Pupils book directly on your own website' },
@@ -136,7 +136,7 @@ const features = [
             The <span class="text-brand-red">driving school platform</span> that does the thinking for you
           </h1>
           <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-            AI-generated lesson briefings. DVSA competency tracking across the full 8-category framework. Automated Google review requests that grow your school. Everything a UK driving instructor needs — in one place.
+            AI-generated lesson briefings. DVSA competency tracking across the full 8-category framework. Google review requests prompted at every pass. Everything a UK driving instructor needs — in one place.
           </p>
 
           <a
@@ -229,14 +229,14 @@ const features = [
           <p class="text-gray-600 text-sm leading-relaxed">Not a generic progress bar. All 8 official DVSA categories and 27 skills, tracked lesson by lesson. Test readiness scoring built in.</p>
         </div>
 
-        <!-- Card 3: Automated Google Reviews -->
+        <!-- Card 3: Google Review Prompts -->
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
           <div class="w-10 h-10 rounded-lg bg-brand-red-light flex items-center justify-center mb-4">
             <svg class="w-5 h-5 text-brand-red" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
           </div>
-          <p class="font-semibold text-gray-900 mb-2">Automated Google Reviews</p>
+          <p class="font-semibold text-gray-900 mb-2">Google Review Prompts</p>
           <p class="text-gray-600 text-sm leading-relaxed">Every pupil who passes is automatically asked for a Google review. The single fastest way to grow a UK driving school.</p>
         </div>
 
@@ -298,7 +298,7 @@ const features = [
         <div class="text-center">
           <div class="w-12 h-12 rounded-full bg-brand-red text-white font-bold text-xl flex items-center justify-center mx-auto mb-4">3</div>
           <h3 class="font-semibold text-gray-900 mb-2">Watch reviews roll in</h3>
-          <p class="text-gray-600 text-sm leading-relaxed">Every test pass triggers an automated Google review request. Your reputation grows on autopilot.</p>
+          <p class="text-gray-600 text-sm leading-relaxed">Every test pass puts the pupil on your Today screen with a Google review request. Your reputation grows on autopilot.</p>
         </div>
 
       </div>
@@ -388,7 +388,7 @@ const features = [
   <section class="section bg-gray-50">
     <div class="container-custom text-center">
       <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-3">Free Until 31 March 2027</h2>
-      <p class="text-gray-500 mb-8">We're in early access, building with founding schools. No setup fees. No contracts. No per-student charges — and we take no commission on the payments you collect.</p>
+      <p class="text-gray-500 mb-8">We're in early access, building with founding schools. No setup fees. No contracts. No per-student charges. We charge 3% on card payments you collect, and Stripe's own processing fee is separate.</p>
       <div>
         <a
           href={OFFER.ctaPrimary.href}
@@ -440,7 +440,7 @@ const features = [
             </svg>
           </summary>
           <p class="mt-3 text-gray-600 text-sm leading-relaxed">
-            {OFFER.long} — no credit card required, and we take no commission on the payments you collect. Pricing will be announced well before 1 April 2027, and nothing is charged automatically.
+            {OFFER.long} — no credit card required. We charge 3% on card payments you collect, and Stripe's own processing fee is separate. Pricing will be announced well before 1 April 2027, and nothing is charged automatically.
           </p>
         </details>
 
@@ -476,7 +476,7 @@ const features = [
             </svg>
           </summary>
           <p class="mt-3 text-gray-600 text-sm leading-relaxed">
-            Most ADIs are fully set up within 10 minutes. Add your students and schedule your first lesson — you can run both systems in parallel until you're comfortable.
+            Most ADIs are fully set up within five minutes. Add your students and schedule your first lesson — you can run both systems in parallel until you're comfortable.
           </p>
         </details>
 

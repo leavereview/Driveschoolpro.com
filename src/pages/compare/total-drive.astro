@@ -9,7 +9,7 @@ import FAQEnhanced from '../../components/seo/FAQEnhanced.astro';
 const comparisonRows = [
   { label: 'AI lesson briefings', values: [true, false], highlight: true },
   { label: 'Full DVSA 8-category framework', values: [true, true] },
-  { label: 'Automated Google review requests', values: [true, false], highlight: true },
+  { label: 'Google review requests prompted at each pass', values: [true, false], highlight: true },
   { label: 'WhatsApp reminders', values: ['Coming soon', false], highlight: true },
   { label: 'Email reminders', values: [true, true] },
   { label: 'Three-way conflict detection (pupil + instructor + vehicle)', values: [true, false] },
@@ -26,7 +26,7 @@ const comparisonRows = [
 const faqItems = [
   {
     question: "Is DriveSchoolPro better than Total Drive?",
-    answer: "It depends what matters to you. On price, right now DriveSchoolPro wins: it's free until 31 March 2027 while we're in early access, against Total Drive's £18/month after its 30-day trial. On track record, Total Drive is the more established platform and we'd rather you knew that. Where DriveSchoolPro differs is the feature set: AI-generated lesson briefings, automated Google review requests after each test pass, Stripe Connect payments and an embeddable booking widget. Pricing verified July 2026.",
+    answer: "It depends what matters to you. On price, right now DriveSchoolPro wins: it's free until 31 March 2027 while we're in early access, against Total Drive's £18/month after its 30-day trial. On track record, Total Drive is the more established platform and we'd rather you knew that. Where DriveSchoolPro differs is the feature set: AI-generated lesson briefings, Google review requests prompted after each test pass, Stripe Connect payments and an embeddable booking widget. Pricing verified July 2026.",
     links: [{ text: 'Get started free', url: OFFER.ctaPrimary.href }]
   },
   {
@@ -40,13 +40,13 @@ const faqItems = [
     links: [{ text: 'How AI briefings work', url: '/how-progress-works/' }]
   },
   {
-    question: "Does Total Drive send automated Google review requests?",
-    answer: "No. Total Drive does not automate Google review requests. DriveSchoolPro automatically sends a review request to every pupil who passes their test — the most effective time to ask, since they're in the best possible mood. For driving schools building their online reputation, this is a significant difference.",
+    question: "Does Total Drive prompt you for Google review requests?",
+    answer: "Not that we can find on their published feature list. In DriveSchoolPro, pupils who have just passed appear on your Today screen with a Google review request ready to send in one tap — you still press send, which keeps the ask personal. Asking on pass day is the most effective time, since that is when a pupil is most willing.",
     links: []
   },
   {
     question: "Which is better for a solo ADI?",
-    answer: "Both suit solo ADIs. On cost, DriveSchoolPro is currently free until 31 March 2027 (early access, no per-student limits), while Total Drive is from £18/month after its 30-day trial. On maturity, Total Drive is the more established platform. If AI lesson briefings, automated Google review requests after each pass and Stripe Connect payments appeal, DriveSchoolPro is the better fit — and trying it costs nothing. Neither platform asks for a card to start.",
+    answer: "Both suit solo ADIs. On cost, DriveSchoolPro is currently free until 31 March 2027 (early access, no per-student limits), while Total Drive is from £18/month after its 30-day trial. On maturity, Total Drive is the more established platform. If AI lesson briefings, Google review requests prompted after each pass and Stripe Connect payments appeal, DriveSchoolPro is the better fit — and trying it costs nothing. Neither platform asks for a card to start.",
     links: [{ text: 'Get started free', url: OFFER.ctaPrimary.href }]
   },
   {
@@ -64,7 +64,7 @@ const schemaMarkup = {
   "author": { "@type": "Organization", "name": "DriveSchoolPro" },
   "publisher": { "@type": "Organization", "name": "DriveSchoolPro" },
   "datePublished": "2026-04-19",
-  "dateModified": "2026-04-19"
+  "dateModified": "2026-09-11"
 };
 ---
 
@@ -91,7 +91,7 @@ const schemaMarkup = {
         <span class="inline-block px-4 py-1 bg-brand-red/20 text-brand-red-light rounded-full text-sm font-medium mb-4">Platform Comparison</span>
         <h1 class="text-4xl md:text-5xl font-bold mb-4">DriveSchoolPro vs Total Drive</h1>
         <p class="text-xl text-gray-300 mb-8">
-          An honest, feature-by-feature comparison. Total Drive is an established UK platform. DriveSchoolPro is built for ADIs who want AI lesson briefings, automated Google reviews, and transparent pricing from day one.
+          An honest, feature-by-feature comparison. Total Drive is an established UK platform. DriveSchoolPro is built for ADIs who want AI lesson briefings, prompted Google review requests, and transparent pricing from day one.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">Try DriveSchoolPro Free</a>
@@ -102,7 +102,7 @@ const schemaMarkup = {
   </section>
 
   <FeaturedAnswer question="How does DriveSchoolPro compare to Total Drive?">
-    DriveSchoolPro and Total Drive are both UK driving school platforms with DVSA tracking, scheduling and openly published terms. Total Drive is the more established option, from £18/month with a 30-day free trial. DriveSchoolPro is free until 31 March 2027 while in early access — no card required — and adds AI-generated lesson briefings, automated Google review requests after each test pass, Stripe Connect payments and an embeddable booking widget. Pricing verified July 2026.
+    DriveSchoolPro and Total Drive are both UK driving school platforms with DVSA tracking, scheduling and openly published terms. Total Drive is the more established option, from £18/month with a 30-day free trial. DriveSchoolPro is free until 31 March 2027 while in early access — no card required — and adds AI-generated lesson briefings, Google review requests prompted after each test pass, Stripe Connect payments and an embeddable booking widget. Pricing verified July 2026.
   </FeaturedAnswer>
 
   <!-- Summary Cards -->
@@ -122,7 +122,7 @@ const schemaMarkup = {
             {[
               'AI lesson briefings before every session',
               'Full DVSA 8-category, 27-skill framework',
-              'Automated Google review requests',
+              'Google review requests, prompted at each pass',
               'Email reminders (WhatsApp coming soon)',
               'Three-way conflict detection',
               'Embeddable booking widget',
@@ -152,7 +152,7 @@ const schemaMarkup = {
             {[
               { text: 'No AI lesson briefings', has: false },
               { text: 'DVSA progress tracking', has: true },
-              { text: 'No automated Google reviews', has: false },
+              { text: 'No Google review prompts', has: false },
               { text: 'No WhatsApp reminders', has: false },
               { text: 'SMS and email reminders', has: true },
               { text: 'No embeddable booking widget', has: false },
@@ -235,11 +235,11 @@ const schemaMarkup = {
         {[
           {
             title: 'AI lesson briefings',
-            body: 'DriveSchoolPro generates a pre-lesson briefing before every session using your previous notes and DVSA skill ratings. Total Drive has no equivalent. This saves 5–10 minutes per lesson and ensures context carries between sessions.'
+            body: 'DriveSchoolPro generates a pre-lesson briefing before every session using your previous notes and DVSA skill ratings. Total Drive has no equivalent. Context carries between sessions, so a pupil handed between instructors does not spend the first ten minutes re-explaining their own history.'
           },
           {
-            title: 'Automated Google review requests',
-            body: 'Every test pass in DriveSchoolPro triggers an automatic review request. This is the most effective way to build Google reviews — asking at exactly the right moment. Total Drive doesn\'t offer this.'
+            title: 'Google review requests, prompted at each pass',
+            body: 'Pupils who have just passed surface on your Today screen with a Google review request ready to send. Asking on pass day is the single biggest lever on review volume, and the prompt means it stops depending on you remembering.'
           },
           {
             title: 'WhatsApp reminders (coming soon)',
@@ -247,7 +247,7 @@ const schemaMarkup = {
           },
           {
             title: 'Stripe Connect payments built in',
-            body: 'DriveSchoolPro takes card payments through Stripe Connect, so pupils can pay from an invoice pay-link and the money lands in your own account — we take no commission on it.'
+            body: 'DriveSchoolPro takes card payments through Stripe Connect, so pupils can pay from an invoice pay-link and the money lands in your own account. We charge 3% on card payments collected through DriveSchoolPro; Stripe\'s own processing fee is separate.'
           },
           {
             title: 'Free during early access — for any number of instructors',
@@ -274,7 +274,7 @@ const schemaMarkup = {
   <section class="section bg-brand-navy text-white text-center">
     <div class="container-custom">
       <h2 class="text-3xl font-bold mb-3">Try DriveSchoolPro — Free Until 31 March 2027</h2>
-      <p class="text-white/80 text-lg mb-8 max-w-xl mx-auto">No credit card. No demo call. Set up in 3 minutes and run a week of real lessons before deciding.</p>
+      <p class="text-white/80 text-lg mb-8 max-w-xl mx-auto">No credit card. No demo call. Set up in five minutes and run a week of real lessons before deciding.</p>
       <a href={OFFER.ctaPrimary.href} class="inline-block bg-brand-red text-white px-10 py-4 rounded-xl font-semibold text-lg hover:bg-red-700 transition-colors">
         {OFFER.ctaPrimary.label} &rarr;
       </a>

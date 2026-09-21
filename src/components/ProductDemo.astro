@@ -1,0 +1,104 @@
+---
+/**
+ * A silent, looping product demo clip with a poster-image fallback.
+ *
+ * Renders a plain <img> when given no `src`, so pages can ship before their
+ * clips are cut. Deliberately separate from MarketingScreenshot.astro, which
+ * is used in ~10 places and must not be destabilised.
+ */
+interface Props {
+  /** Path to the MP4. Omit to render the poster as a static image. */
+  src?: string;
+  /** Always required — the still shown before load, and the no-video fallback. */
+  poster: string;
+  width: number;
+  height: number;
+  /** Describes what HAPPENS in the clip, not just what is pictured. */
+  alt: string;
+  /**
+   * Describes the POSTER STILL, used whenever no clip is present. Without it a
+   * screen reader is told a lesson is being dragged while the page is showing a
+   * static image. Falls back to `alt` only when the two genuinely coincide.
+   */
+  posterAlt?: string;
+  phone?: boolean;
+  class?: string;
+}
+
+const { src, poster, width, height, alt, posterAlt, phone = false, class: className = '' } = Astro.props;
+
+const frameClass = phone
+  ? 'mx-auto max-w-[280px] rounded-[2rem] border-[8px] border-gray-800 bg-gray-800 p-1 shadow-2xl'
+  : '';
+const mediaClass = phone
+  ? 'w-full h-auto rounded-[1.5rem]'
+  : 'rounded-xl shadow-lg border border-gray-200 w-full h-auto';
+---
+
+<div class:list={[frameClass, className]}>
+  <div class:list={[phone ? 'overflow-hidden rounded-[1.5rem]' : '']}>
+    {src ? (
+      <video
+        class:list={['product-demo', mediaClass]}
+        width={width}
+        height={height}
+        poster={poster}
+        aria-label={alt}
+        data-src={src}
+        muted
+        loop
+        playsinline
+        preload="none"
+      ></video>
+    ) : (
+      <img
+        src={poster}
+        width={width}
+        height={height}
+        alt={posterAlt ?? alt}
+        loading="lazy"
+        decoding="async"
+        class:list={[mediaClass]}
+      />
+    )}
+  </div>
+</div>
+
+<script>
+  // Clips load only when they near the viewport: four of the five sit below the
+  // fold, and eager loading would undo the site's Core Web Vitals tuning.
+  const demos = document.querySelectorAll<HTMLVideoElement>('video.product-demo');
+
+  if (demos.length) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion) {
+      // Autoplaying motion triggers symptoms for people with vestibular
+      // disorders. Show the poster and let them choose to play it.
+      demos.forEach((video) => {
+        if (video.dataset.src) video.src = video.dataset.src;
+        video.controls = true;
+      });
+    } else {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target as HTMLVideoElement;
+            if (!entry.isIntersecting) {
+              video.pause();
+              return;
+            }
+            if (!video.src && video.dataset.src) video.src = video.dataset.src;
+            // A rejected play() means the browser declined autoplay; fall back
+            // to controls rather than leaving a dead frame on the page.
+            video.play().catch(() => {
+              video.controls = true;
+            });
+          });
+        },
+        { rootMargin: '200px 0px' },
+      );
+      demos.forEach((video) => observer.observe(video));
+    }
+  }
+</script>
