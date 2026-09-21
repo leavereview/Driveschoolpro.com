@@ -65,7 +65,7 @@ UK ADIs must keep their tuition vehicles MOT'd, taxed, and insured. Schools with
 | DriveSchoolPro | UK ADIs & schools (1–5 instructors) | Free until 31 March 2027 (early access) | ✅ Yes | ✅ Full | Free until 31 March 2027 |
 | Driving School Office | UK schools & franchises wanting an established platform | Contact for pricing | ⚠️ Mobile friendly | ⚠️ Not stated | Trial offered |
 | DrivingSchoolSoftware.com | Enterprise with custom needs | £99/month | ✅ Yes | ⚠️ Partial | 30 days |
-| Total Drive | UK instructors wanting all-in-one | From £18/month | ✅ Yes | ✅ Yes | 30-day free trial |
+| Total Drive | UK instructors wanting all-in-one | [See their pricing](https://totaldrive.co.uk/instructor-software-pricing/) | ✅ Yes | ✅ Yes | 30-day free trial |
 | DriveScout | US multi-location schools | $79/month | ✅ Yes | ❌ No | 7 days |
 | Acuity Scheduling | Solo instructors on tight budget | $16/month | ⚠️ Limited | ❌ No | 7 days |
 | Driving Instructor Manager | Windows desktop, no subscription | £149 (one-time) | ❌ No | ⚠️ Basic | 30 days |
@@ -77,16 +77,16 @@ If price is your deciding factor, here is the same list ordered by what you actu
 | Rank | Software | Monthly cost | What you give up at this price |
 |------|----------|--------------|-------------------------------|
 | 1 | Acuity Scheduling | **$16/month** | It's a generic scheduler. No DVSA progress tracking, no pupil records, no driving-school reporting — you're buying a calendar. |
-| 2 | Total Drive | **From £18/month** | Genuine UK ADI software with a 30-day free trial. Discounts for multi-car instructors. |
-| 3 | DriveSchoolPro | **Free until 31 March 2027 (early access)** | Nothing material; DVSA tracking, pupil records and multi-instructor features included. Pricing announced well before 1 April 2027. |
-| 4 | DriveScout | **$79/month** | Built for US multi-location schools. No DVSA tracking, so UK ADIs are paying for features they can't use. |
-| 5 | DrivingSchoolSoftware.com | **£99/month** | Only partial DVSA tracking despite being the second most expensive option here. |
-| 6 | Driving Instructor Manager | **£149 one-off** | Windows desktop only, no mobile app. Cheapest over three years if you never change computer. |
+| 2 | DriveSchoolPro | **Free until 31 March 2027 (early access)** | Nothing material; DVSA tracking, pupil records and multi-instructor features included. Pricing announced well before 1 April 2027. |
+| 3 | DriveScout | **$79/month** | Built for US multi-location schools. No DVSA tracking, so UK ADIs are paying for features they can't use. |
+| 4 | DrivingSchoolSoftware.com | **£99/month** | Only partial DVSA tracking despite being the second most expensive option here. |
+| 5 | Driving Instructor Manager | **£149 one-off** | Windows desktop only, no mobile app. Cheapest over three years if you never change computer. |
+| — | Total Drive | [See their pricing](https://totaldrive.co.uk/instructor-software-pricing/) | Genuine UK ADI software with a 30-day free trial. Its prices change, so we don't quote one here. See our [head-to-head with Total Drive](/compare/total-drive/). |
 | — | Driving School Office | Contact for pricing | No published pricing, so you cannot compare it without a sales call. See our [head-to-head with Driving School Office](/compare/driving-school-office/). |
 
 **The honest read on "cheapest":** Acuity at $16/month is genuinely the lowest number, and for an ADI who only needs a booking calendar and already tracks pupil progress on paper, it is a reasonable choice. But it isn't driving school software — it's appointment software. The moment you want DVSA progress tracking, pupil records or test-readiness reporting, you're rebuilding those in spreadsheets and the saving evaporates.
 
-**On DriveSchoolPro's £0:** right now we are the cheapest, because we're in early access — the full product is free until 31 March 2027, with no card required and pricing announced well before 1 April 2027. That's a genuine early-access arrangement rather than a freemium tier: nothing is feature-capped, and nothing is charged automatically. Total Drive at £18/month remains the cheapest established paid option, and our [head-to-head with Total Drive](/compare/total-drive/) goes through the feature differences properly.
+**On DriveSchoolPro's £0:** right now we are the cheapest, because we're in early access — the full product is free until 31 March 2027, with no card required and pricing announced well before 1 April 2027. That's a genuine early-access arrangement rather than a freemium tier: nothing is feature-capped, and nothing is charged automatically. Our [head-to-head with Total Drive](/compare/total-drive/) goes through the feature differences properly, and links to their own pricing.
 
 **On the one-off option:** Driving Instructor Manager at £149 once looks expensive in month one and cheap by month eight against a typical £20/month subscription. The catch is that it's a Windows desktop application with no mobile app, so you're back at a laptop to move a lesson.
 

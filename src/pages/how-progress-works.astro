@@ -8,7 +8,7 @@ import FAQEnhanced from '../components/seo/FAQEnhanced.astro';
 const faqItems = [
   {
     question: "What DVSA skills does DriveSchoolPro track?",
-    answer: "DriveSchoolPro tracks all 27 official DVSA driving skills across 8 categories: The Basics, Control & Positioning, Observation & Planning, Junctions & Roundabouts, Manoeuvres, Road Types, Driving Conditions, and Following Routes. These are the same categories and skills used by DVSA examiners — not a simplified version.",
+    answer: "DriveSchoolPro tracks all 27 official DVSA driving skills across 8 categories: The Basics, Control & Positioning, Observation & Planning, Junctions & Roundabouts, Manoeuvres, Road Types, Driving Conditions, and Following Routes. These are the same categories and skills as DVSA's official Ready to Pass framework — not a simplified version.",
     links: [
       { text: 'All 27 DVSA skills explained', url: '/dvsa-27-driving-skills/' }
     ]
@@ -30,7 +30,7 @@ const faqItems = [
   },
   {
     question: "How do I record progress after a lesson?",
-    answer: "After each lesson, you open the session record on your phone and rate the pupil's performance against the relevant DVSA skills. Ratings use a six-level scale from Not Started through to Independent. The ratings feed into the progress dashboard and update the test readiness score automatically.",
+    answer: "After each lesson, you open the session record on your phone and rate the pupil's performance against the relevant DVSA skills. Ratings use a six-level scale from Not Started through to Reflection. The ratings feed into the progress dashboard and update the test readiness score automatically.",
     links: []
   },
   {
@@ -94,7 +94,7 @@ const schemaMarkup = {
       <div class="max-w-3xl mx-auto">
         <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">The DVSA Framework — Not a Simplified Version</h2>
         <p class="text-gray-600 mb-6 leading-relaxed">
-          Most driving school software uses a generic progress bar. DriveSchoolPro is built around the actual framework DVSA examiners use — 8 categories and 27 specific skills. When a pupil sees their progress, they're seeing exactly the same breakdown their examiner uses to assess them.
+          Most driving school software uses a generic progress bar. DriveSchoolPro is built around DVSA's official Ready to Pass framework — 8 categories and 27 specific skills. When a pupil sees their progress, they're seeing the same official breakdown of skills that you're trained to teach against.
         </p>
         <div class="grid sm:grid-cols-2 gap-4">
           {[
@@ -127,16 +127,16 @@ const schemaMarkup = {
       <div class="max-w-3xl mx-auto">
         <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Recording Progress After Each Lesson</h2>
         <p class="text-gray-600 mb-8 leading-relaxed">
-          After each lesson, open the session on your phone and rate the pupil's performance against the skills you covered. Each skill uses a six-level scale:
+          After each lesson, open the session on your phone and rate the pupil's performance against the skills you covered. Each skill is rated on DVSA's five Ready to Pass levels, plus a Not Started state for skills you haven't taught yet:
         </p>
         <div class="space-y-3 mb-8">
           {[
-            { level: 'Not Started', desc: 'Skill not yet introduced', color: 'bg-gray-200 text-gray-700' },
-            { level: 'Introduced', desc: 'Pupil has seen the skill but not yet practised it', color: 'bg-blue-100 text-blue-800' },
-            { level: 'Developing', desc: 'Practising but not yet consistent', color: 'bg-yellow-100 text-yellow-800' },
-            { level: 'Competent', desc: 'Consistent with occasional prompting', color: 'bg-orange-100 text-orange-800' },
-            { level: 'Proficient', desc: 'Performs skill reliably without prompts', color: 'bg-green-100 text-green-800' },
-            { level: 'Independent', desc: 'Examiner-standard — pupil owns this skill', color: 'bg-brand-red-light text-brand-red' },
+            { level: 'Not Started', desc: "Skill not yet introduced", color: 'bg-gray-200 text-gray-700' },
+            { level: 'Introduced', desc: "The skill has been introduced to the pupil for the first time", color: 'bg-blue-100 text-blue-800' },
+            { level: 'Helped', desc: "The pupil needed physical or verbal help to perform the skill", color: 'bg-yellow-100 text-yellow-800' },
+            { level: 'Prompted', desc: "The pupil needed verbal prompting but no physical assistance", color: 'bg-orange-100 text-orange-800' },
+            { level: 'Independent', desc: "The pupil can perform the skill independently without prompting", color: 'bg-green-100 text-green-800' },
+            { level: 'Reflection', desc: "The pupil can reflect on their own performance and self-correct", color: 'bg-brand-red-light text-brand-red' },
           ].map(({ level, desc, color }) => (
             <div class="flex items-center gap-4">
               <span class={`text-xs font-semibold px-3 py-1 rounded-full flex-shrink-0 w-28 text-center ${color}`}>{level}</span>
@@ -162,7 +162,7 @@ const schemaMarkup = {
         <div class="bg-brand-navy text-white rounded-2xl p-6 mb-6">
           <div class="text-xs font-semibold text-brand-red mb-3 uppercase tracking-wider">Example AI Briefing</div>
           <p class="text-gray-300 leading-relaxed italic">
-            "Last session Emma worked on junctions and struggled with speed on approach — she was arriving too fast and having to brake late. Her mirror checks are now consistent (Proficient). Today's focus: junction approach speed and timing. She's also not yet introduced to parallel parking, which would be good to cover if junctions go well. Emma tends to tense up when she makes a mistake — keep the tone relaxed."
+            "Last session Emma worked on junctions and struggled with speed on approach — she was arriving too fast and having to brake late. Her mirror checks are now consistent (Independent). Today's focus: junction approach speed and timing. She's also not yet introduced to parallel parking, which would be good to cover if junctions go well. Emma tends to tense up when she makes a mistake — keep the tone relaxed."
           </p>
         </div>
         <p class="text-gray-600 leading-relaxed">
