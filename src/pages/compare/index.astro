@@ -13,10 +13,19 @@ const platforms = [
     name: 'Total Drive',
     href: '/compare/total-drive/',
     positioning: 'The most established UK instructor app',
-    price: 'From £18/month',
+    price: "See Total Drive's own pricing page (prices change)",
     trial: '30-day free trial, no card',
-    bestFor: 'Instructors who want a proven, widely used UK platform and are happy to pay from day 31.',
-    gap: 'No AI lesson briefings and no prompted Google review requests.',
+    bestFor: 'Instructors who want an established UK platform with a theory suite and cancellation-gap broadcasts.',
+    gap: 'AI lesson briefings and Google review requests are not listed on its site.',
+  },
+  {
+    name: 'My Drive Time',
+    href: '/compare/my-drive-time/',
+    positioning: 'Independent UK instructor app; describes its support as award-winning',
+    price: "See My Drive Time's own pricing page (prices change)",
+    trial: '30-day free trial, no card',
+    bestFor: 'Instructors who value strong support, SMS reminders and diary-gap broadcasts.',
+    gap: 'AI lesson briefings and Google review requests are not listed on its site.',
   },
   {
     name: 'Driving School Office',
@@ -32,12 +41,12 @@ const platforms = [
 const faqItems = [
   {
     question: 'What is the best driving school software in the UK?',
-    answer: 'There is no single best platform — it depends on whether you are a solo ADI or a multi-car school, and whether DVSA skill tracking matters to you. Total Drive is the most established UK instructor app at from £18/month. Driving School Office suits larger schools and franchises but does not publish its pricing. DriveSchoolPro is free until 31 March 2027 during early access and is built around the full DVSA 27-skill framework. Compare them side by side using the links on this page.',
+    answer: 'There is no single best platform — it depends on whether you are a solo ADI or a multi-car school, and whether DVSA skill tracking matters to you. Total Drive is the most established UK instructor app, and My Drive Time is the support-led independent. Driving School Office suits larger schools and franchises but does not publish its pricing. DriveSchoolPro is free until 31 March 2027 during early access and is built around the full DVSA 27-skill framework. Compare them side by side using the links on this page.',
     links: [{ text: 'Full software comparison', url: '/blog/best-driving-school-software/' }],
   },
   {
     question: 'How much should driving school software cost?',
-    answer: 'UK instructor software generally runs from about £18 to £99 per month per instructor. Total Drive publishes from £18/month. DrivingSchoolSoftware.com is £99/month. Some platforms, including Driving School Office, do not publish pricing at all and quote on request. DriveSchoolPro is free until 31 March 2027 while in early access, with pricing announced well before that date. Verified against vendor sites August 2026.',
+    answer: 'Prices vary by vendor, by number of instructors and by add-ons such as SMS, and they change, so check each vendor\'s own pricing page. DrivingSchoolSoftware.com is £99/month. Some platforms, including Driving School Office, do not publish pricing at all and quote on request. DriveSchoolPro is free until 31 March 2027 while in early access, with pricing announced well before that date. Verified against vendor sites August 2026.',
     links: [{ text: 'See DriveSchoolPro pricing', url: '/pricing/' }],
   },
   {
@@ -47,7 +56,7 @@ const faqItems = [
   },
   {
     question: 'Why should I trust a comparison written by one of the vendors?',
-    answer: 'You should read it sceptically — we have an obvious interest. What we can offer is verifiability: every competitor price on these pages is taken from that vendor\'s own public pricing page, dated, and we state plainly where a competitor is better or more established than us. Where a vendor does not publish a price, we say that rather than inventing one. Check the figures against the vendor sites yourself.',
+    answer: 'You should read it sceptically — we have an obvious interest. What we can offer is verifiability: every competitor claim on these pages is taken from that vendor\'s own public website and dated, we link to their pricing pages instead of quoting prices that change, and we state plainly where a competitor is better or more established than us. Where a vendor does not publish a price, we say that rather than inventing one. Check the figures against the vendor sites yourself.',
     links: [],
   },
 ];
@@ -83,7 +92,7 @@ const schemaMarkup = {
         <span class="inline-block px-4 py-1 bg-brand-red/20 text-brand-red-light rounded-full text-sm font-medium mb-4">Platform Comparisons</span>
         <h1 class="text-4xl md:text-5xl font-bold mb-4">Compare UK Driving School Software</h1>
         <p class="text-xl text-gray-300 mb-8">
-          Side-by-side comparisons against the platforms UK ADIs actually shortlist. Every competitor price comes from that vendor's own pricing page, and we say where they beat us.
+          Side-by-side comparisons against the platforms UK ADIs actually shortlist. Where we quote a competitor's price it comes from that vendor's own pricing page, and we say where they beat us.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">Try DriveSchoolPro Free</a>
@@ -94,7 +103,7 @@ const schemaMarkup = {
   </section>
 
   <FeaturedAnswer question="Which driving school software should a UK ADI choose?">
-    For most solo UK ADIs the shortlist comes down to three: Total Drive, the most established UK instructor app at from £18/month with a 30-day trial; Driving School Office, aimed at multi-car schools and franchises but with no published pricing; and DriveSchoolPro, free until 31 March 2027 during early access and built around the full DVSA 27-skill framework. If you are managing test readiness rather than just a diary, prioritise DVSA skill tracking over price. All pricing verified against vendor sites August 2026.
+    For most solo UK ADIs the shortlist comes down to four: Total Drive, the most established UK instructor app; My Drive Time, the support-led independent; Driving School Office, aimed at multi-car schools and franchises but with no published pricing; and DriveSchoolPro, free until 31 March 2027 during early access and built around the full DVSA 27-skill framework. If you are managing test readiness rather than just a diary, prioritise DVSA skill tracking over price. We don't quote Total Drive's or My Drive Time's prices because they change; each comparison links to the vendor's own pricing page.
   </FeaturedAnswer>
 
   <section class="section bg-white">
@@ -102,7 +111,7 @@ const schemaMarkup = {
       <h2 class="text-3xl font-bold text-brand-navy mb-3">Head-to-head comparisons</h2>
       <p class="text-gray-600 mb-10">Each page covers features, pricing, where the competitor genuinely wins, and where we think we are the better fit.</p>
 
-      <div class="grid md:grid-cols-2 gap-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {platforms.map((p) => (
           <a href={p.href} class="card p-6 hover:shadow-lg transition-shadow group block">
             <h3 class="font-bold text-brand-navy text-xl mb-1 group-hover:text-brand-red transition-colors">

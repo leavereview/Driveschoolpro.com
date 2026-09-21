@@ -17,6 +17,11 @@ const footerLinks = {
     { label: 'Driving School Insurance', href: '/blog/driving-school-insurance-guide/' },
     { label: 'Free Software Options', href: '/free-driving-school-software/' },
   ],
+  comparisons: [
+    { label: 'vs Total Drive', href: '/compare/total-drive/' },
+    { label: 'vs My Drive Time', href: '/compare/my-drive-time/' },
+    { label: 'vs Driving School Office', href: '/compare/driving-school-office/' },
+  ],
   drivingSkills: [
     { label: '27 Driving Skills Guide', href: '/dvsa-27-driving-skills/' },
     { label: 'The Basics (Skills 1–4)', href: '/driving-skills/basics/' },
@@ -90,6 +95,16 @@ const footerLinks = {
         <h3 class="text-sm font-semibold uppercase tracking-wider mb-4">Popular Articles</h3>
         <ul class="space-y-3">
           {footerLinks.popular.map((link) => (
+            <li>
+              <a href={link.href} class="text-gray-400 hover:text-white transition-colors text-sm">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <h3 class="text-sm font-semibold uppercase tracking-wider mt-8 mb-4">Comparisons</h3>
+        <ul class="space-y-3">
+          {footerLinks.comparisons.map((link) => (
             <li>
               <a href={link.href} class="text-gray-400 hover:text-white transition-colors text-sm">
                 {link.label}
