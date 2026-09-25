@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductDemo from '../components/ProductDemo.astro';
-import ArcadeDemo from '../components/ArcadeDemo.astro';
 import Testimonials from '../components/Testimonials.astro';
 import FAQEnhanced from '../components/seo/FAQEnhanced.astro';
 import { OFFER } from '../config/offer';
@@ -232,7 +231,12 @@ const homeFaqs = [
           </a>
         </div>
         <div>
-          <ArcadeDemo id="wmaqmMnxBOOkddxDDfGz" title="Reschedule a Driving Lesson in the Calendar" />
+          <ProductDemo
+            poster="/images/marketing/calendar-week-view-live.webp"
+            width={1440}
+            height={1212}
+            alt="The weekly calendar for 21–27 September: each day's lessons laid out by time, with pupil, pick-up address and a status on every lesson."
+          />
         </div>
       </div>
     </div>
@@ -265,7 +269,14 @@ const homeFaqs = [
           </div>
         </div>
         <div>
-          <ArcadeDemo id="Ygz37438FJnWRA4l5UUV" title="Review Student Progress in Driving Competencies" />
+          <ProductDemo
+            src="/videos/progress-tracking.mp4"
+            poster="/images/marketing/dvsa-progress-poster.webp"
+            width={1234}
+            height={1098}
+            alt="The DVSA Ready to Pass grid: mastered competencies per category, a progress-over-time chart drawing in, then the Manoeuvres category opening to show each skill's proficiency level."
+            posterAlt="The DVSA Ready to Pass grid showing 15 of 27 competencies mastered across 8 categories, with a progress-over-time chart below."
+          />
         </div>
       </div>
     </div>
@@ -277,11 +288,11 @@ const homeFaqs = [
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div class="order-2 lg:order-1">
           <ProductDemo
-            poster="/images/marketing/ai-briefing-mobile.webp"
+            poster="/images/marketing/ai-briefing-today-mobile.webp"
             width={640}
-            height={1308}
-            alt="A lesson card is opened and its AI briefing is already written: what was covered last time, what the pupil struggled with, and what to focus on today."
-            posterAlt="DriveSchoolPro on a phone: the Today view showing a 15:00 lesson with a suggested focus of Manoeuvres and an AI lesson briefing on roundabout lane discipline."
+            height={1164}
+            alt="A lesson card with its AI briefing already written from the pupil's recorded lessons."
+            posterAlt="DriveSchoolPro on a phone: the Today view showing the current lesson with a pupil's name, address and an AI lesson briefing suggesting a full mock test."
             phone
           />
         </div>
