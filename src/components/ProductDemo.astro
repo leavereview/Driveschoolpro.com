@@ -23,9 +23,18 @@ interface Props {
   posterAlt?: string;
   phone?: boolean;
   class?: string;
+  /**
+   * Makes the whole demo a link to the relevant page. Pair with `linkLabel`.
+   * A linked video never shows native controls (clicks would navigate), so
+   * reduced-motion and blocked-autoplay visitors get the poster, which is
+   * itself the link.
+   */
+  href?: string;
+  /** Accessible name for the link — say where it goes, not what is pictured. */
+  linkLabel?: string;
 }
 
-const { src, poster, width, height, alt, posterAlt, phone = false, class: className = '' } = Astro.props;
+const { src, poster, width, height, alt, posterAlt, phone = false, class: className = '', href, linkLabel } = Astro.props;
 
 const frameClass = phone
   ? 'mx-auto max-w-[280px] rounded-[2rem] border-[8px] border-gray-800 bg-gray-800 p-1 shadow-2xl'
@@ -33,10 +42,14 @@ const frameClass = phone
 const mediaClass = phone
   ? 'w-full h-auto rounded-[1.5rem]'
   : 'rounded-xl shadow-lg border border-gray-200 w-full h-auto';
+
+const Wrapper = href ? 'a' : Fragment;
+const wrapperProps = href ? { href, 'aria-label': linkLabel, class: 'block' } : {};
 ---
 
 <div class:list={[frameClass, className]}>
   <div class:list={[phone ? 'overflow-hidden rounded-[1.5rem]' : '']}>
+    <Wrapper {...wrapperProps}>
     {src ? (
       <video
         class:list={['product-demo', mediaClass]}
@@ -45,6 +58,7 @@ const mediaClass = phone
         poster={poster}
         aria-label={alt}
         data-src={src}
+        data-linked={href ? '' : undefined}
         muted
         loop
         playsinline
@@ -61,6 +75,7 @@ const mediaClass = phone
         class:list={[mediaClass]}
       />
     )}
+    </Wrapper>
   </div>
 </div>
 
@@ -76,6 +91,8 @@ const mediaClass = phone
       // Autoplaying motion triggers symptoms for people with vestibular
       // disorders. Show the poster and let them choose to play it.
       demos.forEach((video) => {
+        // A linked demo stays a poster: native controls inside a link are unreliable.
+        if (video.dataset.linked !== undefined) return;
         if (video.dataset.src) video.src = video.dataset.src;
         video.controls = true;
       });
@@ -92,7 +109,7 @@ const mediaClass = phone
             // A rejected play() means the browser declined autoplay; fall back
             // to controls rather than leaving a dead frame on the page.
             video.play().catch(() => {
-              video.controls = true;
+              if (video.dataset.linked === undefined) video.controls = true;
             });
           });
         },
