@@ -3,6 +3,7 @@ import { OFFER } from '../../config/offer';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BreadcrumbsEnhanced from '../../components/seo/BreadcrumbsEnhanced.astro';
 import FAQEnhanced from '../../components/seo/FAQEnhanced.astro';
+import ArcadeDemo from '../../components/ArcadeDemo.astro';
 import ProductDemo from '../../components/ProductDemo.astro';
 
 const faqs = [
@@ -60,13 +61,7 @@ const faqs = [
         </p>
       </div>
 
-      <ProductDemo
-        poster="/images/marketing/calendar-week-view.webp"
-        posterAlt="A weekly calendar showing colour-coded lessons across several instructors, with booking, cancellation and utilisation totals along the top."
-        alt="A lesson is dragged from Tuesday to Thursday in the weekly calendar; a second drag onto a clashing slot raises a conflict warning."
-        width={1440}
-        height={900}
-      />
+      <ArcadeDemo id="wmaqmMnxBOOkddxDDfGz" title="Reschedule a Driving Lesson in the Calendar" />
     </div>
   </section>
 
@@ -111,6 +106,35 @@ const faqs = [
           short of visibility about where the holes are. Seeing a month at a glance is what turns
           that into something you can actually sell into.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white border-t border-gray-100">
+    <div class="container-custom">
+      <div class="grid lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Today's diary, on your phone</h2>
+          <p class="text-lg text-gray-600 mb-4">
+            The same diary, in your pocket. Day, week and month views are a tap apart, with a
+            strip of the week's days along the top showing how many lessons each one holds.
+          </p>
+          <p class="text-lg text-gray-600">
+            The day view lists each lesson in order — time, pupil and pick-up address — and marks
+            the gap between them, so you can see at a glance how long you have to get to the next
+            pupil.
+          </p>
+        </div>
+        <div>
+          <ProductDemo
+            poster="/images/marketing/calendar-day-mobile.webp"
+            posterAlt="The DriveSchoolPro calendar on a phone in day view for Friday 25 September, listing three lessons with pupil names, pick-up addresses and 30 minute gaps between them."
+            alt="The day view of the calendar on a phone, listing each lesson in order with the gap between them."
+            width={640}
+            height={1164}
+            phone
+          />
+        </div>
       </div>
     </div>
   </section>
