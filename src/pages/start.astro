@@ -1,0 +1,31 @@
+---
+// src/pages/start.astro — paid-traffic squeeze page. noindex; no navigation.
+// /ads/driving-school-software stays unchanged as the A/B control.
+import LandingLayout from '../layouts/LandingLayout.astro';
+import BusinessNameCapture from '../components/BusinessNameCapture.astro';
+import { OFFER } from '../config/offer';
+---
+<LandingLayout
+  title={`Start your driving school account — ${OFFER.short} | DriveSchoolPro`}
+  description={`Set up DriveSchoolPro in under a minute. ${OFFER.meta} No card required.`}
+  robots="noindex, follow"
+>
+  <section class="bg-white py-16 md:py-24">
+    <div class="container-custom max-w-2xl text-center">
+      <h1 class="text-3xl md:text-5xl font-bold text-brand-navy leading-tight mb-4">
+        Run your driving school from your phone
+      </h1>
+      <p class="text-lg text-gray-600 mb-8">
+        Diary, DVSA progress and payments in one place. {OFFER.short} — no card required.
+      </p>
+      <div class="flex justify-center text-left">
+        <BusinessNameCapture id="start-capture" />
+      </div>
+      <ul class="mt-10 grid gap-4 sm:grid-cols-3 text-sm text-gray-700">
+        <li>Tracks all 27 DVSA driving skills</li>
+        <li>Pupils book and pay online</li>
+        <li>Automatic lesson reminders</li>
+      </ul>
+    </div>
+  </section>
+</LandingLayout>

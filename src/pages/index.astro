@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductDemo from '../components/ProductDemo.astro';
 import Testimonials from '../components/Testimonials.astro';
 import FAQEnhanced from '../components/seo/FAQEnhanced.astro';
+import BusinessNameCapture from '../components/BusinessNameCapture.astro';
 import { OFFER } from '../config/offer';
 
 // SoftwareApplication Schema
@@ -146,10 +147,8 @@ const homeFaqs = [
           The average wait for a driving test in Great Britain was 22 weeks in September 2025, and DVSA doesn't expect it to fall to seven weeks until November 2027. DriveSchoolPro tracks all 27 DVSA skills across 8 categories — the same official framework, recorded from your phone at the end of a lesson — so you know before you book, not after.
         </p>
         <p class="text-sm text-gray-400 mb-8">Source: <a href="https://www.nao.org.uk/reports/investigation-into-car-driving-test-waiting-times/" class="underline hover:text-white" rel="noopener" target="_blank">National Audit Office, 17 December 2025</a>.</p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label} →</a>
-          <a href="#the-week" class="btn-secondary text-lg px-8 py-4">See it work</a>
-        </div>
+        <BusinessNameCapture id="hero-capture" tone="dark" />
+        <a href="#the-week" class="mt-4 inline-block text-sm text-gray-300 underline hover:text-white">See it work first</a>
         <p class="mt-6 text-sm text-gray-400">No credit card required • {OFFER.short}</p>
       </div>
     </div>
