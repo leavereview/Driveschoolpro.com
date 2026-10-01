@@ -86,7 +86,8 @@ const GOOGLE_ADS_ID = import.meta.env.PUBLIC_GOOGLE_ADS_ID || '';
         gtag('config', 'G-4HJLDWJ8DR', {
           linker: {
             domains: ['driveschoolpro.com', 'app.driveschoolpro.com'],
-            accept_incoming: true
+            accept_incoming: true,
+            decorate_forms: true
           }
         });
         if (GOOGLE_ADS_ID) { gtag('config', GOOGLE_ADS_ID); }

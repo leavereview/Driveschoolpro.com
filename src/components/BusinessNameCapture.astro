@@ -1,0 +1,256 @@
+---
+// src/components/BusinessNameCapture.astro
+// One-field signup start. A real GET form to the app's /signup, so it works
+// with JS off or Google blocked; Places suggestions are a progressive layer.
+// Contract: docs/superpowers/specs/2026-10-01-business-name-capture-design.md (app repo).
+import { OFFER } from '../config/offer';
+
+interface Props {
+  id: string;
+  tone?: 'dark' | 'light';
+}
+const { id, tone = 'light' } = Astro.props;
+
+const action = import.meta.env.PUBLIC_APP_SIGNUP_URL || OFFER.ctaPrimary.href;
+const mapsKey = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY || '';
+const adsId = import.meta.env.PUBLIC_GOOGLE_ADS_ID || '';
+const adsLabel = import.meta.env.PUBLIC_GOOGLE_ADS_CONVERSION_LABEL || '';
+const inputId = `${id}-org`;
+const listId = `${id}-suggestions`;
+---
+<form
+  data-capture
+  data-maps-key={mapsKey}
+  data-ads-id={adsId}
+  data-ads-label={adsLabel}
+  method="get"
+  action={action}
+  autocomplete="off"
+  class="w-full max-w-xl"
+>
+  <label for={inputId} class={tone === 'dark' ? 'block text-sm font-medium text-gray-200 mb-2' : 'block text-sm font-medium text-gray-700 mb-2'}>
+    Your driving school name
+  </label>
+  <div class="flex flex-col sm:flex-row gap-3">
+    <div class="relative flex-1">
+      <input
+        id={inputId}
+        name="org"
+        type="text"
+        maxlength="100"
+        placeholder="e.g. Smith School of Motoring"
+        role="combobox"
+        aria-autocomplete="list"
+        aria-expanded="false"
+        aria-controls={listId}
+        class="w-full rounded-lg border border-gray-300 bg-white px-4 py-4 text-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-red"
+      />
+      <ul
+        id={listId}
+        role="listbox"
+        aria-label="Matching businesses on Google"
+        hidden
+        class="absolute left-0 right-0 top-full z-20 mt-1 max-h-72 overflow-auto rounded-lg border border-gray-200 bg-white py-1 text-left text-gray-900 shadow-lg"
+      ></ul>
+    </div>
+    <input type="hidden" name="place_id" disabled />
+    <button type="submit" class="btn-primary text-lg px-8 py-4 whitespace-nowrap">
+      {OFFER.ctaPrimary.label} →
+    </button>
+  </div>
+  <p class={tone === 'dark' ? 'mt-2 text-xs text-gray-400' : 'mt-2 text-xs text-gray-500'}>
+    Not on Google? Just type your name — that works too.
+  </p>
+</form>
+
+<script>
+  import { pickTrackingParams, reconcilePlaceId } from '../utils/signup-capture';
+
+  type Gtag = (...args: unknown[]) => void;
+  interface PlacePrediction {
+    placeId: string;
+    mainText?: { text: string } | null;
+    secondaryText?: { text: string } | null;
+    text: { text: string };
+  }
+  interface PlacesLib {
+    AutocompleteSessionToken: new () => object;
+    AutocompleteSuggestion: {
+      fetchAutocompleteSuggestions(req: {
+        input: string;
+        sessionToken: object;
+        includedRegionCodes: string[];
+        includedPrimaryTypes: string[];
+      }): Promise<{ suggestions: Array<{ placePrediction: PlacePrediction | null }> }>;
+    };
+  }
+  type GoogleNs = { maps: { importLibrary(name: 'places'): Promise<PlacesLib> } };
+  const w = window as unknown as { gtag?: Gtag; google?: GoogleNs; __dspMapsReady?: () => void };
+
+  let placesPromise: Promise<PlacesLib | null> | null = null;
+  function loadPlaces(key: string): Promise<PlacesLib | null> {
+    if (!key) return Promise.resolve(null);
+    placesPromise ??= new Promise<PlacesLib | null>((resolve) => {
+      w.__dspMapsReady = () => {
+        w.google!.maps.importLibrary('places').then(resolve, () => resolve(null));
+      };
+      const s = document.createElement('script');
+      s.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(key)}&loading=async&callback=__dspMapsReady`;
+      s.async = true;
+      s.onerror = () => resolve(null);
+      document.head.appendChild(s);
+    });
+    return placesPromise;
+  }
+
+  function setup(form: HTMLFormElement) {
+    const input = form.querySelector<HTMLInputElement>('input[name="org"]')!;
+    const placeField = form.querySelector<HTMLInputElement>('input[name="place_id"]')!;
+    const list = form.querySelector<HTMLUListElement>('[role="listbox"]')!;
+    const key = form.dataset.mapsKey ?? '';
+
+    for (const [k, v] of pickTrackingParams(location.search)) {
+      const hidden = document.createElement('input');
+      hidden.type = 'hidden';
+      hidden.name = k;
+      hidden.value = v;
+      form.appendChild(hidden);
+    }
+
+    let pickedId: string | null = null;
+    let pickedName: string | null = null;
+    let token: object | null = null;
+    let active = -1;
+    let options: PlacePrediction[] = [];
+    let debounce: ReturnType<typeof setTimeout> | undefined;
+    let requestSeq = 0;
+
+    function close() {
+      list.hidden = true;
+      list.replaceChildren();
+      input.setAttribute('aria-expanded', 'false');
+      input.removeAttribute('aria-activedescendant');
+      active = -1;
+      options = [];
+    }
+
+    function highlight(i: number) {
+      active = i;
+      [...list.children].forEach((li, n) => li.setAttribute('aria-selected', String(n === i)));
+      if (i >= 0) input.setAttribute('aria-activedescendant', list.children[i].id);
+    }
+
+    function pick(p: PlacePrediction) {
+      pickedId = p.placeId;
+      pickedName = p.mainText?.text ?? p.text.text;
+      input.value = pickedName;
+      token = null; // a pick ends the Places session
+      close();
+    }
+
+    function render(preds: PlacePrediction[]) {
+      options = preds;
+      list.replaceChildren(
+        ...preds.map((p, i) => {
+          const li = document.createElement('li');
+          li.id = `${list.id}-${i}`;
+          li.role = 'option';
+          li.className = 'cursor-pointer px-4 py-3 min-h-[44px] hover:bg-gray-50 aria-selected:bg-gray-100';
+          const main = document.createElement('span');
+          main.className = 'block font-medium';
+          main.textContent = p.mainText?.text ?? p.text.text;
+          li.appendChild(main);
+          if (p.secondaryText?.text) {
+            const sub = document.createElement('span');
+            sub.className = 'block text-sm text-gray-500';
+            sub.textContent = p.secondaryText.text;
+            li.appendChild(sub);
+          }
+          // mousedown, not click: fires before the input's blur closes the list.
+          li.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            pick(p);
+          });
+          return li;
+        }),
+      );
+      list.hidden = preds.length === 0;
+      input.setAttribute('aria-expanded', String(preds.length > 0));
+      active = -1;
+    }
+
+    input.addEventListener('focus', () => {
+      void loadPlaces(key);
+    });
+
+    input.addEventListener('input', () => {
+      clearTimeout(debounce);
+      const q = input.value.trim();
+      if (q.length < 3) return close();
+      debounce = setTimeout(async () => {
+        const places = await loadPlaces(key);
+        if (!places) return;
+        token ??= new places.AutocompleteSessionToken();
+        const seq = ++requestSeq;
+        try {
+          const { suggestions } = await places.AutocompleteSuggestion.fetchAutocompleteSuggestions({
+            input: q,
+            sessionToken: token,
+            includedRegionCodes: ['gb'],
+            includedPrimaryTypes: ['establishment'],
+          });
+          if (seq !== requestSeq) return; // a newer keystroke won
+          render(
+            suggestions
+              .map((s) => s.placePrediction)
+              .filter((p): p is PlacePrediction => p !== null)
+              .slice(0, 5),
+          );
+        } catch {
+          close(); // suggestions are optional; typing still works
+        }
+      }, 250);
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (list.hidden) return;
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        highlight(Math.min(active + 1, options.length - 1));
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        highlight(Math.max(active - 1, 0));
+      } else if (e.key === 'Enter' && active >= 0) {
+        e.preventDefault();
+        pick(options[active]);
+      } else if (e.key === 'Escape') {
+        close();
+      }
+    });
+
+    input.addEventListener('blur', () => setTimeout(close, 100));
+
+    form.addEventListener('submit', () => {
+      const placeId = reconcilePlaceId(pickedId, pickedName, input.value);
+      placeField.value = placeId ?? '';
+      placeField.disabled = placeId === null;
+      // An empty field submits as bare /signup — identical to the old button.
+      input.disabled = input.value.trim() === '';
+      // Re-enable after the navigation starts so bfcache back-navigation works.
+      setTimeout(() => {
+        input.disabled = false;
+      }, 0);
+
+      if (typeof w.gtag === 'function') {
+        w.gtag('event', 'signup_start', { has_place_id: placeId !== null, transport_type: 'beacon' });
+        const { adsId, adsLabel } = form.dataset;
+        if (adsId && adsLabel) {
+          w.gtag('event', 'conversion', { send_to: `${adsId}/${adsLabel}`, transport_type: 'beacon' });
+        }
+      }
+      // No preventDefault: native GET submit is what lets the GA linker add _gl.
+    });
+  }
+
+  document.querySelectorAll<HTMLFormElement>('form[data-capture]').forEach(setup);
+</script>
