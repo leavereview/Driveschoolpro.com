@@ -126,6 +126,8 @@ const listId = `${id}-suggestions`;
     let requestSeq = 0;
 
     function close() {
+      clearTimeout(debounce); // drop any pending lookup
+      requestSeq++; // invalidate any in-flight lookup
       list.hidden = true;
       list.replaceChildren();
       input.setAttribute('aria-expanded', 'false');
@@ -200,6 +202,7 @@ const listId = `${id}-suggestions`;
             includedPrimaryTypes: ['establishment'],
           });
           if (seq !== requestSeq) return; // a newer keystroke won
+          if (document.activeElement !== input) return; // user has moved on
           render(
             suggestions
               .map((s) => s.placePrediction)
