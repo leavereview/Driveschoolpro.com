@@ -15,13 +15,17 @@ interface Props {
   id: string;
   /** Accessible name for the iframe; should say what the demo shows. */
   title: string;
+  /** Arcade's padding-bottom % for this demo's aspect ratio (from its embed code). */
+  ratio?: number;
+  /** How the demo behaves on mobile: open in a new tab (default) or play inline. */
+  mobile?: 'tab' | 'inline';
 }
 
-const { id, title } = Astro.props;
-const src = `https://demo.arcade.software/${id}?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true`;
+const { id, title, ratio = 73.6811, mobile = 'tab' } = Astro.props;
+const src = `https://demo.arcade.software/${id}?embed&embed_mobile=${mobile}&embed_desktop=inline&show_copy_link=true`;
 ---
 
-<div class="relative w-full h-0 rounded-xl shadow-lg border border-gray-200 overflow-hidden" style="padding-bottom: calc(73.6811% + 41px);">
+<div class="relative w-full h-0 rounded-xl shadow-lg border border-gray-200 overflow-hidden" style={`padding-bottom: calc(${ratio}% + 41px);`}>
   <iframe
     src={src}
     title={title}
