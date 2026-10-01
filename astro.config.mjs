@@ -13,7 +13,7 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap({
-      filter: (page) => !page.includes('/blog/tag/') && !page.includes('/ads/'),
+      filter: (page) => !page.includes('/blog/tag/') && !page.includes('/ads/') && !page.endsWith('/start/'),
       serialize: lastmodSerializer(lastmod),
     }),
     compress({
