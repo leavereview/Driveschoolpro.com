@@ -66,7 +66,7 @@ Footer stays LandingLayout's (Privacy/Terms). No nav, no outbound links except t
 |---|---|---|---|
 | H1 | Driving school software that runs from your phone | Free driving school software — nothing to download | Lesson scheduling built for driving instructors |
 | Subhead | Diary, DVSA progress and payments in one place. {OFFER.short} — no card required. | {OFFER.short}. Works in your browser and on your phone — no card, no install. | Book, move and remind pupils from one diary. {OFFER.short} — no card required. |
-| Hero | `calendar-mobile.webp` | `portal-progress-mobile.webp` | `calendar-day-mobile.webp` |
+| Hero | `calendar-mobile.webp` | `portal-dashboard-mobile.webp` (portal-progress-mobile is a 375×7173 full-page capture — unusable) | `calendar-day-mobile.webp` |
 | Benefit order | diary · DVSA · payments | diary · DVSA · reminders | diary · reminders · payments |
 | Extra FAQ | "Is it built for solo instructors?" | "Is there a download?" (honest: web app, add to home screen) | "Can pupils book themselves?" |
 
