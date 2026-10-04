@@ -46,6 +46,7 @@ for (const [id, path] of Object.entries(VARIANTS)) {
       check(ib && ib.y + ib.height <= 664, `${id}: field below the fold (${ib && ib.y + ib.height})`);
       check(bb && bb.y + bb.height <= 664, `${id}: button below the fold (${bb && bb.y + bb.height})`);
       check(bb && bb.height >= 44, `${id}: button tap target ${bb && bb.height}px`);
+      check(await page.locator('summary').count() === 5, `${id}: expected 5 FAQ summaries`);
       const small = await page.$$eval('summary', (els) => els.filter((e) => e.getBoundingClientRect().height < 44).length);
       check(small === 0, `${id}: ${small} FAQ summaries under 44px`);
     }
@@ -64,6 +65,26 @@ for (const [id, path] of Object.entries(VARIANTS)) {
       check(u.searchParams.get('utm_content') === id, `${id}/${device}/${which}: utm_content lost`);
       await page.goto(url);
     }
+    await ctx.close();
+  }
+}
+
+// First-time ad visitor: no stored consent, so the cookie banner is showing.
+// The top capture button must sit fully above the banner on common small phones.
+for (const [id, path] of Object.entries(VARIANTS)) {
+  for (const vp of [{ width: 390, height: 664 }, { width: 375, height: 553 }]) {
+    const ctx = await browser.newContext({ ...devices['iPhone 13'], viewport: vp });
+    const page = await ctx.newPage();
+    await page.route('https://maps.googleapis.com/**', (r) => r.abort());
+    await page.goto(`${BASE}${path}`);
+    const banner = page.locator('#cookie-consent');
+    await banner.waitFor({ state: 'visible' });
+    // It slides in from translate-y-full after a timeout; measure only once it has settled on screen.
+    await page.waitForFunction(() => { const r = document.getElementById('cookie-consent').getBoundingClientRect(); return r.bottom <= window.innerHeight + 1; });
+    await page.waitForTimeout(350);
+    const top = (await banner.boundingBox()).y;
+    const bb = await page.locator('#start-capture-top-org').locator('xpath=ancestor::form').locator('button[type="submit"]').boundingBox();
+    check(bb.y + bb.height <= top, `${id} @${vp.width}x${vp.height}: button bottom ${Math.round(bb.y + bb.height)} under banner top ${Math.round(top)}`);
     await ctx.close();
   }
 }
