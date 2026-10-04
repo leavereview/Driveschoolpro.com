@@ -1,0 +1,100 @@
+---
+// src/components/start/StartPage.astro — one /start squeeze-page variant.
+// Section order is fixed; copy comes from src/config/start-variants.ts.
+import BusinessNameCapture from '../BusinessNameCapture.astro';
+import { OFFER } from '../../config/offer';
+import { BENEFITS, SHARED_FAQ, fillOffer, type StartVariant } from '../../config/start-variants';
+
+interface Props {
+  variant: StartVariant;
+}
+const { variant } = Astro.props;
+const fill = (s: string) => fillOffer(s, OFFER);
+const faqs = [...SHARED_FAQ, variant.extraFaq];
+const steps = [
+  { title: 'Enter your school name', body: 'Pick your business from the suggestions or just type it.' },
+  { title: 'Confirm your details', body: 'Check your name and email — no card needed.' },
+  { title: 'Add your first pupil', body: 'Book a lesson and you’re running.' },
+];
+---
+<div data-start-variant={variant.id}>
+  <section class="bg-white pt-8 pb-10 md:pt-20 md:pb-16">
+    <div class="container-custom max-w-2xl text-center">
+      <h1 class="text-[1.75rem] leading-tight md:text-5xl font-bold text-brand-navy mb-3">{variant.h1}</h1>
+      <p class="text-base md:text-lg text-gray-600 mb-6">{fill(variant.subhead)}</p>
+      <div class="flex justify-center text-left">
+        <BusinessNameCapture id="start-capture-top" />
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-gray-50 py-10 md:py-16" aria-label="Product screenshot">
+    <div class="container-custom flex justify-center">
+      <img
+        src={variant.hero.src}
+        alt={variant.hero.alt}
+        width={variant.hero.width}
+        height={variant.hero.height}
+        loading="lazy"
+        decoding="async"
+        class="w-64 md:w-72 aspect-[9/16] object-cover object-top rounded-3xl border border-gray-200 shadow-xl"
+      />
+    </div>
+  </section>
+
+  <section class="bg-white py-10 md:py-16" aria-labelledby="start-benefits">
+    <div class="container-custom max-w-4xl">
+      <h2 id="start-benefits" class="sr-only">Why instructors use DriveSchoolPro</h2>
+      <ul class="grid gap-6 md:grid-cols-3">
+        {variant.benefits.map((id) => (
+          <li class="rounded-2xl border border-gray-100 p-6">
+            <h3 class="font-semibold text-brand-navy mb-2">{BENEFITS[id].title}</h3>
+            <p class="text-sm text-gray-600">{BENEFITS[id].body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="bg-gray-50 py-10 md:py-16" aria-labelledby="start-how">
+    <div class="container-custom max-w-3xl">
+      <h2 id="start-how" class="text-2xl font-bold text-brand-navy text-center mb-8">How it works</h2>
+      <ol class="grid gap-6 md:grid-cols-3">
+        {steps.map((s, i) => (
+          <li class="text-center">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-navy text-white font-semibold mb-3">{i + 1}</span>
+            <h3 class="font-semibold text-brand-navy">{s.title}</h3>
+            <p class="text-sm text-gray-600 mt-1">{s.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="bg-white py-10 md:py-16" aria-labelledby="start-faq">
+    <div class="container-custom max-w-2xl">
+      <h2 id="start-faq" class="text-2xl font-bold text-brand-navy text-center mb-6">Questions</h2>
+      <div class="divide-y divide-gray-100 border-y border-gray-100">
+        {faqs.map((f) => (
+          <details class="group">
+            <summary class="flex min-h-[44px] cursor-pointer items-center justify-between py-3 font-medium text-brand-navy">
+              {fill(f.q)}
+              <span aria-hidden="true" class="ml-4 transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p class="pb-4 text-sm text-gray-600">{fill(f.a)}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-brand-navy py-12 md:py-16">
+    <div class="container-custom max-w-2xl text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Set up your school in under a minute</h2>
+      <p class="text-gray-300 mb-6">{OFFER.short} — no card required.</p>
+      <div class="flex justify-center text-left">
+        <BusinessNameCapture id="start-capture-bottom" tone="dark" />
+      </div>
+    </div>
+  </section>
+</div>

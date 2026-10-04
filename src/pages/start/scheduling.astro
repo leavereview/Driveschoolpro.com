@@ -1,0 +1,10 @@
+---
+// /start/scheduling — Scheduling ad group. noindex.
+import LandingLayout from '../../layouts/LandingLayout.astro';
+import StartPage from '../../components/start/StartPage.astro';
+import { START_VARIANTS } from '../../config/start-variants';
+const variant = START_VARIANTS.scheduling;
+---
+<LandingLayout title={variant.title} description={variant.description} robots="noindex, follow">
+  <StartPage variant={variant} />
+</LandingLayout>
