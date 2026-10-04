@@ -10,7 +10,8 @@
     "postbuild": "node scripts/verify-seo.js && node scripts/verify-claims.js && node scripts/verify-demos.js && node scripts/verify-start.js",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "node --test tests/*.test.ts"
+    "test": "node --test tests/*.test.ts",
+    "e2e:start": "node scripts/e2e-start.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.2",
@@ -22,6 +23,7 @@
     "typescript": "^5.7.2"
   },
   "devDependencies": {
+    "playwright": "~1.61.1",
     "sharp": "^0.34.5"
   }
 }
