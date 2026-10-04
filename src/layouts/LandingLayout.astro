@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import CookieConsent from '../components/CookieConsent.astro';
+import { CONSENT_DEFAULT_DENIED, CONSENT_GRANTED_ALL } from '../utils/consent-mode';
 
 interface Props {
   title: string;
@@ -56,32 +57,35 @@ const GOOGLE_ADS_ID = import.meta.env.PUBLIC_GOOGLE_ADS_ID || '';
     GA4 Configuration — driveschoolpro.com
 
     Measurement ID: G-4HJLDWJ8DR
-    Verified against the GA4 Admin API on 2026-07-29: this is the ONLY data stream on
-    property 517695357 (account "My Drive School"). Keep in sync with BaseLayout.astro.
+    Verified 2026-10-02: property 529247825 (account 388299423) has two web streams — this one and
+    app.driveschoolpro.com (G-EX4E9M57XG); both tags cross-domain "Contains driveschoolpro.com". Keep in sync with BaseLayout.astro.
 
     Known data-quality gaps (see BaseLayout.astro for the full list):
     - 2026-03-20 to 2026-07-29: TOTAL DATA LOSS on these PPC landers. The ID in place was
       G-2E741HXVN9, which matches no real data stream, so every Google Ads visit that
       accepted cookies was discarded. Do not read pre-2026-07-29 PPC performance from GA4.
-    - Google Ads conversion tracking is STILL inert: PUBLIC_GOOGLE_ADS_ID is unset at build,
-      so the trackAdConversion branch compiles away to a bare redirect. Paid conversions
-      remain unattributable until that env var is set at build time.
+    - Google Ads 852-626-4049 imports onboarding_complete (Primary) and signup_start (Secondary)
+      from GA4, so PUBLIC_GOOGLE_ADS_CONVERSION_LABEL stays unset; PUBLIC_GOOGLE_ADS_ID only loads
+      the Ads tag (remarketing) after consent.
 
     Any historical analysis crossing these dates needs caveating.
   -->
-  <script is:inline define:vars={{ GOOGLE_ADS_ID }}>
+  <script is:inline define:vars={{ GOOGLE_ADS_ID, CONSENT_DEFAULT_DENIED, CONSENT_GRANTED_ALL }}>
     (function() {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      // Consent Mode v2: must precede js/config. Default denied for everyone.
+      gtag('consent', 'default', CONSENT_DEFAULT_DENIED);
       var loaded = false;
       function loadGA() {
         if (loaded) return;
         loaded = true;
+        gtag('consent', 'update', CONSENT_GRANTED_ALL);
         var script = document.createElement('script');
         script.async = true;
         script.src = 'https://www.googletagmanager.com/gtag/js?id=G-4HJLDWJ8DR';
         document.head.appendChild(script);
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        window.gtag = gtag;
         gtag('js', new Date());
         gtag('config', 'G-4HJLDWJ8DR', {
           linker: {
@@ -98,8 +102,6 @@ const GOOGLE_ADS_ID = import.meta.env.PUBLIC_GOOGLE_ADS_ID || '';
           return !!c && JSON.parse(c).consent === 'all';
         } catch (e) { return false; }
       }
-      // Load now if consent already granted; otherwise load the moment the
-      // visitor accepts (so a cold PPC visitor's first-session conversion fires).
       if (hasConsent()) loadGA();
       window.addEventListener('cookieConsentAccepted', loadGA);
     })();
