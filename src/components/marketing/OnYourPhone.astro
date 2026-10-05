@@ -1,0 +1,79 @@
+---
+// OnYourPhone.astro — "On your phone — and theirs". Shared by the homepage and
+// the /start landers so the app message can't drift between them.
+// Store names are text, not links: on a squeeze page a store link is an exit
+// before signup. Facts (checked 2026-10-05): app live on the App Store
+// (id6787402547) and Google Play (com.driveschoolpro.app); pupils use the same
+// app — the portal invite sends them to /get-app.
+interface Props {
+  /** Instructor-side screenshot. Default is the device-framed iPhone capture (640×1308). */
+  instructorSrc?: string;
+  instructorAlt?: string;
+  tone?: 'white' | 'gray';
+}
+const {
+  instructorSrc = '/images/marketing/ai-briefing-mobile.webp',
+  instructorAlt = 'DriveSchoolPro on an instructor’s iPhone: the Today screen with the next lesson, suggested focus and lesson briefing',
+  tone = 'gray',
+} = Astro.props;
+
+const sides = [
+  {
+    label: 'You',
+    body: 'Your diary, pupils, progress notes and money — between lessons, wherever you’re parked.',
+    src: instructorSrc,
+    alt: instructorAlt,
+    width: 640,
+    height: 1308,
+    // Already has its own iPhone bezel; the radius clips the capture's white corners.
+    crop: 'aspect-[640/1308] rounded-[1.9rem] md:rounded-[2.2rem]',
+    framed: true,
+  },
+  {
+    label: 'Your pupils',
+    body: 'Their next lesson, their DVSA progress and what they owe. They book and pay themselves — so they stop texting you to ask.',
+    src: '/images/marketing/dsw-portal-dashboard-mobile.webp',
+    alt: 'A pupil’s DriveSchoolPro app on a phone showing their balance, a Book a lesson button and their progress',
+    width: 660,
+    height: 1434,
+    // Stops above the progress list ("of 25 skills started" would contradict "27 skills").
+    // Shown as the top of a phone (bezel on three sides, fading out at the bottom) so the
+    // crop reads as deliberate rather than as a squat tablet.
+    crop: 'aspect-[660/800] rounded-t-[2rem] border-[10px] border-b-0 border-gray-900',
+    framed: false,
+  },
+];
+---
+<section id="on-your-phone" class:list={[tone === 'gray' ? 'bg-gray-50' : 'bg-white', 'py-12 md:py-20']} aria-labelledby="on-your-phone-heading">
+  <div class="container-custom max-w-5xl">
+    <div class="text-center max-w-2xl mx-auto mb-10 md:mb-14">
+      <h2 id="on-your-phone-heading" class="text-2xl md:text-4xl font-bold text-brand-navy mb-3">On your phone — and theirs</h2>
+      <p class="text-gray-600 md:text-lg">One app for you and your pupils, on iPhone and Android. Or use any web browser.</p>
+    </div>
+    <div class="grid gap-12 md:grid-cols-2">
+      {sides.map((s) => (
+        <div class="text-center">
+          <div class="flex items-start justify-center mb-6">
+          <div class="relative">
+          <img
+            src={s.src}
+            alt={s.alt}
+            width={s.width}
+            height={s.height}
+            loading="lazy"
+            decoding="async"
+            class:list={['mx-auto w-56 md:w-64 object-cover object-top', s.crop, s.framed && 'shadow-2xl']}
+          />
+          {!s.framed && (
+            <div aria-hidden="true" class:list={['pointer-events-none absolute -inset-x-1 bottom-0 h-24 bg-gradient-to-b from-transparent', tone === 'gray' ? 'to-gray-50' : 'to-white']}></div>
+          )}
+          </div>
+          </div>
+          <h3 class="text-xl font-bold text-brand-navy mb-2">{s.label}</h3>
+          <p class="text-gray-600 max-w-sm mx-auto">{s.body}</p>
+        </div>
+      ))}
+    </div>
+    <p class="mt-10 text-center text-sm font-medium text-gray-500">Free on the App Store and Google Play</p>
+  </div>
+</section>

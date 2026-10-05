@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductDemo from '../components/ProductDemo.astro';
 import FAQEnhanced from '../components/seo/FAQEnhanced.astro';
 import BusinessNameCapture from '../components/BusinessNameCapture.astro';
+import OnYourPhone from '../components/marketing/OnYourPhone.astro';
 import { OFFER } from '../config/offer';
 
 // SoftwareApplication Schema
@@ -14,7 +15,7 @@ const softwareApplicationSchema = {
   "alternateName": "DriveSchoolPro",
   "description": "Complete driving school management software for driving instructors and schools. Lesson scheduling, student management, automated billing, and instructor allocation in one platform.",
   "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web",
+  "operatingSystem": "Web, iOS, Android",
   "offers": [
     {
       "@type": "Offer",
@@ -57,22 +58,22 @@ const softwareApplicationSchema = {
 const features = [
   {
     icon: 'calendar',
-    title: 'Smart Scheduling',
+    title: 'Never double-booked',
     description: 'Day, week and month calendar views with colour-coded lessons across every instructor. Three-way conflict detection checks student, instructor, and vehicle before every booking. Drag-and-drop rescheduling and quick booking straight from the calendar.'
   },
   {
     icon: 'users',
-    title: 'Student Management',
+    title: 'Every pupil in one place',
     description: 'Complete student profiles with DVSA competency tracking across all 27 skills, per-student notification preferences, and every student\'s balance tracked with a full credit and debit ledger.'
   },
   {
     icon: 'bell',
-    title: 'Automated Reminders',
+    title: 'Fewer no-shows',
     description: 'Automated email reminders with configurable timing, sent before every lesson to cut no-shows. (WhatsApp coming soon.)'
   },
   {
     icon: 'chart',
-    title: 'Business Analytics',
+    title: 'See how the business is doing',
     description: 'Real-time dashboard with 8 business metrics. Financial reports with 6-month revenue trends, lesson and vehicle reporting, and student progress overviews.'
   }
 ];
@@ -80,9 +81,9 @@ const features = [
 
 const stats = [
   { number: 'Unlimited', label: 'Students & Lessons' },
-  { number: 'Built for', label: 'UK ADIs' },
-  { number: '10+ hrs', label: 'Saved Weekly*' },
-  { number: '27', label: 'DVSA Skills Tracked' }
+  { number: 'iOS + Android', label: 'App for you & your pupils' },
+  { number: '27', label: 'DVSA Skills Tracked' },
+  { number: 'Free', label: 'During early access' }
 ];
 
 // Homepage FAQ — answers kept strictly to what the product does (FAQ schema auto-generated)
@@ -107,8 +108,12 @@ const homeFaqs = [
   },
   {
     question: "I'm moving from a paper diary, WhatsApp or a spreadsheet — is it hard to switch?",
-    answer: "Not at all. Most instructors are set up in about five minutes, and you can keep your current diary running alongside until you're confident. DriveSchoolPro is free during early access — no card required.",
+    answer: "Not at all. Setting up takes about two minutes, and you can keep your current diary running alongside until you're confident. DriveSchoolPro is free during early access — no card required.",
     links: [{ text: "Switching guide", url: "/blog/switch-paper-diary-to-driving-school-software/" }],
+  },
+  {
+    question: "Is there an app for me and my pupils?",
+    answer: "Yes. DriveSchoolPro is free on the App Store and Google Play. You run your diary from it, and your pupils use the same app — or any web browser — to see their lessons and progress, book and pay.",
   },
   {
     question: "How much does DriveSchoolPro cost?",
@@ -140,12 +145,14 @@ const homeFaqs = [
       <div class="max-w-3xl">
         <span class="badge-primary mb-6">Purpose-built for UK driving instructors</span>
         <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-          Know <span class="text-brand-red">they're ready</span> before the next test slot is months away
+          Teach. Everything else <span class="text-brand-red">runs itself.</span>
         </h1>
-        <p class="text-xl md:text-2xl text-gray-300 mb-3 leading-relaxed">
-          The average wait for a driving test in Great Britain was 22 weeks in September 2025, and DVSA doesn't expect it to fall to seven weeks until November 2027. DriveSchoolPro tracks all 27 DVSA skills across 8 categories — the same official framework, recorded from your phone at the end of a lesson — so you know before you book, not after.
+        <!-- Each clause is a live feature (checked 2026-10-05). Not "review requests go out" —
+             reviews are a one-tap nudge, not an automatic send. -->
+        <p class="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
+          Pupils book and pay on their phones. Reminders go out before every lesson. Your briefing
+          is written before you pull up, and progress is logged in a tap.
         </p>
-        <p class="text-sm text-gray-400 mb-8">Source: <a href="https://www.nao.org.uk/reports/investigation-into-car-driving-test-waiting-times/" class="underline hover:text-white" rel="noopener" target="_blank">National Audit Office, 17 December 2025</a>.</p>
         <BusinessNameCapture id="hero-capture" tone="dark" autofocus />
         <a href="#the-week" class="mt-4 inline-block text-sm text-gray-300 underline hover:text-white">See it work first</a>
         <p class="mt-6 text-sm text-gray-400">No credit card required • {OFFER.short}</p>
@@ -195,7 +202,7 @@ const homeFaqs = [
   <!-- Stats bar -->
   <section class="py-12 bg-gray-50 border-b border-gray-100">
     <div class="container-custom">
-      <p class="text-center text-sm text-gray-500 uppercase tracking-wider mb-8">Built to scale with your school</p>
+      <p class="text-center text-sm text-gray-500 uppercase tracking-wider mb-8">At a glance</p>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         {stats.map((stat) => (
           <div>
@@ -204,7 +211,6 @@ const homeFaqs = [
           </div>
         ))}
       </div>
-      <p class="text-center text-xs text-gray-400 mt-6">*Based on early user feedback comparing admin time before and after adoption.</p>
     </div>
   </section>
 
@@ -260,6 +266,11 @@ const homeFaqs = [
             levels from Not Started to Reflection. Any instructor picks up exactly where the
             last one left off — and pupils can see their own progress in their portal, so they
             stop asking how they're doing.
+          </p>
+          <p class="text-gray-600 mb-6">
+            With the average test wait at 22 weeks in Great Britain (September 2025), knowing
+            they're ready before you book matters more than ever.
+            <span class="block text-sm text-gray-400 mt-1">Source: <a href="https://www.nao.org.uk/reports/investigation-into-car-driving-test-waiting-times/" class="underline hover:text-gray-600" rel="noopener" target="_blank">National Audit Office, 17 December 2025</a>.</span>
           </p>
           <div class="flex flex-col sm:flex-row gap-3">
             <a href="/features/progress-tracking/" class="text-brand-red font-semibold hover:underline">
@@ -399,6 +410,9 @@ const homeFaqs = [
     </div>
   </section>
 
+  <!-- On your phone — and theirs (shared with the /start landers) -->
+  <OnYourPhone />
+
   <!-- Everything You Need — 4 feature cards -->
   <section class="section bg-white border-t border-gray-100">
     <div class="container-custom">
@@ -439,7 +453,7 @@ const homeFaqs = [
       <div class="max-w-4xl mx-auto text-center mb-12">
         <span class="badge-primary mb-4">Switching is easy</span>
         <h2 class="text-3xl md:text-4xl font-bold text-brand-navy mb-4">Coming from a paper diary, WhatsApp, or a spreadsheet?</h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Moving to DriveSchoolPro is designed to be painless. Start in minutes and switch at your own pace — nothing to install.</p>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Moving to DriveSchoolPro is designed to be painless. Set up in about two minutes, then switch at your own pace — on the app or in any browser.</p>
       </div>
       <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto text-left">
         <div class="card">
@@ -448,8 +462,8 @@ const homeFaqs = [
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h3 class="font-bold text-brand-navy mb-2">Set up in about five minutes</h3>
-          <p class="text-gray-600 text-sm">Add your students and lessons and you're ready to go — most instructors are up and running the same day.</p>
+          <h3 class="font-bold text-brand-navy mb-2">Set up in about two minutes</h3>
+          <p class="text-gray-600 text-sm">Create your school, then add your pupils and lessons as you go — most instructors are up and running the same day.</p>
         </div>
         <div class="card">
           <div class="w-10 h-10 rounded-lg bg-brand-red-light flex items-center justify-center mb-4">
@@ -554,7 +568,7 @@ const homeFaqs = [
     <div class="container-custom text-center">
       <h2 class="text-3xl md:text-5xl font-bold mb-6">Ready to spend less time on admin?</h2>
       <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-        DriveSchoolPro is free until 31 March 2027 — no card required, cancel anytime. Most instructors are up and running in about five minutes.
+        DriveSchoolPro is free until 31 March 2027 — no card required, cancel anytime. Setting up takes about two minutes.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href={OFFER.ctaPrimary.href} class="btn bg-white text-brand-red hover:bg-gray-100 text-lg px-8 py-4">{OFFER.ctaPrimary.label}</a>

@@ -49,7 +49,10 @@ for (const [id, path] of Object.entries(VARIANTS)) {
       check(ib && ib.y + ib.height <= 664, `${id}: field below the fold (${ib && ib.y + ib.height})`);
       check(bb && bb.y + bb.height <= 664, `${id}: button below the fold (${bb && bb.y + bb.height})`);
       check(bb && bb.height >= 44, `${id}: button tap target ${bb && bb.height}px`);
-      check(await page.locator('summary').count() === 6, `${id}: expected 6 FAQ summaries`);
+      check(await page.locator('summary').count() === 7, `${id}: expected 7 FAQ summaries`);
+      check(await page.locator('[data-moment]').count() >= 3, `${id}: fewer than 3 week moments`);
+      check(await page.locator('#on-your-phone').count() === 1, `${id}: missing the apps section`);
+      check(await page.locator('#start-who, #start-how').count() === 0, `${id}: founder or signup-steps section is back`);
       const small = await page.$$eval('summary', (els) => els.filter((e) => e.getBoundingClientRect().height < 44).length);
       check(small === 0, `${id}: ${small} FAQ summaries under 44px`);
     }

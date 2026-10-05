@@ -2,7 +2,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { START_VARIANTS, BENEFITS, SHARED_FAQ, fillOffer } from '../src/config/start-variants.ts';
+import { START_VARIANTS, SHARED_FAQ, fillOffer } from '../src/config/start-variants.ts';
+import { MOMENTS } from '../src/config/moments.ts';
 
 const variants = Object.values(START_VARIANTS);
 
@@ -13,20 +14,29 @@ test('four variants with the agreed paths', () => {
   );
 });
 
-test('every variant has a CTA and a demo whose media exists', () => {
+test('every variant has a CTA and at least three distinct known moments', () => {
   for (const v of variants) {
     assert.ok(v.cta.length > 0 && v.cta.length <= 24, `${v.id}: cta "${v.cta}"`);
-    if (v.demo.kind === 'clip') {
-      assert.ok(fs.existsSync(path.join('public', v.demo.src)), `${v.id}: missing ${v.demo.src}`);
-      assert.ok(fs.existsSync(path.join('public', v.demo.poster)), `${v.id}: missing ${v.demo.poster}`);
-    } else {
-      assert.ok(v.demo.items.length > 0, `${v.id}: empty arcade list`);
+    assert.ok(v.moments.length >= 3, `${v.id}: ${v.moments.length} moments`);
+    assert.equal(new Set(v.moments).size, v.moments.length, `${v.id}: duplicate moment`);
+    for (const m of v.moments) assert.ok(MOMENTS[m], `${v.id}: unknown moment ${m}`);
+  }
+});
+
+test('moment media files exist and copy follows the anatomy', () => {
+  for (const [id, m] of Object.entries(MOMENTS)) {
+    assert.ok(m.pain && m.headline && m.body && m.eyebrow, id);
+    assert.ok(!/\b(20\d\d)\b/.test(m.headline + m.body), `${id}: dated copy`);
+    if (m.media.kind === 'clip') {
+      assert.ok(fs.existsSync(path.join('public', m.media.src)), `${id}: missing ${m.media.src}`);
+      assert.ok(fs.existsSync(path.join('public', m.media.poster)), `${id}: missing ${m.media.poster}`);
     }
+    if (m.media.kind === 'still') assert.ok(fs.existsSync(path.join('public', m.media.src)), `${id}: missing ${m.media.src}`);
   }
 });
 
 test('only the demo-first tour variant embeds click-through demos', () => {
-  for (const v of variants) assert.equal(v.demo.kind === 'arcade', v.id === 'tour', v.id);
+  for (const v of variants) assert.equal(Boolean(v.arcade?.length), v.id === 'tour', v.id);
 });
 
 test('no hard-coded years or month names in any variant copy (offer text comes from OFFER)', () => {
@@ -50,20 +60,12 @@ test('hero images exist in public/ with declared dimensions', () => {
   }
 });
 
-test('each variant lists exactly three distinct known benefits', () => {
-  for (const v of variants) {
-    assert.equal(v.benefits.length, 3, v.id);
-    assert.equal(new Set(v.benefits).size, 3, v.id);
-    for (const b of v.benefits) assert.ok(BENEFITS[b], `${v.id}: unknown benefit ${b}`);
-  }
-});
-
 test('H1 fits a 390px hero: at most 60 characters', () => {
   for (const v of variants) assert.ok(v.h1.length <= 60, `${v.id}: ${v.h1.length}`);
 });
 
-test('shared FAQ has five entries and no testimonial-style quotes', () => {
-  assert.equal(SHARED_FAQ.length, 5);
+test('shared FAQ has six entries and no testimonial-style quotes', () => {
+  assert.equal(SHARED_FAQ.length, 6);
   for (const f of SHARED_FAQ) assert.ok(!/[“"].+[”"]\s*[—-]\s*\w/.test(f.a), f.q);
 });
 

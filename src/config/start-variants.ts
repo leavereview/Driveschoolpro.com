@@ -6,7 +6,7 @@
  * render time. Never put a date here — the offer changes, this file shouldn't have to.
  */
 export type VariantId = 'core' | 'free' | 'scheduling' | 'tour';
-export type BenefitId = 'diary' | 'dvsa' | 'payments' | 'reminders';
+import type { MomentId } from './moments';
 
 export interface StartVariant {
   id: VariantId;
@@ -16,69 +16,19 @@ export interface StartVariant {
   h1: string;
   subhead: string;
   hero: { src: string; alt: string; width: number; height: number };
-  benefits: BenefitId[];
+  /** "Your week with DriveSchoolPro" — ordered to match the ad group's search intent. */
+  moments: MomentId[];
+  /** Free ("free download") leads with the apps section, before the week. */
+  appsFirst?: boolean;
+  /**
+   * Click-through Arcade demos, shown before the week. Only on the demo-first
+   * `tour` variant: its visitors already saw a variant once and need proof.
+   */
+  arcade?: { id: string; title: string; ratio?: number }[];
   extraFaq: { q: string; a: string };
   /** Submit-button text. Every variant says what happens next, not just "go". */
   cta: string;
-  /**
-   * The "See it working" section. A clip is a silent loop (no exits); an Arcade
-   * demo is click-through — used only on the demo-first `tour` variant, whose
-   * visitors already saw a variant once and need proof, not the same pitch.
-   */
-  demo:
-    | { kind: 'clip'; src: string; poster: string; width: number; height: number; alt: string; posterAlt?: string; phone?: boolean }
-    | { kind: 'arcade'; items: { id: string; title: string; ratio?: number }[] };
 }
-
-/** Verified clip definitions — copied from the homepage, where each was checked against src/config/features.ts. */
-const CLIPS = {
-  progress: {
-    kind: 'clip',
-    src: '/videos/progress-tracking.mp4',
-    poster: '/images/marketing/dvsa-progress-poster.webp',
-    width: 1234,
-    height: 1098,
-    alt: 'The DVSA Ready to Pass grid: mastered competencies per category, a progress-over-time chart drawing in, then the Manoeuvres category opening to show each skill’s proficiency level.',
-  },
-  briefings: {
-    kind: 'clip',
-    src: '/videos/lesson-briefings-today.mp4',
-    poster: '/images/marketing/lesson-briefings-today-poster.webp',
-    width: 640,
-    height: 1156,
-    alt: 'The Today view on a phone: tomorrow’s lesson card with the pupil’s name, address, a suggested focus and an AI lesson briefing already written from the instructor’s lesson notes.',
-    posterAlt: 'DriveSchoolPro on a phone: the Today view showing tomorrow’s 09:15 lesson with Sophie Bennett, a suggested focus and an AI lesson briefing.',
-    phone: true,
-  },
-  reschedule: {
-    kind: 'clip',
-    src: '/videos/calendar-reschedule.mp4',
-    poster: '/images/marketing/calendar-reschedule-poster.webp',
-    width: 944,
-    height: 720,
-    alt: 'The day calendar for 30 September: each lesson laid out by time with the pupil, pick-up address and a Reschedule button, and a lesson being moved to a new slot.',
-    posterAlt: 'The DriveSchoolPro day calendar for Wednesday 30 September showing the day’s lessons with pupil names, addresses and Reschedule buttons.',
-  },
-} as const satisfies Record<string, StartVariant['demo']>;
-
-export const BENEFITS: Record<BenefitId, { title: string; body: string }> = {
-  diary: {
-    title: 'Your diary on your phone',
-    body: 'Book, move and cancel lessons between pupils — no paper diary, no spreadsheet.',
-  },
-  dvsa: {
-    title: 'Tracks all 27 DVSA driving skills',
-    body: 'Record progress against the official framework, and pupils see it in their own portal.',
-  },
-  payments: {
-    title: 'Pupils book and pay online',
-    body: 'Card payments go straight to your bank through Stripe, so you stop chasing cash.',
-  },
-  reminders: {
-    title: 'Automatic lesson reminders',
-    body: 'Pupils get a reminder before every lesson, which means fewer no-shows.',
-  },
-};
 
 export const SHARED_FAQ: { q: string; a: string }[] = [
   {
@@ -91,11 +41,15 @@ export const SHARED_FAQ: { q: string; a: string }[] = [
   },
   {
     q: 'Does it track DVSA driving skills?',
-    a: 'Yes. It tracks all 27 DVSA driving skills across 8 categories, and pupils can view their own progress in a self-service portal.',
+    a: 'Yes. It tracks all 27 DVSA driving skills across 8 categories, and pupils see their own progress in their app or any browser.',
   },
   {
     q: 'Can I switch from my paper diary easily?',
-    a: 'Most instructors are set up within five minutes. Add your pupils and book your first lesson — you can run both side by side until you’re comfortable.',
+    a: 'Setting up takes about two minutes. Then add your pupils as you go — you can run both side by side until you’re comfortable.',
+  },
+  {
+    q: 'Is there an app for me and my pupils?',
+    a: 'Yes. DriveSchoolPro is free on the App Store and Google Play. You run your diary from it, and your pupils use the same app — or any web browser — to see their lessons and progress, book and pay.',
   },
   {
     q: 'What happens when early access ends?',
@@ -112,18 +66,17 @@ export const START_VARIANTS: Record<VariantId, StartVariant> = {
     h1: 'Driving school software that runs from your phone',
     subhead: 'Diary, DVSA progress and payments in one place. {offer} — no card required.',
     hero: {
-      src: '/images/marketing/ai-briefing-today-mobile.webp',
-      alt: 'DriveSchoolPro Today screen on a phone showing the lesson in progress, pupil address and a lesson briefing',
+      src: '/images/marketing/calendar-day-mobile.webp',
+      alt: 'DriveSchoolPro day view on a phone with a full day of lessons, pupil names and addresses',
       width: 640,
       height: 1164,
     },
-    benefits: ['diary', 'dvsa', 'payments'],
+    moments: ['briefing', 'dvsa', 'paid', 'reminders'],
     extraFaq: {
       q: 'Is it built for solo instructors?',
       a: 'Yes. Most of our users are independent ADIs running their own diary, and it scales up if you take on other instructors later.',
     },
     cta: 'Get started free',
-    demo: CLIPS.progress,
   },
   free: {
     id: 'free',
@@ -138,13 +91,13 @@ export const START_VARIANTS: Record<VariantId, StartVariant> = {
       width: 640,
       height: 1164,
     },
-    benefits: ['diary', 'dvsa', 'reminders'],
+    moments: ['briefing', 'paid', 'reminders'],
+    appsFirst: true,
     extraFaq: {
-      q: 'Is there an app to download?',
-      a: 'Yes. DriveSchoolPro is free on the App Store and Google Play. Create your school here first, then sign in on the app. You can also use it in any web browser.',
+      q: 'How do I get the app?',
+      a: 'Create your school on this page first, then download DriveSchoolPro from the App Store or Google Play and sign in. You can then invite your pupils to the same app.',
     },
     cta: 'Create my free school',
-    demo: CLIPS.briefings,
   },
   scheduling: {
     id: 'scheduling',
@@ -159,13 +112,12 @@ export const START_VARIANTS: Record<VariantId, StartVariant> = {
       width: 640,
       height: 1164,
     },
-    benefits: ['diary', 'reminders', 'payments'],
+    moments: ['diary', 'reminders', 'paid'],
     extraFaq: {
       q: 'Can pupils book lessons themselves?',
-      a: 'Yes. Pupils can book and pay online through their portal, within the hours you make available.',
+      a: 'Yes. Pupils can book and pay in their app or any browser, within the hours you make available.',
     },
     cta: 'Set up my diary',
-    demo: CLIPS.reschedule,
   },
   // Display remarketing (R1: visited a variant, never submitted). Demo-first, not in Search.
   tour: {
@@ -181,19 +133,16 @@ export const START_VARIANTS: Record<VariantId, StartVariant> = {
       width: 640,
       height: 1164,
     },
-    benefits: ['diary', 'dvsa', 'payments'],
+    moments: ['briefing', 'dvsa', 'paid'],
+    arcade: [
+      { id: 'wmaqmMnxBOOkddxDDfGz', title: 'Reschedule a Driving Lesson in the Calendar' },
+      { id: 'cCvwdbSQVM1HfA3KkxcL', title: 'Record and Review a Driving Lesson Outcome', ratio: 81.9214 },
+    ],
     extraFaq: {
       q: 'Is it built for solo instructors?',
       a: 'Yes. Most of our users are independent ADIs running their own diary, and it scales up if you take on other instructors later.',
     },
     cta: 'Get started free',
-    demo: {
-      kind: 'arcade',
-      items: [
-        { id: 'wmaqmMnxBOOkddxDDfGz', title: 'Reschedule a Driving Lesson in the Calendar' },
-        { id: 'cCvwdbSQVM1HfA3KkxcL', title: 'Record and Review a Driving Lesson Outcome', ratio: 81.9214 },
-      ],
-    },
   },
 };
 

@@ -1,0 +1,84 @@
+---
+// WeekMoments.astro — "Your week with DriveSchoolPro": the instructor's day as
+// pain → outcome → how. Moments with media alternate sides on desktop;
+// consecutive text-only moments sit side by side as cards. No links: it is used
+// on squeeze pages. Copy lives in src/config/moments.ts.
+import ProductDemo from '../ProductDemo.astro';
+import { MOMENTS, type Moment, type MomentId } from '../../config/moments';
+
+interface Props {
+  moments: MomentId[];
+  heading?: string;
+}
+const { moments, heading = 'Your week with DriveSchoolPro' } = Astro.props;
+
+type Block = { kind: 'media'; id: MomentId; m: Moment } | { kind: 'text'; items: { id: MomentId; m: Moment }[] };
+const blocks: Block[] = [];
+for (const id of moments) {
+  const m = MOMENTS[id];
+  const last = blocks.at(-1);
+  if (m.media.kind !== 'none') blocks.push({ kind: 'media', id, m });
+  else if (last?.kind === 'text') last.items.push({ id, m });
+  else blocks.push({ kind: 'text', items: [{ id, m }] });
+}
+let mediaIndex = 0;
+---
+<section id="your-week" class="bg-white border-t border-gray-100 py-12 md:py-20" aria-labelledby="your-week-heading">
+  <div class="container-custom max-w-5xl">
+    <h2 id="your-week-heading" class="text-2xl md:text-4xl font-bold text-brand-navy text-center mb-10 md:mb-16">{heading}</h2>
+    <div class="space-y-14 md:space-y-24">
+      {blocks.map((b) => {
+        if (b.kind === 'text') {
+          return (
+            <div class:list={['grid gap-6', b.items.length > 1 ? 'md:grid-cols-2' : 'max-w-2xl mx-auto']}>
+              {b.items.map(({ id, m }) => (
+                <article data-moment={id} class="rounded-2xl border border-gray-100 bg-gray-50 p-6 md:p-8">
+                  <p class="text-xs font-semibold uppercase tracking-wider text-brand-red mb-2">{m.eyebrow}</p>
+                  <p class="text-gray-500 italic mb-3">{m.pain}</p>
+                  <h3 class="text-xl md:text-2xl font-bold text-brand-navy mb-3">{m.headline}</h3>
+                  <p class="text-gray-600">{m.body}</p>
+                </article>
+              ))}
+            </div>
+          );
+        }
+        const { id, m } = b;
+        const flip = mediaIndex++ % 2 === 1;
+        return (
+          <article data-moment={id} class="md:grid md:grid-cols-2 md:items-center md:gap-14">
+            <div class:list={[flip && 'md:order-2']}>
+              <p class="text-xs font-semibold uppercase tracking-wider text-brand-red mb-2">{m.eyebrow}</p>
+              <p class="text-gray-500 italic mb-3">{m.pain}</p>
+              <h3 class="text-2xl md:text-3xl font-bold text-brand-navy mb-3">{m.headline}</h3>
+              <p class="text-gray-600">{m.body}</p>
+            </div>
+            <div class="mt-8 md:mt-0">
+              {m.media.kind === 'clip' && (
+                <ProductDemo
+                  src={m.media.src}
+                  poster={m.media.poster}
+                  width={m.media.width}
+                  height={m.media.height}
+                  alt={m.media.alt}
+                  posterAlt={m.media.posterAlt}
+                  phone={m.media.phone}
+                />
+              )}
+              {m.media.kind === 'still' && (
+                <img
+                  src={m.media.src}
+                  alt={m.media.alt}
+                  width={m.media.width}
+                  height={m.media.height}
+                  loading="lazy"
+                  decoding="async"
+                  class:list={['mx-auto w-64 md:w-72 object-cover object-top rounded-3xl border border-gray-200 shadow-xl', m.media.crop ?? 'aspect-[9/16]']}
+                />
+              )}
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</section>
