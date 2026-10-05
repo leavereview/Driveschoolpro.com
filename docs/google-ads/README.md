@@ -47,7 +47,7 @@ R2 ad copy should say "Finish setting up your school", not "Get started".
   "Destination not working").
 - Display R2: final URL → `app.driveschoolpro.com/signup…utm_content=r2`; description "Finish in
   under a minute" → "Finish in a couple of minutes".
-- Display campaign budget is **£3/day** in the account (plan said £2) — reconcile before enabling.
+- Display campaign budget: **£3/day** — confirmed by JP 2026-10-05 (supersedes the plan's £2). Enable when R1+R2 ≥ 100 users.
 - Ad-group default bids (Core shows £0.01 in Ads Editor) are ignored under Maximise Clicks;
   set them to £2.50 before any switch to Manual CPC.
 
