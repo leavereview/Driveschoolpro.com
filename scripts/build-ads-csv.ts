@@ -1,6 +1,6 @@
 // scripts/build-ads-csv.ts — writes Ads Editor import files from google-ads/search-uk-start.ts
 import fs from 'node:fs';
-import { CAMPAIGN, AD_GROUPS, ROUTING_NEGATIVES, SHARED_NEGATIVES } from '../google-ads/search-uk-start.ts';
+import { CAMPAIGN, AD_GROUPS, ROUTING_NEGATIVES, SHARED_NEGATIVES, SITELINKS, CALLOUTS } from '../google-ads/search-uk-start.ts';
 
 const q = (s: string | number) => `"${String(s).replace(/"/g, '""')}"`;
 const row = (cells: (string | number)[]) => cells.map(q).join(',');
@@ -29,4 +29,12 @@ for (const g of AD_GROUPS) {
 fs.writeFileSync('docs/google-ads/ads.csv', ads.join('\n') + '\n');
 
 fs.writeFileSync('docs/google-ads/negatives.txt', SHARED_NEGATIVES.map((n) => `"${n}"`).join('\n') + '\n');
-console.log('wrote docs/google-ads/{keywords.csv,ads.csv,negatives.txt}');
+const sl = [row(['Campaign', 'Link Text', 'Description Line 1', 'Description Line 2', 'Final URL'])];
+for (const l of SITELINKS) sl.push(row([CAMPAIGN.name, l.text, l.line1, l.line2, l.url]));
+fs.writeFileSync('docs/google-ads/sitelinks.csv', sl.join('\n') + '\n');
+
+const co = [row(['Campaign', 'Callout Text'])];
+for (const c of CALLOUTS) co.push(row([CAMPAIGN.name, c]));
+fs.writeFileSync('docs/google-ads/callouts.csv', co.join('\n') + '\n');
+
+console.log('wrote docs/google-ads/{keywords.csv,ads.csv,negatives.txt,sitelinks.csv,callouts.csv}');

@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductDemo from '../components/ProductDemo.astro';
-import Testimonials from '../components/Testimonials.astro';
 import FAQEnhanced from '../components/seo/FAQEnhanced.astro';
 import BusinessNameCapture from '../components/BusinessNameCapture.astro';
 import { OFFER } from '../config/offer';
@@ -94,7 +93,7 @@ const homeFaqs = [
   },
   {
     question: "Can I cancel anytime? Is there a contract?",
-    answer: "Yes, you can cancel anytime. Plans are month-to-month with no long-term contract and no cancellation fees — cancel before your next billing date and you won't be charged again.",
+    answer: "Yes. There's no contract and no card on file, so there's no billing date to beat — close your account whenever you like. DriveSchoolPro is free during early access, and nothing is ever charged automatically.",
   },
   {
     question: "How is my data kept secure, and where is it hosted?",
@@ -430,8 +429,9 @@ const homeFaqs = [
     </div>
   </section>
 
-  <!-- Testimonials -->
-  <Testimonials />
+  <!-- Testimonials removed 2026-10-05: they were illustrative, not real customers (CAP/Google Ads
+       misrepresentation risk — same reason the /start pages have none). Testimonials.astro is kept
+       for when real, permissioned quotes exist. -->
 
   <!-- Switching reassurance -->
   <section class="section bg-white border-t border-gray-100">

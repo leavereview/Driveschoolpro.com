@@ -13,7 +13,7 @@ const SHARED_HEADLINES = [
   'Works on Your Phone',
   'Built for UK Instructors',
   'Tracks All 27 DVSA Skills',
-  'Set Up in Under a Minute',
+  'Set Up in a Few Minutes',
   'Pupils Book and Pay Online',
   'Automatic Lesson Reminders',
   'Start With Your School Name',
@@ -22,7 +22,7 @@ const SHARED_HEADLINES = [
 
 const DESCRIPTIONS = [
   'Diary, DVSA progress and payments for UK driving instructors. Free during early access.',
-  'Enter your school name and you are set up in under a minute. No card required.',
+  'Enter your school name and you are set up in a few minutes. No card required.',
   'Pupils book and pay online, get lesson reminders and see their own DVSA progress.',
   'Works in your browser, plus a free app for iPhone and Android.',
 ];
@@ -111,4 +111,25 @@ export const SHARED_NEGATIVES = [
   'driver scheduling', 'dispatch', 'jobs', 'job', 'career', 'salary', 'vacancies',
   'course', 'courses', 'theory test', 'hazard perception', 'learner', 'learners',
   'simulator', 'game', 'crack', 'torrent', 'apk', 'login', 'sign in', 'cdl',
+];
+
+/**
+ * Campaign-level sitelinks. Each needs a distinct final URL (Google disapproves
+ * duplicates), so they point at the four /start variants — all squeeze pages,
+ * so a sitelink click still lands on a signup form. Text ≤ 25, lines ≤ 35.
+ */
+export const SITELINKS = [
+  { text: 'Driving School Software', line1: 'Diary, DVSA progress and payments', line2: 'Built for UK instructors', url: `https://driveschoolpro.com/start/?${UTM}&utm_content=sitelink-core` },
+  { text: 'Free Instructor App', line1: 'On iPhone, Android and the web', line2: 'Free during early access', url: `https://driveschoolpro.com/start/free/?${UTM}&utm_content=sitelink-free` },
+  { text: 'Lesson Scheduling', line1: 'Book, move and remind pupils', line2: 'One diary on your phone', url: `https://driveschoolpro.com/start/scheduling/?${UTM}&utm_content=sitelink-scheduling` },
+  { text: 'See It Working', line1: 'Click through the real app', line2: 'No sign-up needed to look', url: `https://driveschoolpro.com/start/tour/?${UTM}&utm_content=sitelink-tour` },
+];
+
+/** Campaign-level callouts (≤ 25 chars). Each must be true of every landing page. */
+export const CALLOUTS = [
+  'No Card Required',
+  'Never Auto-Charged',
+  'Tracks All 27 DVSA Skills',
+  'iPhone and Android App',
+  'Built for UK Instructors',
 ];

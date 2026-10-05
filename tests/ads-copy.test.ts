@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { AD_GROUPS, SHARED_NEGATIVES, ROUTING_NEGATIVES } from '../google-ads/search-uk-start.ts';
+import { AD_GROUPS, SHARED_NEGATIVES, ROUTING_NEGATIVES, SITELINKS, CALLOUTS } from '../google-ads/search-uk-start.ts';
 import { START_VARIANTS } from '../src/config/start-variants.ts';
 
 const DKI = /^\{KeyWord:(.+)\}$/;
@@ -60,4 +60,22 @@ test('"free" routes to the Free group only', () => {
   assert.deepEqual(ROUTING_NEGATIVES['Core'], ['free']);
   assert.deepEqual(ROUTING_NEGATIVES['Scheduling'], ['free']);
   assert.equal(ROUTING_NEGATIVES['Free'], undefined);
+});
+
+test('sitelinks: ≤ 25 / ≤ 35 chars, distinct final URLs, each on a /start variant', () => {
+  const paths = Object.values(START_VARIANTS).map((v) => v.path);
+  assert.ok(SITELINKS.length >= 4);
+  assert.equal(new Set(SITELINKS.map((l) => new URL(l.url).pathname)).size, SITELINKS.length);
+  for (const l of SITELINKS) {
+    assert.ok(l.text.length <= 25, l.text);
+    assert.ok(l.line1.length <= 35 && l.line2.length <= 35, l.text);
+    assert.ok(paths.includes(new URL(l.url).pathname), l.url);
+  }
+});
+
+test('callouts ≤ 25 chars, no dates or superlatives', () => {
+  for (const c of CALLOUTS) {
+    assert.ok(c.length <= 25, c);
+    assert.ok(!/\b(20\d\d|best|#1|cheapest)\b/i.test(c), c);
+  }
 });

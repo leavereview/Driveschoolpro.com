@@ -16,9 +16,11 @@ Tools → Shared library → Negative keyword lists → `DSP exclusions` → pas
 apply to `Search – UK – Start` (and any future campaign).
 
 ## 4. Assets (campaign level)
-Callouts: No card required · Tracks all 27 DVSA skills · Works on your phone · Built for UK instructors.
+Import `callouts.csv` and `sitelinks.csv` (Ads Editor → Import → From file; map columns if prompted).
 Structured snippet "Features": Diary, DVSA progress, Payments, Reminders, Pupil portal.
-No sitelinks — the landing pages have no navigation.
+Sitelinks point at the four `/start` variants (distinct URLs, all squeeze pages) — so a sitelink
+click still lands on a signup form. Replaces the old "no sitelinks" rule: no navigation on the page
+is not a reason to give up the extra ad space.
 
 ## 5. Audiences
 Observation: `R1 Start visitors 30d`, `R2 Started not onboarded 14d` (+30% bid adjustment).
@@ -29,10 +31,22 @@ Exclusion: `X Registered 540d`.
 ## Display remarketing — final URLs per ad group
 | Ad group | Final URL | Why |
 |---|---|---|
-| Display – R1 Visitors | `https://driveschoolpro.com/start/?utm_source=google&utm_medium=display&utm_campaign=remarketing-uk&utm_content=r1` | Never submitted the form. (Phase 2: move to a demo-first page — a repeat of the page they left converts poorly.) |
+| Display – R1 Visitors | `https://driveschoolpro.com/start/tour/?utm_source=google&utm_medium=display&utm_campaign=remarketing-uk&utm_content=r1` | Never submitted the form. `/start/tour/` is demo-first (two click-through Arcade demos) — a repeat of the page they left converts poorly. Ad copy: "See it working before you sign up". |
 | Display – R2 Started not onboarded | `https://app.driveschoolpro.com/signup?utm_source=google&utm_medium=display&utm_campaign=remarketing-uk&utm_content=r2` | They already gave their school name. `/signup` routes every R2 case correctly: no account → the form; signed in without an org → the form; signed in with an unfinished org → `/today` → `/onboarding`; signed out with an account → "Already have an account? Sign in". **Not** `/onboarding` — that sends anyone without an account to a login page they can't use. |
 
 R2 ad copy should say "Finish setting up your school", not "Get started".
+
+## Testing at this volume
+At ~£12/day (≈5–10 clicks) a landing-page A/B split cannot reach significance for months. Ship
+changes as releases and compare `signup_start` per session (secondary conversion — higher volume)
+for 2–3 weeks before vs after, by `utm_content`. Use Google Ads Experiments only once
+`onboarding_complete` reaches ~15+/month.
+
+Funnel without app changes (GA4 Explore → Funnel, open funnel, segment `utm_campaign = search-uk-start`):
+1. `page_view` page_location contains `driveschoolpro.com/start` → 2. `signup_start` →
+3. `page_view` page_location contains `app.driveschoolpro.com/signup` →
+4. `page_view` page_location contains `app.driveschoolpro.com/onboarding` (account created) →
+5. `onboarding_complete`. The biggest drop tells you whether to work on the page or the app.
 
 ## Bid switch rule
 Maximise conversions (no target) once ≥ 15 `onboarding_complete` in trailing 30 days. tCPA only after ≥ 30.

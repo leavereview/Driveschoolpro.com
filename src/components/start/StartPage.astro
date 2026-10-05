@@ -1,7 +1,10 @@
 ---
 // src/components/start/StartPage.astro — one /start squeeze-page variant.
 // Section order is fixed; copy comes from src/config/start-variants.ts.
+// No outbound links except the layout footer's Privacy/Terms: every exit costs a signup.
 import BusinessNameCapture from '../BusinessNameCapture.astro';
+import ProductDemo from '../ProductDemo.astro';
+import ArcadeDemo from '../ArcadeDemo.astro';
 import { OFFER } from '../../config/offer';
 import { BENEFITS, SHARED_FAQ, fillOffer, type StartVariant } from '../../config/start-variants';
 
@@ -11,10 +14,20 @@ interface Props {
 const { variant } = Astro.props;
 const fill = (s: string) => fillOffer(s, OFFER);
 const faqs = [...SHARED_FAQ, variant.extraFaq];
+const captureLabel = 'Your driving school (or your own name)';
+const captureNote = 'No card needed · Nothing charged automatically';
+// Mirrors the app's real flow: /signup (school, name, email, password) → onboarding "How You Work".
 const steps = [
   { title: 'Enter your school name', body: 'Pick your business from the suggestions or just type it.' },
-  { title: 'Confirm your details', body: 'Check your name and email — no card needed.' },
-  { title: 'Add your first pupil', body: 'Book a lesson and you’re running.' },
+  { title: 'Create your login', body: 'Your name, email and a password — no card needed.' },
+  { title: 'Tell us how you work', body: 'Your working days and lesson price, then add pupils and book lessons.' },
+];
+// Facts only from /about (verified bio). Third person: these are not John's own words.
+const trust = [
+  'UK company: LEAVE.REVIEW LTD, company no. 05408918',
+  'Card payments handled by Stripe',
+  'Your data is never used to train AI',
+  'No card on file — nothing is ever charged automatically',
 ];
 ---
 <div data-start-variant={variant.id}>
@@ -32,7 +45,7 @@ const steps = [
         <h1 class="text-[1.75rem] leading-tight md:text-5xl font-bold text-brand-navy mb-2 md:mb-4">{variant.h1}</h1>
         <p class="text-base md:text-lg text-gray-600 mb-5 md:mb-8">{fill(variant.subhead)}</p>
         <div class="flex justify-center md:justify-start text-left">
-          <BusinessNameCapture id="start-capture-top" />
+          <BusinessNameCapture id="start-capture-top" label={captureLabel} cta={variant.cta} note={captureNote} />
         </div>
       </div>
       <img
@@ -56,7 +69,7 @@ const steps = [
         height={variant.hero.height}
         loading="lazy"
         decoding="async"
-        class="w-64 md:w-72 aspect-[9/16] object-cover object-top rounded-3xl border border-gray-200 shadow-xl"
+        class="w-64 aspect-[9/16] object-cover object-top rounded-3xl border border-gray-200 shadow-xl"
       />
     </div>
   </section>
@@ -75,6 +88,70 @@ const steps = [
     </div>
   </section>
 
+  <section id="see-it-working" class="bg-gray-50 py-10 md:py-16" aria-labelledby="start-demo">
+    <div class="container-custom max-w-4xl">
+      <h2 id="start-demo" class="text-2xl font-bold text-brand-navy text-center mb-2">See it working</h2>
+      {variant.demo.kind === 'clip' ? (
+        <>
+          <p class="text-center text-gray-600 mb-8">The real app, recorded with sample pupils.</p>
+          <ProductDemo
+            src={variant.demo.src}
+            poster={variant.demo.poster}
+            width={variant.demo.width}
+            height={variant.demo.height}
+            alt={variant.demo.alt}
+            posterAlt={variant.demo.posterAlt}
+            phone={variant.demo.phone}
+            class={variant.demo.phone ? '' : 'max-w-3xl mx-auto'}
+          />
+        </>
+      ) : (
+        <>
+          <p class="text-center text-gray-600 mb-8">Click through the real app yourself — sample pupils, nothing to sign up for.</p>
+          <div class="space-y-10">
+            {variant.demo.items.map((d) => (
+              <figure>
+                <ArcadeDemo id={d.id} title={d.title} ratio={d.ratio} mobile="inline" />
+                <figcaption class="mt-3 text-center text-sm text-gray-500">{d.title}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  </section>
+
+  <section class="bg-white py-10 md:py-16" aria-labelledby="start-who">
+    <div class="container-custom max-w-4xl md:grid md:grid-cols-2 md:gap-12 md:items-center">
+      <div class="flex items-center gap-4 mb-8 md:mb-0">
+        <img
+          src="/images/about-founder.jpg"
+          alt="John Powell, founder of DriveSchoolPro"
+          width="96"
+          height="96"
+          loading="lazy"
+          decoding="async"
+          class="h-20 w-20 md:h-24 md:w-24 shrink-0 rounded-full object-cover"
+        />
+        <div>
+          <h2 id="start-who" class="text-xl font-bold text-brand-navy">Built by John Powell</h2>
+          <p class="text-sm text-gray-600 mt-1">
+            John has spent 20 years building management software for service businesses, and built and sold
+            RevelationPets.com, a pet-care management platform. DriveSchoolPro is his software for UK driving instructors.
+          </p>
+        </div>
+      </div>
+      <ul class="space-y-3">
+        {trust.map((t) => (
+          <li class="flex gap-3 text-sm text-gray-700">
+            <svg aria-hidden="true" class="mt-0.5 h-5 w-5 shrink-0 text-green-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 011.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z" clip-rule="evenodd" /></svg>
+            {t}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
   <section class="bg-gray-50 py-10 md:py-16" aria-labelledby="start-how">
     <div class="container-custom max-w-3xl">
       <h2 id="start-how" class="text-2xl font-bold text-brand-navy text-center mb-8">How it works</h2>
@@ -87,6 +164,9 @@ const steps = [
           </li>
         ))}
       </ol>
+      <p class="mt-8 text-center text-sm text-gray-600">
+        Switching from a paper diary? Keep it running alongside until you’re confident — there’s nothing to cancel.
+      </p>
     </div>
   </section>
 
@@ -109,11 +189,53 @@ const steps = [
 
   <section class="bg-brand-navy py-12 md:py-16">
     <div class="container-custom max-w-2xl text-center">
-      <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Set up your school in under a minute</h2>
+      <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Set up your school in a few minutes</h2>
       <p class="text-gray-300 mb-6">{OFFER.short} — no card required.</p>
       <div class="flex justify-center text-left">
-        <BusinessNameCapture id="start-capture-bottom" tone="dark" />
+        <BusinessNameCapture id="start-capture-bottom" tone="dark" label={captureLabel} cta={variant.cta} note={captureNote} />
       </div>
     </div>
   </section>
+
+  <!-- Phones only: appears once the top field has scrolled away, hides while either field is on screen. -->
+  <div
+    data-sticky-cta
+    hidden
+    class="fixed inset-x-0 bottom-0 z-40 border-t border-gray-200 bg-white/95 px-4 py-3 backdrop-blur md:hidden"
+  >
+    <button type="button" class="btn-primary w-full min-h-[48px] text-base">{variant.cta} →</button>
+  </div>
 </div>
+
+<script>
+  const bar = document.querySelector<HTMLElement>('[data-sticky-cta]');
+  const top = document.getElementById('start-capture-top-org');
+  const forms = [...document.querySelectorAll<HTMLFormElement>('form[data-capture]')];
+  if (bar && top && forms.length) {
+    const visible = new Set<Element>();
+    let pastTop = false;
+    const update = () => {
+      bar.hidden = !pastTop || visible.size > 0;
+    };
+    new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) visible.add(e.target);
+        else visible.delete(e.target);
+        if (e.target === forms[0]) pastTop = !e.isIntersecting && e.boundingClientRect.top < 0;
+      }
+      update();
+    }).observe(forms[0]);
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) visible.add(e.target);
+        else visible.delete(e.target);
+      }
+      update();
+    });
+    forms.slice(1).forEach((f) => io.observe(f));
+    bar.querySelector('button')!.addEventListener('click', () => {
+      top.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      top.focus({ preventScroll: true });
+    });
+  }
+</script>

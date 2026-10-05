@@ -6,7 +6,7 @@ import fs from 'node:fs';
 const BASE = process.env.E2E_BASE || 'http://localhost:4329';
 const OUT = 'screenshots-videos/start-variants';
 fs.mkdirSync(OUT, { recursive: true });
-const VARIANTS = { core: '/start/', free: '/start/free/', scheduling: '/start/scheduling/' };
+const VARIANTS = { core: '/start/', free: '/start/free/', scheduling: '/start/scheduling/', tour: '/start/tour/' };
 const failures = [];
 const check = (ok, msg) => { if (!ok) failures.push(msg); };
 

@@ -6,11 +6,27 @@ import { START_VARIANTS, BENEFITS, SHARED_FAQ, fillOffer } from '../src/config/s
 
 const variants = Object.values(START_VARIANTS);
 
-test('three variants with the agreed paths', () => {
+test('four variants with the agreed paths', () => {
   assert.deepEqual(
     Object.fromEntries(variants.map((v) => [v.id, v.path])),
-    { core: '/start/', free: '/start/free/', scheduling: '/start/scheduling/' },
+    { core: '/start/', free: '/start/free/', scheduling: '/start/scheduling/', tour: '/start/tour/' },
   );
+});
+
+test('every variant has a CTA and a demo whose media exists', () => {
+  for (const v of variants) {
+    assert.ok(v.cta.length > 0 && v.cta.length <= 24, `${v.id}: cta "${v.cta}"`);
+    if (v.demo.kind === 'clip') {
+      assert.ok(fs.existsSync(path.join('public', v.demo.src)), `${v.id}: missing ${v.demo.src}`);
+      assert.ok(fs.existsSync(path.join('public', v.demo.poster)), `${v.id}: missing ${v.demo.poster}`);
+    } else {
+      assert.ok(v.demo.items.length > 0, `${v.id}: empty arcade list`);
+    }
+  }
+});
+
+test('only the demo-first tour variant embeds click-through demos', () => {
+  for (const v of variants) assert.equal(v.demo.kind === 'arcade', v.id === 'tour', v.id);
 });
 
 test('no hard-coded years or month names in any variant copy (offer text comes from OFFER)', () => {

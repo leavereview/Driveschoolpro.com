@@ -8,8 +8,20 @@ import { OFFER } from '../config/offer';
 interface Props {
   id: string;
   tone?: 'dark' | 'light';
+  /** Field label. Defaults to the homepage wording. */
+  label?: string;
+  /** Submit-button text (an arrow is appended). */
+  cta?: string;
+  /** Optional reassurance line shown above the "Not on Google?" hint. */
+  note?: string;
 }
-const { id, tone = 'light' } = Astro.props;
+const {
+  id,
+  tone = 'light',
+  label = 'Your driving school name',
+  cta = OFFER.ctaPrimary.label,
+  note,
+} = Astro.props;
 
 const action = import.meta.env.PUBLIC_APP_SIGNUP_URL || OFFER.ctaPrimary.href;
 const mapsKey = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY || '';
@@ -29,7 +41,7 @@ const listId = `${id}-suggestions`;
   class="w-full max-w-xl"
 >
   <label for={inputId} class={tone === 'dark' ? 'block text-sm font-medium text-gray-200 mb-2' : 'block text-sm font-medium text-gray-700 mb-2'}>
-    Your driving school name
+    {label}
   </label>
   <div class="flex flex-col sm:flex-row gap-3">
     <div class="relative flex-1">
@@ -63,10 +75,13 @@ const listId = `${id}-suggestions`;
     </div>
     <input type="hidden" name="place_id" disabled />
     <button type="submit" class="btn-primary text-lg px-8 py-4 whitespace-nowrap">
-      {OFFER.ctaPrimary.label} →
+      {cta} →
     </button>
   </div>
-  <p class={tone === 'dark' ? 'mt-2 text-xs text-gray-400' : 'mt-2 text-xs text-gray-500'}>
+  {note && (
+    <p class={tone === 'dark' ? 'mt-2 text-sm font-medium text-gray-200' : 'mt-2 text-sm font-medium text-gray-700'}>{note}</p>
+  )}
+  <p class={tone === 'dark' ? (note ? 'mt-1 text-xs text-gray-400' : 'mt-2 text-xs text-gray-400') : (note ? 'mt-1 text-xs text-gray-500' : 'mt-2 text-xs text-gray-500')}>
     Not on Google? Just type your name — that works too.
   </p>
 </form>
