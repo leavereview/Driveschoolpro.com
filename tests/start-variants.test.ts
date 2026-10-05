@@ -46,8 +46,8 @@ test('H1 fits a 390px hero: at most 60 characters', () => {
   for (const v of variants) assert.ok(v.h1.length <= 60, `${v.id}: ${v.h1.length}`);
 });
 
-test('shared FAQ has four entries and no testimonial-style quotes', () => {
-  assert.equal(SHARED_FAQ.length, 4);
+test('shared FAQ has five entries and no testimonial-style quotes', () => {
+  assert.equal(SHARED_FAQ.length, 5);
   for (const f of SHARED_FAQ) assert.ok(!/[“"].+[”"]\s*[—-]\s*\w/.test(f.a), f.q);
 });
 

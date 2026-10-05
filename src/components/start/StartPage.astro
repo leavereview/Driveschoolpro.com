@@ -18,17 +18,36 @@ const steps = [
 ];
 ---
 <div data-start-variant={variant.id}>
-  <section class="bg-white pt-5 pb-10 md:pt-20 md:pb-16">
-    <div class="container-custom max-w-2xl text-center">
-      <h1 class="text-[1.75rem] leading-tight md:text-5xl font-bold text-brand-navy mb-2 md:mb-3">{variant.h1}</h1>
-      <p class="text-base md:text-lg text-gray-600 mb-5 md:mb-6">{fill(variant.subhead)}</p>
-      <div class="flex justify-center text-left">
-        <BusinessNameCapture id="start-capture-top" />
+  <!-- Brand bar: confirms the advertiser named in the ad. Deliberately not a link — squeeze page, no exits. -->
+  <header class="border-b border-gray-100 bg-white">
+    <div class="container-custom flex h-11 md:h-16 items-center justify-between">
+      <span class="text-lg md:text-2xl font-bold text-brand-navy">DriveSchool<span class="text-brand-red">Pro</span></span>
+      <span class="text-xs md:text-sm font-medium text-gray-500">Free during early access</span>
+    </div>
+  </header>
+
+  <section class="bg-white pt-4 pb-10 md:py-16">
+    <div class="container-custom max-w-5xl md:grid md:grid-cols-[1fr_auto] md:items-center md:gap-16">
+      <div class="text-center md:text-left">
+        <h1 class="text-[1.75rem] leading-tight md:text-5xl font-bold text-brand-navy mb-2 md:mb-4">{variant.h1}</h1>
+        <p class="text-base md:text-lg text-gray-600 mb-5 md:mb-8">{fill(variant.subhead)}</p>
+        <div class="flex justify-center md:justify-start text-left">
+          <BusinessNameCapture id="start-capture-top" />
+        </div>
       </div>
+      <img
+        src={variant.hero.src}
+        alt={variant.hero.alt}
+        width={variant.hero.width}
+        height={variant.hero.height}
+        loading="eager"
+        decoding="async"
+        class="hidden md:block w-72 aspect-[9/16] object-cover object-top rounded-3xl border border-gray-200 shadow-xl"
+      />
     </div>
   </section>
 
-  <section class="bg-gray-50 py-10 md:py-16" aria-label="Product screenshot">
+  <section class="bg-gray-50 py-10 md:hidden" aria-label="Product screenshot">
     <div class="container-custom flex justify-center">
       <img
         src={variant.hero.src}

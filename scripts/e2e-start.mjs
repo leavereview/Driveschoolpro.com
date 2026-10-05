@@ -46,7 +46,7 @@ for (const [id, path] of Object.entries(VARIANTS)) {
       check(ib && ib.y + ib.height <= 664, `${id}: field below the fold (${ib && ib.y + ib.height})`);
       check(bb && bb.y + bb.height <= 664, `${id}: button below the fold (${bb && bb.y + bb.height})`);
       check(bb && bb.height >= 44, `${id}: button tap target ${bb && bb.height}px`);
-      check(await page.locator('summary').count() === 5, `${id}: expected 5 FAQ summaries`);
+      check(await page.locator('summary').count() === 6, `${id}: expected 6 FAQ summaries`);
       const small = await page.$$eval('summary', (els) => els.filter((e) => e.getBoundingClientRect().height < 44).length);
       check(small === 0, `${id}: ${small} FAQ summaries under 44px`);
     }

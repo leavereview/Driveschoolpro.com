@@ -26,6 +26,14 @@ Exclusion: `X Registered 540d`.
 
 ## 6. Post → check every ad is "Eligible" within 1 business day.
 
+## Display remarketing — final URLs per ad group
+| Ad group | Final URL | Why |
+|---|---|---|
+| Display – R1 Visitors | `https://driveschoolpro.com/start/?utm_source=google&utm_medium=display&utm_campaign=remarketing-uk&utm_content=r1` | Never submitted the form. (Phase 2: move to a demo-first page — a repeat of the page they left converts poorly.) |
+| Display – R2 Started not onboarded | `https://app.driveschoolpro.com/signup?utm_source=google&utm_medium=display&utm_campaign=remarketing-uk&utm_content=r2` | They already gave their school name. `/signup` routes every R2 case correctly: no account → the form; signed in without an org → the form; signed in with an unfinished org → `/today` → `/onboarding`; signed out with an account → "Already have an account? Sign in". **Not** `/onboarding` — that sends anyone without an account to a login page they can't use. |
+
+R2 ad copy should say "Finish setting up your school", not "Get started".
+
 ## Bid switch rule
 Maximise conversions (no target) once ≥ 15 `onboarding_complete` in trailing 30 days. tCPA only after ≥ 30.
 

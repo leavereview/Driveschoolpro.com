@@ -24,7 +24,7 @@ const DESCRIPTIONS = [
   'Diary, DVSA progress and payments for UK driving instructors. Free during early access.',
   'Enter your school name and you are set up in under a minute. No card required.',
   'Pupils book and pay online, get lesson reminders and see their own DVSA progress.',
-  'Works in your browser and on your phone. Nothing to install, nothing to download.',
+  'Works in your browser, plus a free app for iPhone and Android.',
 ];
 
 type Headline = { text: string; pin?: 1 };
@@ -51,7 +51,7 @@ export const AD_GROUPS: {
     headlines: [
       { text: 'Free Driving School Software', pin: 1 },
       { text: '{KeyWord:Driving School Software}' },
-      ...h(['Nothing to Download', 'Free Instructor Software', 'Diary, Pupils and Payments']),
+      ...h(['Free App for iPhone & Android', 'Free Instructor Software', 'Diary, Pupils and Payments']),
       ...h(SHARED_HEADLINES),
     ],
     descriptions: DESCRIPTIONS,

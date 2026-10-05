@@ -42,7 +42,7 @@ export const BENEFITS: Record<BenefitId, { title: string; body: string }> = {
 export const SHARED_FAQ: { q: string; a: string }[] = [
   {
     q: 'Is DriveSchoolPro free?',
-    a: '{offerLong} — no credit card required. We charge 3% on card payments you collect, and Stripe’s own processing fee is separate. Nothing is charged automatically.',
+    a: 'Yes. {offerLong}, with no card required and nothing charged automatically. The one optional cost: if you take card payments from pupils through the app, we charge 3% per payment and Stripe’s own processing fee is separate. Cash and bank transfers you record cost nothing.',
   },
   {
     q: 'Does it work on my phone?',
@@ -56,6 +56,10 @@ export const SHARED_FAQ: { q: string; a: string }[] = [
     q: 'Can I switch from my paper diary easily?',
     a: 'Most instructors are set up within five minutes. Add your pupils and book your first lesson — you can run both side by side until you’re comfortable.',
   },
+  {
+    q: 'What happens when early access ends?',
+    a: 'We’ll announce pricing well before early access ends. There’s no card on file and nothing is charged automatically, so you decide whether to carry on.',
+  },
 ];
 
 export const START_VARIANTS: Record<VariantId, StartVariant> = {
@@ -67,10 +71,10 @@ export const START_VARIANTS: Record<VariantId, StartVariant> = {
     h1: 'Driving school software that runs from your phone',
     subhead: 'Diary, DVSA progress and payments in one place. {offer} — no card required.',
     hero: {
-      src: '/images/marketing/calendar-mobile.webp',
-      alt: 'DriveSchoolPro lesson diary on a phone showing a week of booked lessons',
-      width: 375,
-      height: 812,
+      src: '/images/marketing/ai-briefing-today-mobile.webp',
+      alt: 'DriveSchoolPro Today screen on a phone showing the lesson in progress, pupil address and a lesson briefing',
+      width: 640,
+      height: 1164,
     },
     benefits: ['diary', 'dvsa', 'payments'],
     extraFaq: {
@@ -81,20 +85,20 @@ export const START_VARIANTS: Record<VariantId, StartVariant> = {
   free: {
     id: 'free',
     path: '/start/free/',
-    title: 'Free driving school software — no download | DriveSchoolPro',
-    description: 'Free driving school software for UK instructors. Works in your browser and on your phone. No card, no install.',
-    h1: 'Free driving school software — nothing to download',
-    subhead: '{offer}. Works in your browser and on your phone — no card, no install.',
+    title: 'Free driving school app for iPhone and Android | DriveSchoolPro',
+    description: 'Free driving school software for UK instructors, with an app for iPhone and Android. No card required.',
+    h1: 'Free driving school app for iPhone and Android',
+    subhead: '{offer}. Create your school here, then get the app on your phone — no card required.',
     hero: {
-      src: '/images/marketing/portal-dashboard-mobile.webp',
-      alt: 'DriveSchoolPro pupil portal on a phone showing upcoming lessons and progress',
-      width: 375,
-      height: 1193,
+      src: '/images/marketing/calendar-day-mobile.webp',
+      alt: 'DriveSchoolPro day view on a phone with a full day of lessons, pupil names and addresses',
+      width: 640,
+      height: 1164,
     },
     benefits: ['diary', 'dvsa', 'reminders'],
     extraFaq: {
-      q: 'Is there anything to download?',
-      a: 'No. DriveSchoolPro runs in your web browser. On your phone you can add it to your home screen so it opens like an app.',
+      q: 'Is there an app to download?',
+      a: 'Yes. DriveSchoolPro is free on the App Store and Google Play. Create your school here first, then sign in on the app. You can also use it in any web browser.',
     },
   },
   scheduling: {
