@@ -36,6 +36,21 @@ Exclusion: `X Registered 540d`.
 
 R2 ad copy should say "Finish setting up your school", not "Get started".
 
+## Applied in the account — 2026-10-05
+- Search: new RSAs imported; the three previous RSAs ("Nothing to Download", "under a minute") **paused**, not removed.
+- Sitelinks (4) + callouts imported. New callouts that only duplicated older ones by capitalisation
+  were removed; the older approved copies kept ("No card required", "Tracks all 27 DVSA skills",
+  "Built for UK instructors"). New: "Never Auto-Charged", "iPhone and Android App".
+- Display R1: final URL → `/start/tour/…utm_content=r1`; headline "Set Up in Under a Minute" →
+  "See It Working First"; description → "…set up in about two minutes…"; added "Click through the
+  diary and DVSA progress tracking yourself, then set up your school". Resubmitted (was disapproved
+  "Destination not working").
+- Display R2: final URL → `app.driveschoolpro.com/signup…utm_content=r2`; description "Finish in
+  under a minute" → "Finish in a couple of minutes".
+- Display campaign budget is **£3/day** in the account (plan said £2) — reconcile before enabling.
+- Ad-group default bids (Core shows £0.01 in Ads Editor) are ignored under Maximise Clicks;
+  set them to £2.50 before any switch to Manual CPC.
+
 ## Testing at this volume
 At ~£12/day (≈5–10 clicks) a landing-page A/B split cannot reach significance for months. Ship
 changes as releases and compare `signup_start` per session (secondary conversion — higher volume)
