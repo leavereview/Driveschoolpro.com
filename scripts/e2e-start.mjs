@@ -34,6 +34,9 @@ for (const [id, path] of Object.entries(VARIANTS)) {
     const url = `${BASE}${path}?gclid=TEST123&utm_source=google&utm_content=${id}`;
     await page.goto(url);
     check(await page.locator(`[data-start-variant="${id}"]`).count() === 1, `${id}/${device}: variant marker`);
+    const focused = await page.evaluate(() => document.activeElement?.id);
+    if (device === 'desktop') check(focused === 'start-capture-top-org', `${id}/desktop: top field not focused on load (${focused})`);
+    else check(focused !== 'start-capture-top-org', `${id}/iphone13: field autofocused on a phone`);
     const robots = await page.locator('meta[name="robots"]').getAttribute('content');
     check(robots === 'noindex, follow', `${id}/${device}: robots=${robots}`);
 
@@ -67,6 +70,23 @@ for (const [id, path] of Object.entries(VARIANTS)) {
     }
     await ctx.close();
   }
+}
+
+// Homepage hero field: focused on desktop, not on a phone; a focus we gave must not load Maps.
+for (const device of ['desktop', 'iphone13']) {
+  const { ctx, page } = await newPage(device, 'necessary');
+  const maps = [];
+  page.on('request', (r) => { if (r.url().startsWith('https://maps.googleapis.com/')) maps.push(r.url()); });
+  await page.goto(`${BASE}/`);
+  const focused = await page.evaluate(() => document.activeElement?.id);
+  if (device === 'desktop') {
+    check(focused === 'hero-capture-org', `home/desktop: hero field not focused (${focused})`);
+    await page.waitForTimeout(500);
+    check(maps.length === 0, 'home/desktop: autofocus loaded the Maps script');
+  } else {
+    check(focused !== 'hero-capture-org', 'home/iphone13: hero field autofocused on a phone');
+  }
+  await ctx.close();
 }
 
 // First-time ad visitor: no stored consent, so the cookie banner is showing.

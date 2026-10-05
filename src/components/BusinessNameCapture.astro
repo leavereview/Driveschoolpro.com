@@ -14,6 +14,12 @@ interface Props {
   cta?: string;
   /** Optional reassurance line shown above the "Not on Google?" hint. */
   note?: string;
+  /**
+   * Focus the field on load — desktop only (fine pointer + hover). Not the HTML
+   * `autofocus` attribute: on Android that opens the keyboard over the headline
+   * before the visitor has read the offer. Use on one form per page.
+   */
+  autofocus?: boolean;
 }
 const {
   id,
@@ -21,6 +27,7 @@ const {
   label = 'Your driving school name',
   cta = OFFER.ctaPrimary.label,
   note,
+  autofocus = false,
 } = Astro.props;
 
 const action = import.meta.env.PUBLIC_APP_SIGNUP_URL || OFFER.ctaPrimary.href;
@@ -35,6 +42,7 @@ const listId = `${id}-suggestions`;
   data-maps-key={mapsKey}
   data-ads-id={adsId}
   data-ads-label={adsLabel}
+  data-autofocus={autofocus ? '' : undefined}
   method="get"
   action={action}
   autocomplete="off"
@@ -207,9 +215,27 @@ const listId = `${id}-suggestions`;
       active = -1;
     }
 
+    let autoFocused = false;
     input.addEventListener('focus', () => {
+      // A focus we gave on load is not intent: don't fetch the Maps script for
+      // every desktop page view. The first keystroke loads it instead.
+      if (autoFocused) {
+        autoFocused = false;
+        return;
+      }
       void loadPlaces(key);
     });
+
+    if (
+      form.dataset.autofocus !== undefined &&
+      window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
+      window.scrollY === 0 && // a restored scroll position or #anchor means they're elsewhere on the page
+      !location.hash &&
+      (document.activeElement === null || document.activeElement === document.body)
+    ) {
+      autoFocused = true;
+      input.focus({ preventScroll: true });
+    }
 
     input.addEventListener('input', () => {
       clearTimeout(debounce);
