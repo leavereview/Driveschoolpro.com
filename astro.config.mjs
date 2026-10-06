@@ -13,7 +13,13 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap({
-      filter: (page) => !page.includes('/blog/tag/') && !page.includes('/ads/') && !/\/start\//.test(page),
+      // Keep noindex pages out of the sitemap: listing a noindex URL sends Google
+      // conflicting signals (GSC "Excluded by noindex", 6 Oct 2026).
+      filter: (page) =>
+        !page.includes('/blog/tag/') &&
+        !page.includes('/ads/') &&
+        !/\/start\//.test(page) &&
+        !/\/(changelog|early-access|get-started)\/$/.test(page),
       serialize: lastmodSerializer(lastmod),
     }),
     compress({
