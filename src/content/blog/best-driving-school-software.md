@@ -70,7 +70,7 @@ Competitor entries reflect what each vendor's own website says. "Not listed" mea
 
 | Software | Built for | DVSA skill tracking | Pupil app or portal | How to try it |
 |----------|-----------|---------------------|---------------------|---------------|
-| DriveSchoolPro | UK ADIs and schools | ✅ All 27 skills, 8 categories | Web portal (add to home screen) | Free until 31 March 2027, no card |
+| DriveSchoolPro | UK ADIs and schools | ✅ All 27 skills, 8 categories | ✅ iOS and Android app, or web | Free until 31 March 2027, no card |
 | Total Drive | UK ADIs and schools | ✅ Pre-filled DVSA syllabus | ✅ App | 30-day free trial, no card |
 | My Drive Time | UK ADIs and schools | Syllabus manager; DVSA structure not stated | ✅ Student app | 30-day free trial, no card |
 | Passly | UK ADIs and schools | ✅ DVSA-aligned scoring; skill count not stated | Web portal | 14-day free trial, no card |
@@ -109,7 +109,7 @@ Most comparisons are written for multi-instructor schools, which is a different 
 - **Established UK app with theory content: [Total Drive](/compare/total-drive/).** Pre-filled DVSA syllabus, a theory suite and cancellation-gap broadcasts.
 - **Support-led independent: [My Drive Time](/compare/my-drive-time/).** Describes its support as award-winning; lists SMS reminders, diary-gap broadcasts and free migration.
 - **Help finding new pupils: [Passly](/compare/passly/).** Its learner marketplace brings in enquiries, and it pushes cancelled slots to your other pupils.
-- **A native app with parent access: [LessonBuddy](/compare/lessonbuddy/).** One app for instructor, pupil and parent on iOS and Android, plus test-centre route tools.
+- **Parent access and route tools: [LessonBuddy](/compare/lessonbuddy/).** One app for instructor, pupil and parent on iOS and Android, plus test-centre route tools.
 
 If you only need pupils to book and pay online, a general booking tool will do it, but you'll be tracking progress somewhere else.
 
@@ -176,7 +176,8 @@ Each review lists what the platform's own website says it does, where it's the b
 **Best for:** UK ADIs and small-to-medium schools who want DVSA tracking and less admin. **Pricing:** free until 31 March 2027 (early access).
 
 **What it does well:**
-- Tracks every pupil against all 27 DVSA skills in 8 categories, and pupils see their own progress in their portal
+- Tracks every pupil against all 27 DVSA skills in 8 categories, and pupils see their own progress
+- One app on the App Store and Google Play for you and your pupils, or use any web browser
 - Writes a short AI lesson briefing before each lesson from your last notes and the pupil's skill ratings
 - Puts a Google review request on your Today screen when a pupil passes (you choose whether to send it)
 - Checks every booking against the pupil, the instructor and the vehicle, and tracks MOT, tax and insurance dates with alerts
@@ -184,7 +185,6 @@ Each review lists what the platform's own website says it does, where it's the b
 - Email lesson reminders; WhatsApp reminders are coming soon
 
 **What it doesn't do yet:**
-- No native app in the App Store or Google Play; it's a web app you can add to your home screen
 - No theory content, no cancellation-gap broadcast and no parent login
 - Recording test bookings and results is coming soon
 - One-way calendar export rather than two-way sync
@@ -225,7 +225,7 @@ Passly combines instructor software with a learner marketplace. Its site lists D
 
 ### LessonBuddy
 
-**Best for:** instructors and schools who want a native app with parent access. **Pricing:** [see LessonBuddy's pricing page](https://lessonbuddy.co.uk/pricing/).
+**Best for:** instructors and schools who want parent access and test-centre route tools. **Pricing:** [see LessonBuddy's pricing page](https://lessonbuddy.co.uk/pricing/).
 
 LessonBuddy describes one app for instructors, pupils, parents and schools on iOS and Android. Its site lists a five-level skills matrix, DL25-style fault records, website booking tools, publishing gaps to chosen pupils, test-centre route tools, parent access, card payments, income, expenses and mileage, and sponsored instructor seats for schools.
 
@@ -285,7 +285,7 @@ All of our side-by-side comparisons are on the [comparison hub](/compare/).
 
 **DVSA tracking with vehicle clash checks and compliance:** **DriveSchoolPro**. Shared pupil records on the DVSA framework, clash checks across pupil, instructor and car, and MOT, tax and insurance alerts.
 
-**A native app with parent access:** **LessonBuddy**.
+**Parent access and route tools:** **LessonBuddy**.
 
 **An established platform:** **Total Drive** or **My Drive Time**. Both list multi-instructor plans.
 
@@ -422,13 +422,13 @@ Ask before you sign up. Check whether you can export pupil records, lesson histo
 
 ## Final Recommendations
 
-**For most UK ADIs and small schools who want DVSA tracking:** start with **[DriveSchoolPro](/driving-school-software/)**. It's free until 31 March 2027 while in early access, with full DVSA tracking, AI lesson briefings, email reminders (WhatsApp coming soon), vehicle compliance alerts and a pupil portal.
+**For most UK ADIs and small schools who want DVSA tracking:** start with **[DriveSchoolPro](/driving-school-software/)**. It's free until 31 March 2027 while in early access, with full DVSA tracking, AI lesson briefings, email reminders (WhatsApp coming soon), vehicle compliance alerts, and an app for you and your pupils on iOS and Android.
 
 **For an established UK app with a long track record:** trial **[Total Drive](/compare/total-drive/)** and **[My Drive Time](/compare/my-drive-time/)**.
 
 **For new pupils as well as software:** look at **[Passly](/compare/passly/)**.
 
-**For a native app with parent access:** look at **[LessonBuddy](/compare/lessonbuddy/)**.
+**For parent access and route tools:** look at **[LessonBuddy](/compare/lessonbuddy/)**.
 
 **For franchises and large multi-car schools:** get a demo of **[Driving School Office](/compare/driving-school-office/)**.
 

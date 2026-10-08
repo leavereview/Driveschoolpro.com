@@ -73,6 +73,9 @@ const FORBIDDEN = [
   // Found live on /compare/ 2026-10-08 (generic-vs-specific FAQ).
   ['give a parent visibility', 'parentAccessFlag is off'],
   ['parent visibility of', 'parentAccessFlag is off'],
+  // Found on /blog/drivescout-vs-drivingschoolsoftware-comparison/ 2026-10-08: the app has no
+  // GoCardless integration (card payments are Stripe only).
+  ['gocardless integration for direct debit', 'no GoCardless integration in the app'],
   // Review collection is a NUDGE, not an automatic send: ReviewNudgePanel puts
   // candidates (test passes + inactive pupils) on the Today screen and the
   // instructor taps send. Copy claiming it sends by itself is false. Found and
