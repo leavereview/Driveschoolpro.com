@@ -70,6 +70,9 @@ const FORBIDDEN = [
   ['parents can be given', 'parentAccessFlag is off'],
   ['pupils and parents can view', 'parentAccessFlag is off'],
   ['parent and guardian access', 'parentAccessFlag is off'],
+  // Found live on /compare/ 2026-10-08 (generic-vs-specific FAQ).
+  ['give a parent visibility', 'parentAccessFlag is off'],
+  ['parent visibility of', 'parentAccessFlag is off'],
   // Review collection is a NUDGE, not an automatic send: ReviewNudgePanel puts
   // candidates (test passes + inactive pupils) on the Today screen and the
   // instructor taps send. Copy claiming it sends by itself is false. Found and

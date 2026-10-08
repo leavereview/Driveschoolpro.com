@@ -1,0 +1,111 @@
+---
+import CompetitorComparison from '../../components/compare/CompetitorComparison.astro';
+
+// Competitor cells reflect Passly's own public pages, checked 8 Oct 2026:
+//   passly.co.uk/instructor (DVSA-aligned scoring, gap push alerts, pupil app/portal)
+//   /instructor/features/messaging-and-reminders (email, in-app, push; "Passly just does not send text messages")
+//   /instructor/features/progress-tracking (five levels; practical test date/centre/result logged)
+//   /instructor/features/online-booking (embeddable booking widget)
+//   /instructor/features/lesson-calendar ("blocks clashes automatically")
+//   /instructor/features/pupil-portal (web app, nothing to install)
+//   /instructor/driving-school-management-software (multi-instructor, school-wide conflict detection)
+// Passly's site contradicts itself on a native app and on card processing, so we
+// state neither. "Not listed" = not found on those pages; never "No" unless the vendor says so.
+const rows = [
+  { label: 'AI lesson briefings', values: [true, 'Not listed'] },
+  { label: 'DVSA 27-skill, 8-category progress tracking', values: [true, 'DVSA-aligned scoring; skill count not stated'] },
+  { label: 'Google review requests at each test pass', values: [true, 'Not listed (reviews on its own marketplace)'] },
+  { label: 'Automatic lesson reminders', values: ['Email', 'Yes (email, in-app, push)'] },
+  { label: 'WhatsApp reminders', values: ['Coming soon', 'Not listed'] },
+  { label: 'Booking widget for your own website', values: [true, 'Yes'] },
+  { label: 'Clash checks across pupil, instructor and vehicle', values: [true, 'Clash checks listed; vehicles not stated'] },
+  { label: 'Vehicle MOT, tax and insurance tracking', values: [true, 'Not listed'] },
+  { label: 'Pupil app or portal', values: ['Web portal', 'Yes (web portal)'] },
+  { label: 'Multi-instructor schools', values: [true, true] },
+  { label: 'Test bookings and results recording (coming soon)', values: ['Coming soon', 'Yes (test results logged)'] },
+  { label: 'Cancellation-gap broadcast to pupils', values: [false, 'Yes (push gap alerts)'] },
+  { label: 'Learner marketplace and leads', values: [false, 'Yes'] },
+  { label: 'Theory content', values: [false, 'Not listed'] },
+  { label: 'Free migration of your existing records', values: [false, 'Not listed'] },
+];
+
+const faqs = [
+  {
+    question: 'Does Passly track the DVSA syllabus?',
+    answer: "Yes. Passly's site says it scores each pupil against the DVSA syllabus lesson by lesson, using five levels grouped into areas such as junctions and manoeuvres. It doesn't state a skill count. DriveSchoolPro tracks the official 27 skills in 8 categories, and pupils see their own progress in their portal.",
+    links: [{ text: 'How DriveSchoolPro tracks progress', url: '/how-progress-works/' }],
+  },
+  {
+    question: 'Does either send SMS reminders?',
+    answer: "No. Passly says plainly that it does not send text messages; its reminders go by email, in-app and push notification. DriveSchoolPro sends lesson reminders by email today, with WhatsApp coming soon. Neither uses SMS.",
+    links: [{ text: 'How DriveSchoolPro handles messaging', url: '/whatsapp/' }],
+  },
+  {
+    question: 'Passly helps me find new pupils. Does DriveSchoolPro?',
+    answer: "No. Passly runs a marketplace where learners find and book instructors, and that's a real difference. DriveSchoolPro doesn't have a marketplace. What it does have is a booking widget for your own website and a Google review request ready to send when a pupil passes, which helps people find you on Google.",
+    links: [{ text: 'Review requests in DriveSchoolPro', url: '/features/reviews/' }],
+  },
+  {
+    question: 'Is this a fair comparison?',
+    answer: "We've tried to make it one. The Passly column only records what Passly's own public website says, checked on 8 October 2026. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote Passly's prices because they change, so use their own pricing page. The gaps in DriveSchoolPro are set out above. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
+    links: [{ text: "Passly's current pricing", url: 'https://passly.co.uk/instructor/pricing' }],
+  },
+  {
+    question: 'Do I have to switch all at once?',
+    answer: "No. Keep your current diary running alongside DriveSchoolPro until you're confident everything's in. There's no big switch-over day, and it's free until 31 March 2027 with no card required.",
+    links: [{ text: 'Get started free', url: 'https://app.driveschoolpro.com/signup' }],
+  },
+];
+---
+
+<CompetitorComparison
+  competitor={{ name: 'Passly', slug: 'passly', pricingUrl: 'https://passly.co.uk/instructor/pricing' }}
+  seo={{
+    title: 'DriveSchoolPro vs Passly: Honest Comparison | DriveSchoolPro',
+    description: 'Compare DriveSchoolPro and Passly feature by feature: DVSA tracking, AI lesson briefings, reminders, gap alerts and test results. DriveSchoolPro is free until 31 March 2027.',
+    schemaDescription: 'Feature-by-feature comparison of DriveSchoolPro and Passly for UK driving instructors, including what DriveSchoolPro does not do yet.',
+    datePublished: '2026-10-08',
+    dateModified: '2026-10-08',
+  }}
+  checkedOn="8 October 2026"
+  heroIntro="A plain, feature-by-feature comparison for UK instructors weighing up Passly. It covers what's different, and what DriveSchoolPro doesn't do yet."
+  featuredAnswer="DriveSchoolPro and Passly are both UK platforms for driving instructors, with a diary, a booking widget, DVSA-based progress tracking and multi-instructor support. DriveSchoolPro adds AI lesson briefings, Google review requests at each test pass, clash checks that include the vehicle, and MOT, tax and insurance tracking. Passly lists cancellation-gap push alerts, practical test result logging and a learner marketplace that DriveSchoolPro doesn't have."
+  intro="This page is for an instructor looking at Passly and wondering whether DriveSchoolPro is worth a look too. Passly is a capable UK product with a marketplace that brings in learners, so this isn't a case against it. It's a list of what's different."
+  rows={rows}
+  switchHeading="Where DriveSchoolPro differs"
+  switchIntro="These are the differences that exist today, from the table above."
+  switchItems={[
+    {
+      title: 'The full DVSA framework, named',
+      body: "DriveSchoolPro tracks the official 27 skills across 8 categories, and pupils see their own progress in their portal. Passly scores pupils against the DVSA syllabus but doesn't say how many skills it covers.",
+    },
+    {
+      title: 'Lesson prep written for you',
+      body: "Before each lesson, DriveSchoolPro writes a short briefing from your last notes and the pupil's skill ratings, using Claude. We couldn't find an equivalent on Passly's site.",
+    },
+    {
+      title: 'Google reviews, not just marketplace reviews',
+      body: "When a pupil passes, they appear on your Today screen with a Google review request ready to send. It's prompted, not automatic. Passly's reviews live on its own marketplace profile.",
+    },
+    {
+      title: 'Vehicle clash checks and compliance',
+      body: 'Bookings are checked against the pupil, the instructor and the vehicle together, and MOT, tax and insurance dates are tracked with alerts.',
+    },
+    {
+      title: 'Free while in early access',
+      body: "DriveSchoolPro has no subscription fee until 31 March 2027 and doesn't ask for a card. Pricing will be announced well before 1 April 2027, and nothing is charged automatically.",
+    },
+  ]}
+  gapsHeading="What DriveSchoolPro doesn't do yet"
+  gapsBody="DriveSchoolPro has no learner marketplace, so it won't bring you new pupils the way Passly's can. We can't broadcast a cancelled slot to your other pupils, which Passly does with push alerts, and recording test bookings and results is coming soon, where Passly logs them today. Lesson reminders go out by email only for now (WhatsApp is coming soon), and we don't offer free bulk migration of your records yet. If any of these decides it for you, that's a fair reason to choose Passly."
+  sources={[
+    { label: 'Passly — for instructors', url: 'https://passly.co.uk/instructor' },
+    { label: 'Passly — messaging and reminders', url: 'https://passly.co.uk/instructor/features/messaging-and-reminders' },
+    { label: 'Passly — progress tracking', url: 'https://passly.co.uk/instructor/features/progress-tracking' },
+    { label: 'Passly — online booking', url: 'https://passly.co.uk/instructor/features/online-booking' },
+    { label: 'Passly — driving school management software', url: 'https://passly.co.uk/instructor/driving-school-management-software' },
+    { label: 'Passly — pricing', url: 'https://passly.co.uk/instructor/pricing' },
+  ]}
+  faqs={faqs}
+  faqTitle="DriveSchoolPro vs Passly — common questions"
+/>

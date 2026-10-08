@@ -1,0 +1,109 @@
+---
+import CompetitorComparison from '../../components/compare/CompetitorComparison.astro';
+
+// Competitor cells reflect Teachworks' own public pages, checked 8 Oct 2026:
+//   teachworks.com/driving-school-management-software (email or SMS reminders, website booking)
+//   / (built for teaching businesses worldwide), /faq ("web-based", hosted on AWS in the US)
+//   /pricing (unlimited teachers), /features/communication (online accounts for students/parents)
+//   /addons/vehicle-manager ("conflict checker will check if the vehicle has already been booked")
+//   /addons/student-conflict-checker, /addons/results-tracking, /features/records (import)
+// Key phrases re-checked against raw HTML 8 Oct 2026.
+// "Not listed" = not found on those pages; never "No" unless the vendor says so.
+const rows = [
+  { label: 'Built specifically for UK driving instructors', values: [true, 'International; driving is one of several markets'] },
+  { label: 'AI lesson briefings', values: [true, 'Not listed (AI support chat only)'] },
+  { label: 'DVSA 27-skill, 8-category progress tracking', values: [true, 'Not listed (general results tracking add-on)'] },
+  { label: 'Google review requests at each test pass', values: [true, 'Not listed'] },
+  { label: 'Automatic lesson reminders', values: ['Email', 'Yes (email, SMS)'] },
+  { label: 'WhatsApp reminders', values: ['Coming soon', 'Not listed'] },
+  { label: 'Booking widget for your own website', values: [true, 'Yes'] },
+  { label: 'Clash checks across pupil, instructor and vehicle', values: [true, 'Yes (with vehicle and student add-ons)'] },
+  { label: 'Vehicle MOT, tax and insurance tracking', values: [true, 'Not listed'] },
+  { label: 'Pupil app or portal', values: ['Web portal', 'Web portal'] },
+  { label: 'Multi-instructor schools', values: [true, 'Yes (unlimited teachers)'] },
+  { label: 'Test bookings and results recording (coming soon)', values: ['Coming soon', 'Not listed'] },
+  { label: 'Cancellation-gap broadcast to pupils', values: [false, 'Not listed'] },
+  { label: 'Theory content', values: [false, 'Not listed'] },
+  { label: 'Import of your existing records', values: [false, 'Self-service import listed'] },
+];
+
+const faqs = [
+  {
+    question: 'Is Teachworks built for driving schools?',
+    answer: "Teachworks is a scheduling and billing platform for teaching businesses worldwide, including tutoring, music and language schools, with a driving-school edition. Its driving page doesn't mention the DVSA or UK tests. DriveSchoolPro is built only for UK driving instructors, around the DVSA 27 driving skills.",
+    links: [{ text: 'The DVSA 27 driving skills', url: '/dvsa-27-driving-skills/' }],
+  },
+  {
+    question: 'Can Teachworks book vehicles?',
+    answer: "Yes. Its Vehicle Manager add-on stores vehicle profiles, and its conflict checker stops a vehicle being double-booked. We couldn't find MOT, tax or insurance tracking. DriveSchoolPro checks every booking against the pupil, instructor and vehicle, and tracks MOT, tax and insurance dates with alerts.",
+    links: [{ text: 'Scheduling in DriveSchoolPro', url: '/features/scheduling/' }],
+  },
+  {
+    question: 'Where is my data stored?',
+    answer: "Teachworks' FAQ says its data is hosted with Amazon Web Services in the US. If UK data residency matters to you, ask any vendor where pupil records are held before you sign up, including us.",
+    links: [{ text: 'DriveSchoolPro privacy policy', url: '/privacy-policy/' }],
+  },
+  {
+    question: 'Is this a fair comparison?',
+    answer: "We've tried to make it one. The Teachworks column only records what Teachworks' own public website says, checked on 8 October 2026. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote Teachworks' prices because they change, so use their own pricing page. The gaps in DriveSchoolPro are set out above. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
+    links: [{ text: "Teachworks' current pricing", url: 'https://www.teachworks.com/pricing' }],
+  },
+  {
+    question: 'Do I have to switch all at once?',
+    answer: "No. Keep your current diary running alongside DriveSchoolPro until you're confident everything's in. There's no big switch-over day, and it's free until 31 March 2027 with no card required.",
+    links: [{ text: 'Get started free', url: 'https://app.driveschoolpro.com/signup' }],
+  },
+];
+---
+
+<CompetitorComparison
+  competitor={{ name: 'Teachworks', slug: 'teachworks', pricingUrl: 'https://www.teachworks.com/pricing' }}
+  seo={{
+    title: 'DriveSchoolPro vs Teachworks: Honest Comparison | DriveSchoolPro',
+    description: 'Compare DriveSchoolPro and Teachworks for UK driving schools: DVSA tracking, vehicle clash checks, reminders and booking. DriveSchoolPro is free until 31 March 2027.',
+    schemaDescription: 'Feature-by-feature comparison of DriveSchoolPro and Teachworks for UK driving schools, including what DriveSchoolPro does not do yet.',
+    datePublished: '2026-10-08',
+    dateModified: '2026-10-08',
+  }}
+  checkedOn="8 October 2026"
+  heroIntro="A plain, feature-by-feature comparison for UK driving schools weighing up Teachworks. It covers what's different, and what DriveSchoolPro doesn't do yet."
+  featuredAnswer="Teachworks is an international scheduling and billing platform for teaching businesses, with a driving-school edition; DriveSchoolPro is built only for UK driving instructors. Both offer online booking, multi-instructor diaries and vehicle-aware clash checks. DriveSchoolPro adds progress tracking on the official DVSA 27 skills, AI lesson briefings, Google review requests at each test pass and MOT, tax and insurance tracking. Teachworks lists SMS reminders, self-service data import and a large set of add-ons and integrations."
+  intro="This page is for a UK driving school looking at Teachworks and wondering whether a driving-specific tool would fit better. Teachworks is a mature, flexible platform used by many kinds of teaching business, so this isn't a case against it. It's a list of what's different."
+  rows={rows}
+  switchHeading="Where DriveSchoolPro differs"
+  switchIntro="These are the differences that exist today, from the table above."
+  switchItems={[
+    {
+      title: 'Built around the DVSA framework',
+      body: "DriveSchoolPro tracks the official 27 skills across 8 categories, so every instructor rates pupils the same way and pupils see their own progress. Teachworks offers general results tracking for grades and test scores.",
+    },
+    {
+      title: 'Lesson prep written for you',
+      body: "Before each lesson, DriveSchoolPro writes a short briefing from your last notes and the pupil's skill ratings, using Claude. The AI we found on Teachworks' site is a support chat assistant.",
+    },
+    {
+      title: 'Vehicle compliance, not just vehicle booking',
+      body: 'Both check vehicle clashes. DriveSchoolPro also tracks MOT, tax and insurance dates with alerts, which we couldn\'t find on Teachworks\' site.',
+    },
+    {
+      title: 'Review requests at the right moment',
+      body: "When a pupil passes, they appear on your Today screen with a Google review request ready to send. It's prompted, not automatic: you decide whether to send it.",
+    },
+    {
+      title: 'Free while in early access',
+      body: "DriveSchoolPro has no subscription fee until 31 March 2027 and doesn't ask for a card. Pricing will be announced well before 1 April 2027, and nothing is charged automatically.",
+    },
+  ]}
+  gapsHeading="What DriveSchoolPro doesn't do yet"
+  gapsBody="Teachworks has been around far longer and has a much bigger library of add-ons and integrations. It offers two-way Google Calendar sync, where DriveSchoolPro exports one way to your calendar. It sends reminders by SMS as well as email; DriveSchoolPro sends email only for now (WhatsApp is coming soon). We don't have a self-service bulk import yet, recording test bookings and results is coming soon, and we can't broadcast a cancelled slot to other pupils. If any of these decides it for you, that's a fair reason to choose Teachworks."
+  sources={[
+    { label: 'Teachworks — driving school management software', url: 'https://www.teachworks.com/driving-school-management-software' },
+    { label: 'Teachworks — vehicle manager add-on', url: 'https://www.teachworks.com/addons/vehicle-manager' },
+    { label: 'Teachworks — student conflict checker add-on', url: 'https://www.teachworks.com/addons/student-conflict-checker' },
+    { label: 'Teachworks — integrations and add-ons', url: 'https://www.teachworks.com/features/integrations' },
+    { label: 'Teachworks — FAQ', url: 'https://www.teachworks.com/faq' },
+    { label: 'Teachworks — pricing', url: 'https://www.teachworks.com/pricing' },
+  ]}
+  faqs={faqs}
+  faqTitle="DriveSchoolPro vs Teachworks — common questions"
+/>

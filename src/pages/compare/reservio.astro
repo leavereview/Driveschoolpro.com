@@ -1,0 +1,109 @@
+---
+import CompetitorComparison from '../../components/compare/CompetitorComparison.astro';
+
+// Competitor cells reflect Reservio's own public pages, checked 8 Oct 2026:
+//   reservio.com/driving-school-software (SMS and email reminders, "Avoid double-booking with
+//     calendar sync", assign instructors and vehicles, online booking and payments)
+//   /pricing (Free plan: 40 bookings per 30 days, 100 clients; SMS reminders an add-on)
+//   /features/reminders ("Feedback request" message type), /features/client-management (CSV import)
+//   /about-us (HQ Brno, Czech Republic; multi-industry)
+// Free-plan LIMITS are stated (not a price); paid plan prices are never quoted.
+// Key phrases re-checked against raw HTML 8 Oct 2026.
+// "Not listed" = not found on those pages; never "No" unless the vendor says so.
+const rows = [
+  { label: 'Built specifically for UK driving instructors', values: [true, 'General booking tool for many industries'] },
+  { label: 'AI lesson briefings', values: [true, 'Not listed'] },
+  { label: 'DVSA 27-skill, 8-category progress tracking', values: [true, 'Not listed'] },
+  { label: 'Google review requests at each test pass', values: [true, 'Not listed (feedback requests listed)'] },
+  { label: 'Automatic lesson reminders', values: ['Email', 'Yes (email; SMS add-on)'] },
+  { label: 'WhatsApp reminders', values: ['Coming soon', 'Not listed'] },
+  { label: 'Booking widget for your own website', values: [true, 'Yes'] },
+  { label: 'Clash checks across pupil, instructor and vehicle', values: [true, 'Double-booking checks via calendar sync; vehicles not stated'] },
+  { label: 'Vehicle MOT, tax and insurance tracking', values: [true, 'Not listed'] },
+  { label: 'Pupil app or portal', values: ['Web portal', 'Yes (client booking app)'] },
+  { label: 'Multi-instructor schools', values: [true, 'Yes'] },
+  { label: 'Test bookings and results recording (coming soon)', values: ['Coming soon', 'Not listed'] },
+  { label: 'Cancellation-gap broadcast to pupils', values: [false, 'Not listed'] },
+  { label: 'Theory content', values: [false, 'Not listed'] },
+  { label: 'Permanent free plan', values: ['Free until 31 March 2027', 'Yes (40 bookings per 30 days, 100 clients)'] },
+];
+
+const faqs = [
+  {
+    question: 'Is Reservio free for driving schools?',
+    answer: "Reservio has a permanent Free plan. Its pricing page caps it at 40 bookings per 30 days and 100 clients, which a full-time instructor teaching 25 or more lessons a week will pass within a fortnight. DriveSchoolPro is free with no booking cap until 31 March 2027 while in early access, with pricing announced well before 1 April 2027.",
+    links: [{ text: 'Free driving school software options', url: '/free-driving-school-software/' }],
+  },
+  {
+    question: 'Does Reservio track DVSA progress?',
+    answer: "Not that we could find. Reservio tracks bookings, attendance and client notes, which is what a general booking tool is built for. DriveSchoolPro tracks each pupil against the DVSA 27 driving skills in 8 categories, and pupils see their own progress in their portal.",
+    links: [{ text: 'The DVSA 27 driving skills', url: '/dvsa-27-driving-skills/' }],
+  },
+  {
+    question: 'When does a general booking tool make sense?',
+    answer: "If you only need pupils to book and pay online, with reminders, a general tool like Reservio does that well, and its free plan suits a part-time instructor. Once you're tracking pupils toward a test, sharing pupils between instructors or keeping cars compliant, a driving-specific tool saves you running a second system alongside it.",
+    links: [{ text: 'Best driving school software UK', url: '/blog/best-driving-school-software/' }],
+  },
+  {
+    question: 'Is this a fair comparison?',
+    answer: "We've tried to make it one. The Reservio column only records what Reservio's own public website says, checked on 8 October 2026. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote Reservio's paid prices because they change, so use their own pricing page. The gaps in DriveSchoolPro are set out above. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
+    links: [{ text: "Reservio's current pricing", url: 'https://www.reservio.com/pricing' }],
+  },
+  {
+    question: 'Do I have to switch all at once?',
+    answer: "No. Keep your current diary running alongside DriveSchoolPro until you're confident everything's in. There's no big switch-over day, and it's free until 31 March 2027 with no card required.",
+    links: [{ text: 'Get started free', url: 'https://app.driveschoolpro.com/signup' }],
+  },
+];
+---
+
+<CompetitorComparison
+  competitor={{ name: 'Reservio', slug: 'reservio', pricingUrl: 'https://www.reservio.com/pricing' }}
+  seo={{
+    title: 'DriveSchoolPro vs Reservio: Honest Comparison | DriveSchoolPro',
+    description: "DriveSchoolPro vs Reservio's free plan for UK instructors: DVSA tracking, booking caps, reminders and clash checks. DriveSchoolPro is free until 31 March 2027.",
+    schemaDescription: 'Feature-by-feature comparison of DriveSchoolPro and Reservio for UK driving instructors, including what DriveSchoolPro does not do yet.',
+    datePublished: '2026-10-08',
+    dateModified: '2026-10-08',
+  }}
+  checkedOn="8 October 2026"
+  heroIntro="A plain, feature-by-feature comparison for UK instructors weighing up Reservio's booking system. It covers what's different, and what DriveSchoolPro doesn't do yet."
+  featuredAnswer="Reservio is a general online booking tool used by many kinds of business, with a driving-school page and a free plan capped at 40 bookings per 30 days; DriveSchoolPro is built only for UK driving instructors. Both take online bookings and payments and send reminders. DriveSchoolPro adds progress tracking on the official DVSA 27 skills, AI lesson briefings, clash checks across pupil, instructor and vehicle, MOT, tax and insurance tracking, and Google review requests at each test pass. Reservio lists SMS reminders, a client booking app and a permanent free plan."
+  intro="This page is for an instructor who has found Reservio's free plan and wants to know what a driving-specific tool adds. Reservio is a polished booking system, so this isn't a case against it. It's a list of what's different."
+  rows={rows}
+  switchHeading="Where DriveSchoolPro differs"
+  switchIntro="These are the differences that exist today, from the table above."
+  switchItems={[
+    {
+      title: 'Built for teaching people to drive',
+      body: "DriveSchoolPro tracks the official DVSA 27 skills across 8 categories, so you and your pupils can see how close they are to test-ready. Reservio tracks bookings and attendance.",
+    },
+    {
+      title: 'Clash checks that include the car',
+      body: 'Every booking is checked against the pupil, the instructor and the vehicle together, and MOT, tax and insurance dates are tracked with alerts.',
+    },
+    {
+      title: 'Lesson prep written for you',
+      body: "Before each lesson, DriveSchoolPro writes a short briefing from your last notes and the pupil's skill ratings, using Claude. We couldn't find an equivalent on Reservio's site.",
+    },
+    {
+      title: 'Review requests at the right moment',
+      body: "When a pupil passes, they appear on your Today screen with a Google review request ready to send. It's prompted, not automatic: you decide whether to send it.",
+    },
+    {
+      title: 'No booking cap while in early access',
+      body: "DriveSchoolPro has no subscription fee and no booking limit until 31 March 2027, and doesn't ask for a card. Pricing will be announced well before 1 April 2027, and nothing is charged automatically.",
+    },
+  ]}
+  gapsHeading="What DriveSchoolPro doesn't do yet"
+  gapsBody="Reservio's free plan is permanent; DriveSchoolPro's free period ends on 31 March 2027, with pricing announced before then. Reservio offers SMS reminders as an add-on and a native client booking app, where DriveSchoolPro sends email reminders only for now (WhatsApp is coming soon) and pupils use a web portal. Reservio also has point-of-sale, vouchers and memberships, which we don't. If any of these decides it for you, that's a fair reason to choose Reservio."
+  sources={[
+    { label: 'Reservio — driving school software', url: 'https://www.reservio.com/driving-school-software' },
+    { label: 'Reservio — pricing', url: 'https://www.reservio.com/pricing' },
+    { label: 'Reservio — reminders', url: 'https://www.reservio.com/features/reminders' },
+    { label: 'Reservio — client management', url: 'https://www.reservio.com/features/client-management' },
+    { label: 'Reservio — about us', url: 'https://www.reservio.com/about-us' },
+  ]}
+  faqs={faqs}
+  faqTitle="DriveSchoolPro vs Reservio — common questions"
+/>

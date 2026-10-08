@@ -4,10 +4,16 @@ description: "Compare UK driving school and instructor booking software on real 
 image: /images/blog-software.jpg
 imageAlt: "Driving school instructor using management software on tablet to schedule lessons and track student progress"
 date: "2026-02-24"
-updatedDate: "2026-07-29"
+updatedDate: "2026-10-08"
 tags: ["Software"]
 author: "DriveSchoolPro Team"
 faqs:
+  - question: "What is the best driver training software?"
+    answer: "For UK instructors, the best driver training software is the one that tracks pupils against the DVSA 27 driving skills, not just lesson times. Solo ADIs usually shortlist Total Drive, My Drive Time, Passly, LessonBuddy and DriveSchoolPro; multi-car schools add Driving School Office. DriveSchoolPro is free until 31 March 2027 while in early access."
+  - question: "What apps do driving instructors use?"
+    answer: "Most UK driving instructors use a dedicated instructor app for their diary, pupil progress and payments. Common choices include Total Drive, My Drive Time, Passly, LessonBuddy and DriveSchoolPro. Some use generic booking tools such as Reservio, Teachworks or Acuity, which take bookings well but do not track the DVSA driving skills."
+  - question: "What is the best app for driving lessons?"
+    answer: "For the instructor, it is an app that combines the diary, reminders, payments and DVSA progress tracking, so the pupil can see how close they are to test-ready. For the pupil, the best app is usually the one their instructor uses, because that is where their lessons, progress and balance live."
   - question: "Does driving school software track DVSA driving skills?"
     answer: "UK-specific driving school software should track the DVSA 27 driving skills framework with proficiency levels per pupil. Generic scheduling tools such as Acuity or Calendly have no DVSA integration at all, so check this is in any demo you watch."
   - question: "Can multiple instructors see the same pupil's progress?"
@@ -325,6 +331,17 @@ Total Drive is a UK-focused platform that positions itself as an all-in-one solu
 - Dated interface from early 2010s
 
 **Best Fit**: Solo UK instructors who prefer desktop software, don't want monthly fees, and don't need online booking.
+
+### Other platforms UK instructors shortlist
+
+These come up in almost every search for driving school software. We've written a dated, feature-by-feature comparison for each, taken only from the vendor's own website, with links to their current pricing rather than quoting it:
+
+- **[Passly](/compare/passly/)** — UK instructor app with DVSA-aligned progress scoring, cancellation-gap push alerts and a learner marketplace.
+- **[LessonBuddy](/compare/lessonbuddy/)** — UK app for instructors, pupils and parents, with route tools, a five-level skills matrix and school seat sponsorship.
+- **[Teachworks](/compare/teachworks/)** — international scheduling platform for teaching businesses, with a driving-school edition and vehicle booking add-ons.
+- **[Reservio](/compare/reservio/)** — general online booking tool used across many industries, with a free plan capped by monthly bookings.
+
+All of these are on our [comparison hub](/compare/).
 
 ## How to Choose: Decision Framework by School Size
 

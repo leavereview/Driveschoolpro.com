@@ -1,0 +1,109 @@
+---
+import CompetitorComparison from '../../components/compare/CompetitorComparison.astro';
+
+// Competitor cells reflect LessonBuddy's own public pages, checked 8 Oct 2026:
+//   lessonbuddy.co.uk/ (UK focus; iOS and Android app)
+//   /features/ (five-level skills matrix, DL25-style fault records, reminders, website booking,
+//              published gaps, pupil app, parent access, route tools)
+//   /driving-school-software/ (multi-instructor, sponsored seats, school branding)
+//   /driving-instructor-app/ and /pdi-app/
+// Reminder channel is not named on the site, so we don't name one.
+// "Not listed" = not found on those pages; never "No" unless the vendor says so.
+const rows = [
+  { label: 'AI lesson briefings', values: [true, 'Not listed'] },
+  { label: 'DVSA 27-skill, 8-category progress tracking', values: [true, 'Five-level skills matrix; DVSA syllabus not stated'] },
+  { label: 'Google review requests at each test pass', values: [true, 'Not listed'] },
+  { label: 'Automatic lesson reminders', values: ['Email', 'Yes (channel not stated)'] },
+  { label: 'WhatsApp reminders', values: ['Coming soon', 'Not listed'] },
+  { label: 'Booking widget for your own website', values: [true, 'Yes (website booking tools)'] },
+  { label: 'Clash checks across pupil, instructor and vehicle', values: [true, 'Not listed'] },
+  { label: 'Vehicle MOT, tax and insurance tracking', values: [true, 'Not listed'] },
+  { label: 'Pupil app or portal', values: ['Web portal', 'Yes (iOS and Android app)'] },
+  { label: 'Parent access', values: [false, 'Yes'] },
+  { label: 'Multi-instructor schools', values: [true, 'Yes (sponsored instructor seats)'] },
+  { label: 'Test bookings and results recording (coming soon)', values: ['Coming soon', 'Not listed (DL25-style fault records listed)'] },
+  { label: 'Cancellation-gap broadcast to pupils', values: [false, 'Yes (publish gaps to chosen pupils)'] },
+  { label: 'Test-centre route library', values: [false, 'Yes'] },
+  { label: 'Theory content', values: [false, 'Not listed'] },
+  { label: 'Free migration of your existing records', values: [false, 'Not listed'] },
+];
+
+const faqs = [
+  {
+    question: 'Does LessonBuddy use the DVSA skills?',
+    answer: "LessonBuddy's site describes a five-level skills matrix and DL25-style fault records, but it doesn't say the skills follow the DVSA syllabus. DriveSchoolPro tracks the official 27 skills in 8 categories, and pupils see their own progress in their portal.",
+    links: [{ text: 'The DVSA 27 driving skills', url: '/dvsa-27-driving-skills/' }],
+  },
+  {
+    question: 'Can parents see progress?',
+    answer: "In LessonBuddy, yes: its site says parents can view lessons, progress and test-readiness information. DriveSchoolPro doesn't have a separate parent login yet. Pupils can show a parent their own portal in the meantime.",
+    links: [{ text: 'How DriveSchoolPro tracks progress', url: '/how-progress-works/' }],
+  },
+  {
+    question: 'Does LessonBuddy have a native app?',
+    answer: "Yes. LessonBuddy describes one app for instructors, pupils, parents and schools, available on iOS and Android. DriveSchoolPro runs in the browser, and you can add it to your phone's home screen so it opens like an app.",
+    links: [],
+  },
+  {
+    question: 'Is this a fair comparison?',
+    answer: "We've tried to make it one. The LessonBuddy column only records what LessonBuddy's own public website says, checked on 8 October 2026. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote LessonBuddy's prices because they change, so use their own pricing page. The gaps in DriveSchoolPro are set out above. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
+    links: [{ text: "LessonBuddy's current pricing", url: 'https://lessonbuddy.co.uk/pricing/' }],
+  },
+  {
+    question: 'Do I have to switch all at once?',
+    answer: "No. Keep your current diary running alongside DriveSchoolPro until you're confident everything's in. There's no big switch-over day, and it's free until 31 March 2027 with no card required.",
+    links: [{ text: 'Get started free', url: 'https://app.driveschoolpro.com/signup' }],
+  },
+];
+---
+
+<CompetitorComparison
+  competitor={{ name: 'LessonBuddy', slug: 'lessonbuddy', pricingUrl: 'https://lessonbuddy.co.uk/pricing/' }}
+  seo={{
+    title: 'DriveSchoolPro vs LessonBuddy: Honest Comparison | DriveSchoolPro',
+    description: 'Compare DriveSchoolPro and LessonBuddy feature by feature: DVSA tracking, AI lesson briefings, pupil apps, parent access and gaps. DriveSchoolPro is free until 31 March 2027.',
+    schemaDescription: 'Feature-by-feature comparison of DriveSchoolPro and LessonBuddy for UK driving instructors and schools, including what DriveSchoolPro does not do yet.',
+    datePublished: '2026-10-08',
+    dateModified: '2026-10-08',
+  }}
+  checkedOn="8 October 2026"
+  heroIntro="A plain, feature-by-feature comparison for UK instructors and schools weighing up LessonBuddy. It covers what's different, and what DriveSchoolPro doesn't do yet."
+  featuredAnswer="DriveSchoolPro and LessonBuddy are both UK platforms for driving instructors and schools, with a diary, online booking, skills tracking and multi-instructor support. DriveSchoolPro adds AI lesson briefings, progress tracking on the official DVSA 27 skills, Google review requests at each test pass, clash checks across pupil, instructor and vehicle, and vehicle compliance tracking. LessonBuddy lists a native iOS and Android app, parent access, gap publishing and test-centre route tools that DriveSchoolPro doesn't have."
+  intro="This page is for an instructor or school looking at LessonBuddy and wondering whether DriveSchoolPro is worth a look too. LessonBuddy has a broad feature set and a native app, so this isn't a case against it. It's a list of what's different."
+  rows={rows}
+  switchHeading="Where DriveSchoolPro differs"
+  switchIntro="These are the differences that exist today, from the table above."
+  switchItems={[
+    {
+      title: 'Progress tracking built on the DVSA framework',
+      body: "DriveSchoolPro tracks the official 27 skills across 8 categories. LessonBuddy's site describes a five-level skills matrix but doesn't say it follows the DVSA syllabus.",
+    },
+    {
+      title: 'Lesson prep written for you',
+      body: "Before each lesson, DriveSchoolPro writes a short briefing from your last notes and the pupil's skill ratings, using Claude. We couldn't find an equivalent on LessonBuddy's site.",
+    },
+    {
+      title: 'Review requests at the right moment',
+      body: "When a pupil passes, they appear on your Today screen with a Google review request ready to send. It's prompted, not automatic: you decide whether to send it.",
+    },
+    {
+      title: 'Clash checks and vehicle tracking',
+      body: 'Bookings are checked against the pupil, the instructor and the vehicle together, and MOT, tax and insurance dates are tracked with alerts.',
+    },
+    {
+      title: 'Free while in early access',
+      body: "DriveSchoolPro has no subscription fee until 31 March 2027 and doesn't ask for a card. Pricing will be announced well before 1 April 2027, and nothing is charged automatically.",
+    },
+  ]}
+  gapsHeading="What DriveSchoolPro doesn't do yet"
+  gapsBody="DriveSchoolPro has no native app in the App Store or Google Play yet; it runs in the browser and can be added to your home screen. There's no parent login, no way to publish a cancelled slot to chosen pupils, and no test-centre route library, all of which LessonBuddy lists. Lesson reminders go out by email only for now (WhatsApp is coming soon), recording test bookings and results is coming soon, and we don't offer free bulk migration of your records yet. If any of these decides it for you, that's a fair reason to choose LessonBuddy."
+  sources={[
+    { label: 'LessonBuddy — home page', url: 'https://lessonbuddy.co.uk/' },
+    { label: 'LessonBuddy — features', url: 'https://lessonbuddy.co.uk/features/' },
+    { label: 'LessonBuddy — driving school software', url: 'https://lessonbuddy.co.uk/driving-school-software/' },
+    { label: 'LessonBuddy — driving instructor app', url: 'https://lessonbuddy.co.uk/driving-instructor-app/' },
+    { label: 'LessonBuddy — pricing', url: 'https://lessonbuddy.co.uk/pricing/' },
+  ]}
+  faqs={faqs}
+  faqTitle="DriveSchoolPro vs LessonBuddy — common questions"
+/>

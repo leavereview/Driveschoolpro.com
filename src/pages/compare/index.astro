@@ -5,9 +5,9 @@ import BreadcrumbsEnhanced from '../../components/seo/BreadcrumbsEnhanced.astro'
 import FeaturedAnswer from '../../components/seo/FeaturedAnswer.astro';
 import FAQEnhanced from '../../components/seo/FAQEnhanced.astro';
 
-// Every figure below is taken from the vendor's own public pricing page.
-// Verified August 2026. Where a vendor does not publish a price, we say so
-// rather than repeating a number from a comparison site.
+// Comparative-advertising rules (ASA CAP 3.33–3.41), same as CompetitorComparison.astro:
+// we never state a competitor's price — we link to the vendor's own pricing page,
+// because prices change. Every competitor fact comes from the vendor's own site, dated.
 const platforms = [
   {
     name: 'Total Drive',
@@ -36,22 +36,59 @@ const platforms = [
     bestFor: 'Multi-car schools and franchises that need white-labelling and instructor expense tracking.',
     gap: 'No published pricing, no native mobile app, and no DVSA 27-skill framework advertised.',
   },
+  // Added 8 Oct 2026 — the platforms named alongside DriveSchoolPro in Google's AI Overview.
+  {
+    name: 'Passly',
+    href: '/compare/passly/',
+    positioning: 'UK instructor app with a learner marketplace',
+    price: "See Passly's own pricing page (prices change)",
+    trial: '14-day free trial, no card',
+    bestFor: 'Instructors who want new-pupil leads, cancellation-gap push alerts and test results logged.',
+    gap: 'AI lesson briefings, Google review requests and vehicle compliance are not listed on its site.',
+  },
+  {
+    name: 'LessonBuddy',
+    href: '/compare/lessonbuddy/',
+    positioning: 'UK app for instructors, pupils, parents and schools',
+    price: "See LessonBuddy's own pricing page (prices change)",
+    trial: '60 days free for ADIs, no card',
+    bestFor: 'Instructors and schools who want a native app, parent access and test-centre route tools.',
+    gap: 'AI lesson briefings, DVSA 27-skill tracking and vehicle clash checks are not listed on its site.',
+  },
+  {
+    name: 'Teachworks',
+    href: '/compare/teachworks/',
+    positioning: 'International scheduling platform for teaching businesses',
+    price: "See Teachworks' own pricing page (prices change)",
+    trial: 'Free trial (21 days)',
+    bestFor: 'Larger schools that want SMS reminders, payroll and a big library of integrations.',
+    gap: 'Not built for UK driving: no DVSA skill tracking or vehicle MOT, tax and insurance tracking listed.',
+  },
+  {
+    name: 'Reservio',
+    href: '/compare/reservio/',
+    positioning: 'General online booking tool used across many industries',
+    price: "Free plan (40 bookings per 30 days); see Reservio's pricing page for paid plans",
+    trial: 'Permanent free plan',
+    bestFor: 'Part-time instructors who only need online booking, payments and reminders.',
+    gap: 'No DVSA skill tracking, test recording or vehicle compliance listed; free plan capped.',
+  },
 ];
 
 const faqItems = [
   {
     question: 'What is the best driving school software in the UK?',
-    answer: 'There is no single best platform — it depends on whether you are a solo ADI or a multi-car school, and whether DVSA skill tracking matters to you. Total Drive is the most established UK instructor app, and My Drive Time is the support-led independent. Driving School Office suits larger schools and franchises but does not publish its pricing. DriveSchoolPro is free until 31 March 2027 during early access and is built around the full DVSA 27-skill framework. Compare them side by side using the links on this page.',
+    answer: 'There is no single best platform — it depends on whether you are a solo ADI or a multi-car school, and whether DVSA skill tracking matters to you. Total Drive is the most established UK instructor app, My Drive Time is the support-led independent, Passly adds a learner marketplace and LessonBuddy has a native app with parent access. Driving School Office suits larger schools and franchises but does not publish its pricing. DriveSchoolPro is free until 31 March 2027 during early access and is built around the full DVSA 27-skill framework. Compare them side by side using the links on this page.',
     links: [{ text: 'Full software comparison', url: '/blog/best-driving-school-software/' }],
   },
   {
     question: 'How much should driving school software cost?',
-    answer: 'Prices vary by vendor, by number of instructors and by add-ons such as SMS, and they change, so check each vendor\'s own pricing page. DrivingSchoolSoftware.com is £99/month. Some platforms, including Driving School Office, do not publish pricing at all and quote on request. DriveSchoolPro is free until 31 March 2027 while in early access, with pricing announced well before that date. Verified against vendor sites August 2026.',
+    answer: 'Prices vary by vendor, by number of instructors and by add-ons such as SMS, and they change, so we don\'t quote other vendors\' prices: check each vendor\'s own pricing page, linked from every comparison. Some platforms, including Driving School Office, do not publish pricing at all and quote on request. DriveSchoolPro is free until 31 March 2027 while in early access, with pricing announced well before that date.',
     links: [{ text: 'See DriveSchoolPro pricing', url: '/pricing/' }],
   },
   {
     question: 'Do I need driving-school-specific software, or will a generic booking tool do?',
-    answer: 'A generic tool such as Acuity or Calendly will take bookings and payments perfectly well, and it is cheaper. What it cannot do is track a pupil against the DVSA 27 driving skills, detect a three-way clash between pupil, instructor and vehicle, or give a parent visibility of an under-18 pupil. If you only need a diary, generic is fine. If you are managing test readiness, it is not.',
+    answer: 'A generic tool such as Reservio, Acuity or Calendly will take bookings and payments perfectly well, and it is cheaper. What it cannot do is track a pupil against the DVSA 27 driving skills, or detect a three-way clash between pupil, instructor and vehicle. If you only need a diary, generic is fine. If you are managing test readiness, it is not.',
     links: [{ text: 'The DVSA 27 driving skills', url: '/dvsa-27-driving-skills/' }],
   },
   {
@@ -66,7 +103,7 @@ const schemaMarkup = {
   '@type': 'CollectionPage',
   name: 'Driving School Software Comparisons',
   description:
-    'Honest side-by-side comparisons of UK driving school software: DriveSchoolPro vs Total Drive, Driving School Office and other platforms. Vendor-verified pricing.',
+    'Honest side-by-side comparisons of UK driving school software: DriveSchoolPro vs Total Drive, My Drive Time, Passly, LessonBuddy, Driving School Office and more. Feature facts taken from each vendor\'s own website.',
   url: 'https://driveschoolpro.com/compare/',
   publisher: { '@type': 'Organization', name: 'DriveSchoolPro' },
 };
@@ -74,7 +111,7 @@ const schemaMarkup = {
 
 <BaseLayout
   title="Compare UK Driving School Software"
-  description="Honest side-by-side comparisons of UK driving school software. Vendor-verified pricing for Total Drive, Driving School Office and DriveSchoolPro."
+  description="Honest, dated feature comparisons of DriveSchoolPro vs Total Drive, Passly, LessonBuddy and more, including where they beat us. Free until 31 March 2027."
 >
   <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
 
@@ -92,7 +129,7 @@ const schemaMarkup = {
         <span class="inline-block px-4 py-1 bg-brand-red/20 text-brand-red-light rounded-full text-sm font-medium mb-4">Platform Comparisons</span>
         <h1 class="text-4xl md:text-5xl font-bold mb-4">Compare UK Driving School Software</h1>
         <p class="text-xl text-gray-300 mb-8">
-          Side-by-side comparisons against the platforms UK ADIs actually shortlist. Where we quote a competitor's price it comes from that vendor's own pricing page, and we say where they beat us.
+          Side-by-side comparisons against the platforms UK ADIs actually shortlist. Every competitor fact comes from that vendor's own website and is dated. We link to their pricing rather than quoting it, and we say where they beat us.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">Try DriveSchoolPro Free</a>
@@ -103,13 +140,13 @@ const schemaMarkup = {
   </section>
 
   <FeaturedAnswer question="Which driving school software should a UK ADI choose?">
-    For most solo UK ADIs the shortlist comes down to four: Total Drive, the most established UK instructor app; My Drive Time, the support-led independent; Driving School Office, aimed at multi-car schools and franchises but with no published pricing; and DriveSchoolPro, free until 31 March 2027 during early access and built around the full DVSA 27-skill framework. If you are managing test readiness rather than just a diary, prioritise DVSA skill tracking over price. We don't quote Total Drive's or My Drive Time's prices because they change; each comparison links to the vendor's own pricing page.
+    For most UK ADIs the shortlist is Total Drive, the most established UK instructor app; My Drive Time, the support-led independent; Passly, which adds a learner marketplace; LessonBuddy, with a native app and parent access; Driving School Office, aimed at multi-car schools and franchises; and DriveSchoolPro, free until 31 March 2027 during early access and built around the full DVSA 27-skill framework. General booking tools such as Teachworks and Reservio take bookings well but don't track the DVSA skills. If you are managing test readiness rather than just a diary, prioritise DVSA skill tracking over price. We don't quote other vendors' prices because they change; each comparison links to the vendor's own pricing page.
   </FeaturedAnswer>
 
   <section class="section bg-white">
     <div class="container-custom max-w-5xl">
       <h2 class="text-3xl font-bold text-brand-navy mb-3">Head-to-head comparisons</h2>
-      <p class="text-gray-600 mb-10">Each page covers features, pricing, where the competitor genuinely wins, and where we think we are the better fit.</p>
+      <p class="text-gray-600 mb-10">Each page covers features, where the competitor genuinely wins, and where we think we are the better fit.</p>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {platforms.map((p) => (
@@ -143,7 +180,7 @@ const schemaMarkup = {
 
       <p class="text-gray-500 text-sm mt-8">
         Looking for a wider list including DrivingSchoolSoftware.com, DriveScout and Acuity? The
-        <a href="/blog/best-driving-school-software/" class="text-brand-red hover:underline"> full driving school software roundup</a> covers seven platforms with pricing, or read the
+        <a href="/blog/best-driving-school-software/" class="text-brand-red hover:underline"> full driving school software roundup</a> covers more platforms, or read the
         <a href="/blog/drivescout-vs-drivingschoolsoftware-comparison/" class="text-brand-red hover:underline">DriveScout vs DrivingSchoolSoftware.com comparison</a>.
       </p>
     </div>
