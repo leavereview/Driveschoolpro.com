@@ -15,3 +15,9 @@ test('names Google (Analytics and Ads) among the recipients of personal data', (
   assert.match(recipients, /<li><strong>Google<\/strong>[^<]*(Analytics)[^<]*Ads/);
   assert.match(recipients, /policies\.google\.com\/privacy/);
 });
+
+test('names PostHog among the recipients, consent-gated and EU-hosted', () => {
+  const recipients = src.slice(src.indexOf('We share personal data only with'), src.indexOf('We do <strong>not</strong> sell, rent'));
+  assert.match(recipients, /<li><strong>PostHog<\/strong>[^]*Accept All[^]*EU/);
+  assert.match(recipients, /posthog\.com\/privacy/);
+});
