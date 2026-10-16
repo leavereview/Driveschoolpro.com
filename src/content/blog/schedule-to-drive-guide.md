@@ -202,7 +202,7 @@ Most modern instructors find online booking saves significant time and reduces n
 - Handle payments
 - Manage multiple vehicles/instructors
 
-[Driving school software](/driving-school-software/) typically includes all these features, replacing the paper diary and constant messaging.
+[Driving school software](/) typically includes all these features, replacing the paper diary and constant messaging.
 
 ### Reducing No-Shows
 
@@ -350,7 +350,7 @@ When scheduling works well:
 
 ## Ready to Simplify Your Scheduling?
 
-Managing student bookings, reminders, and your teaching schedule doesn't have to be complicated. [DriveSchoolPro](/driving-school-software/) handles scheduling, reminders, and payments in one platform—giving you back hours of admin time each week.
+Managing student bookings, reminders, and your teaching schedule doesn't have to be complicated. [DriveSchoolPro](/) handles scheduling, reminders, and payments in one platform—giving you back hours of admin time each week.
 
 [Get started free](https://app.driveschoolpro.com/signup) and see how much easier teaching to drive can be.
 

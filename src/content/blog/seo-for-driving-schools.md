@@ -7,7 +7,7 @@ tags: ["Marketing"]
 author: "John Powell"
 ---
 
-When someone searches "driving lessons near me" or "driving school [your town]," you want your business to appear. Search engine optimisation (SEO) determines whether potential students find you or your competitors. This guide covers practical SEO strategies specifically for [driving schools](/driving-school-software/).
+When someone searches "driving lessons near me" or "driving school [your town]," you want your business to appear. Search engine optimisation (SEO) determines whether potential students find you or your competitors. This guide covers practical SEO strategies specifically for [driving schools](/).
 
 ## Why SEO Matters for Driving Schools
 
@@ -301,7 +301,7 @@ SEO takes months to show results. Consistency over time wins—quick fixes don't
 
 ### Online Booking
 
-If your [driving school software](/driving-school-software/) includes online booking, having that functionality on your website can improve:
+If your [driving school software](/) includes online booking, having that functionality on your website can improve:
 - Time on site (students exploring availability)
 - Conversion rates (immediate action possible)
 - User experience signals
@@ -350,12 +350,12 @@ SEO is a marathon, not a sprint. Consistent effort over months builds sustainabl
 
 ## Ready to Grow Your Driving School?
 
-Better visibility brings more inquiries. [DriveSchoolPro](/driving-school-software/) helps you convert those inquiries efficiently with online booking, automated reminders, and professional student management. Explore [Driving School Management Software](/driving-school-management-software/) solutions. Check out [Driving School Scheduling Software](/driving-school-scheduling-software/). See how [Driving School Software: What's Actually Available?](/free-driving-school-software/) can help.
+Better visibility brings more inquiries. [DriveSchoolPro](/) helps you convert those inquiries efficiently with online booking, automated reminders, and professional student management. Explore [Driving School Management Software](/driving-school-management-software/) solutions. Check out [Driving School Scheduling Software](/driving-school-scheduling-software/). See how [Driving School Software: What's Actually Available?](/free-driving-school-software/) can help.
 
 [Get started free](https://app.driveschoolpro.com/signup) and build a more efficient driving school.
 
 ## Related Articles
 
-- [Driving School Software](/driving-school-software/)
+- [Driving School Software](/)
 - [Reduce No-Shows at Your Driving School](/blog/reduce-driving-lesson-no-shows/)
 - [Starting a Driving School Guide](/blog/starting-driving-school-guide/)

@@ -23,7 +23,7 @@ No-shows aren't just annoying — they're expensive. A solo ADI teaching 30 hour
 
 The frustrating part is that most no-shows are preventable. Students don't ghost their instructor because they're inconsiderate — they do it because they forgot, because rescheduling felt like too much effort, or because there was no real consequence. Those are systems problems, and they have systems solutions.
 
-This guide covers eight strategies that actually work in the real world: no theoretical fluff, no generic advice about "building rapport." Each section explains the mechanism, what to do, and where [driving school software](/driving-school-software/) changes the equation from unsustainable manual effort to something that runs on autopilot.
+This guide covers eight strategies that actually work in the real world: no theoretical fluff, no generic advice about "building rapport." Each section explains the mechanism, what to do, and where [driving school software](/) changes the equation from unsustainable manual effort to something that runs on autopilot.
 
 ---
 
@@ -67,7 +67,7 @@ The most common reason students no-show is simple: they forgot. Not malice, not 
 
 The confirmation request matters. Asking students to actively respond — rather than just receiving a passive notification — reduces no-shows further because it re-engages them with the commitment they made.
 
-**Manual vs automated**: You can do this manually for a small diary. With 10–15 active students it's manageable, though time-consuming. Beyond that, manual reminders become a part-time job in themselves. [DriveSchoolPro's automated reminder system](/driving-school-software/) lets you configure the timing and template once — then it sends for every lesson without any further input from you.
+**Manual vs automated**: You can do this manually for a small diary. With 10–15 active students it's manageable, though time-consuming. Beyond that, manual reminders become a part-time job in themselves. [DriveSchoolPro's automated reminder system](/) lets you configure the timing and template once — then it sends for every lesson without any further input from you.
 
 > "One no-show in the last month. Used to be two or three a week." — Rachel K., solo ADI, Yorkshire
 
@@ -223,7 +223,7 @@ A standard UK policy requires 24 or 48 hours notice to cancel or reschedule with
 Yes. The first time, many ADIs issue a warning rather than charge — which is fair and preserves the relationship. From the second no-show onwards, enforcing the full lesson charge is reasonable and expected by most students if the policy was communicated clearly.
 
 **What's the best way to send lesson reminders?**
-Automated reminders are the most effective fix. Send two — 24 hours before and 2 hours before — and ask students to confirm. Automated email reminders via [DriveSchoolPro](/driving-school-software/) run without any manual effort once configured (WhatsApp reminders coming soon).
+Automated reminders are the most effective fix. Send two — 24 hours before and 2 hours before — and ask students to confirm. Automated email reminders via [DriveSchoolPro](/) run without any manual effort once configured (WhatsApp reminders coming soon).
 
 **How many no-shows is normal for a driving instructor?**
 Without any system in place, 10–15% is common. With automated reminders and a clear cancellation policy, most ADIs bring this below 5%. Above 15% usually means reminders are missing, there's no deposit requirement, and students weren't vetted at enquiry.
@@ -240,7 +240,7 @@ DriveSchoolPro sends automated reminders, tracks cancellations, manages lesson p
 
 ## Related Articles
 
-- [Driving School Software — Automated Reminders and Scheduling](/driving-school-software/)
+- [Driving School Software — Automated Reminders and Scheduling](/)
 - [Best Driving School Software 2026: UK ADI Comparison Guide](/blog/best-driving-school-software/)
 - [How to Start a Driving School in the UK](/blog/how-to-start-a-driving-school/)
 - [Switching from Paper Diary to Driving School Software](/blog/switch-paper-diary-to-driving-school-software/)

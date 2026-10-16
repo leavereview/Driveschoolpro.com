@@ -9,7 +9,7 @@ author: "John Powell"
 
 Starting a driving school can be a rewarding business with steady demand—everyone needs to learn to drive. However, it requires proper planning, licensing, and investment. This guide covers everything you need to know about launching a successful driving instruction business.
 
-Before diving in, understand that [driving school software](/driving-school-software/) becomes essential as you grow, but first you need to get the fundamentals right.
+Before diving in, understand that [driving school software](/) becomes essential as you grow, but first you need to get the fundamentals right.
 
 ## Is a Driving School Right for You?
 
@@ -406,12 +406,12 @@ Success comes from quality instruction, consistent marketing, and efficient oper
 
 ## Ready to Launch Your Driving School?
 
-As you build your business, the right software makes management easier. [DriveSchoolPro](/driving-school-software/) helps driving instructors handle scheduling, student tracking, and business administration efficiently. See how [Driving School Management Software](/driving-school-management-software/) can help. Learn more about [Driving School Software: What's Actually Available?](/free-driving-school-software/).
+As you build your business, the right software makes management easier. [DriveSchoolPro](/) helps driving instructors handle scheduling, student tracking, and business administration efficiently. See how [Driving School Management Software](/driving-school-management-software/) can help. Learn more about [Driving School Software: What's Actually Available?](/free-driving-school-software/).
 
 [Get started free](https://app.driveschoolpro.com/signup) when you're ready to streamline your operations.
 
 ## Related Articles
 
-- [Driving School Software](/driving-school-software/)
+- [Driving School Software](/)
 - [Driving School Insurance Guide](/blog/driving-school-insurance-guide/)
 - [Driving School Franchise Guide](/blog/driving-school-franchise-guide/)

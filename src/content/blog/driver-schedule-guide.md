@@ -258,7 +258,7 @@ If your school has multiple training vehicles:
 
 ### What Good Software Does
 
-[Driving school software](/driving-school-software/) should:
+[Driving school software](/) should:
 - Show real-time instructor availability
 - Prevent double-booking
 - Allow student online booking
@@ -450,7 +450,7 @@ Good scheduling isn't set-and-forget—it's ongoing optimisation.
 
 ## Ready to Streamline Your Scheduling?
 
-Managing instructor schedules, student bookings, and vehicle coordination takes time. [DriveSchoolPro](/driving-school-software/) handles scheduling, reminders, and coordination in one platform.
+Managing instructor schedules, student bookings, and vehicle coordination takes time. [DriveSchoolPro](/) handles scheduling, reminders, and coordination in one platform.
 
 [Get started free](https://app.driveschoolpro.com/signup) and see how much easier schedule management can be.
 

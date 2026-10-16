@@ -9,7 +9,7 @@ author: "John Powell"
 
 Proper insurance is essential for any driving instruction business. Without adequate coverage, a single incident could end your career and leave you financially devastated. This guide explains the insurance requirements for driving schools and instructors.
 
-Whether you're [starting a driving school](/blog/starting-driving-school-guide/) or reviewing your current coverage, understanding insurance helps protect your livelihood. And [driving school software](/driving-school-software/) helps document lessons and manage your business professionally.
+Whether you're [starting a driving school](/blog/starting-driving-school-guide/) or reviewing your current coverage, understanding insurance helps protect your livelihood. And [driving school software](/) helps document lessons and manage your business professionally.
 
 ## Why Driving Instructor Insurance Matters
 
@@ -265,7 +265,7 @@ May not understand dual-control, learner driver, or instruction-specific needs.
 - Correspondence
 
 **Why documentation matters:**
-[Driving school software](/driving-school-software/) helps maintain records that support your position in claims. Check out [Driving School Management Software](/driving-school-management-software/). Check out [Driving School Scheduling Software](/driving-school-scheduling-software/). See how [Driving School Software: What's Actually Available?](/free-driving-school-software/) can help.
+[Driving school software](/) helps maintain records that support your position in claims. Check out [Driving School Management Software](/driving-school-management-software/). Check out [Driving School Scheduling Software](/driving-school-scheduling-software/). See how [Driving School Software: What's Actually Available?](/free-driving-school-software/) can help.
 
 ### Claim Handling
 
@@ -348,12 +348,12 @@ Never compromise on insurance. The cost of coverage is insignificant compared to
 
 ## Manage Your Professional Business
 
-[DriveSchoolPro](/driving-school-software/) helps maintain the professional records and documentation that support your business and insurance needs.
+[DriveSchoolPro](/) helps maintain the professional records and documentation that support your business and insurance needs.
 
 [Get started free](https://app.driveschoolpro.com/signup) and run your driving school professionally.
 
 ## Related Articles
 
-- [Driving School Software](/driving-school-software/)
+- [Driving School Software](/)
 - [Starting a Driving School Guide](/blog/starting-driving-school-guide/)
 - [Driving School Franchise Guide](/blog/driving-school-franchise-guide/)

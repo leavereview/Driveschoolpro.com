@@ -6,7 +6,7 @@
 // Pillar page keyword mappings
 const PILLAR_KEYWORDS: Record<string, string> = {
   // Primary pillar pages
-  'driving school software': '/driving-school-software/',
+  'driving school software': '/',
   'driving instructor software': '/driving-instructor-software/',
   'adi software': '/driving-instructor-software/',
   'lesson scheduling software': '/lesson-scheduling-software/',
@@ -84,7 +84,7 @@ export function getRelatedPages(content: string, currentPath: string, limit: num
   const contentLower = content.toLowerCase();
 
   const pageData: Record<string, string> = {
-    '/driving-school-software/': 'Driving School Software',
+    '/': 'Driving School Software',
     '/driving-instructor-software/': 'Driving Instructor Software',
     '/lesson-scheduling-software/': 'Lesson Scheduling Software',
     '/driving-school-crm/': 'Driving School CRM',

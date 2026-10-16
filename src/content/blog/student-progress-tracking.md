@@ -7,7 +7,7 @@ tags: ["Student Management"]
 author: "John Powell"
 ---
 
-Driving schools that track student progress systematically see 23% higher first-time pass rates and 31% better [student retention](/blog/reduce-driving-lesson-no-shows/) compared to schools using ad-hoc methods or memory alone. Progress tracking is one of the core features of [DriveSchoolPro's driving school software](/driving-school-software/) — built around the DVSA 27-skill framework.
+Driving schools that track student progress systematically see 23% higher first-time pass rates and 31% better [student retention](/blog/reduce-driving-lesson-no-shows/) compared to schools using ad-hoc methods or memory alone. Progress tracking is one of the core features of [DriveSchoolPro's driving school software](/) — built around the DVSA 27-skill framework.
 
 But progress tracking isn't just about pass rates—it's about demonstrating value to parents, building student confidence, making data-driven test booking decisions, and protecting yourself from disputes.
 
@@ -437,7 +437,7 @@ When tracking student progress, you must comply with UK GDPR:
 - 👁️ Allow students to request their data (Subject Access Request)
 - 🗑️ Delete data when no longer needed (typically 2 years after last lesson)
 
-**Using software:** Ensure your software provider is GDPR-compliant (e.g., [DriveSchoolPro](/driving-school-software/) is UK GDPR-compliant).
+**Using software:** Ensure your software provider is GDPR-compliant (e.g., [DriveSchoolPro](/) is UK GDPR-compliant).
 
 ## Implementation Roadmap
 
@@ -515,6 +515,6 @@ Ready to implement digital progress tracking with built-in DVSA competency check
 
 ## Related Articles
 
-- [Driving School Software](/driving-school-software/)
+- [Driving School Software](/)
 - [Student Management for Driving Schools](/blog/student-management-driving-schools/)
 - [Reduce No-Shows at Your Driving School](/blog/reduce-driving-lesson-no-shows/)

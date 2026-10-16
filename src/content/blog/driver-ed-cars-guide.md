@@ -10,7 +10,7 @@ noindex: true
 
 The vehicle you choose for your driving school affects everything—student confidence, safety, operating costs, and your professional image. This guide covers what to consider when selecting driver education cars and which models work best for instruction.
 
-Whether you're [starting a driving school](/blog/starting-driving-school-guide/) or replacing existing vehicles, choosing wisely impacts your business success. And don't forget that [driving school software](/driving-school-software/) helps manage your fleet operations efficiently. Learn more about [Driving School Management Software](/driving-school-management-software/). Explore [Driving School Software: What's Actually Available?](/free-driving-school-software/) solutions.
+Whether you're [starting a driving school](/blog/starting-driving-school-guide/) or replacing existing vehicles, choosing wisely impacts your business success. And don't forget that [driving school software](/) helps manage your fleet operations efficiently. Learn more about [Driving School Management Software](/driving-school-management-software/). Explore [Driving School Software: What's Actually Available?](/free-driving-school-software/) solutions.
 
 ## Key Considerations
 
@@ -459,7 +459,7 @@ Popular choices like the Ford Fiesta, Vauxhall Corsa, and Toyota Yaris remain po
 
 ## Manage Your Fleet Efficiently
 
-Whether you have one vehicle or many, [DriveSchoolPro](/driving-school-software/) helps manage scheduling, student progress, and business operations effectively. Learn more about [Driving School Scheduling Software](/driving-school-scheduling-software/).
+Whether you have one vehicle or many, [DriveSchoolPro](/) helps manage scheduling, student progress, and business operations effectively. Learn more about [Driving School Scheduling Software](/driving-school-scheduling-software/).
 
 [Get started free](https://app.driveschoolpro.com/signup) and streamline your driving school operations.
 

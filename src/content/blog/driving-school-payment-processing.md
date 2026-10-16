@@ -143,7 +143,7 @@ This is not a complex system to set up. Most driving school software platforms s
 
 ## Next Steps
 
-Simplifying your payment setup is one of the highest-return improvements you can make to your driving school operations. [See our payment features](/driving-school-software/) and start accepting payments online today.
+Simplifying your payment setup is one of the highest-return improvements you can make to your driving school operations. [See our payment features](/) and start accepting payments online today.
 
 ## Related Articles
 

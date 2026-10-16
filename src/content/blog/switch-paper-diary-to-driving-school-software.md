@@ -21,7 +21,7 @@ faqs:
 
 Let us be honest from the start: your paper diary and WhatsApp system probably works. Millions of ADIs use exactly this combination to run perfectly functional driving schools. Lessons get booked. Reminders get sent. Students pass their tests. The paper diary is not broken.
 
-The question is not whether your current system is broken. The question is whether [driving school software](/driving-school-software/) gives you back enough time and money to make the change worth the effort.
+The question is not whether your current system is broken. The question is whether [driving school software](/) gives you back enough time and money to make the change worth the effort.
 
 This guide helps you answer that honestly. If the answer is yes, it walks you through exactly how to make the switch without disrupting your students, losing any records, or spending a stressful weekend migrating your entire diary.
 

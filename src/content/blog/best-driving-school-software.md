@@ -191,7 +191,7 @@ Each review lists what the platform's own website says it does, where it's the b
 - No white-labelling or franchise management
 - Newer than the established platforms, so less track record
 
-**Best fit:** solo ADIs and small-to-medium schools who want DVSA-based progress tracking and are happy on a newer platform. [See how it works for driving schools](/driving-school-software/).
+**Best fit:** solo ADIs and small-to-medium schools who want DVSA-based progress tracking and are happy on a newer platform. [See how it works for driving schools](/).
 
 ### Total Drive
 
@@ -422,7 +422,7 @@ Ask before you sign up. Check whether you can export pupil records, lesson histo
 
 ## Final Recommendations
 
-**For most UK ADIs and small schools who want DVSA tracking:** start with **[DriveSchoolPro](/driving-school-software/)**. It's free until 31 March 2027 while in early access, with full DVSA tracking, AI lesson briefings, email reminders (WhatsApp coming soon), vehicle compliance alerts, and an app for you and your pupils on iOS and Android.
+**For most UK ADIs and small schools who want DVSA tracking:** start with **[DriveSchoolPro](/)**. It's free until 31 March 2027 while in early access, with full DVSA tracking, AI lesson briefings, email reminders (WhatsApp coming soon), vehicle compliance alerts, and an app for you and your pupils on iOS and Android.
 
 **For an established UK app with a long track record:** trial **[Total Drive](/compare/total-drive/)** and **[My Drive Time](/compare/my-drive-time/)**.
 
@@ -449,6 +449,6 @@ Bring in 10–20 pupils, use it for a week alongside your current diary, and you
 
 - [Compare UK driving school software](/compare/)
 - [Driving Instructor Accounting Software](/driving-instructor-accounting-software/)
-- [Driving School Software](/driving-school-software/)
+- [Driving School Software](/)
 - [Free Driving School Software](/free-driving-school-software/)
 - [How to Choose Driving School Scheduling Software](/blog/how-to-choose-driving-school-scheduling-software/)

@@ -9,7 +9,7 @@ author: "John Powell"
 
 When becoming a driving instructor, one of the first decisions is whether to join a franchise or operate independently. Both paths have merits, and the right choice depends on your circumstances, goals, and preferences.
 
-This guide provides an honest comparison to help you decide. Whatever path you choose, [driving school software](/driving-school-software/) helps manage your business effectively.
+This guide provides an honest comparison to help you decide. Whatever path you choose, [driving school software](/) helps manage your business effectively.
 
 ## Understanding the Options
 
@@ -290,7 +290,7 @@ Building a brand takes time and effort. Franchise provides shortcut but not owne
 ### Technology Choice
 
 **Choose your own:**
-- [Driving school software](/driving-school-software/)
+- [Driving school software](/)
 - Booking systems
 - Payment processing
 - Marketing tools Explore [Driving School Management Software](/driving-school-management-software/) solutions. Learn more about [Driving School Scheduling Software](/driving-school-scheduling-software/). Explore [Driving School Software: What's Actually Available?](/free-driving-school-software/) solutions.
@@ -433,12 +433,12 @@ Neither is universally better—choose based on your situation, personality, and
 
 ## Run Your Business Your Way
 
-Whatever path you choose, [DriveSchoolPro](/driving-school-software/) helps you manage scheduling, student progress, and business operations on your terms—without franchise restrictions.
+Whatever path you choose, [DriveSchoolPro](/) helps you manage scheduling, student progress, and business operations on your terms—without franchise restrictions.
 
 [Get started free](https://app.driveschoolpro.com/signup) and build the driving instruction business you want.
 
 ## Related Articles
 
-- [Driving School Software](/driving-school-software/)
+- [Driving School Software](/)
 - [Starting a Driving School Guide](/blog/starting-driving-school-guide/)
 - [Driving School Insurance Guide](/blog/driving-school-insurance-guide/)

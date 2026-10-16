@@ -8,7 +8,7 @@ tags: ["Software"]
 author: "John Powell"
 ---
 
-DriveScout and DrivingSchoolSoftware.com both turn up when you search for [driving school software](/driving-school-software/), and both have long track records. This comparison sets out what each one offers, taken only from their own websites (checked 8 October 2026), so you can judge the fit for yourself.
+DriveScout and DrivingSchoolSoftware.com both turn up when you search for [driving school software](/), and both have long track records. This comparison sets out what each one offers, taken only from their own websites (checked 8 October 2026), so you can judge the fit for yourself.
 
 One thing to know up front: both are North American products. DriveScout's site is built around California, and DrivingSchoolSoftware.com describes its customers as driver education professionals "across US and Canada". Neither site mentions the UK or the DVSA. That doesn't make them bad products, but it matters if you teach to the [DVSA 27 driving skills](/dvsa-27-driving-skills/).
 
@@ -120,5 +120,5 @@ It doesn't do everything these two do: there's no classroom scheduling, no SMS r
 
 - [Best Driving School Software UK](/blog/best-driving-school-software/)
 - [Compare UK driving school software](/compare/)
-- [Driving School Software](/driving-school-software/)
+- [Driving School Software](/)
 - [Free Driving School Software](/free-driving-school-software/)

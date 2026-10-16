@@ -21,7 +21,7 @@ faqs:
 
 The UK driving instruction market is larger than most people realise. There are around 40,000 active ADIs in England, Scotland, and Wales, and the learner population has grown steadily as the backlog from COVID test cancellations continues to work through the system. At the same time, a significant wave of ADIs who qualified in the 1990s are now retiring, creating genuine space for new instructors to build strong local practices.
 
-If you are considering starting a driving school — whether as a solo ADI or with ambitions to build a multi-instructor business — this guide covers everything you need to know: qualification, setup costs, vehicle choice, pricing, finding students, and managing operations with [driving school software](/driving-school-software/) from day one.
+If you are considering starting a driving school — whether as a solo ADI or with ambitions to build a multi-instructor business — this guide covers everything you need to know: qualification, setup costs, vehicle choice, pricing, finding students, and managing operations with [driving school software](/) from day one.
 
 This is a serious career decision. Done well, it offers flexibility, good income, and real satisfaction. Done without preparation, it can be expensive and exhausting. Read this guide carefully before committing.
 
@@ -228,7 +228,7 @@ Keeping your vehicle legal and roadworthy is a non-negotiable operational requir
 - Dual control inspection dates
 - Service intervals
 
-Missing any of these is not just a regulatory risk — it is a safety issue. [DriveSchoolPro's vehicle compliance tracking](/driving-school-software/) sends alerts before each deadline so nothing slips through while you are focused on teaching.
+Missing any of these is not just a regulatory risk — it is a safety issue. [DriveSchoolPro's vehicle compliance tracking](/) sends alerts before each deadline so nothing slips through while you are focused on teaching.
 
 ---
 
@@ -335,7 +335,7 @@ At that point, you are spending 1–2 hours per day on admin that good software 
 
 The argument for setting up software from your first student, not your twentieth, is simple: it costs nothing to start (DriveSchoolPro is free until 31 March 2027 while in early access), and the habits you form when your diary is small will serve you when it is full.
 
-[DriveSchoolPro](/driving-school-software/) is built specifically for UK ADIs and schools. It handles:
+[DriveSchoolPro](/) is built specifically for UK ADIs and schools. It handles:
 
 - Scheduling with travel time buffers between lessons
 - DVSA competency tracking against the 27-skill framework
@@ -380,7 +380,7 @@ Options for bringing on additional instructors:
 
 Once you have multiple vehicles, compliance tracking becomes critical. Each vehicle needs its own MOT, insurance, and service schedule tracked independently. Overlook one expiry and you are uninsured or illegal.
 
-This is one of the scenarios where [multi-vehicle software](/driving-school-software/) moves from convenience to necessity.
+This is one of the scenarios where [multi-vehicle software](/) moves from convenience to necessity.
 
 ### When to Consider the School Plan
 

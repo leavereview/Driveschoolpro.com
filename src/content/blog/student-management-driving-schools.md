@@ -68,7 +68,7 @@ Each skill is typically assessed on a scale from Not Started through to Independ
 
 This matters for several reasons. First, it protects you professionally — you have a record of what was taught and when. Second, it helps students understand why they might not be test-ready yet, which reduces the pressure to rush. Third, it makes parent conversations objective rather than vague.
 
-[DriveSchoolPro](/driving-school-software/) tracks all 27 DVSA skills lesson by lesson, with a student-facing portal where pupils can see their own progress between sessions.
+[DriveSchoolPro](/) tracks all 27 DVSA skills lesson by lesson, with a student-facing portal where pupils can see their own progress between sessions.
 
 ## Managing Lesson Packages and Payments
 
@@ -107,7 +107,7 @@ Lesson notes should record:
 - What needs repeating next time
 - Any concerns (nerves, bad habits, physical limitations to be aware of)
 
-This is exactly where AI-generated lesson briefings help. [DriveSchoolPro](/driving-school-software/) uses Anthropic's Claude to generate a 3–4 sentence briefing before each lesson, drawing on the previous session's notes. Instead of reading back through five lessons of notes, you open the lesson card and the context is already there.
+This is exactly where AI-generated lesson briefings help. [DriveSchoolPro](/) uses Anthropic's Claude to generate a 3–4 sentence briefing before each lesson, drawing on the previous session's notes. Instead of reading back through five lessons of notes, you open the lesson card and the context is already there.
 
 ## Common Student Management Mistakes
 

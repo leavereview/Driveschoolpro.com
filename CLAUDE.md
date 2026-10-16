@@ -38,7 +38,7 @@ This is a static marketing site built with **Astro 4** and **Tailwind CSS**. It 
 - `.prose` - Blog content typography
 
 **Page Types**:
-- Pillar pages (e.g., `driving-school-software.astro`) - SEO landing pages
+- Pillar pages (e.g., `driving-school-management-software.astro`) - SEO landing pages. The homepage targets "driving school software"; `/driving-school-software/` 301s to `/` (nginx, 16 Oct 2026)
 - Standard pages (about, contact, pricing)
 - Blog index and dynamic `[slug].astro` for posts
 
@@ -61,8 +61,7 @@ as **external contracts**: don't rename, move, or noindex them without updating 
 
 - `/driving-instructor-software` — solo ADI lander (leads with Solo £22/mo)
 - `/driving-school-software-uk` — multi-instructor lander (leads with School £22 + £10/extra instructor; prices apply from 1 April 2027)
-  - Note the `-uk` slug: `/driving-school-software` is the existing SEO pillar and was deliberately
-    kept; the lander uses a distinct slug rather than overwriting a ranking page.
+  - Note the `-uk` slug: it was created when `/driving-school-software` was the SEO pillar. That page now 301s to the homepage (16 Oct 2026), which owns the head term "driving school software"; the lander keeps its slug because ads point at it.
 
 Both use `LandingLayout` (no global nav — company details + GA4/Ads conversion are inherited from
 the layout), link to `/compare/total-drive/`, and stay in the sitemap by default. They cross-link
