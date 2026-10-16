@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import CookieConsent from '../components/CookieConsent.astro';
+import SignupAttribution from '../components/SignupAttribution.astro';
 import { CONSENT_DEFAULT_DENIED, CONSENT_GRANTED_ALL } from '../utils/consent-mode';
 
 interface Props {
@@ -124,5 +125,6 @@ const GOOGLE_ADS_ID = import.meta.env.PUBLIC_GOOGLE_ADS_ID || '';
   </footer>
 
   <CookieConsent />
+  <SignupAttribution />
 </body>
 </html>

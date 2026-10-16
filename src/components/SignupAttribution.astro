@@ -1,0 +1,33 @@
+---
+// Carries campaign parameters from the current URL onto links to the app's signup,
+// so app.driveschoolpro.com can record where a signup came from even when the visitor
+// declined analytics cookies. URL-only: nothing is stored on the device.
+// The app reads these on /signup (see Trello "[App] Fix signup attribution").
+---
+<script is:inline>
+  (function () {
+    var KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid', 'msclkid', 'fbclid'];
+    function decorate() {
+      var here = new URLSearchParams(location.search);
+      var add = [];
+      KEYS.forEach(function (k) { var v = here.get(k); if (v) add.push([k, v]); });
+      // External referrer host (e.g. www.google.com, chatgpt.com) on the landing page only
+      try {
+        if (document.referrer) {
+          var host = new URL(document.referrer).hostname;
+          if (host && !/(^|\.)driveschoolpro\.com$/.test(host)) add.push(['dsp_ref', host]);
+        }
+      } catch (e) {}
+      add.push(['dsp_page', location.pathname]);
+      document.querySelectorAll('a[href^="https://app.driveschoolpro.com/signup"]').forEach(function (a) {
+        try {
+          var url = new URL(a.href);
+          add.forEach(function (kv) { if (!url.searchParams.has(kv[0])) url.searchParams.set(kv[0], kv[1]); });
+          a.href = url.toString();
+        } catch (e) {}
+      });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', decorate);
+    else decorate();
+  })();
+</script>

@@ -52,6 +52,21 @@
   const BANNER_ID = 'cookie-consent';
   const ACCEPT_BTN_ID = 'accept-cookies';
   const NECESSARY_BTN_ID = 'necessary-only-cookies';
+  // Shared with app.driveschoolpro.com so visitors answer the banner once.
+  // localStorage is per-origin; this cookie is readable by every *.driveschoolpro.com host.
+  // A consent-record cookie is strictly necessary, so it needs no consent itself.
+  const SHARED_COOKIE = 'dsp_consent';
+
+  function writeSharedCookie(level: 'all' | 'necessary' | null): void {
+    try {
+      const domain = location.hostname.endsWith('driveschoolpro.com') ? '; Domain=.driveschoolpro.com' : '';
+      document.cookie = level
+        ? `${SHARED_COOKIE}=${level}; Path=/; Max-Age=31536000; SameSite=Lax; Secure${domain}`
+        : `${SHARED_COOKIE}=; Path=/; Max-Age=0; SameSite=Lax; Secure${domain}`;
+    } catch (error) {
+      console.error('Error writing shared consent cookie:', error);
+    }
+  }
 
   // Helper functions
   function getConsentData(): ConsentData | null {
@@ -75,6 +90,7 @@
     } catch (error) {
       console.error('Error saving cookie consent to localStorage:', error);
     }
+    writeSharedCookie(level);
   }
 
   function showBanner(): void {
@@ -128,6 +144,7 @@
     revoke: (): void => {
       try {
         localStorage.removeItem(STORAGE_KEY);
+        writeSharedCookie(null);
         // Reload page to show banner again
         window.location.reload();
       } catch (error) {
@@ -150,6 +167,8 @@
 
     // If consent already given (accept or necessary), don't show banner
     if (consentData !== null) {
+      // Back-fill the shared cookie for visitors who answered before it existed
+      if (!document.cookie.includes(`${SHARED_COOKIE}=`)) writeSharedCookie(consentData.consent);
       const banner = document.getElementById(BANNER_ID);
       if (banner) {
         banner.remove();
