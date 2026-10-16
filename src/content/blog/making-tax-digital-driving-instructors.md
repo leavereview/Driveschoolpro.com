@@ -16,7 +16,7 @@ faqs:
   - question: "When are the Making Tax Digital quarterly deadlines?"
     answer: "Quarterly updates are due on 7 August, 7 November, 7 February and 7 May. Each one covers the tax year so far, from 6 April (or 1 April if you use calendar quarters) to the end of the quarter."
   - question: "Will I get a penalty for a late quarterly update?"
-    answer: "Not in the first year. HMRC says it will not apply penalty points for late quarterly updates during the 2026 to 2027 tax year. After that, each missed deadline earns a point, and four points means a £200 penalty. Late tax returns attract points from the start."
+    answer: "Not during the 2026 to 2027 tax year: HMRC says it will not apply penalty points for late quarterly updates in that year. If you start in April 2027, your first updates fall in 2027 to 2028, when points do apply. From then on, each missed deadline earns a point, and four points means a £200 penalty. Late tax returns attract points from the start."
   - question: "Can I keep using a spreadsheet for my driving school accounts?"
     answer: "Only if it is linked to MTD-compatible bridging software that sends your updates to HMRC. A spreadsheet on its own does not meet the rules. Most ADIs find it simpler to use accounting software that is on HMRC's list of MTD software."
   - question: "Does DriveSchoolPro submit Making Tax Digital returns?"
@@ -104,7 +104,7 @@ After the fourth update you make any adjustments, such as capital allowances on 
 
 ### Penalties
 
-HMRC will not give penalty points for late quarterly updates during the 2026 to 2027 tax year. From the following year, each missed deadline earns a point, and four points means a £200 penalty. A late tax return attracts points from day one.
+HMRC will not give penalty points for late quarterly updates during the 2026 to 2027 tax year. That relief covers people who started in April 2026, so if you start in April 2027 points apply from your first update. From 2027 to 2028, each missed deadline earns a point, and four points means a £200 penalty. A late tax return attracts points from day one.
 
 ## A checklist for April 2027
 
@@ -128,6 +128,9 @@ DriveSchoolPro is free until 31 March 2027. From 1 April 2027 there's a permanen
 
 ## Related guides
 
+- [MTD record keeping for driving instructors](/blog/mtd-record-keeping-driving-instructors/): the digital records to keep, typical ADI expenses and the mileage choice
+- [Choosing MTD software for driving instructors](/blog/choosing-mtd-software-driving-instructors/): an 8-point checklist and questions to ask before you sign up
+- [MTD timeline for 2027 and 2028](/blog/mtd-timeline-2027-2028-driving-instructors/): every date from now to your first MTD tax return
 - [Accounting software for driving instructors](/driving-instructor-accounting-software/): what bookkeeping software does that driving school software doesn't
 - [Driving school payment processing](/blog/driving-school-payment-processing/): taking card payments and keeping track of who has paid
 - [How to start a driving school](/blog/how-to-start-a-driving-school/): registering as self-employed, insurance and setting your prices

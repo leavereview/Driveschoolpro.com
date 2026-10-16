@@ -1,0 +1,488 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BreadcrumbsEnhanced from '../components/seo/BreadcrumbsEnhanced.astro';
+import FeaturedAnswer from '../components/seo/FeaturedAnswer.astro';
+import ComparisonTable from '../components/seo/ComparisonTable.astro';
+import FAQEnhanced from '../components/seo/FAQEnhanced.astro';
+import MarketingScreenshot from '../components/MarketingScreenshot.astro';
+import { OFFER, PRICING, PRICE_LINE } from '../config/offer';
+
+// Claims on this page are limited to what the rest of the site already states
+// (features/scheduling, features/getting-paid, features/lesson-briefings,
+// features/progress-tracking, compare pages). Do not add offline mode, calendar
+// sync or repeating lessons without checking the app first. Reminders: email only on every
+// plan today; text and WhatsApp are COMING SOON (planned for Solo and School). Never present them as live.
+
+const pageUrl = 'https://driveschoolpro.com/driving-instructor-diary-app/';
+
+const paperVsApp = [
+  { label: 'See the day, week and month at a glance', values: [true, 'Flip pages', 'Day and week only'] },
+  { label: 'Drag a lesson to a new slot', values: [true, 'Rub out and rewrite', 'Partly (no pupil link)'] },
+  { label: 'Warns you before a double-booking', values: ['Pupil, instructor and car', false, 'Your own events only'] },
+  { label: 'Pupil records next to the lesson', values: [true, 'Separate notebook', false] },
+  { label: 'Automatic lesson reminders to pupils', values: ['Email (text and WhatsApp coming soon)', false, false] },
+  { label: 'Pupils book their own slots', values: ['Portal and booking widget', false, false] },
+  { label: 'Card payments and lesson blocks', values: [true, false, false] },
+  { label: 'DVSA 27-skill progress per pupil', values: [true, 'Hand-written', false] },
+  { label: 'Shared diary for a multi-instructor school', values: [true, 'One book per car', 'Shared calendars, no clash checks'] },
+  { label: 'Survives being left in the car on a hot day', values: [true, 'Usually', true] },
+];
+
+const faqs = [
+  {
+    question: 'What is the best driving instructor diary app in the UK?',
+    answer: "The best one is the one that stops the mistakes you actually make. For most ADIs that means three things: it refuses double-bookings across the pupil, the instructor and the car; it sends lesson reminders without you lifting a finger; and it keeps the pupil's record and payments next to the lesson. DriveSchoolPro does all three, works on the web, iPhone and Android, and is free until 31 March 2027. Total Drive and My Drive Time are the established UK alternatives, and our comparison sets out how they differ.",
+    links: [{ text: 'Total Drive vs My Drive Time', url: '/compare/total-drive-vs-mydrivetime/' }],
+  },
+  {
+    question: 'Is there a free ADI diary app?',
+    answer: `Yes. DriveSchoolPro is free for every instructor until 31 March 2027, with no card needed. ${PRICE_LINE} So a part-time instructor teaching up to ${PRICING.free.lessonsPerMonth} lessons a month can keep using the diary for nothing after the early-access period ends.`,
+    links: [{ text: 'See pricing', url: '/pricing/' }],
+  },
+  {
+    question: 'Does the diary app send lesson reminders by text?',
+    answer: `Reminders go out automatically before every lesson, and you choose how far in advance. Today they go by email, on every plan including Free. Text and WhatsApp reminders are coming soon on the paid ${PRICING.solo.name} and ${PRICING.school.name} plans.`,
+    links: [{ text: 'Scheduling features', url: '/features/scheduling/' }],
+  },
+  {
+    question: 'Can I set up a weekly slot that repeats for a regular pupil?',
+    answer: 'Not yet. A repeating weekly series is coming soon. For now each lesson is booked individually from the calendar, which takes a few seconds per lesson.',
+    links: [{ text: 'What is coming next', url: '/changelog/' }],
+  },
+  {
+    question: 'Does it sync with Google Calendar or Apple Calendar?',
+    answer: "Not as a two-way feed. DriveSchoolPro is where the diary lives, and keeping it as the single source is what makes clash checking reliable. Pupils who book through your public booking page get an add-to-calendar link for their own lesson.",
+    links: [{ text: 'Scheduling software guide', url: '/driving-school-scheduling-software/' }],
+  },
+  {
+    question: 'Can several instructors share one diary?',
+    answer: `Yes. On the School plan every instructor has their own column in a shared, colour-coded diary, and each booking is checked against the pupil, the instructor and the vehicle. From ${PRICING.startDate} the School plan is £${PRICING.school.price} a month plus £${PRICING.school.perExtraInstructor} for each extra instructor, and it is free until then.`,
+    links: [{ text: 'Management software for schools', url: '/driving-school-management-software/' }],
+  },
+  {
+    question: 'How do I move from a paper diary without losing anything?',
+    answer: "Run both for a week or two. Add your current pupils one at a time as you teach them, book their next lessons into the app, and keep the paper diary as a safety net until you trust the new one. Most instructors stop opening the paper book within a fortnight.",
+    links: [{ text: 'Switching from a paper diary', url: '/blog/switch-paper-diary-to-driving-school-software/' }],
+  },
+];
+
+const schemaMarkup = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Driving Instructor Diary App: What It Should Do, and How DriveSchoolPro Works',
+  description: 'A guide to choosing a driving instructor diary app in the UK: calendar views, clash checks, pupil records, payments, reminders and multi-instructor diaries.',
+  author: { '@type': 'Organization', name: 'DriveSchoolPro' },
+  publisher: { '@type': 'Organization', name: 'DriveSchoolPro' },
+  datePublished: '2026-10-16',
+  dateModified: '2026-10-16',
+  mainEntityOfPage: pageUrl,
+};
+
+const softwareSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'DriveSchoolPro',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web, iOS, Android',
+  description: 'Driving instructor diary app with day, week and month views, drag-and-drop rescheduling, clash checks across pupil, instructor and vehicle, pupil records, card payments and automatic lesson reminders.',
+  url: 'https://driveschoolpro.com/',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'GBP', description: OFFER.meta },
+};
+---
+
+<BaseLayout
+  title="Driving Instructor Diary App for UK ADIs | DriveSchoolPro"
+  description="A driving instructor diary app that blocks double-bookings across pupil, instructor and car, and reminds pupils for you. Web, iPhone and Android. Free until 31 March 2027."
+  image="/images/marketing/calendar-week-view.webp"
+  publishedDate="2026-10-16"
+  modifiedDate="2026-10-16"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
+  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
+
+  <BreadcrumbsEnhanced
+    site="driveschool"
+    items={[
+      { label: 'Home', href: '/' },
+      { label: 'Driving Instructor Diary App', href: '/driving-instructor-diary-app/' },
+    ]}
+  />
+
+  <section class="relative overflow-hidden bg-gradient-to-br from-brand-navy to-gray-900 text-white py-16">
+    <div class="container-custom relative">
+      <div class="max-w-3xl">
+        <span class="inline-block bg-brand-red/20 text-brand-red-light px-3 py-1 rounded-full text-sm mb-4">ADI diary app</span>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">The Driving Instructor Diary App That Won't Let You Double-Book</h1>
+        <p class="text-xl text-gray-300 mb-4">
+          DriveSchoolPro is a diary app built for UK driving instructors. Day, week and month views,
+          drag-and-drop rescheduling, clash checks across the pupil, the instructor and the car, and
+          reminders that go out without you. Pupil records, payments and DVSA progress sit
+          next to every lesson.
+        </p>
+        <p class="text-gray-400 mb-8">Web, iPhone and Android &middot; {OFFER.short} &middot; No card needed</p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label}</a>
+          <a href="#what-it-should-do" class="btn-secondary text-lg px-8 py-4">What a diary app should do</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FeaturedAnswer question="What is a driving instructor diary app?">
+    A driving instructor diary app replaces the paper ADI diary with a calendar on your phone and
+    computer that knows about your pupils. A good one shows your day, week and month, lets you drag
+    lessons to new slots, warns you before a double-booking, sends pupils reminders automatically and
+    keeps each pupil's notes, payments and progress one tap from the lesson. DriveSchoolPro does this
+    on the web, iPhone and Android, and is free until 31 March 2027.
+  </FeaturedAnswer>
+
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-sm">
+        <h2 class="text-xl font-bold text-brand-navy mb-4">On this page</h2>
+        <ul class="grid md:grid-cols-2 gap-2 text-gray-700">
+          <li><a href="#what-it-should-do" class="hover:text-brand-red">&rarr; What a diary app should do</a></li>
+          <li><a href="#views" class="hover:text-brand-red">&rarr; Day, week and month views</a></li>
+          <li><a href="#clashes" class="hover:text-brand-red">&rarr; Clash checks</a></li>
+          <li><a href="#pupils" class="hover:text-brand-red">&rarr; Pupil records and progress</a></li>
+          <li><a href="#payments-reminders" class="hover:text-brand-red">&rarr; Payments and reminders</a></li>
+          <li><a href="#paper-vs-app" class="hover:text-brand-red">&rarr; Paper diary vs app</a></li>
+          <li><a href="#schools" class="hover:text-brand-red">&rarr; Shared diaries for schools</a></li>
+          <li><a href="#pricing" class="hover:text-brand-red">&rarr; What it costs</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto prose prose-lg">
+
+        <h2 id="what-it-should-do" class="text-3xl font-bold text-brand-navy mb-6">What a driving instructor diary app should actually do</h2>
+
+        <p>
+          Every ADI has a diary system that works, mostly. A spiral-bound book in the door pocket, a
+          shared Google Calendar, a notes app, a WhatsApp thread per pupil. The trouble is not booking
+          a lesson. Anyone can write "Sam, 4pm, Tue". The trouble is everything that has to happen
+          around that lesson: checking the car is free, remembering where Sam lives, reminding Sam the
+          night before, recording what you covered, and knowing whether Sam has paid.
+        </p>
+
+        <p>
+          A <strong>driving instructor diary app</strong> earns its place when it does that surrounding
+          work for you. When you are comparing ADI diary apps, these are the jobs worth testing on a
+          real week of lessons:
+        </p>
+
+        <ol>
+          <li><strong>Show the shape of your week.</strong> Day, week and month views, so you can see today's run and next month's gaps without flicking pages.</li>
+          <li><strong>Make changes cheap.</strong> Moving a lesson should be a drag, not a rewrite, and the pupil should find out without you sending a separate message.</li>
+          <li><strong>Refuse clashes.</strong> Before a booking is saved, check that the pupil, the instructor and the car are all free.</li>
+          <li><strong>Keep the pupil next to the lesson.</strong> Address, phone number, notes and progress should be one tap from the slot.</li>
+          <li><strong>Chase people for you.</strong> Reminders should go out automatically, and payments should be recorded against the lesson.</li>
+          <li><strong>Work wherever you are.</strong> Plan the week on a laptop, run the day from your phone.</li>
+        </ol>
+
+        <p>
+          DriveSchoolPro was built around that list. It is a full
+          <a href="/" class="text-brand-red hover:underline">driving school software</a> platform, but
+          for most solo instructors the diary is the part they open fifty times a day, so it is the
+          part we have spent the most time on. The rest of this page goes through each job in turn,
+          including the things it does not do yet.
+        </p>
+
+        <h2 id="views" class="text-3xl font-bold text-brand-navy mt-12 mb-6">Day, week and month views, with drag-and-drop</h2>
+
+        <p>
+          The diary has three views, and each suits a different moment in an instructor's day.
+        </p>
+
+        <ul>
+          <li><strong>Day view</strong> lists each lesson in order with the time, the pupil and the pick-up address, and marks the gap between lessons so you can see how long you have to get across town.</li>
+          <li><strong>Week view</strong> is where most instructors live. It shows every lesson in a time grid, colour-coded, with totals for bookings and cancellations along the top.</li>
+          <li><strong>Month view</strong> is a heatmap. Busy weeks look busy and thin weeks look thin, which makes the Tuesday afternoons that never fill impossible to miss.</li>
+        </ul>
+
+        <p>
+          To move a lesson, pick it up and drop it in the new slot. The change follows the lesson
+          everywhere it appears: your diary, the pupil's own app and the reminder that goes out
+          before the lesson. You can also book straight from the calendar with a quick booking panel,
+          so there is no separate form to fill in.
+        </p>
+
+        <div class="my-8 not-prose">
+          <MarketingScreenshot
+            src="/images/marketing/calendar-week-view.webp"
+            width={1440}
+            height={900}
+            alt="DriveSchoolPro week view: colour-coded driving lessons in a time grid with booking totals along the top"
+          />
+          <p class="text-sm text-gray-500 text-center mt-3">The week view, where most instructors plan from</p>
+        </div>
+
+        <p>
+          The same diary runs in any web browser and in the DriveSchoolPro apps for iPhone and
+          Android. Plan Sunday night's week on a laptop, then run Monday from your phone at the kerb.
+          There is nothing to sync by hand, because it is the same diary in every place. More detail
+          is on the <a href="/features/scheduling/" class="text-brand-red hover:underline">scheduling feature page</a>.
+        </p>
+
+        <h2 id="clashes" class="text-3xl font-bold text-brand-navy mt-12 mb-6">Clash checks across pupil, instructor and car</h2>
+
+        <p>
+          Most double-bookings are not carelessness. They happen because the fact you needed to check
+          was somewhere else: in last week's message from the pupil, in another instructor's diary, or
+          in your head as "the car's in for its MOT on Thursday". A paper diary cannot check any of
+          that, and neither can a general calendar app.
+        </p>
+
+        <p>
+          DriveSchoolPro checks three things on every booking. Is this pupil already booked? Is this
+          instructor already teaching? Is this vehicle already out? If any one of them is taken, the
+          booking is stopped before it is saved, and you are told which of the three clashed and when.
+          It is the difference between finding out now and finding out at 9am on a Saturday with a
+          learner on the doorstep.
+        </p>
+
+        <p>
+          The vehicle check matters more than people expect. If you share a dual-controlled car with
+          a colleague, or keep a spare for when yours is off the road, the diary knows which car each
+          lesson is in. The app also tracks each vehicle's MOT, tax and insurance dates and alerts you
+          before they lapse, so the car you have booked is a car you can legally teach in.
+        </p>
+
+        <div class="bg-blue-50 border-l-4 border-brand-navy p-4 my-6 not-prose">
+          <p class="font-bold text-brand-navy mb-1">What it doesn't do yet</p>
+          <p class="text-gray-700">
+            A repeating weekly series for a regular pupil is coming soon; for now each lesson is booked
+            individually. There is no two-way sync with Google or Apple Calendar: the diary in
+            DriveSchoolPro is the single source, which is what makes the clash checks trustworthy.
+          </p>
+        </div>
+
+        <h2 id="pupils" class="text-3xl font-bold text-brand-navy mt-12 mb-6">Pupil records, progress and AI lesson briefings</h2>
+
+        <p>
+          A diary entry is only useful if you know who you are picking up. In DriveSchoolPro every
+          lesson links to the pupil's record: contact details, pick-up address, lesson history,
+          notes, remaining lesson balance and progress. Tap the lesson, and it is all there.
+        </p>
+
+        <h3 class="text-xl font-bold text-brand-navy mt-8 mb-4">Progress against the DVSA 27 skills</h3>
+
+        <p>
+          Progress is tracked against the official DVSA framework: all
+          <a href="/dvsa-27-driving-skills/" class="text-brand-red hover:underline">27 driving skills across 8 categories</a>,
+          rated on a six-level scale. Logging a lesson takes a couple of taps per skill you worked on,
+          so it happens at the kerb before you drive off rather than at eleven at night from memory.
+          See <a href="/features/progress-tracking/" class="text-brand-red hover:underline">progress tracking</a>
+          for how the ratings work.
+        </p>
+
+        <h3 class="text-xl font-bold text-brand-navy mt-8 mb-4">A pupil app of their own</h3>
+
+        <p>
+          Each pupil gets their own app on iPhone, Android or the web. They see their upcoming
+          lessons, where they stand against each of the 27 skills, and how many hours they have left.
+          They can also book from the times you have made available, so the "are you free Thursday?"
+          messages dry up. You can embed a booking widget on your own website too, so new enquiries
+          pick a slot without messaging you first.
+        </p>
+
+        <h3 class="text-xl font-bold text-brand-navy mt-8 mb-4">A briefing before every lesson</h3>
+
+        <p>
+          Before each lesson, DriveSchoolPro writes a three- or four-sentence briefing from your last
+          notes and the pupil's current skill ratings, using Claude, Anthropic's AI. It is there to
+          be read in the ten seconds before you knock on the door, so you start from what happened
+          last time rather than from memory. It is particularly useful when another instructor took
+          the previous lesson. Read more on the
+          <a href="/features/lesson-briefings/" class="text-brand-red hover:underline">AI lesson briefings page</a>.
+        </p>
+
+        <div class="my-8 not-prose flex justify-center">
+          <MarketingScreenshot
+            src="/images/marketing/calendar-day-mobile.webp"
+            width={640}
+            height={1164}
+            alt="DriveSchoolPro day view on a phone listing three lessons with pupil names, pick-up addresses and the gaps between them"
+            mobile
+          />
+        </div>
+        <p class="text-sm text-gray-500 text-center -mt-4 mb-8">The day view on a phone: who, where, and how long until the next one</p>
+
+        <h2 id="payments-reminders" class="text-3xl font-bold text-brand-navy mt-12 mb-6">Payments and automatic reminders</h2>
+
+        <h3 class="text-xl font-bold text-brand-navy mt-8 mb-4">Getting paid from the diary</h3>
+
+        <p>
+          Pupils can pay by card through Stripe, from their own app or from a payment link you send.
+          The money goes to your own Stripe account. You can sell lesson blocks, say ten hours paid
+          up front, which draw down as lessons are taken so both of you can see the remaining balance.
+          Cash, bank transfer and cheque can be recorded against a pupil too, so the ledger stays
+          right however the money arrived. Card payments taken through DriveSchoolPro carry a
+          {PRICING.cardFeePercent}% platform fee plus Stripe's own processing fee. The
+          <a href="/features/getting-paid/" class="text-brand-red hover:underline">getting paid page</a>
+          has the detail.
+        </p>
+
+        <h3 class="text-xl font-bold text-brand-navy mt-8 mb-4">Reminders you don't have to send</h3>
+
+        <p>
+          Automatic email reminders go out before every lesson (text and WhatsApp coming soon on
+          {PRICING.solo.name} and {PRICING.school.name}), and you choose how far in advance. When
+          you drag a lesson to a new time, the reminder moves with it. Email reminders are on every
+          plan, including Free. For more on cutting missed lessons, read
+          <a href="/blog/reduce-driving-lesson-no-shows/" class="text-brand-red hover:underline">how to reduce driving lesson no-shows</a>.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-brand-red-light">
+    <div class="container-custom text-center max-w-3xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-3">Try the diary on next week's lessons</h2>
+      <p class="text-gray-700 mb-6">Set up in a few minutes. Keep your paper diary as a safety net until you trust it. {OFFER.short}, no card needed.</p>
+      <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label} &rarr;</a>
+    </div>
+  </section>
+
+  <section id="paper-vs-app">
+    <ComparisonTable
+      title="Paper ADI diary vs a general calendar vs DriveSchoolPro"
+      description="What each option does for a working driving instructor. A general calendar means Google Calendar, Apple Calendar or similar."
+      headers={['DriveSchoolPro', 'Paper diary', 'General calendar app']}
+      rows={paperVsApp}
+      rowHeader="Job"
+      highlightColumn={0}
+    />
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto prose prose-lg">
+
+        <p>
+          A paper diary is not a bad tool. It never runs out of battery and nobody has to train you
+          to use it. Where it falls down is everything joined to the lesson: it cannot remind the
+          pupil, check the car, take a payment or show you a month of gaps. A general calendar app
+          fixes the battery and the backup, but it does not know what a pupil, a vehicle or a DVSA
+          skill is. A dedicated driving lesson diary app is worth it once the admin around your
+          lessons starts taking evenings. If you are making that move, our guide to
+          <a href="/blog/switch-paper-diary-to-driving-school-software/" class="text-brand-red hover:underline">switching from a paper diary</a>
+          walks through the first fortnight.
+        </p>
+
+        <h2 id="schools" class="text-3xl font-bold text-brand-navy mt-12 mb-6">A shared diary for multi-instructor schools</h2>
+
+        <p>
+          The same diary scales from one instructor to a school. On the School plan every instructor
+          appears in a shared, colour-coded diary, and the clash checks run across all of them. If a
+          pupil is already booked with one instructor, another cannot book them into the same slot.
+          If two instructors share a car, the diary will not let both take it out at once.
+        </p>
+
+        <p>
+          That shared view is what makes cover lessons painless. When an instructor is off sick, the
+          office can see who has space, move the lesson by dragging it into another instructor's
+          column, and the pupil's reminder and app update to match. The covering instructor opens the
+          same pupil record, sees the same DVSA progress and gets the same AI briefing, so the pupil
+          does not spend ten minutes explaining where they got to. Each instructor can set their own
+          working hours and availability, and pupils booking from their app only see times that are
+          genuinely free.
+        </p>
+
+        <p>
+          For the wider picture of running a school, including instructor management and reporting,
+          see the <a href="/driving-school-management-software/" class="text-brand-red hover:underline">driving school management software guide</a>
+          and the <a href="/driving-school-scheduling-software/" class="text-brand-red hover:underline">scheduling software guide</a>.
+        </p>
+
+        <h2 id="pricing" class="text-3xl font-bold text-brand-navy mt-12 mb-6">What the diary app costs</h2>
+
+        <p>
+          DriveSchoolPro is free for everyone until 31 March 2027 while it is in early access. Every
+          feature on this page is included, for solo instructors and schools, and no card is needed
+          to start.
+        </p>
+
+        <p>{PRICE_LINE}</p>
+
+        <ul>
+          <li><strong>{PRICING.free.name}:</strong> £0 for {PRICING.free.instructors} instructor and up to {PRICING.free.lessonsPerMonth} lessons a month, with every feature including AI lesson briefings.</li>
+          <li><strong>{PRICING.solo.name}:</strong> £{PRICING.solo.price} a month for one instructor with unlimited lessons. Text and WhatsApp reminders coming soon.</li>
+          <li><strong>{PRICING.school.name}:</strong> £{PRICING.school.price} a month plus £{PRICING.school.perExtraInstructor} for each extra instructor. Text and WhatsApp reminders coming soon.</li>
+        </ul>
+
+        <p>
+          Instructors who add a card by {PRICING.founding.cardBy} can lock in founding prices for
+          {PRICING.founding.lockMonths} months. The full breakdown is on the
+          <a href="/pricing/" class="text-brand-red hover:underline">pricing page</a>.
+        </p>
+
+        <h2 id="choosing" class="text-3xl font-bold text-brand-navy mt-12 mb-6">How DriveSchoolPro compares with other ADI diary apps</h2>
+
+        <p>
+          The two diary apps UK instructors most often mention are Total Drive and My Drive Time.
+          Both are established, both have a pupil app, and both list features DriveSchoolPro does not
+          have yet, such as broadcasting a cancelled slot to pupils and free migration of your
+          existing records. DriveSchoolPro differs on AI lesson briefings, progress built on the
+          DVSA 27 skills, vehicle-aware clash checks and Google review requests when a pupil passes.
+        </p>
+
+        <p>
+          We have written a neutral
+          <a href="/compare/total-drive-vs-mydrivetime/" class="text-brand-red hover:underline">Total Drive vs My Drive Time comparison</a>
+          that sets the three side by side using each vendor's own website, and there are one-to-one
+          pages for <a href="/compare/total-drive/" class="text-brand-red hover:underline">DriveSchoolPro vs Total Drive</a>
+          and <a href="/compare/my-drive-time/" class="text-brand-red hover:underline">DriveSchoolPro vs My Drive Time</a>.
+          The honest advice is the same whichever you pick: run it alongside your current diary for a
+          week of real lessons, try to double-book yourself, move a lesson, and see whether the pupil
+          hears about it. That week tells you more than any feature list.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <FAQEnhanced
+      site="driveschool"
+      pageUrl={pageUrl}
+      title="Driving instructor diary app: common questions"
+      faqs={faqs}
+    />
+  </section>
+
+  <section class="section bg-brand-navy text-white text-center">
+    <div class="container-custom">
+      <h2 class="text-3xl font-bold mb-3">Put next week in the diary app</h2>
+      <p class="text-white/80 text-lg mb-8 max-w-xl mx-auto">Web, iPhone and Android. Clash checks, automatic reminders, pupil records and payments in one place.</p>
+      <a href={OFFER.ctaPrimary.href} class="inline-block bg-brand-red text-white px-10 py-4 rounded-xl font-semibold text-lg hover:bg-red-700 transition-colors">
+        {OFFER.ctaPrimary.label} &rarr;
+      </a>
+      <p class="text-white/50 text-sm mt-3">{OFFER.short} &middot; No credit card required &middot; Cancel anytime</p>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <h2 class="text-2xl font-bold text-brand-navy mb-8 text-center">Related</h2>
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <a href="/features/scheduling/" class="card p-6 hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-brand-navy mb-2">Scheduling features</h3>
+          <p class="text-gray-600 text-sm">Drag-and-drop, clash checks and pupil self-booking in detail</p>
+        </a>
+        <a href="/features/progress-tracking/" class="card p-6 hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-brand-navy mb-2">DVSA progress tracking</h3>
+          <p class="text-gray-600 text-sm">All 27 skills, logged at the kerb</p>
+        </a>
+        <a href="/compare/total-drive-vs-mydrivetime/" class="card p-6 hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-brand-navy mb-2">Total Drive vs My Drive Time</h3>
+          <p class="text-gray-600 text-sm">A neutral three-way comparison</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

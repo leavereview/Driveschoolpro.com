@@ -5,6 +5,7 @@ import CompetitorComparison from '../../components/compare/CompetitorComparison.
 //   www.mydrivetime.co.uk/ and /pricing/ (SMS included, free migration, gaps,
 //   student app, test outcome recording, Schools & Teams plan, syllabus manager)
 // "Not listed" = not found on those pages; never "No" unless the vendor says so.
+// 16 Oct 2026: clash row updated - home page now lists "Clash Resolution".
 const rows = [
   { label: 'AI lesson briefings', values: [true, 'Not listed'] },
   { label: 'DVSA 27-skill, 8-category progress tracking', values: [true, 'Syllabus manager; DVSA structure not stated'] },
@@ -12,7 +13,7 @@ const rows = [
   { label: 'Automatic lesson reminders', values: ['Email', 'Yes (email, SMS, app)'] },
   { label: 'WhatsApp reminders', values: ['Coming soon', 'Not listed'] },
   { label: 'Booking widget for your own website', values: [true, 'Not listed'] },
-  { label: 'Clash checks across pupil, instructor and vehicle', values: [true, 'Not listed'] },
+  { label: 'Clash checks across pupil, instructor and vehicle', values: [true, 'Clash Resolution listed; scope not stated'] },
   { label: 'Vehicle MOT, tax and insurance tracking', values: [true, 'Not listed'] },
   { label: 'Pupil app or portal', values: ['Yes (iOS, Android or web)', 'Yes (student app)'] },
   { label: 'Multi-instructor schools', values: [true, 'Yes (Schools & Teams)'] },
@@ -39,6 +40,11 @@ const faqs = [
     links: [{ text: 'Contact us', url: '/contact/' }],
   },
   {
+    question: 'How does My Drive Time compare with Total Drive?',
+    answer: "Both are established UK instructor apps with a diary, a pupil app, syllabus-based progress and cancellation-gap broadcasts. On their own sites, Total Drive lists a theory suite and two-way calendar sync, while My Drive Time lists SMS reminders on its individual plan and free data transfer. Our three-way comparison sets them side by side with DriveSchoolPro.",
+    links: [{ text: 'Total Drive vs My Drive Time', url: '/compare/total-drive-vs-mydrivetime/' }],
+  },
+  {
     question: 'Is this a fair comparison?',
     answer: "We've tried to make it one. The My Drive Time column only records what My Drive Time's own public website says, checked on 21 September 2026. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote My Drive Time's prices because they change, so use their own pricing page. The gaps in DriveSchoolPro are set out above. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
     links: [{ text: "My Drive Time's current pricing", url: 'https://www.mydrivetime.co.uk/pricing/' }],
@@ -62,7 +68,7 @@ const faqs = [
   }}
   checkedOn="21 September 2026"
   heroIntro="A plain, feature-by-feature comparison for instructors already using My Drive Time. It covers what's different, and what DriveSchoolPro doesn't do yet."
-  featuredAnswer="DriveSchoolPro and My Drive Time are both UK platforms for driving instructors, with a diary, pupil progress tracking and a pupil app. DriveSchoolPro adds AI lesson briefings, Google review requests at each test pass, progress tracking on the official DVSA 27 skills, clash checks across pupil, instructor and vehicle, and vehicle compliance tracking. My Drive Time lists SMS reminders, diary-gap broadcasts and free migration that DriveSchoolPro doesn't have yet."
+  featuredAnswer="DriveSchoolPro and My Drive Time are both UK platforms for driving instructors, with a diary, pupil progress tracking and a pupil app. DriveSchoolPro adds AI lesson briefings, Google review requests at each test pass, progress tracking on the official DVSA 27 skills, clash checks that include the vehicle, and vehicle compliance tracking. My Drive Time lists SMS reminders, diary-gap broadcasts and free migration that DriveSchoolPro doesn't have yet."
   intro="This page is for an instructor who uses My Drive Time today and is wondering whether DriveSchoolPro is worth a look. My Drive Time is well liked and its support is a real strength, so this isn't a case for leaving. It's a list of what's different."
   rows={rows}
   switchHeading="Where DriveSchoolPro differs"
