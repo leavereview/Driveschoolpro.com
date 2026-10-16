@@ -1,0 +1,93 @@
+---
+import CompetitorComparison from '../../components/compare/CompetitorComparison.astro';
+
+// Competitor cells reflect EasyWeek's own public pages, checked 16 Oct 2026:
+//   easyweek.io/business/solutions/driving-school (calendar, class and exam scheduling, instructors,
+//     learning progress tracker, practice tests)
+//   /business/features/notifications-and-reminders (SMS, email, WhatsApp, Telegram, push)
+//   /business/features/online-payments (Stripe, PayPal, deposits, pay-by-link)
+//   /business/pricing (permanent free tier; 14-day trial on paid plans)
+//   /business/ai (AI receptionist beta, AI agent integration)
+//   /business/about (EasyWeek GmbH, Germany; multi-industry)
+// Paid prices are never quoted. "Not listed" = not found on those pages; never "No" unless the vendor says so.
+const rows = [
+  { label: 'Built specifically for UK driving instructors', values: [true, 'General booking tool for many industries'] },
+  { label: 'AI lesson briefings', values: [true, 'Not listed (AI receptionist in beta)'] },
+  { label: 'DVSA 27-skill, 8-category progress tracking', values: [true, 'General learning progress tracker; DVSA not listed'] },
+  { label: 'Automatic lesson reminders', values: ['Email', 'Yes (email, SMS, WhatsApp, Telegram, push; paid plans)'] },
+  { label: 'Booking widget for your own website', values: [true, 'Yes'] },
+  { label: 'Clash checks across pupil, instructor and vehicle', values: [true, 'Not listed'] },
+  { label: 'Vehicle MOT, tax and insurance tracking', values: [true, 'Not listed'] },
+  { label: 'Pupil app or portal', values: ['Yes (iOS, Android or web)', 'Yes (EasyWeek customer app)'] },
+  { label: 'Card payments', values: ['Yes (Stripe)', 'Yes (Stripe, PayPal, deposits)'] },
+  { label: 'Multi-instructor schools', values: [true, 'Yes'] },
+  { label: 'Test bookings and results recording (coming soon)', values: ['Coming soon', 'Exam scheduling listed; no DVSA link'] },
+  { label: 'Website builder and gift cards', values: [false, 'Yes'] },
+  { label: 'Permanent free plan', values: ['Yes, from 1 April 2027 (60 lessons a month; free and unlimited until then)', 'Yes (basic booking)'] },
+];
+
+const faqs = [
+  {
+    question: 'Is EasyWeek good for driving schools?',
+    answer: "It's a capable general booking tool with a driving-school page, lots of reminder channels and a free tier. What it isn't built for is UK driving instruction: we couldn't find DVSA skill tracking, vehicle MOT and insurance tracking or clash checks that include the car. If you only need bookings and payments, it can work. If you're tracking pupils towards a test, DriveSchoolPro is built for that.",
+    links: [{ text: 'The DVSA 27 driving skills', url: '/dvsa-27-driving-skills/' }],
+  },
+  {
+    question: 'Which has the better free plan?',
+    answer: "EasyWeek has a permanent free tier for basic booking; automated reminders need a paid plan. DriveSchoolPro is free with every feature until 31 March 2027, then keeps a permanent Free plan with every feature, including AI lesson briefings and email reminders, for 1 instructor and up to 60 lessons a month.",
+    links: [{ text: 'Free driving school software options', url: '/free-driving-school-software/' }],
+  },
+  {
+    question: 'Is this a fair comparison?',
+    answer: "We've tried to make it one. The EasyWeek column only records what EasyWeek's own website says, checked on 16 October 2026. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote its paid prices because they change, so use its own pricing page. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
+    links: [{ text: "EasyWeek's current pricing", url: 'https://easyweek.io/business/pricing' }],
+  },
+];
+---
+
+<CompetitorComparison
+  competitor={{ name: 'EasyWeek', slug: 'easyweek', pricingUrl: 'https://easyweek.io/business/pricing' }}
+  seo={{
+    title: 'DriveSchoolPro vs EasyWeek for Driving Schools | DriveSchoolPro',
+    description: 'Compare DriveSchoolPro and EasyWeek for a UK driving school: DVSA tracking, reminders, vehicle checks and free plans. DriveSchoolPro is free until 31 March 2027, then has a permanent Free plan.',
+    schemaDescription: 'Comparison of DriveSchoolPro and EasyWeek, a general booking tool, for UK driving instructors and schools.',
+    datePublished: '2026-10-16',
+    dateModified: '2026-10-16',
+  }}
+  checkedOn="16 October 2026"
+  heroIntro="A plain comparison for UK instructors weighing up EasyWeek, a booking tool used by many kinds of business, against software built for driving instruction."
+  featuredAnswer="EasyWeek is a general booking tool from Germany used by salons, gyms, clinics and driving schools, with online booking, card payments, many reminder channels and a permanent free tier. DriveSchoolPro is built for UK driving instruction: all 27 DVSA skills tracked lesson by lesson, AI lesson briefings, clash checks that include the vehicle, and MOT, tax and insurance tracking. EasyWeek offers more reminder channels, a website builder and gift cards."
+  intro="This page is for an instructor looking at EasyWeek because it's cheap or free and does online booking well. That's a fair reason to look. Here's what's different."
+  rows={rows}
+  switchHeading="Where DriveSchoolPro differs"
+  switchIntro="These are the differences that exist today, from the table above."
+  switchItems={[
+    {
+      title: 'Built for the DVSA test',
+      body: 'DriveSchoolPro tracks the official 27 skills across 8 categories, lesson by lesson, and pupils see their own progress in their app.',
+    },
+    {
+      title: 'Lesson prep written for you',
+      body: "Before each lesson, DriveSchoolPro writes a short briefing from your last notes and the pupil's skill ratings, using Claude.",
+    },
+    {
+      title: 'The car is part of the booking',
+      body: 'Bookings are checked against the pupil, the instructor and the vehicle together, and MOT, tax and insurance dates are tracked with alerts.',
+    },
+    {
+      title: 'A free plan with every feature',
+      body: "From 1 April 2027 DriveSchoolPro's permanent Free plan includes every feature for 1 instructor and up to 60 lessons a month. Solo is £22 a month and School £22 plus £10 per extra instructor, with no VAT charged.",
+    },
+  ]}
+  gapsHeading="What DriveSchoolPro doesn't do"
+  gapsBody="EasyWeek sends reminders by SMS, WhatsApp, Telegram and push as well as email, where DriveSchoolPro sends email only for now (WhatsApp is coming soon). EasyWeek also has a website builder, gift cards and point-of-sale, which we don't. If those matter more than DVSA tracking, EasyWeek is a fair choice."
+  sources={[
+    { label: 'EasyWeek: driving school software', url: 'https://easyweek.io/business/solutions/driving-school' },
+    { label: 'EasyWeek: notifications and reminders', url: 'https://easyweek.io/business/features/notifications-and-reminders' },
+    { label: 'EasyWeek: online payments', url: 'https://easyweek.io/business/features/online-payments' },
+    { label: 'EasyWeek: pricing', url: 'https://easyweek.io/business/pricing' },
+    { label: 'EasyWeek: AI', url: 'https://easyweek.io/business/ai' },
+  ]}
+  faqs={faqs}
+  faqTitle="DriveSchoolPro vs EasyWeek: common questions"
+/>

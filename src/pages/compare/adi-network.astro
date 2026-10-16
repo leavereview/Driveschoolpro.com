@@ -1,0 +1,97 @@
+---
+import CompetitorComparison from '../../components/compare/CompetitorComparison.astro';
+
+// Competitor cells reflect ADI Network's own public pages and app-store listings, checked 16 Oct 2026:
+//   adinetwork.co.uk and /why-join-adi (free app; jobs board of pre-sold PassMeFast courses with test dates)
+//   /why-join-adi/diary-management (diary, phone calendar sync)
+//   /why-join-adi/track-learner-progress (progress tracker, reflective log; learners log in to see progress)
+//   /why-join-adi/adi-finance-tools (Stripe Connect payment links, small per-payment fee, money in/out)
+//   App Store id6450789318 (seller PassMeFast), Google Play com.passmefast.portal.adi
+// "Not listed" = not found on those pages; never "No" unless the vendor says so.
+const rows = [
+  { label: 'What it mainly is', values: ['Software to run your diary and pupils', 'Jobs board of pre-sold PassMeFast courses, plus a diary'] },
+  { label: 'AI lesson briefings', values: [true, 'Not listed'] },
+  { label: 'DVSA 27-skill, 8-category progress tracking', values: [true, 'Progress tracker and reflective log; DVSA skills not named'] },
+  { label: 'Pupils book online from your website', values: [true, 'Not listed'] },
+  { label: 'Automatic lesson reminders', values: ['Email', 'Not listed'] },
+  { label: 'Pupil app or portal', values: ['Yes (iOS, Android or web)', 'Yes (learners log in to see progress)'] },
+  { label: 'Card payments', values: ['Yes (Stripe)', 'Yes (Stripe payment links; small per-payment fee)'] },
+  { label: 'Invoices and pupil balances', values: [true, 'Invoicing listed in the app store description'] },
+  { label: 'Vehicle MOT, tax and insurance tracking', values: [true, 'Not listed'] },
+  { label: 'Multi-instructor schools', values: [true, 'Not listed'] },
+  { label: 'Ready-made paid courses with test dates', values: [false, 'Yes (core of the product)'] },
+  { label: 'Test date handling', values: ['Coming soon', 'Yes (accept, reject or ask to change test dates)'] },
+  { label: 'Price to the instructor', values: ['Free until 31 March 2027, then Free plan or £22/month', 'Free (earns from courses and payment fees)'] },
+];
+
+const faqs = [
+  {
+    question: 'Is ADI Network really free?',
+    answer: "Yes. ADI Network says the app is completely free to instructors. It's run by the company behind PassMeFast, and makes its money from the intensive courses it offers instructors as jobs and from a small fee on card payments. DriveSchoolPro is free until 31 March 2027, then has a permanent Free plan for 1 instructor and up to 60 lessons a month, or Solo at £22 a month with no VAT charged.",
+    links: [{ text: 'DriveSchoolPro pricing', url: '/pricing/' }],
+  },
+  {
+    question: 'Can I use both?',
+    answer: "Yes. Many instructors take some work from course providers and teach their own private pupils too. You could pick up PassMeFast courses through ADI Network and run your private diary, bookings and DVSA progress in DriveSchoolPro.",
+    links: [{ text: 'DriveSchoolPro for driving instructors', url: '/driving-instructor-software/' }],
+  },
+  {
+    question: 'Does either track the DVSA 27 skills?',
+    answer: "DriveSchoolPro tracks all 27 DVSA skills in 8 categories, lesson by lesson, and pupils see their own progress. ADI Network has a progress tracker covering key skills such as manoeuvres, moving off and mirrors, plus a reflective log, but it doesn't name the full DVSA framework.",
+    links: [{ text: 'How DriveSchoolPro tracks progress', url: '/how-progress-works/' }],
+  },
+  {
+    question: 'Is this a fair comparison?',
+    answer: "We've tried to make it one. The ADI Network column only records what its own website and app-store listings say, checked on 16 October 2026. Where we couldn't find a feature we say \"Not listed\", not \"No\". If you spot an error, email info@driveschoolpro.com and we'll correct it.",
+    links: [{ text: 'ADI Network', url: 'https://www.adinetwork.co.uk/' }],
+  },
+];
+---
+
+<CompetitorComparison
+  competitor={{ name: 'ADI Network', slug: 'adi-network', pricingUrl: 'https://www.adinetwork.co.uk/' }}
+  seo={{
+    title: 'DriveSchoolPro vs ADI Network: Comparison | DriveSchoolPro',
+    description: 'Compare DriveSchoolPro and ADI Network, the free PassMeFast instructor app: diary, DVSA tracking, online booking, payments and course jobs. DriveSchoolPro is free until 31 March 2027.',
+    schemaDescription: 'Comparison of DriveSchoolPro and ADI Network for UK driving instructors, including what each is built for.',
+    datePublished: '2026-10-16',
+    dateModified: '2026-10-16',
+  }}
+  checkedOn="16 October 2026"
+  heroIntro="ADI Network and DriveSchoolPro solve different problems. This page sets out what each is for, feature by feature."
+  featuredAnswer="ADI Network is a free app from the company behind PassMeFast. Its core is a jobs board of pre-sold intensive courses with test dates already booked, with a basic diary, progress tracker and payment links on top. DriveSchoolPro is software for running your own pupils: online booking from your website, automatic reminders, all 27 DVSA skills tracked, AI lesson briefings, invoicing, vehicle tracking and multi-instructor schools. Many instructors could use both."
+  intro="This page is for an instructor who uses ADI Network, or is thinking about it, and wants to know whether DriveSchoolPro does something different. It does, because the two are built for different jobs."
+  rows={rows}
+  switchHeading="What DriveSchoolPro adds"
+  switchIntro="These are features for running your own private pupils, from the table above."
+  switchItems={[
+    {
+      title: 'Your own pupils book themselves',
+      body: 'Put the booking widget on your website and pupils book within the rules you set. Lesson reminders go out by email automatically.',
+    },
+    {
+      title: 'The full DVSA framework',
+      body: 'DriveSchoolPro tracks the official 27 skills across 8 categories, lesson by lesson, and pupils see their own progress in their app.',
+    },
+    {
+      title: 'Lesson prep written for you',
+      body: "Before each lesson, DriveSchoolPro writes a short briefing from your last notes and the pupil's skill ratings, using Claude.",
+    },
+    {
+      title: 'Room to grow',
+      body: 'Add instructors and vehicles to the same account, with role-based access and MOT, tax and insurance tracking.',
+    },
+  ]}
+  gapsHeading="What DriveSchoolPro doesn't do"
+  gapsBody="DriveSchoolPro doesn't supply work. There's no jobs board or ready-made courses with test dates, so it won't fill your diary the way ADI Network's course jobs can. Recording test bookings and results is coming soon. If you mainly want paid course work, ADI Network is built for that."
+  sources={[
+    { label: 'ADI Network', url: 'https://www.adinetwork.co.uk/' },
+    { label: 'ADI Network: why join', url: 'https://www.adinetwork.co.uk/why-join-adi' },
+    { label: 'ADI Network: track learner progress', url: 'https://www.adinetwork.co.uk/why-join-adi/track-learner-progress' },
+    { label: 'ADI Network: finance tools', url: 'https://www.adinetwork.co.uk/why-join-adi/adi-finance-tools' },
+    { label: 'ADI Network on the App Store', url: 'https://apps.apple.com/gb/app/adi-network-instructor-app/id6450789318' },
+    { label: 'ADI Network on Google Play', url: 'https://play.google.com/store/apps/details?id=com.passmefast.portal.adi' },
+  ]}
+  faqs={faqs}
+  faqTitle="DriveSchoolPro vs ADI Network: common questions"
+/>
