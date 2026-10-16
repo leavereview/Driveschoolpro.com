@@ -5,7 +5,7 @@ image: /images/blog-comparison.jpg
 date: "2025-12-27"
 updatedDate: "2026-10-08"
 tags: ["Software"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 ---
 
 DriveScout and DrivingSchoolSoftware.com both turn up when you search for [driving school software](/driving-school-software/), and both have long track records. This comparison sets out what each one offers, taken only from their own websites (checked 8 October 2026), so you can judge the fit for yourself.

@@ -4,7 +4,7 @@ description: "Master the Mirror-Signal-Manoeuvre routine for your UK driving tes
 date: "2026-02-21"
 image: /images/feature-driving.jpg
 tags: ["student-management"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Observation & Planning"
 skill_number: 8
 imageAlt: "Learner driver checking interior mirror before a manoeuvre on a UK road"

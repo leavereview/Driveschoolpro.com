@@ -4,7 +4,7 @@ description: "Start a driving school: £15K-£50K startup costs, ADI licensing s
 image: /images/blog-office.jpg
 date: "2026-02-13"
 tags: ["Startup", "Business"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 ---
 
 Starting a driving school can be a rewarding business with steady demand—everyone needs to learn to drive. However, it requires proper planning, licensing, and investment. This guide covers everything you need to know about launching a successful driving instruction business.

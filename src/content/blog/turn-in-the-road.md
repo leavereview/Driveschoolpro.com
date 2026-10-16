@@ -4,7 +4,7 @@ description: "Complete guide to the turn in the road manoeuvre for your UK drivi
 date: "2026-02-21"
 image: /images/blog-lesson.jpg
 tags: ["manoeuvres", "driving-test", "turn-in-the-road"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Manoeuvres"
 skill_number: 18
 imageAlt: "A learner driver performing a turn in the road on a quiet residential street during a driving lesson, with the instructor watching"

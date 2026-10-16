@@ -4,7 +4,7 @@ description: "How to perform an emergency stop on your UK driving test. ABS tech
 date: "2026-02-20"
 image: /images/blog-lesson.jpg
 tags: ["student-management"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Manoeuvres"
 skill_number: 20
 imageAlt: "Car braking sharply on a wet UK road, illustrating the emergency stop technique for the driving test"

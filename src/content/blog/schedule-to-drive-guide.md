@@ -4,7 +4,7 @@ description: "Master the art of scheduling driving lessons. Tips for students on
 image: /images/blog-scheduling.jpg
 date: "2026-02-06"
 tags: ["Scheduling"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 ---
 
 Scheduling driving lessons effectively can make the difference between a quick path to passing and a frustrating, drawn-out learning experience. Whether you're a student trying to book lessons or an instructor managing your diary, getting scheduling right matters more than most people realise. For instructors, [driving school scheduling software](/driving-school-scheduling-software/) removes most of the friction — this guide covers the principles that apply regardless of the tools you use.

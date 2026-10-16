@@ -4,7 +4,7 @@ description: "Learners can now drive on motorways with an ADI. Master joining, l
 date: "2026-02-21"
 image: /images/hero-driving.jpg
 tags: ["student-management", "road-types", "dvsa-skills"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Road Types"
 skill_number: 23
 imageAlt: "UK motorway with multiple lanes of traffic and overhead gantry signs showing speed limits"

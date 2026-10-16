@@ -4,7 +4,7 @@ description: "Keep the right distance from parked cars, choose the correct lane,
 date: "2026-02-21"
 image: /images/feature-instructor.jpg
 tags: ["student-management", "control-positioning", "dvsa-skills"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Control & Positioning"
 skill_number: 7
 imageAlt: "Car driving on a UK road at correct distance from parked vehicles with lane markings visible"

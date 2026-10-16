@@ -10,8 +10,10 @@ const blogCollection = defineCollection({
     image: z.string().optional(),
     imageAlt: z.string().optional(),
     tags: z.array(z.string()).optional(),
-    author: z.string().default('DriveSchoolPro Team'),
+    author: z.string().default('John Powell'),
     category: z.string().optional(),
+    /** US-focused or off-topic posts: kept live for visitors, hidden from search and listings */
+    noindex: z.boolean().optional(),
     skill_number: z.number().optional(),
     howTo: z.object({
       name: z.string(),

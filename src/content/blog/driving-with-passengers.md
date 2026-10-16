@@ -4,7 +4,7 @@ description: "How to drive responsibly with passengers and loads for your UK dri
 date: "2026-02-21"
 image: /images/blog-new-driver.jpg
 tags: ["driving-conditions", "dvsa-skills", "passengers", "vehicle-loading"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Driving Conditions"
 skill_number: 26
 imageAlt: "Driver with passengers in a car on a UK road"

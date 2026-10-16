@@ -1,13 +1,16 @@
 ---
 interface Props {
   date: string;
+  updatedDate?: string;
 }
-const { date } = Astro.props;
-const formattedDate = new Date(date).toLocaleDateString('en-US', {
+const { date, updatedDate } = Astro.props;
+const formatDate = (d: string) => new Date(d).toLocaleDateString('en-GB', {
   year: 'numeric',
   month: 'long',
   day: 'numeric'
 });
+const formattedDate = formatDate(date);
+const formattedUpdated = updatedDate && updatedDate !== date ? formatDate(updatedDate) : null;
 ---
 
 <div class="flex items-center gap-4 mt-4">
@@ -28,7 +31,11 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
       <span class="text-gray-400 text-sm font-normal">Founder, DriveSchoolPro</span>
     </div>
     <div class="flex items-center gap-3 text-sm text-gray-300 mt-0.5">
-      <time datetime={date}>{formattedDate}</time>
+      {formattedUpdated ? (
+        <span>Updated <time datetime={updatedDate}>{formattedUpdated}</time></span>
+      ) : (
+        <time datetime={date}>{formattedDate}</time>
+      )}
       <span>·</span>
       <a
         href="https://www.linkedin.com/in/johnpowellpm/"

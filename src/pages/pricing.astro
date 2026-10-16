@@ -1,141 +1,169 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
-import { OFFER, PROMO } from '../config/offer';
+import { OFFER, PROMO, PRICING } from '../config/offer';
 
-// Early-access offer schema — DriveSchoolPro is free until 31 March 2027
+const P = PRICING;
+const offerBase = {
+  "@context": "https://schema.org",
+  "@type": "Offer",
+  "priceCurrency": "GBP",
+  "availability": "https://schema.org/InStock",
+  "url": OFFER.ctaPrimary.href,
+  "seller": { "@type": "Organization", "name": "DriveSchoolPro" },
+  "itemOffered": { "@id": "https://driveschoolpro.com/#software" },
+};
+const monthly = (price: number) => ({
+  "@type": "UnitPriceSpecification",
+  "price": String(price),
+  "priceCurrency": "GBP",
+  "unitText": "month",
+  "billingIncrement": 1,
+  "valueAddedTaxIncluded": false,
+});
+
+// Offer schema: early access now, then the three plans from 1 April 2027
 const offerSchemas = [
   {
-    "@context": "https://schema.org",
-    "@type": "Offer",
+    ...offerBase,
     "@id": "https://driveschoolpro.com/pricing/#early-access",
-    "name": "Early Access — Free until 31 March 2027",
-    "description": "DriveSchoolPro is free during early access — until 31 March 2027. Unlimited pupils and lessons, scheduling, online booking, DVSA progress tracking, invoicing, and multi-instructor features. No card required, no setup fees.",
+    "name": "Early access — free until 31 March 2027",
+    "description": "Every feature free for solo ADIs and multi-instructor schools until 31 March 2027. No card required, no setup fees.",
     "price": "0",
-    "priceCurrency": "GBP",
-    "priceSpecification": {
-      "@type": "UnitPriceSpecification",
-      "price": "0",
-      "priceCurrency": "GBP",
-      "unitText": "month",
-      "billingIncrement": 1
-    },
+    "priceSpecification": monthly(0),
     "priceValidUntil": "2027-03-31",
-    "availability": "https://schema.org/InStock",
-    "url": OFFER.ctaPrimary.href,
-    "seller": {
-      "@type": "Organization",
-      "name": "DriveSchoolPro"
-    },
-    "itemOffered": {
-      "@id": "https://driveschoolpro.com/#software"
-    },
-    "additionalProperty": [
-      {
-        "@type": "PropertyValue",
-        "name": "Credit Card Required",
-        "value": "No"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Setup Fee",
-        "value": "No"
-      }
-    ]
-  }
+  },
+  {
+    ...offerBase,
+    "@id": "https://driveschoolpro.com/pricing/#free",
+    "name": "Free plan",
+    "description": `${P.free.summary}. Email reminders included.`,
+    "price": "0",
+    "priceSpecification": monthly(0),
+    "validFrom": "2027-04-01",
+  },
+  {
+    ...offerBase,
+    "@id": "https://driveschoolpro.com/pricing/#solo",
+    "name": "Solo plan",
+    "description": `For one instructor: unlimited lessons, every feature, text and WhatsApp reminders. £${P.solo.price} a month, no VAT charged.`,
+    "price": String(P.solo.price),
+    "priceSpecification": monthly(P.solo.price),
+    "validFrom": "2027-04-01",
+  },
+  {
+    ...offerBase,
+    "@id": "https://driveschoolpro.com/pricing/#school",
+    "name": "School plan",
+    "description": `For multi-instructor schools: £${P.school.price} a month plus £${P.school.perExtraInstructor} for each extra instructor, no VAT charged.`,
+    "price": String(P.school.price),
+    "priceSpecification": monthly(P.school.price),
+    "validFrom": "2027-04-01",
+  },
 ];
 
-// FAQ schema for pricing page — keep in sync with the visible FAQ section below
+// FAQ — rendered on the page and as FAQPage schema from the same array
+const faqs = [
+  {
+    q: "How much does DriveSchoolPro cost?",
+    a: `Nothing until 31 March 2027 while we're in early access. From ${P.startDate} there are three plans: Free (1 instructor, up to ${P.free.lessonsPerMonth} lessons a month, every feature including AI lesson briefings), Solo at £${P.solo.price} a month, and School at £${P.school.price} a month plus £${P.school.perExtraInstructor} for each extra instructor. We're not VAT-registered, so no VAT is charged on top.`,
+  },
+  {
+    q: "Is the Free plan really free forever?",
+    a: `Yes. It isn't a trial. You get every feature, including AI lesson briefings, for 1 instructor and up to ${P.free.lessonsPerMonth} lessons a month, with email reminders. That suits a part-time instructor or a new ADI building up a diary. Text and WhatsApp messages cost us money per message, so they're on Solo and School.`,
+  },
+  {
+    q: `What happens when I go over ${P.free.lessonsPerMonth} lessons a month?`,
+    a: `Nothing breaks and nothing is deleted. We'll let you know when you're close, and once you're regularly over the limit we'll ask you to move to Solo. Cancelled lessons and no-shows don't count towards the limit.`,
+  },
+  {
+    q: "What is the founding member price?",
+    a: `If you add a card by ${P.founding.cardBy}, you pay £${P.founding.price} a month instead of £${P.solo.price} (School: £${P.founding.price} plus £${P.founding.perExtraInstructor} per extra instructor), locked for ${P.founding.lockMonths} months from ${P.startDate}. Nothing is charged before ${P.startDate}, and you can cancel before then.`,
+  },
+  {
+    q: "What happens on 1 April 2027 if I do nothing?",
+    a: `Your account moves to the Free plan. Nothing is charged unless you choose Solo or School, and your pupils, lessons and progress records all stay where they are.`,
+  },
+  {
+    q: "Is there a contract?",
+    a: "No. Plans are monthly, with no contract and no cancellation fees. You can stop using DriveSchoolPro at any time.",
+  },
+  {
+    q: "How do my pupils pay me?",
+    a: `You can record cash, bank transfer and cheque payments, and take card payments through Stripe pay-links on invoices. We charge ${P.cardFeePercent}% on card payments you collect through DriveSchoolPro, and Stripe's standard processing fee applies on top. Cash and bank transfers carry no fee.`,
+  },
+  {
+    q: "How is my data kept secure, and where is it hosted?",
+    a: "DriveSchoolPro is run by JOHN POWELL LTD, a UK company and the data controller under UK GDPR. Payments are handled by Stripe (PCI DSS Level 1) and your data is encrypted at rest. Our sub-processors are Stripe, Neon, Vercel and Resend.",
+  },
+  {
+    q: "Is my data used to train AI?",
+    a: "No. Lesson briefings are generated by Claude (Anthropic). Your data is sent securely to produce each briefing and is not used to train any AI model.",
+  },
+  {
+    q: "I'm switching from paper, WhatsApp or a spreadsheet. Is it hard?",
+    a: "No. Setting up takes about two minutes, and you can keep your current diary running alongside until you're confident. It's free until 31 March 2027 and needs no card.",
+  },
+];
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "@id": "https://driveschoolpro.com/pricing/#faqpage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is DriveSchoolPro really free?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes — DriveSchoolPro is free until 31 March 2027 while we're in early access. No card is required and nothing is ever charged automatically. We charge 3% on card payments your school collects through DriveSchoolPro; Stripe's own processing fee is separate. Pricing will be announced well before 1 April 2027."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much does driving school software cost?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Driving school software in the UK typically costs £15–£100+ per month. DriveSchoolPro is currently free — until 31 March 2027 — because we're in early access and building the product with founding schools. That includes unlimited pupils and lessons, scheduling, online booking, DVSA progress tracking, invoicing, and multi-instructor features."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What happens after 31 March 2027?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We'll announce pricing well before 1 April 2027, so you'll have plenty of time to decide. Because there's no card on file, nothing is ever charged automatically — you'll only pay if you actively choose a plan when pricing launches."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is there a contract?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. There's no contract, no card on file, and no cancellation fees. You can stop using DriveSchoolPro at any time."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do my pupils pay me?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You can record cash, bank transfer, and cheque payments, and take card payments through Stripe pay-links on invoices. We charge 3% on card payments you collect through DriveSchoolPro, and Stripe's standard processing fee applies on top."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How is my data kept secure, and where is it hosted?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "DriveSchoolPro is run by LEAVE.REVIEW LTD, a UK company and the data controller under UK GDPR. Payments are handled by Stripe (PCI DSS Level 1) and your data is encrypted at rest. Our sub-processors are Stripe, Neon, Vercel and Resend."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my data used to train AI?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. Lesson briefings are generated by Claude (Anthropic). Your data is sent securely to produce each briefing and is not used to train any AI model."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "I'm switching from paper, WhatsApp or a spreadsheet — is it hard?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. Setting up takes about two minutes, and you can keep your current diary running alongside until you're confident. DriveSchoolPro is free during early access and needs no card."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Which reminders can I send — email or WhatsApp?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Reminders go out by email automatically before every lesson, with configurable timing and full delivery logs. WhatsApp is coming soon."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Why is it free?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Because it's early. We're building DriveSchoolPro with founding schools — your feedback shapes the product, and in return the full product is free until 31 March 2027."
-      }
-    }
-  ]
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a },
+  })),
 };
+
+const plans = [
+  {
+    name: "Free",
+    price: "£0",
+    sub: "for ever",
+    who: "Part-time and new instructors",
+    points: [
+      "1 instructor",
+      `Up to ${P.free.lessonsPerMonth} lessons a month`,
+      "Every feature, including AI lesson briefings",
+      "Email reminders",
+      "Online booking, invoicing and pupil portal",
+    ],
+    featured: false,
+  },
+  {
+    name: "Solo",
+    price: `£${P.solo.price}`,
+    sub: "a month",
+    who: "Full-time independent ADIs",
+    points: [
+      "1 instructor",
+      "Unlimited lessons",
+      "Every feature, including AI lesson briefings",
+      "Text and WhatsApp reminders",
+      `Founding price £${P.founding.price} for ${P.founding.lockMonths} months`,
+    ],
+    featured: true,
+  },
+  {
+    name: "School",
+    price: `£${P.school.price}`,
+    sub: `a month + £${P.school.perExtraInstructor} per extra instructor`,
+    who: "Multi-instructor schools",
+    points: [
+      "Everything in Solo",
+      "Extra instructors £" + P.school.perExtraInstructor + " a month each",
+      "Role-based access and vehicle tracking",
+      "One diary view across the team",
+      `Founding price £${P.founding.price} + £${P.founding.perExtraInstructor} per extra instructor`,
+    ],
+    featured: false,
+  },
+];
 ---
 
-<BaseLayout title="Driving School Software — Free until 31 March 2027" description={`Driving school software with DVSA tracking, scheduling, automated reminders, and invoicing included. ${OFFER.meta} No card required.`} image="/images/hero-pricing.jpg">
+<BaseLayout title="Driving School Software Pricing: Free Plan, Solo £22" description={`Driving school software pricing: free until 31 March 2027, then a permanent Free plan (60 lessons a month) or Solo at £22 a month. No VAT charged. No card required.`} image="/images/hero-pricing.jpg">
   <Fragment slot="head">
     {offerSchemas.map(offerSchema => (
       <script type="application/ld+json" set:html={JSON.stringify(offerSchema)} />
@@ -160,8 +188,8 @@ const faqSchema = {
     <div class="container-custom relative">
       <div class="max-w-3xl text-center mx-auto">
         <span class="inline-block bg-brand-red/20 text-brand-red-light px-3 py-1 rounded-full text-sm mb-4">Early access</span>
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Free until 31 March 2027</h1>
-        <p class="text-xl text-gray-300">We're in early access, building DriveSchoolPro with founding schools. The full product is free — no card required and no setup fees. We charge 3% on card payments you collect; Stripe's own processing fee is separate.</p>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Free until 31 March 2027. Then free for ever, or £22 a month.</h1>
+        <p class="text-xl text-gray-300">Every feature is free during early access, with no card required. From {P.startDate} you can stay on the permanent Free plan or move to Solo or School. No VAT is charged.</p>
         <a href={OFFER.ctaPrimary.href} class="btn-primary inline-flex items-center text-lg mt-8">{OFFER.ctaPrimary.label}</a>
         <p class="text-gray-400 text-sm mt-3">No card required</p>
       </div>
@@ -170,11 +198,11 @@ const faqSchema = {
 
   <section class="section bg-white">
     <div class="container-custom">
-      <div class="max-w-4xl mx-auto">
+      <div class="max-w-5xl mx-auto">
         <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-brand-navy mb-4">One Plan. Everything Included. £0.</h2>
+          <h2 class="text-3xl font-bold text-brand-navy mb-4">Plans from {P.startDate}</h2>
           <p class="text-gray-600 max-w-2xl mx-auto">
-            Solo ADIs and multi-instructor schools get the full product during early access. Pricing will be announced well before 1 April 2027 — and nothing is ever charged automatically.
+            Until then, everyone gets everything free. Prices are per month, with no contract. We're not VAT-registered, so the price you see is the price you pay.
           </p>
           {PROMO.enabled && (
             <p class="inline-block bg-brand-red-light text-brand-navy text-sm font-medium px-4 py-2 rounded-lg">
@@ -182,28 +210,26 @@ const faqSchema = {
             </p>
           )}
         </div>
-        <div class="max-w-xl mx-auto">
-          <!-- Early Access — free plan -->
-          <div class="card border-2 border-brand-red ring-2 ring-brand-red/20 relative">
-            <span class="badge-primary mb-2">Early access</span>
-            <h3 class="text-xl font-bold text-brand-navy mb-2">Everything, free</h3>
-            <p class="text-gray-600 mb-4">For independent ADIs and driving schools</p>
-            <div class="text-4xl font-bold text-brand-navy mb-1">£0<span class="text-lg font-normal text-gray-500">/month</span></div>
-            <p class="text-sm text-gray-500 mb-4">until 31 March 2027</p>
-            <ul class="text-left space-y-2 mb-6 text-sm">
-              <li>✓ Unlimited pupils & lessons</li>
-              <li>✓ Scheduling with conflict detection + online booking</li>
-              <li>✓ Full DVSA progress tracking (27 skills, 8 categories)</li>
-              <li>✓ Invoicing & card payments via Stripe</li>
-              <li>✓ Multi-instructor tools, vehicles & role-based access</li>
-              <li>✓ Automated email reminders (WhatsApp coming soon)</li>
-              <li>✓ AI lesson briefings (powered by Claude)</li>
-              <li>✓ Student self-service portal</li>
-            </ul>
-            <a href={OFFER.ctaPrimary.href} class="btn-primary w-full">{OFFER.ctaPrimary.label}</a>
-            <p class="text-center text-gray-500 text-xs mt-3">No card required · 3% on card payments you collect · Cancel anytime</p>
-          </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          {plans.map(plan => (
+            <div class={`card relative flex flex-col ${plan.featured ? 'border-2 border-brand-red ring-2 ring-brand-red/20' : ''}`}>
+              {plan.featured && <span class="badge-primary mb-2 self-start">Founding price £{P.founding.price}</span>}
+              <h3 class="text-xl font-bold text-brand-navy mb-1">{plan.name}</h3>
+              <p class="text-gray-600 text-sm mb-4">{plan.who}</p>
+              <div class="text-4xl font-bold text-brand-navy mb-1">{plan.price}</div>
+              <p class="text-sm text-gray-500 mb-4">{plan.sub} · no VAT</p>
+              <ul class="text-left space-y-2 mb-6 text-sm flex-1">
+                {plan.points.map(point => <li>✓ {point}</li>)}
+              </ul>
+              <a href={OFFER.ctaPrimary.href} class={plan.featured ? 'btn-primary w-full' : 'btn-secondary w-full'}>{OFFER.ctaPrimary.label}</a>
+            </div>
+          ))}
         </div>
+        <div class="mt-8 max-w-3xl mx-auto bg-brand-red-light rounded-xl p-6 text-center">
+          <h3 class="font-bold text-brand-navy mb-2">Founding member price: £{P.founding.price} a month for {P.founding.lockMonths} months</h3>
+          <p class="text-gray-700 text-sm">Add a card by {P.founding.cardBy} and pay £{P.founding.price} a month instead of £{P.solo.price} (School: £{P.founding.price} + £{P.founding.perExtraInstructor} per extra instructor), locked from {P.startDate} for {P.founding.lockMonths} months. Nothing is charged before {P.startDate}. If you do nothing, your account simply moves to the Free plan.</p>
+        </div>
+        <p class="text-center text-gray-500 text-xs mt-6">{P.cardFeePercent}% on card payments you collect through DriveSchoolPro; Stripe's own processing fee is separate. Cash and bank transfers carry no fee.</p>
       </div>
     </div>
   </section>
@@ -213,7 +239,7 @@ const faqSchema = {
     <div class="container-custom">
       <div class="max-w-3xl mx-auto bg-brand-navy text-white rounded-2xl p-8 md:p-10 text-center">
         <h2 class="text-2xl font-bold mb-3">Running 6 or more instructors?</h2>
-        <p class="text-gray-300 mb-6 max-w-xl mx-auto">Early access is free for larger schools too. Tell us about your school and we'll help you get set up, with priority support and onboarding tailored to bigger teams.</p>
+        <p class="text-gray-300 mb-6 max-w-xl mx-auto">Early access is free for larger schools too, and from 1 April 2027 each extra instructor is £10 a month. Tell us about your school and we'll help you get set up, with priority support and onboarding tailored to bigger teams.</p>
         <a href="/contact/" class="btn-primary">Talk to us</a>
       </div>
     </div>
@@ -231,7 +257,7 @@ const faqSchema = {
           </div>
           <div class="card">
             <h3 class="font-bold text-brand-navy mb-2">Automated Reminders</h3>
-            <p class="text-gray-600 text-sm">Email reminders with configurable timing. WhatsApp coming soon. Per-student notification preferences and full delivery logs so you know every message was received.</p>
+            <p class="text-gray-600 text-sm">Email reminders with configurable timing on every plan; text and WhatsApp reminders on Solo and School. Per-student notification preferences and full delivery logs so you know every message was received.</p>
           </div>
           <div class="card">
             <h3 class="font-bold text-brand-navy mb-2">DVSA Progress Tracking</h3>
@@ -267,29 +293,34 @@ const faqSchema = {
             <thead>
               <tr class="bg-brand-navy text-white">
                 <th class="text-left p-3 rounded-tl-lg">Who it's for</th>
-                <th class="text-left p-3">Monthly cost</th>
-                <th class="text-left p-3 rounded-tr-lg">Until</th>
+                <th class="text-left p-3">Until 31 March 2027</th>
+                <th class="text-left p-3 rounded-tr-lg">From {P.startDate}</th>
               </tr>
             </thead>
             <tbody>
               <tr class="border-b border-gray-200">
-                <td class="p-3 font-medium">Independent ADIs</td>
-                <td class="p-3 font-bold text-brand-navy">£0 <span class="text-xs font-normal text-gray-500">(early access)</span></td>
-                <td class="p-3 text-gray-600">31 March 2027</td>
+                <td class="p-3 font-medium">Part-time ADI (up to {P.free.lessonsPerMonth} lessons a month)</td>
+                <td class="p-3 font-bold text-brand-navy">£0</td>
+                <td class="p-3 text-gray-700">£0 on the Free plan</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="p-3 font-medium">Full-time independent ADI</td>
+                <td class="p-3 font-bold text-brand-navy">£0</td>
+                <td class="p-3 text-gray-700">£{P.solo.price} a month (founding: £{P.founding.price})</td>
               </tr>
               <tr>
-                <td class="p-3 font-medium">Multi-instructor schools</td>
-                <td class="p-3 font-bold text-brand-navy">£0 <span class="text-xs font-normal text-gray-500">(early access)</span></td>
-                <td class="p-3 text-gray-600">31 March 2027</td>
+                <td class="p-3 font-medium">School with 3 instructors</td>
+                <td class="p-3 font-bold text-brand-navy">£0</td>
+                <td class="p-3 text-gray-700">£{P.school.price + 2 * P.school.perExtraInstructor} a month (founding: £{P.founding.price + 2 * P.founding.perExtraInstructor})</td>
               </tr>
             </tbody>
           </table>
         </div>
         <p class="text-gray-600 mb-4">
-          Why free? Because it's early. We're building DriveSchoolPro with founding schools — your feedback shapes the product. Early users report saving 10+ hours of admin weekly, and during early access that saving costs you nothing. Pricing will be announced well before 1 April 2027, and with no card on file nothing is ever charged automatically.
+          Why free now? Because it's early. We're building DriveSchoolPro with founding schools, and your feedback shapes the product. Why a permanent Free plan? Because a part-time instructor with a dozen pupils shouldn't have to pay for software to run a small diary.
         </p>
         <p class="text-gray-600">
-          There are no setup fees and no per-lesson charges. We charge 3% on card payments you collect through invoice pay-links, and Stripe's standard processing fee applies on top. See <a href="/driving-school-software/" class="text-brand-red hover:underline">all driving school software features</a> included.
+          There are no setup fees and no per-lesson charges, and no VAT is added. We charge {P.cardFeePercent}% on card payments you collect through invoice pay-links, and Stripe's standard processing fee applies on top. See <a href="/driving-school-software/" class="text-brand-red hover:underline">all driving school software features</a> included.
         </p>
       </div>
     </div>
@@ -301,42 +332,12 @@ const faqSchema = {
       <div class="max-w-3xl mx-auto">
         <h2 class="text-2xl font-bold text-brand-navy mb-8 text-center">Frequently Asked Questions</h2>
         <div class="space-y-4">
-          <div class="card">
-            <h3 class="font-bold text-brand-navy mb-2">Is DriveSchoolPro really free?</h3>
-            <p class="text-gray-600 text-sm">Yes — DriveSchoolPro is free until 31 March 2027 while we're in early access. No card is required and nothing is ever charged automatically. We charge 3% on card payments your school collects through DriveSchoolPro; Stripe's own processing fee is separate. Pricing will be announced well before 1 April 2027.</p>
-          </div>
-          <div class="card">
-            <h3 class="font-bold text-brand-navy mb-2">What happens after 31 March 2027?</h3>
-            <p class="text-gray-600 text-sm">We'll announce pricing well before 1 April 2027, so you'll have plenty of time to decide. Because there's no card on file, nothing is ever charged automatically — you'll only pay if you actively choose a plan when pricing launches.</p>
-          </div>
-          <div class="card">
-            <h3 class="font-bold text-brand-navy mb-2">Is there a contract?</h3>
-            <p class="text-gray-600 text-sm">No. There's no contract, no card on file, and no cancellation fees. You can stop using DriveSchoolPro at any time.</p>
-          </div>
-          <div class="card">
-            <h3 class="font-bold text-brand-navy mb-2">How do my pupils pay me?</h3>
-            <p class="text-gray-600 text-sm">You can record cash, bank transfer, and cheque payments, and take card payments through Stripe pay-links on invoices. We charge 3% on card payments you collect through DriveSchoolPro, and Stripe's standard processing fee applies on top.</p>
-          </div>
-          <div class="card">
-            <h3 class="font-bold text-brand-navy mb-2">How is my data kept secure, and where is it hosted?</h3>
-            <p class="text-gray-600 text-sm">DriveSchoolPro is run by LEAVE.REVIEW LTD, a UK company and the data controller under UK GDPR. Payments are handled by Stripe (PCI DSS Level 1) and your data is encrypted at rest. Our sub-processors are Stripe, Neon, Vercel and Resend. See our <a href="/privacy-policy/" class="text-brand-red hover:underline">privacy policy</a> for detail.</p>
-          </div>
-          <div class="card">
-            <h3 class="font-bold text-brand-navy mb-2">Is my data used to train AI?</h3>
-            <p class="text-gray-600 text-sm">No. Lesson briefings are generated by Claude (Anthropic). Your data is sent securely to produce each briefing and is not used to train any AI model.</p>
-          </div>
-          <div class="card">
-            <h3 class="font-bold text-brand-navy mb-2">I'm switching from paper, WhatsApp or a spreadsheet — is it hard?</h3>
-            <p class="text-gray-600 text-sm">No. Setting up takes about two minutes, and you can keep your current diary running alongside until you're confident. DriveSchoolPro is free during early access and needs no card.</p>
-          </div>
-          <div class="card">
-            <h3 class="font-bold text-brand-navy mb-2">Which reminders can I send — email or WhatsApp?</h3>
-            <p class="text-gray-600 text-sm">Reminders go out by email automatically before every lesson, with configurable timing and full delivery logs. WhatsApp is coming soon.</p>
-          </div>
-          <div class="card">
-            <h3 class="font-bold text-brand-navy mb-2">Why is it free?</h3>
-            <p class="text-gray-600 text-sm">Because it's early. We're building DriveSchoolPro with founding schools — your feedback shapes the product, and in return the full product is free until 31 March 2027.</p>
-          </div>
+          {faqs.map(f => (
+            <div class="card">
+              <h3 class="font-bold text-brand-navy mb-2">{f.q}</h3>
+              <p class="text-gray-600 text-sm">{f.a}</p>
+            </div>
+          ))}
         </div>
         <p class="text-sm text-gray-500 mt-6 text-center">
           Not sure if software is worth it? See <a href="/blog/switch-paper-diary-to-driving-school-software/#the-numbers" class="text-brand-red hover:underline">how much admin time it saves</a> in our switching guide.

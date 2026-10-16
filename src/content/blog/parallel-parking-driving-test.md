@@ -4,7 +4,7 @@ description: "Master parallel parking for your UK driving test. Learn reference 
 date: "2026-02-20"
 image: /images/blog-lesson.jpg
 tags: ["student-management"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Manoeuvres"
 skill_number: 19
 imageAlt: "Diagram showing parallel parking reference points and technique for UK driving test"

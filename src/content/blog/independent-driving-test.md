@@ -4,7 +4,7 @@ description: "Master the independent driving section of your UK test. Learn how 
 date: "2026-02-21"
 image: /images/blog-pass-test.jpg
 tags: ["following-routes", "dvsa-skills", "independent-driving", "sat-nav", "driving-test"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Following Routes"
 skill_number: 27
 imageAlt: "Driver looking at sat nav screen during UK driving test"

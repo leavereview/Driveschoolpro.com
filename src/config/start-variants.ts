@@ -53,7 +53,7 @@ export const SHARED_FAQ: { q: string; a: string }[] = [
   },
   {
     q: 'What happens when early access ends?',
-    a: 'We’ll announce pricing well before early access ends. There’s no card on file and nothing is charged automatically, so you decide whether to carry on.',
+    a: 'From 1 April 2027 you can stay on the permanent Free plan (1 instructor, up to 60 lessons a month, every feature) or move to Solo at £22 a month. No VAT is charged, and nothing is charged unless you choose a paid plan.',
   },
 ];
 

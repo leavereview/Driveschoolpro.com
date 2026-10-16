@@ -4,7 +4,7 @@ description: "Find out when to signal and when not to on your UK driving test. D
 date: "2026-02-21"
 image: /images/blog-lesson.jpg
 tags: ["student-management"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Observation & Planning"
 skill_number: 9
 imageAlt: "Indicator stalk on a UK car with a learner driver preparing to signal at a junction"

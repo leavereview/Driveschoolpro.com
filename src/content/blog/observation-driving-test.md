@@ -4,7 +4,7 @@ description: "Master observation and anticipation for your UK driving test. What
 date: "2026-02-22"
 image: /images/blog-learner.jpg
 tags: ["driving-test", "observation", "anticipation", "hazard-perception"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Observation & Planning"
 skill_number: 10
 imageAlt: "A learner driver scanning the road ahead through a windscreen, mirrors visible, approaching a junction with clear observation technique"

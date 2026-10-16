@@ -4,7 +4,7 @@ description: "Everything UK learner drivers must know about legal responsibiliti
 date: "2026-02-21"
 image: /images/blog-theory.jpg
 tags: ["the-basics", "dvsa-skills", "legal", "learner-driver", "new-driver"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "The Basics"
 skill_number: 1
 imageAlt: "UK provisional driving licence and car keys on a table"

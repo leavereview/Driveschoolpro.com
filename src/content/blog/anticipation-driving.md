@@ -4,7 +4,7 @@ description: "Learn how to read the road and anticipate hazards for your UK driv
 date: "2026-02-21"
 image: /images/feature-driving.jpg
 tags: ["student-management"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Observation & Planning"
 skill_number: 10
 imageAlt: "View from the driver's seat looking ahead down a busy UK road with parked vehicles and a junction ahead"

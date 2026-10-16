@@ -4,7 +4,7 @@ description: "UK roundabout rules for learner drivers. Lane selection, signallin
 date: "2026-02-20"
 image: /images/feature-driving.jpg
 tags: ["student-management"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Junctions & Roundabouts"
 skill_number: 15
 imageAlt: "Overhead diagram of a UK roundabout showing correct lane positioning and signalling for each exit"

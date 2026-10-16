@@ -4,7 +4,7 @@ description: "Should you join a driving school franchise or go independent? Comp
 image: /images/blog-team.jpg
 date: "2026-01-30"
 tags: ["Business"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 ---
 
 When becoming a driving instructor, one of the first decisions is whether to join a franchise or operate independently. Both paths have merits, and the right choice depends on your circumstances, goals, and preferences.

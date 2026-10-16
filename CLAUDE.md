@@ -60,7 +60,7 @@ URLs and H1s are referenced by live Google Ads campaigns — once ads are live, 
 as **external contracts**: don't rename, move, or noindex them without updating the ads first.
 
 - `/driving-instructor-software` — solo ADI lander (leads with Solo £22/mo)
-- `/driving-school-software-uk` — multi-instructor lander (leads with School £22 + £12/extra)
+- `/driving-school-software-uk` — multi-instructor lander (leads with School £22 + £10/extra instructor; prices apply from 1 April 2027)
   - Note the `-uk` slug: `/driving-school-software` is the existing SEO pillar and was deliberately
     kept; the lander uses a distinct slug rather than overwriting a ranking page.
 

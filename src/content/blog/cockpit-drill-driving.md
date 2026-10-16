@@ -4,7 +4,7 @@ description: "Master the cockpit drill (DSSSM) for your UK driving test. Learn w
 date: "2026-02-21"
 image: /images/blog-learner.jpg
 tags: ["the-basics", "dvsa-skills", "cockpit-drill", "dsssm", "mirrors"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "The Basics"
 skill_number: 3
 imageAlt: "Driver adjusting car mirrors before driving — cockpit drill"

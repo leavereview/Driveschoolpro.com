@@ -19,7 +19,9 @@ export default defineConfig({
         !page.includes('/blog/tag/') &&
         !page.includes('/ads/') &&
         !/\/start\//.test(page) &&
-        !/\/(changelog|early-access|get-started)\/$/.test(page),
+        !/\/(changelog|early-access|get-started)\/$/.test(page) &&
+        // US drivers-ed posts (noindex: true in frontmatter)
+        !/\/blog\/(driver-ed-cars-guide|drivers-ed-franchise-guide)\/$/.test(page),
       serialize: lastmodSerializer(lastmod),
     }),
     compress({

@@ -4,7 +4,7 @@ description: "Make it easy for students to pay and improve your cash flow. Compl
 image: /images/blog-payment.jpg
 date: "2026-01-09"
 tags: ["Software", "Business"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 ---
 
 Getting paid reliably and on time is one of the most practical challenges in running a driving school. Good [driving school management software](/driving-school-management-software/) handles payment processing as part of the same system you use for scheduling, so you're not chasing students for money manually or reconciling two separate tools at the end of each week. This guide covers every payment method worth considering for a UK driving school, the software integrations that make them work, and the practices that protect your cash flow and reduce the admin burden.

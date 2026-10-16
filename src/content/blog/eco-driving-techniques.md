@@ -4,7 +4,7 @@ description: "Eco-driving for UK learner drivers: master block gear changes, coa
 date: "2026-02-21"
 image: /images/feature-driving.jpg
 tags: ["student-management", "dvsa-skills", "eco-driving", "fuel-efficiency"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Observation & Planning"
 skill_number: 13
 imageAlt: "Driver's hand on gear stick demonstrating smooth gear changes in a UK driving lesson"

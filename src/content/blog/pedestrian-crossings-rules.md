@@ -4,7 +4,7 @@ description: "Know all 6 UK pedestrian crossing types for your driving test. Lea
 date: "2026-02-21"
 image: /images/feature-student.jpg
 tags: ["junctions", "driving-test", "pedestrian-crossings", "observation"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Junctions & Roundabouts"
 skill_number: 16
 imageAlt: "A learner driver stopped at a zebra crossing, waiting for a pedestrian to complete crossing safely before moving off"

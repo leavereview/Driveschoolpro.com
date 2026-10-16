@@ -57,6 +57,7 @@ const allPosts = await getCollection('blog');
 const relatedPosts = allPosts
   .filter(p =>
     p.slug !== post.slug &&
+    !p.data.noindex &&
     p.data.tags?.some(tag => post.data.tags?.includes(tag))
   )
   .slice(0, 3);
@@ -68,6 +69,9 @@ const relatedPosts = allPosts
   image={post.data.image}
   type="article"
   publishedDate={post.data.date}
+  modifiedDate={post.data.updatedDate}
+  author={post.data.author}
+  noindex={post.data.noindex}
 >
   {faqSchema && (
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
@@ -104,7 +108,7 @@ const relatedPosts = allPosts
           <h1 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">
             {post.data.title}
           </h1>
-          <AuthorByline date={post.data.date} />
+          <AuthorByline date={post.data.date} updatedDate={post.data.updatedDate} />
         </div>
       </div>
     </header>

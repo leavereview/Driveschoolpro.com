@@ -4,7 +4,8 @@ description: "Complete guide to driver's ed franchises. Compare franchise vs. in
 image: /images/blog-team.jpg
 date: "2026-01-30"
 tags: ["Business", "Startup"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
+noindex: true
 ---
 
 Considering a driver's education franchise? Franchising offers a proven business model with established brand recognition, but it comes with significant costs and restrictions. This guide provides an honest assessment of driving school franchises to help you decide whether franchising is right for you.

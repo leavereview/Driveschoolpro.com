@@ -4,7 +4,7 @@ description: "Complete guide to Show Me Tell Me for your UK driving test. Learn 
 date: "2026-02-21"
 image: /images/feature-student.jpg
 tags: ["the-basics", "dvsa-skills", "show-me-tell-me", "vehicle-checks", "driving-test"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "The Basics"
 skill_number: 2
 imageAlt: "Driver checking engine oil level under car bonnet"

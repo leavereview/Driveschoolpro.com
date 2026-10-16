@@ -4,7 +4,7 @@ description: "Understand driving school insurance requirements. Types of coverag
 image: /images/blog-lesson.jpg
 date: "2026-02-06"
 tags: ["Compliance", "Business"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 ---
 
 Proper insurance is essential for any driving instruction business. Without adequate coverage, a single incident could end your career and leave you financially devastated. This guide explains the insurance requirements for driving schools and instructors.

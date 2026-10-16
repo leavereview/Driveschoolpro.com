@@ -4,7 +4,7 @@ description: "SEO for driving schools: rank #1 locally with Google Business opti
 image: /images/blog-software.jpg
 date: "2026-02-13"
 tags: ["Marketing"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 ---
 
 When someone searches "driving lessons near me" or "driving school [your town]," you want your business to appear. Search engine optimisation (SEO) determines whether potential students find you or your competitors. This guide covers practical SEO strategies specifically for [driving schools](/driving-school-software/).

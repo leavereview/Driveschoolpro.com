@@ -6,7 +6,7 @@ imageAlt: "Driving school instructor using management software on tablet to sche
 date: "2026-02-24"
 updatedDate: "2026-10-08"
 tags: ["Software"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 faqs:
   - question: "What is the best driver training software?"
     answer: "For UK instructors, the best driver training software is the one that tracks pupils against the DVSA 27 driving skills, not just lesson times. Solo ADIs usually shortlist Total Drive, My Drive Time, Passly, LessonBuddy and DriveSchoolPro; multi-car schools add Driving School Office. DriveSchoolPro is free until 31 March 2027 while in early access."
@@ -89,7 +89,7 @@ Rather than a price league table, here's how to make sure you're comparing like 
 - **Is pricing published at all?** Some vendors, including Driving School Office, quote on request. That's a legitimate model for larger schools, but it makes budgeting harder for a solo ADI.
 - **What happens after the trial?** Check whether a card is taken up front and whether you're charged automatically when the trial ends.
 
-**DriveSchoolPro right now:** the full product is free until 31 March 2027 while in early access, for solo ADIs and multi-instructor schools alike. There's no card on file, so nothing is charged automatically, and pricing will be announced well before 1 April 2027. It's an early-access arrangement, not a feature-capped free tier.
+**DriveSchoolPro right now:** the full product is free until 31 March 2027 while in early access, for solo ADIs and multi-instructor schools alike. There's no card on file, so nothing is charged automatically. From 1 April 2027 there's a permanent Free plan with every feature for 1 instructor and up to 60 lessons a month, Solo at £22 a month, and School at £22 plus £10 per extra instructor, with no VAT charged.
 
 If you want something that stays free, our guide to [free driving school software](/free-driving-school-software/) covers what the no-cost options include and where they stop.
 

@@ -117,8 +117,8 @@ const FORBIDDEN = [
   ['import your pupils', 'no pupil import feature exists in the app'],
   ['import students', 'no pupil import feature exists in the app'],
   ['import your students', 'no pupil import feature exists in the app'],
-  ['inc vat', 'LEAVE.REVIEW LTD is not VAT-registered'],
-  ['including vat', 'LEAVE.REVIEW LTD is not VAT-registered'],
+  ['inc vat', 'JOHN POWELL LTD is not VAT-registered'],
+  ['including vat', 'JOHN POWELL LTD is not VAT-registered'],
   ['#ff385c', 'not a brand token'],
 ];
 

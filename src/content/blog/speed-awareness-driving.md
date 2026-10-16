@@ -4,7 +4,7 @@ description: "Speed management for UK learner drivers: drive at the right pace f
 date: "2026-02-21"
 image: /images/feature-driving.jpg
 tags: ["student-management", "dvsa-skills", "speed", "observation"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Observation & Planning"
 skill_number: 11
 imageAlt: "Learner driver checking speedometer while driving on a UK road"

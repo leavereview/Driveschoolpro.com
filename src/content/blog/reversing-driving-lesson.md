@@ -4,7 +4,7 @@ description: "Learn how to reverse safely and confidently for your UK driving te
 date: "2026-02-21"
 image: /images/blog-lesson.jpg
 tags: ["manoeuvres", "driving-test", "reversing"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Manoeuvres"
 skill_number: 17
 imageAlt: "A learner driver looking through the rear window while reversing slowly along a quiet residential road during a driving lesson"

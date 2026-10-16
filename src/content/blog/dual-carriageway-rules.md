@@ -4,7 +4,7 @@ description: "How to join, travel, overtake, and leave dual carriageways safely.
 date: "2026-02-21"
 image: /images/hero-driving.jpg
 tags: ["student-management", "road-types", "dvsa-skills"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Road Types"
 skill_number: 22
 imageAlt: "Two-lane dual carriageway in the UK with vehicles travelling in the left lane and central reservation visible"

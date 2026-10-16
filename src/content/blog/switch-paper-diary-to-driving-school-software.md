@@ -97,7 +97,7 @@ This guide would not be much use if it glossed over the genuine drawbacks.
 
 **There is a learning curve.** It is small — budget 30 minutes to set up and a week to feel completely comfortable — but it is real. If you are mid-way through a busy teaching week and your time is limited, choose a quieter period to make the switch.
 
-**It will cost money eventually.** Right now DriveSchoolPro is free — until 31 March 2027, while in early access — so cost is not a barrier to switching today. Pricing will be announced well before 1 April 2027, and nothing is charged automatically. See the [pricing page](/pricing/) for what's included. The [numbers below](#the-numbers) show how much admin time the software saves — the saving is bigger than most ADIs expect.
+**It may cost money eventually.** Right now DriveSchoolPro is free — until 31 March 2027, while in early access — so cost is not a barrier to switching today. From 1 April 2027 there's a permanent Free plan for 1 instructor and up to 60 lessons a month; busier instructors pay £22 a month for Solo, with no VAT charged. See the [pricing page](/pricing/) for what's included. The [numbers below](#the-numbers) show how much admin time the software saves — the saving is bigger than most ADIs expect.
 
 **You need your phone charged and connected.** Cloud-based software requires internet access to sync. If you are teaching in a rural area with patchy signal, check whether the app has offline functionality or requires consistent connectivity.
 

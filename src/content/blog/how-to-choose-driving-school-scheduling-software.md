@@ -4,7 +4,7 @@ description: "A practical guide for UK ADIs: what features matter in scheduling 
 image: /images/blog-scheduling.jpg
 date: "2025-12-27"
 tags: ["Software", "Scheduling"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 ---
 
 Choosing [driving school scheduling software](/driving-school-scheduling-software/) sounds simple until you're looking at a list of features you don't fully understand, pricing pages that hide the real cost, and trials that expire before you've worked out how to use them.

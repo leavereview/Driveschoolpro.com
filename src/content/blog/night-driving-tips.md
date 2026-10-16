@@ -4,7 +4,7 @@ description: "Master night driving for your UK test. Learn correct headlight use
 date: "2026-02-21"
 image: /images/feature-driving.jpg
 tags: ["driving-conditions", "dvsa-skills", "night-driving", "headlights"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Driving Conditions"
 skill_number: 24
 imageAlt: "Car headlights illuminating a dark UK road at night"

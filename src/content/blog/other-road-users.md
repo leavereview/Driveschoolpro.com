@@ -4,7 +4,7 @@ description: "Learn how to safely interact with cyclists, pedestrians, horses, a
 date: "2026-02-21"
 image: /images/feature-student.jpg
 tags: ["student-management", "dvsa-skills", "road-users", "observation"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Observation & Planning"
 skill_number: 12
 imageAlt: "Driver checking mirrors for cyclists and pedestrians at a busy UK junction"

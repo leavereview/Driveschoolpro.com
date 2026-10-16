@@ -4,7 +4,7 @@ description: "Master bay parking for your UK driving test. Learn reverse and for
 date: "2026-02-21"
 image: /images/blog-lesson.jpg
 tags: ["manoeuvres", "driving-test", "bay-parking"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Manoeuvres"
 skill_number: 19
 imageAlt: "A learner driver carefully reversing into a marked bay in a car park during a driving lesson"

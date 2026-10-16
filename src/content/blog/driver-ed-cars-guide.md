@@ -4,7 +4,8 @@ description: "Complete guide to selecting driver education vehicles. Features, s
 image: /images/blog-dual-controls.jpg
 date: "2026-01-23"
 tags: ["Business"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
+noindex: true
 ---
 
 The vehicle you choose for your driving school affects everything—student confidence, safety, operating costs, and your professional image. This guide covers what to consider when selecting driver education cars and which models work best for instruction.

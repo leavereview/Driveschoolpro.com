@@ -26,7 +26,7 @@ const personSchema = {
   },
   "worksFor": {
     "@type": "Organization",
-    "name": "LEAVE.REVIEW LTD",
+    "name": "JOHN POWELL LTD",
     "url": "https://driveschoolpro.com"
   },
   "knowsAbout": [
@@ -41,10 +41,10 @@ const personSchema = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "LEAVE.REVIEW LTD",
+  "name": "JOHN POWELL LTD",
   "alternateName": "DriveSchoolPro",
   "url": "https://driveschoolpro.com",
-  "logo": "https://driveschoolpro.com/images/mydriveschool-logo.png",
+  "logo": "https://driveschoolpro.com/icon-512.png",
   "foundingDate": "2005-03-31",
   "description": "UK-registered software development company providing vertical SaaS solutions for driving schools and instructors",
   "address": {
@@ -60,7 +60,11 @@ const organizationSchema = {
   },
   "sameAs": [
     "https://find-and-update.company-information.service.gov.uk/company/05408918",
-    "https://www.linkedin.com/company/driveschoolpro/"
+    "https://www.linkedin.com/company/driveschoolpro/",
+    "https://www.capterra.co.uk/software/1092493/DriveSchoolPro",
+    "https://www.g2.com/products/drive-school-pro/reviews",
+    "https://uk.trustpilot.com/review/driveschoolpro.com",
+    "https://www.producthunt.com/products/driveschoolpro"
   ]
 };
 
@@ -258,7 +262,7 @@ const testimonials = [
         <div class="mb-16 bg-gray-50 rounded-2xl p-8">
           <h2 class="text-3xl font-bold text-brand-navy mb-6">Company Information</h2>
           <p class="text-gray-600 mb-6">
-            DriveSchoolPro is a trading name of <strong class="text-brand-navy">LEAVE.REVIEW LTD</strong>, a UK-registered software development company established in 2005.
+            DriveSchoolPro is a trading name of <strong class="text-brand-navy">JOHN POWELL LTD</strong>, a UK-registered software development company established in 2005. For a one-page summary of the company, prices and features, see our <a href="/about/facts/" class="text-brand-red hover:underline">company facts page</a>.
           </p>
 
           <div class="grid md:grid-cols-2 gap-6 mb-6">
@@ -294,7 +298,7 @@ const testimonials = [
 
           <div class="mt-6 p-4 bg-blue-50 rounded-xl border border-blue-100">
             <p class="text-sm text-blue-800">
-              <strong>Why this matters:</strong> LEAVE.REVIEW LTD has traded since 2005 — originally as REVELATION MEDIA LTD, the company behind RevelationPets.com. A 20-year track record means stable support, no overnight shutdowns, and a team with real experience in the software industry.
+              <strong>Why this matters:</strong> JOHN POWELL LTD (company number 05408918) has traded since 2005 and is the company behind RevelationPets.com. A 20-year track record means stable support, no overnight shutdowns, and a team with real experience in the software industry.
             </p>
           </div>
         </div>
@@ -517,11 +521,11 @@ const testimonials = [
       </p>
       <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12">
         {[
-          { name: 'Product Hunt', href: 'https://www.producthunt.com',    file: 'product-hunt.svg' },
-          { name: 'Capterra',     href: 'https://www.capterra.com',       file: 'capterra.svg'     },
-          { name: 'SaaSHub',      href: 'https://www.saashub.com',        file: 'saashub.svg'      },
-          { name: 'G2',           href: 'https://www.g2.com',             file: 'g2.svg'           },
-          { name: 'FreeIndex',    href: 'https://www.freeindex.co.uk',    file: 'freeindex.svg'    },
+          { name: 'Product Hunt', href: 'https://www.producthunt.com/products/driveschoolpro', file: 'product-hunt.svg' },
+          { name: 'Capterra',     href: 'https://www.capterra.co.uk/software/1092493/DriveSchoolPro', file: 'capterra.svg'     },
+          { name: 'SaaSHub',      href: 'https://www.saashub.com/driveschoolpro', file: 'saashub.svg'      },
+          { name: 'G2',           href: 'https://www.g2.com/products/drive-school-pro/reviews', file: 'g2.svg'           },
+          { name: 'FreeIndex',    href: 'https://www.freeindex.co.uk/profile(driveschoolpro)_859501.htm', file: 'freeindex.svg'    },
         ].map(({ name, href, file }) => (
           <a
             href={href}

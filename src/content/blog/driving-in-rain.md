@@ -4,7 +4,7 @@ description: "How to drive safely in rain, fog, ice and adverse weather for your
 date: "2026-02-21"
 image: /images/feature-driving.jpg
 tags: ["driving-conditions", "dvsa-skills", "adverse-weather", "rain-driving"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Driving Conditions"
 skill_number: 25
 imageAlt: "Car driving on a wet UK road with rain and spray visible"

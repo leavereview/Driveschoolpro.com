@@ -4,7 +4,7 @@ description: "Student progress tracking boosts pass rates 23% and retention 31%.
 image: /images/blog-progress.jpg
 date: "2025-12-20"
 tags: ["Student Management"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 ---
 
 Driving schools that track student progress systematically see 23% higher first-time pass rates and 31% better [student retention](/blog/reduce-driving-lesson-no-shows/) compared to schools using ad-hoc methods or memory alone. Progress tracking is one of the core features of [DriveSchoolPro's driving school software](/driving-school-software/) — built around the DVSA 27-skill framework.

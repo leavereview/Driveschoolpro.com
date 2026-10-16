@@ -4,7 +4,7 @@ description: "Junctions cause more driving test faults than anything else. Learn
 date: "2026-02-21"
 image: /images/blog-learner.jpg
 tags: ["junctions", "driving-test", "observation", "road-positioning"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Junctions & Roundabouts"
 skill_number: 14
 imageAlt: "A learner driver approaching a T-junction carefully, checking both ways before emerging onto the main road during a driving lesson"

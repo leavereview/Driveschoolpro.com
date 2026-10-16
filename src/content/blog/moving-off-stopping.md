@@ -4,7 +4,7 @@ description: "POM routine, clutch control, hill starts, and safe stopping positi
 date: "2026-02-21"
 image: /images/feature-instructor.jpg
 tags: ["control-positioning", "dvsa-skills"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Control & Positioning"
 skill_number: 6
 imageAlt: "Learner driver checking mirrors and preparing to move off from a parked position on a UK road"

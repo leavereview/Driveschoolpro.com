@@ -4,7 +4,7 @@ description: "UK learner driver guide to vehicle security — applying handbrake
 date: "2026-02-21"
 image: /images/blog-learner.jpg
 tags: ["the-basics", "dvsa-skills", "vehicle-security", "parking", "handbrake"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "The Basics"
 skill_number: 4
 imageAlt: "Driver applying handbrake and securing vehicle before leaving"

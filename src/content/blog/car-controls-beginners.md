@@ -4,7 +4,7 @@ description: "Master every pedal, gear, and switch before your first drive. DVSA
 date: "2026-02-21"
 image: /images/feature-instructor.jpg
 tags: ["student-management", "control-positioning", "dvsa-skills"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Control & Positioning"
 skill_number: 5
 imageAlt: "Learner driver sitting in car reviewing dashboard controls with driving instructor"

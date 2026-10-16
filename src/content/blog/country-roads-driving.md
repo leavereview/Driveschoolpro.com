@@ -4,7 +4,7 @@ description: "Country roads kill more drivers than motorways. Learn DVSA Skill 2
 date: "2026-02-21"
 image: /images/hero-driving.jpg
 tags: ["student-management", "road-types", "dvsa-skills"]
-author: "DriveSchoolPro Team"
+author: "John Powell"
 category: "Road Types"
 skill_number: 21
 imageAlt: "Car navigating a narrow country lane in the UK with hedgerows on either side"
