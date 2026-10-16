@@ -461,5 +461,6 @@ DriveSchoolPro gives you scheduling, DVSA competency tracking, student managemen
 
 - [Best Driving School Software 2026: UK ADI Comparison Guide](/blog/best-driving-school-software/)
 - [Driving School Insurance Guide](/blog/driving-school-insurance-guide/)
+- [Making Tax Digital for Driving Instructors](/blog/making-tax-digital-driving-instructors/)
 - [How to Reduce Driving Lesson No-Shows: 8 Proven Strategies](/blog/reduce-driving-lesson-no-shows/)
 - [Switching from Paper Diary to Driving School Software](/blog/switch-paper-diary-to-driving-school-software/)

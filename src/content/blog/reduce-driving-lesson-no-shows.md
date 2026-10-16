@@ -240,7 +240,7 @@ DriveSchoolPro sends automated reminders, tracks cancellations, manages lesson p
 
 ## Related Articles
 
-- [Driving School Software — Automated Reminders and Scheduling](/)
+- [Driving School Software — Automated Reminders and Scheduling](/features/scheduling/)
 - [Best Driving School Software 2026: UK ADI Comparison Guide](/blog/best-driving-school-software/)
 - [How to Start a Driving School in the UK](/blog/how-to-start-a-driving-school/)
 - [Switching from Paper Diary to Driving School Software](/blog/switch-paper-diary-to-driving-school-software/)
