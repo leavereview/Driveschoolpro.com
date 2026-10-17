@@ -3,6 +3,7 @@
     python3 brand/build-social-templates.py
 
 Writes brand/social-templates/{png,svg}/<type>-<WxH>-{bg,sample}.{png,svg} and contact-sheet.png.
+Templates take sample=True (placeholder copy) or a dict of real copy (see build-social-posts.py).
   -bg      no placeholder copy: background, label, decoration, logo footer (upload to Canva/Metricool)
   -sample  same plus placeholder copy ("Headline goes here") showing where text goes and how big
 PNGs are rendered from outlined text (exact). SVGs keep text as editable <text> (Lexend / Inter).
@@ -196,12 +197,13 @@ def tpl_announce(F, sample, mode):
     b += f'<rect x="0" y="{by_ + bh:.1f}" width="{W}" height="10" fill="{NAVY}"/>'
     b += pill(F, 'NEWS', mode, NAVY, WHITE)
     if sample:
+        c = sample if isinstance(sample, dict) else {}
         hs = F.by(72, 80, 88)
-        b += stack(F, [item(0, *tb(LEX, 'Announcement headline goes here', hs, F.cw, NAVY, mode, 1.12, ident='headline'))],
+        b += stack(F, [item(0, *tb(LEX, c.get('headline', 'Announcement headline goes here'), hs, F.cw, NAVY, mode, 1.12, ident='headline'))],
                    F.content_top, by_ - 50)
         bs = F.by(64, 68, 70)
-        b += text(LEX, 'Free until 31 March 2027', bs, W / 2, by_ + bh / 2 + bs * 0.36, WHITE, mode, anchor='middle', ident='band')
-        b += stack(F, [item(0, *tb(INTER, 'Supporting detail goes here. Keep it to one or two lines.', F.by(34, 36, 40), F.cw, MUTED_ON_LIGHT, mode, 1.4, ident='body'))],
+        b += text(LEX, c.get('band', 'Free until 31 March 2027'), bs, W / 2, by_ + bh / 2 + bs * 0.36, WHITE, mode, anchor='middle', ident='band')
+        b += stack(F, [item(0, *tb(INTER, c.get('body', 'Supporting detail goes here. Keep it to one or two lines.'), F.by(34, 36, 40), F.cw, MUTED_ON_LIGHT, mode, 1.4, ident='body'))],
                    by_ + bh + 10 + 50, F.content_bottom)
     return b + footer(F, mode, False)
 
@@ -214,10 +216,11 @@ def tpl_mtd(F, sample, mode):
     b += ring(W - 40, F.top + r * 0.5, r, F.by(52, 58, 66), FAINT_ON_PINK, FAINT_ON_PINK, done=N)
     b += pill(F, 'MAKING TAX DIGITAL', mode, 'none', NAVY, stroke=NAVY)
     if sample:
+        c = sample if isinstance(sample, dict) else {}
         hs = F.by(72, 78, 84)
-        items = [item(30, *tb(LEX, 'Guide headline goes here', hs, F.cw, NAVY, mode, 1.12, ident='headline')),
-                 item(F.by(44, 56, 64), *tb(INTER, 'A calm, plain-English line explaining what this means for instructors.', F.by(34, 36, 40), F.by(880, 900, 920), OFF_DARK, mode, 1.4, ident='body'))]
-        for pt in ['Key point one goes here', 'Key point two goes here', 'Key point three goes here']:
+        items = [item(30, *tb(LEX, c.get('headline', 'Guide headline goes here'), hs, F.cw, NAVY, mode, 1.12, ident='headline')),
+                 item(F.by(44, 56, 64), *tb(INTER, c.get('body', 'A calm, plain-English line explaining what this means for instructors.'), F.by(34, 36, 40), F.by(880, 900, 920), OFF_DARK, mode, 1.4, ident='body'))]
+        for pt in c.get('points', ['Key point one goes here', 'Key point two goes here', 'Key point three goes here']):
             def fn(y, pt=pt):
                 s = 44 / 128
                 return (f'<g transform="translate({M} {y:.1f}) scale({s:.4f})"><circle cx="64" cy="64" r="64" fill="{WHITE}"/>'
