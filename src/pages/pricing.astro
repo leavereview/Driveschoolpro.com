@@ -46,7 +46,7 @@ const offerSchemas = [
     ...offerBase,
     "@id": "https://driveschoolpro.com/pricing/#solo",
     "name": "Solo plan",
-    "description": `For one instructor: unlimited lessons, every feature, text and WhatsApp reminders. £${P.solo.price} a month, no VAT charged.`,
+    "description": `For one instructor: unlimited lessons, every feature, text and WhatsApp reminders when they launch (coming soon). £${P.solo.price} a month, no VAT charged.`,
     "price": String(P.solo.price),
     "priceSpecification": monthly(P.solo.price),
     "validFrom": "2027-04-01",
@@ -70,7 +70,7 @@ const faqs = [
   },
   {
     q: "Is the Free plan really free forever?",
-    a: `Yes. It isn't a trial. You get every feature, including AI lesson briefings, for 1 instructor and up to ${P.free.lessonsPerMonth} lessons a month, with email reminders. That suits a part-time instructor or a new ADI building up a diary. Text and WhatsApp messages cost us money per message, so they're on Solo and School.`,
+    a: `Yes. It isn't a trial. You get every feature, including AI lesson briefings, for 1 instructor and up to ${P.free.lessonsPerMonth} lessons a month, with email reminders. That suits a part-time instructor or a new ADI building up a diary. Text and WhatsApp reminders are coming soon; because each message costs us money, they'll be on Solo and School.`,
   },
   {
     q: `What happens when I go over ${P.free.lessonsPerMonth} lessons a month?`,
@@ -141,7 +141,7 @@ const plans = [
       "1 instructor",
       "Unlimited lessons",
       "Every feature, including AI lesson briefings",
-      "Text and WhatsApp reminders",
+      "Text and WhatsApp reminders (coming soon)",
       `Founding price £${P.founding.price} for ${P.founding.lockMonths} months`,
     ],
     featured: true,
@@ -257,7 +257,7 @@ const plans = [
           </div>
           <div class="card">
             <h3 class="font-bold text-brand-navy mb-2">Automated Reminders</h3>
-            <p class="text-gray-600 text-sm">Email reminders with configurable timing on every plan; text and WhatsApp reminders on Solo and School. Per-student notification preferences and full delivery logs so you know every message was received.</p>
+            <p class="text-gray-600 text-sm">Email reminders with configurable timing on every plan; text and WhatsApp reminders coming soon on Solo and School. Per-student notification preferences and full delivery logs so you know every message was received.</p>
           </div>
           <div class="card">
             <h3 class="font-bold text-brand-navy mb-2">DVSA Progress Tracking</h3>

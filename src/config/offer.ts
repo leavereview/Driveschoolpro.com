@@ -80,7 +80,7 @@ export const PRICING = {
   solo: {
     name: "Solo",
     price: 22,
-    summary: "1 instructor, unlimited lessons, text and WhatsApp reminders",
+    summary: "1 instructor, unlimited lessons, text and WhatsApp reminders (coming soon)",
   },
   school: {
     name: "School",
