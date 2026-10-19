@@ -25,6 +25,7 @@ const levels = [
 <BaseLayout
   title="Road Types: Skills 21-23 | Country Roads to Motorways"
   description="Master country roads, dual carriageways, and motorways. Skills 21-23 of the DVSA Ready to Pass framework — adapting your driving to different environments."
+  image="/images/blog/dvsa-road-types.jpg"
 >
   <BreadcrumbsEnhanced
     site="driveschool"
@@ -38,6 +39,7 @@ const levels = [
   <!-- Hero -->
   <section class="bg-gradient-to-br from-brand-navy to-gray-900 text-white py-16">
     <div class="container-custom">
+      <div class="grid lg:grid-cols-[minmax(0,1fr)_340px] gap-12 items-center">
       <div class="max-w-3xl">
         <div class="flex items-center gap-3 mb-4">
           <span class="inline-block bg-brand-red/20 border border-brand-red/40 text-brand-red-light text-sm font-semibold px-3 py-1 rounded-full">Skills 21–23</span>
@@ -51,6 +53,10 @@ const levels = [
           Note: motorway driving is not part of the practical test, but it is part of the DVSA framework. Many instructors introduce it during post-test lessons.
         </p>
         <a href={OFFER.ctaPrimary.href} class="btn-primary px-8 py-4">Track Your Road Type Progress</a>
+      </div>
+      <div class="hidden lg:block rounded-2xl overflow-hidden bg-white p-4 shadow-xl">
+        <img src="/images/dvsa/road-types.svg" alt="A winding road, illustrating different road types" width="340" height="340" class="w-full h-auto" loading="eager" decoding="async" />
+      </div>
       </div>
     </div>
   </section>

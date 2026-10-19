@@ -25,6 +25,7 @@ const levels = [
 <BaseLayout
   title="Following Routes: Skill 27 | Independent Driving & Sat Nav"
   description="Master independent driving for your test — following sat nav or road signs for 20 minutes. Skill 27 of the DVSA Ready to Pass framework, fully explained."
+  image="/images/blog/dvsa-following-routes.jpg"
 >
   <BreadcrumbsEnhanced
     site="driveschool"
@@ -38,6 +39,7 @@ const levels = [
   <!-- Hero -->
   <section class="bg-gradient-to-br from-brand-navy to-gray-900 text-white py-16">
     <div class="container-custom">
+      <div class="grid lg:grid-cols-[minmax(0,1fr)_340px] gap-12 items-center">
       <div class="max-w-3xl">
         <div class="flex items-center gap-3 mb-4">
           <span class="inline-block bg-brand-red/20 border border-brand-red/40 text-brand-red-light text-sm font-semibold px-3 py-1 rounded-full">Skill 27</span>
@@ -51,6 +53,10 @@ const levels = [
           This section worries many learners, but it's actually straightforward. Going the wrong way isn't a fault — only unsafe driving is.
         </p>
         <a href={OFFER.ctaPrimary.href} class="btn-primary px-8 py-4">Track Your Progress</a>
+      </div>
+      <div class="hidden lg:block rounded-2xl overflow-hidden bg-white p-4 shadow-xl">
+        <img src="/images/dvsa/following-routes.svg" alt="A winding route leading to a map pin, illustrating independent driving" width="340" height="340" class="w-full h-auto" loading="eager" decoding="async" />
+      </div>
       </div>
     </div>
   </section>

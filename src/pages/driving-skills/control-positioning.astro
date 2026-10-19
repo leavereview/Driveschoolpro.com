@@ -25,6 +25,7 @@ const levels = [
 <BaseLayout
   title="Control & Positioning: Skills 5-7 | Master Your Vehicle"
   description="Master car controls, moving off and stopping, and safe road positioning. Skills 5-7 of the DVSA Ready to Pass framework — the foundations of vehicle control."
+  image="/images/blog/dvsa-control-positioning.jpg"
 >
   <BreadcrumbsEnhanced
     site="driveschool"
@@ -38,6 +39,7 @@ const levels = [
   <!-- Hero -->
   <section class="bg-gradient-to-br from-brand-navy to-gray-900 text-white py-16">
     <div class="container-custom">
+      <div class="grid lg:grid-cols-[minmax(0,1fr)_340px] gap-12 items-center">
       <div class="max-w-3xl">
         <div class="flex items-center gap-3 mb-4">
           <span class="inline-block bg-brand-red/20 border border-brand-red/40 text-brand-red-light text-sm font-semibold px-3 py-1 rounded-full">Skills 5–7</span>
@@ -51,6 +53,10 @@ const levels = [
           These three skills underpin every other skill on the list. Weak control makes junctions, roundabouts, and manoeuvres much harder than they need to be.
         </p>
         <a href={OFFER.ctaPrimary.href} class="btn-primary px-8 py-4">Track Your Control Progress</a>
+      </div>
+      <div class="hidden lg:block rounded-2xl overflow-hidden bg-white p-4 shadow-xl">
+        <img src="/images/dvsa/control-positioning.svg" alt="A car seen from above keeping its position in lane" width="340" height="340" class="w-full h-auto" loading="eager" decoding="async" />
+      </div>
       </div>
     </div>
   </section>

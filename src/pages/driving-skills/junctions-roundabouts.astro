@@ -25,6 +25,7 @@ const levels = [
 <BaseLayout
   title="Junctions & Roundabouts: Skills 14-16 | Navigate Safely"
   description="Master junctions, roundabout rules UK, and pedestrian crossings. Skills 14-16 of the DVSA Ready to Pass — the most common source of driving test faults."
+  image="/images/blog/dvsa-junctions-roundabouts-crossings.jpg"
 >
   <BreadcrumbsEnhanced
     site="driveschool"
@@ -38,6 +39,7 @@ const levels = [
   <!-- Hero -->
   <section class="bg-gradient-to-br from-brand-navy to-gray-900 text-white py-16">
     <div class="container-custom">
+      <div class="grid lg:grid-cols-[minmax(0,1fr)_340px] gap-12 items-center">
       <div class="max-w-3xl">
         <div class="flex items-center gap-3 mb-4">
           <span class="inline-block bg-brand-red/20 border border-brand-red/40 text-brand-red-light text-sm font-semibold px-3 py-1 rounded-full">Skills 14–16</span>
@@ -51,6 +53,10 @@ const levels = [
           Observation, lane selection, timing, and signalling all come together at junctions. Examiners watch these moments closely on every test.
         </p>
         <a href={OFFER.ctaPrimary.href} class="btn-primary px-8 py-4">Track Your Junction Progress</a>
+      </div>
+      <div class="hidden lg:block rounded-2xl overflow-hidden bg-white p-4 shadow-xl">
+        <img src="/images/dvsa/junctions-roundabouts-crossings.svg" alt="A roundabout seen from above with arrows showing the way through" width="340" height="340" class="w-full h-auto" loading="eager" decoding="async" />
+      </div>
       </div>
     </div>
   </section>
