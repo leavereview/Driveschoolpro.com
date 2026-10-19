@@ -1,0 +1,525 @@
+<title>Filming Day 1</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lexend:wght@600;700&display=swap">
+<style>
+/* Layout: a call sheet you scroll on a phone. Blocks in shooting order; each scene is a card with
+   numbered beats (camera + words), the phone screens to show, and a tick box per scene. */
+:root {
+  --bg: #F5F5F8;
+  --surface: #FFFFFF;
+  --ink: #1A1A2E;
+  --muted: #5B5B72;
+  --line: #E2E2EA;
+  --accent: #E94560;
+  --accent-soft: #FFE7EC;
+  --ok: #16794A;
+  --ok-soft: #E3F5EA;
+  --warn-soft: #FFF4D6;
+  --warn-ink: #7A5200;
+  --display: "Lexend", "Inter", system-ui, sans-serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12121F; --surface: #1C1C2E; --ink: #F1F1F6; --muted: #A9A9BE; --line: #2E2E46;
+    --accent: #FF5C79; --accent-soft: #3A1E2A; --ok: #5FD394; --ok-soft: #183327;
+    --warn-soft: #3A2F12; --warn-ink: #F3D27A; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12121F; --surface: #1C1C2E; --ink: #F1F1F6; --muted: #A9A9BE; --line: #2E2E46;
+  --accent: #FF5C79; --accent-soft: #3A1E2A; --ok: #5FD394; --ok-soft: #183327;
+  --warn-soft: #3A2F12; --warn-ink: #F3D27A; color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font: 16px/1.5 var(--body); }
+.wrap { max-width: 760px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 24px 80px; display: flex; flex-direction: column; gap: 28px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.2; text-wrap: balance; margin: 0; }
+h1 { font-size: 32px; }
+h2 { font-size: 23px; }
+h3 { font-size: 18px; }
+p { margin: 0; }
+a { color: var(--accent); }
+.eyebrow { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.lead { font-size: 17px; color: var(--muted); }
+.stack { display: flex; flex-direction: column; gap: 12px; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.rule { background: var(--warn-soft); color: var(--warn-ink); border-radius: 12px; padding: 14px 16px; font-weight: 500; }
+.rule strong { display: block; }
+nav.toc { display: flex; flex-wrap: wrap; gap: 8px; }
+nav.toc a { text-decoration: none; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 99px; padding: 6px 12px; font-size: 14px; font-weight: 500; }
+.block-head { display: flex; flex-direction: column; gap: 4px; padding-top: 8px; border-top: 3px solid var(--ink); }
+.block-head .meta { color: var(--muted); font-size: 15px; }
+.scene { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.scene.done { opacity: .55; }
+.scene-top { display: flex; gap: 12px; align-items: flex-start; padding: 16px 18px 0; }
+.scene-top .titles { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); margin-right: 6px; }
+.tag.grey { background: var(--bg); color: var(--muted); }
+.tick { flex: none; display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); cursor: pointer; padding: 4px 0; }
+.tick input { width: 22px; height: 22px; accent-color: var(--ok); }
+.scene-body { padding: 12px 18px 18px; display: flex; flex-direction: column; gap: 14px; }
+.facts { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 15px; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; min-width: 0; }
+ol.beats { margin: 0; padding: 0; list-style: none; counter-reset: beat; display: flex; flex-direction: column; gap: 10px; }
+ol.beats li { counter-increment: beat; display: grid; grid-template-columns: 28px 1fr; gap: 10px; }
+ol.beats li::before { content: counter(beat); font-family: var(--display); font-weight: 700; width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 14px; }
+.say { display: block; margin-top: 4px; background: var(--accent-soft); border-radius: 10px; padding: 8px 12px; font-weight: 600; }
+.say .who { font-weight: 500; color: var(--muted); font-size: 13px; display: block; }
+.text-on { font-size: 14px; color: var(--muted); }
+.text-on b { color: var(--ink); }
+.screens { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px; }
+.screens button { flex: none; background: none; border: 0; padding: 0; cursor: zoom-in; display: flex; flex-direction: column; gap: 4px; align-items: center; font: 12px var(--body); color: var(--muted); }
+.screens img { width: 84px; border-radius: 10px; border: 1px solid var(--line); display: block; }
+.screens button:focus-visible img { outline: 3px solid var(--accent); }
+.lines { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+.lines li { font-weight: 600; font-size: 17px; }
+.lines li.vo { font-weight: 400; font-style: italic; color: var(--muted); }
+.btn { font: 600 15px var(--body); border-radius: 10px; padding: 10px 16px; border: 0; background: var(--ink); color: var(--bg); cursor: pointer; align-self: flex-start; }
+.btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.check { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.check li { display: grid; grid-template-columns: 24px 1fr; gap: 8px; }
+.check li::before { content: "☐"; color: var(--muted); font-size: 18px; line-height: 1.3; }
+.videos { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.videos li { display: flex; flex-direction: column; gap: 2px; }
+.videos .why { color: var(--muted); font-size: 14px; }
+.small { font-size: 14px; color: var(--muted); }
+/* Lightbox: full-screen screen image, also usable as the "app" on a prop phone */
+#lightbox { position: fixed; inset: 0; background: #000; z-index: 50; display: flex; align-items: center; justify-content: center; padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px); }
+#lightbox img { max-height: 100%; max-width: 100%; object-fit: contain; }
+#lightbox .close { position: absolute; top: calc(12px + env(safe-area-inset-top, 0px)); right: calc(12px + env(safe-area-inset-right, 0px)); background: rgba(255,255,255,.15); color: #fff; border: 0; border-radius: 99px; padding: 8px 14px; font: 600 14px var(--body); }
+/* Prompter: big lines, tap to go on */
+#prompter { position: fixed; inset: 0; background: #0B0B14; color: #fff; z-index: 60; display: flex; flex-direction: column; padding: calc(16px + env(safe-area-inset-top, 0px)) max(20px, env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) max(20px, env(safe-area-inset-left, 0px)); }
+#prompter .bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; font: 600 14px var(--body); color: #9A9AB5; }
+#prompter .bar button { background: rgba(255,255,255,.12); color: #fff; border: 0; border-radius: 99px; padding: 8px 14px; font: 600 14px var(--body); }
+#prompter .line { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; font: 700 clamp(30px, 7vw, 64px)/1.2 var(--display); text-wrap: balance; cursor: pointer; user-select: none; }
+#prompter .line.vo { color: #9FC3FF; font-style: italic; }
+#prompter .hint { text-align: center; color: #6E6E8A; font-size: 14px; }
+@media (prefers-reduced-motion: no-preference) { .scene { transition: opacity .2s; } }
+</style>
+
+<div class="wrap">
+
+<header class="stack">
+  <span class="eyebrow">DriveSchoolPro · Saturday 24 October · about 4 hours</span>
+  <h1>Filming Day 1</h1>
+  <p class="lead">Everything for Saturday, in shooting order. Most skits have no lines to learn: you act it out, and Claude adds the words on screen afterwards. Tick each scene as you finish it (the ticks are saved on this device).</p>
+  <nav class="toc" aria-label="Jump to">
+    <a href="#before">Before Saturday</a>
+    <a href="#kit">Kit list</a>
+    <a href="#block1">1 · Home</a>
+    <a href="#block2">2 · Desk</a>
+    <a href="#block3">3 · Parked car</a>
+    <a href="#block4">4 · Driving + tips</a>
+    <a href="#block5">5 · B-roll</a>
+    <a href="#after">After</a>
+    <a href="#learn">Tutorials</a>
+  </nav>
+</header>
+
+<div class="rule"><strong>The one rule in the car</strong>Nobody holds or touches a phone while the car is moving. Every phone scene is parked, engine off (engine on only for the lights and washers shots, still parked). Moving shots are filmed by your friend from the pavement.</div>
+
+<section id="before" class="stack">
+  <h2>Before Saturday</h2>
+  <div class="panel">
+    <ul class="check">
+      <li>Watch the 5 short tutorials at the bottom of this page (about 45 minutes in total). The first two matter most.</li>
+      <li>Read through Block 2 out loud once. You don't need to learn it: on the day you'll read each line from the prompter, look at the lens and say it.</li>
+      <li>Put the phone screens on both phones: on the Mac, the folder "DSP phone screens" is on your Desktop. AirDrop it to both phones and save to Photos (in Photos, tap the image once to hide the buttons). Or open this page on the prop phone and tap a screen: it opens full screen on black.</li>
+      <li>Choose your clothes: one plain shirt or jumper for the desk pieces, no stripes or logos. Your daughter: something she'd wear to a lesson.</li>
+      <li>Clear 20 GB of space on the filming phone. Charge everything.</li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h3>Camera settings (iPhone, once)</h3>
+    <ul class="check">
+      <li>Settings → Camera → Record Video → <b>4K at 30 fps</b>.</li>
+      <li>Settings → Camera → Formats → <b>Most Compatible</b> (easier to edit).</li>
+      <li>Settings → Camera → <b>Grid</b> on. Keep eyes on the top third line.</li>
+      <li>Always film <b>upright (vertical)</b>, with the back camera, 1× lens. Wipe the lens first.</li>
+      <li>Before each shot, <b>press and hold</b> on your face (or the phone screen) until "AE/AF LOCK" appears, so focus and brightness don't wander.</li>
+      <li>Count 2 seconds before you start and 2 seconds after you finish. Do every shot twice.</li>
+    </ul>
+    <p class="small">Android: same idea. 4K 30 fps (or 1080p if 4K isn't offered), grid on, film upright, tap and hold to lock focus.</p>
+  </div>
+  <div class="panel">
+    <h3>Phones in the shot</h3>
+    <ul class="check">
+      <li>Do Not Disturb on both prop phones, brightness to full, Auto-Lock to Never.</li>
+      <li>Only the demo screens on show. No real pupils, messages or numbers.</li>
+      <li>Hold the phone still for 3 seconds on each screen so it can be read.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="kit" class="stack">
+  <h2>Kit list</h2>
+  <div class="panel">
+    <ul class="check">
+      <li>Filming phone, tripod, your clip-on mic (test it: record 10 seconds and play it back with headphones)</li>
+      <li>Your phone and your daughter's phone, both with the screens loaded</li>
+      <li>A laptop or iPad for the prompter (this page)</li>
+      <li>Tuition car: clean inside and out, L plates, roof sign if you have one</li>
+      <li>Props: paper diary, a pile of receipts, calculator, a mug, a few £10 and £20 notes, a coat, ice scraper, screenwash</li>
+      <li>Water and snacks. Breaks matter more than you think.</li>
+    </ul>
+  </div>
+</section>
+
+<div id="blocks"></div>
+
+<section id="after" class="stack">
+  <h2>After filming</h2>
+  <div class="panel">
+    <ul class="check">
+      <li>AirDrop everything to the Mac into one folder called "Filming day 1". Don't delete or trim anything.</li>
+      <li>Tell Claude it's there. Claude edits, captions and adds the intro and end card, then puts the November founder videos into Metricool as drafts for you to approve.</li>
+      <li>Friday 27 November: 10 minutes for the November recap (N42), once the comments are in.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="learn" class="stack">
+  <h2>Tutorials to watch first</h2>
+  <p class="small">Picked for beginners and checked to exist on 19 October. Claude hasn't watched them end to end, so skip anything that doesn't suit you.</p>
+  <div class="panel">
+    <ol class="videos">
+      <li><a href="https://www.youtube.com/watch?v=2sHVssy5pCw">How to film yourself with your iPhone or Android phone: 7 tips</a><span class="why">InVideo. Framing, light and sound for the desk pieces.</span></li>
+      <li><a href="https://www.youtube.com/watch?v=gEXDKEW8zKs">How to talk naturally on camera in 3 easy steps</a><span class="why">Nancy Taylor. For nerves and sounding like yourself.</span></li>
+      <li><a href="https://www.youtube.com/watch?v=YUD667S3Nak">Lavalier mic tutorial: Android and iPhone tricks</a><span class="why">AdventureTimMedia. Connecting and placing a clip-on mic.</span></li>
+      <li><a href="https://www.youtube.com/watch?v=v1nOFh0mLrc">How to film and edit TikTok / Reels / short vlogs (beginners)</a><span class="why">Marguerite Faure. Good one for your friend who's filming: shot types and B-roll.</span></li>
+      <li><a href="https://www.youtube.com/watch?v=T7psU8VRD50">Everything you need to make comedy skits</a><span class="why">Nate Killian. Timing and cutting short skits.</span></li>
+    </ol>
+  </div>
+  <div class="panel">
+    <h3>Five tips that matter most</h3>
+    <ul class="check">
+      <li>Light in front of you, never behind. Face a window.</li>
+      <li>Phone at eye level, lens at your eyes. Look into the lens, not at the screen.</li>
+      <li>Mic clipped mid-chest, a hand's width below your chin, cable hidden under your shirt.</li>
+      <li>Say one line, stop, breathe, next line. Claude cuts the gaps out.</li>
+      <li>Mistake? Pause, then say the whole line again. Never stop the recording to start over.</li>
+    </ul>
+  </div>
+</section>
+
+<p class="small">Fictional demo data only: Ace Driving School, pupil "Emily Thompson". Every skit is captioned as acted by John and his daughter.</p>
+</div>
+
+<div id="lightbox" hidden role="dialog" aria-label="Phone screen">
+  <button class="close" type="button" id="lb-close">Close</button>
+  <img id="lb-img" alt="">
+</div>
+
+<div id="prompter" hidden role="dialog" aria-label="Prompter">
+  <div class="bar"><span id="pr-title"></span><span id="pr-count"></span><button type="button" id="pr-close">Close</button></div>
+  <div class="line" id="pr-line" tabindex="0"></div>
+  <div class="hint">Tap the line or press space for the next one. Blue lines are voiceover: say them without looking at the camera.</div>
+</div>
+
+<script>
+// Screens: id -> caption. Files: screens/<id>.png, thumbs/<id>.jpg
+const SC = {
+  '01a-instructor-invoice': 'John: invoice',
+  '01b-pupil-pay': 'Emily: pay',
+  '01c-pupil-paid': 'Emily: paid',
+  '01d-instructor-paid': 'John: paid',
+  '02a-pupil-packages': 'Emily: blocks',
+  '02b-pupil-package-active': 'Emily: bought',
+  '03a-pupil-book-slot': 'Emily: book',
+  '03b-pupil-booked': 'Emily: booked',
+  '03c-instructor-today': 'John: today',
+  '04a-messages-move': 'John: text',
+  '04b-instructor-calendar-moved': 'John: moved',
+  '05a-email-reminder': 'Emily: email',
+  '05b-lesson-confirmed': 'Emily: confirmed',
+  '06a-instructor-rate-skills': 'John: skills',
+  '07a-pupil-progress': 'Emily: progress',
+  '08a-instructor-briefing': 'John: briefing',
+  '09a-instructor-clash': 'John: clash',
+  '10a-instructor-week-sorted': 'John: week',
+  '11a-instructor-record-cash': 'John: cash',
+  '12a-texts-many': 'John: texts',
+  '12b-pupil-home': 'Emily: home',
+  '13a-instructor-passed-review': 'John: passed',
+  '13b-review-sent': 'John: sent',
+};
+
+// Blocks in shooting order. beats: [camera, say?, who?]
+const BLOCKS = [
+  { id: 'block1', title: 'Block 1 · At home', time: '45 min', where: 'Kitchen table, sofa, a bedroom', who: 'You, your daughter (as Emily), your friend filming',
+    intro: 'Silent skits to warm up. Act big and slow; the words go on screen afterwards.',
+    scenes: [
+      { id: 's10', title: 'Sunday night', tags: ['Saves time'], len: '15 s', cast: 'You', props: 'Paper diary, receipts, calculator, mug',
+        screens: ['10a-instructor-week-sorted'],
+        beats: [
+          ['Wide: you at the kitchen table buried in the diary and receipts. Rub your eyes.'],
+          ['Close-up: your hands flicking pages, crossing things out.'],
+          ['Close-up: tapping the calculator. Big sigh.'],
+          ['Same spot, table cleared. You pick up your phone, glance at it for 3 seconds, small smile.'],
+          ['Wide: you drop onto the sofa, feet up.'],
+        ], onscreen: 'Sunday night admin… · …or not.' },
+      { id: 's4', title: '"Can we move Thursday?"', tags: ['Saves time'], len: '15 s', cast: 'You', props: 'Paper diary, pen, mug',
+        screens: ['04a-messages-move', '04b-instructor-calendar-moved'],
+        beats: [
+          ['Your phone buzzes on the counter. Close-up of the message.'],
+          ['Before: you open the paper diary, cross out, write, cross out again, frown.'],
+          ['After: same spot. You tap the phone twice and show the moved lesson to the camera.', 'Done.', 'You'],
+        ], onscreen: 'Moving a lesson: before / after. 5 seconds.' },
+      { id: 's3', title: 'Booked at 11pm', tags: ['Saves time', 'Fills your diary'], len: '15 s', cast: 'Both', props: 'Dark bedroom (curtains shut, lamp off), coffee mug',
+        screens: ['03a-pupil-book-slot', '03b-pupil-booked', '03c-instructor-today'],
+        beats: [
+          ['Emily in bed, face lit only by her phone. She picks a time and taps Confirm.'],
+          ['She yawns, puts the phone down, light off.'],
+          ['Morning: you with a coffee, glance at your phone, nod.'],
+        ], onscreen: 'Booked at 11pm. Nobody had to reply.' },
+      { id: 's2', title: 'A block of 10 from the sofa', tags: ['Money upfront'], len: '10 s', cast: 'Emily', props: 'Sofa, cushion',
+        screens: ['02a-pupil-packages', '02b-pupil-package-active'],
+        beats: [
+          ['Emily on the sofa scrolling her phone. She taps Buy on the 10 hour block.'],
+          ['Close-up: "Paid £350". A small fist pump.'],
+        ], onscreen: 'Paid upfront. No chasing.' },
+      { id: 's5', title: 'The forgotten lesson', tags: ['Fewer no-shows'], len: '12 s', cast: 'Emily', props: 'Coat, bag',
+        screens: ['05a-email-reminder', '05b-lesson-confirmed'],
+        beats: [
+          ['Emily relaxing on the sofa. Her phone pings. She reads it.', 'Oh! I totally forgot.', 'Emily'],
+          ['She taps Confirm lesson. Close-up of "Lesson Confirmed!".'],
+        ], onscreen: 'The pupil who is reminded turns up. Automatic email reminders.' },
+      { id: 's12', title: '"What time\'s my lesson?"', tags: ['Less admin'], len: '12 s', cast: 'Both', props: 'Dinner plate',
+        screens: ['12a-texts-many', '12b-pupil-home'],
+        beats: [
+          ['You at dinner. Your phone buzzes again and again. Close-up of the pile of messages. You put your fork down.'],
+          ['Cut: Emily checks her own app instead, nods, puts the phone away.'],
+        ], onscreen: 'Pupils check their own app. Fewer "what time\'s my lesson?" texts.' },
+    ] },
+  { id: 'block2', title: 'Block 2 · At the desk', time: '60 min', where: 'Your desk, facing a window', who: 'You, your friend filming',
+    intro: 'Your November founder videos. Set the phone at eye level on the tripod, 1 metre away, mic clipped on. Open the prompter on the laptop just behind the phone. Say each line to the lens, then pause. Do every line twice.',
+    talks: [
+      { id: 'N01', title: 'Hello, I\'m John', due: 'Goes out Sun 1 Nov', note: 'Check "about 20 years" is how you\'d put it.',
+        lines: ['I\'m John, and I build DriveSchoolPro.', 'I\'ve been building software for service businesses for about twenty years.', 'And I built and sold a booking system before this one.', 'It\'s free until the end of March 2027. No card needed.', 'Ask me anything in the comments. I read every one.'],
+        vo: ['It\'s your diary, reminders, payments and pupil progress, in one app.', 'This month I\'ll post short how-tos and tips for the dark evenings. No hard sell.'] },
+      { id: 'N15', title: 'Why I built DriveSchoolPro', due: 'Goes out Tue 10 Nov', note: 'Change the first line to your own words if you\'d say it differently.',
+        lines: ['Most driving instructors I talk to don\'t hate admin.', 'They hate doing it at ten o\'clock at night.', 'Before this, I built and sold a booking system for pet care businesses.', 'Same problems: messages at all hours, forgotten appointments, chasing money.', 'So I built one app for booking, reminders, payments and progress.', 'It works on your phone, between lessons.', 'If something in your week is still a pain, tell me. That\'s how it gets better.'],
+        vo: ['Instructors have all of that, plus twenty-seven skills to track for every pupil, and a car to keep legal.'] },
+      { id: 'N39', title: 'No Black Friday tricks', due: 'Goes out Fri 27 Nov', note: 'Deadpan for the first two lines, then a small smile.',
+        lines: ['It\'s Black Friday, so here\'s our deal.', '(pause) There isn\'t one.', 'No countdown timer. No "ends at midnight". No price that goes up on Monday.', 'It\'s free until the end of March 2027.', 'Then there\'s a free plan for good, or twenty-two pounds a month.', 'Take your time. It\'ll still be here.'],
+        vo: [] },
+      { id: 'N09', title: 'Making Tax Digital: the 19-hour rule', due: 'Goes out Fri 6 Nov', note: 'Calm and clear. The numbers go on screen, so don\'t worry about them.',
+        lines: ['If you teach more than about nineteen paid hours a week…', '…Making Tax Digital probably applies to you from April 2027.', 'From April 2027 the line is thirty thousand pounds.', 'And it\'s your lesson income before expenses. Not profit.', 'The year that counts is the one that ended on the fifth of April 2026.', 'HMRC writes to people, but it\'s your job to check.', 'We\'re not MTD software, and this isn\'t tax advice. Our guide explains it properly.'],
+        vo: ['At thirty-five pounds an hour, nineteen hours a week for forty-six weeks is about thirty thousand, five hundred and ninety pounds.'] },
+    ] },
+  { id: 'block3', title: 'Block 3 · In the parked car', time: '75 min', where: 'Driveway or a quiet legal parking spot', who: 'You (passenger seat), Emily (driver\'s seat), your friend filming through the open door or window',
+    intro: 'Engine off, handbrake on, for every scene with a phone. Two phones in play: yours and Emily\'s.',
+    scenes: [
+      { id: 's1', title: '"I\'ll transfer it tonight"', tags: ['Gets you paid'], len: '20 s', cast: 'Both', props: 'Emily\'s bag',
+        screens: ['01a-instructor-invoice', '01b-pupil-pay', '01c-pupil-paid', '01d-instructor-paid'],
+        beats: [
+          ['Before: end of lesson. Emily pats her pockets.', 'Oh no, I\'ve left my purse. I\'ll transfer it tonight?', 'Emily'],
+          ['Your forced smile.', '…Sure.', 'You'],
+          ['After, same spot: close-up of you tapping Request Payment.'],
+          ['Emily\'s phone pings. She taps Pay. Close-up of "Payment successful".'],
+          ['Close-up of your phone: Paid. You both nod.'],
+        ], onscreen: 'Every. Week. · Paid before she\'s out of the car.' },
+      { id: 's15', title: 'POV: paid before she\'s shut the door', tags: ['Gets you paid'], len: '6 s', cast: 'Both', props: '',
+        screens: ['01d-instructor-paid'],
+        beats: [['One shot over your shoulder: your phone on your knee shows Paid while Emily waves goodbye outside the window.']],
+        onscreen: 'POV: your pupil paid before she\'s even shut the door.' },
+      { id: 's6', title: 'Two taps at the kerb', tags: ['Clean records'], len: '10 s', cast: 'Both', props: '',
+        screens: ['06a-instructor-rate-skills'],
+        beats: [
+          ['Emily slowly unclips her seatbelt and gathers her things.'],
+          ['You tap through the skills and Save before she\'s opened the door. Close-up of the screen.'],
+        ], onscreen: 'Lesson recorded before she\'s out of the car.' },
+      { id: 's7', title: '"Am I ready for my test?"', tags: ['Less admin'], len: '12 s', cast: 'Both', props: '',
+        screens: ['07a-pupil-progress'],
+        beats: [
+          ['Emily turns to you.', 'Be honest. Am I ready for my test?', 'Emily'],
+          ['You point at her phone. She opens her progress (67%). She nods, impressed.'],
+        ], onscreen: 'She can see her progress herself, any time.' },
+      { id: 's8', title: 'You remembered', tags: ['Saves time'], len: '20 s', cast: 'Both', props: '',
+        screens: ['08a-instructor-briefing'],
+        beats: [
+          ['You alone in the parked car before the lesson, reading your phone for 10 seconds. Phone away.'],
+          ['Emily gets in.', 'Right. Roundabouts were much better last week, so today we\'re trying the dual carriageway.', 'You'],
+          ['Emily stares at you.', 'How do you remember all this?', 'Emily'],
+          ['You just smile.'],
+        ], onscreen: 'Four sentences. Ten seconds. AI lesson briefings.' },
+      { id: 's9', title: 'Double booking saved', tags: ['Clean records'], len: '12 s', cast: 'Both', props: '',
+        screens: ['09a-instructor-clash'],
+        beats: [
+          ['Emily:', 'Can I do Thursday at four?', 'Emily'],
+          ['You check your phone. Close-up of the clash warning.', 'That clashes with Harry in this car. Five o\'clock?', 'You'],
+          ['Emily:', 'Perfect.', 'Emily'],
+        ], onscreen: 'It won\'t let you double-book. Not the pupil, not you, not the car.' },
+      { id: 's11', title: 'Where did the cash go?', tags: ['Accounting'], len: '12 s', cast: 'Both', props: 'Two £20 notes',
+        screens: ['11a-instructor-record-cash'],
+        beats: [
+          ['Before: Emily hands you £40.', 'Keep the change.', 'Emily'],
+          ['You stuff the notes in the door pocket. Close-up: the pocket is already full of crumpled notes.'],
+          ['After: same handover. You record it on your phone in three taps. Close-up of "Payment recorded".'],
+        ], onscreen: 'Cash recorded against the lesson. Your books add up.' },
+      { id: 's13', title: 'Pass day (acted)', tags: ['More pupils'], len: '15 s', cast: 'Both', props: '',
+        screens: ['13a-instructor-passed-review', '13b-review-sent'],
+        beats: [
+          ['Emily jumps into the passenger seat (car parked).', 'I PASSED!', 'Emily'],
+          ['You celebrate together.'],
+          ['You:', 'Brilliant! Would you leave me a Google review?', 'You'],
+          ['You tap Send review request. Close-up. Emily already typing on her phone.'],
+        ], onscreen: 'Asked on the best day of their year. Review requests to your Google profile.' },
+      { id: 's14', title: 'Things ADIs hear', tags: ['Fun, no product'], len: '20 s', cast: 'Both', props: '',
+        screens: [],
+        beats: [
+          ['Emily in the driver\'s seat (parked), says each line to you. You react with a blank stare after each one. Film 6 short clips.'],
+          ['', 'The sun was in my eyes.', 'Emily'],
+          ['', 'I did look. I just didn\'t see it.', 'Emily'],
+          ['', 'The car stalled itself.', 'Emily'],
+          ['', 'I indicated in my head.', 'Emily'],
+          ['', 'Can we not do roundabouts today?', 'Emily'],
+          ['', 'My mum says I\'m a natural.', 'Emily'],
+        ], onscreen: 'Things driving instructors hear. Tag an ADI.' },
+    ],
+    bonus: [
+      { id: 'N20', title: 'Standards check: the first 3 minutes (bonus)', due: 'Already posted as text; your version replaces it if filmed', note: 'You in the passenger seat, parked, phone on a dash mount or tripod in the footwell.',
+        lines: ['The first three minutes of your standards check set up the whole lesson.', 'Agree the goals with your pupil, and how you\'ll share the risk.', 'Keep it to three minutes or less.', 'And leave about three minutes at the end for them to reflect.'],
+        vo: ['Then a normal lesson that fits the pupil. Not a whole lesson on a manoeuvre, but a quick recap is fine.'] },
+      { id: 'N31', title: 'Winter show me tell me (bonus)', due: 'Already posted as text', note: 'Close-ups of the controls (engine on, parked): front demist, rear demister, dipped headlights, washers, rear fog light switch and its warning light.',
+        lines: ['Five show me tell me questions that matter in winter.', 'Wrong answer is one driving fault. Doing it unsafely on the move is a fail. Practise till it\'s automatic.'],
+        vo: ['Show me how you\'d demist the front windscreen.', 'Set the rear demister.', 'Switch on dipped headlights.', 'Wash and clean the windscreen.', 'Tell me how you\'d switch on the rear fog light, and when you\'d use it.'] },
+      { id: 'N26', title: 'Ice and stopping distances (bonus)', due: 'Already posted as text', note: 'You standing by the car with the ice scraper. Spray the windscreen with water if there\'s no frost.',
+        lines: ['On ice, stopping distances can be up to ten times longer.', 'Before you move off: every window clear, lights clean, mirrors clear. That\'s Rule 229.', 'On a frosty lesson, start with a bigger gap. Then everything gentle: steering, brakes, gas.'],
+        vo: ['In the wet, at least double. On ice or snow, up to ten times.'] },
+    ] },
+  { id: 'block4', title: 'Block 4 · Driving shots and pupil tips', time: '40 min', where: 'Quiet road near home', who: 'Emily drives, you in the passenger seat, your friend films from the pavement',
+    intro: 'Moving shots are only filmed from outside the car. Then park up for the pupil tips.',
+    scenes: [
+      { id: 'd1', title: 'Driving shots', tags: ['B-roll'], len: '5 × 5 s', cast: 'Both', props: 'L plates on',
+        screens: [],
+        beats: [
+          ['Car pulls away from the kerb, filmed from the pavement.'],
+          ['Car drives past the camera, slowly, twice.'],
+          ['Car arrives and parks at the kerb.'],
+          ['Through the windscreen, parked: Emily checks her mirrors, you point ahead.'],
+          ['L plate close-up as the car pulls away.'],
+        ], onscreen: '' },
+      { id: 't1', title: 'Pupil tip: the cockpit drill', tags: ['Pupil tip'], len: '20 s', cast: 'Both', props: '',
+        screens: [],
+        beats: [['Emily does each step slowly as you say it.', 'Doors. Seat. Steering. Seatbelt. Mirrors.', 'You'], ['Close-up of each step.']],
+        onscreen: 'The cockpit drill: DSSSM. Save this for lesson one.' },
+      { id: 't2', title: 'Pupil tip: setting your mirrors', tags: ['Pupil tip'], len: '15 s', cast: 'Emily', props: '',
+        screens: [],
+        beats: [['Emily adjusts the interior mirror, then each door mirror. Close-ups of her view in each.']],
+        onscreen: 'Set your mirrors before you start the engine.' },
+      { id: 't3', title: 'Pupil tip: checks under the bonnet', tags: ['Pupil tip'], len: '25 s', cast: 'Both', props: 'Bonnet open',
+        screens: [],
+        beats: [['You point, Emily shows: oil dipstick, coolant level, screenwash, then tyre tread.'], ['Close-up of each.']],
+        onscreen: '"Tell me" checks: oil, coolant, screenwash, tyres.' },
+      { id: 't4', title: 'Pupil tip: if you stall', tags: ['Pupil tip'], len: '15 s', cast: 'Both', props: 'Parked, engine on',
+        screens: [],
+        beats: [['Calmly, Emily shows: handbrake on, neutral, restart, look all round. You give a thumbs up.']],
+        onscreen: 'Stalled? Handbrake, neutral, restart, look all round. Everyone stalls.' },
+    ] },
+  { id: 'block5', title: 'Block 5 · B-roll', time: '10 min', where: 'Anywhere', who: 'Your friend, on their own',
+    intro: 'Short 3 to 5 second clips that Claude can drop in anywhere. Hold the phone still.',
+    scenes: [
+      { id: 'b1', title: 'B-roll list', tags: ['B-roll'], len: '10 × 4 s', cast: 'Anyone', props: '',
+        screens: [],
+        beats: [
+          ['L plates going on the car.'], ['Car keys picked up from a table.'], ['Hands on the steering wheel (parked).'],
+          ['The paper diary closing.'], ['Your phone face up on the table, screen on.'], ['A mug of tea being put down.'],
+          ['The car door shutting.'], ['Indicator flashing (parked, hazard lights).'], ['A street sign near you (no house numbers).'], ['You and Emily laughing in the car (parked).'],
+        ], onscreen: '' },
+    ] },
+];
+
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+
+function screensHtml(ids) {
+  if (!ids.length) return '';
+  return `<div class="screens">${ids.map((id) => `<button type="button" data-shot="${id}"><img src="thumbs/${id}.jpg" alt="${esc(SC[id])}" loading="lazy" width="84" height="182"><span>${esc(SC[id])}</span></button>`).join('')}</div>`;
+}
+function tickHtml(id) {
+  const on = store.get('fd1-' + id) === '1';
+  return `<label class="tick"><input type="checkbox" id="tick-${id}" data-tick="${id}" ${on ? 'checked' : ''}>Done</label>`;
+}
+function sceneHtml(s) {
+  const done = store.get('fd1-' + s.id) === '1';
+  const beats = s.beats.map(([see, say, who]) => `<li><div>${esc(see)}${say ? `<span class="say"><span class="who">${esc(who || '')}</span>"${esc(say)}"</span>` : ''}</div></li>`).join('');
+  return `<article class="scene ${done ? 'done' : ''}" id="sc-${s.id}">
+    <div class="scene-top"><div class="titles"><div>${s.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join('')}<span class="tag grey">${esc(s.len)}</span></div><h3>${esc(s.title)}</h3></div>${tickHtml(s.id)}</div>
+    <div class="scene-body">
+      <dl class="facts"><dt>Who</dt><dd>${esc(s.cast)}</dd>${s.props ? `<dt>Props</dt><dd>${esc(s.props)}</dd>` : ''}</dl>
+      ${screensHtml(s.screens)}
+      <ol class="beats">${beats}</ol>
+      ${s.onscreen ? `<p class="text-on"><b>Words Claude adds on screen:</b> ${esc(s.onscreen)}</p>` : ''}
+    </div></article>`;
+}
+function talkHtml(t) {
+  const done = store.get('fd1-' + t.id) === '1';
+  return `<article class="scene ${done ? 'done' : ''}" id="sc-${t.id}">
+    <div class="scene-top"><div class="titles"><div><span class="tag">${esc(t.id)}</span><span class="tag grey">${esc(t.due)}</span></div><h3>${esc(t.title)}</h3></div>${tickHtml(t.id)}</div>
+    <div class="scene-body">
+      <p class="small">${esc(t.note)}</p>
+      <ol class="lines">${t.lines.map((l) => `<li>${esc(l)}</li>`).join('')}${t.vo.map((l) => `<li class="vo">Voiceover: ${esc(l)}</li>`).join('')}</ol>
+      <button class="btn" type="button" data-prompt="${t.id}">Open prompter</button>
+    </div></article>`;
+}
+const TALKS = {};
+const root = document.getElementById('blocks');
+root.innerHTML = BLOCKS.map((b) => {
+  (b.talks || []).concat(b.bonus || []).forEach((t) => (TALKS[t.id] = t));
+  return `<section id="${b.id}" class="stack">
+    <div class="block-head"><span class="eyebrow">${esc(b.time)}</span><h2>${esc(b.title)}</h2><p class="meta">${esc(b.where)} · ${esc(b.who)}</p></div>
+    <p>${esc(b.intro)}</p>
+    ${(b.scenes || []).map(sceneHtml).join('')}
+    ${(b.talks || []).map(talkHtml).join('')}
+    ${b.bonus ? `<h3>Bonus, if you have time</h3>${b.bonus.map(talkHtml).join('')}` : ''}
+  </section>`;
+}).join('');
+
+root.addEventListener('change', (e) => {
+  const id = e.target.dataset.tick; if (!id) return;
+  store.set('fd1-' + id, e.target.checked ? '1' : '0');
+  document.getElementById('sc-' + id).classList.toggle('done', e.target.checked);
+});
+
+// Lightbox
+const lb = document.getElementById('lightbox'), lbImg = document.getElementById('lb-img');
+root.addEventListener('click', (e) => {
+  const shot = e.target.closest('[data-shot]');
+  if (shot) { lbImg.src = 'screens/' + shot.dataset.shot + '.png'; lbImg.alt = SC[shot.dataset.shot]; lb.hidden = false; document.getElementById('lb-close').focus(); return; }
+  const p = e.target.closest('[data-prompt]');
+  if (p) openPrompter(p.dataset.prompt);
+});
+document.getElementById('lb-close').addEventListener('click', () => (lb.hidden = true));
+lb.addEventListener('click', (e) => { if (e.target === lb) lb.hidden = true; });
+
+// Prompter
+const pr = document.getElementById('prompter'), prLine = document.getElementById('pr-line');
+let seq = [], pos = 0, wake = null;
+function show() {
+  const item = seq[pos];
+  prLine.textContent = item.text; prLine.classList.toggle('vo', item.vo);
+  document.getElementById('pr-count').textContent = `${pos + 1} / ${seq.length}`;
+}
+async function openPrompter(id) {
+  const t = TALKS[id];
+  seq = t.lines.map((text) => ({ text, vo: false })).concat(t.vo.map((text) => ({ text, vo: true })));
+  pos = 0; document.getElementById('pr-title').textContent = `${t.id} · ${t.title}`;
+  pr.hidden = false; show(); prLine.focus();
+  try { wake = await navigator.wakeLock?.request('screen'); } catch (e) { wake = null; }
+}
+function next() { if (pos < seq.length - 1) { pos++; show(); } else { closePrompter(); } }
+function closePrompter() { pr.hidden = true; try { wake?.release(); } catch (e) {} wake = null; }
+prLine.addEventListener('click', next);
+document.getElementById('pr-close').addEventListener('click', closePrompter);
+document.addEventListener('keydown', (e) => {
+  if (!pr.hidden) {
+    if (e.key === ' ' || e.key === 'ArrowRight' || e.key === 'Enter') { e.preventDefault(); next(); }
+    if (e.key === 'ArrowLeft' && pos > 0) { pos--; show(); }
+    if (e.key === 'Escape') closePrompter();
+  } else if (!lb.hidden && e.key === 'Escape') lb.hidden = true;
+});
+</script>
