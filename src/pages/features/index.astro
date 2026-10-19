@@ -47,10 +47,23 @@ const moments = [
     when: 'End of month',
     href: '/features/reviews/',
     headline: 'The reviews you meant to ask for, actually asked for.',
-    blurb: 'Pupils who have just passed appear on your Today screen with a Google review request ready to send, on the day they are happiest to write one.',
-    poster: '/images/marketing/dashboard-overview.webp',
-    posterAlt: 'The DriveSchoolPro dashboard overview showing the day and business metrics.',
-    w: 1440, h: 900,
+    blurb: 'Mark a pupil as passed and they get a Google review request by email, on the day they are happiest to write one. Anyone you have marked inactive can be asked from your Today screen.',
+    poster: '/images/marketing/review-requests.webp',
+    posterAlt: 'The Review Requests list on the Today screen: two pupils who have just passed, each with a Send Email button to ask for a Google review.',
+    w: 1216, h: 277,
+  },
+];
+
+const more = [
+  {
+    href: '/features/online-booking/',
+    title: 'Online booking',
+    blurb: 'Pupils book from your website or their portal into the times you are free, within the notice and booking rules you set.',
+  },
+  {
+    href: '/features/vehicles/',
+    title: 'Vehicle tracking',
+    blurb: 'MOT, tax and insurance dates for every training car, with warnings ahead of expiry and an option to block bookings in an out-of-date car. School plan.',
   },
 ];
 
@@ -113,6 +126,21 @@ const collectionSchema = {
   </section>
 
   <section class="section bg-gray-50 border-t border-gray-100">
+    <div class="container-custom max-w-5xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-8">And the rest of the working week</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        {more.map((f) => (
+          <a href={f.href} class="card block hover:border-brand-red transition-colors">
+            <h3 class="text-xl font-bold text-brand-navy mb-2">{f.title}</h3>
+            <p class="text-gray-600 mb-3">{f.blurb}</p>
+            <span class="text-brand-red font-semibold">Read more &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white border-t border-gray-100">
     <div class="container-custom text-center max-w-3xl mx-auto">
       <h2 class="text-3xl md:text-4xl font-bold text-brand-navy mb-4">Free until 31 March 2027</h2>
       <p class="text-lg text-gray-600 mb-8">

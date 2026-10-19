@@ -1,0 +1,181 @@
+---
+import { OFFER } from '../../config/offer';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BreadcrumbsEnhanced from '../../components/seo/BreadcrumbsEnhanced.astro';
+import FAQEnhanced from '../../components/seo/FAQEnhanced.astro';
+import ProductDemo from '../../components/ProductDemo.astro';
+
+const faqs = [
+  {
+    question: "What does it track for each car?",
+    answer: "Registration, make, model, year, colour, transmission and fuel; MOT, road tax and insurance expiry dates (with the insurer and policy number); last and next service dates; mileage; whether it has dual controls and when they were last checked; and free-text notes. A maintenance log records each job with its date, mileage, cost and who did it.",
+    links: []
+  },
+  {
+    question: "Can it look up a car from its registration?",
+    answer: "Yes, for UK schools. Type the registration when adding a vehicle and it fills in the car's details along with its MOT and tax status and expiry dates. It is a lookup when you add or edit a car, so it does not keep checking in the background, and insurance is always entered by you.",
+    links: []
+  },
+  {
+    question: "How far ahead does it warn me?",
+    answer: "You set a warning period for MOT, insurance and road tax separately, and it starts at 30 days. The Vehicles page puts any car needing attention in a banner at the top, with the document and the date, and the vehicle list marks it too.",
+    links: []
+  },
+  {
+    question: "Can it stop a lesson being booked in a car with no MOT?",
+    answer: "Yes, if you switch it on. There are three separate options: block bookings on a vehicle with an expired MOT, with expired insurance, or with expired road tax. A lesson that breaks one of them cannot be booked until the document is renewed and updated. They are off until you choose them.",
+    links: []
+  },
+  {
+    question: "Does it stop two lessons using the same car at once?",
+    answer: "Yes. When you create or move a lesson, the diary checks the pupil, the instructor and the car, and tells you which one is already committed and when.",
+    links: [{ text: "How scheduling works", url: "/features/scheduling/" }]
+  },
+  {
+    question: "Is vehicle tracking on every plan?",
+    answer: "No. It is part of the School plan, for schools with more than one car and instructor. A solo instructor on the Free or Solo plan does not see the vehicles section. Early access is free for schools too, until 31 March 2027.",
+    links: [{ text: "See pricing", url: "/pricing/" }]
+  }
+];
+---
+
+<BaseLayout
+  title="Driving School Vehicle Tracking: MOT, Tax and Insurance | DriveSchoolPro"
+  description="Track MOT, road tax, insurance and servicing for every training car, and stop lessons being booked in a car that is out of date. Free until 31 March 2027."
+>
+  <BreadcrumbsEnhanced items={[{ label: 'Home', href: '/' }, { label: 'Features', href: '/features/' }, { label: 'Vehicles' }]} site="driveschool" />
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-3xl mb-12">
+        <p class="text-sm uppercase tracking-wider text-gray-400 mb-3">For schools with a fleet</p>
+        <h1 class="text-4xl md:text-5xl font-bold text-brand-navy leading-tight mb-6">
+          Know which car is about to go out of date, before a lesson is booked in it.
+        </h1>
+        <p class="text-xl text-gray-600 leading-relaxed mb-8">
+          One car is easy to keep track of. Five, each with its own MOT month, insurance renewal
+          and service, is a spreadsheet nobody quite trusts. The usual way of finding out one has
+          lapsed is a pupil in the passenger seat, which is the worst possible place to find out.
+          Vehicle tracking keeps every date in one list and tells you ahead of time.
+        </p>
+        <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label} &rarr;</a>
+        <p class="mt-4 text-sm text-gray-500">Part of the School plan, for schools running more than one car.</p>
+      </div>
+
+      <ProductDemo
+        poster="/images/marketing/vehicle-settings.webp"
+        posterAlt="The vehicle settings screen: a list of four cars with one marked MOT expiring on 29 October, a fleet status of three compliant and one expiring soon, and MOT, insurance and road tax alert periods of 30 days each."
+        alt="The vehicle settings screen: a list of four cars with one marked MOT expiring on 29 October, a fleet status of three compliant and one expiring soon, and MOT, insurance and road tax alert periods of 30 days each."
+        width={932}
+        height={842}
+      />
+    </div>
+  </section>
+
+  <section class="section bg-gray-50 border-t border-gray-100">
+    <div class="container-custom max-w-4xl space-y-14">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Every date in one place</h2>
+        <p class="text-lg text-gray-600 mb-4">
+          Each car has its MOT, road tax and insurance expiry, its last and next service, its
+          mileage, and whether it has dual controls and when they were last checked. A maintenance
+          log keeps the history: what was done, when, at what mileage and what it cost.
+        </p>
+        <p class="text-lg text-gray-600">
+          For UK schools, typing the registration fills in the car's details and its MOT and tax
+          status and expiry for you. That saves most of the typing when you add a car, and it
+          avoids the transcription mistakes that make a reminder fire on the wrong day. Insurance
+          you enter yourself.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Warned in time to do something about it</h2>
+        <p class="text-lg text-gray-600 mb-4">
+          Set how far ahead you want to hear about MOT, insurance and road tax, separately, starting
+          at 30 days. Any car that needs attention appears in a banner at the top of the Vehicles
+          page with the document and the date, and the list marks it so you can see the fleet at a
+          glance. A timeline view lays every renewal along a calendar, which makes it easy to see
+          when two cars are due in the same fortnight and book them in one after the other.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Stop a lesson being booked in the wrong car</h2>
+        <p class="text-lg text-gray-600 mb-4">
+          Driving a car on a public road without a valid MOT or insurance is illegal, and a school
+          is the one that has to answer for it. So you can switch on three protections: do not
+          allow lessons to be booked in a car with an expired MOT, expired insurance, or expired
+          road tax. Once on, the booking is refused with a message saying why, and the car is
+          bookable again as soon as you update the date.
+        </p>
+        <p class="text-lg text-gray-600">
+          Separately, every booking checks that the car is not already in use, in the same check
+          that covers the pupil and the instructor, so a lesson cannot be set up in a car that is
+          out with someone else.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">What each car earns</h2>
+        <p class="text-lg text-gray-600">
+          A performance view shows, for each car over a date range you choose, how many lessons it
+          has done, the hours, and the revenue. It will not tell you how much spare capacity you
+          have, but it will show you which car is carrying the week and which one mostly sits on
+          the drive.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white border-t border-gray-100">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-8">How it works</h2>
+      <ol class="space-y-6">
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">1</span>
+          <div>
+            <h3 class="font-bold text-brand-navy mb-1">Add each car</h3>
+            <p class="text-gray-600">Type the registration to fill in the details, then add insurance and service dates.</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">2</span>
+          <div>
+            <h3 class="font-bold text-brand-navy mb-1">Set your warning periods</h3>
+            <p class="text-gray-600">How early you want to hear about each expiry. Thirty days is the starting point.</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">3</span>
+          <div>
+            <h3 class="font-bold text-brand-navy mb-1">Switch on booking protection</h3>
+            <p class="text-gray-600">Choose whether an expired MOT, insurance or tax stops lessons being booked in that car.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <FAQEnhanced faqs={faqs} site="driveschool" pageUrl="https://driveschoolpro.com/features/vehicles/" title="Vehicle tracking questions" />
+
+  <section class="section bg-brand-navy text-white">
+    <div class="container-custom text-center max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Find out about the MOT before your pupils do</h2>
+      <p class="text-lg text-gray-300 mb-8">Free until 31 March 2027. No card, no contract, cancel any time.</p>
+      <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label} &rarr;</a>
+    </div>
+  </section>
+
+  <section class="section bg-white border-t border-gray-100">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-xl font-bold text-brand-navy mb-6">Related</h2>
+      <ul class="space-y-3 text-lg">
+        <li><a href="/features/scheduling/" class="text-brand-red font-semibold hover:underline">Scheduling &rarr;</a> <span class="text-gray-500">— the diary checks the car as well as the pupil</span></li>
+        <li><a href="/features/online-booking/" class="text-brand-red font-semibold hover:underline">Online booking &rarr;</a> <span class="text-gray-500">— pupils booking themselves into free slots</span></li>
+        <li><a href="/driving-school-management-software/" class="text-brand-red font-semibold hover:underline">Driving school management software &rarr;</a> <span class="text-gray-500">— running a multi-instructor school</span></li>
+        <li><a href="/driving-school-software-uk/" class="text-brand-red font-semibold hover:underline">Driving school software for UK schools &rarr;</a> <span class="text-gray-500">— plans and pricing for a team</span></li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

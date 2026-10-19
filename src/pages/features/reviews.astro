@@ -12,18 +12,18 @@ const faqs = [
     links: []
   },
   {
-    question: "When does someone appear on the list?",
-    answer: "Two things put a pupil there: passing their practical test, and going quiet after a run of lessons. You set how long to wait before they surface — anything from immediately up to seven days — so the ask lands when it will be welcome rather than the moment they walk out of the test centre.",
+    question: "Who gets asked, and when?",
+    answer: "When you mark a pupil's practical test as passed, DriveSchoolPro emails them a request to review you on Google. You choose how long it waits, from straight away up to three days; requests with a wait go out in a daily morning batch. It asks each pupil once, and only if they have an email address. Pupils you have marked inactive also appear in a Review Requests list on your Today screen, so you can ask them with one click.",
     links: []
   },
   {
     question: "Does it send the request for me?",
-    answer: "It does the remembering; you do the sending. Candidates appear on your Today screen and the request goes with one tap. That is deliberate — an ask that looks personal works far better than one that obviously came from software, and you stay in control of who gets asked.",
+    answer: "For a practical pass, yes. It is on by default and you can switch it off in settings. If you would rather ask yourself, turn it off and use the Review Requests list on your Today screen instead: each pupil is one click, so you stay in control of who gets asked.",
     links: []
   },
   {
     question: "Can I change the wording?",
-    answer: "Yes. The request is yours, in your words. A short personal message reads better than anything generic, and pupils can tell the difference.",
+    answer: "Not yet. The email is a short, friendly congratulations from your school's name with a button that opens your Google review page, and the wording is fixed. You can change when it is sent, or switch it off and ask in person or by message instead.",
     links: []
   },
   {
@@ -41,7 +41,7 @@ const faqs = [
 
 <BaseLayout
   title="Automated Google Review Collection for Driving Instructors | DriveSchoolPro"
-  description="Pupils who have just passed appear on your Today screen with a Google review request ready to send — on the day they are happiest to write one. Free until 31 March 2027."
+  description="DriveSchoolPro emails a Google review request to pupils who have just passed their practical test, when they are happiest to write one. Free until 31 March 2027."
 >
   <BreadcrumbsEnhanced items={[{ label: 'Home', href: '/' }, { label: 'Features', href: '/features/' }, { label: 'Reviews' }]} site="driveschool" />
 
@@ -62,11 +62,11 @@ const faqs = [
       </div>
 
       <ProductDemo
-        poster="/images/marketing/dashboard-overview.webp"
-        posterAlt="The DriveSchoolPro dashboard overview showing the day's lessons and business metrics."
-        alt="The Today screen: every instructor's lessons and the day's lesson value at a glance."
-        width={1440}
-        height={900}
+        poster="/images/marketing/review-requests.webp"
+        posterAlt="The Review Requests list on the Today screen: two pupils who have just passed their test, each with a Send Email button to ask for a Google review."
+        alt="The Review Requests list on the Today screen: two pupils who have just passed their test, each with a Send Email button to ask for a Google review."
+        width={1216}
+        height={277}
       />
     </div>
   </section>
@@ -88,24 +88,25 @@ const faqs = [
       </div>
 
       <div>
-        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">It remembers so you don't have to</h2>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">It asks so you don't have to remember</h2>
         <p class="text-lg text-gray-600">
           Almost every instructor knows they should ask for reviews. Very few do it consistently,
           and not through laziness — asking requires remembering, at the exact right moment, while
-          driving to the next pickup. DriveSchoolPro does that half: pupils who have passed, and
-          pupils who have gone quiet, appear on your Today screen with a request ready to go. You
-          still press send, which is what keeps it feeling like it came from you. Over a year that
+          driving to the next pickup. DriveSchoolPro does that half. Mark a pupil's
+          practical test as passed and a short email goes out asking them to review you on Google,
+          once, after a wait you choose. Anyone you have marked inactive shows up in a Review
+          Requests list on your Today screen, ready for you to ask with one click. Over a year that
           is the difference between four reviews and forty.
         </p>
       </div>
 
       <div>
-        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">In your words, to your Google profile</h2>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Straight to your Google profile</h2>
         <p class="text-lg text-gray-600">
           Requests point at your Google Business Profile — the listing people actually see when they
-          search for an instructor in your town — and the message is yours to write. We will not
+          search for an instructor in your town — and the email comes from your school. We will not
           promise you a ranking; nobody honestly can. What the tool does is narrow and useful: it
-          puts the right person in front of you at the right moment, so the ask stops depending on
+          asks the right person at the right moment, so the ask stops depending on
           you remembering.
         </p>
       </div>
@@ -126,15 +127,15 @@ const faqs = [
         <li class="flex gap-4">
           <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">2</span>
           <div>
-            <h3 class="font-bold text-brand-navy mb-1">Write the message in your own voice</h3>
-            <p class="text-gray-600">Short and personal beats polished and generic.</p>
+            <h3 class="font-bold text-brand-navy mb-1">Choose when it goes out</h3>
+            <p class="text-gray-600">From immediately to three days after the pass. It is on by default and you can switch it off.</p>
           </div>
         </li>
         <li class="flex gap-4">
           <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">3</span>
           <div>
-            <h3 class="font-bold text-brand-navy mb-1">Send from your Today screen</h3>
-            <p class="text-gray-600">Pupils who have passed, and pupils who have gone quiet, appear there when they are due an ask. One tap each.</p>
+            <h3 class="font-bold text-brand-navy mb-1">Mark the pass, or ask from Today</h3>
+            <p class="text-gray-600">Marking a practical pass sends the request automatically. Pupils you have marked inactive appear in the Review Requests list on your Today screen, one click each.</p>
           </div>
         </li>
       </ol>

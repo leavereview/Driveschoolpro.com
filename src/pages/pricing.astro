@@ -163,7 +163,7 @@ const plans = [
 ];
 ---
 
-<BaseLayout title="Driving School Software Pricing: Free Plan, Solo £22" description={`Driving school software pricing: free until 31 March 2027, then a permanent Free plan (60 lessons a month) or Solo at £22 a month. No VAT charged. No card required.`} image="/images/hero-pricing.jpg">
+<BaseLayout title="Driving School Software Pricing: Free Plan, Solo £22" description={`Driving school software pricing: free until 31 March 2027, then a permanent Free plan (60 lessons a month) or Solo at £22 a month. No VAT charged. No card required.`} image="/images/marketing/payments.webp">
   <Fragment slot="head">
     {offerSchemas.map(offerSchema => (
       <script type="application/ld+json" set:html={JSON.stringify(offerSchema)} />
@@ -182,9 +182,6 @@ const plans = [
   </div>
 
   <section class="relative overflow-hidden bg-gradient-to-br from-brand-navy to-gray-900 text-white py-16">
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute inset-0" style="background-image: url('/images/hero-pricing.jpg'); background-size: cover; background-position: center;"></div>
-    </div>
     <div class="container-custom relative">
       <div class="max-w-3xl text-center mx-auto">
         <span class="inline-block bg-brand-red/20 text-brand-red-light px-3 py-1 rounded-full text-sm mb-4">Early access</span>

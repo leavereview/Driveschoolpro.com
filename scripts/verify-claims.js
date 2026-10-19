@@ -76,14 +76,13 @@ const FORBIDDEN = [
   // Found on /blog/drivescout-vs-drivingschoolsoftware-comparison/ 2026-10-08: the app has no
   // GoCardless integration (card payments are Stripe only).
   ['gocardless integration for direct debit', 'no GoCardless integration in the app'],
-  // Review collection is a NUDGE, not an automatic send: ReviewNudgePanel puts
-  // candidates (test passes + inactive pupils) on the Today screen and the
-  // instructor taps send. Copy claiming it sends by itself is false. Found and
-  // corrected 2026-09-10 after the first draft of /features/reviews/ shipped it.
-  ['review request goes out automatically', 'review collection is a nudge, not an automatic send'],
-  ['review requests go out automatically', 'review collection is a nudge, not an automatic send'],
-  ['requests go to your google business profile automatically', 'review collection is a nudge, not an automatic send'],
-  ['reviews are sent automatically', 'review collection is a nudge, not an automatic send'],
+  // Review collection: RULES RETIRED 2026-10-19. These banned "automatic" review wording on the
+  // belief that review collection was only a Today-screen nudge. The app code says otherwise:
+  // marking a practical (final-stage) pass calls triggerReviewRequestForPass
+  // (src/lib/services/reviews/review-request-trigger.ts, wired in src/lib/actions/tests.ts), which
+  // emails the pupil once, after org.reviewRequestDelay (default 120 min, daily 07:00 cron batch).
+  // reviewRequestEnabled defaults true; email only; fixed wording; needs a Google Place ID.
+  // Do not claim: editable wording, WhatsApp requests, or a delay over 3 days (UI maximum).
   // Found 2026-09-10 by scanning every product claim against the app. The only
   // text/calendar response in the whole app is the PUBLIC booking-management
   // route (a pupil's own lesson); there is no instructor diary export or feed.
@@ -96,11 +95,6 @@ const FORBIDDEN = [
   ['turned off per pupil', 'no per-pupil briefing toggle exists'],
   ['turned off per-pupil', 'no per-pupil briefing toggle exists'],
   ['off per pupil', 'no per-pupil briefing toggle exists'],
-  // Review collection: six more pages carried the "automatic" framing.
-  ['triggers an automatic review', 'review collection is a nudge, not an automatic send'],
-  ['automatic review request', 'review collection is a nudge, not an automatic send'],
-  ['automated google review request', 'review collection is a nudge, not an automatic send'],
-  ['automatically sends a review', 'review collection is a nudge, not an automatic send'],
   // PLATFORM COMMISSION IS 3%. driveschoolpro/src/lib/utils/connect-fees.ts:14-25
   // (#1139, JP 2026-08-24: "3%, everyone, from launch") and schema.prisma:1081
   // platformFeePercent @default(3). It applies to FOUNDING orgs too - the free

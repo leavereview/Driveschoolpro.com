@@ -1,0 +1,190 @@
+---
+import { OFFER } from '../../config/offer';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BreadcrumbsEnhanced from '../../components/seo/BreadcrumbsEnhanced.astro';
+import FAQEnhanced from '../../components/seo/FAQEnhanced.astro';
+import ProductDemo from '../../components/ProductDemo.astro';
+
+const faqs = [
+  {
+    question: "Do pupils need an account to book online?",
+    answer: "Not through the website widget. A visitor picks a lesson type, an instructor (or anyone available), a day and a time, then enters their name, email, phone number and pick-up address. Pupils you have already invited use the portal instead, where they log in, see their own lessons and book from there.",
+    links: []
+  },
+  {
+    question: "Can I stop pupils booking at short notice or too far ahead?",
+    answer: "Yes. You set how far ahead pupils can book (anywhere from 1 to 365 days), whether same-day booking is allowed, how many upcoming bookings one pupil can hold at once, and a buffer of up to two hours after each lesson for travel time. Times are only offered when you are actually free.",
+    links: []
+  },
+  {
+    question: "Do I have to approve bookings first?",
+    answer: "Not at the moment. Online bookings are confirmed straight away and land in your diary, so the protection is in the rules you set up front rather than an approval step. If you want a say in who books, keep the widget switched off and invite pupils to the portal one at a time.",
+    links: []
+  },
+  {
+    question: "What happens when a pupil wants to cancel?",
+    answer: "You choose the notice period, from one hour up to 72 hours, and whether pupils may cancel or reschedule online at all. Inside the notice window they cannot cancel from the portal and have to contact you, so the decision stays with you.",
+    links: []
+  },
+  {
+    question: "Can pupils pay when they book?",
+    answer: "Yes, if you have connected Stripe to take card payments and switched on payment at booking. A pupil with a lesson package can use their prepaid hours instead, from the portal. Without Stripe connected, bookings are confirmed without taking a payment.",
+    links: [{ text: "How card payments work", url: "/features/getting-paid/" }]
+  },
+  {
+    question: "Can pupils choose which car they have?",
+    answer: "No. Pupils pick a lesson type, an instructor and a time. Which vehicle is used is for you to decide, and the diary checks that the car is not already booked.",
+    links: []
+  },
+  {
+    question: "Is it available on the free plan?",
+    answer: "Yes. Everything is free until 31 March 2027, and the permanent Free plan covers up to 60 lessons a month. Check the pricing page for the full picture.",
+    links: [{ text: "See pricing", url: "/pricing/" }]
+  }
+];
+---
+
+<BaseLayout
+  title="Online Booking for Driving Lessons | DriveSchoolPro"
+  description="Let pupils book driving lessons from your website or their portal, 24 hours a day, into times you are actually free. Free until 31 March 2027."
+>
+  <BreadcrumbsEnhanced items={[{ label: 'Home', href: '/' }, { label: 'Features', href: '/features/' }, { label: 'Online booking' }]} site="driveschool" />
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-3xl mb-12">
+        <p class="text-sm uppercase tracking-wider text-gray-400 mb-3">Between lessons</p>
+        <h1 class="text-4xl md:text-5xl font-bold text-brand-navy leading-tight mb-6">
+          Online booking for driving lessons, into the times you are actually free.
+        </h1>
+        <p class="text-xl text-gray-600 leading-relaxed mb-8">
+          Enquiries do not arrive at convenient times. They arrive at ten at night, or while you
+          are halfway round a roundabout with a learner, and a good share of them go to whichever
+          instructor answers first. Online booking lets a new pupil, or one of your existing ones,
+          pick a slot themselves, at any hour, without you being involved.
+        </p>
+        <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label} &rarr;</a>
+      </div>
+
+      <ProductDemo
+        poster="/images/marketing/portal-book-lesson-type-mobile.webp"
+        posterAlt="A pupil's booking screen on a phone at step one, Choose Lesson Type: a one hour lesson at £38, a two hour lesson at £74 and a mock test at £55."
+        alt="A pupil's booking screen on a phone at step one, Choose Lesson Type: a one hour lesson at £38, a two hour lesson at £74 and a mock test at £55."
+        width={375}
+        height={900}
+        phone
+      />
+    </div>
+  </section>
+
+  <section class="section bg-gray-50 border-t border-gray-100">
+    <div class="container-custom max-w-4xl space-y-14">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Two ways for pupils to book</h2>
+        <p class="text-lg text-gray-600 mb-4">
+          <strong>From your website.</strong> Paste a short snippet into your site and a booking
+          button appears. It opens a booking window without taking the visitor away from your page.
+          They choose a lesson type, an instructor or "any available", a day and a time, and leave
+          their name, email, phone number and pick-up address. No account, no password, nothing to
+          remember. You choose the button's wording, colour and which corner it sits in.
+        </p>
+        <p class="text-lg text-gray-600">
+          <strong>From their portal.</strong> Pupils you have invited log in to see their lessons,
+          progress and invoices, and book the next one from the same place. They get a link to
+          manage the booking afterwards, and where you allow it they can use prepaid lesson hours
+          rather than paying again.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Only the times you would say yes to</h2>
+        <p class="text-lg text-gray-600 mb-4">
+          The risk with letting people book themselves is that they book things you would never
+          have agreed to. So the slots shown come straight from your working hours and your diary,
+          and you set the rules around them:
+        </p>
+        <ul class="list-disc pl-6 space-y-2 text-lg text-gray-600 mb-6">
+          <li><strong>Slot length:</strong> start times every 15, 30 or 60 minutes.</li>
+          <li><strong>Travel buffer:</strong> up to two hours kept clear after each lesson.</li>
+          <li><strong>How far ahead:</strong> from 1 to 365 days.</li>
+          <li><strong>Same-day booking:</strong> on or off.</li>
+          <li><strong>Pupil limit:</strong> how many upcoming bookings one pupil can hold at once.</li>
+          <li><strong>Cancellation notice:</strong> one hour up to 72 hours, with separate switches for whether pupils can cancel or reschedule online.</li>
+        </ul>
+        <p class="text-lg text-gray-600 mb-8">
+          Every booking is checked against the pupil, the instructor and the car in the same way as
+          one you make yourself, so an online booking cannot double-book anything.
+        </p>
+        <ProductDemo
+          poster="/images/marketing/booking-rules.webp"
+          posterAlt="The Booking rules and What pupils can do settings: slot interval every 30 minutes, 15 minute buffer, 21 days maximum advance booking, three active bookings per student, 24 hour cancellation notice, same-day booking off, and switches allowing students to cancel and reschedule."
+          alt="The Booking rules and What pupils can do settings: slot interval every 30 minutes, 15 minute buffer, 21 days maximum advance booking, three active bookings per student, 24 hour cancellation notice, same-day booking off, and switches allowing students to cancel and reschedule."
+          width={934}
+          height={655}
+        />
+      </div>
+
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">What it will not do</h2>
+        <p class="text-lg text-gray-600">
+          It is worth being plain about the edges. Bookings are confirmed immediately, so there is
+          no approve-first step. Pupils do not pick the car. There is no text-message booking.
+          And the refund policy you write is shown to pupils as wording; it does not decide refund
+          amounts for you. If any of those matter to how you run things, you will want to know
+          before you rely on it rather than after.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white border-t border-gray-100">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-8">How it works</h2>
+      <ol class="space-y-6">
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">1</span>
+          <div>
+            <h3 class="font-bold text-brand-navy mb-1">Set your hours and lesson types</h3>
+            <p class="text-gray-600">Working hours, the lessons you offer and their prices. This is what decides which times pupils are shown.</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">2</span>
+          <div>
+            <h3 class="font-bold text-brand-navy mb-1">Choose your rules, then switch it on</h3>
+            <p class="text-gray-600">Notice period, how far ahead, buffers. Online booking is off until you turn it on.</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">3</span>
+          <div>
+            <h3 class="font-bold text-brand-navy mb-1">Share the link or add the button to your site</h3>
+            <p class="text-gray-600">Copy the snippet onto your website, or send pupils the portal link. Bookings appear in your diary as they are made.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <FAQEnhanced faqs={faqs} site="driveschool" pageUrl="https://driveschoolpro.com/features/online-booking/" title="Online booking questions" />
+
+  <section class="section bg-brand-navy text-white">
+    <div class="container-custom text-center max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Let the next pupil book while you are teaching</h2>
+      <p class="text-lg text-gray-300 mb-8">Free until 31 March 2027. No card, no contract, cancel any time.</p>
+      <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label} &rarr;</a>
+    </div>
+  </section>
+
+  <section class="section bg-white border-t border-gray-100">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-xl font-bold text-brand-navy mb-6">Related</h2>
+      <ul class="space-y-3 text-lg">
+        <li><a href="/features/scheduling/" class="text-brand-red font-semibold hover:underline">Scheduling &rarr;</a> <span class="text-gray-500">— the diary every booking lands in</span></li>
+        <li><a href="/features/getting-paid/" class="text-brand-red font-semibold hover:underline">Getting paid &rarr;</a> <span class="text-gray-500">— card payment and lesson packages</span></li>
+        <li><a href="/driving-school-scheduling-software/" class="text-brand-red font-semibold hover:underline">Driving school scheduling software &rarr;</a> <span class="text-gray-500">— the longer guide</span></li>
+        <li><a href="/driving-instructor-software/" class="text-brand-red font-semibold hover:underline">Driving instructor software &rarr;</a> <span class="text-gray-500">— everything a solo ADI needs</span></li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
