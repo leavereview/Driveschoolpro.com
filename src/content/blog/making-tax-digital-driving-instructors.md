@@ -4,8 +4,8 @@ description: "Most full-time ADIs pass the £30,000 Making Tax Digital threshold
 date: "2026-10-16"
 tags: ["business", "guide", "tax"]
 author: "John Powell"
-image: /images/blog-office.jpg
-imageAlt: "Driving instructor reviewing lesson income on a laptop before a quarterly tax update"
+image: /images/blog/app-payments.jpg
+imageAlt: "The DriveSchoolPro Money screen showing revenue this month, outstanding and overdue balances, and payment reminders"
 faqs:
   - question: "Do driving instructors have to use Making Tax Digital?"
     answer: "Self-employed driving instructors registered for Self Assessment must use Making Tax Digital for Income Tax once their qualifying income passes the threshold: over £50,000 from 6 April 2026, over £30,000 from 6 April 2027 and over £20,000 from 6 April 2028. Qualifying income is your lesson income before expenses, so most full-time ADIs pass £30,000 and start in April 2027."

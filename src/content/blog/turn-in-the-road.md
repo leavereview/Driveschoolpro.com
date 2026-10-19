@@ -2,12 +2,12 @@
 title: "Turn in the Road: 3-Point Turn Guide for Driving Test"
 description: "Complete guide to the turn in the road manoeuvre for your UK driving test. Master clutch control, observation, and kerb clearance with DVSA Skill 18."
 date: "2026-02-21"
-image: /images/blog-lesson.jpg
+image: /images/blog/dvsa-manoeuvres.jpg
 tags: ["manoeuvres", "driving-test", "turn-in-the-road"]
 author: "John Powell"
 category: "Manoeuvres"
 skill_number: 18
-imageAlt: "A learner driver performing a turn in the road on a quiet residential street during a driving lesson, with the instructor watching"
+imageAlt: "DriveSchoolPro illustration of two cars and a parking bay for Manoeuvres, DVSA skills 17 to 20"
 howTo:
   name: "How to Turn in the Road (3-Point Turn)"
   description: "A step-by-step guide to completing a turn in the road safely and accurately on a narrow road, meeting DVSA test standard."

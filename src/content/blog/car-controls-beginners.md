@@ -2,12 +2,12 @@
 title: "Car Controls for Beginners: DVSA Skill 5 Explained"
 description: "Master every pedal, gear, and switch before your first drive. DVSA Skill 5 car controls explained for UK learner drivers."
 date: "2026-02-21"
-image: /images/feature-instructor.jpg
+image: /images/blog/dvsa-control-positioning.jpg
 tags: ["student-management", "control-positioning", "dvsa-skills"]
 author: "John Powell"
 category: "Control & Positioning"
 skill_number: 5
-imageAlt: "Learner driver sitting in car reviewing dashboard controls with driving instructor"
+imageAlt: "DriveSchoolPro illustration of a car seen from above keeping its lane, for Control and Positioning, DVSA skills 5 to 7"
 howTo:
   name: "How to Learn and Master the Basic Car Controls"
   description: "A step-by-step approach to understanding every control in the car before you begin moving, covering pedals, gears, steering, and secondary controls."

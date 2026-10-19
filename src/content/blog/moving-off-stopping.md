@@ -2,12 +2,12 @@
 title: "Moving Off and Stopping: Master DVSA Skill 6"
 description: "POM routine, clutch control, hill starts, and safe stopping positions. Everything UK learners need to master DVSA Skill 6."
 date: "2026-02-21"
-image: /images/feature-instructor.jpg
+image: /images/blog/dvsa-control-positioning.jpg
 tags: ["control-positioning", "dvsa-skills"]
 author: "John Powell"
 category: "Control & Positioning"
 skill_number: 6
-imageAlt: "Learner driver checking mirrors and preparing to move off from a parked position on a UK road"
+imageAlt: "DriveSchoolPro illustration of a car seen from above keeping its lane, for Control and Positioning, DVSA skills 5 to 7"
 howTo:
   name: "How to Move Off and Stop Safely"
   description: "The complete POM routine for moving off and a systematic approach to stopping safely at the right position, including hill starts."

@@ -1,7 +1,8 @@
 ---
 title: "SEO for Driving Schools"
 description: "SEO for driving schools: rank #1 locally with Google Business optimisation, keyword targeting, and content strategy. 47% of students find schools via search."
-image: /images/blog-software.jpg
+image: /images/blog/app-review-requests.jpg
+imageAlt: "The DriveSchoolPro Review Requests list, prompting the instructor to ask two pupils who have just passed for a Google review"
 date: "2026-02-13"
 tags: ["Marketing"]
 author: "John Powell"

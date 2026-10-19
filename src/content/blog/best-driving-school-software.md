@@ -1,8 +1,8 @@
 ---
 title: "Best Driving School Software UK (2026)"
 description: "Compare 8 UK driving instructor apps on DVSA tracking, reminders, pupil apps and trials, with each one's gaps. DriveSchoolPro is free until 31 March 2027."
-image: /images/blog-software.jpg
-imageAlt: "Driving school instructor using management software on tablet to schedule lessons and track student progress"
+image: /images/blog/app-dashboard-overview.jpg
+imageAlt: "The DriveSchoolPro Today screen showing the day's lessons for each instructor and the day's lesson value"
 date: "2026-02-24"
 updatedDate: "2026-10-08"
 tags: ["Software"]

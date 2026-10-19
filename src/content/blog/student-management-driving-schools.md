@@ -1,7 +1,8 @@
 ---
 title: "Student Management for Driving Schools: The Complete Guide"
 description: "How to manage student records, track DVSA progress, and communicate with parents — with practical tips for solo ADIs and multi-instructor schools."
-image: /images/blog-student.jpg
+image: /images/blog/app-student-list.jpg
+imageAlt: "The DriveSchoolPro Students page, with pupils grouped by what needs doing and each pupil's next lesson and test readiness"
 date: "2026-01-13"
 tags: ["Software", "Student Management"]
 author: "John Powell"

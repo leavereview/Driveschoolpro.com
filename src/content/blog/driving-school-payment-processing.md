@@ -1,7 +1,8 @@
 ---
 title: "Driving School Payment Processing"
 description: "Make it easy for students to pay and improve your cash flow. Complete guide to payment processing options for driving schools."
-image: /images/blog-payment.jpg
+image: /images/blog/app-payments.jpg
+imageAlt: "The DriveSchoolPro Money screen showing revenue this month, outstanding and overdue balances, and payment reminders"
 date: "2026-01-09"
 tags: ["Software", "Business"]
 author: "John Powell"

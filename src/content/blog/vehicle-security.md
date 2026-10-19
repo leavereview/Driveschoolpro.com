@@ -2,12 +2,12 @@
 title: "Vehicle Security: DVSA Skill 4 — Parking & Anti-Theft"
 description: "UK learner driver guide to vehicle security — applying handbrake, locking up correctly, leaving vehicles safely, and avoiding common test faults."
 date: "2026-02-21"
-image: /images/blog-learner.jpg
+image: /images/blog/dvsa-the-basics.jpg
 tags: ["the-basics", "dvsa-skills", "vehicle-security", "parking", "handbrake"]
 author: "John Powell"
 category: "The Basics"
 skill_number: 4
-imageAlt: "Driver applying handbrake and securing vehicle before leaving"
+imageAlt: "DriveSchoolPro illustration of a steering wheel and car key for The Basics, DVSA skills 1 to 4"
 howTo:
   name: "How to secure your vehicle when parking or leaving it"
   description: "Step-by-step guidance for safely stopping, securing, and leaving a vehicle — for UK learner drivers and the driving test"

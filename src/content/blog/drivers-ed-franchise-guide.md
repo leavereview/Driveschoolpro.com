@@ -1,7 +1,8 @@
 ---
 title: "Driver's Ed Franchise Guide"
 description: "Complete guide to driver's ed franchises. Compare franchise vs. independent, costs, pros and cons, and what to expect from driving school franchises."
-image: /images/blog-team.jpg
+image: /images/blog/app-instructors.jpg
+imageAlt: "The DriveSchoolPro Instructors page showing four instructors with their transmissions and active pupils"
 date: "2026-01-30"
 tags: ["Business", "Startup"]
 author: "John Powell"

@@ -2,12 +2,12 @@
 title: "Anticipation & Planning: DVSA Skill 10 for Safer Driving"
 description: "Learn how to read the road and anticipate hazards for your UK driving test. DVSA Skill 10 levels, techniques, and practice tips."
 date: "2026-02-21"
-image: /images/feature-driving.jpg
+image: /images/blog/dvsa-observations-signalling-planning.jpg
 tags: ["student-management"]
 author: "John Powell"
 category: "Observation & Planning"
 skill_number: 10
-imageAlt: "View from the driver's seat looking ahead down a busy UK road with parked vehicles and a junction ahead"
+imageAlt: "DriveSchoolPro illustration of an eye with a compass for Observation and Planning, DVSA skills 8 to 13"
 howTo:
   name: "How to develop anticipation and planning ahead while driving"
   description: "A structured approach to scanning further ahead, identifying hazards early, and adjusting your driving before problems develop"

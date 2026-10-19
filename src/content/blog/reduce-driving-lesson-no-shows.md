@@ -4,8 +4,8 @@ description: "UK driving instructors lose £2,000+ per year to no-shows. Here ar
 date: "2026-04-11"
 tags: ["business", "guide"]
 author: "John Powell"
-image: /images/blog-scheduling.jpg
-imageAlt: "Driving instructor checking lesson schedule on phone with automated reminder notifications visible"
+image: /images/blog/app-booking-rules.jpg
+imageAlt: "DriveSchoolPro online booking rules: cancellation notice, buffer between lessons, how far ahead pupils can book, and whether pupils can cancel or reschedule"
 faqs:
   - question: "What is a reasonable cancellation policy for driving lessons?"
     answer: "A standard UK ADI cancellation policy requires 24 or 48 hours notice to reschedule or cancel without charge. Less than 24 hours notice typically means the lesson is charged in full, and a no-show (no contact at all) is charged in full and may result in a requirement to prepay future lessons. Always communicate the policy at booking, in confirmation messages, and in reminders."

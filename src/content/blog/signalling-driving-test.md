@@ -2,12 +2,12 @@
 title: "Signalling on Your Driving Test: When and How (Skill 9)"
 description: "Find out when to signal and when not to on your UK driving test. DVSA Skill 9 levels, common faults, and practice tips explained."
 date: "2026-02-21"
-image: /images/blog-lesson.jpg
+image: /images/blog/dvsa-observations-signalling-planning.jpg
 tags: ["student-management"]
 author: "John Powell"
 category: "Observation & Planning"
 skill_number: 9
-imageAlt: "Indicator stalk on a UK car with a learner driver preparing to signal at a junction"
+imageAlt: "DriveSchoolPro illustration of an eye with a compass for Observation and Planning, DVSA skills 8 to 13"
 howTo:
   name: "How to signal correctly during your driving test"
   description: "A practical guide to timing, cancelling, and deciding when a signal is genuinely necessary"

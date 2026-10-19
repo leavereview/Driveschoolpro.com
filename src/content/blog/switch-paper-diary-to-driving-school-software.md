@@ -4,8 +4,8 @@ description: "Thinking of ditching your paper diary and WhatsApp? Here's a pract
 date: "2026-04-11"
 tags: ["business", "guide"]
 author: "John Powell"
-image: /images/blog-scheduling.jpg
-imageAlt: "Driving instructor switching from paper diary to driving school software on smartphone beside a lesson booking calendar"
+image: /images/blog/app-calendar-week.jpg
+imageAlt: "The DriveSchoolPro week calendar showing colour-coded driving lessons across four instructors"
 faqs:
   - question: "Can I try driving school software before committing?"
     answer: "Yes. DriveSchoolPro is free until 31 March 2027 while in early access, with no credit card required. You can add all your students, set up your calendar, and run the software alongside your paper diary for as long as you like. If it does not work for you, you simply stop — nothing is lost."

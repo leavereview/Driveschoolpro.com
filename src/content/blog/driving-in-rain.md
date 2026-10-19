@@ -2,12 +2,12 @@
 title: "Driving in Rain: DVSA Skill 25 — Adverse Weather Guide"
 description: "How to drive safely in rain, fog, ice and adverse weather for your UK driving test. Covers stopping distances, aquaplaning and fog lights."
 date: "2026-02-21"
-image: /images/feature-driving.jpg
+image: /images/blog/dvsa-driving-conditions.jpg
 tags: ["driving-conditions", "dvsa-skills", "adverse-weather", "rain-driving"]
 author: "John Powell"
 category: "Driving Conditions"
 skill_number: 25
-imageAlt: "Car driving on a wet UK road with rain and spray visible"
+imageAlt: "DriveSchoolPro illustration of sun, cloud and rain for Driving Conditions, DVSA skills 24 to 26"
 howTo:
   name: "How to drive safely in rain and adverse weather"
   description: "A practical step-by-step approach to handling wet roads, fog, ice and other adverse conditions for UK learner drivers"

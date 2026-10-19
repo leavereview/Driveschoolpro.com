@@ -2,12 +2,12 @@
 title: "Pedestrian Crossings: Rules & Driving Test Guide (Skill 16)"
 description: "Know all 6 UK pedestrian crossing types for your driving test. Learn the rules for Zebra, Pelican, Toucan, Puffin, Pegasus & Crossrail crossings."
 date: "2026-02-21"
-image: /images/feature-student.jpg
+image: /images/blog/dvsa-junctions-roundabouts-crossings.jpg
 tags: ["junctions", "driving-test", "pedestrian-crossings", "observation"]
 author: "John Powell"
 category: "Junctions & Roundabouts"
 skill_number: 16
-imageAlt: "A learner driver stopped at a zebra crossing, waiting for a pedestrian to complete crossing safely before moving off"
+imageAlt: "DriveSchoolPro illustration of a roundabout for Junctions and Roundabouts, DVSA skills 14 to 16"
 howTo:
   name: "How to Approach and Stop at a Pedestrian Crossing Correctly"
   description: "A step-by-step guide to handling all pedestrian crossing types safely and legally, to the standard required for the DVSA driving test."

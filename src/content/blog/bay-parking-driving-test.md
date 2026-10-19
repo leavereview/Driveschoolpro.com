@@ -2,12 +2,12 @@
 title: "Bay Parking on Your Driving Test: Forward and Reverse"
 description: "Master bay parking for your UK driving test. Learn reverse and forward bay park techniques, what examiners assess, and how to avoid common faults."
 date: "2026-02-21"
-image: /images/blog-lesson.jpg
+image: /images/blog/dvsa-manoeuvres.jpg
 tags: ["manoeuvres", "driving-test", "bay-parking"]
 author: "John Powell"
 category: "Manoeuvres"
 skill_number: 19
-imageAlt: "A learner driver carefully reversing into a marked bay in a car park during a driving lesson"
+imageAlt: "DriveSchoolPro illustration of two cars and a parking bay for Manoeuvres, DVSA skills 17 to 20"
 howTo:
   name: "How to Reverse Bay Park for Your Driving Test"
   description: "A step-by-step guide to completing a reverse bay park accurately and safely, meeting DVSA test standard."

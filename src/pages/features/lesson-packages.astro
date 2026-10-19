@@ -1,0 +1,187 @@
+---
+import { OFFER } from '../../config/offer';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BreadcrumbsEnhanced from '../../components/seo/BreadcrumbsEnhanced.astro';
+import FAQEnhanced from '../../components/seo/FAQEnhanced.astro';
+import ProductDemo from '../../components/ProductDemo.astro';
+
+const faqs = [
+  {
+    question: "How do lesson packages work?",
+    answer: "You create a package with a name, a number of lessons, a price and, if you like, how long it is valid for. A pupil buys it, and each lesson they take counts one off the balance until it runs out. Both of you can see how many are left at any time.",
+    links: []
+  },
+  {
+    question: "Can pupils buy a block of lessons online?",
+    answer: "Yes, by card in the pupil app or portal, once you have connected Stripe and ticked the package as available to buy. If Stripe is not connected, pupils are asked to contact you to buy one instead.",
+    links: [{ text: "How card payments work", url: "/features/getting-paid/" }]
+  },
+  {
+    question: "Can I record a block a pupil paid for in cash?",
+    answer: "Yes. From the pupil's record you add the package and record how they paid: cash, bank transfer, card or online. You enter the amount actually paid, so a part-payment is recorded as a part-payment.",
+    links: []
+  },
+  {
+    question: "When is a lesson taken off the balance?",
+    answer: "When you book a lesson against a package yourself, it comes off at booking. When a pupil books through the app using their package, it comes off when the lesson is completed. Either way, cancelling the lesson puts it back.",
+    links: []
+  },
+  {
+    question: "Can a package only be used for one type of lesson?",
+    answer: "You choose: a package can cover any lesson type, or one specific type, such as a mock test package that can only be used for mock tests. Each lesson counts as one, whatever its length.",
+    links: []
+  },
+  {
+    question: "Does it remind pupils when their package is running low or expiring?",
+    answer: "Not by message at the moment. You see a prompt on the pupil's record when they are down to their last lesson, and pupils can see their own balance and expiry date in the app. Expired packages can no longer be used, and the owner can extend an expiry date if needed.",
+    links: []
+  }
+];
+---
+
+<BaseLayout
+  title="Driving Lesson Packages and Block Bookings | DriveSchoolPro"
+  description="Sell blocks of driving lessons that pupils can buy by card in their app, with balances that count down after each lesson. Free until 31 March 2027."
+>
+  <BreadcrumbsEnhanced items={[{ label: 'Home', href: '/' }, { label: 'Features', href: '/features/' }, { label: 'Lesson packages' }]} site="driveschool" />
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-3xl mb-12">
+        <p class="text-sm uppercase tracking-wider text-gray-400 mb-3">Paid up front</p>
+        <h1 class="text-4xl md:text-5xl font-bold text-brand-navy leading-tight mb-6">
+          Lesson packages and block bookings that keep their own count.
+        </h1>
+        <p class="text-xl text-gray-600 leading-relaxed mb-8">
+          Selling lessons in blocks is good for everyone: the pupil gets a better price and you get
+          paid up front, which is the most reliable cure for cancellations there is. The awkward part
+          is the counting. "How many have I got left?" should not need a notebook, a spreadsheet and
+          a guess. Lesson packages keep the count for you, and show it to the pupil too.
+        </p>
+        <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label} &rarr;</a>
+      </div>
+
+      <ProductDemo
+        poster="/images/marketing/lesson-packages-settings.webp"
+        posterAlt="The Lesson Packages settings screen with four packages: a 5 lesson taster at £195, a 10 lesson starter at £350, a 20 lesson intensive at £660 and a 3 session test prep package at £185, each showing the price per lesson and how long it is valid."
+        alt="The Lesson Packages settings screen with four packages: a 5 lesson taster at £195, a 10 lesson starter at £350, a 20 lesson intensive at £660 and a 3 session test prep package at £185, each showing the price per lesson and how long it is valid."
+        width={932}
+        height={640}
+      />
+    </div>
+  </section>
+
+  <section class="section bg-gray-50 border-t border-gray-100">
+    <div class="container-custom max-w-4xl space-y-14">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Set up the blocks you sell</h2>
+        <p class="text-lg text-gray-600">
+          Each package has a name, a short description, a number of lessons, a price and an
+          optional validity period, such as 90 days for a taster or a year for a big block. It can
+          cover any lesson type or just one, so a mock-test package can only be spent on mock tests.
+          The price per lesson is worked out and shown for you, which makes the saving on a bigger
+          block easy to see.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-10 items-start">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Pupils buy them on their phone</h2>
+          <p class="text-lg text-gray-600 mb-4">
+            Tick a package as available and it appears in the <a href="/features/pupil-app/" class="text-brand-red hover:underline">pupil app</a>,
+            where pupils can buy it by card. The money goes to your Stripe account, less card and platform fees, and the balance
+            is on their account straight away, ready to book against.
+          </p>
+          <p class="text-lg text-gray-600">
+            Prefer bank transfer or cash? Record the sale on the pupil's record instead, with the
+            amount actually paid, and the balance works exactly the same way.
+          </p>
+        </div>
+        <ProductDemo
+          poster="/images/marketing/portal-packages-mobile.webp"
+          posterAlt="The pupil app's My packages screen: a 20 hour intensive package, active, with 8 of 20 remaining and an expiry date."
+          alt="The pupil app's My packages screen: a 20 hour intensive package, active, with 8 of 20 remaining and an expiry date."
+          width={375}
+          height={900}
+          phone
+        />
+      </div>
+
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">A balance that counts itself down</h2>
+        <p class="text-lg text-gray-600 mb-4">
+          Book a lesson against a package and one comes off. If a pupil books through the app using
+          their package, it comes off when the lesson is completed. Cancel the lesson and it goes back.
+          You never have to work out the balance, and neither does the pupil: they can see what is
+          left, and when it expires, in their app.
+        </p>
+        <p class="text-lg text-gray-600">
+          When a pupil is down to their last lesson, their record tells you so, which is the moment
+          to mention the next block. An expired package can no longer be used, and the owner can
+          extend the date if there is a good reason.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">What it does not do yet</h2>
+        <p class="text-lg text-gray-600">
+          It does not send pupils a message when they are running low or a package is about to
+          expire; that prompt is for you, in the app. Pupils can only buy online by card, through
+          Stripe. And a refund made directly in your Stripe account does not remove the lessons from
+          the package automatically. You are told to check it, but you adjust it yourself.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white border-t border-gray-100">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-8">How it works</h2>
+      <ol class="space-y-6">
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">1</span>
+          <div>
+            <h3 class="font-bold text-brand-navy mb-1">Create your packages</h3>
+            <p class="text-gray-600">Number of lessons, price, and how long it lasts.</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">2</span>
+          <div>
+            <h3 class="font-bold text-brand-navy mb-1">Sell them</h3>
+            <p class="text-gray-600">Pupils buy by card in their app, or you record a cash or bank-transfer sale.</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">3</span>
+          <div>
+            <h3 class="font-bold text-brand-navy mb-1">Book against the balance</h3>
+            <p class="text-gray-600">Each lesson counts one off; a cancelled lesson puts it back.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <FAQEnhanced faqs={faqs} site="driveschool" pageUrl="https://driveschoolpro.com/features/lesson-packages/" title="Lesson package questions" />
+
+  <section class="section bg-brand-navy text-white">
+    <div class="container-custom text-center max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Get paid for the next ten lessons today</h2>
+      <p class="text-lg text-gray-300 mb-8">Free until 31 March 2027. No card, no contract, cancel any time.</p>
+      <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label} &rarr;</a>
+    </div>
+  </section>
+
+  <section class="section bg-white border-t border-gray-100">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-xl font-bold text-brand-navy mb-6">Related</h2>
+      <ul class="space-y-3 text-lg">
+        <li><a href="/features/getting-paid/" class="text-brand-red font-semibold hover:underline">Getting paid &rarr;</a> <span class="text-gray-500">— card payments, invoices and who owes you</span></li>
+        <li><a href="/features/pupil-app/" class="text-brand-red font-semibold hover:underline">Pupil app &rarr;</a> <span class="text-gray-500">— where pupils buy and track their packages</span></li>
+        <li><a href="/blog/reduce-driving-lesson-no-shows/" class="text-brand-red font-semibold hover:underline">How to stop driving lesson no-shows &rarr;</a> <span class="text-gray-500">— why paying up front works</span></li>
+        <li><a href="/driving-instructor-accounting-software/" class="text-brand-red font-semibold hover:underline">Driving instructor accounting software &rarr;</a> <span class="text-gray-500">— invoicing and the money side</span></li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

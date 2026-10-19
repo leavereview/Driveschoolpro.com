@@ -2,12 +2,12 @@
 title: "Driving Test Junctions: How to Pass T-Junctions & Crossroads"
 description: "Junctions cause more driving test faults than anything else. Learn the MSPSL routine, open vs closed junctions, and crossroad priority for DVSA Skill 14."
 date: "2026-02-21"
-image: /images/blog-learner.jpg
+image: /images/blog/dvsa-junctions-roundabouts-crossings.jpg
 tags: ["junctions", "driving-test", "observation", "road-positioning"]
 author: "John Powell"
 category: "Junctions & Roundabouts"
 skill_number: 14
-imageAlt: "A learner driver approaching a T-junction carefully, checking both ways before emerging onto the main road during a driving lesson"
+imageAlt: "DriveSchoolPro illustration of a roundabout for Junctions and Roundabouts, DVSA skills 14 to 16"
 howTo:
   name: "How to Approach and Emerge from a T-Junction"
   description: "A step-by-step guide to the MSPSL routine for approaching and safely emerging from a T-junction to the standard required for the DVSA driving test."

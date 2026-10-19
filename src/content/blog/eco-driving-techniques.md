@@ -2,12 +2,12 @@
 title: "Eco-Driving Techniques: Save Fuel & Pass DVSA Skill 13"
 description: "Eco-driving for UK learner drivers: master block gear changes, coasting, and smooth acceleration to pass your test and cut fuel costs."
 date: "2026-02-21"
-image: /images/feature-driving.jpg
+image: /images/blog/dvsa-observations-signalling-planning.jpg
 tags: ["student-management", "dvsa-skills", "eco-driving", "fuel-efficiency"]
 author: "John Powell"
 category: "Observation & Planning"
 skill_number: 13
-imageAlt: "Driver's hand on gear stick demonstrating smooth gear changes in a UK driving lesson"
+imageAlt: "DriveSchoolPro illustration of an eye with a compass for Observation and Planning, DVSA skills 8 to 13"
 howTo:
   name: "How to drive more fuel-efficiently and eco-consciously"
   description: "Use your gears, momentum, and anticipation to reduce fuel consumption and emissions while becoming a smoother, more controlled driver."

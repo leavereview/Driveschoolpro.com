@@ -1,7 +1,8 @@
 ---
 title: "How to Choose Driving School Scheduling Software: A Step-by-Step Guide"
 description: "A practical guide for UK ADIs: what features matter in scheduling software, what to ignore, red flags to avoid, and questions to ask before signing up."
-image: /images/blog-scheduling.jpg
+image: /images/blog/app-calendar-day.jpg
+imageAlt: "The DriveSchoolPro calendar in day view, showing free slots between lessons and a Reschedule button on each booking"
 date: "2025-12-27"
 tags: ["Software", "Scheduling"]
 author: "John Powell"

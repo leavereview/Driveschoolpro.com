@@ -2,12 +2,12 @@
 title: "Country Roads: DVSA Skill 21 — Rural Driving Guide"
 description: "Country roads kill more drivers than motorways. Learn DVSA Skill 21 — speed, bends, passing places, and farm hazards for your UK test."
 date: "2026-02-21"
-image: /images/hero-driving.jpg
+image: /images/blog/dvsa-road-types.jpg
 tags: ["student-management", "road-types", "dvsa-skills"]
 author: "John Powell"
 category: "Road Types"
 skill_number: 21
-imageAlt: "Car navigating a narrow country lane in the UK with hedgerows on either side"
+imageAlt: "DriveSchoolPro illustration of a winding road for Road Types, DVSA skills 21 to 23"
 howTo:
   name: "How to Drive Safely on Country Roads"
   description: "A step-by-step approach to adjusting your speed, positioning, and hazard awareness for rural roads, including single-track lanes and farm hazards."

@@ -41,7 +41,7 @@ const moments = [
     blurb: 'Pupils buy lesson blocks in their own portal and pay by card. Balances keep themselves up to date.',
     poster: '/images/marketing/portal-dashboard-mobile.webp',
     posterAlt: "A pupil's portal on a phone showing their next lesson and remaining package hours.",
-    w: 640, h: 1308,
+    w: 375, h: 1193,
   },
   {
     when: 'End of month',
@@ -59,6 +59,16 @@ const more = [
     href: '/features/online-booking/',
     title: 'Online booking',
     blurb: 'Pupils book from your website or their portal into the times you are free, within the notice and booking rules you set.',
+  },
+  {
+    href: '/features/pupil-app/',
+    title: 'Pupil app',
+    blurb: 'An iPhone and Android app for your pupils: next lesson, directions, DVSA progress, booking, messages and payments.',
+  },
+  {
+    href: '/features/lesson-packages/',
+    title: 'Lesson packages',
+    blurb: 'Sell blocks of lessons that pupils can buy by card, with a balance that counts down after each lesson.',
   },
   {
     href: '/features/vehicles/',
@@ -110,7 +120,7 @@ const collectionSchema = {
       {moments.map((m, i) => (
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div class={i % 2 === 1 ? 'order-2 lg:order-1' : ''}>
-            <ProductDemo poster={m.poster} posterAlt={m.posterAlt} width={m.w} height={m.h} alt={m.posterAlt} phone={m.w === 640} />
+            <ProductDemo poster={m.poster} posterAlt={m.posterAlt} width={m.w} height={m.h} alt={m.posterAlt} phone={m.h > m.w} />
           </div>
           <div class={i % 2 === 1 ? 'order-1 lg:order-2' : ''}>
             <p class="text-sm uppercase tracking-wider text-gray-400 mb-3">{m.when}</p>

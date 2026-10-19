@@ -4,8 +4,8 @@ description: "Making Tax Digital starts for ADIs over £30,000 on 6 April 2027. 
 date: "2026-10-16"
 tags: ["business", "guide", "tax"]
 author: "John Powell"
-image: /images/blog-scheduling.jpg
-imageAlt: "Driving instructor's calendar marked with Making Tax Digital quarterly deadlines for 2027 and 2028"
+image: /images/blog/app-payments.jpg
+imageAlt: "The DriveSchoolPro Money screen showing revenue this month, outstanding and overdue balances, and payment reminders"
 faqs:
   - question: "When do driving instructors have to start Making Tax Digital?"
     answer: "It depends on your qualifying income, which is your lesson income before expenses. If it was over £30,000 on your 2025 to 2026 tax return, you start on 6 April 2027. If it is over £20,000 on your 2026 to 2027 return, you start on 6 April 2028. If it was over £50,000 on your 2024 to 2025 return, you should already have started on 6 April 2026."

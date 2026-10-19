@@ -2,12 +2,12 @@
 title: "Mirrors & the MSM Routine: DVSA Skill 8 Explained"
 description: "Master the Mirror-Signal-Manoeuvre routine for your UK driving test. Learn what examiners check and how to hit DVSA Level 5."
 date: "2026-02-21"
-image: /images/feature-driving.jpg
+image: /images/blog/dvsa-observations-signalling-planning.jpg
 tags: ["student-management"]
 author: "John Powell"
 category: "Observation & Planning"
 skill_number: 8
-imageAlt: "Learner driver checking interior mirror before a manoeuvre on a UK road"
+imageAlt: "DriveSchoolPro illustration of an eye with a compass for Observation and Planning, DVSA skills 8 to 13"
 howTo:
   name: "How to apply the MSM (Mirror-Signal-Manoeuvre) routine"
   description: "A step-by-step guide to checking mirrors correctly before every manoeuvre on your driving test"

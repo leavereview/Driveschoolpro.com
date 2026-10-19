@@ -1,0 +1,218 @@
+---
+import { OFFER } from '../../config/offer';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BreadcrumbsEnhanced from '../../components/seo/BreadcrumbsEnhanced.astro';
+import FAQEnhanced from '../../components/seo/FAQEnhanced.astro';
+import ProductDemo from '../../components/ProductDemo.astro';
+
+const IOS_URL = 'https://apps.apple.com/gb/app/driveschoolpro/id6787402547';
+const ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.driveschoolpro.app';
+
+const faqs = [
+  {
+    question: "Is there an app pupils can download?",
+    answer: "Yes. DriveSchoolPro is on the App Store for iPhone and on Google Play for Android. Pupils who would rather not install anything can use the same account in a web browser.",
+    links: []
+  },
+  {
+    question: "How do pupils get access?",
+    answer: "Either you invite them from their record, which emails a link to set a password (it lasts 72 hours), or they sign up on your school's own registration page. After that they log in with their email and password, and can find your school by name if they forget the link.",
+    links: []
+  },
+  {
+    question: "Can pupils see my lesson notes?",
+    answer: "No. Pupils see their DVSA skill levels and which skills each lesson covered, but not your private notes or the AI briefing written for you before each lesson. Progress is read-only for them: only you set the levels.",
+    links: [{ text: "How progress tracking works", url: "/features/progress-tracking/" }]
+  },
+  {
+    question: "Can pupils message me through the app?",
+    answer: "Yes, as a private conversation with their own instructor. It is not a group chat, so other pupils never see it. You get a notification and reply from the Messages inbox. It is plain text rather than live chat, and pupils without an assigned instructor are pointed to the school's phone number and email instead.",
+    links: []
+  },
+  {
+    question: "Can pupils cancel lessons themselves?",
+    answer: "Only if you allow it, and only outside the notice period you set (24 hours unless you change it). Inside that window the cancel and reschedule options are not available, so a late cancellation still has to come to you.",
+    links: [{ text: "Online booking rules", url: "/features/online-booking/" }]
+  },
+  {
+    question: "Can pupils pay in the app?",
+    answer: "Yes, by card, once you have connected Stripe. They can pay an invoice, pay for a lesson, or buy a lesson package. Without Stripe connected they can still see what they owe, and pay you however you normally take money.",
+    links: [{ text: "Getting paid", url: "/features/getting-paid/" }]
+  }
+];
+---
+
+<BaseLayout
+  title="Driving Lessons App for Your Pupils (iPhone and Android) | DriveSchoolPro"
+  description="Give learners their own driving lessons app: next lesson, directions, DVSA progress, booking, messages and card payments. Free until 31 March 2027."
+>
+  <BreadcrumbsEnhanced items={[{ label: 'Home', href: '/' }, { label: 'Features', href: '/features/' }, { label: 'Pupil app' }]} site="driveschool" />
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-sm uppercase tracking-wider text-gray-400 mb-3">For your pupils</p>
+          <h1 class="text-4xl md:text-5xl font-bold text-brand-navy leading-tight mb-6">
+            A driving lessons app for your pupils, with your school's name on it.
+          </h1>
+          <p class="text-xl text-gray-600 leading-relaxed mb-6">
+            Most of the messages an instructor gets are questions the pupil could answer themselves
+            if they had the information. When is my next lesson? Where are you picking me up? How
+            many lessons have I got left? Am I nearly ready for my test? The pupil app puts all of
+            that on their phone, so they stop asking you at nine at night.
+          </p>
+          <p class="text-lg text-gray-600 mb-8">
+            It is on the <a href={IOS_URL} class="text-brand-red hover:underline" rel="noopener">App Store</a> and
+            <a href={ANDROID_URL} class="text-brand-red hover:underline" rel="noopener">Google Play</a>, and works in
+            any web browser too.
+          </p>
+          <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label} &rarr;</a>
+        </div>
+        <ProductDemo
+          poster="/images/marketing/portal-dashboard-mobile.webp"
+          posterAlt="A pupil's home screen on a phone: their next lesson tomorrow at 14:00 with Call instructor and Directions buttons, and their progress across the eight DVSA skill categories with 64% test readiness."
+          alt="A pupil's home screen on a phone: their next lesson tomorrow at 14:00 with Call instructor and Directions buttons, and their progress across the eight DVSA skill categories with 64% test readiness."
+          width={375}
+          height={1193}
+          phone
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50 border-t border-gray-100">
+    <div class="container-custom max-w-4xl space-y-14">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Everything about their next lesson, on the home screen</h2>
+        <p class="text-lg text-gray-600">
+          The first thing a pupil sees is their next lesson: the day, the time, the instructor and
+          the car, the pick-up address, a button to call you and a button that opens directions to
+          the pick-up point. Below it sit their progress, any balance they owe, how many lessons
+          are left on their package, and a countdown to their driving test once a date is in.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Lessons, booking and changes</h2>
+        <p class="text-lg text-gray-600 mb-4">
+          Pupils see their upcoming and past lessons, and each one shows the skills it covered.
+          They can book from the times you are free, and cancel or move a lesson within the rules
+          you set, so the notice period is enforced without you having to have that conversation.
+        </p>
+        <p class="text-lg text-gray-600">
+          Where you take card payments, they can pay for a lesson, settle an invoice or buy a block
+          of lessons from the same screens.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-10 items-start">
+        <ProductDemo
+          poster="/images/marketing/portal-progress-mobile.webp"
+          posterAlt="A pupil's My Progress screen on a phone: 64% test readiness and every DVSA skill listed by category with its level, such as Independent, Prompted or Helped."
+          alt="A pupil's My Progress screen on a phone: 64% test readiness and every DVSA skill listed by category with its level, such as Independent, Prompted or Helped."
+          width={375}
+          height={2100}
+          phone
+        />
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Their progress, in the examiner's language</h2>
+          <p class="text-lg text-gray-600 mb-4">
+            Pupils can see where they stand on each of the DVSA's 27 driving skills, grouped into the
+            same eight categories, with an overall test readiness figure. It updates as you record
+            each lesson. They can look but not change it.
+          </p>
+          <p class="text-lg text-gray-600">
+            That changes the conversation about test dates. A pupil who can see that roundabouts
+            and parallel parking are still at "Helped" understands why you are not booking the test
+            yet, without you having to argue the point.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-10 items-start">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">A private line to their instructor</h2>
+          <p class="text-lg text-gray-600 mb-4">
+            Pupils can message their own instructor from the app. It is a one-to-one conversation,
+            not a group chat, and you get a notification and reply from your inbox rather than from
+            your personal WhatsApp. Your school's phone number and email are on the same screen for
+            anything else.
+          </p>
+          <p class="text-lg text-gray-600">
+            Keeping pupil messages out of your personal phone matters more than it sounds: they stay
+            with the pupil's record, and they do not arrive in the middle of your family's evening.
+          </p>
+        </div>
+        <ProductDemo
+          poster="/images/marketing/portal-messages-mobile.webp"
+          posterAlt="The Messages screen in the pupil app: a private line to the pupil's instructor, a message box, and the school's phone number and email underneath."
+          alt="The Messages screen in the pupil app: a private line to the pupil's instructor, a message box, and the school's phone number and email underneath."
+          width={375}
+          height={900}
+          phone
+        />
+      </div>
+
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">What pupils do not see</h2>
+        <p class="text-lg text-gray-600">
+          Your private notes and the AI briefing you read before each lesson stay with you. Pupils
+          cannot edit their own skill levels. And they only ever see their own lessons, messages and
+          payments, never anyone else's.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white border-t border-gray-100">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-8">How it works</h2>
+      <ol class="space-y-6">
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">1</span>
+          <div>
+            <h3 class="font-bold text-brand-navy mb-1">Invite the pupil</h3>
+            <p class="text-gray-600">From their record. They get an email with a link to set a password, or they can sign up on your school's page.</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">2</span>
+          <div>
+            <h3 class="font-bold text-brand-navy mb-1">They download the app or use the browser</h3>
+            <p class="text-gray-600">iPhone, Android or the web, with the same login.</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">3</span>
+          <div>
+            <h3 class="font-bold text-brand-navy mb-1">Teach as normal</h3>
+            <p class="text-gray-600">Bookings, progress and payments you record show up on their phone without any extra step.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <FAQEnhanced faqs={faqs} site="driveschool" pageUrl="https://driveschoolpro.com/features/pupil-app/" title="Pupil app questions" />
+
+  <section class="section bg-brand-navy text-white">
+    <div class="container-custom text-center max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Answer the nine o'clock questions before they are asked</h2>
+      <p class="text-lg text-gray-300 mb-8">Free until 31 March 2027. No card, no contract, cancel any time.</p>
+      <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label} &rarr;</a>
+    </div>
+  </section>
+
+  <section class="section bg-white border-t border-gray-100">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-xl font-bold text-brand-navy mb-6">Related</h2>
+      <ul class="space-y-3 text-lg">
+        <li><a href="/features/online-booking/" class="text-brand-red font-semibold hover:underline">Online booking &rarr;</a> <span class="text-gray-500">— the rules behind what pupils can book</span></li>
+        <li><a href="/features/progress-tracking/" class="text-brand-red font-semibold hover:underline">Progress tracking &rarr;</a> <span class="text-gray-500">— where the skill levels pupils see come from</span></li>
+        <li><a href="/features/lesson-packages/" class="text-brand-red font-semibold hover:underline">Lesson packages &rarr;</a> <span class="text-gray-500">— blocks of lessons pupils can buy in the app</span></li>
+        <li><a href="/driving-instructor-diary-app/" class="text-brand-red font-semibold hover:underline">Driving instructor diary app &rarr;</a> <span class="text-gray-500">— the instructor's side of the same diary</span></li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

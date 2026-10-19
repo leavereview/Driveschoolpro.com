@@ -1,7 +1,8 @@
 ---
 title: "Student Progress Tracking Guide"
 description: "Student progress tracking boosts pass rates 23% and retention 31%. Digital vs paper comparison, what to track, parent dashboards, and compliance checklist."
-image: /images/blog-progress.jpg
+image: /images/blog/app-dvsa-progress.jpg
+imageAlt: "A pupil's DVSA progress in DriveSchoolPro: test readiness and the 27 skills by category, each with its level"
 date: "2025-12-20"
 tags: ["Student Management"]
 author: "John Powell"

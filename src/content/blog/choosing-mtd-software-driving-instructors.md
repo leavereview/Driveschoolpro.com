@@ -4,8 +4,8 @@ description: "HMRC recognises the software but doesn't recommend any of it. Use 
 date: "2026-10-16"
 tags: ["business", "guide", "tax"]
 author: "John Powell"
-image: /images/blog-software.jpg
-imageAlt: "Driving instructor comparing Making Tax Digital accounting software options on a laptop"
+image: /images/blog/app-payments.jpg
+imageAlt: "The DriveSchoolPro Money screen showing revenue this month, outstanding and overdue balances, and payment reminders"
 faqs:
   - question: "What software do driving instructors need for Making Tax Digital?"
     answer: "Software that HMRC recognises for Making Tax Digital for Income Tax. It must keep digital records of your income and expenses, send quarterly updates and let you submit your tax return. You can use one accounting product that does all of that, or a spreadsheet linked to bridging software. HMRC's software finder on GOV.UK lists recognised products."

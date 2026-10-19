@@ -4,8 +4,8 @@ description: "Under Making Tax Digital every ADI income and expense needs a date
 date: "2026-10-16"
 tags: ["business", "guide", "tax"]
 author: "John Powell"
-image: /images/blog-payment.jpg
-imageAlt: "Driving instructor recording a lesson payment on a phone to keep digital records for Making Tax Digital"
+image: /images/blog/app-payments.jpg
+imageAlt: "The DriveSchoolPro Money screen showing revenue this month, outstanding and overdue balances, and payment reminders"
 faqs:
   - question: "What records does a driving instructor need to keep for Making Tax Digital?"
     answer: "A digital record of every business income and expense item, showing the amount, the date and a category. For most ADIs that means each lesson payment you receive and each cost you pay, such as fuel, car finance, insurance and franchise fees. You also keep the supporting documents, such as invoices, receipts and bank statements, or copies of them."

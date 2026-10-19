@@ -2,12 +2,12 @@
 title: "Observation and Anticipation on Your Driving Test: DVSA Skill 10"
 description: "Master observation and anticipation for your UK driving test. What examiners check, the MSM routine, hazard perception, and how to reach DVSA Level 5 standard."
 date: "2026-02-22"
-image: /images/blog-learner.jpg
+image: /images/blog/dvsa-observations-signalling-planning.jpg
 tags: ["driving-test", "observation", "anticipation", "hazard-perception"]
 author: "John Powell"
 category: "Observation & Planning"
 skill_number: 10
-imageAlt: "A learner driver scanning the road ahead through a windscreen, mirrors visible, approaching a junction with clear observation technique"
+imageAlt: "DriveSchoolPro illustration of an eye with a compass for Observation and Planning, DVSA skills 8 to 13"
 howTo:
   name: "How to Apply Effective Observation on Your Driving Test"
   description: "A step-by-step guide to scanning, anticipating hazards, and reading the road to the standard required by DVSA examiners."

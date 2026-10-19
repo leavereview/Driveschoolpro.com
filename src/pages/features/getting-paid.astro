@@ -23,8 +23,8 @@ const faqs = [
   },
   {
     question: "What is a lesson block?",
-    answer: "A package of lessons bought up front — ten hours, twenty hours, whatever you sell. You set them up once and pupils can buy them from their portal. The hours draw down as lessons are taken, and both of you can see the remaining balance.",
-    links: []
+    answer: "A package of lessons bought up front — five, ten, twenty, whatever you sell. You set them up once and pupils can buy them from their portal. Each lesson counts one off the balance, and both of you can see how many are left.",
+    links: [{ text: "How lesson packages work", url: "/features/lesson-packages/" }]
   },
   {
     question: "Does this actually reduce no-shows?",
@@ -63,10 +63,10 @@ const faqs = [
         <div>
           <ProductDemo
             poster="/images/marketing/portal-dashboard-mobile.webp"
-            posterAlt="A pupil's student portal on a phone showing their next lesson, competencies covered, test readiness and remaining package hours."
+            posterAlt="A pupil's student portal on a phone showing their next lesson, competencies covered, test readiness and remaining package lessons."
             alt="A pupil opens the package catalogue on their phone, buys a ten-lesson block by card, and books their first slots."
-            width={640}
-            height={1308}
+            width={375}
+            height={1193}
             phone
           />
         </div>
@@ -79,9 +79,9 @@ const faqs = [
       <div>
         <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Pupils buy blocks themselves, on their phones</h2>
         <p class="text-lg text-gray-600 mb-4">
-          You set up the packages you sell — ten hours, twenty, an intensive — and they appear in
+          You set up the <a href="/features/lesson-packages/" class="text-brand-red hover:underline">packages you sell</a> — ten lessons, twenty, an intensive — and they appear in
           your pupils' portal. A learner buys one on their phone, pays by card through Stripe, and
-          the hours land on their balance. You were not involved. You did not have to ask.
+          the lessons land on their balance. You were not involved. You did not have to ask.
         </p>
         <p class="text-lg text-gray-600">
           For a lot of instructors this is the single biggest change, and not for the reason they

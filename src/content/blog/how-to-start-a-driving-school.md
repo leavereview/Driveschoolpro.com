@@ -4,8 +4,8 @@ description: "Step-by-step guide to starting a driving school in the UK. From AD
 date: "2026-04-11"
 tags: ["business", "guide"]
 author: "John Powell"
-image: /images/blog-dual-controls.jpg
-imageAlt: "Dual controls fitted to a driving school car, showing the instructor brake pedal on the passenger side"
+image: /images/blog/app-dashboard-overview.jpg
+imageAlt: "The DriveSchoolPro Today screen showing the day's lessons for each instructor and the day's lesson value"
 faqs:
   - question: "How long does it take to qualify as an ADI?"
     answer: "Most candidates complete the full ADI qualification in 6 to 12 months, though some take up to 18 months. The timeline depends on how quickly you can book and pass each of the three parts, your existing driving ability, and how much training you invest in."

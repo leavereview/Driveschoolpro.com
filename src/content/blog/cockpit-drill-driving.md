@@ -2,12 +2,12 @@
 title: "The Cockpit Drill: DVSA Skill 3 — DSSSM Explained"
 description: "Master the cockpit drill (DSSSM) for your UK driving test. Learn why seat position, mirror adjustment, and seatbelts must be done before every drive."
 date: "2026-02-21"
-image: /images/blog-learner.jpg
+image: /images/blog/dvsa-the-basics.jpg
 tags: ["the-basics", "dvsa-skills", "cockpit-drill", "dsssm", "mirrors"]
 author: "John Powell"
 category: "The Basics"
 skill_number: 3
-imageAlt: "Driver adjusting car mirrors before driving — cockpit drill"
+imageAlt: "DriveSchoolPro illustration of a steering wheel and car key for The Basics, DVSA skills 1 to 4"
 howTo:
   name: "How to perform the cockpit drill before driving"
   description: "The complete step-by-step DSSSM cockpit drill every UK driver should complete before moving the car"

@@ -2,12 +2,12 @@
 title: "Independent Driving: DVSA Skill 27 — Sat Nav & Road Signs"
 description: "Master the independent driving section of your UK test. Learn how sat nav works on test, what happens if you go wrong, and road sign following."
 date: "2026-02-21"
-image: /images/blog-pass-test.jpg
+image: /images/blog/dvsa-following-routes.jpg
 tags: ["following-routes", "dvsa-skills", "independent-driving", "sat-nav", "driving-test"]
 author: "John Powell"
 category: "Following Routes"
 skill_number: 27
-imageAlt: "Driver looking at sat nav screen during UK driving test"
+imageAlt: "DriveSchoolPro illustration of a route to a map pin for Following Routes, DVSA skill 27"
 howTo:
   name: "How to complete the independent driving section of your test"
   description: "A step-by-step guide to handling the independent driving section confidently, whether following a sat nav or road signs"

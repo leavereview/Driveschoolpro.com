@@ -1,7 +1,8 @@
 ---
 title: "Driving School Insurance Guide"
 description: "Understand driving school insurance requirements. Types of coverage, costs, what to look for, and how to protect your driving instruction business."
-image: /images/blog-lesson.jpg
+image: /images/blog/app-vehicles.jpg
+imageAlt: "DriveSchoolPro vehicle settings showing four cars, one with an MOT expiring soon, and MOT, insurance and road tax alert periods"
 date: "2026-02-06"
 tags: ["Compliance", "Business"]
 author: "John Powell"

@@ -2,12 +2,12 @@
 title: "Motorway Driving: DVSA Skill 23 — Rules for New Drivers"
 description: "Learners can now drive on motorways with an ADI. Master joining, lane discipline, following distance, and smart motorway rules for DVSA Skill 23."
 date: "2026-02-21"
-image: /images/hero-driving.jpg
+image: /images/blog/dvsa-road-types.jpg
 tags: ["student-management", "road-types", "dvsa-skills"]
 author: "John Powell"
 category: "Road Types"
 skill_number: 23
-imageAlt: "UK motorway with multiple lanes of traffic and overhead gantry signs showing speed limits"
+imageAlt: "DriveSchoolPro illustration of a winding road for Road Types, DVSA skills 21 to 23"
 howTo:
   name: "How to Drive Safely on a Motorway"
   description: "A five-step guide to motorway driving for learners — from joining at full speed to dealing with breakdowns and smart motorway signals."

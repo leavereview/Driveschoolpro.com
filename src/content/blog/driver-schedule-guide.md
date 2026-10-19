@@ -1,7 +1,8 @@
 ---
 title: "Driver Schedule Guide"
 description: "Learn to create efficient instructor schedules that maximise bookings, reduce gaps, and keep students and instructors happy."
-image: /images/blog-scheduling.jpg
+image: /images/blog/app-calendar-week.jpg
+imageAlt: "The DriveSchoolPro week calendar showing colour-coded driving lessons across four instructors"
 date: "2026-01-23"
 tags: ["Scheduling", "Business"]
 author: "John Powell"
