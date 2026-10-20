@@ -30,6 +30,7 @@ The rules and evidence to apply every time posts are built. Background and sourc
 ## Build every post so it could become an ad
 Paid ads start in 2027. Posts that already perform become the first ad creatives, so build them ad-ready now:
 - Video: 9:16, under 30 seconds, burned-in captions, the main message in the first 3 seconds, nothing important in the bottom 35% of the frame. Also export 4:5 or 1:1 for feeds where easy.
+- Audio: assume most people watch muted, so captions carry the message. Use John's voiceover or real sound he records (car indicator, door, phone tap), or tracks from licensed libraries only: Meta Sound Collection (FB/IG ads), TikTok Commercial Music Library (TikTok Business), YouTube Audio Library (check each track's licence). Never trending or chart music: it isn't licensed for business accounts or ads. Log each track and its source in the month's file.
 - One message per post, matching a landing page's H1 and offer wording exactly (`/driving-instructor-software/` for solo ADIs, `/driving-school-software-uk/` for schools, `/pricing/` for price posts).
 - Hook in the first line: a problem the instructor recognises ("How many 'are you free Tuesday?' messages…").
 - A single clear next step (try it free / see pricing), never several.
