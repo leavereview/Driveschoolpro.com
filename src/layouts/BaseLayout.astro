@@ -237,6 +237,11 @@ const schemaOrg = {
           }
         });
         if (GOOGLE_ADS_ID) { gtag('config', GOOGLE_ADS_ID); }
+        // Metricool web analytics (brand DriveSchoolPro), also consent-gated
+        var mc = document.createElement('script');
+        mc.src = 'https://tracker.metricool.com/resources/be.js';
+        mc.onload = function() { window.beTracker && window.beTracker.t({ hash: 'ea05817d31fdac21764a5b73412dbdf9' }); };
+        document.head.appendChild(mc);
       }
       function hasConsent() {
         try {
