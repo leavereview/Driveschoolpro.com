@@ -127,7 +127,7 @@
 ## Decisions (answered by John, 20 Oct 2026)
 1. Setup-service banner (C): **the app dashboard (Today)**. It must ignore seed/sample data. → driveschoolpro#2023
 2. Slack: app alerts and the Monday digest stay on the **driveschool** app DM. The agentbox briefing uses #jp-ltd.
-3. Google Ads API (A): **John will set it up with guidance.** Since Sept 2026, access belongs to a Google Cloud project (no developer token): enable the Google Ads API, apply for **Explorer** access (production calls, 2,880 ops/day), then use a service account added as a user in Google Ads. Attribution capture first: driveschoolpro#2022.
+3. Google Ads API (A): **John will set it up with guidance.** Since Sept 2026, access belongs to a Google Cloud project (no developer token): enable the Google Ads API, apply for **Explorer** access (production calls, 2,880 ops/day), then use a service account added as a user in Google Ads. Attribution capture first: driveschoolpro#2022. Done 20 Oct: Cloud project `driveschoolpro` has Explorer access; Ads account **852-626-4049** has offline "Import from clicks" actions **App signup** and **App activated** (Sign-up category, no value, count One, 90-day window, both **Secondary** until uploads are verified; then make App activated Primary and GA4 `onboarding_complete` Secondary). Still to do: service account added as a Standard user in Ads.
 4. Setup service: **no response-time promise**.
 
 Also found: a registration alert from a non-production environment (`…@example.com`, 19 Oct 04:35, no matching prod org) → driveschoolpro#2024.
