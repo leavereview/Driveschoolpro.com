@@ -124,8 +124,10 @@
 - Same digest job with a section per product.
 - BeltManager and MyTattoo stay on "maintenance with automation" (alerts, monitors, briefing) until DSP's paid conversion is proven.
 
-## Decisions for John
-1. Which page gets the setup-service banner (C)?
-2. Which Slack channel the app alerts and the Monday digest should use (B): keep the current one or move to #jp-ltd?
-3. Google Ads API access (A): create a developer token, or use the CSV upload stopgap?
-4. Is a response time OK to promise for the setup service (C)?
+## Decisions (answered by John, 20 Oct 2026)
+1. Setup-service banner (C): **the app dashboard (Today)**. It must ignore seed/sample data. → driveschoolpro#2023
+2. Slack: app alerts and the Monday digest stay on the **driveschool** app DM. The agentbox briefing uses #jp-ltd.
+3. Google Ads API (A): **John will set it up with guidance.** Since Sept 2026, access belongs to a Google Cloud project (no developer token): enable the Google Ads API, apply for **Explorer** access (production calls, 2,880 ops/day), then use a service account added as a user in Google Ads. Attribution capture first: driveschoolpro#2022.
+4. Setup service: **no response-time promise**.
+
+Also found: a registration alert from a non-production environment (`…@example.com`, 19 Oct 04:35, no matching prod org) → driveschoolpro#2024.
