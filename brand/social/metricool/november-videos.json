@@ -3,25 +3,33 @@
     "video": "https://driveschoolpro.com/social/video/n03.mp4",
     "cover": "https://driveschoolpro.com/social/video/n03-cover.png",
     "durationSec": 36.7,
-    "notes": "Demo school website (fictional Ace Driving School page) with the real embed widget: pupil picks 1 hour lesson, Tom Harrison, Thu 22 Oct 10:00, books (no payment step: local org has no Stripe Connect). Then the lesson in the diary and Online Booking > Booking rules. Hook card replaces John to camera."
+    "notes": "Demo school website (fictional Ace Driving School page) with the real embed widget: pupil picks 1 hour lesson, Tom Harrison, Thu 22 Oct 10:00, books (no payment step: local org has no Stripe Connect). Then the lesson in the diary and Online Booking > Booking rules. Hook card replaces John to camera.",
+    "videoVoiceover": "https://driveschoolpro.com/social/video/n03-vo.mp4",
+    "voiceoverLines": "H01 F01 F02 C01"
   },
   "n07": {
     "video": "https://driveschoolpro.com/social/video/n07.mp4",
     "cover": "https://driveschoolpro.com/social/video/n07-cover.png",
     "durationSec": 33.2,
-    "notes": "Real reminder email from the confirmation-reminders job, captured locally (shown as the email body, not an inbox). Tap Confirm, then the diary showing \"Student confirmed\" vs \"Awaiting confirmation\", Lesson Settings (24 h deadline / 48 h reminder) and the email delivery log. The clip cuts at the confirm tap because the app currently shows \"Invalid Confirmation Link\" after a successful confirm (bug). The email is the \"confirm your lesson\" reminder; the plain lesson reminder has no Confirm button."
+    "notes": "Real reminder email from the confirmation-reminders job, captured locally (shown as the email body, not an inbox). Tap Confirm, then the diary showing \"Student confirmed\" vs \"Awaiting confirmation\", Lesson Settings (24 h deadline / 48 h reminder) and the email delivery log. The clip cuts at the confirm tap because the app currently shows \"Invalid Confirmation Link\" after a successful confirm (bug). The email is the \"confirm your lesson\" reminder; the plain lesson reminder has no Confirm button.",
+    "videoVoiceover": "https://driveschoolpro.com/social/video/n07-vo.mp4",
+    "voiceoverLines": "H07 F03 O01 C01"
   },
   "n14": {
     "video": "https://driveschoolpro.com/social/video/n14.mp4",
     "cover": "https://driveschoolpro.com/social/video/n14-cover.png",
     "durationSec": 35.7,
-    "notes": "Record outcome on a just-finished lesson: Completed, notes, rate Parallel parking L3, Meeting oncoming traffic L4, Roundabouts L4, then the \"3 skills moved up\" summary and the pupil portal progress page (test readiness bar, not a ring)."
+    "notes": "Record outcome on a just-finished lesson: Completed, notes, rate Parallel parking L3, Meeting oncoming traffic L4, Roundabouts L4, then the \"3 skills moved up\" summary and the pupil portal progress page (test readiness bar, not a ring).",
+    "videoVoiceover": "https://driveschoolpro.com/social/video/n14-vo.mp4",
+    "voiceoverLines": "H06 F05 F06"
   },
   "n17": {
     "video": "https://driveschoolpro.com/social/video/n17.mp4",
     "cover": "https://driveschoolpro.com/social/video/n17-cover.png",
     "durationSec": 30.7,
-    "notes": "Diary > Tue 20 Oct lesson > Lesson briefing card. Briefing text was seeded locally in the app’s format (AI gateway was disabled for safety), so it is representative rather than live AI output."
+    "notes": "Diary > Tue 20 Oct lesson > Lesson briefing card. Briefing text was seeded locally in the app’s format (AI gateway was disabled for safety), so it is representative rather than live AI output.",
+    "videoVoiceover": "https://driveschoolpro.com/social/video/n17-vo.mp4",
+    "voiceoverLines": "H02 F04 C01"
   },
   "n20": {
     "video": "https://driveschoolpro.com/social/video/n20.mp4",
@@ -33,19 +41,25 @@
     "video": "https://driveschoolpro.com/social/video/n24.mp4",
     "cover": "https://driveschoolpro.com/social/video/n24-cover.png",
     "durationSec": 21.9,
-    "notes": "Desktop week view filtered to Ben + Rachel, who share the Ford Fiesta. Dragging Ben’s 11:00 onto 13:00 gives the real \"Conflict: Vehicle overlap with Isla Bennett\" toast; then dropped on a free 12:00 slot and confirmed. The drag flow has no suggested-times list, so the caption says \"Pick a free time\" (suggested slots exist only in the new-lesson slot picker)."
+    "notes": "Desktop week view filtered to Ben + Rachel, who share the Ford Fiesta. Dragging Ben’s 11:00 onto 13:00 gives the real \"Conflict: Vehicle overlap with Isla Bennett\" toast; then dropped on a free 12:00 slot and confirmed. The drag flow has no suggested-times list, so the caption says \"Pick a free time\" (suggested slots exist only in the new-lesson slot picker).",
+    "videoVoiceover": "https://driveschoolpro.com/social/video/n24-vo.mp4",
+    "voiceoverLines": "H04 F09 C01"
   },
   "n26": {
     "video": "https://driveschoolpro.com/social/video/n26.mp4",
     "cover": "https://driveschoolpro.com/social/video/n26-cover.png",
     "durationSec": 36.0,
-    "notes": "Text-only version; John’s on-camera footage can replace it."
+    "notes": "Text-only version; John’s on-camera footage can replace it.",
+    "videoVoiceover": "https://driveschoolpro.com/social/video/n26-vo.mp4",
+    "voiceoverLines": "T01"
   },
   "n28": {
     "video": "https://driveschoolpro.com/social/video/n28.mp4",
     "cover": "https://driveschoolpro.com/social/video/n28-cover.png",
     "durationSec": 29.1,
-    "notes": "Invoice created and sent (Create & Send), then a cash payment recorded and the invoice shows Paid. Card payment via Stripe NOT shown: needs a Stripe Connect test account on the org plus webhook forwarding. John should record that part, or add it later."
+    "notes": "Invoice created and sent (Create & Send), then a cash payment recorded and the invoice shows Paid. Card payment via Stripe NOT shown: needs a Stripe Connect test account on the org plus webhook forwarding. John should record that part, or add it later.",
+    "videoVoiceover": "https://driveschoolpro.com/social/video/n28-vo.mp4",
+    "voiceoverLines": "H05 F07 F08 C01"
   },
   "n31": {
     "video": "https://driveschoolpro.com/social/video/n31.mp4",
@@ -57,18 +71,24 @@
     "video": "https://driveschoolpro.com/social/video/n33.mp4",
     "cover": "https://driveschoolpro.com/social/video/n33-cover.png",
     "durationSec": 42.9,
-    "notes": "Busy week (seeded demo lessons) coloured by instructor, day view, People > Edit Staff Member role (changed to Owner and back, then cancelled), Vehicles > compliance (MOT 11 days left, tax, insurance), plus the shared-car clash clip from N24."
+    "notes": "Busy week (seeded demo lessons) coloured by instructor, day view, People > Edit Staff Member role (changed to Owner and back, then cancelled), Vehicles > compliance (MOT 11 days left, tax, insurance), plus the shared-car clash clip from N24.",
+    "videoVoiceover": "https://driveschoolpro.com/social/video/n33-vo.mp4",
+    "voiceoverLines": "H08 F12 F11 F09"
   },
   "n37": {
     "video": "https://driveschoolpro.com/social/video/n37.mp4",
     "cover": "https://driveschoolpro.com/social/video/n37-cover.png",
     "durationSec": 32.8,
-    "notes": "Pupil portal as demo pupil Emily: upcoming lessons, progress (64% test readiness, 27 skills), packages and invoices, Book (online booking wizard)."
+    "notes": "Pupil portal as demo pupil Emily: upcoming lessons, progress (64% test readiness, 27 skills), packages and invoices, Book (online booking wizard).",
+    "videoVoiceover": "https://driveschoolpro.com/social/video/n37-vo.mp4",
+    "voiceoverLines": "H09 F06 C01"
   },
   "n45": {
     "video": "https://driveschoolpro.com/social/video/n45.mp4",
     "cover": "https://driveschoolpro.com/social/video/n45-cover.png",
     "durationSec": 38.8,
-    "notes": "Real-time run on a fresh local sign-up: sign up (no card), onboarding, add pupil, book first lesson. The stopwatch badge shows real elapsed wall-clock time: 48 s. The video is sped up 1.65x but the clock is genuine. The caption can say \"under a minute\". John’s closing line is shown as outro text."
+    "notes": "Real-time run on a fresh local sign-up: sign up (no card), onboarding, add pupil, book first lesson. The stopwatch badge shows real elapsed wall-clock time: 48 s. The video is sped up 1.65x but the clock is genuine. The caption can say \"under a minute\". John’s closing line is shown as outro text.",
+    "videoVoiceover": "https://driveschoolpro.com/social/video/n45-vo.mp4",
+    "voiceoverLines": "B03 O01 B01 B02 C01"
   }
 }
