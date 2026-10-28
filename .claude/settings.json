@@ -1,0 +1,8 @@
+{
+  "model": "sonnet",
+  "permissions": {
+    "allow": [
+      "mcp__metricool__createScheduledPost"
+    ]
+  }
+}
