@@ -1,17 +1,17 @@
 ---
 title: "Best Driving School Software UK (2026)"
-description: "Compare 8 UK driving instructor apps on DVSA tracking, reminders, pupil apps and trials, with each one's gaps. DriveSchoolPro is free until 31 March 2027."
+description: "Compare 9 UK driving instructor apps on DVSA tracking, reminders, pupil apps and trials, with each one's gaps. DriveSchoolPro is free until 31 March 2027."
 image: /images/blog/app-dashboard-overview.jpg
 imageAlt: "The DriveSchoolPro Today screen showing the day's lessons for each instructor and the day's lesson value"
 date: "2026-02-24"
-updatedDate: "2026-10-08"
+updatedDate: "2026-11-02"
 tags: ["Software"]
 author: "John Powell"
 faqs:
   - question: "What is the best driver training software?"
-    answer: "For UK instructors, the best driver training software is the one that tracks pupils against the DVSA 27 driving skills, not just lesson times. Solo ADIs usually shortlist Total Drive, My Drive Time, Passly, LessonBuddy and DriveSchoolPro; multi-car schools add Driving School Office. DriveSchoolPro is free until 31 March 2027 while in early access."
+    answer: "For UK instructors, the best driver training software is the one that tracks pupils against the DVSA 27 driving skills, not just lesson times. Solo ADIs usually shortlist Total Drive, MyDriveTime, Passly, LessonBuddy and DriveSchoolPro; multi-car schools add Driving School Office. DriveSchoolPro is free until 31 March 2027 while in early access."
   - question: "What apps do driving instructors use?"
-    answer: "Most UK driving instructors use a dedicated instructor app for their diary, pupil progress and payments. Common choices include Total Drive, My Drive Time, Passly, LessonBuddy and DriveSchoolPro. Some use generic booking tools such as Reservio, Teachworks or Acuity, which take bookings well but do not track the DVSA driving skills."
+    answer: "Most UK driving instructors use a dedicated instructor app for their diary, pupil progress and payments. Common choices include Total Drive, MyDriveTime, Passly, LessonBuddy and DriveSchoolPro. Some use generic booking tools such as Reservio, Teachworks or Acuity, which take bookings well but do not track the DVSA driving skills."
   - question: "What is the best app for driving lessons?"
     answer: "For the instructor, it is an app that combines the diary, reminders, payments and DVSA progress tracking, so the pupil can see how close they are to test-ready. For the pupil, the best app is usually the one their instructor uses, because that is where their lessons, progress and balance live."
   - question: "Does driving school software track DVSA driving skills?"
@@ -19,18 +19,22 @@ faqs:
   - question: "Can multiple instructors see the same pupil's progress?"
     answer: "In purpose-built platforms, yes. Any instructor assigned to a pupil should see the full lesson history, skills record and test date. This matters most for cover lessons and multi-instructor schools."
   - question: "Can I try driving school software before paying?"
-    answer: "Usually, yes. Total Drive and My Drive Time offer 30-day free trials, Passly 14 days, Teachworks 21 days and LessonBuddy 60 days for ADIs, according to their own sites. DriveSchoolPro is free until 31 March 2027 while in early access, with no credit card required."
+    answer: "Usually, yes. Total Drive and MyDriveTime offer 30-day free trials, Passly 14 days, Teachworks 21 days and LessonBuddy 60 days for ADIs, according to their own sites. DriveSchoolPro is free until 31 March 2027 while in early access, with no credit card required."
   - question: "Does it work with Google Calendar?"
     answer: "Most platforms connect to Google Calendar, but check which direction. Some sync both ways; others, including DriveSchoolPro today, publish your lessons to Google Calendar one way, so your diary shows on your phone but time blocked in Google Calendar doesn't flow back."
   - question: "Do I need to change my phone number?"
     answer: "No. Software complements your existing phone number. You can still take phone bookings and enter them yourself, and move pupils to online booking at your own pace."
+  - question: "What is the best CRM for driving schools?"
+    answer: "For most UK driving schools, the CRM is the pupil record inside their instructor software rather than a separate sales tool: contact details, lesson history, payments, DVSA progress and notes in one place, shared by every instructor who teaches that pupil. DriveSchoolPro, Total Drive, MyDriveTime and Passly all keep a pupil record like this. If you need to track enquiries before someone books, check for an enquiry or lead list: GoRoadie Pro lists an enquiry manager, and DriveSchoolPro doesn't have one."
+  - question: "What is the best driving instructor software for multi-car schools?"
+    answer: "Look for shared pupil records, one diary across instructors, clash checks that include the car, and vehicle MOT, tax and insurance tracking. DriveSchoolPro does all four in one account, with School pricing of £22 a month plus £10 per extra instructor from 1 April 2027 (free until then). Total Drive and MyDriveTime list multi-instructor plans, and Driving School Office is built for larger schools and franchises."
 ---
 
-Choosing driving school software is mostly a question of fit: a solo ADI, a three-car school and a franchise want different things. This guide compares the eight platforms UK instructors most often shortlist on what actually separates them: DVSA skill tracking, reminders, pupil apps, vehicle handling and how you can try them.
+Choosing driving school software is mostly a question of fit: a solo ADI, a three-car school and a franchise want different things. This guide compares the nine platforms UK instructors most often shortlist on what actually separates them: DVSA skill tracking, reminders, pupil apps, vehicle handling and how you can try them.
 
 We don't rank them by price, and we don't quote other vendors' prices. Prices change, they're structured differently (per instructor, per school, with or without SMS), and a number copied into a blog post goes out of date. Every platform below links to its own pricing page. Every competitor fact comes from that vendor's own website, checked on the date shown, and links to a fuller side-by-side comparison.
 
-We make DriveSchoolPro, so read this with that in mind. Where another platform is the better fit, we say so.
+We make DriveSchoolPro, so read this with that in mind. Where another platform is the better fit, we say so. If you'd rather see ours on its own first, start with the [DriveSchoolPro driving school software](/) overview.
 
 ## What UK ADIs Need From Driving School Software
 
@@ -72,7 +76,8 @@ Competitor entries reflect what each vendor's own website says. "Not listed" mea
 |----------|-----------|---------------------|---------------------|---------------|
 | DriveSchoolPro | UK ADIs and schools | ✅ All 27 skills, 8 categories | ✅ iOS and Android app, or web | Free until 31 March 2027, no card |
 | Total Drive | UK ADIs and schools | ✅ Pre-filled DVSA syllabus | ✅ App | 30-day free trial, no card |
-| My Drive Time | UK ADIs and schools | Syllabus manager; DVSA structure not stated | ✅ Student app | 30-day free trial, no card |
+| MyDriveTime | UK ADIs and schools | Syllabus manager; DVSA structure not stated | ✅ Student app | 30-day free trial, no card |
+| GoRoadie Pro | UK ADIs and PDIs (separate Schools product) | Progress tracking; DVSA skills not named | ✅ Free learner app | Free trial; free for trainee instructors (PDIs) |
 | Passly | UK ADIs and schools | ✅ DVSA-aligned scoring; skill count not stated | Web portal | 14-day free trial, no card |
 | LessonBuddy | UK ADIs and schools | Five-level skills matrix; DVSA not stated | ✅ iOS and Android app | 60 days free for ADIs, no card |
 | Driving School Office | UK schools and franchises | Progress tracker; DVSA 27 skills not advertised | Mobile-friendly web | Trial offered; "First Instructor Free" |
@@ -107,7 +112,7 @@ Most comparisons are written for multi-instructor schools, which is a different 
 
 - **DVSA tracking with AI lesson prep, free for now: [DriveSchoolPro](/driving-instructor-software/).** All 27 DVSA skills, an AI-written briefing before each lesson, and Google review requests when a pupil passes. Free until 31 March 2027.
 - **Established UK app with theory content: [Total Drive](/compare/total-drive/).** Pre-filled DVSA syllabus, a theory suite and cancellation-gap broadcasts.
-- **Support-led independent: [My Drive Time](/compare/my-drive-time/).** Describes its support as award-winning; lists SMS reminders, diary-gap broadcasts and free migration.
+- **Support-led independent: [MyDriveTime](/compare/my-drive-time/).** Describes its support as award-winning; lists SMS reminders, diary-gap broadcasts and free migration.
 - **Help finding new pupils: [Passly](/compare/passly/).** Its learner marketplace brings in enquiries, and it pushes cancelled slots to your other pupils.
 - **Parent access and route tools: [LessonBuddy](/compare/lessonbuddy/).** One app for instructor, pupil and parent on iOS and Android, plus test-centre route tools.
 
@@ -167,6 +172,17 @@ You'll want income figures for your accountant and a way to take your data with 
 
 **What to check:** Can you export your records, and in what format? Who in the school can export?
 
+## Driving School CRM: What It Means for an Instructor
+
+"CRM" (customer relationship management) gets used loosely in driving school software. For most schools it means one record per pupil that everyone can trust, not a sales pipeline. When you compare software for driving schools as a CRM, check four things:
+
+1. **One pupil record.** Contact details, pickup address, lesson history, payments, DVSA skill ratings and your notes in one place. In DriveSchoolPro every instructor assigned to the pupil sees the same record, which matters for cover lessons.
+2. **Messages tied to the pupil.** Pupils can message their own instructor from the DriveSchoolPro app, and you reply from a Messages inbox, so the conversation sits with the pupil rather than in your personal WhatsApp.
+3. **A record of what was sent.** DriveSchoolPro keeps a log of the reminders and emails it has sent, so you can check whether a pupil was told about a change.
+4. **Enquiries before the first lesson.** This is where tools differ most. GoRoadie Pro lists an enquiry manager and Passly a marketplace; DriveSchoolPro doesn't track enquiries yet, so people who haven't booked live wherever they contacted you.
+
+If you run a multi-car school, the CRM question becomes "can every instructor and the office see the same pupil?" That's covered in the [decision framework below](#how-to-choose-decision-framework-by-school-size).
+
 ## Platform Reviews
 
 Each review lists what the platform's own website says it does, where it's the better fit, and what to know before you commit. For the full feature table on each, follow the comparison link.
@@ -203,15 +219,25 @@ According to its own site, Total Drive's progress syllabus is pre-filled with th
 
 [DriveSchoolPro vs Total Drive, feature by feature →](/compare/total-drive/)
 
-### My Drive Time
+### MyDriveTime (My Drive Time)
 
-**Best for:** instructors who value support and SMS reminders. **Pricing:** [see My Drive Time's pricing page](https://www.mydrivetime.co.uk/pricing/).
+**Best for:** instructors who value support and SMS reminders. **Pricing:** [see MyDriveTime's pricing page](https://www.mydrivetime.co.uk/pricing/).
 
-My Drive Time describes its support as award-winning. Its site lists reminders by email, SMS and app, Diary Gaps for filling cancellations, free migration of your records, a student app, test outcome recording, a syllabus manager, and a Schools & Teams plan.
+MyDriveTime describes its support as award-winning. Its site lists reminders by email, SMS and app, Diary Gaps for filling cancellations, free migration of your records, a student app, test outcome recording, a syllabus manager, and a Schools & Teams plan.
 
 **Worth knowing:** its site doesn't say whether the syllabus follows the DVSA structure by default. We couldn't find AI lesson briefings or vehicle compliance tracking.
 
-[DriveSchoolPro vs My Drive Time, feature by feature →](/compare/my-drive-time/)
+[DriveSchoolPro vs MyDriveTime, feature by feature →](/compare/my-drive-time/)
+
+### GoRoadie Pro
+
+**Best for:** instructors who want pupils from a marketplace and expenses in the same app. **Pricing:** [see GoRoadie Pro's page](https://goroadie.com/pro).
+
+GoRoadie Pro is the instructor app from GoRoadie, which also runs a learner marketplace where instructors pay per pupil they take on. Its site lists reminders by text, email and in-app with no text costs, Stripe card payments, photo-scanned expense receipts ("Making Tax Digital ready"), pupils' theory test progress, a lesson-request link with an enquiry manager, and a free learner app. It's listed on the App Store and Google Play; we couldn't find a web version. Multi-instructor schools are a separate GoRoadie Schools product.
+
+**Worth knowing:** its site doesn't name the DVSA skills in its progress tracking. We couldn't find AI lesson briefings, clash checks across the car, or vehicle compliance tracking.
+
+[GoRoadie vs DriveSchoolPro, feature by feature →](/compare/goroadie/)
 
 ### Passly
 
@@ -275,19 +301,19 @@ All of our side-by-side comparisons are on the [comparison hub](/compare/).
 
 **Want DVSA tracking and less admin, at no cost for now:** **DriveSchoolPro**, free until 31 March 2027. DVSA progress tracking, AI lesson briefings, email reminders and payments.
 
-**Want an established UK app:** **Total Drive** or **My Drive Time**. Both have years of UK track record, pupil apps and cancellation-gap tools.
+**Want an established UK app:** **Total Drive** or **MyDriveTime**. Both have years of UK track record, pupil apps and cancellation-gap tools.
 
 **Want new pupils as well as software:** **Passly**, for its learner marketplace.
 
 **Just need online booking:** a general tool such as **Reservio** works on its free plan if your diary is light, but you'll track progress somewhere else.
 
-### Small UK Schools (2–5 Instructors)
+### Small Multi-Car Schools (2–5 Instructors)
 
 **DVSA tracking with vehicle clash checks and compliance:** **DriveSchoolPro**. Shared pupil records on the DVSA framework, clash checks across pupil, instructor and car, and MOT, tax and insurance alerts.
 
 **Parent access and route tools:** **LessonBuddy**.
 
-**An established platform:** **Total Drive** or **My Drive Time**. Both list multi-instructor plans.
+**An established platform:** **Total Drive** or **MyDriveTime**. Both list multi-instructor plans.
 
 ### Medium Schools (6–20 Instructors)
 
@@ -398,7 +424,7 @@ In purpose-built platforms, yes. Any instructor assigned to a pupil should see t
 
 ### Can I try it before paying?
 
-Usually. Total Drive and My Drive Time offer 30-day free trials, Passly 14 days, Teachworks 21 days and LessonBuddy 60 days for ADIs, according to their own sites. **DriveSchoolPro** is [free until 31 March 2027](https://app.driveschoolpro.com/signup) while in early access, with no credit card required. Bring in 5–10 real pupils and run a week of lessons through it. That's the only reliable test of whether a platform suits you.
+Usually. Total Drive and MyDriveTime offer 30-day free trials, Passly 14 days, Teachworks 21 days and LessonBuddy 60 days for ADIs, according to their own sites. **DriveSchoolPro** is [free until 31 March 2027](https://app.driveschoolpro.com/signup) while in early access, with no credit card required. Bring in 5–10 real pupils and run a week of lessons through it. That's the only reliable test of whether a platform suits you.
 
 ### What if I already use Google Calendar?
 
@@ -424,7 +450,7 @@ Ask before you sign up. Check whether you can export pupil records, lesson histo
 
 **For most UK ADIs and small schools who want DVSA tracking:** start with **[DriveSchoolPro](/)**. It's free until 31 March 2027 while in early access, with full DVSA tracking, AI lesson briefings, email reminders (WhatsApp coming soon), vehicle compliance alerts, and an app for you and your pupils on iOS and Android.
 
-**For an established UK app with a long track record:** trial **[Total Drive](/compare/total-drive/)** and **[My Drive Time](/compare/my-drive-time/)**.
+**For an established UK app with a long track record:** trial **[Total Drive](/compare/total-drive/)** and **[MyDriveTime](/compare/my-drive-time/)**.
 
 **For new pupils as well as software:** look at **[Passly](/compare/passly/)**.
 
