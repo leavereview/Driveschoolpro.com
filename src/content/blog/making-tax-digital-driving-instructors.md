@@ -2,11 +2,14 @@
 title: "Making Tax Digital for Driving Instructors: Do You Need It in 2027?"
 description: "Most full-time ADIs pass the £30,000 Making Tax Digital threshold and must start on 6 April 2027. See if you're in, what counts as income, the quarterly deadlines and a step-by-step checklist."
 date: "2026-10-16"
+updatedDate: "2026-11-02"
 tags: ["business", "guide", "tax"]
 author: "John Powell"
 image: /images/blog/app-payments.jpg
 imageAlt: "The DriveSchoolPro Money screen showing revenue this month, outstanding and overdue balances, and payment reminders"
 faqs:
+  - question: "How can driving instructors comply with Making Tax Digital?"
+    answer: "Five steps. Check whether your lesson income before expenses is over the threshold (£30,000 from 6 April 2027, £20,000 from 6 April 2028). Choose software on HMRC's list of Making Tax Digital software, or bridging software if you keep a spreadsheet. Keep digital records of every lesson payment and business expense. Send a quarterly update by 7 August, 7 November, 7 February and 7 May. Then file your tax return through the software by 31 January after the tax year. Driving school software such as DriveSchoolPro keeps the income side accurate, lesson by lesson, but doesn't file anything with HMRC."
   - question: "Do driving instructors have to use Making Tax Digital?"
     answer: "Self-employed driving instructors registered for Self Assessment must use Making Tax Digital for Income Tax once their qualifying income passes the threshold: over £50,000 from 6 April 2026, over £30,000 from 6 April 2027 and over £20,000 from 6 April 2028. Qualifying income is your lesson income before expenses, so most full-time ADIs pass £30,000 and start in April 2027."
   - question: "Is the Making Tax Digital threshold based on turnover or profit?"
