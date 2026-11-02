@@ -117,10 +117,15 @@ const relatedPosts = allPosts
     {post.data.image && (
       <div class="container-custom -mt-8 mb-8">
         <div class="max-w-4xl">
+          <!-- width/height reserve the space before the image loads (blog images are 1200x630);
+               without them the article body jumps down when it arrives (CLS ~0.17-0.27) -->
           <img
             src={post.data.image}
             alt={post.data.imageAlt || post.data.title}
-            class="w-full rounded-2xl shadow-xl"
+            width="1200"
+            height="630"
+            fetchpriority="high"
+            class="w-full h-auto rounded-2xl shadow-xl"
           />
         </div>
       </div>
