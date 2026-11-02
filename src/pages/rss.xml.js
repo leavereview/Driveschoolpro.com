@@ -17,7 +17,7 @@ export async function GET(context) {
       title: post.data.title,
       description: post.data.description,
       pubDate: new Date(post.data.updatedDate ?? post.data.date),
-      link: `/blog/${post.slug}/`,
+      link: `/blog/${post.id}/`,
       ...(post.data.image && {
         enclosure: {
           url: new URL(post.data.image, context.site).href,

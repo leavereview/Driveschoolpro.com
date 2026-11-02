@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import compress from 'astro-compress';
 import { fileURLToPath } from 'node:url';
@@ -11,7 +10,6 @@ const lastmod = buildLastmodMap(dirname(fileURLToPath(import.meta.url)));
 export default defineConfig({
   site: 'https://driveschoolpro.com',
   integrations: [
-    tailwind(),
     sitemap({
       // Keep noindex pages out of the sitemap: listing a noindex URL sends Google
       // conflicting signals (GSC "Excluded by noindex", 6 Oct 2026).
@@ -44,7 +42,6 @@ export default defineConfig({
   },
   vite: {
     build: {
-      minify: 'esbuild',
       cssCodeSplit: true,
       rollupOptions: {
         output: {
