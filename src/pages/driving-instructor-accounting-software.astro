@@ -25,6 +25,18 @@ const comparisonRows = [
 
 const faqItems = [
   {
+    question: 'Do driving instructors need an accountant?',
+    answer:
+      'No. Many self-employed ADIs keep their own records and file their own Self Assessment return. An accountant is worth paying for in your first tax year, when you move to Making Tax Digital (sole traders with lesson income over £30,000 start on 6 April 2027), when you buy or lease a car, if you go limited or take on other instructors, or as you approach the £90,000 VAT threshold. Accountancy fees are an allowable business expense.',
+    links: [{ text: 'Making Tax Digital for driving instructors', url: '/blog/making-tax-digital-driving-instructors/' }],
+  },
+  {
+    question: 'What should I ask an accountant for driving instructors?',
+    answer:
+      'Ask whether they work with other driving instructors and how they treat franchise fees, dual controls and car costs; whether they handle Making Tax Digital for Income Tax and which software you will need; whether the fee is fixed and includes the quarterly updates; and which records they want from you, how often and in what format.',
+    links: [{ text: 'MTD record keeping for driving instructors', url: '/blog/mtd-record-keeping-driving-instructors/' }],
+  },
+  {
     question: 'Is DriveSchoolPro accounting software?',
     answer:
       'No, and we would rather say so up front. DriveSchoolPro records lesson income, issues invoices, tracks outstanding balances and reports revenue by period — the income side of your books, captured automatically as you teach. It does not categorise expenses, track mileage, reconcile a bank feed or file a Self Assessment return. For those you still want proper accounting software or an accountant. The two work well together: DriveSchoolPro is where the income data comes from, accounting software is where the tax return happens.',
@@ -85,8 +97,8 @@ const schemaMarkup = {
 ---
 
 <BaseLayout
-  title="Driving Instructor Accounting Software"
-  description="What accounting software does for a self-employed ADI, what instructor software does, and why you need both. Honest guide, no overclaiming."
+  title="Driving Instructor Accounting Software and Accountants"
+  description="What accounting software does for a self-employed ADI, what instructor software does, and when a driving instructor needs an accountant, with the questions to ask before you hire one."
 >
   <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
 
@@ -195,6 +207,38 @@ const schemaMarkup = {
         <a href="/blog/mtd-record-keeping-driving-instructors/" class="text-brand-red hover:underline">MTD record keeping for driving instructors</a>,
         <a href="/blog/choosing-mtd-software-driving-instructors/" class="text-brand-red hover:underline">choosing MTD software</a> and the
         <a href="/blog/mtd-timeline-2027-2028-driving-instructors/" class="text-brand-red hover:underline">MTD timeline for 2027 and 2028</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50" id="accountant">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-3xl font-bold text-brand-navy mb-6">Do driving instructors need an accountant?</h2>
+      <p class="text-gray-700 mb-4">
+        No law says you must use one. Plenty of self-employed ADIs keep their own records and file their own Self Assessment
+        return. An accountant earns their fee when your tax affairs stop being simple, and the fee itself is an allowable business
+        expense.
+      </p>
+      <h3 class="text-xl font-semibold text-brand-navy mb-3">When an accountant for driving instructors is worth paying for</h3>
+      <ul class="list-disc pl-6 space-y-2 text-gray-700 mb-6">
+        <li><strong>Your first tax year</strong>, to set up records and expense categories you can keep using.</li>
+        <li><strong>Switching to Making Tax Digital.</strong> Sole traders with lesson income over £30,000 a year start on 6 April 2027 and send quarterly updates. Many accountants file those updates for you. See <a href="/blog/making-tax-digital-driving-instructors/" class="text-brand-red hover:underline">Making Tax Digital for driving instructors</a>.</li>
+        <li><strong>Buying, financing or leasing a car</strong>, and choosing between the flat mileage rate and actual car costs. The choice affects your tax for as long as you keep the car.</li>
+        <li><strong>Going limited or taking on other instructors</strong>, where company accounts, payroll or associate agreements come in.</li>
+        <li><strong>Getting close to the VAT registration threshold</strong> (£90,000 of taxable turnover in a rolling 12 months).</li>
+      </ul>
+      <h3 class="text-xl font-semibold text-brand-navy mb-3">What to ask before you hire one</h3>
+      <ul class="list-disc pl-6 space-y-2 text-gray-700 mb-6">
+        <li>Do you work with other driving instructors, and how do you treat franchise fees, dual controls and car costs?</li>
+        <li>Do you handle Making Tax Digital for Income Tax, and which software will I need to use?</li>
+        <li>Is your fee fixed for the year, and does it include the quarterly updates?</li>
+        <li>What records do you want from me, how often, and in what format?</li>
+      </ul>
+      <p class="text-gray-700">
+        Whoever does your books, the income figures start with your lessons. DriveSchoolPro records every lesson, invoice and payment
+        and reports revenue by period, so you can give your accountant a report rather than a diary. It does not track expenses or file
+        anything with HMRC. For the records your accountant will expect, see
+        <a href="/blog/mtd-record-keeping-driving-instructors/" class="text-brand-red hover:underline">MTD record keeping for driving instructors</a>.
       </p>
     </div>
   </section>
