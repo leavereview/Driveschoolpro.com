@@ -1,6 +1,6 @@
 ---
-title: "Driving School Insurance Guide"
-description: "Understand driving school insurance requirements. Types of coverage, costs, what to look for, and how to protect your driving instruction business."
+title: "Driving School Insurance: What Cover UK Driving Instructors Need"
+description: "Driving school insurance explained for UK instructors: tuition cover for learner drivers, public liability, dual controls, courtesy cars and the questions to ask before you buy a policy."
 image: /images/blog/app-vehicles.jpg
 imageAlt: "DriveSchoolPro vehicle settings showing four cars, one with an MOT expiring soon, and MOT, insurance and road tax alert periods"
 date: "2026-02-06"

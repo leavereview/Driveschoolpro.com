@@ -269,5 +269,5 @@ No risk. No commitment. If it does not work, your paper diary is still there.
 ## Related Articles
 
 - [How to Reduce Driving Lesson No-Shows: 8 Proven Strategies](/blog/reduce-driving-lesson-no-shows/)
-- [How to Start a Driving School in the UK: Complete 2026 Guide](/blog/how-to-start-a-driving-school/)
+- [How to Start a Driving School in the UK: Complete 2026 Guide](/blog/starting-driving-school-guide/)
 - [Best Driving School Software 2026: UK ADI Comparison Guide](/blog/best-driving-school-software/)
