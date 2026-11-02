@@ -21,7 +21,9 @@ import FAQEnhanced from '../seo/FAQEnhanced.astro';
 interface Item { title: string; body: string }
 
 interface Props {
-  competitor: { name: string; slug: string; pricingUrl: string };
+  competitor: { name: string; slug: string; pricingUrl: string; alternateName?: string };
+  /** Optional H1; defaults to "DriveSchoolPro vs {name}". */
+  h1?: string;
   seo: {
     title: string;
     description: string;
@@ -45,7 +47,7 @@ interface Props {
 }
 
 const {
-  competitor, seo, checkedOn, heroIntro, featuredAnswer, intro, rows,
+  competitor, h1, seo, checkedOn, heroIntro, featuredAnswer, intro, rows,
   switchHeading, switchIntro, switchItems, gapsHeading, gapsBody, sources, faqs, faqTitle,
 } = Astro.props;
 
@@ -60,6 +62,15 @@ const schemaMarkup = {
   publisher: { '@type': 'Organization', name: 'DriveSchoolPro' },
   datePublished: seo.datePublished,
   dateModified: seo.dateModified,
+  about: [
+    { '@type': 'SoftwareApplication', name: 'DriveSchoolPro', applicationCategory: 'BusinessApplication' },
+    {
+      '@type': 'SoftwareApplication',
+      name: competitor.name,
+      ...(competitor.alternateName ? { alternateName: competitor.alternateName } : {}),
+      applicationCategory: 'BusinessApplication',
+    },
+  ],
 };
 ---
 
@@ -79,7 +90,7 @@ const schemaMarkup = {
     <div class="container-custom relative">
       <div class="max-w-3xl">
         <span class="inline-block px-4 py-1 bg-brand-red/20 text-brand-red-light rounded-full text-sm font-medium mb-4">Platform Comparison</span>
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">DriveSchoolPro vs {competitor.name}</h1>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">{h1 ?? `DriveSchoolPro vs ${competitor.name}`}</h1>
         <p class="text-xl text-gray-300 mb-8">{heroIntro}</p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label}</a>

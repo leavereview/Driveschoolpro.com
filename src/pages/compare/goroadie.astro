@@ -9,12 +9,14 @@ import CompetitorComparison from '../../components/compare/CompetitorComparison.
 //   goroadie.com and /instructors (learner referral marketplace, pay per pupil)
 //   App Store id1548955079, Google Play com.goroadie.pro (iOS and Android; no web version listed)
 // GoRoadie's page gives two different trial lengths, so we state neither.
+// 2 Nov 2026: re-checked goroadie.com/pro. Same features; it also says "zero text costs"
+//   for reminders. Name is written "GoRoadie" (one word), the instructor app "GoRoadie Pro".
 // "Not listed" = not found on those pages; never "No" unless the vendor says so.
 const rows = [
   { label: 'AI lesson briefings', values: [true, 'Not listed'] },
   { label: 'DVSA 27-skill, 8-category progress tracking', values: [true, 'Progress tracking and reflective logs; DVSA skills not named'] },
   { label: 'Theory test progress shown alongside lessons', values: [false, 'Yes (Theory Test Pro, 4-in-1)'] },
-  { label: 'Automatic lesson reminders', values: ['Email', 'Yes (text, email and in-app)'] },
+  { label: 'Automatic lesson reminders', values: ['Email', 'Yes (text, email and in-app; no text costs)'] },
   { label: 'WhatsApp reminders', values: ['Coming soon', 'Not listed'] },
   { label: 'Pupils book online from your website', values: [true, 'Lesson-request link and enquiry manager'] },
   { label: 'Works in a web browser on a computer', values: [true, 'Not listed (iPhone and Android apps)'] },
@@ -29,6 +31,11 @@ const rows = [
 ];
 
 const faqs = [
+  {
+    question: 'What is GoRoadie?',
+    answer: "GoRoadie is a UK driving company with two sides. Its website, goroadie.com, is a marketplace where learner drivers find an instructor, and instructors pay per pupil they take on. GoRoadie Pro is its separate iPhone and Android app for instructors (ADIs and PDIs), with a diary, a free learner app, reminders, card payments and expense tracking. This page compares GoRoadie Pro with DriveSchoolPro.",
+    links: [{ text: 'GoRoadie Pro', url: 'https://goroadie.com/pro' }],
+  },
   {
     question: 'Can I use GoRoadie Pro on a computer?',
     answer: "GoRoadie Pro is listed as an iPhone, iPad and Android app; we couldn't find a web version on its site. DriveSchoolPro works in any web browser as well as on iPhone and Android, so you can plan the week on a laptop and run the day from your phone.",
@@ -51,22 +58,23 @@ const faqs = [
   },
   {
     question: 'Is this a fair comparison?',
-    answer: "We've tried to make it one. The GoRoadie column only records what GoRoadie's own website and app-store listings say, checked on 16 October 2026. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote GoRoadie's prices because they change, so use its own page. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
+    answer: "We've tried to make it one. The GoRoadie column only records what GoRoadie's own website and app-store listings say, first checked on 16 October 2026 and re-checked on 2 November 2026. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote GoRoadie's prices because they change, so use its own page. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
     links: [{ text: 'GoRoadie Pro', url: 'https://goroadie.com/pro' }],
   },
 ];
 ---
 
 <CompetitorComparison
-  competitor={{ name: 'GoRoadie', slug: 'goroadie', pricingUrl: 'https://goroadie.com/pro' }}
+  competitor={{ name: 'GoRoadie', alternateName: 'GoRoadie Pro', slug: 'goroadie', pricingUrl: 'https://goroadie.com/pro' }}
+  h1="GoRoadie vs DriveSchoolPro"
   seo={{
-    title: 'DriveSchoolPro vs GoRoadie Pro: Comparison | DriveSchoolPro',
-    description: 'Compare DriveSchoolPro and GoRoadie Pro feature by feature: DVSA 27-skill tracking, AI lesson briefings, reminders, expenses and the learner marketplace. DriveSchoolPro is free until 31 March 2027.',
+    title: 'GoRoadie vs DriveSchoolPro: GoRoadie Pro Compared for UK ADIs',
+    description: 'GoRoadie Pro vs DriveSchoolPro, feature by feature: DVSA 27-skill tracking, AI lesson briefings, reminders, expenses and the learner marketplace. DriveSchoolPro is free until 31 March 2027.',
     schemaDescription: 'Feature-by-feature comparison of DriveSchoolPro and GoRoadie Pro for UK driving instructors, including what DriveSchoolPro does not do.',
     datePublished: '2026-10-16',
-    dateModified: '2026-10-16',
+    dateModified: '2026-11-02',
   }}
-  checkedOn="16 October 2026"
+  checkedOn="2 November 2026"
   heroIntro="A plain, feature-by-feature comparison for UK instructors weighing up GoRoadie Pro. It covers what's different, and what DriveSchoolPro doesn't do."
   featuredAnswer="DriveSchoolPro and GoRoadie Pro are both UK apps for driving instructors, with a diary, a free pupil app, reminders and Stripe card payments. DriveSchoolPro adds DVSA 27-skill tracking, AI lesson briefings, a web version, vehicle MOT, tax and insurance tracking, and multi-instructor schools in the same product. GoRoadie Pro adds text-message reminders, expense and receipt tracking, pupils' theory test progress and access to GoRoadie's learner marketplace."
   intro="This page is for an instructor looking at GoRoadie Pro and wondering whether DriveSchoolPro is worth a look too. GoRoadie Pro is a UK app with features we don't have, so this isn't a case against it. It's a list of what's different."
