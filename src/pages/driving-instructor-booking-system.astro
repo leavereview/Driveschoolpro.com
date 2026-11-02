@@ -8,8 +8,11 @@ import ProductDemo from '../components/ProductDemo.astro';
 import { OFFER } from '../config/offer';
 
 // Target: 'driving instructor booking' (vol 260, no page), 'driving instructor booking software'
-// (vol 50, GSC 23.6) and 'driving school booking software' (vol 30, GSC 26.2). Issue
-// leavereview/Driveschoolpro.com#43, 2 Nov 2026.
+// (vol 50, GSC 23.6), 'driving instructor booking system', 'instructor booking system' and
+// 'booking system for driving instructors' (GSC 37 to 51, all on /driving-school-scheduling-software/
+// before this page existed). Issues leavereview/Driveschoolpro.com#43, leavereview/driveschoolpro#2097.
+// 'driving school booking software' (school-level) belongs to /driving-school-scheduling-software/,
+// which Google already ranks for it: link there, don't compete for it here.
 //
 // Claims on this page are limited to what /features/online-booking/, /features/getting-paid/
 // and /features/scheduling/ already state about the live app. Bookings are confirmed straight
@@ -36,6 +39,16 @@ const faqs = [
     question: 'What is a driving instructor booking system?',
     answer: "It is software that lets pupils book driving lessons themselves, online, into times the instructor is actually free. A good one reads the instructor's real diary, applies their rules on notice, travel time and how far ahead pupils can book, checks for clashes, and puts the booking straight into the diary with the pupil's details. DriveSchoolPro does this from a widget on your own website and from the pupils' app.",
     links: [{ text: 'Online booking in detail', url: '/features/online-booking/' }],
+  },
+  {
+    question: 'What is the best booking software for driving instructors?',
+    answer: "For a UK ADI, the best driving instructor booking software reads your real diary, so pupils can only pick times you are actually free, and checks the pupil, the instructor and the car before confirming. It should also apply your notice and travel-time rules and put the booking next to the pupil's record. General booking tools can take bookings but do not know about pupils, cars or DVSA progress. DriveSchoolPro does all of these, and is free until 31 March 2027.",
+    links: [{ text: 'Online booking in detail', url: '/features/online-booking/' }],
+  },
+  {
+    question: 'What is the difference between a booking system and a diary app?',
+    answer: "The diary app is where you see and manage your lessons; the booking system is the part that lets pupils add lessons to it themselves. In DriveSchoolPro they are the same app: online bookings land straight in your diary, checked against everything already in it.",
+    links: [{ text: 'Driving instructor diary app', url: '/driving-instructor-diary-app/' }],
   },
   {
     question: 'Is there a free booking system for driving instructors?',
@@ -94,7 +107,7 @@ const softwareSchema = {
 ---
 
 <BaseLayout
-  title="Driving Instructor Booking System: Pupils Book Online"
+  title="Driving Instructor Booking System and Booking Software"
   description="A driving instructor booking system that lets pupils book lessons online, from your website or their app, only into times you're free. Free until 31 March 2027, no card."
   image="/images/marketing/portal-book-lesson-type-mobile.webp"
   publishedDate="2026-11-02"

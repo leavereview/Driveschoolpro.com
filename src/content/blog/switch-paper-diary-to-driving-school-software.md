@@ -2,6 +2,7 @@
 title: "Switching from Paper Diary to Driving School Software: An ADI's Honest Guide"
 description: "Thinking of ditching your paper diary and WhatsApp? Here's a practical, honest guide to switching to driving school software — what changes, what gets easier, and how to make the transition without losing a single student record."
 date: "2026-04-11"
+updatedDate: "2026-11-02"
 tags: ["business", "guide"]
 author: "John Powell"
 image: /images/blog/app-calendar-week.jpg
@@ -10,7 +11,7 @@ faqs:
   - question: "Can I try driving school software before committing?"
     answer: "Yes. DriveSchoolPro is free until 31 March 2027 while in early access, with no credit card required. You can add all your students, set up your calendar, and run the software alongside your paper diary for as long as you like. If it does not work for you, you simply stop — nothing is lost."
   - question: "Will my students notice the change?"
-    answer: "They will notice improvements, not disruption. They will start receiving automatic text reminders before each lesson, which most students genuinely appreciate. The booking and scheduling process stays the same from their perspective — they still contact you to book, and you confirm. The difference is on your end: everything is recorded, tracked, and reminded automatically."
+    answer: "They will notice improvements, not disruption. They will start receiving automatic email reminders before each lesson, which most students genuinely appreciate. Booking can stay the same from their perspective — they contact you and you put the lesson in the diary — or you can let them book online into the times you are free. The difference is on your end: everything is recorded, tracked, and reminded automatically."
   - question: "What happens if I lose my phone?"
     answer: "Because DriveSchoolPro is cloud-based, your data is not stored on your device. Log in on any phone, tablet, or computer with your email and password and your entire diary, student records, and lesson history are there. This is one of the genuine advantages over a paper diary, which is lost permanently if it goes missing."
   - question: "Can I switch back to paper if I do not like it?"
@@ -23,7 +24,7 @@ Let us be honest from the start: your paper diary and WhatsApp system probably w
 
 The question is not whether your current system is broken. The question is whether [driving school software](/) gives you back enough time and money to make the change worth the effort.
 
-This guide helps you answer that honestly. If the answer is yes, it walks you through exactly how to make the switch without disrupting your students, losing any records, or spending a stressful weekend migrating your entire diary.
+If you already know you want an app and are choosing one, our page on what an [ADI diary app](/driving-instructor-diary-app/) should do sets out the jobs to test and how DriveSchoolPro handles each. This guide is about the switch itself. It helps you decide honestly whether it is worth it and, if it is, walks you through exactly how to make the switch without disrupting your students, losing any records, or spending a stressful weekend migrating your entire diary.
 
 ---
 
@@ -61,7 +62,7 @@ The clearest way to understand the difference is to walk through a real working 
 
 **Paper:** Check diary, identify tomorrow's students, send individual WhatsApp messages to remind them, wait for replies, follow up with anyone who has not responded.
 
-**Software:** Open the app. Tomorrow's students have already received an automated text reminder. Confirmations show as green ticks in your dashboard. Nothing for you to do.
+**Software:** Open the app. Tomorrow's students have already received an automated email reminder. Nothing for you to do.
 
 ### Between lessons
 
@@ -242,7 +243,7 @@ Yes. DriveSchoolPro is free until 31 March 2027 while in early access, with no c
 
 **Will my students notice the change?**
 
-They will notice improvements, not disruption. They will start receiving automatic text reminders before each lesson, which most students genuinely appreciate. The booking process stays the same from their perspective — they still contact you to book, and you confirm. The difference is on your end: everything is recorded, tracked, and reminded automatically.
+They will notice improvements, not disruption. They will start receiving automatic email reminders before each lesson, which most students genuinely appreciate. Booking can stay the same from their perspective — they contact you and you put the lesson in the diary — or you can let them book online into the times you are free. The difference is on your end: everything is recorded, tracked, and reminded automatically.
 
 **What happens if I lose my phone?**
 
