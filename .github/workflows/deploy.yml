@@ -7,17 +7,28 @@ on:
     - cron: '0 9 * * 1'  # Every Monday at 9 AM UTC
   workflow_dispatch:
 
+# Never run two deploys at once; a newer push waits for the running one.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
+      # Node 24 (from .nvmrc): postbuild's verify-start.js imports .ts files,
+      # which needs Node's built-in type stripping (Node 20 fails the build).
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version-file: .nvmrc
+          cache: npm
 
       - name: Install dependencies
         run: npm ci
@@ -25,12 +36,33 @@ jobs:
       - name: Build site
         run: npm run build
 
+      - name: Set up SSH
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          SERVER_IP: ${{ secrets.SERVER_IP }}
+        run: |
+          if [ -z "$DEPLOY_KEY" ] || [ -z "$SERVER_IP" ]; then
+            echo "::error::DEPLOY_KEY and SERVER_IP repo secrets must both be set"
+            exit 1
+          fi
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "$SERVER_IP" >> ~/.ssh/known_hosts 2>/dev/null
+
+      # --delete prunes pages removed from the site, but the protect filters keep
+      # server-only files: social/ holds the scheduled-post videos (social/video/*.mp4)
+      # that are not in the repo.
       - name: Deploy to server
-        uses: easingthemes/ssh-deploy@main
-        with:
-          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY }}
-          REMOTE_HOST: ${{ secrets.SERVER_IP }}
-          REMOTE_USER: ubuntu
-          SOURCE: dist/
-          TARGET: /var/www/driveschoolpro.com/
-          ARGS: "-rltDvz --delete"
+        env:
+          SERVER_IP: ${{ secrets.SERVER_IP }}
+        run: |
+          rsync -rltDvz --delete \
+            --filter='P /social/**' \
+            --filter='P /.DS_Store' \
+            -e "ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes" \
+            dist/ "ubuntu@${SERVER_IP}:/var/www/driveschoolpro.com/"
+
+      - name: Remove SSH key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
