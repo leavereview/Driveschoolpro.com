@@ -1,0 +1,364 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BreadcrumbsEnhanced from '../components/seo/BreadcrumbsEnhanced.astro';
+import FeaturedAnswer from '../components/seo/FeaturedAnswer.astro';
+import ComparisonTable from '../components/seo/ComparisonTable.astro';
+import FAQEnhanced from '../components/seo/FAQEnhanced.astro';
+import ProductDemo from '../components/ProductDemo.astro';
+import { OFFER } from '../config/offer';
+
+// Target: 'driving instructor booking' (vol 260, no page), 'driving instructor booking software'
+// (vol 50, GSC 23.6) and 'driving school booking software' (vol 30, GSC 26.2). Issue
+// leavereview/Driveschoolpro.com#43, 2 Nov 2026.
+//
+// Claims on this page are limited to what /features/online-booking/, /features/getting-paid/
+// and /features/scheduling/ already state about the live app. Bookings are confirmed straight
+// away (no approve-first step), pupils do not choose the car, there is no text-message booking,
+// reminders are email only today (WhatsApp coming soon) and repeating weekly bookings are
+// coming soon. Never present any of those as live.
+
+const pageUrl = 'https://driveschoolpro.com/driving-instructor-booking-system/';
+
+const options = [
+  { label: 'Pupils book at any hour without messaging you', values: [true, true, false] },
+  { label: 'Only offers times you are actually free', values: ['From your working hours and diary', 'If you keep its calendar up to date', false] },
+  { label: 'Checks the pupil, the instructor and the car', values: [true, 'Your own calendar only', false] },
+  { label: 'Travel buffer between lessons', values: ['Up to two hours', 'Usually', false] },
+  { label: 'Booking lands next to the pupil’s record and progress', values: [true, false, false] },
+  { label: 'Card payment or prepaid lessons at booking', values: [true, 'Card, if connected', false] },
+  { label: 'Pupil app with their lessons, progress and balance', values: ['iPhone, Android and web', false, false] },
+  { label: 'DVSA 27-skill progress per pupil', values: [true, false, false] },
+  { label: 'Approve each booking before it is confirmed', values: [false, 'Some tools', true] },
+];
+
+const faqs = [
+  {
+    question: 'What is a driving instructor booking system?',
+    answer: "It is software that lets pupils book driving lessons themselves, online, into times the instructor is actually free. A good one reads the instructor's real diary, applies their rules on notice, travel time and how far ahead pupils can book, checks for clashes, and puts the booking straight into the diary with the pupil's details. DriveSchoolPro does this from a widget on your own website and from the pupils' app.",
+    links: [{ text: 'Online booking in detail', url: '/features/online-booking/' }],
+  },
+  {
+    question: 'Is there a free booking system for driving instructors?',
+    answer: 'Yes. DriveSchoolPro, including online booking, is free for every instructor until 31 March 2027 with no card needed. After that there is a permanent Free plan for one instructor and up to 60 lessons a month, and online booking is included in it.',
+    links: [{ text: 'Pricing', url: '/pricing/' }],
+  },
+  {
+    question: 'Can pupils book lessons from my own website?',
+    answer: 'Yes. You paste a short snippet into your website and a booking button appears. It opens a booking window on your page: the visitor picks a lesson type, an instructor or "any available", a day and a time, then leaves their name, email, phone number and pick-up address. They do not need an account.',
+    links: [],
+  },
+  {
+    question: 'Do I have to approve every booking?',
+    answer: "No, and there is currently no option to. Online bookings are confirmed straight away, so you control them with rules set in advance: how far ahead, whether same-day is allowed, a travel buffer, a limit on upcoming bookings per pupil and a cancellation notice period. If you want to vet new pupils first, leave the website widget off and invite pupils to the app one at a time.",
+    links: [],
+  },
+  {
+    question: 'Can pupils pay when they book a lesson?',
+    answer: "Yes, if you connect your own Stripe account and switch on payment at booking. Pupils with a lesson package can use their prepaid hours instead. DriveSchoolPro charges 3% on card payments you collect, and Stripe's standard processing fee applies on top. Without Stripe, bookings are confirmed without taking payment.",
+    links: [{ text: 'Getting paid', url: '/features/getting-paid/' }],
+  },
+  {
+    question: 'Does it work for a driving school with several instructors?',
+    answer: 'Yes. Pupils can choose an instructor or "any available", and every booking is checked against the pupil, the instructor and the car, so two instructors cannot be booked into the same vehicle. Each instructor sees their own diary and the office sees everyone’s.',
+    links: [{ text: 'Driving school scheduling software', url: '/driving-school-scheduling-software/' }],
+  },
+  {
+    question: 'Can pupils book a repeating weekly lesson?',
+    answer: 'Not yet. Repeating weekly bookings are coming soon. Today each lesson is booked on its own, by the pupil online or by you in the diary.',
+    links: [],
+  },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Driving Instructor Booking System: Let Pupils Book Lessons Online',
+  description: 'How a driving instructor booking system works, what to check before you choose one, and how online booking works in DriveSchoolPro for UK ADIs and driving schools.',
+  author: { '@type': 'Organization', name: 'DriveSchoolPro' },
+  publisher: { '@type': 'Organization', name: 'DriveSchoolPro' },
+  datePublished: '2026-11-02',
+  dateModified: '2026-11-02',
+  mainEntityOfPage: pageUrl,
+};
+
+const softwareSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'DriveSchoolPro',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web, iOS, Android',
+  description: 'Driving instructor booking system: pupils book lessons online from your website or the pupil app, into your real availability, with clash checks across pupil, instructor and car and optional card payment at booking.',
+  url: 'https://driveschoolpro.com/',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'GBP', description: OFFER.meta },
+};
+---
+
+<BaseLayout
+  title="Driving Instructor Booking System: Pupils Book Online"
+  description="A driving instructor booking system that lets pupils book lessons online, from your website or their app, only into times you're free. Free until 31 March 2027, no card."
+  image="/images/marketing/portal-book-lesson-type-mobile.webp"
+  publishedDate="2026-11-02"
+  modifiedDate="2026-11-02"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
+
+  <BreadcrumbsEnhanced
+    site="driveschool"
+    items={[
+      { label: 'Home', href: '/' },
+      { label: 'Driving Instructor Booking System', href: '/driving-instructor-booking-system/' },
+    ]}
+  />
+
+  <section class="relative overflow-hidden bg-gradient-to-br from-brand-navy to-gray-900 text-white py-16">
+    <div class="container-custom relative">
+      <div class="max-w-3xl">
+        <span class="inline-block bg-brand-red/20 text-brand-red-light px-3 py-1 rounded-full text-sm mb-4">Online booking for ADIs</span>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">A Driving Instructor Booking System That Only Offers Times You're Free</h1>
+        <p class="text-xl text-gray-300 mb-4">
+          Pupils book their own driving lessons online, from a button on your website or from their
+          app, at ten at night or while you're teaching. Every booking is checked against your diary,
+          your rules and the car before it lands, with the pupil's details already attached.
+        </p>
+        <p class="text-gray-400 mb-8">Web, iPhone and Android &middot; {OFFER.short} &middot; No card needed</p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label}</a>
+          <a href="#what-to-check" class="btn-secondary text-lg px-8 py-4">What to check before you choose</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FeaturedAnswer question="What is a driving instructor booking system?">
+    A driving instructor booking system lets learners book lessons online without messaging you
+    first. It shows only the slots you would agree to, based on your working hours, your existing
+    lessons and your rules on notice and travel time, then puts the booking straight into your
+    diary with the pupil's contact details and pick-up address. DriveSchoolPro does this from a
+    widget on your own website and from the pupils' app, and checks every booking against the pupil,
+    the instructor and the car.
+  </FeaturedAnswer>
+
+  <section class="section bg-white">
+    <div class="container-custom max-w-3xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Why instructors move bookings online</h2>
+      <p class="text-lg text-gray-600 mb-4">
+        Booking by phone and message works until it doesn't. Enquiries arrive while you are on a
+        lesson and can't answer, a pupil asks "any slots next week?" and you scroll back through the
+        diary at a set of traffic lights, and the new learner who messaged at nine at night has booked
+        with whoever replied first. None of that is teaching, and most of it happens in your evenings.
+      </p>
+      <p class="text-lg text-gray-600 mb-4">
+        A booking system takes the back-and-forth out. The pupil sees what is free and picks it. You
+        find out when the lesson is already in the diary, with the right pick-up address, rather than
+        when you get round to the messages.
+      </p>
+      <p class="text-lg text-gray-600">
+        The worry most instructors have is losing control: pupils booking at silly times, the day
+        after a long motorway lesson, or straight after a lesson on the other side of town. That is
+        why the rules matter more than the booking button, and why they come first below.
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Two ways for pupils to book</h2>
+          <h3 class="text-xl font-semibold text-brand-navy mb-2">From your own website</h3>
+          <p class="text-lg text-gray-600 mb-6">
+            Paste a short snippet into your website and a booking button appears. It opens a booking
+            window on your page, so the visitor never leaves your site. They pick a lesson type, an
+            instructor or "any available", a day and a time, and leave their name, email, phone number
+            and pick-up address. There is no account to create and no password to forget. You choose
+            the button's wording, colour and which corner it sits in.
+          </p>
+          <h3 class="text-xl font-semibold text-brand-navy mb-2">From the pupil app</h3>
+          <p class="text-lg text-gray-600">
+            Pupils you have invited sign in to the DriveSchoolPro app on iPhone, Android or the web. They
+            see their own lessons, progress and invoices, and book the next lesson from the same
+            screen, using prepaid lesson hours where you allow it. Read more about
+            <a href="/features/pupil-app/" class="text-brand-red hover:underline">the pupil app</a>.
+          </p>
+        </div>
+        <ProductDemo
+          poster="/images/marketing/portal-book-lesson-type-mobile.webp"
+          posterAlt="A pupil's booking screen on a phone at step one, Choose Lesson Type: a one hour lesson, a two hour lesson and a mock test, each with its price."
+          alt="A pupil's booking screen on a phone at step one, Choose Lesson Type: a one hour lesson, a two hour lesson and a mock test, each with its price."
+          width={375}
+          height={900}
+          phone
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-custom max-w-5xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">The rules that keep online booking safe</h2>
+      <p class="text-lg text-gray-600 mb-6 max-w-3xl">
+        The slots a pupil sees come straight from your working hours and your diary. On top of that,
+        you set the rules once and they apply to every online booking:
+      </p>
+      <ul class="grid md:grid-cols-2 gap-4 text-lg text-gray-700 mb-8">
+        <li class="card p-5"><strong class="text-brand-navy">Slot length.</strong> Start times every 15, 30 or 60 minutes.</li>
+        <li class="card p-5"><strong class="text-brand-navy">Travel buffer.</strong> Up to two hours kept clear after each lesson.</li>
+        <li class="card p-5"><strong class="text-brand-navy">How far ahead.</strong> Anywhere from 1 to 365 days.</li>
+        <li class="card p-5"><strong class="text-brand-navy">Same-day booking.</strong> On or off.</li>
+        <li class="card p-5"><strong class="text-brand-navy">Pupil limit.</strong> How many upcoming bookings one pupil can hold at once.</li>
+        <li class="card p-5"><strong class="text-brand-navy">Cancellation notice.</strong> One hour up to 72 hours, with separate switches for cancelling and rescheduling online.</li>
+      </ul>
+      <p class="text-lg text-gray-600 max-w-3xl">
+        Every online booking is then checked against the pupil, the instructor and the car, exactly
+        like a lesson you add yourself, so it cannot double-book anyone or anything.
+      </p>
+      <div class="mt-8">
+        <ProductDemo
+          poster="/images/marketing/booking-rules.webp"
+          posterAlt="The Booking rules and What pupils can do settings: slot interval, travel buffer, maximum advance booking, active bookings per pupil, cancellation notice, same-day booking and switches for cancelling and rescheduling."
+          alt="The Booking rules and What pupils can do settings: slot interval, travel buffer, maximum advance booking, active bookings per pupil, cancellation notice, same-day booking and switches for cancelling and rescheduling."
+          width={934}
+          height={655}
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50">
+    <div class="container-custom max-w-3xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Payment at booking, or prepaid lessons</h2>
+      <p class="text-lg text-gray-600 mb-4">
+        Connect your own Stripe account and you can ask pupils to pay by card when they book. The money
+        goes to your Stripe account. Pupils who have bought a block of lessons can use those prepaid
+        hours instead, so a pupil with ten hours left is not asked to pay again.
+      </p>
+      <p class="text-lg text-gray-600">
+        DriveSchoolPro charges 3% on card payments you collect, and Stripe's standard processing fee
+        applies on top. If you would rather keep taking cash or bank transfer, leave payment at
+        booking off: bookings are confirmed without payment, and you record what the pupil pays
+        against their balance. See <a href="/features/getting-paid/" class="text-brand-red hover:underline">getting paid</a>
+        and <a href="/features/lesson-packages/" class="text-brand-red hover:underline">lesson packages</a>.
+      </p>
+    </div>
+  </section>
+
+  <section id="options">
+    <ComparisonTable
+      title="Booking system vs a general booking link vs messages"
+      description="What each option does for a working driving instructor. A general booking link means an all-purpose appointment tool; messages means taking bookings by phone, text or WhatsApp."
+      headers={['DriveSchoolPro', 'General booking link', 'Phone and messages']}
+      rows={options}
+      rowHeader="Job"
+      highlightColumn={0}
+    />
+  </section>
+
+  <section id="what-to-check" class="section bg-white">
+    <div class="container-custom max-w-3xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">What to check before choosing driving instructor booking software</h2>
+      <p class="text-lg text-gray-600 mb-6">Whatever you choose, test these on a trial with a few real pupils before you put the button on your website.</p>
+      <ol class="space-y-5 text-lg text-gray-700 list-decimal pl-6">
+        <li><strong class="text-brand-navy">Does it read your real diary?</strong> If lessons you add yourself don't block the slot, a pupil will book over them.</li>
+        <li><strong class="text-brand-navy">Can you protect travel time?</strong> Door-to-door lessons need a gap after each one, and it should be set once, not remembered.</li>
+        <li><strong class="text-brand-navy">Does it check the car?</strong> In a school with shared cars, a booking that only checks the instructor can still put two lessons in one vehicle.</li>
+        <li><strong class="text-brand-navy">Who controls cancellations?</strong> Look for a notice period that stops late online cancellations and sends the pupil back to you.</li>
+        <li><strong class="text-brand-navy">Where does the booking end up?</strong> The best place is next to the pupil's record, payments and progress, not in a separate calendar you copy from.</li>
+        <li><strong class="text-brand-navy">What does it do about payment?</strong> Card at booking, prepaid lessons, or neither: check it matches how you are paid today.</li>
+        <li><strong class="text-brand-navy">Is it built for UK driving lessons?</strong> General booking tools take appointments well but don't know about pick-up addresses or the DVSA's 27 driving skills.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section bg-brand-red-light">
+    <div class="container-custom text-center max-w-3xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-3">Let the next pupil book while you're teaching</h2>
+      <p class="text-gray-700 mb-6">Set your hours and rules, then switch online booking on when you're ready. {OFFER.short}, no card needed.</p>
+      <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label} &rarr;</a>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-custom max-w-3xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Booking for a driving school with several instructors</h2>
+      <p class="text-lg text-gray-600 mb-4">
+        In a school, pupils can pick an instructor or choose "any available", and the system offers
+        the times when an instructor is free. Because every booking is checked
+        against the car as well as the instructor, two instructors sharing a vehicle can't both be
+        booked into it.
+      </p>
+      <p class="text-lg text-gray-600">
+        Each instructor sees their own diary on their phone, and the office sees everyone's. For the
+        wider picture of running several diaries, see our guide to
+        <a href="/driving-school-scheduling-software/" class="text-brand-red hover:underline">driving school scheduling software</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50">
+    <div class="container-custom max-w-3xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">What DriveSchoolPro's booking won't do</h2>
+      <p class="text-lg text-gray-600">
+        It is better to know the edges before you rely on it. Online bookings are confirmed straight
+        away, so there is no approve-first step. Pupils don't choose the car; you do. There is no
+        booking by text message. Lesson reminders go out by email today, and WhatsApp is coming soon.
+        Repeating weekly bookings are coming soon too, so each lesson is booked on its own for now. If
+        any of these matters to how you work, that is worth knowing now rather than after you've
+        switched.
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-8">How to set it up</h2>
+      <ol class="space-y-6">
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">1</span>
+          <div><h3 class="text-xl font-semibold text-brand-navy">Set your hours and lesson types</h3><p class="text-gray-600">Working hours, the lessons you offer and their prices. This decides which times pupils are shown.</p></div>
+        </li>
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">2</span>
+          <div><h3 class="text-xl font-semibold text-brand-navy">Choose your rules, then switch it on</h3><p class="text-gray-600">Notice period, how far ahead, travel buffer and the per-pupil limit. Online booking stays off until you turn it on.</p></div>
+        </li>
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">3</span>
+          <div><h3 class="text-xl font-semibold text-brand-navy">Add the button to your site or invite pupils</h3><p class="text-gray-600">Copy the snippet onto your website, or invite pupils to the app. Bookings appear in your <a href="/driving-instructor-diary-app/" class="text-brand-red hover:underline">diary</a> as they are made.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <FAQEnhanced faqs={faqs} site="driveschool" pageUrl={pageUrl} title="Driving instructor booking system: common questions" />
+
+  <section class="section bg-brand-navy text-white text-center">
+    <div class="container-custom">
+      <h2 class="text-3xl font-bold mb-3">Put online booking on your website this week</h2>
+      <p class="text-white/80 text-lg mb-8 max-w-xl mx-auto">Pupils book into the times you're free. You get the booking, the pick-up address and the pupil's record in one place.</p>
+      <a href={OFFER.ctaPrimary.href} class="inline-block bg-brand-red text-white px-10 py-4 rounded-xl font-semibold text-lg hover:bg-red-700 transition-colors">
+        {OFFER.ctaPrimary.label} &rarr;
+      </a>
+      <p class="text-white/50 text-sm mt-3">{OFFER.short} &middot; No credit card required &middot; Cancel anytime</p>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <h2 class="text-2xl font-bold text-brand-navy mb-8 text-center">Related</h2>
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <a href="/features/online-booking/" class="card p-6 hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-brand-navy mb-2">Online booking feature</h3>
+          <p class="text-gray-600 text-sm">Every setting, screen by screen</p>
+        </a>
+        <a href="/driving-instructor-diary-app/" class="card p-6 hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-brand-navy mb-2">Driving instructor diary app</h3>
+          <p class="text-gray-600 text-sm">The diary every booking lands in</p>
+        </a>
+        <a href="/driving-school-scheduling-software/" class="card p-6 hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-brand-navy mb-2">Driving school scheduling software</h3>
+          <p class="text-gray-600 text-sm">Several instructors, cars and diaries</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
