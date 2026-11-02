@@ -15,6 +15,11 @@ const faqs = [
     links: []
   },
   {
+    question: "Is this a driving instructor app or an app for learners?",
+    answer: "Both, in one app. DriveSchoolPro is a driving instructor app: you run your diary, pupils, progress and payments from it on iPhone, Android or in a web browser. When a pupil signs in to the same app, they see only their own lessons, progress, messages and payments.",
+    links: [{ text: 'The instructor side: diary app', url: '/driving-instructor-diary-app/' }]
+  },
+  {
     question: "How do pupils get access?",
     answer: "Either you invite them from their record, which emails a link to set a password (it lasts 72 hours), or they sign up on your school's own registration page. After that they log in with their email and password, and can find your school by name if they forget the link.",
     links: []
@@ -43,8 +48,8 @@ const faqs = [
 ---
 
 <BaseLayout
-  title="Driving Lessons App for Your Pupils (iPhone and Android) | DriveSchoolPro"
-  description="Give learners their own driving lessons app: next lesson, directions, DVSA progress, booking, messages and card payments. Free until 31 March 2027."
+  title="Driving Instructor App With a Pupil App Built In (iPhone, Android)"
+  description="One driving instructor app for you and your learners: you run the diary, pupils see their next lesson, DVSA progress, booking, messages and payments. Free until 31 March 2027."
 >
   <BreadcrumbsEnhanced items={[{ label: 'Home', href: '/' }, { label: 'Features', href: '/features/' }, { label: 'Pupil app' }]} site="driveschool" />
 
@@ -162,6 +167,24 @@ const faqs = [
           payments, never anyone else's.
         </p>
       </div>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50 border-t border-gray-100">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">One driving instructor app for you and your learners</h2>
+      <p class="text-lg text-gray-600 mb-4">
+        Most driving instructor apps are built for the instructor and give pupils something extra on
+        the side. DriveSchoolPro is one app with two views. You sign in and get your diary, your
+        pupils, their DVSA progress and your payments. Your pupil signs in to the same app and gets
+        their next lesson, their progress and a way to book, pay and message you.
+      </p>
+      <p class="text-lg text-gray-600">
+        Because it is the same system, nothing has to be copied across: when you move a lesson, the
+        pupil's app shows the new time, and when you rate a skill after a lesson, their progress
+        updates. See the <a href="/driving-instructor-diary-app/" class="text-brand-red hover:underline">instructor's side of the app</a>
+        or the full <a href="/driving-instructor-software/" class="text-brand-red hover:underline">driving instructor software</a>.
+      </p>
     </div>
   </section>
 
