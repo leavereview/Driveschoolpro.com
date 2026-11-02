@@ -1,6 +1,6 @@
 ---
-title: "Best Driving School Software UK (2026)"
-description: "Compare 9 UK driving instructor apps on DVSA tracking, reminders, pupil apps and trials, with each one's gaps. DriveSchoolPro is free until 31 March 2027."
+title: "Best Driving School Software UK 2026: 12 Compared"
+description: "UK driving school management software and CRM compared: prices, apps, DVSA tracking, reminders and who each suits. 12 platforms, checked November 2026."
 image: /images/blog/app-dashboard-overview.jpg
 imageAlt: "The DriveSchoolPro Today screen showing the day's lessons for each instructor and the day's lesson value"
 date: "2026-02-24"
@@ -8,473 +8,328 @@ updatedDate: "2026-11-02"
 tags: ["Software"]
 author: "John Powell"
 faqs:
-  - question: "What is the best driver training software?"
-    answer: "For UK instructors, the best driver training software is the one that tracks pupils against the DVSA 27 driving skills, not just lesson times. Solo ADIs usually shortlist Total Drive, MyDriveTime, Passly, LessonBuddy and DriveSchoolPro; multi-car schools add Driving School Office. DriveSchoolPro is free until 31 March 2027 while in early access."
-  - question: "What apps do driving instructors use?"
-    answer: "Most UK driving instructors use a dedicated instructor app for their diary, pupil progress and payments. Common choices include Total Drive, MyDriveTime, Passly, LessonBuddy and DriveSchoolPro. Some use generic booking tools such as Reservio, Teachworks or Acuity, which take bookings well but do not track the DVSA driving skills."
-  - question: "What is the best app for driving lessons?"
-    answer: "For the instructor, it is an app that combines the diary, reminders, payments and DVSA progress tracking, so the pupil can see how close they are to test-ready. For the pupil, the best app is usually the one their instructor uses, because that is where their lessons, progress and balance live."
-  - question: "Does driving school software track DVSA driving skills?"
-    answer: "UK-specific driving school software should track the DVSA 27 driving skills framework with proficiency levels per pupil. Generic scheduling tools such as Acuity or Calendly don't track driving skills at all, so check this is in any demo or trial."
-  - question: "Can multiple instructors see the same pupil's progress?"
-    answer: "In purpose-built platforms, yes. Any instructor assigned to a pupil should see the full lesson history, skills record and test date. This matters most for cover lessons and multi-instructor schools."
-  - question: "Can I try driving school software before paying?"
-    answer: "Usually, yes. Total Drive and MyDriveTime offer 30-day free trials, Passly 14 days, Teachworks 21 days and LessonBuddy 60 days for ADIs, according to their own sites. DriveSchoolPro is free until 31 March 2027 while in early access, with no credit card required."
-  - question: "Does it work with Google Calendar?"
-    answer: "Most platforms connect to Google Calendar, but check which direction. Some sync both ways; others, including DriveSchoolPro today, publish your lessons to Google Calendar one way, so your diary shows on your phone but time blocked in Google Calendar doesn't flow back."
-  - question: "Do I need to change my phone number?"
-    answer: "No. Software complements your existing phone number. You can still take phone bookings and enter them yourself, and move pupils to online booking at your own pace."
+  - question: "What is the best driving school software in the UK?"
+    answer: "It depends on the size of the business. Solo ADIs most often shortlist Total Drive, MyDriveTime, GoRoadie Pro, Passly, LessonBuddy, Lesson Diary and DriveSchoolPro. Multi-car schools look at Total Drive, MyDriveTime, Passly, LessonBuddy and DriveSchoolPro, and franchises at Driving School Office. Pick on DVSA progress tracking, reminder channels, card fees and price per extra instructor rather than on the headline monthly price. DriveSchoolPro is free until 31 March 2027."
+  - question: "What is a driving school management system?"
+    answer: "A driving school management system is software that runs the whole school in one place: the lesson diary for every instructor, online booking, pupil records and DVSA progress, reminders, payments and pupil balances, and, for multi-car schools, vehicles and staff logins. A generic booking tool covers the diary and payments but not DVSA progress or vehicles."
   - question: "What is the best CRM for driving schools?"
-    answer: "For most UK driving schools, the CRM is the pupil record inside their instructor software rather than a separate sales tool: contact details, lesson history, payments, DVSA progress and notes in one place, shared by every instructor who teaches that pupil. DriveSchoolPro, Total Drive, MyDriveTime and Passly all keep a pupil record like this. If you need to track enquiries before someone books, check for an enquiry or lead list: GoRoadie Pro lists an enquiry manager, and DriveSchoolPro doesn't have one."
-  - question: "What is the best driving instructor software for multi-car schools?"
-    answer: "Look for shared pupil records, one diary across instructors, clash checks that include the car, and vehicle MOT, tax and insurance tracking. DriveSchoolPro does all four in one account, with School pricing of £22 a month plus £10 per extra instructor from 1 April 2027 (free until then). Total Drive and MyDriveTime list multi-instructor plans, and Driving School Office is built for larger schools and franchises."
+    answer: "For most UK driving schools the CRM is the pupil record inside their instructor software rather than a separate sales tool: contact details, lesson history, payments, DVSA progress and notes in one place, shared by every instructor who teaches that pupil. If you need to track enquiries before someone books, check for an enquiry or leads list: Total Drive, MyDriveTime, GoRoadie Pro and Passly all list one on their sites. DriveSchoolPro doesn't track enquiries yet."
+  - question: "How much does driving school software cost in the UK?"
+    answer: "On the vendors' own sites (checked 2 November 2026), instructor apps cost about £9.99 to £26 a month for one instructor: LessonBuddy and Lesson Diary £9.99, Passly £14.99, GoRoadie Pro £17, Total Drive £18 to £26 and MyDriveTime £19. Extra instructors usually cost more on top. DriveSchoolPro is free until 31 March 2027, then has a free plan for 1 instructor and up to 60 lessons a month, Solo at £22 a month and School at £22 plus £10 per extra instructor."
+  - question: "Is there free driving school software?"
+    answer: "Yes, with limits. DriveSchoolPro is free until 31 March 2027 and keeps a permanent free plan for 1 instructor and up to 60 lessons a month after that. Lesson Diary has a free account for up to 3 pupils and 12 lessons. SimplyBook.me and Reservio have free booking plans capped at 50 and 40 bookings a month, without DVSA progress tracking."
+  - question: "Which driving school software tracks the DVSA driving skills?"
+    answer: "DriveSchoolPro tracks all 27 DVSA skills in 8 categories. Bitepoint (bitepoint.co.uk) says it tracks all 27 DVSA competencies across 5 levels. MyDriveTime and Lesson Diary say they use the DVSA syllabus, and Passly describes DVSA-aligned scoring. Generic booking tools such as Teachworks, SimplyBook.me and Reservio don't track DVSA skills."
+  - question: "What is the best driving school software for multi-car schools?"
+    answer: "Look for shared pupil records, one diary across instructors, clash checks that include the car, and the price per extra instructor. DriveSchoolPro checks every booking against the pupil, the instructor and the vehicle and tracks MOT, tax and insurance dates; School is £22 a month plus £10 per extra instructor from 1 April 2027 (free until then). MyDriveTime's extra instructors fall to £5 a month each from the 11th, which suits bigger schools, and Driving School Office lists white-labelling and franchise management."
+  - question: "Does driving school software sync with Google Calendar?"
+    answer: "Some do. Total Drive lists two-way sync with Google and Apple Calendar. MyDriveTime, Passly, GoRoadie Pro, SimplyBook.me and Reservio list a calendar connection without always saying which direction. DriveSchoolPro doesn't sync with Google Calendar yet; pupils who book online can add their lesson to their own calendar."
+  - question: "Can I try driving school software before paying?"
+    answer: "Usually. According to their own sites, Total Drive and MyDriveTime offer 30-day free trials, LessonBuddy 60 days for ADIs, Teachworks 21 days, and Passly and Lesson Diary 14 days. DriveSchoolPro is free until 31 March 2027 with no card required."
 ---
 
-Choosing driving school software is mostly a question of fit: a solo ADI, a three-car school and a franchise want different things. This guide compares the nine platforms UK instructors most often shortlist on what actually separates them: DVSA skill tracking, reminders, pupil apps, vehicle handling and how you can try them.
+Choosing driving school software is mostly a question of fit: a solo ADI, a three-car school and a franchise want different things. This guide compares the 12 platforms UK instructors most often shortlist, side by side, on price, apps, DVSA progress tracking, reminders and card fees, then shows how to choose.
 
-We don't rank them by price, and we don't quote other vendors' prices. Prices change, they're structured differently (per instructor, per school, with or without SMS), and a number copied into a blog post goes out of date. Every platform below links to its own pricing page. Every competitor fact comes from that vendor's own website, checked on the date shown, and links to a fuller side-by-side comparison.
+**How we checked.** Every fact about another platform comes from that company's own website or app-store listing, checked on 2 November 2026, and each review links to its source. Where a site doesn't say something, we say "not stated" rather than guess; the feature may still exist. Prices change, so check the vendor's pricing page before you buy. No ratings or review scores here are ours to give, so there aren't any.
 
-We make DriveSchoolPro, so read this with that in mind. Where another platform is the better fit, we say so. If you'd rather see ours on its own first, start with the [DriveSchoolPro driving school software](/) overview.
+**Who wrote this.** We make DriveSchoolPro, so read this with that in mind. Where another platform is the better fit, we say so. DriveSchoolPro's own facts match our [company fact sheet](/about/facts/).
 
-## What UK ADIs Need From Driving School Software
+## The short answer
 
-UK driving instructors have requirements that generic appointment booking tools don't cover. Knowing them before you choose will save you from a tool that looks good in a demo but doesn't fit how you teach.
+- **Solo ADI who wants DVSA tracking and less admin, free for now:** [DriveSchoolPro](/driving-instructor-software/). Free until 31 March 2027.
+- **Solo ADI who wants the most established UK app, with theory practice:** Total Drive.
+- **Solo ADI on the lowest monthly price:** LessonBuddy or Lesson Diary, both £9.99 a month.
+- **Instructor who wants text reminders included:** MyDriveTime or GoRoadie Pro.
+- **Multi-car school that wants vehicle clash checks and MOT, tax and insurance dates:** [DriveSchoolPro](/driving-school-software-uk/).
+- **School with 10 or more instructors on a budget:** MyDriveTime, whose extra instructors fall to £5 a month each.
+- **Franchise or white-label:** Driving School Office.
+- **Just online booking on a light diary:** SimplyBook.me or Reservio on a free plan.
 
-### The DVSA Competency Framework
+## Comparison table 1: price, trial and platforms
 
-Every ADI teaching to UK standards works within the DVSA's 27 driving skills across 8 categories, from cockpit drill and legal responsibilities through to motorway and independent driving. Tracking each pupil against that framework is what turns a diary into a teaching tool.
+Prices as published on each vendor's site on 2 November 2026. "Per month" unless stated.
 
-Generic scheduling tools have no awareness of the DVSA framework. Purpose-built UK software should let you record which of the [27 DVSA skills](/dvsa-27-driving-skills/) you covered each lesson, rate the pupil's proficiency, and show both of you how close they are to test-ready.
+| Software | Published price | Free trial or free plan | Platforms |
+|----------|-----------------|-------------------------|-----------|
+| **DriveSchoolPro** | Free until 31 March 2027. Then Free plan (1 instructor, 60 lessons a month), Solo £22, School £22 + £10 per extra instructor. No VAT charged | Free now, no card | iPhone and Android app, web |
+| **Total Drive** | Four plans, £18 to £26, VAT included | 30 days, no payment details | iPhone and Android app, web |
+| **MyDriveTime** | Individuals £19 (SMS included). Schools from £19, extra instructors £15, £10 or £5 each depending on team size | 30 days, no card | Mobile app and web browser |
+| **GoRoadie Pro** | £17 | Free trial, no card (site says both 60 days and 1 month); free for PDIs | iPhone and Android app |
+| **Passly** | £14.99 (£7.50 for the first 3 months); extra instructors £8.99 on its pricing page | 14 days, no card | Mobile app and web |
+| **LessonBuddy** | £9.99, or £89.99 a year | 60 days for ADIs, up to 6 months for PDIs, no card | iPhone and Android app |
+| **Lesson Diary** | Solo £9.99; free account for up to 3 pupils and 12 lessons | 14 days (payment details at checkout) | Web, iPhone app; Android on request |
+| **Bitepoint** (bitepoint.co.uk) | £17.99 per instructor; pupils pay a 3.5% booking fee, capped at £3.50 | Not stated | Web diary and WhatsApp; no app to install |
+| **Driving School Office** | Not published ("Pay-As-You-Grow", "First Instructor Free") | Not stated | Web browser |
+| **Teachworks** | From US$16.49 + US$0.35 per student lesson (Starter) | 21 days | Web |
+| **SimplyBook.me** | Free (50 bookings a month) to £55; SMS and WhatsApp credits extra | Free plan; 14-day trial, no card | Web, iPhone and Android apps |
+| **Reservio** | Free (40 bookings per 30 days) to £29 + VAT; shortest term 6 months | Free plan; 14-day trial | Web, iPhone and Android apps |
 
-If a product doesn't track driving skills, it's not really driving school software. It's a calendar.
+## Comparison table 2: features that separate them
 
-### Door-to-Door Pickup Model
+| Software | DVSA progress tracking | Lesson reminders | Card payments | Multi-instructor | Best for |
+|----------|------------------------|------------------|---------------|------------------|----------|
+| **DriveSchoolPro** | All 27 skills, 8 categories; pupils see their own | Email (text and WhatsApp coming soon) | Stripe; 3% platform fee + Stripe's fee | Yes, with clash checks across pupil, instructor and car, and MOT, tax and insurance dates | DVSA-led solo ADIs and small-to-medium schools |
+| **Total Drive** | Syllabus tracking with custom syllabuses and skill sets | Free lesson and payment reminders; channels not stated | Yes; fee not stated | Yes, including pass rate per instructor | An established app with theory practice |
+| **MyDriveTime** | "The standard DVSA syllabus", customisable | Automated, with delivery shown in the diary | Not stated | Yes, cheaper per head as the team grows | Support-led solo ADIs and bigger schools |
+| **GoRoadie Pro** | Pupil progress tracking; DVSA not named | Text, email and in-app, included | Stripe; 1.9% service fee | Not stated on the Pro page | Included texts and an enquiry manager |
+| **Passly** | "DVSA-aligned" scoring | Email, in-app and push; no SMS | Stripe; 1.5% + Stripe's fee | Yes | Low price plus a leads marketplace |
+| **LessonBuddy** | Five-level skills matrix; DVSA not named | Automated; channels not stated | Stripe top-ups | Yes, with sponsored seats | Parent access and a low annual price |
+| **Lesson Diary** | DVSA syllabus, lesson by lesson; DL25-style mock tests | Email only | Doesn't take cards; records payments | Not stated | Browser-first solo ADIs |
+| **Bitepoint** | All 27 DVSA competencies, 5 levels | WhatsApp assistant | Stripe | Yes | Instructors who live in WhatsApp |
+| **Driving School Office** | Pupil progress tracker; DVSA not named | Automated notifications; channels not stated | Yes; provider not stated | Yes, plus white-labelling and franchise manager | Franchises |
+| **Teachworks** | None | Email; SMS as a paid add-on | Stripe | Unlimited teachers; vehicle add-on | Large schools wanting integrations |
+| **SimplyBook.me** | None | Email and SMS (SMS credits paid) | Several providers | Yes | Booking only |
+| **Reservio** | None | Email free; SMS credits paid | Yes | Instructors and vehicles on one calendar | Booking only, light diary |
 
-UK ADIs usually collect pupils from home, teach the lesson and drop them back. Your diary has to reflect travel between pupils, not just lesson time, or it will show availability you don't really have. Ask any vendor how it handles travel time before you commit.
+Two things the tables show that headline prices hide. First, card fees differ: Passly lists 1.5% and GoRoadie Pro 1.9% on top of card processing, and DriveSchoolPro's 3% is the highest of the three. If most of your pupils pay by card, work that into the monthly cost. Second, the cost of extra instructors varies far more than the solo price does.
 
-### Shared Pupil Management
+## How to choose: five questions
 
-Many pupils have lessons with more than one instructor: holiday cover, a specialist for motorway lessons, a change of instructor. Whoever picks a pupil up should see exactly where the last instructor left off: the skills covered, what needs work and the test date.
+### 1. Do you need DVSA progress tracking?
 
-Without shared records, you're back to paper logbooks and hoping nothing gets lost.
+If you teach to the UK test, yes. Tracking each pupil against the [DVSA 27 driving skills](/dvsa-27-driving-skills/) is what turns a diary into a teaching tool, and it shows the pupil (and anyone covering their lessons) how close they are to test-ready. Generic booking tools such as Teachworks, SimplyBook.me and Reservio don't do it. Among the driving apps, check the wording: some say "DVSA syllabus", others describe their own skills matrix.
 
-### UK Payment Norms
+### 2. Which reminder channel do your pupils read?
 
-UK pupils pay per lesson, in blocks or by package, by cash, bank transfer or card. Your software should track what each pupil has paid and has left, and take card payments if you want them, without a separate accounting system alongside it.
+Reminders are the simplest way to cut no-shows (see our [guide to reducing no-shows](/blog/reduce-driving-lesson-no-shows/)). Email reminders are usually included. Text reminders are included by MyDriveTime (individual plan) and GoRoadie Pro; elsewhere they're paid or not offered. Passly and Lesson Diary don't send texts. DriveSchoolPro sends email reminders today, with text and WhatsApp coming soon.
 
-### Vehicle Compliance
+### 3. How will pupils pay?
 
-Tuition cars must be MOT'd, taxed and insured. Schools with several cars need expiry dates tracked across the fleet with a warning before anything lapses. Generic booking software doesn't do this.
+If pupils pay cash or bank transfer, any tool that records payments will do. If most pay by card, compare the platform fee on top of card processing as well as the subscription.
 
----
+### 4. How many instructors and cars?
 
-## Quick Comparison
+Solo, the extra-instructor price doesn't matter. From two instructors up, check the price per extra instructor, whether every instructor sees the same pupil record, and whether a booking is checked against the car as well as the instructor. Vehicle MOT, tax and insurance tracking is rare: of the platforms here, only DriveSchoolPro lists it.
 
-Competitor entries reflect what each vendor's own website says. "Not listed" means we couldn't find it there; the feature may exist.
+### 5. Phone, browser or both?
 
-| Software | Built for | DVSA skill tracking | Pupil app or portal | How to try it |
-|----------|-----------|---------------------|---------------------|---------------|
-| DriveSchoolPro | UK ADIs and schools | ✅ All 27 skills, 8 categories | ✅ iOS and Android app, or web | Free until 31 March 2027, no card |
-| Total Drive | UK ADIs and schools | ✅ Pre-filled DVSA syllabus | ✅ App | 30-day free trial, no card |
-| MyDriveTime | UK ADIs and schools | Syllabus manager; DVSA structure not stated | ✅ Student app | 30-day free trial, no card |
-| GoRoadie Pro | UK ADIs and PDIs (separate Schools product) | Progress tracking; DVSA skills not named | ✅ Free learner app | Free trial; free for trainee instructors (PDIs) |
-| Passly | UK ADIs and schools | ✅ DVSA-aligned scoring; skill count not stated | Web portal | 14-day free trial, no card |
-| LessonBuddy | UK ADIs and schools | Five-level skills matrix; DVSA not stated | ✅ iOS and Android app | 60 days free for ADIs, no card |
-| Driving School Office | UK schools and franchises | Progress tracker; DVSA 27 skills not advertised | Mobile-friendly web | Trial offered; "First Instructor Free" |
-| Teachworks | Teaching businesses worldwide | Not listed (general results tracking) | Web portal | 21-day free trial |
-| Reservio | Booking for many industries | Not listed | Client booking app | Permanent free plan (40 bookings per 30 days) |
+You're in the car between lessons, so the instructor app has to be quick on a phone. Some platforms are app-only (GoRoadie Pro, LessonBuddy), some browser-first (Lesson Diary, Driving School Office, Teachworks) and some both.
 
-## How to Compare Pricing Fairly
+## Driving school management system or booking tool?
 
-Rather than a price league table, here's how to make sure you're comparing like with like when you look at each vendor's pricing page:
+"Driving school management system" and "management software" usually mean the whole school in one place: every instructor's diary, online booking, pupil records and DVSA progress, reminders, payments and balances, and, for schools, vehicles and staff logins. A booking tool covers the diary and payments but stops there. If you only want pupils to book and pay online, a booking tool is cheaper; if you run cars and instructors, you want a management system. Our [driving school management software](/driving-school-management-software/) page shows what that looks like in DriveSchoolPro.
 
-- **Per instructor or per school?** Some platforms charge per instructor seat and some per school. A price that looks low for one instructor can look very different for five.
-- **Are reminders included?** SMS reminders are often an add-on or charged per message. Email reminders are usually included.
-- **What do card payments cost?** Most platforms take card payments through Stripe or similar. Check the platform's own fee on top of the processor's. DriveSchoolPro charges a 3% platform fee plus Stripe's processing fee on card payments taken through it.
-- **Is pricing published at all?** Some vendors, including Driving School Office, quote on request. That's a legitimate model for larger schools, but it makes budgeting harder for a solo ADI.
-- **What happens after the trial?** Check whether a card is taken up front and whether you're charged automatically when the trial ends.
+## Driving school CRM: what it means for an instructor
 
-**DriveSchoolPro right now:** the full product is free until 31 March 2027 while in early access, for solo ADIs and multi-instructor schools alike. There's no card on file, so nothing is charged automatically. From 1 April 2027 there's a permanent Free plan with every feature for 1 instructor and up to 60 lessons a month, Solo at £22 a month, and School at £22 plus £10 per extra instructor, with no VAT charged.
+"CRM" gets used loosely. For most schools it means one pupil record everyone can trust, not a sales pipeline. Check four things:
 
-If you want something that stays free, our guide to [free driving school software](/free-driving-school-software/) covers what the no-cost options include and where they stop.
-
-## Best Software for Solo Driving Instructors
-
-Most comparisons are written for multi-instructor schools, which is a different buying decision. If you work on your own, three things change.
-
-**You don't need multi-instructor features.** Diary allocation across instructors, franchise reporting and staff permissions separate entry plans from bigger ones. A solo ADI can ignore that whole axis.
-
-**Your phone matters more than your desk.** You're in the car between lessons. Whatever you choose has to be quick to use on a phone: moving a lesson, logging progress, taking a payment.
-
-**Your real admin is pupil progress.** For a solo ADI, the recurring work is knowing where each pupil is against the DVSA syllabus and who's test-ready. That's the feature to buy on.
-
-### Solo instructor picks
-
-- **DVSA tracking with AI lesson prep, free for now: [DriveSchoolPro](/driving-instructor-software/).** All 27 DVSA skills, an AI-written briefing before each lesson, and Google review requests when a pupil passes. Free until 31 March 2027.
-- **Established UK app with theory content: [Total Drive](/compare/total-drive/).** Pre-filled DVSA syllabus, a theory suite and cancellation-gap broadcasts.
-- **Support-led independent: [MyDriveTime](/compare/my-drive-time/).** Describes its support as award-winning; lists SMS reminders, diary-gap broadcasts and free migration.
-- **Help finding new pupils: [Passly](/compare/passly/).** Its learner marketplace brings in enquiries, and it pushes cancelled slots to your other pupils.
-- **Parent access and route tools: [LessonBuddy](/compare/lessonbuddy/).** One app for instructor, pupil and parent on iOS and Android, plus test-centre route tools.
-
-If you only need pupils to book and pay online, a general booking tool will do it, but you'll be tracking progress somewhere else.
-
-If you run several instructors, the [decision framework by school size](#how-to-choose-decision-framework-by-school-size) below is the more useful section.
-
-## What to Look For in Driving School Software
-
-These are the eight features that separate a booking system from driving school software. Use them as a checklist on any trial.
-
-### 1. Online Booking with Real-Time Availability
-
-Pupils should be able to book without ringing you, especially in the evening when you're not answering the phone. Availability has to update instantly across every instructor so nothing is double-booked.
-
-**What to check:** Can pupils see the right instructor's availability? Is there a booking widget for your own website? Are clashes checked against the car as well as the instructor?
-
-### 2. Automated Reminders
-
-Reminders sent before each lesson are the simplest way to cut no-shows. Our [guide to reducing no-shows](/blog/reduce-driving-lesson-no-shows/) covers what works.
-
-**What to check:** Which channels are included: email, SMS, app notifications or WhatsApp? Is SMS extra? Can you set the timing?
-
-### 3. Student Progress Tracking
-
-Digital progress tracking replaces the paper logbook and shows the pupil, and anyone covering their lessons, exactly where they stand. Read more about [student progress tracking](/blog/student-progress-tracking/).
-
-**What to check:** Does it track the DVSA syllabus, and how many skills? Can pupils see their own progress? Is there a parent view, if you need one?
-
-### 4. Instructor Schedule Management
-
-If you run several instructors, you need everyone's diary, lessons and test dates in one place. Good [scheduling software](/driving-school-scheduling-software/) stops double-bookings across instructors and cars.
-
-**What to check:** Can you assign pupils to instructors and move them? Can instructors block personal time? Who can see whose earnings?
-
-### 5. Payment Processing & Invoicing
-
-Chasing payments eats into evenings. Built-in payments and balance tracking keep it under control.
-
-**What to check:** Can pupils pay by card online? What's the platform's fee on top of the card processor's? Can you record cash and bank transfers too?
-
-### 6. Mobile Access for Instructors
-
-You need to see your day, mark lessons complete and add notes from your phone between pupils.
-
-**What to check:** Is there a native app or a mobile web app? How many taps does it take to log a lesson? Does it work on a weak signal?
-
-### 7. Theory Test Content
-
-Some platforms include theory practice for pupils. If that matters to you, it narrows the field quickly.
-
-**What to check:** Is theory content included or extra? Can you see a pupil's theory progress?
-
-### 8. Reporting & Data Export
-
-You'll want income figures for your accountant and a way to take your data with you if you ever leave.
-
-**What to check:** Can you export your records, and in what format? Who in the school can export?
-
-## Driving School CRM: What It Means for an Instructor
-
-"CRM" (customer relationship management) gets used loosely in driving school software. For most schools it means one record per pupil that everyone can trust, not a sales pipeline. When you compare software for driving schools as a CRM, check four things:
-
-1. **One pupil record.** Contact details, pickup address, lesson history, payments, DVSA skill ratings and your notes in one place. In DriveSchoolPro every instructor assigned to the pupil sees the same record, which matters for cover lessons.
+1. **One pupil record.** Contact details, pickup address, lesson history, payments, DVSA skill ratings and notes in one place. In DriveSchoolPro every instructor assigned to the pupil sees the same record, which matters for cover lessons.
 2. **Messages tied to the pupil.** Pupils can message their own instructor from the DriveSchoolPro app, and you reply from a Messages inbox, so the conversation sits with the pupil rather than in your personal WhatsApp.
-3. **A record of what was sent.** DriveSchoolPro keeps a log of the reminders and emails it has sent, so you can check whether a pupil was told about a change.
-4. **Enquiries before the first lesson.** This is where tools differ most. GoRoadie Pro lists an enquiry manager and Passly a marketplace; DriveSchoolPro doesn't track enquiries yet, so people who haven't booked live wherever they contacted you.
+3. **A record of what was sent.** DriveSchoolPro keeps delivery logs of the reminders and emails it sends.
+4. **Enquiries before the first lesson.** This is where tools differ most. Total Drive, MyDriveTime, GoRoadie Pro (Enquiry Manager) and Passly (leads inbox) all list enquiry handling. DriveSchoolPro doesn't track enquiries yet.
 
-If you run a multi-car school, the CRM question becomes "can every instructor and the office see the same pupil?" That's covered in the [decision framework below](#how-to-choose-decision-framework-by-school-size).
+## Platform reviews
 
-## Platform Reviews
-
-Each review lists what the platform's own website says it does, where it's the better fit, and what to know before you commit. For the full feature table on each, follow the comparison link.
+What each platform's own site says it does, where it's the better fit, and what to know. Checked 2 November 2026.
 
 ### DriveSchoolPro
 
-**Best for:** UK ADIs and small-to-medium schools who want DVSA tracking and less admin. **Pricing:** free until 31 March 2027 (early access).
+**Best for:** UK ADIs and small-to-medium schools who want DVSA tracking and less admin. **Price:** free until 31 March 2027; then a Free plan, Solo £22 a month or School £22 plus £10 per extra instructor, no VAT ([pricing](/pricing/)).
 
 **What it does well:**
-- Tracks every pupil against all 27 DVSA skills in 8 categories, and pupils see their own progress
-- One app on the App Store and Google Play for you and your pupils, or use any web browser
-- Writes a short AI lesson briefing before each lesson from your last notes and the pupil's skill ratings
-- Puts a Google review request on your Today screen when a pupil passes (you choose whether to send it)
-- Checks every booking against the pupil, the instructor and the vehicle, and tracks MOT, tax and insurance dates with alerts
-- Booking widget for your own website, and card payments through Stripe
-- Email lesson reminders; WhatsApp reminders are coming soon
+- Tracks every pupil against all 27 DVSA skills in 8 categories, and pupils see their own progress ([progress tracking](/features/progress-tracking/))
+- One app on the App Store and Google Play for you and your pupils, or any web browser
+- Writes a short [AI lesson briefing](/features/lesson-briefings/) before each lesson from your last notes and the pupil's skill ratings
+- Checks every booking against the pupil, the instructor and the vehicle, and tracks [MOT, tax and insurance dates](/features/vehicles/)
+- Booking widget for your own website, card payments through Stripe, pupil balances and lesson packages
+- Asks pupils who pass for a [Google review](/features/reviews/)
+- Email lesson reminders with delivery logs
 
 **What it doesn't do yet:**
-- No theory content, no cancellation-gap broadcast and no parent login
+- No text reminders yet (text and WhatsApp coming soon), no theory content, no cancellation-gap broadcast and no parent accounts
 - Recording test bookings and results is coming soon
-- One-way calendar export rather than two-way sync
-- No white-labelling or franchise management
+- No Google Calendar sync, no enquiry list and no bulk import of pupils (pupils are added by hand)
+- No white-labelling or franchise tools
+- Its 3% card fee is higher than Passly's or GoRoadie Pro's
 - Newer than the established platforms, so less track record
-
-**Best fit:** solo ADIs and small-to-medium schools who want DVSA-based progress tracking and are happy on a newer platform. [See how it works for driving schools](/).
 
 ### Total Drive
 
-**Best for:** UK ADIs who want an established app with theory content. **Pricing:** [see Total Drive's pricing page](https://totaldrive.co.uk/instructor-software-pricing/).
+**Best for:** instructors who want the most established UK app and theory practice for pupils. **Price:** £18 to £26 a month across four plans, VAT included ([pricing](https://totaldrive.co.uk/instructor-software-pricing/)).
 
-According to its own site, Total Drive's progress syllabus is pre-filled with the DVSA syllabus and can be customised. It lists a theory suite, Smart Gaps for broadcasting cancelled slots, migration support, a pupil app and multi-instructor support. It's the most established UK instructor app on this list.
+Total Drive says it is used by over 8,600 driving instructors every week. Its site lists syllabus progress tracking with custom syllabuses and skill sets, free lesson and payment reminders, card payments without a card machine, Smart Gaps for filling cancelled slots, two-way Google and Apple Calendar sync, enquiry forms that feed into your account, mock and practical test records, a free pupil and parent app, and multi-instructor reports including pass rate per instructor. Its [Theory Suite](https://totaldrive.co.uk/theory-suite/) has 2,500+ DVSA questions, which pupils unlock for a one-off £4.99.
 
-**Worth knowing:** we couldn't find AI lesson briefings, Google review requests or vehicle compliance tracking on its site.
+**Worth knowing:** online booking and "Gaps Plus" are in the higher plans, not the £18 Basic plan. We couldn't find vehicle MOT, tax and insurance tracking or AI lesson briefings. [DriveSchoolPro vs Total Drive →](/compare/total-drive/)
 
-[DriveSchoolPro vs Total Drive, feature by feature →](/compare/total-drive/)
+### MyDriveTime
 
-### MyDriveTime (My Drive Time)
+**Best for:** instructors who value support, and bigger schools watching the cost per instructor. **Price:** £19 a month for individuals, SMS included; schools from £19 plus £15, £10 or £5 per extra instructor ([pricing](https://www.mydrivetime.co.uk/pricing/)).
 
-**Best for:** instructors who value support and SMS reminders. **Pricing:** [see MyDriveTime's pricing page](https://www.mydrivetime.co.uk/pricing/).
+Running since October 2014, MyDriveTime describes itself as twice "Professional Support Provider of the Year". Its site lists the standard DVSA syllabus (customisable), automated reminders with delivery shown in the diary, inviting pupils to fill gaps, practical and theory test results, enquiry handling and pupil allocation for schools, sharing the diary with external calendars, spreadsheet finance export, free migration from another system, and a 6-month money-back guarantee. A PDI plan is free until you qualify.
 
-MyDriveTime describes its support as award-winning. Its site lists reminders by email, SMS and app, Diary Gaps for filling cancellations, free migration of your records, a student app, test outcome recording, a syllabus manager, and a Schools & Teams plan.
-
-**Worth knowing:** its site doesn't say whether the syllabus follows the DVSA structure by default. We couldn't find AI lesson briefings or vehicle compliance tracking.
-
-[DriveSchoolPro vs MyDriveTime, feature by feature →](/compare/my-drive-time/)
+**Worth knowing:** we couldn't find card payments, vehicle tracking or AI lesson briefings on its site. [DriveSchoolPro vs MyDriveTime →](/compare/my-drive-time/)
 
 ### GoRoadie Pro
 
-**Best for:** instructors who want pupils from a marketplace and expenses in the same app. **Pricing:** [see GoRoadie Pro's page](https://goroadie.com/pro).
+**Best for:** instructors who want texts included and an enquiry manager. **Price:** £17 a month ([GoRoadie Pro](https://goroadie.com/pro)).
 
-GoRoadie Pro is the instructor app from GoRoadie, which also runs a learner marketplace where instructors pay per pupil they take on. Its site lists reminders by text, email and in-app with no text costs, Stripe card payments, photo-scanned expense receipts ("Making Tax Digital ready"), pupils' theory test progress, a lesson-request link with an enquiry manager, and a free learner app. It's listed on the App Store and Google Play; we couldn't find a web version. Multi-instructor schools are a separate GoRoadie Schools product.
+GoRoadie Pro lists three reminders per lesson by text, email and in-app with "zero text costs", Stripe card payments (with a 1.9% service fee on payments you request, and pupils covering Stripe's fee), an Enquiry Manager with a request link and waiting list, filling nearby open slots, pupils' theory test progress from partner apps, lessons added to your phone's calendar, and a free pupil app. It's free for PDIs. GoRoadie also runs a separate learner referral service where instructors pay per pupil.
 
-**Worth knowing:** its site doesn't name the DVSA skills in its progress tracking. We couldn't find AI lesson briefings, clash checks across the car, or vehicle compliance tracking.
-
-[GoRoadie vs DriveSchoolPro, feature by feature →](/compare/goroadie/)
+**Worth knowing:** the site doesn't name DVSA skills, and we couldn't find a web version or multi-instructor features on the Pro page. [GoRoadie vs DriveSchoolPro →](/compare/goroadie/)
 
 ### Passly
 
-**Best for:** instructors who want help finding pupils. **Pricing:** [see Passly's pricing page](https://passly.co.uk/instructor/pricing).
+**Best for:** price-conscious instructors who also want leads. **Price:** £14.99 a month (£7.50 for the first 3 months) ([pricing](https://passly.co.uk/instructor/pricing)).
 
-Passly combines instructor software with a learner marketplace. Its site lists DVSA-aligned progress scoring, a booking widget, reminders by email, in-app and push, cancellation-gap push alerts, practical test result logging and multi-instructor support. It says plainly that it doesn't send SMS.
+Passly lists DVSA-aligned skill tracking, reminders by email, in-app and push, free push alerts for cancelled slots, test results (pending, pass or fail), a leads inbox with CSV export, multi-instructor accounts with a super-admin view, and Stripe card payments with a flat 1.5% on top of Stripe's fees. It says plainly that it doesn't send SMS.
 
-**Worth knowing:** its site doesn't state how many DVSA skills it tracks. We couldn't find AI lesson briefings, Google review requests or vehicle compliance tracking.
-
-[DriveSchoolPro vs Passly, feature by feature →](/compare/passly/)
+**Worth knowing:** its pages disagree on the price of extra instructors (£8.99 each on the pricing page, £14.99 per teaching instructor elsewhere), so confirm before you sign up. [DriveSchoolPro vs Passly →](/compare/passly/)
 
 ### LessonBuddy
 
-**Best for:** instructors and schools who want parent access and test-centre route tools. **Pricing:** [see LessonBuddy's pricing page](https://lessonbuddy.co.uk/pricing/).
+**Best for:** instructors who want parent access, and PDIs. **Price:** £9.99 a month or £89.99 a year, one plan with unlimited pupils ([pricing](https://lessonbuddy.co.uk/pricing/)).
 
-LessonBuddy describes one app for instructors, pupils, parents and schools on iOS and Android. Its site lists a five-level skills matrix, DL25-style fault records, website booking tools, publishing gaps to chosen pupils, test-centre route tools, parent access, card payments, income, expenses and mileage, and sponsored instructor seats for schools.
+LessonBuddy lists a five-level skills matrix, automated lesson and payment reminders, Stripe card top-ups, publishing gaps to chosen pupils, website booking tools, pupil and parent access at no extra cost, and school accounts with sponsored instructor seats. Qualified ADIs get 60 days free and PDIs up to 6 months.
 
-**Worth knowing:** its site doesn't say the skills matrix follows the DVSA syllabus or which channels reminders use. We couldn't find clash checks, vehicle compliance tracking or AI lesson briefings.
+**Worth knowing:** it's iPhone and Android only (we couldn't find a web version), and the site doesn't say whether the matrix follows the DVSA syllabus or which reminder channels it uses. [DriveSchoolPro vs LessonBuddy →](/compare/lessonbuddy/)
 
-[DriveSchoolPro vs LessonBuddy, feature by feature →](/compare/lessonbuddy/)
+### Lesson Diary
+
+**Best for:** solo ADIs who prefer a browser. **Price:** Solo £9.99 a month, plus a free account for up to 3 pupils and 12 lessons ([plans](https://lessondiary.co.uk/plans)).
+
+Lesson Diary runs in any browser with an iPhone app (Android on request). It lists tracking against the DVSA syllabus lesson by lesson, DL25-style mock tests, email reminders, sending a cancelled slot to pupils (first to book gets it), a pupil link with no app needed, and free diary migration within one working day.
+
+**Worth knowing:** it doesn't send text reminders or take card payments, it doesn't show pupils their syllabus progress, and we couldn't find multi-instructor support.
+
+### Bitepoint
+
+Two different UK products use this name. **Bitepoint at bitepoint.co.uk** is a WhatsApp assistant and CRM for instructors: it answers booking enquiries on WhatsApp, says it tracks all 27 DVSA competencies across 5 levels, sends parents a weekly progress report, and takes Stripe payments. It costs £17.99 a month per instructor, and pupils pay a 3.5% booking fee capped at £3.50 ([bitepoint.co.uk](https://bitepoint.co.uk)). **Bitepoint at bitepoint.app** is a separate pay-once diary for solo instructors on Android, with data kept on your phone ([bitepoint.app](https://bitepoint.app)).
+
+**Best for:** instructors whose pupils book on WhatsApp. **Worth knowing:** we couldn't find a trial length, calendar sync or vehicle tracking.
 
 ### Driving School Office
 
-**Best for:** multi-car schools and franchises. **Pricing:** not published; quoted on request ("Pay-As-You-Grow").
+**Best for:** franchises and larger multi-car schools. **Price:** not published; "Pay-As-You-Grow" with "First Instructor Free" ([drivingschooloffice.co.uk](https://drivingschooloffice.co.uk/)).
 
-Driving School Office is a long-standing UK platform. Its site lists an online diary and booking, a pupil progress tracker, online payments, automated notifications, bulk messaging, instructor expense tracking, white-labelling and franchise management, and "First Instructor Free".
+Driving School Office lists a pupil progress tracker, automated notifications and bulk messaging, in-app card payments, free online pupil accounts, instructor expenses, an audit log, white-labelling and a franchise manager. It says it has booked over 1 million lessons.
 
-**Worth knowing:** its site doesn't advertise tracking against the DVSA 27 skills specifically, so ask them if it matters to you. It's the stronger choice for a franchise.
-
-[DriveSchoolPro vs Driving School Office, feature by feature →](/compare/driving-school-office/)
+**Worth knowing:** its pricing and benefits pages didn't load when we checked, so ask for a quote and a demo. It's still the only platform here listing franchise management. [DriveSchoolPro vs Driving School Office →](/compare/driving-school-office/)
 
 ### Teachworks
 
-**Best for:** larger schools that want a mature scheduling and billing platform with lots of integrations. **Pricing:** [see Teachworks' pricing page](https://www.teachworks.com/pricing).
+**Best for:** larger schools that want a mature scheduling and billing platform with many integrations. **Price:** from US$16.49 a month plus US$0.35 per student lesson, with unlimited teachers ([pricing](https://www.teachworks.com/pricing)).
 
-Teachworks is built for teaching businesses worldwide, with a driving-school edition. Its site lists email and SMS reminders, website booking, vehicle and student conflict checking through add-ons, unlimited teachers, mileage tracking, and a large library of add-ons and integrations.
+Teachworks is built for teaching businesses worldwide, with a [driving school page](https://www.teachworks.com/driving-school-management-software). It lists a Vehicle Manager add-on that assigns cars to lessons, email reminders with SMS as a paid add-on, Stripe payments and a Google Calendar integration.
 
-**Worth knowing:** it isn't built around UK driving tests. We couldn't find DVSA skill tracking, vehicle MOT, tax and insurance tracking, or test recording. Its FAQ says data is hosted with Amazon Web Services in the US.
+**Worth knowing:** it's priced in US dollars and isn't built around UK tests: no DVSA tracking or test recording. Its FAQ says data is hosted on Amazon Web Services in the US. [DriveSchoolPro vs Teachworks →](/compare/teachworks/)
 
-[DriveSchoolPro vs Teachworks, feature by feature →](/compare/teachworks/)
+### SimplyBook.me
+
+**Best for:** instructors who only need online booking with text reminders. **Price:** free for 50 bookings a month; paid plans £12.90 to £55 a month, or less billed annually ([pricing](https://simplybook.me/en/pricing)).
+
+SimplyBook.me has a [driving school booking page](https://simplybook.me/en/driving-school-scheduling-software) listing email and SMS reminders (SMS on paid credits), multi-instructor schedules, lesson packages, Google Calendar connection and iPhone and Android apps.
+
+**Worth knowing:** it's a general booking tool: no DVSA progress, vehicle tracking or test recording.
 
 ### Reservio
 
-**Best for:** part-time instructors who only need online booking, payments and reminders. **Pricing:** permanent free plan; [see Reservio's pricing page](https://www.reservio.com/pricing) for paid plans.
+**Best for:** part-time instructors who only need booking on a light diary. **Price:** free for 40 bookings per 30 days; paid plans £7 to £29 a month plus VAT, with a 6-month minimum term ([pricing](https://www.reservio.com/pricing)).
 
-Reservio is a general booking tool used across many industries, with a driving-school page. Its site lists online booking and a website widget, email reminders with SMS as an add-on, online payments, a client booking app, and a free plan capped at 40 bookings per 30 days and 100 clients.
+Reservio's [driving school page](https://www.reservio.com/driving-school-software) lists assigning instructors and vehicles on one calendar, avoiding double-booking and tracking a pupil's history. Email reminders are free and SMS uses paid credits. It syncs bookings to Google, iCal and Outlook.
 
-**Worth knowing:** we couldn't find DVSA skill tracking, test recording or vehicle compliance tracking. A full-time diary will outgrow the free plan's booking cap quickly.
+**Worth knowing:** no DVSA tracking or test recording, and its free plan also charges a higher fee on online payments. [DriveSchoolPro vs Reservio →](/compare/reservio/)
 
-[DriveSchoolPro vs Reservio, feature by feature →](/compare/reservio/)
+### Also seen in AI answers and app stores
 
-### US-focused platforms
+**WeDrive** and **Instructly** come up when people ask AI assistants for instructor apps. We couldn't check them properly: WeDrive's website has no pricing or feature detail and its iPhone app was last updated in May 2023, and Instructly's website no longer loads and its iPhone app was last updated in August 2024. Check that either is still maintained before you rely on it. US platforms such as DriveScout are built for US driver's ed; we compare two in [DriveScout vs DrivingSchoolSoftware.com](/blog/drivescout-vs-drivingschoolsoftware-comparison/).
 
-You'll also see US-built platforms such as DriveScout and DrivingSchoolSoftware.com in search results. They're designed around US driver's ed requirements rather than the DVSA framework, so check carefully how well they fit a UK school. We compare the two in [DriveScout vs DrivingSchoolSoftware.com](/blog/drivescout-vs-drivingschoolsoftware-comparison/).
+All our side-by-side pages are on the [comparison hub](/compare/).
 
-All of our side-by-side comparisons are on the [comparison hub](/compare/).
+## Decision guide by school size
 
-## How to Choose: Decision Framework by School Size
+### Solo ADI
 
-### Solo UK ADIs (Just You)
+- **DVSA tracking and less admin, free for now:** DriveSchoolPro.
+- **Established, with theory practice:** Total Drive.
+- **Lowest price:** LessonBuddy (app) or Lesson Diary (browser), both £9.99.
+- **Texts included:** MyDriveTime or GoRoadie Pro.
+- **Leads as well as software:** Passly.
+- **Light diary, booking only:** SimplyBook.me or Reservio free plans. Our guide to [free driving school software](/free-driving-school-software/) covers where the free options stop.
 
-**Want DVSA tracking and less admin, at no cost for now:** **DriveSchoolPro**, free until 31 March 2027. DVSA progress tracking, AI lesson briefings, email reminders and payments.
+### Small school (2 to 5 instructors)
 
-**Want an established UK app:** **Total Drive** or **MyDriveTime**. Both have years of UK track record, pupil apps and cancellation-gap tools.
+- **Vehicle clash checks and MOT, tax and insurance dates:** DriveSchoolPro (£22 + £10 per extra instructor from April 2027; free until then).
+- **Cheapest per extra instructor at this size:** Passly lists £8.99; MyDriveTime £15 for the 2nd and 3rd, then £10.
+- **Parent access:** LessonBuddy or Total Drive.
 
-**Want new pupils as well as software:** **Passly**, for its learner marketplace.
+### Medium school (6 to 20 instructors)
 
-**Just need online booking:** a general tool such as **Reservio** works on its free plan if your diary is light, but you'll track progress somewhere else.
+- **DriveSchoolPro** for shared DVSA records and fleet compliance dates; [get in touch](/contact/) for help setting up.
+- **MyDriveTime**, whose extra instructors fall to £10 and then £5 each.
+- **Teachworks** if you want a large integrations library and don't need DVSA tracking.
 
-### Small Multi-Car Schools (2–5 Instructors)
+### Franchise or 20+ instructors
 
-**DVSA tracking with vehicle clash checks and compliance:** **DriveSchoolPro**. Shared pupil records on the DVSA framework, clash checks across pupil, instructor and car, and MOT, tax and insurance alerts.
+**Driving School Office** lists white-labelling and a franchise manager. DriveSchoolPro has neither.
 
-**Parent access and route tools:** **LessonBuddy**.
+## Is software worth it? A worked example
 
-**An established platform:** **Total Drive** or **MyDriveTime**. Both list multi-instructor plans.
-
-### Medium Schools (6–20 Instructors)
-
-**DriveSchoolPro** handles multiple instructors, a fleet's compliance dates and DVSA tracking per pupil. Schools with six or more instructors should [get in touch](/contact/) for help setting up.
-
-**Teachworks** suits schools that want SMS reminders, payroll and a deep integration library and don't need DVSA tracking built in.
-
-### Large Schools (20+ Instructors) or Franchises
-
-**Driving School Office** is built for this: white-labelling, franchise management and instructor expense tracking. Ask for a quote and a demo. DriveSchoolPro doesn't offer white-labelling or franchise tools.
-
-## Implementation Timeline: What to Expect
-
-### Week 1: Setup & Configuration
-- Create your account and add instructors
-- Bring in your existing pupils
-- Set up lesson types, prices and durations
-- Connect card payments if you want them
-- Set your reminder timing
-
-**Time investment:** a few hours across the week
-
-### Week 2: Instructor Training
-- Show instructors the app on their phones
-- Set up individual availability
-- Practise logging lessons and progress
-- Book a test lesson as a pupil would
-
-**Time investment:** an hour's training plus questions as they come up
-
-### Week 3: Pupil Rollout
-- Email existing pupils their booking link
-- Add the booking widget to your website
-- Move phone bookings online gradually
-
-**Time investment:** a couple of hours plus answering pupils' questions
-
-### Week 4: Fine-Tune
-- Look at no-shows and late cancellations
-- Adjust reminder timing if needed
-- Check your reports and exports
-
-**Time investment:** an hour or two
-
-Keep your old diary running alongside for the first couple of weeks. There's no need for a big switch-over day.
-
-## Is Software Worth It? A Worked Example
-
-The figures below are an illustration with assumed numbers, not a measured result. Swap in your own.
+An illustration with assumed numbers, not a measured result. Swap in your own.
 
 **Assumptions:** 3 instructors, 60 lessons a week, £35 a lesson, 15% of lessons lost to no-shows, 8 hours a week of admin valued at £15 an hour.
 
-**Without software:**
-- No-shows: 9 lessons × £35 = £315 a week
-- Admin: 8 hours × £15 = £120 a week
-- **Total:** £435 a week
+- **Without software:** 9 no-shows × £35 = £315, plus 8 hours × £15 = £120. **£435 a week.**
+- **With software, if no-shows fall to 8% and admin to 2 hours:** 5 × £35 = £175, plus 2 × £15 = £30. **£205 a week**, before the software's cost.
 
-**With software, if reminders bring no-shows down to 8% and admin falls to 2 hours:**
-- No-shows: 5 lessons × £35 = £175 a week
-- Admin: 2 hours × £15 = £30 a week
-- **Total:** £205 a week, before the software's own cost
+On those assumptions the difference is about £230 a week. Even at half that, it covers the monthly price of every instructor app in the tables above. The [driving school revenue calculator](/driving-school-calculator/) runs the numbers for your school.
 
-On those assumptions the difference is about £230 a week. Even if your no-shows and admin improve by half as much, it usually covers a typical subscription several times over. Our [driving school revenue calculator](/driving-school-calculator/) helps you plan the numbers for your own school.
+## Switching: what to expect
 
-## Common Mistakes to Avoid
+- **Week 1:** create your account, add instructors and pupils, set lesson types and prices, connect card payments, set reminder timing. Ask each vendor what migration help they offer; MyDriveTime and Lesson Diary list free migration, and DriveSchoolPro has no bulk import yet.
+- **Week 2:** instructors install the app, set availability and log a few real lessons.
+- **Week 3:** send pupils their booking link and add the booking widget to your website.
+- **Week 4:** check no-shows and reminder timing.
 
-### ❌ Choosing on Price Alone
+Keep your old diary running alongside for the first couple of weeks. Before you sign up anywhere, ask how you'd export your records if you left; in DriveSchoolPro the account owner can download the school's data from Settings.
 
-A cheaper generic booking tool can cost more overall if it doesn't cut no-shows or track progress, because you end up rebuilding those in spreadsheets.
+## Frequently asked questions
 
-**Better approach:** work out what no-shows and admin cost you now, then compare what each tool would save.
+### What is the best driving school software in the UK?
 
-### ❌ Not Testing with Real Pupils
+It depends on the size of the business. Solo ADIs most often shortlist Total Drive, MyDriveTime, GoRoadie Pro, Passly, LessonBuddy, Lesson Diary and DriveSchoolPro. Multi-car schools look at Total Drive, MyDriveTime, Passly, LessonBuddy and DriveSchoolPro, and franchises at Driving School Office. Pick on DVSA progress tracking, reminder channels, card fees and price per extra instructor rather than on the headline monthly price. DriveSchoolPro is free until 31 March 2027.
 
-Many schools set up software but never try the booking flow as a pupil would.
+### What is a driving school management system?
 
-**Better approach:** ask a friend to book a lesson on their phone. Is it obvious? Fix any friction before you send the link to pupils.
+Software that runs the whole school in one place: the lesson diary for every instructor, online booking, pupil records and DVSA progress, reminders, payments and pupil balances, and, for multi-car schools, vehicles and staff logins. A generic booking tool covers the diary and payments but not DVSA progress or vehicles.
 
-### ❌ Switching On Everything at Once
+### What is the best CRM for driving schools?
 
-Trying to use every feature on day one leads to confusion and resistance.
+For most UK driving schools the CRM is the pupil record inside their instructor software rather than a separate sales tool: contact details, lesson history, payments, DVSA progress and notes in one place, shared by every instructor who teaches that pupil. If you need to track enquiries before someone books, check for an enquiry or leads list: Total Drive, MyDriveTime, GoRoadie Pro and Passly all list one. DriveSchoolPro doesn't track enquiries yet.
 
-**Better approach:** start with the diary, booking and reminders. Add progress tracking and payments once everyone's comfortable.
+### How much does driving school software cost in the UK?
 
-### ❌ Not Bringing Existing Pupils Across
+On the vendors' own sites (checked 2 November 2026), instructor apps cost about £9.99 to £26 a month for one instructor: LessonBuddy and Lesson Diary £9.99, Passly £14.99, GoRoadie Pro £17, Total Drive £18 to £26 and MyDriveTime £19. Extra instructors usually cost more on top. DriveSchoolPro is free until 31 March 2027, then has a free plan for 1 instructor and up to 60 lessons a month, Solo at £22 a month and School at £22 plus £10 per extra instructor.
 
-Starting fresh without your current pupils means re-entering them later.
+### Is there free driving school software?
 
-**Better approach:** export your pupil list and bring it in during setup. Ask each vendor what help they offer; some list free migration.
+Yes, with limits. DriveSchoolPro is free until 31 March 2027 and keeps a permanent free plan for 1 instructor and up to 60 lessons a month after that. Lesson Diary has a free account for up to 3 pupils and 12 lessons. SimplyBook.me and Reservio have free booking plans capped at 50 and 40 bookings a month, without DVSA progress tracking.
 
-### ❌ Ignoring the Phone Experience
+### Which driving school software tracks the DVSA driving skills?
 
-Pupils book on their phones, and you work from yours.
+DriveSchoolPro tracks all [27 DVSA skills](/dvsa-27-driving-skills/) in 8 categories. Bitepoint (bitepoint.co.uk) says it tracks all 27 DVSA competencies across 5 levels. MyDriveTime and Lesson Diary say they use the DVSA syllabus, and Passly describes DVSA-aligned scoring. Generic booking tools such as Teachworks, SimplyBook.me and Reservio don't track DVSA skills.
 
-**Better approach:** test booking and lesson logging on a phone before you launch.
+### What is the best driving school software for multi-car schools?
 
-## Frequently Asked Questions
+Look for shared pupil records, one diary across instructors, clash checks that include the car, and the price per extra instructor. DriveSchoolPro checks every booking against the pupil, the instructor and the vehicle and tracks MOT, tax and insurance dates; School is £22 a month plus £10 per extra instructor from 1 April 2027 (free until then). MyDriveTime's extra instructors fall to £5 a month each from the 11th, which suits bigger schools, and Driving School Office lists white-labelling and franchise management.
 
-### Does it track DVSA driving skills?
+### Does driving school software sync with Google Calendar?
 
-UK-specific driving school software should track the [DVSA 27 driving skills framework](/dvsa-27-driving-skills/) with proficiency levels per pupil. That covers everything from the [cockpit drill](/blog/cockpit-drill-driving/) through to [independent driving](/blog/independent-driving-test/), the full scope of what a learner needs to show before test day.
+Some do. Total Drive lists two-way sync with Google and Apple Calendar. MyDriveTime, Passly, GoRoadie Pro, SimplyBook.me and Reservio list a calendar connection without always saying which direction. DriveSchoolPro doesn't sync with Google Calendar yet; pupils who book online can add their lesson to their own calendar.
 
-Generic scheduling tools such as Acuity or Calendly don't track driving skills. Among the driving-specific platforms, check how each one describes its syllabus: some say it's the DVSA syllabus, others describe their own skills matrix.
+### Can I try driving school software before paying?
 
-### Can multiple instructors see the same pupil's progress?
+Usually. According to their own sites, Total Drive and MyDriveTime offer 30-day free trials, LessonBuddy 60 days for ADIs, Teachworks 21 days, and Passly and Lesson Diary 14 days. DriveSchoolPro is [free until 31 March 2027](https://app.driveschoolpro.com/signup) with no card required. Whichever you try, run a real week of lessons through it with 5 to 10 pupils.
 
-In purpose-built platforms, yes. Any instructor assigned to a pupil should see the full lesson history, skills record and test date. That's critical for cover lessons and multi-instructor schools.
-
-### Can I try it before paying?
-
-Usually. Total Drive and MyDriveTime offer 30-day free trials, Passly 14 days, Teachworks 21 days and LessonBuddy 60 days for ADIs, according to their own sites. **DriveSchoolPro** is [free until 31 March 2027](https://app.driveschoolpro.com/signup) while in early access, with no credit card required. Bring in 5–10 real pupils and run a week of lessons through it. That's the only reliable test of whether a platform suits you.
-
-### What if I already use Google Calendar?
-
-Most platforms connect to Google Calendar, but check the direction. Some sync both ways. Others, including DriveSchoolPro today, publish your lessons to Google Calendar one way, so your diary shows on your phone but time blocked in Google Calendar doesn't flow back.
-
-### Do I need to change my phone number?
-
-No. You can still take phone bookings and enter them yourself, and move pupils to online booking at your own pace.
-
-### Can pupils book at midnight?
-
-With online booking, yes. That's much of the point: pupils book when it suits them, often in the evening after you've stopped answering calls.
-
-### Will this replace my accountant?
-
-No. Software tracks income and gives you reports, but you'll still want an accountant for tax. Check what each platform exports and whether your accountant can use it.
-
-### What if I want to leave later?
-
-Ask before you sign up. Check whether you can export pupil records, lesson history and payments, in what format, and whether there's a minimum contract. In DriveSchoolPro the account owner can download everything held for the school from Settings.
-
-## Final Recommendations
-
-**For most UK ADIs and small schools who want DVSA tracking:** start with **[DriveSchoolPro](/)**. It's free until 31 March 2027 while in early access, with full DVSA tracking, AI lesson briefings, email reminders (WhatsApp coming soon), vehicle compliance alerts, and an app for you and your pupils on iOS and Android.
-
-**For an established UK app with a long track record:** trial **[Total Drive](/compare/total-drive/)** and **[MyDriveTime](/compare/my-drive-time/)**.
-
-**For new pupils as well as software:** look at **[Passly](/compare/passly/)**.
-
-**For parent access and route tools:** look at **[LessonBuddy](/compare/lessonbuddy/)**.
-
-**For franchises and large multi-car schools:** get a demo of **[Driving School Office](/compare/driving-school-office/)**.
-
-**For booking only, on a light diary:** a general tool such as **[Reservio](/compare/reservio/)** on its free plan.
-
-## Take the Next Step
-
-The quickest way to know is to run a real week through it.
+## Take the next step
 
 - [Get started with DriveSchoolPro free](https://app.driveschoolpro.com/signup) (free until 31 March 2027, no credit card required)
 - [Compare DriveSchoolPro side by side with each platform](/compare/)
+- [Contact us](/contact/) for a straight answer, including when another platform suits you better
 
-Bring in 10–20 pupils, use it for a week alongside your current diary, and you'll know whether it fits.
+## Related articles
 
-**Questions about choosing a platform?** [Contact us](/contact/) and we'll give you a straight answer, including when another platform suits you better.
-
-## Related Articles
-
-- [Compare UK driving school software](/compare/)
-- [Driving Instructor Accounting Software](/driving-instructor-accounting-software/)
-- [Driving School Software](/)
-- [Free Driving School Software](/free-driving-school-software/)
-- [How to Choose Driving School Scheduling Software](/blog/how-to-choose-driving-school-scheduling-software/)
+- [Driving school management software](/driving-school-management-software/)
+- [Driving instructor booking system](/driving-instructor-booking-system/)
+- [Driving instructor diary app](/driving-instructor-diary-app/)
+- [Free driving school software](/free-driving-school-software/)
+- [How to choose driving school scheduling software](/blog/how-to-choose-driving-school-scheduling-software/)
