@@ -44,13 +44,23 @@ This is a static marketing site built with **Astro 4** and **Tailwind CSS**. It 
 
 ## Deployment
 
-**Direct rsync to Lightsail — no GitHub Actions, no auto-deploy.**
+**Auto-deploy: every merge to `main` deploys via GitHub Actions** (`.github/workflows/deploy.yml`;
+also runs Mondays 09:00 UTC and on manual dispatch). It runs on Node 24 (`.nvmrc`), does
+`npm ci && npm run build`, then rsyncs `dist/` to Lightsail over SSH using the repo secrets
+`DEPLOY_KEY` (private key for `ubuntu@`) and `SERVER_IP`. A concurrency group stops two deploys overlapping.
+If the build or postbuild checks fail, nothing is deployed — check `gh run list --workflow deploy.yml`.
+
+Manual deploy (same flags as CI):
 
 ```bash
 npm run build
-rsync -avz --delete dist/ lightsail:/var/www/driveschoolpro.com/
+rsync -rltDvz --delete --filter='P /social/**' --filter='P /.DS_Store' dist/ lightsail:/var/www/driveschoolpro.com/
 ```
 
+**Never rsync with a bare `--delete`.** The server holds files that aren't in the repo
+(`social/video/*.mp4`, used by scheduled social posts); the `P` (protect) filters keep them. Before
+adding new server-only files, add a matching protect filter here and in the workflow, and check with
+`rsync -avzn --delete <same filters> dist/ lightsail:/var/www/driveschoolpro.com/ | grep deleting`.
 Always use the `lightsail` SSH alias, not the raw IP.
 
 ## PPC Landing Pages (external contracts — do not rename or noindex)
