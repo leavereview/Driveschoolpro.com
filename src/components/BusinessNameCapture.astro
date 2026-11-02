@@ -95,7 +95,7 @@ const listId = `${id}-suggestions`;
 </form>
 
 <script>
-  import { pickTrackingParams, reconcilePlaceId } from '../utils/signup-capture';
+  import { pickReferrerParams, pickTrackingParams, reconcilePlaceId } from '../utils/signup-capture';
 
   type Gtag = (...args: unknown[]) => void;
   interface PlacePrediction {
@@ -141,7 +141,7 @@ const listId = `${id}-suggestions`;
     const attribution = form.querySelector<HTMLElement>('[data-attribution]')!;
     const key = form.dataset.mapsKey ?? '';
 
-    for (const [k, v] of pickTrackingParams(location.search)) {
+    for (const [k, v] of [...pickTrackingParams(location.search), ...pickReferrerParams(document.referrer, location.pathname)]) {
       const hidden = document.createElement('input');
       hidden.type = 'hidden';
       hidden.name = k;

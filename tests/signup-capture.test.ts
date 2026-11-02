@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { pickTrackingParams, reconcilePlaceId } from '../src/utils/signup-capture.ts';
+import { pickReferrerParams, pickTrackingParams, reconcilePlaceId } from '../src/utils/signup-capture.ts';
 
 test('pickTrackingParams keeps only known ad/UTM params, in a fixed order', () => {
   const got = pickTrackingParams('?gclid=abc&foo=bar&utm_source=google&utm_campaign=autumn');
@@ -32,4 +32,25 @@ test('reconcilePlaceId drops the id once the name was edited', () => {
 
 test('reconcilePlaceId with nothing picked is null', () => {
   assert.equal(reconcilePlaceId(null, null, 'Anything'), null);
+});
+
+test('pickTrackingParams forwards Facebook and Microsoft click ids', () => {
+  assert.deepEqual(pickTrackingParams('?fbclid=IwZX&msclkid=m1'), [
+    ['msclkid', 'm1'],
+    ['fbclid', 'IwZX'],
+  ]);
+});
+
+test('pickReferrerParams passes an external referrer host and the page', () => {
+  assert.deepEqual(pickReferrerParams('https://m.facebook.com/groups/123/', '/'), [
+    ['dsp_ref', 'm.facebook.com'],
+    ['dsp_page', '/'],
+  ]);
+});
+
+test('pickReferrerParams ignores our own site and junk referrers', () => {
+  assert.deepEqual(pickReferrerParams('https://driveschoolpro.com/pricing/', '/'), [['dsp_page', '/']]);
+  assert.deepEqual(pickReferrerParams('https://app.driveschoolpro.com/x', '/'), [['dsp_page', '/']]);
+  assert.deepEqual(pickReferrerParams('not a url', '/start/'), [['dsp_page', '/start/']]);
+  assert.deepEqual(pickReferrerParams('', ''), []);
 });
