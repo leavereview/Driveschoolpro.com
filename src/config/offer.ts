@@ -65,7 +65,8 @@ export type PromoConfig = typeof PROMO;
 /**
  * Plans from 1 April 2027 — single source of truth for published prices.
  * Decided 16 Oct 2026. JOHN POWELL LTD is not VAT-registered, so no VAT is charged.
- * Competitor prices are never quoted on this site (see compare pages).
+ * Competitor prices: only on /blog/best-driving-school-software/, dated and sourced from each vendor's
+ * own site (JP, 2 Nov 2026). Re-check them every quarter (next: Feb 2027). Compare pages stay price-free.
  */
 export const PRICING = {
   startDate: "1 April 2027",
