@@ -12,6 +12,11 @@ import { OFFER, PRICING, PRICE_LINE } from '../config/offer';
 // features/progress-tracking, compare pages). Do not add offline mode, calendar
 // sync or repeating lessons without checking the app first. Reminders: email only on every
 // plan today; text and WhatsApp are COMING SOON (planned for Solo and School). Never present them as live.
+//
+// Targets (GSC, 90 days to 31 Oct 2026): 'adi diary app' (104 impressions at 23 on
+// /blog/switch-paper-diary-to-driving-school-software/, only 3 here at 40), 'driving instructor diary',
+// 'driving instructor diary app', 'diary app for driving instructors' (47 to 58). This page is the one
+// meant to rank; the blog post links here with the 'ADI diary app' anchor. leavereview/driveschoolpro#2095.
 
 const pageUrl = 'https://driveschoolpro.com/driving-instructor-diary-app/';
 
@@ -30,6 +35,16 @@ const paperVsApp = [
 
 const faqs = [
   {
+    question: 'What is an ADI diary app?',
+    answer: "An ADI diary app is a driving instructor's lesson diary on a phone and computer instead of in a paper book. As well as the time and the pupil, it holds the pick-up address, notes, payments and progress for each lesson, checks for double-bookings and sends the pupil a reminder. DriveSchoolPro is an ADI diary app for UK instructors on the web, iPhone and Android.",
+    links: [{ text: 'Scheduling features', url: '/features/scheduling/' }],
+  },
+  {
+    question: 'Is there a driving instructor diary app for iPhone and Android?',
+    answer: "Yes. DriveSchoolPro is on the App Store and Google Play, and the same diary opens in any web browser, so a lesson you book on a laptop is on your phone straight away. Your pupils use the same app, with their own view of their lessons, progress and balance.",
+    links: [{ text: 'The pupil and instructor app', url: '/features/pupil-app/' }],
+  },
+  {
     question: 'What is the best driving instructor diary app in the UK?',
     answer: "The best one is the one that stops the mistakes you actually make. For most ADIs that means three things: it refuses double-bookings across the pupil, the instructor and the car; it sends lesson reminders without you lifting a finger; and it keeps the pupil's record and payments next to the lesson. DriveSchoolPro does all three, works on the web, iPhone and Android, and is free until 31 March 2027. Total Drive and MyDriveTime are the established UK alternatives, and our comparison sets out how they differ.",
     links: [{ text: 'Total Drive vs My Drive Time', url: '/compare/total-drive-vs-mydrivetime/' }],
@@ -37,7 +52,10 @@ const faqs = [
   {
     question: 'What is the best app for a driving instructor in the UK?',
     answer: "One that runs the whole working day, not just the diary: bookings with clash checks, reminders, the pupil's DVSA progress, payments and an app for the pupil. DriveSchoolPro does all of these on the web, iPhone and Android, tracks the official 27 DVSA skills, and is free until 31 March 2027. Other UK instructor apps people shortlist include Total Drive, MyDriveTime, GoRoadie Pro and Passly; each has strengths we don't, such as theory content or text-message reminders, so compare them on the features you use every day.",
-    links: [{ text: 'Best driving school software compared', url: '/blog/best-driving-school-software/' }],
+    links: [
+      { text: 'The driving instructor app', url: '/features/pupil-app/' },
+      { text: 'Best driving school software compared', url: '/blog/best-driving-school-software/' },
+    ],
   },
   {
     question: 'Is there a free ADI diary app?',
@@ -60,6 +78,11 @@ const faqs = [
     links: [{ text: 'Scheduling software guide', url: '/driving-school-scheduling-software/' }],
   },
   {
+    question: 'Can pupils book lessons into my diary themselves?',
+    answer: "Yes, if you switch online booking on. Pupils book from the times you have made available, either in their app or from a booking button on your own website, and the lesson lands in your diary with their details attached. Every booking is checked for clashes first, and you set the notice period, the travel buffer and how far ahead they can book.",
+    links: [{ text: 'Driving instructor booking system', url: '/driving-instructor-booking-system/' }],
+  },
+  {
     question: 'Can several instructors share one diary?',
     answer: `Yes. On the School plan every instructor has their own column in a shared, colour-coded diary, and each booking is checked against the pupil, the instructor and the vehicle. From ${PRICING.startDate} the School plan is £${PRICING.school.price} a month plus £${PRICING.school.perExtraInstructor} for each extra instructor, and it is free until then.`,
     links: [{ text: 'Management software for schools', url: '/driving-school-management-software/' }],
@@ -74,12 +97,12 @@ const faqs = [
 const schemaMarkup = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'Driving Instructor Diary App: What It Should Do, and How DriveSchoolPro Works',
-  description: 'A guide to choosing a driving instructor diary app in the UK: calendar views, clash checks, pupil records, payments, reminders and multi-instructor diaries.',
+  headline: 'ADI Diary App: What a Driving Instructor Diary App Should Do, and How DriveSchoolPro Works',
+  description: 'A guide to choosing an ADI diary app in the UK: calendar views, clash checks, pupil records, payments, reminders and shared diaries for driving schools.',
   author: { '@type': 'Organization', name: 'DriveSchoolPro' },
   publisher: { '@type': 'Organization', name: 'DriveSchoolPro' },
   datePublished: '2026-10-16',
-  dateModified: '2026-10-16',
+  dateModified: '2026-11-02',
   mainEntityOfPage: pageUrl,
 };
 
@@ -96,11 +119,11 @@ const softwareSchema = {
 ---
 
 <BaseLayout
-  title="Driving Instructor Diary App for UK ADIs | DriveSchoolPro"
-  description="A driving instructor diary app that blocks double-bookings across pupil, instructor and car, and reminds pupils for you. Web, iPhone and Android. Free until 31 March 2027."
+  title="ADI Diary App for Driving Instructors | DriveSchoolPro"
+  description="An ADI diary app that blocks double-bookings across pupil, instructor and car and reminds pupils by email. A driving instructor diary for web, iPhone and Android. Free until 31 March 2027."
   image="/images/marketing/calendar-week-view.webp"
   publishedDate="2026-10-16"
-  modifiedDate="2026-10-16"
+  modifiedDate="2026-11-02"
 >
   <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
   <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
@@ -119,7 +142,7 @@ const softwareSchema = {
         <span class="inline-block bg-brand-red/20 text-brand-red-light px-3 py-1 rounded-full text-sm mb-4">ADI diary app</span>
         <h1 class="text-4xl md:text-5xl font-bold mb-4">The Driving Instructor Diary App That Won't Let You Double-Book</h1>
         <p class="text-xl text-gray-300 mb-4">
-          DriveSchoolPro is a diary app built for UK driving instructors. Day, week and month views,
+          DriveSchoolPro is an ADI diary app built for UK driving instructors. Day, week and month views,
           drag-and-drop rescheduling, clash checks across the pupil, the instructor and the car, and
           reminders that go out without you. Pupil records, payments and DVSA progress sit
           next to every lesson.
@@ -134,7 +157,7 @@ const softwareSchema = {
   </section>
 
   <FeaturedAnswer question="What is a driving instructor diary app?">
-    A driving instructor diary app replaces the paper ADI diary with a calendar on your phone and
+    A driving instructor diary app (or ADI diary app) replaces the paper ADI diary with a calendar on your phone and
     computer that knows about your pupils. A good one shows your day, week and month, lets you drag
     lessons to new slots, warns you before a double-booking, sends pupils reminders automatically and
     keeps each pupil's notes, payments and progress one tap from the lesson. DriveSchoolPro does this
@@ -154,6 +177,8 @@ const softwareSchema = {
           <li><a href="#paper-vs-app" class="hover:text-brand-red">&rarr; Paper diary vs app</a></li>
           <li><a href="#schools" class="hover:text-brand-red">&rarr; Shared diaries for schools</a></li>
           <li><a href="#pricing" class="hover:text-brand-red">&rarr; What it costs</a></li>
+          <li><a href="#choosing" class="hover:text-brand-red">&rarr; Which diary app UK instructors use</a></li>
+          <li><a href="#faq" class="hover:text-brand-red">&rarr; Common questions</a></li>
         </ul>
       </div>
     </div>
@@ -426,7 +451,15 @@ const softwareSchema = {
           <a href="/pricing/" class="text-brand-red hover:underline">pricing page</a>.
         </p>
 
-        <h2 id="choosing" class="text-3xl font-bold text-brand-navy mt-12 mb-6">How DriveSchoolPro compares with other ADI diary apps</h2>
+        <h2 id="choosing" class="text-3xl font-bold text-brand-navy mt-12 mb-6">Which diary app do UK driving instructors use?</h2>
+
+        <p>
+          <strong>Most UK driving instructors still use a paper ADI diary, a general calendar app, or a
+          dedicated driving instructor diary app such as Total Drive, MyDriveTime, GoRoadie Pro or
+          DriveSchoolPro.</strong> A dedicated app is the only one of the three that knows about pupils,
+          cars and DVSA progress, so it is the only one that can check a booking for clashes, remind the
+          pupil and record what you covered.
+        </p>
 
         <p>
           The two diary apps UK instructors most often mention are Total Drive and My Drive Time.

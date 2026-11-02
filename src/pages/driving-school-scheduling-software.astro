@@ -6,7 +6,18 @@ import StatisticsSection from '../components/seo/StatisticsSection.astro';
 import ComparisonTable from '../components/seo/ComparisonTable.astro';
 import FAQEnhanced from '../components/seo/FAQEnhanced.astro';
 import MarketingScreenshot from '../components/MarketingScreenshot.astro';
-import { OFFER } from '../config/offer';
+import { OFFER, PRICING, PRICE_LINE } from '../config/offer';
+
+// Target: 'driving school booking software' (GSC 90 days to 31 Oct 2026: 428 impressions at 49, the
+// site's biggest booking query), 'driving school booking system', 'driving school booking app',
+// 'booking app for driving schools', and the long tail Google already sends here: '... with text
+// reminders', 'cheapest booking software for driving schools', 'is booking software good for driving
+// schools'. leavereview/driveschoolpro#2097. Instructor-level terms ('driving instructor booking
+// system/software', 'instructor booking system') belong to /driving-instructor-booking-system/.
+//
+// Claims: reminders are email only today (text and WhatsApp coming soon on Solo and School);
+// lesson confirmation is off, so reminders never ask pupils to confirm; no calendar sync; no parent
+// accounts; recurring series coming soon. Never quote competitor prices (src/config/offer.ts).
 
 const schedulingStats = [
   {
@@ -25,9 +36,9 @@ const schedulingStats = [
     context: 'Weekly series in one go — in testing now'
   },
   {
-    label: 'Admin Time Saved',
-    value: '10+ hrs',
-    context: 'Per week — based on early user feedback'
+    label: 'Online Booking',
+    value: '24/7',
+    context: 'From your website or the pupil app, within your rules'
   },
   {
     label: 'Price Today',
@@ -95,14 +106,38 @@ const comparisonData = [
   {
     label: 'Online Booking Widget (Embeddable)',
     values: [true, false, false]
-  },
-  {
-    label: 'Automated Email Reminders',
-    values: [true, false, false]
   }
 ];
 
 const faqItems = [
+  {
+    question: "What is driving school booking software?",
+    answer: "Driving school booking software is a shared lesson diary that pupils can book into online. It shows only the times an instructor is free, checks the pupil, the instructor and the car before confirming, puts the booking in the right instructor's diary and sends the pupil a reminder. DriveSchoolPro is driving school booking software for UK ADIs and multi-instructor schools, on the web, iPhone and Android.",
+    links: [
+      { text: 'Online booking', url: '/features/online-booking/' }
+    ]
+  },
+  {
+    question: "Is booking software good for driving schools?",
+    answer: "Yes, once booking and rescheduling by message takes up real time. Booking software lets pupils book outside your working hours, stops double-bookings of instructors and cars, and sends reminders without anyone in the office remembering to. The trade-off is that online bookings follow rules you set in advance: in DriveSchoolPro they are confirmed straight away, with no approve-first step.",
+    links: [
+      { text: 'Driving instructor booking system', url: '/driving-instructor-booking-system/' }
+    ]
+  },
+  {
+    question: "Does driving school booking software send text reminders?",
+    answer: `Some do. DriveSchoolPro sends automatic email reminders before every lesson today, on every plan including Free. Text and WhatsApp reminders are coming soon on the ${PRICING.solo.name} and ${PRICING.school.name} plans. If text reminders are essential to you now, check that they are included in the price rather than charged per message.`,
+    links: [
+      { text: 'Scheduling features', url: '/features/scheduling/' }
+    ]
+  },
+  {
+    question: "What is the cheapest booking software for driving schools?",
+    answer: `DriveSchoolPro is free for every school and instructor until 31 March 2027, with online booking included and no card needed. ${PRICE_LINE} When you compare prices, check what is extra: text messages, extra instructors and card fees. DriveSchoolPro takes ${PRICING.cardFeePercent}% on card payments collected through it, plus Stripe's processing fee.`,
+    links: [
+      { text: 'Pricing', url: '/pricing/' }
+    ]
+  },
   {
     question: "What is the best scheduling software for driving schools?",
     answer: "The best scheduling software offers three-way conflict detection (student, instructor, and vehicle), automated reminders, multi-instructor calendars, and prevents double-bookings. DriveSchoolPro combines all these features with drag-and-drop rescheduling (recurring lesson series coming soon) — and it's free during early access, until 31 March 2027.",
@@ -112,7 +147,7 @@ const faqItems = [
   },
   {
     question: "How much does driving school scheduling software cost?",
-    answer: "Driving school scheduling software typically costs £29-150 per month depending on features and school size. DriveSchoolPro is currently free — until 31 March 2027 — while we're in early access, for solo ADIs and multi-instructor schools alike. No setup fees, no contracts and no card required. From 1 April 2027 there's a permanent Free plan (1 instructor, up to 60 lessons a month), Solo at £22 a month, or School at £22 a month plus £10 per extra instructor, with no VAT charged.",
+    answer: "Prices vary with features and the number of instructors, so compare what each plan includes. DriveSchoolPro is currently free — until 31 March 2027 — while we're in early access, for solo ADIs and multi-instructor schools alike. No setup fees, no contracts and no card required. From 1 April 2027 there's a permanent Free plan (1 instructor, up to 60 lessons a month), Solo at £22 a month, or School at £22 a month plus £10 per extra instructor, with no VAT charged.",
     links: [
       { text: 'Full pricing', url: '/pricing/' },
       { text: OFFER.ctaPrimary.labelShort, url: OFFER.ctaPrimary.href }
@@ -150,14 +185,14 @@ const faqItems = [
   },
   {
     question: "What pickup location features should scheduling software have?",
-    answer: "Good scheduling software lets students specify pickup addresses at booking, shows instructors the route on a map, calculates travel time between appointments, and factors drive time into availability. This prevents back-to-back bookings across town that are physically impossible.",
+    answer: "Good scheduling software takes the pupil's pick-up address at booking, opens it in your maps app for directions, and leaves travel time between lessons. In DriveSchoolPro, online bookings respect a buffer you set between lessons, and the diary warns you when you book a lesson inside that buffer yourself, so you don't end up with back-to-back lessons across town.",
     links: [
       { text: 'Scheduling features', url: '/features/scheduling/' }
     ]
   },
   {
     question: "How do automated reminders work?",
-    answer: "Scheduling software sends automated reminders via email at configurable times (typically 24 hours and 2 hours before lessons). Students can confirm, cancel, or reschedule directly from the reminder. This reduces no-shows significantly and eliminates manual reminder calls.",
+    answer: "DriveSchoolPro emails the pupil automatically before every lesson, at a time you choose. The reminder has the lesson details and a link to the lesson in the pupil's app, where they can see it and, if your rules allow, cancel or reschedule. Text and WhatsApp reminders are coming soon on the Solo and School plans.",
     links: [
       { text: 'Reminder features', url: '/features/scheduling/' }
     ]
@@ -188,21 +223,23 @@ const faqItems = [
 const schemaMarkup = {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Driving School Scheduling Software: The Ultimate Guide",
-  "description": "Complete guide to scheduling software for driving schools. Learn how to reduce no-shows, use conflict detection, and save 10+ hours per week.",
+  "headline": "Driving School Booking and Scheduling Software: A Guide for UK Schools",
+  "description": "How driving school booking and scheduling software works: online booking, clash checks across pupil, instructor and car, reminders and shared diaries for multi-instructor schools.",
   "author": {
     "@type": "Organization",
     "name": "DriveSchoolPro"
   },
   "datePublished": "2025-01-01",
-  "dateModified": "2026-01-15"
+  "dateModified": "2026-11-02"
 };
 ---
 
 <BaseLayout
   title="Driving School Booking & Scheduling Software | DriveSchoolPro"
-  description="Driving school scheduling software with three-way conflict detection, drag-and-drop calendars, and automated email reminders, so pupils turn up and you never double-book."
+  description="Driving school booking software that lets pupils book online and checks pupil, instructor and car before every lesson. Shared diary, email reminders. Free until 31 March 2027."
   image="/images/marketing/calendar-week-view.webp"
+  publishedDate="2025-01-01"
+  modifiedDate="2026-11-02"
 >
   <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
 
@@ -222,9 +259,9 @@ const schemaMarkup = {
         <span class="inline-block bg-brand-red/20 text-brand-red-light px-3 py-1 rounded-full text-sm mb-4">Ultimate Guide</span>
         <h1 class="text-4xl md:text-5xl font-bold mb-4">Driving School Booking and Scheduling Software</h1>
         <p class="text-xl text-gray-300 mb-4">
-          <strong>Driving school scheduling software</strong> automates lesson booking, instructor coordination, and appointment management. DriveSchoolPro adds AI-generated lesson briefings so every session starts with context — and prompted Google review requests so every pass grows your reputation.
+          <strong>Driving school booking software</strong> lets pupils book lessons online into the times your instructors are free, and gives the office one shared diary with clash checks across every pupil, instructor and car. DriveSchoolPro adds AI-generated lesson briefings so every lesson starts with context, and Google review requests when a pupil passes.
         </p>
-        <p class="text-gray-400 mb-8">Last updated: January 2026 | Reading time: 14 minutes</p>
+        <p class="text-gray-400 mb-8">Last updated: 2 November 2026</p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label}</a>
           <a href="#what-is" class="btn-secondary text-lg px-8 py-4">Read the Guide</a>
@@ -234,8 +271,8 @@ const schemaMarkup = {
   </section>
 
   <!-- Featured Answer -->
-  <FeaturedAnswer question="What is driving school scheduling software?">
-    Driving school scheduling software automates lesson management, instructor coordination, and appointment scheduling through drag-and-drop calendars, three-way conflict detection, and automated email reminders. Modern platforms like DriveSchoolPro save 10+ hours weekly, reduce no-shows significantly, and check student, instructor and vehicle availability to prevent clashes.
+  <FeaturedAnswer question="What is driving school booking and scheduling software?">
+    Driving school booking and scheduling software is a shared lesson diary that pupils can also book into online. It shows each instructor's free times, checks that the pupil, the instructor and the car are all free before a lesson is saved, and sends the pupil a reminder automatically. DriveSchoolPro does this on the web, iPhone and Android, with a booking button for your website, and is free until 31 March 2027.
   </FeaturedAnswer>
 
   <!-- Statistics Section -->
@@ -254,6 +291,7 @@ const schemaMarkup = {
           <h2 class="text-xl font-bold text-brand-navy mb-4">In This Guide</h2>
           <ul class="grid md:grid-cols-2 gap-2 text-gray-700">
             <li><a href="#what-is" class="hover:text-brand-red">→ What Is Scheduling Software?</a></li>
+            <li><a href="#booking-software" class="hover:text-brand-red">→ Booking Software for Driving Schools</a></li>
             <li><a href="#why-matters" class="hover:text-brand-red">→ Why Scheduling Is Critical</a></li>
             <li><a href="#essential-features" class="hover:text-brand-red">→ Essential Features</a></li>
             <li><a href="#online-booking" class="hover:text-brand-red">→ Student Self-Service</a></li>
@@ -282,10 +320,18 @@ const schemaMarkup = {
 
         <ul class="space-y-3">
           <li><strong>Multi-resource coordination:</strong> Every driving lesson requires an available instructor, student, and vehicle. Generic tools can't handle this three-way coordination.</li>
-          <li><strong>Behind-the-wheel hour tracking:</strong> Students need specific hours to meet requirements. The software automatically tracks completed and remaining hours.</li>
-          <li><strong>Geographic considerations:</strong> Lessons happen at student locations. Good software considers travel time and creates zones to minimise instructor driving.</li>
-          <li><strong>Parent involvement:</strong> For teen students, parents need to book lessons and monitor schedules.</li>
+          <li><strong>Lesson balances:</strong> Pupils buy blocks of lessons. The software draws each lesson down from the pupil's package so both of you can see what is left.</li>
+          <li><strong>Pick-ups and travel time:</strong> Lessons start at the pupil's address. Good software stores the pick-up address on the booking and leaves a travel buffer between lessons.</li>
+          <li><strong>DVSA progress:</strong> In the UK, progress is measured against the DVSA's 27 driving skills, and the record should sit next to the lesson.</li>
         </ul>
+
+        <h2 id="booking-software" class="text-3xl font-bold text-brand-navy mt-12 mb-6">Driving School Booking Software: How Online Booking Works</h2>
+
+        <p><strong>With driving school booking software, pupils book their own lessons online and the booking goes straight into the right instructor's diary.</strong> In DriveSchoolPro pupils book from a button on your school's website or from their app. They pick a lesson type, an instructor or "any available", a day and a time, and only see slots that are free for the instructor and the car. The booking is confirmed straight away and the pupil gets an email reminder before the lesson.</p>
+
+        <p>You stay in control through rules set in advance: how much notice pupils must give, how far ahead they can book, whether same-day bookings are allowed, a travel buffer between lessons, a limit on upcoming bookings per pupil and whether pupils can cancel or reschedule online. If you connect Stripe, pupils can pay by card when they book, or use prepaid lessons from a package.</p>
+
+        <p>For a single instructor the same thing is described on our <a href="/driving-instructor-booking-system/" class="text-brand-red hover:underline">driving instructor booking system</a> page, and every setting is listed on the <a href="/features/online-booking/" class="text-brand-red hover:underline">online booking feature page</a>. What it won't do yet: there is no approve-first step for online bookings, pupils don't choose the car, and repeating weekly bookings are coming soon.</p>
 
         <h2 id="why-matters" class="text-3xl font-bold text-brand-navy mt-12 mb-6">Why Scheduling Is Critical for Driving Schools</h2>
 
@@ -294,8 +340,8 @@ const schemaMarkup = {
         <h3 class="text-xl font-bold text-brand-navy mt-8 mb-4">The Real Cost of Scheduling Problems</h3>
 
         <div class="bg-red-50 border-l-4 border-brand-red p-4 my-6">
-          <p class="font-bold text-brand-navy">No-shows destroy revenue</p>
-          <p>At £45 per lesson, a single daily no-show costs over £11,000 per year. With a 15% no-show rate (common with manual systems), a school doing 500 lessons per month loses £3,375 monthly.</p>
+          <p class="font-bold text-brand-navy">No-shows cost real money</p>
+          <p>Work it out for your own school: at £40 a lesson, one missed lesson a week is over £2,000 a year of income you planned on and didn't get, for every instructor it happens to.</p>
         </div>
 
         <ul class="space-y-3">
@@ -330,7 +376,6 @@ const schemaMarkup = {
           <li>Quick identification of open slots</li>
           <li><strong>Drag-and-drop rescheduling</strong> — moving a lesson should be effortless</li>
           <li>Quick booking panel — schedule a lesson without leaving the calendar</li>
-          <li>Keyboard shortcuts for power users</li>
         </ul>
 
         <div class="my-8 not-prose">
@@ -400,7 +445,7 @@ const schemaMarkup = {
             <li><strong>24 hours before:</strong> Detailed reminder with time, instructor, pickup location, and what to bring.</li>
             <li><strong>2 hours before:</strong> Brief confirmation reminder. Last chance to reschedule.</li>
           </ul>
-          <p class="mt-4 text-sm"><strong>Reminders that get read:</strong> automated email reminders are included, with WhatsApp coming soon.</p>
+          <p class="mt-4 text-sm"><strong>In DriveSchoolPro:</strong> automated email reminders are included on every plan, at a time you choose. Text and WhatsApp reminders are coming soon.</p>
         </div>
 
         <h3 class="text-xl font-bold text-brand-navy mt-8 mb-4">Easy Rescheduling Options</h3>
@@ -408,7 +453,7 @@ const schemaMarkup = {
         <p>Often, students who no-show intended to reschedule but found it too difficult. Make rescheduling effortless:</p>
 
         <ul class="space-y-2">
-          <li>Include reschedule links directly in reminder messages</li>
+          <li>Link the reminder to the lesson, so pupils can see the details and act on them</li>
           <li>Pupils book and reschedule through the student portal without calling</li>
           <li>Set a reasonable rescheduling deadline (e.g., 12-24 hours before)</li>
         </ul>
@@ -546,10 +591,18 @@ const schemaMarkup = {
   <section class="section bg-gray-50">
     <div class="container-custom">
       <h2 class="text-2xl font-bold text-brand-navy mb-8 text-center">Related Guides</h2>
-      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
         <a href="/" class="card p-6 hover:shadow-lg transition-shadow">
           <h3 class="font-bold text-brand-navy mb-2">Driving School Software</h3>
           <p class="text-gray-600 text-sm">Complete overview of features and benefits</p>
+        </a>
+        <a href="/driving-instructor-booking-system/" class="card p-6 hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-brand-navy mb-2">Driving Instructor Booking System</h3>
+          <p class="text-gray-600 text-sm">Online booking for a single ADI</p>
+        </a>
+        <a href="/driving-instructor-diary-app/" class="card p-6 hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-brand-navy mb-2">ADI Diary App</h3>
+          <p class="text-gray-600 text-sm">The diary on your phone, with clash checks</p>
         </a>
         <a href="/driving-school-management-software/" class="card p-6 hover:shadow-lg transition-shadow">
           <h3 class="font-bold text-brand-navy mb-2">Management Software Guide</h3>
