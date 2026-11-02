@@ -82,7 +82,7 @@ const tags = Array.from(allTags).sort();
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {posts.map((post) => (
           <article class="card group">
-            <a href={`/blog/${post.slug}/`} class="block">
+            <a href={`/blog/${post.id}/`} class="block">
               {post.data.image && (
                 <div class="aspect-video overflow-hidden rounded-lg mb-4 -mx-6 -mt-6">
                   <img
