@@ -1,52 +1,103 @@
 ---
+// /features/getting-paid/ — the one UK answer page for "how do I take driving lesson payments online".
+// 3 Nov 2026 (SEO plan D4): /blog/driving-school-payment-processing/ ("Crawled - currently not
+// indexed", 0 of 4 AI engines named us for the question) was merged in here and 301s to this URL
+// (nginx). Its GoCardless, Square and automated-refund-policy material was dropped: the app has none
+// of them, and the post read as if it did.
+//
+// Every product line is checked against the app (leavereview/driveschoolpro, origin/main 2 Nov 2026):
+//  - 3% platform fee, percent-only: src/lib/utils/connect-fees.ts; Stripe fee is separate (direct charges)
+//  - pay at online booking: OnlineBookingSettings.requirePaymentAtBooking @default(true)
+//  - lessons invoiced automatically after they are taught: autoEmailInvoices @default(true)
+//  - overdue email reminders at 7, 14 and 30 days past due: api/cron/invoice-overdue OVERDUE_REMINDER_DAYS
+//  - no Direct Debit / GoCardless, no card reader, no recurring pupil subscription
+// Stripe UK fees from stripe.com/gb/pricing, checked 3 Nov 2026.
 import { OFFER } from '../../config/offer';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BreadcrumbsEnhanced from '../../components/seo/BreadcrumbsEnhanced.astro';
+import FeaturedAnswer from '../../components/seo/FeaturedAnswer.astro';
 import FAQEnhanced from '../../components/seo/FAQEnhanced.astro';
 import ProductDemo from '../../components/ProductDemo.astro';
+
+const STRIPE_CHECKED = '3 November 2026';
+
+const methods = [
+  {
+    name: 'Card, online',
+    how: 'Pupil pays from their app, a booking page or a link in an email. A payment provider (Stripe, here) takes the card and pays you out.',
+    cost: 'Provider fee per payment, plus any fee your software adds',
+    admin: 'None: the payment is matched to the pupil automatically',
+  },
+  {
+    name: 'Lesson blocks paid up front',
+    how: 'Pupil buys five, ten or twenty hours at once, usually by card. Each lesson comes off the balance.',
+    cost: 'One card fee for the whole block',
+    admin: 'Low: you see how many lessons are left',
+  },
+  {
+    name: 'Bank transfer',
+    how: 'Pupil sends money from their banking app using your account details and a reference.',
+    cost: "Usually free to the pupil; check your own bank's business tariff",
+    admin: 'You check your bank and mark it paid',
+  },
+  {
+    name: 'Cash at the lesson',
+    how: 'Paid in the car, at the start or end of the lesson.',
+    cost: 'None, but a trip to the bank',
+    admin: 'You record it by hand, every time',
+  },
+];
+
+const fees = [
+  { label: 'Standard UK card', stripe: '1.5% + 20p', lesson: '73p', block: '£5.45' },
+  { label: 'Premium UK card (e.g. some rewards and corporate cards)', stripe: '2.8% + 20p', lesson: '£1.18', block: '£10.00' },
+  { label: 'EEA card', stripe: '2.5% + 20p', lesson: '£1.08', block: '£8.95' },
+  { label: 'Other international card', stripe: '3.15% + 20p', lesson: '£1.30', block: '£11.23' },
+];
 
 const faqs = [
   {
     question: "How can a UK driving instructor take lesson payments online?",
-    answer: "The usual ways are card payments through a payment provider such as Stripe, a pay-link sent with each invoice, or pupils paying in their instructor's app. In DriveSchoolPro you connect your own Stripe account, then pupils pay by card from their app or from a link on the invoice, without needing to log in. You can also sell blocks of lessons up front, and record cash or bank transfers against the same balance. DriveSchoolPro charges 3% on card payments you collect, and Stripe's standard processing fee applies on top; the money goes to your Stripe account.",
+    answer: "Most take card payments through a payment provider such as Stripe: pupils pay from a link, a booking page or their instructor's app, and the provider pays the money into the instructor's bank account. Selling blocks of lessons up front and putting a pay-link on every invoice covers most of the rest. In DriveSchoolPro you connect your own Stripe account, pupils pay by card in their app, when they book online, or from a link on the invoice without logging in, and you record cash or bank transfers against the same balance.",
     links: [{ text: "Lesson packages", url: "/features/lesson-packages/" }]
   },
   {
-    question: "How do pupils pay?",
-    answer: "By card, through Stripe, either from their own portal or from a payment link you send them. The link opens the invoice directly — they do not need to log in or remember a password to pay you.",
-    links: []
+    question: "What does it cost to take card payments for driving lessons?",
+    answer: `Stripe's standard UK fee is 1.5% + 20p for a standard UK card and 2.8% + 20p for a premium UK card (Stripe's UK pricing page, checked ${STRIPE_CHECKED}). On a £35 lesson paid with a standard UK card that is 73p. DriveSchoolPro adds a 3% platform fee on card payments you collect through it (£1.05 on a £35 lesson), so you would receive £33.22. There is no DriveSchoolPro fee on cash or bank transfer, and no subscription fee until 31 March 2027.`,
+    links: [{ text: "Pricing", url: "/pricing/" }]
   },
   {
     question: "Do I need a Stripe account?",
-    answer: "Yes, and you connect it from your settings. The money goes to your account, not ours. Stripe handles the card details, so they never touch DriveSchoolPro or you.",
+    answer: "Yes, for card payments, and you connect it from DriveSchoolPro's settings. The money goes to your Stripe account and then your bank, not to us. Stripe handles the card details, so they never touch DriveSchoolPro or you. You don't need Stripe to record cash or bank transfers.",
     links: []
   },
   {
-    question: "Can I still take cash or bank transfer?",
-    answer: "Yes. Plenty of pupils still hand over cash, and you can record cash, bank transfer or cheque against a pupil's balance so the ledger stays right regardless of how the money arrived.",
+    question: "Can pupils pay when they book a lesson online?",
+    answer: "Yes. If pupils book through your DriveSchoolPro booking widget and you have Stripe connected, you can ask for card payment at the time of booking, so the slot is paid for before it is in your diary. Pupils with a lesson block can use that instead.",
+    links: [{ text: "Online booking", url: "/features/online-booking/" }]
+  },
+  {
+    question: "How do I chase pupils who haven't paid?",
+    answer: "DriveSchoolPro invoices lessons once they have been taught and emails the pupil the invoice with a pay-link (you can switch automatic invoice emails off). If an invoice is still unpaid, it emails a reminder 7, 14 and 30 days after the due date. The link opens the invoice directly, so the pupil can pay by card without logging in. Reminders are by email only today.",
     links: []
   },
   {
-    question: "What is a lesson block?",
-    answer: "A package of lessons bought up front — five, ten, twenty, whatever you sell. You set them up once and pupils can buy them from their portal. Each lesson counts one off the balance, and both of you can see how many are left.",
-    links: [{ text: "How lesson packages work", url: "/features/lesson-packages/" }]
+    question: "Can I take Direct Debit or a monthly subscription from pupils?",
+    answer: "Not in DriveSchoolPro. There is no Direct Debit (GoCardless) and no automatic monthly charge. Pupils pay per invoice, pay when they book, or buy lesson blocks up front. Recurring lesson series is coming soon, which is the related piece most instructors ask about.",
+    links: []
   },
   {
-    question: "Does this actually reduce no-shows?",
+    question: "Does taking payment up front reduce no-shows?",
     answer: "It changes the incentive. A pupil paying per lesson loses nothing by cancelling on a Sunday night; a pupil who has already bought ten hours is spending their own money by not turning up. It is not a guarantee, but it is a different conversation.",
     links: [{ text: 'More on reducing no-shows', url: '/blog/reduce-driving-lesson-no-shows/' }]
-  },
-  {
-    question: "Can I set up an automatic monthly subscription?",
-    answer: "Not currently. Pupils pay per invoice or buy lesson blocks up front. Recurring lesson series is coming soon, which is the related piece most instructors ask about.",
-    links: []
   }
 ];
 ---
 
 <BaseLayout
-  title="Getting Paid: Lesson Packages & Card Payments | DriveSchoolPro"
-  description="Pupils buy lesson blocks in their own portal and pay by card through Stripe. Balances update themselves and outstanding invoices get a tap-to-pay link. Free until 31 March 2027."
+  title="Take Driving Lesson Payments Online (UK Guide) | DriveSchoolPro"
+  description="How UK driving instructors take lesson payments online: card via Stripe (1.5% + 20p on standard UK cards), lesson blocks, pay-links and chasing unpaid lessons. Free until 31 March 2027."
+  modifiedDate="2026-11-03"
 >
   <BreadcrumbsEnhanced items={[{ label: 'Home', href: '/' }, { label: 'Features', href: '/features/' }, { label: 'Getting paid' }]} site="driveschool" />
 
@@ -54,15 +105,15 @@ const faqs = [
     <div class="container-custom">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <p class="text-sm uppercase tracking-wider text-gray-400 mb-3">Before they turn up</p>
+          <p class="text-sm uppercase tracking-wider text-gray-400 mb-3">Getting paid · UK driving instructors</p>
           <h1 class="text-4xl md:text-5xl font-bold text-brand-navy leading-tight mb-6">
-            They've already paid before they open the door.
+            How to take driving lesson payments online
           </h1>
           <p class="text-xl text-gray-600 leading-relaxed">
             Asking a 17-year-old for £35 at the kerb, in the rain, is nobody's favourite part of
             this job. Neither is the message on Sunday evening saying they will settle up next week,
-            or the running total in the back of your head of who owes you what. Chasing money is
-            the least skilled thing an ADI does and it eats the most goodwill.
+            or the running total in the back of your head of who owes you what. This page sets out
+            the ways UK instructors take payment, what each costs, and how DriveSchoolPro does it.
           </p>
         </div>
         <div>
@@ -79,13 +130,93 @@ const faqs = [
     </div>
   </section>
 
+  <FeaturedAnswer question="How do UK driving instructors take lesson payments online?">
+    Most take card payments through a provider such as Stripe, with pupils paying from a link, a booking page or an app, and
+    the money paid into the instructor's bank account. Selling blocks of lessons up front and putting a pay-link on every
+    invoice covers most of the rest, with cash and bank transfers recorded against the same balance.
+  </FeaturedAnswer>
+
+  <section class="section bg-white">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">The four ways pupils pay</h2>
+      <p class="text-lg text-gray-600 mb-6">
+        Most instructors end up with a mix. The aim is that card payments and lesson blocks do the bulk of the work, so cash
+        and bank transfers are the exception you record, not the system you chase.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm border border-gray-200">
+          <thead class="bg-gray-50 text-brand-navy">
+            <tr>
+              <th scope="col" class="p-3">Method</th>
+              <th scope="col" class="p-3">How it works</th>
+              <th scope="col" class="p-3">Cost to you</th>
+              <th scope="col" class="p-3">Admin</th>
+            </tr>
+          </thead>
+          <tbody>
+            {methods.map((m) => (
+              <tr class="border-t border-gray-200 align-top">
+                <th scope="row" class="p-3 font-semibold text-gray-900">{m.name}</th>
+                <td class="p-3 text-gray-600">{m.how}</td>
+                <td class="p-3 text-gray-600">{m.cost}</td>
+                <td class="p-3 text-gray-600">{m.admin}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
   <section class="section bg-gray-50 border-t border-gray-100">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">What card payments cost, in pounds</h2>
+      <p class="text-lg text-gray-600 mb-6">
+        Stripe's standard UK fees, from <a href="https://stripe.com/gb/pricing" class="text-brand-red hover:underline" rel="noopener" target="_blank">Stripe's UK pricing page</a>
+        (checked {STRIPE_CHECKED}), worked out on a £35 lesson and a £350 block of ten. Most learners pay with a standard UK debit card.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm border border-gray-200 bg-white">
+          <thead class="bg-gray-50 text-brand-navy">
+            <tr>
+              <th scope="col" class="p-3">Card type</th>
+              <th scope="col" class="p-3">Stripe fee</th>
+              <th scope="col" class="p-3">On a £35 lesson</th>
+              <th scope="col" class="p-3">On a £350 block</th>
+            </tr>
+          </thead>
+          <tbody>
+            {fees.map((f) => (
+              <tr class="border-t border-gray-200">
+                <th scope="row" class="p-3 font-semibold text-gray-900">{f.label}</th>
+                <td class="p-3 text-gray-600">{f.stripe}</td>
+                <td class="p-3 text-gray-600">{f.lesson}</td>
+                <td class="p-3 text-gray-600">{f.block}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-gray-600 mt-6">
+        Stripe adds 2% if a currency conversion is needed. <strong>DriveSchoolPro's own fee:</strong> 3% on card payments
+        you collect through it, on top of Stripe's fee: £1.05 on a £35 lesson, £10.50 on a £350 block. So a £35 lesson
+        paid with a standard UK card leaves you £33.22. There is no DriveSchoolPro fee on cash or bank transfer, and no
+        subscription fee until 31 March 2027.
+      </p>
+      <p class="text-gray-600 mt-4">
+        One card fee on a block costs less than ten fees on ten single lessons, because the fixed 20p is charged once.
+        That is one more reason, after no-shows, to sell blocks.
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-white border-t border-gray-100">
     <div class="container-custom max-w-4xl space-y-14">
       <div>
         <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Pupils buy blocks themselves, on their phones</h2>
         <p class="text-lg text-gray-600 mb-4">
-          You set up the <a href="/features/lesson-packages/" class="text-brand-red hover:underline">packages you sell</a> — ten lessons, twenty, an intensive — and they appear in
-          your pupils' portal. A learner buys one on their phone, pays by card through Stripe, and
+          You set up the <a href="/features/lesson-packages/" class="text-brand-red hover:underline">packages you sell</a> (ten lessons, twenty, an intensive) and they appear in
+          your pupils' app. A learner buys one on their phone, pays by card through Stripe, and
           the lessons land on their balance. You were not involved. You did not have to ask.
         </p>
         <p class="text-lg text-gray-600">
@@ -96,33 +227,50 @@ const faqs = [
       </div>
 
       <div>
-        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">The pupil who has paid turns up</h2>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Paid when they book</h2>
         <p class="text-lg text-gray-600">
-          Pre-payment is usually sold as a cash-flow feature. Its more valuable effect is on
-          cancellations. Someone paying per lesson loses nothing by pulling out on a Sunday night —
-          someone who bought ten hours in advance is spending their own money by not being there.
-          A block booking quietly does the job that reminder texts are trying and mostly failing to
-          do.
+          If pupils book through your <a href="/features/online-booking/" class="text-brand-red hover:underline">online booking widget</a>, you can ask for card payment
+          at the time of booking, so a new pupil's first lesson is paid before it reaches your diary. Pupils who already
+          have a block can book against it instead.
         </p>
       </div>
 
       <div>
-        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">For everything else, a link they can tap</h2>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">The pupil who has paid turns up</h2>
         <p class="text-lg text-gray-600">
-          Not everyone will pre-pay, and some pupils will always pay in cash. Outstanding invoices
-          get a payment link that opens the invoice directly — no login, no password reset at 9pm,
-          no reason to put it off. Cash, bank transfer and cheque can be recorded against the
-          balance too, so the ledger reflects reality however the money turned up. Invoices,
-          payments, package balances and outstanding requests all sit in one view, which means
-          'who owes me what' stops being a thing you carry around in your head.
+          Pre-payment is usually sold as a cash-flow feature. Its more valuable effect is on
+          cancellations. Someone paying per lesson loses nothing by pulling out on a Sunday night;
+          someone who bought ten hours in advance is spending their own money by not being there.
+          A block booking quietly does the job that reminder texts are trying and mostly failing to
+          do. More on that in <a href="/blog/reduce-driving-lesson-no-shows/" class="text-brand-red hover:underline">how to reduce driving lesson no-shows</a>.
         </p>
       </div>
     </div>
   </section>
 
+  <section class="section bg-gray-50 border-t border-gray-100">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Chasing unpaid lessons without chasing</h2>
+      <p class="text-lg text-gray-600 mb-4">
+        Not everyone will pre-pay, and some pupils will always pay in cash. In DriveSchoolPro, lessons are invoiced once
+        they have been taught, and the pupil gets the invoice by email with a pay-link. The link opens the invoice
+        directly: no login, no password reset at 9pm, no reason to put it off.
+      </p>
+      <p class="text-lg text-gray-600 mb-4">
+        If it is still unpaid, DriveSchoolPro emails a reminder 7, 14 and 30 days after the due date, so the awkward
+        message is not yours to send. You can switch automatic invoice emails off if you would rather send them yourself.
+      </p>
+      <p class="text-lg text-gray-600">
+        Cash, bank transfer and cheque are recorded against the same balance, so the ledger reflects reality however the
+        money turned up. Invoices, payments, block balances and anything outstanding sit in one view, and "who owes me
+        what" stops being a thing you carry around in your head.
+      </p>
+    </div>
+  </section>
+
   <section class="section bg-white border-t border-gray-100">
     <div class="container-custom max-w-4xl">
-      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-8">How it works</h2>
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-8">Setting it up in DriveSchoolPro</h2>
       <ol class="space-y-6">
         <li class="flex gap-4">
           <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">1</span>
@@ -135,21 +283,34 @@ const faqs = [
           <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">2</span>
           <div>
             <h3 class="font-bold text-brand-navy mb-1">Set up the blocks you sell</h3>
-            <p class="text-gray-600">Name them, price them, and they appear in every pupil's portal.</p>
+            <p class="text-gray-600">Name them, price them, and they appear in every pupil's app.</p>
           </div>
         </li>
         <li class="flex gap-4">
           <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">3</span>
           <div>
             <h3 class="font-bold text-brand-navy mb-1">Stop thinking about it</h3>
-            <p class="text-gray-600">Pupils buy, balances draw down as lessons are taken, and anything outstanding gets a link to tap.</p>
+            <p class="text-gray-600">Pupils buy, balances draw down as lessons are taken, and anything outstanding gets a link to tap and a reminder if it is late.</p>
           </div>
         </li>
       </ol>
     </div>
   </section>
 
-  <FAQEnhanced faqs={faqs} site="driveschool" pageUrl="https://driveschoolpro.com/features/getting-paid/" title="Questions about payments" />
+  <section class="section bg-gray-50 border-t border-gray-100">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">What DriveSchoolPro doesn't do</h2>
+      <ul class="list-disc pl-6 space-y-2 text-lg text-gray-600">
+        <li>No Direct Debit (GoCardless) and no automatic monthly charge to pupils.</li>
+        <li>No card reader for taking a card in the car; pupils pay on their own phone instead.</li>
+        <li>Card payments are through Stripe only; there is no PayPal or Square option.</li>
+        <li>Payment reminders go by email only, not text.</li>
+        <li>It does not track your expenses or file with HMRC; pair it with accounting software. See <a href="/blog/making-tax-digital-driving-instructors/" class="text-brand-red hover:underline">Making Tax Digital for driving instructors</a>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <FAQEnhanced faqs={faqs} site="driveschool" pageUrl="https://driveschoolpro.com/features/getting-paid/" title="Questions about taking lesson payments" />
 
   <section class="section bg-brand-navy text-white">
     <div class="container-custom text-center max-w-3xl mx-auto">
@@ -163,6 +324,7 @@ const faqs = [
     <div class="container-custom max-w-4xl">
       <h2 class="text-xl font-bold text-brand-navy mb-6">Related</h2>
       <ul class="space-y-3 text-lg">
+        <li><a href="/features/lesson-packages/" class="text-brand-red font-semibold hover:underline">Lesson packages &rarr;</a> <span class="text-gray-500">— selling blocks up front</span></li>
         <li><a href="/features/scheduling/" class="text-brand-red font-semibold hover:underline">Scheduling &rarr;</a> <span class="text-gray-500">— the lessons those hours get spent on</span></li>
         <li><a href="/features/reviews/" class="text-brand-red font-semibold hover:underline">Reviews &rarr;</a> <span class="text-gray-500">— turning finished pupils into the next ones</span></li>
         <li><a href="/driving-instructor-accounting-software/" class="text-brand-red font-semibold hover:underline">Accounting and invoicing &rarr;</a> <span class="text-gray-500">— the longer guide</span></li>

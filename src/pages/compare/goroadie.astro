@@ -32,6 +32,11 @@ const rows = [
 
 const faqs = [
   {
+    question: 'What is a good alternative to GoRoadie Pro?',
+    answer: "For UK driving instructors the main alternatives are Total Drive (offline diary, branded pupil app, Smart Gaps, theory suite), MyDriveTime (diary and admin app with a student app, SMS reminders on its individual plan and expense receipts), Lesson Diary (browser and iPhone app built around filling cancellations) and DriveSchoolPro (DVSA 27-skill tracking, AI lesson briefings, Stripe card payments and a web version, free until 31 March 2027). None of these runs a learner marketplace like GoRoadie's, so if new pupils are why you use it, weigh that first.",
+    links: [{ text: 'Total Drive vs DriveSchoolPro', url: '/compare/total-drive/' }, { text: 'MyDriveTime vs DriveSchoolPro', url: '/compare/my-drive-time/' }],
+  },
+  {
     question: 'What is GoRoadie?',
     answer: "GoRoadie is a UK driving company with two sides. Its website, goroadie.com, is a marketplace where learner drivers find an instructor, and instructors pay per pupil they take on. GoRoadie Pro is its separate iPhone and Android app for instructors (ADIs and PDIs), with a diary, a free learner app, reminders, card payments and expense tracking. This page compares GoRoadie Pro with DriveSchoolPro.",
     links: [{ text: 'GoRoadie Pro', url: 'https://goroadie.com/pro' }],
@@ -68,11 +73,11 @@ const faqs = [
   competitor={{ name: 'GoRoadie', alternateName: 'GoRoadie Pro', slug: 'goroadie', pricingUrl: 'https://goroadie.com/pro' }}
   h1="GoRoadie vs DriveSchoolPro"
   seo={{
-    title: 'GoRoadie vs DriveSchoolPro: GoRoadie Pro Compared for UK ADIs',
-    description: 'GoRoadie Pro vs DriveSchoolPro, feature by feature: DVSA 27-skill tracking, AI lesson briefings, reminders, expenses and the learner marketplace. DriveSchoolPro is free until 31 March 2027.',
+    title: 'GoRoadie Pro vs DriveSchoolPro, and Alternatives (UK, 2026)',
+    description: 'GoRoadie Pro vs DriveSchoolPro feature by feature, plus the UK alternatives to GoRoadie Pro: Total Drive, MyDriveTime and Lesson Diary. DriveSchoolPro is free until 31 March 2027.',
     schemaDescription: 'Feature-by-feature comparison of DriveSchoolPro and GoRoadie Pro for UK driving instructors, including what DriveSchoolPro does not do.',
     datePublished: '2026-10-16',
-    dateModified: '2026-11-02',
+    dateModified: '2026-11-03',
   }}
   checkedOn="2 November 2026"
   heroIntro="A plain, feature-by-feature comparison for UK instructors weighing up GoRoadie Pro. It covers what's different, and what DriveSchoolPro doesn't do."
@@ -111,7 +116,9 @@ const faqs = [
     { label: 'GoRoadie: for instructors', url: 'https://goroadie.com/instructors' },
     { label: 'GoRoadie Pro on the App Store', url: 'https://apps.apple.com/gb/app/goroadie-pro/id1548955079' },
     { label: 'GoRoadie Pro on Google Play', url: 'https://play.google.com/store/apps/details?id=com.goroadie.pro' },
+    { label: 'Lesson Diary home page (alternatives list, checked 3 November 2026)', url: 'https://lessondiary.co.uk/' },
   ]}
+  alternativesKey="goroadie"
   faqs={faqs}
   faqTitle="DriveSchoolPro vs GoRoadie Pro: common questions"
 />
