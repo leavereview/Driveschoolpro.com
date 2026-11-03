@@ -135,6 +135,6 @@ DriveSchoolPro is free until 31 March 2027. From 1 April 2027 there's a permanen
 - [Choosing MTD software for driving instructors](/blog/choosing-mtd-software-driving-instructors/): an 8-point checklist and questions to ask before you sign up
 - [MTD timeline for 2027 and 2028](/blog/mtd-timeline-2027-2028-driving-instructors/): every date from now to your first MTD tax return
 - [Accounting software for driving instructors](/driving-instructor-accounting-software/): what bookkeeping software does that driving school software doesn't
-- [Driving school payment processing](/blog/driving-school-payment-processing/): taking card payments and keeping track of who has paid
+- [Taking driving lesson payments online](/features/getting-paid/): card payments, lesson blocks and keeping track of who has paid
 - [How to start a driving school](/blog/starting-driving-school-guide/): registering as self-employed, insurance and setting your prices
 - [Driving school revenue calculator](/driving-school-calculator/): work out your yearly lesson income before you check the threshold

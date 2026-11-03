@@ -17,6 +17,7 @@ import BreadcrumbsEnhanced from '../seo/BreadcrumbsEnhanced.astro';
 import FeaturedAnswer from '../seo/FeaturedAnswer.astro';
 import ComparisonTable from '../seo/ComparisonTable.astro';
 import FAQEnhanced from '../seo/FAQEnhanced.astro';
+import { ALTERNATIVES_CHECKED, alternativesTo, type AltKey } from '../../data/alternatives';
 
 interface Item { title: string; body: string }
 
@@ -44,12 +45,16 @@ interface Props {
   sources: { label: string; url: string }[];
   faqs: { question: string; answer: string; links?: { text: string; url: string }[] }[];
   faqTitle: string;
+  /** Key in src/data/alternatives.ts: renders "Alternatives to {name}" near the top. */
+  alternativesKey?: AltKey;
 }
 
 const {
   competitor, h1, seo, checkedOn, heroIntro, featuredAnswer, intro, rows,
   switchHeading, switchIntro, switchItems, gapsHeading, gapsBody, sources, faqs, faqTitle,
+  alternativesKey,
 } = Astro.props;
+const alternatives = alternativesKey ? alternativesTo(alternativesKey) : [];
 
 const pageUrl = `https://driveschoolpro.com/compare/${competitor.slug}/`;
 
@@ -103,6 +108,33 @@ const schemaMarkup = {
   <FeaturedAnswer question={`How does DriveSchoolPro compare to ${competitor.name}?`}>
     {featuredAnswer}
   </FeaturedAnswer>
+
+  {alternatives.length > 0 && (
+    <section id="alternatives" class="section bg-white pb-0">
+      <div class="container-custom max-w-3xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-3">Alternatives to {competitor.name}</h2>
+        <p class="text-gray-600 mb-6 leading-relaxed">
+          UK apps for driving instructors you could look at instead of {competitor.name}, including ours. One line each, taken from each
+          app's own website (checked {ALTERNATIVES_CHECKED}); no prices, because they change.
+        </p>
+        <ul class="space-y-4">
+          {alternatives.map((a) => (
+            <li class={`rounded-xl border-2 p-4 ${a.key === 'driveschoolpro' ? 'border-brand-red' : 'border-gray-200'}`}>
+              <div class="font-semibold text-gray-900 mb-1">
+                {a.key === 'driveschoolpro'
+                  ? <span>{a.name} (us)</span>
+                  : <a href={a.url} class="text-brand-navy hover:underline" rel="noopener" target="_blank">{a.name}</a>}
+              </div>
+              <p class="text-gray-600 text-sm">
+                {a.line}
+                {a.compareUrl && <> <a href={a.compareUrl} class="text-brand-red hover:underline">Compare with DriveSchoolPro &rarr;</a></>}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
 
   <section class="section bg-white">
     <div class="container-custom max-w-3xl mx-auto">
