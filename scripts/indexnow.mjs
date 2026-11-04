@@ -38,8 +38,16 @@ export function sitemapUrls(distDir) {
 
 /** Map a site URL to its built HTML file, or null if it isn't in dist. */
 export function htmlFileFor(distDir, url) {
-  if (!url.startsWith(SITE)) return null;
-  let p = decodeURI(url.slice(SITE.length)) || '/';
+  let parsed;
+  try {
+    parsed = new URL(url);
+  } catch {
+    return null;
+  }
+  // Compare the parsed origin, not a string prefix (https://driveschoolpro.com.evil.com).
+  if (parsed.origin !== new URL(SITE).origin) return null;
+  const p = decodeURIComponent(parsed.pathname) || '/';
+  if (p.split('/').includes('..')) return null;
   const file = p.endsWith('/') ? path.join(distDir, p, 'index.html') : path.join(distDir, p);
   return fs.existsSync(file) ? file : null;
 }

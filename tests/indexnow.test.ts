@@ -32,6 +32,9 @@ test('htmlFileFor maps URLs to dist files and rejects other hosts', () => {
   const { dist } = fixture();
   assert.equal(htmlFileFor(dist, 'https://driveschoolpro.com/pricing/'), path.join(dist, 'pricing', 'index.html'));
   assert.equal(htmlFileFor(dist, 'https://example.com/pricing/'), null);
+  assert.equal(htmlFileFor(dist, 'https://driveschoolpro.com.evil.com/pricing/'), null);
+  assert.equal(htmlFileFor(dist, 'http://driveschoolpro.com/pricing/'), null);
+  assert.equal(htmlFileFor(dist, 'not a url'), null);
   assert.equal(htmlFileFor(dist, 'https://driveschoolpro.com/missing/'), null);
 });
 
