@@ -12,7 +12,9 @@
  *
  * This module derives a real per-page date instead, in priority order:
  *
- *   1. frontmatter `updatedDate` — an explicit author statement, most authoritative
+ *   1. an explicit author date: frontmatter `updatedDate`, or in an .astro page a
+ *      literal `modifiedDate="YYYY-MM-DD"` prop or `const updated = 'YYYY-MM-DD'` —
+ *      the same date the page shows as "Updated" and puts in dateModified
  *   2. git last-commit date for the source file — reflects actual edits
  *   3. frontmatter `date` / `pubDate` — publish date, correct when never edited
  *   4. filesystem mtime — only reached for files git doesn't know about yet, where
@@ -44,8 +46,38 @@ function walk(dir, out = []) {
   return out;
 }
 
-/** Last commit date for a file, ISO 8601, or null if untracked / not a repo. */
+/**
+ * A shallow clone (actions/checkout's default fetch-depth: 1) has one commit, so
+ * every file's "last commit" is that commit and every lastmod becomes the deploy
+ * date. Detect it and skip git dates rather than publish 90-odd identical ones.
+ */
+let shallowWarned = false;
+const shallowCache = new Map();
+function isShallow(cwd) {
+  if (!shallowCache.has(cwd)) shallowCache.set(cwd, checkShallow(cwd));
+  return shallowCache.get(cwd);
+}
+function checkShallow(cwd) {
+  try {
+    return execFileSync('git', ['rev-parse', '--is-shallow-repository'], {
+      cwd,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim() === 'true';
+  } catch {
+    return false;
+  }
+}
+
+/** Last commit date for a file, ISO 8601, or null if untracked / not a repo / shallow. */
 function gitLastModified(file, cwd) {
+  if (isShallow(cwd)) {
+    if (!shallowWarned) {
+      console.warn('[sitemap-lastmod] shallow git clone: skipping git dates (use fetch-depth: 0)');
+      shallowWarned = true;
+    }
+    return null;
+  }
   try {
     const out = execFileSync('git', ['log', '-1', '--format=%cI', '--', file], {
       cwd,
@@ -58,8 +90,25 @@ function gitLastModified(file, cwd) {
   }
 }
 
+/** An explicit date set by hand in an .astro page (see priority 1 above). */
+function astroPageDate(file) {
+  if (extname(file) !== '.astro') return null;
+  let src;
+  try {
+    src = readFileSync(file, 'utf8');
+  } catch {
+    return null;
+  }
+  const m =
+    src.match(/\bmodifiedDate\s*=\s*["']([0-9]{4}-[0-9]{2}-[0-9]{2})["']/) ||
+    src.match(/\bconst\s+updated\s*=\s*["']([0-9]{4}-[0-9]{2}-[0-9]{2})["']/);
+  return m ? m[1] : null;
+}
+
 /** Pull date-ish fields out of YAML frontmatter without a YAML dependency. */
 function frontmatterDates(file) {
+  const astroDate = astroPageDate(file);
+  if (astroDate) return { updated: astroDate, published: null };
   let head;
   try {
     head = readFileSync(file, 'utf8').slice(0, 4000);
@@ -131,7 +180,8 @@ export function buildLastmodMap(siteRoot) {
       toIso(updated) ||
       toIso(gitLastModified(file, siteRoot)) ||
       toIso(published) ||
-      toIso(fileMtime(file));
+      // In a shallow clone mtime is the checkout time, i.e. the deploy date: skip it too.
+      (isShallow(siteRoot) ? null : toIso(fileMtime(file)));
     if (date) map.set(routeKey, date);
   };
 

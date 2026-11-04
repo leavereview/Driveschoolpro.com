@@ -1,4 +1,5 @@
 ---
+import UpdatedLine from '../components/UpdatedLine.astro';
 import '../styles/global.css';
 import CookieConsent from '../components/CookieConsent.astro';
 import SignupAttribution from '../components/SignupAttribution.astro';
@@ -10,9 +11,22 @@ interface Props {
   canonicalUrl?: string;
   ogImage?: string;
   robots?: string;
+  /** YYYY-MM-DD, set by hand when the page content changes. Shows an "Updated" line and WebPage dateModified. */
+  modifiedDate?: string;
 }
 
-const { title, description, canonicalUrl, ogImage = '/images/og-default.jpg', robots } = Astro.props;
+const { title, description, canonicalUrl, ogImage = '/images/og-default.jpg', robots, modifiedDate } = Astro.props;
+const pageSchema = modifiedDate ? {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': canonicalUrl || new URL(Astro.url.pathname, Astro.site).href,
+  url: canonicalUrl || new URL(Astro.url.pathname, Astro.site).href,
+  name: title,
+  description,
+  dateModified: modifiedDate,
+  isPartOf: { '@id': 'https://driveschoolpro.com/#website' },
+  publisher: { '@id': 'https://driveschoolpro.com/#organization' },
+} : null;
 const GOOGLE_ADS_ID = import.meta.env.PUBLIC_GOOGLE_ADS_ID || '';
 ---
 
@@ -49,6 +63,7 @@ const GOOGLE_ADS_ID = import.meta.env.PUBLIC_GOOGLE_ADS_ID || '';
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
   <slot name="head" />
+  {pageSchema && <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />}
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -117,6 +132,7 @@ const GOOGLE_ADS_ID = import.meta.env.PUBLIC_GOOGLE_ADS_ID || '';
 <body class="min-h-screen flex flex-col pb-20 md:pb-0">
   <main class="flex-grow">
     <slot />
+    {modifiedDate && <UpdatedLine date={modifiedDate} />}
   </main>
 
   <footer class="py-6 text-center text-gray-400 text-sm border-t border-gray-100">

@@ -21,6 +21,10 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Full history: scripts/sitemap-lastmod.mjs dates each page by its last commit.
+          # A shallow clone gives every page the same date (the deploy), which Google ignores.
+          fetch-depth: 0
 
       # Node 24 (from .nvmrc): postbuild's verify-start.js imports .ts files,
       # which needs Node's built-in type stripping (Node 20 fails the build).

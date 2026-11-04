@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import PromoBanner from '../components/PromoBanner.astro';
 import CookieConsent from '../components/CookieConsent.astro';
 import SignupAttribution from '../components/SignupAttribution.astro';
+import UpdatedLine from '../components/UpdatedLine.astro';
 import { CONSENT_DEFAULT_DENIED, CONSENT_GRANTED_ALL } from '../utils/consent-mode';
 import '../styles/global.css';
 
@@ -15,6 +16,8 @@ interface Props {
   schemaType?: 'Article' | 'BlogPosting' | 'WebPage' | 'CollectionPage';
   publishedDate?: string;
   modifiedDate?: string;
+  /** Show a visible "Updated <modifiedDate>" line at the end of the page. */
+  showUpdated?: boolean;
   noindex?: boolean;
   author?: string;
 }
@@ -27,6 +30,7 @@ const {
   schemaType,
   publishedDate,
   modifiedDate,
+  showUpdated = false,
   noindex = false,
   author = 'John Powell'
 } = Astro.props;
@@ -263,6 +267,7 @@ const schemaOrg = {
   <main id="main-content" class="flex-grow pt-16 md:pt-20">
     <PromoBanner />
     <slot />
+    {showUpdated && modifiedDate && <UpdatedLine date={modifiedDate} />}
   </main>
 
   <Footer />
