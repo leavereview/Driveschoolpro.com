@@ -53,7 +53,8 @@ const faqItems: FAQItem[] = faqs.map((faq, index) => ({
   position: index + 1
 }));
 
-const schemaMarkup = schemaGen.getFAQPageSchema(faqItems, pageUrl);
+// Standalone <script> block, so it needs its own @context (without it the block is not schema.org data)
+const schemaMarkup = { '@context': 'https://schema.org', ...schemaGen.getFAQPageSchema(faqItems, pageUrl) };
 ---
 
 <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />

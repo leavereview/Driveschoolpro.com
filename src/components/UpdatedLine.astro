@@ -1,0 +1,21 @@
+---
+// Visible "Updated <date>" line for commercial pages (issue #16, action 10).
+// The date is set by hand in each page when its content changes. Never compute it
+// at build time: a date that moves on every deploy is not a real "updated" date.
+interface Props {
+  date: string; // YYYY-MM-DD
+  tone?: 'light' | 'dark';
+}
+const { date, tone = 'light' } = Astro.props;
+const label = new Date(`${date}T12:00:00Z`).toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'Europe/London',
+});
+---
+<div class={tone === 'dark' ? 'bg-brand-navy' : 'bg-white'}>
+  <p class={`container-custom py-4 text-sm ${tone === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+    Updated <time datetime={date}>{label}</time>
+  </p>
+</div>

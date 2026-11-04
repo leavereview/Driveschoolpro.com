@@ -21,6 +21,10 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Full history: scripts/sitemap-lastmod.mjs dates each page by its last commit.
+          # A shallow clone gives every page the same date (the deploy), which Google ignores.
+          fetch-depth: 0
 
       # Node 24 (from .nvmrc): postbuild's verify-start.js imports .ts files,
       # which needs Node's built-in type stripping (Node 20 fails the build).
@@ -35,6 +39,15 @@ jobs:
 
       - name: Build site
         run: npm run build
+
+      # IndexNow (issue #16): keep the live manifest from the previous deploy, then write
+      # this build's into dist/ so it ships with the site. A missing live copy (first run)
+      # means every sitemap URL is submitted once.
+      - name: Prepare IndexNow list
+        run: |
+          curl -fsS --max-time 20 https://driveschoolpro.com/indexnow-manifest.json \
+            -o "$RUNNER_TEMP/indexnow-previous.json" || echo '{}' > "$RUNNER_TEMP/indexnow-previous.json"
+          node scripts/indexnow.mjs manifest
 
       - name: Set up SSH
         env:
@@ -62,6 +75,11 @@ jobs:
             --filter='P /.DS_Store' \
             -e "ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes" \
             dist/ "ubuntu@${SERVER_IP}:/var/www/driveschoolpro.com/"
+
+      # Tell Bing and the other IndexNow engines which pages changed. Never fails the deploy.
+      - name: Notify IndexNow
+        continue-on-error: true
+        run: node scripts/indexnow.mjs submit "$RUNNER_TEMP/indexnow-previous.json"
 
       - name: Remove SSH key
         if: always()

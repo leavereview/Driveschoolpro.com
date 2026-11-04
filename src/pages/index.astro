@@ -12,7 +12,8 @@ const softwareApplicationSchema = {
   "@type": "SoftwareApplication",
   "@id": "https://driveschoolpro.com/#software",
   "name": "DriveSchoolPro",
-  "alternateName": "DriveSchoolPro",
+  "alternateName": "Drive School Pro",
+  "publisher": { "@id": "https://driveschoolpro.com/#organization" },
   "description": "Complete driving school management software for driving instructors and schools. Lesson scheduling, student management, automated billing, and instructor allocation in one platform.",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web, iOS, Android",
@@ -141,7 +142,7 @@ const homeFaqs = [
 ];
 ---
 
-<BaseLayout title="Driving School Software UK | DriveSchoolPro, Free Until 2027" description={`UK driving school software: DVSA 27-skill progress tracking, online booking, clash checks and lesson reminders. ${OFFER.short}, no card needed.`} image="/images/marketing/dashboard-overview.webp">
+<BaseLayout title="Driving School Software UK | DriveSchoolPro, Free Until 2027" description={`UK driving school software: DVSA 27-skill progress tracking, online booking, clash checks and lesson reminders. ${OFFER.short}, no card needed.`} image="/images/marketing/dashboard-overview.webp" modifiedDate="2026-11-04" showUpdated>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(softwareApplicationSchema)} />
   </Fragment>
@@ -157,8 +158,9 @@ const homeFaqs = [
         <!-- Each clause is a live feature (checked 2026-10-05). Not "review requests go out" —
              reviews are a one-tap nudge, not an automatic send. -->
         <p class="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-          Pupils book and pay on their phones. Reminders go out before every lesson. Your briefing
-          is written before you pull up, and progress is logged in a tap.
+          DriveSchoolPro is driving school software for UK instructors and schools. Pupils book and pay
+          on their phones, reminders go out before every lesson, your briefing is written before you pull up,
+          and progress is logged against all 27 DVSA skills. Web, iPhone and Android.
         </p>
         <BusinessNameCapture id="hero-capture" tone="dark" autofocus />
         <a href="#the-week" class="mt-4 inline-block text-sm text-gray-300 underline hover:text-white">See it work first</a>

@@ -211,6 +211,24 @@ function checkPage(filePath, pagePath, siteUrl, sitemapPaths, inboundLinks, outb
     failures.push('No outbound internal links to existing pages');
   }
 
+  // 7. Every JSON-LD block parses and carries its own @context
+  //    (a standalone block without @context is not read as schema.org data)
+  const ldBlocks = [...html.matchAll(/<script\s[^>]*type=["']?application\/ld\+json["']?[^>]*>([\s\S]*?)<\/script>/gi)];
+  for (const [, body] of ldBlocks) {
+    let data;
+    try {
+      data = JSON.parse(body);
+    } catch {
+      failures.push('JSON-LD block does not parse');
+      continue;
+    }
+    for (const item of Array.isArray(data) ? data : [data]) {
+      if (!item || typeof item !== 'object' || !item['@context']) {
+        failures.push(`JSON-LD ${item?.['@type'] ?? 'block'} has no @context`);
+      }
+    }
+  }
+
   return failures;
 }
 

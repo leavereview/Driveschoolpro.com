@@ -1,0 +1,400 @@
+---
+// /tools/adi-income-tax-calculator/ — issue #28.
+// Client-side only: the figures someone types are never sent, saved or put in the URL.
+// No <form> element on purpose, so analytics form-interaction events have nothing to hook.
+// The maths lives in src/utils/adi-tax.ts (tested in tests/adi-tax.test.ts).
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { OFFER } from '../../config/offer';
+import { DEFAULT_INPUTS, RATES, TAX_YEAR, estimate } from '../../utils/adi-tax';
+
+const updated = '2026-11-04';
+const d = DEFAULT_INPUTS;
+const initial = estimate(d);
+const gbp = (n: number) => '£' + Math.round(n).toLocaleString('en-GB');
+const fmt = (n: number) => n.toLocaleString('en-GB');
+
+const SOURCES = [
+  {
+    label: 'Income Tax rates and allowances for current and previous tax years',
+    href: 'https://www.gov.uk/government/publications/rates-and-allowances-income-tax/income-tax-rates-and-allowances-current-and-past',
+    note: 'Personal Allowance, the 20%, 40% and 45% bands, and the £100,000 taper.',
+  },
+  {
+    label: 'Income Tax Personal Allowance and basic rate limit, and certain NICs thresholds, from 6 April 2026 to 5 April 2028',
+    href: 'https://www.gov.uk/government/publications/the-personal-allowance-and-basic-rate-limit-for-income-tax-and-certain-national-insurance-contributions-nics-thresholds-from-6-april-2026-to-5-apr',
+    note: 'Fixes the Personal Allowance at £12,570 and the basic rate limit at £37,700 for 2026/27.',
+  },
+  {
+    label: 'Rates and allowances: National Insurance contributions',
+    href: 'https://www.gov.uk/government/publications/rates-and-allowances-national-insurance-contributions/rates-and-allowances-national-insurance-contributions',
+    note: 'Class 4 Lower and Upper Profits Limits, the 6% and 2% rates, and the Class 2 Small Profits Threshold.',
+  },
+  {
+    label: 'Self-employed National Insurance rates',
+    href: 'https://www.gov.uk/self-employed-national-insurance-rates',
+    note: 'How Class 2 and Class 4 apply to self-employed people.',
+  },
+  {
+    label: 'Expenses if you\'re self-employed',
+    href: 'https://www.gov.uk/expenses-if-youre-self-employed',
+    note: 'What counts as an allowable business expense, including car costs and simplified mileage.',
+  },
+  {
+    label: 'Scottish Income Tax',
+    href: 'https://www.gov.uk/scottish-income-tax',
+    note: 'Scottish taxpayers have different Income Tax bands, which this estimator does not use.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'How much does a driving instructor earn in the UK?',
+    answer: `It depends almost entirely on three numbers: your hourly rate, how many paid hours you teach a week, and how many weeks you work. At £${d.hourlyRate} an hour, ${d.lessonsPerWeek} paid hours a week and ${d.weeksWorked} weeks a year, an ADI takes ${gbp(initial.gross)} before costs. Car, fuel, insurance and any franchise fee come off that, which is why profit is the figure to plan around, not turnover. Put your own numbers into the estimator above.`,
+  },
+  {
+    question: 'How much tax does a self-employed driving instructor pay?',
+    answer: `A self-employed ADI pays Income Tax and Class 4 National Insurance on profit, which is lesson income minus allowable business expenses. For ${TAX_YEAR} in England, Wales and Northern Ireland, the first £${fmt(RATES.personalAllowance)} of profit is tax-free, the next £${fmt(RATES.basicRateLimit)} is taxed at 20%, and profit above £${fmt(RATES.personalAllowance + RATES.basicRateLimit)} at 40%. Class 4 NI is 6% on profit between £${fmt(RATES.class4LowerProfitsLimit)} and £${fmt(RATES.class4UpperProfitsLimit)} and 2% above that. On £30,000 of profit that comes to £3,486 Income Tax and £1,045.80 Class 4 NI.`,
+  },
+  {
+    question: 'Do driving instructors pay Class 2 National Insurance?',
+    answer: `Not as a compulsory payment. Since 6 April 2024 self-employed people with profits above the Small Profits Threshold (£7,105 for ${TAX_YEAR}, per GOV.UK) no longer pay Class 2 but are treated as having paid it, which protects their State Pension record. Below that threshold you can choose to pay Class 2 voluntarily. That is why this estimator shows Class 4 only.`,
+  },
+  {
+    question: 'Can I deduct my franchise fee, car and fuel costs?',
+    answer: 'Generally, yes. Costs incurred wholly and exclusively for your instructing business are allowable expenses, and a franchise fee, dual-control car costs, fuel, insurance, ADI registration and CPD usually qualify. If a car is also used privately, only the business share counts. You can claim actual car costs or use simplified mileage rates, but not both for the same car. GOV.UK lists the rules under "Expenses if you\'re self-employed"; an accountant can confirm what applies to you.',
+  },
+  {
+    question: 'Is a franchise fee charged when I am not working?',
+    answer: 'That depends on your franchise agreement. Many franchises charge a fixed weekly fee every week of the year, including holidays, which is why the estimator lets you choose between 52 weeks and only the weeks you work. Check your own contract. Our franchise guide compares franchising with going independent.',
+  },
+  {
+    question: 'Does Making Tax Digital apply to driving instructors?',
+    answer: 'It applies to self-employed people whose qualifying income, meaning turnover before expenses, is over the threshold: over £30,000 from 6 April 2027 and over £20,000 from 6 April 2028, according to GOV.UK. Many full-time ADIs are over £30,000. Our Making Tax Digital guide covers the dates and quarterly updates.',
+  },
+  {
+    question: 'Is this estimate accurate enough to set aside tax?',
+    answer: 'It is a sensible starting point, not a tax calculation. It assumes instructing is your only income, you live in England, Wales or Northern Ireland, and you are a sole trader rather than a limited company. It ignores pension contributions, student loan repayments, other income, capital allowances and payments on account. Many ADIs set aside the estimated tax and NI each month and check the real figure with HMRC or an accountant.',
+  },
+  {
+    question: 'Does DriveSchoolPro see or store the figures I enter?',
+    answer: 'No. The estimator runs entirely in your browser. The numbers you type are not sent to DriveSchoolPro, not saved, and not added to the page address. Close the page and they are gone.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+};
+
+const appSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'ADI income and tax estimator',
+  url: 'https://driveschoolpro.com/tools/adi-income-tax-calculator/',
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'Any (runs in a web browser)',
+  isAccessibleForFree: true,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'GBP' },
+  publisher: { '@id': 'https://driveschoolpro.com/#organization' },
+};
+
+const inputCls = 'w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-brand-red focus:ring-1 focus:ring-brand-red';
+const labelCls = 'block text-sm font-medium text-gray-800 mb-1';
+const hintCls = 'block text-xs text-gray-500 mt-1';
+---
+
+<BaseLayout
+  title={`ADI Income & Tax Calculator ${TAX_YEAR} | Driving Instructor Earnings`}
+  description={`Free ${TAX_YEAR} income and tax estimator for UK driving instructors. Enter your hourly rate, lessons, franchise fee and car costs to see profit, Income Tax and Class 4 NI.`}
+  modifiedDate={updated}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+
+  <div class="bg-gray-100 py-3">
+    <div class="container-custom">
+      <Breadcrumbs items={[
+        { label: 'Home', href: '/' },
+        { label: 'ADI income and tax estimator' },
+      ]} />
+    </div>
+  </div>
+
+  <section class="section bg-white border-b border-gray-100">
+    <div class="container-custom">
+      <div class="max-w-3xl">
+        <h1 class="text-3xl md:text-4xl font-bold text-brand-navy mb-4">
+          ADI income and tax estimator {TAX_YEAR}
+        </h1>
+        <p class="text-lg text-gray-600 mb-3">
+          For self-employed driving instructors in England, Wales and Northern Ireland. Enter your rate, hours and costs to
+          estimate your profit, Income Tax and Class 4 National Insurance for the {TAX_YEAR} tax year (6 April 2026 to 5 April 2027).
+        </p>
+        <p class="text-sm text-gray-500">
+          Your figures stay in your browser: nothing you type is sent to us or saved.
+          Rates last checked <time datetime={updated}>4 November 2026</time>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="grid lg:grid-cols-5 gap-8 max-w-6xl mx-auto" id="adi-estimator">
+        <!-- Inputs -->
+        <div class="lg:col-span-3 bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+          <h2 class="text-xl font-bold text-brand-navy mb-1">Your income</h2>
+          <p class="text-sm text-gray-500 mb-5">Paid lessons only: leave out cancellations you did not charge for.</p>
+          <div class="grid sm:grid-cols-2 gap-5 mb-8">
+            <label class="block">
+              <span class={labelCls}>Hourly rate (£)</span>
+              <input data-field="hourlyRate" type="number" inputmode="decimal" min="0" step="0.5" value={d.hourlyRate} class={inputCls} autocomplete="off" />
+            </label>
+            <label class="block">
+              <span class={labelCls}>Lessons per week</span>
+              <input data-field="lessonsPerWeek" type="number" inputmode="decimal" min="0" step="1" value={d.lessonsPerWeek} class={inputCls} autocomplete="off" />
+            </label>
+            <label class="block">
+              <span class={labelCls}>Lesson length</span>
+              <select data-field="lessonLength" class={inputCls}>
+                <option value="1" selected>1 hour</option>
+                <option value="1.5">1.5 hours</option>
+                <option value="2">2 hours</option>
+              </select>
+            </label>
+            <label class="block">
+              <span class={labelCls}>Weeks worked a year</span>
+              <input data-field="weeksWorked" type="number" inputmode="numeric" min="0" max="52" step="1" value={d.weeksWorked} class={inputCls} autocomplete="off" />
+              <span class={hintCls}>52 minus holidays, illness and quiet weeks.</span>
+            </label>
+          </div>
+
+          <h2 class="text-xl font-bold text-brand-navy mb-1">Your costs</h2>
+          <p class="text-sm text-gray-500 mb-5">Business costs only. Use 0 for anything that does not apply.</p>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <label class="block">
+              <span class={labelCls}>Franchise fee (£ per week)</span>
+              <input data-field="franchiseFeeWeekly" type="number" inputmode="decimal" min="0" step="5" value={d.franchiseFeeWeekly} class={inputCls} autocomplete="off" />
+              <span class={hintCls}>0 if you are independent.</span>
+            </label>
+            <fieldset class="block">
+              <legend class={labelCls}>Franchise fee charged</legend>
+              <div class="flex flex-col gap-1 text-sm text-gray-700 mt-1">
+                <label class="inline-flex items-center gap-2"><input type="radio" name="franchiseAllYear" value="1" data-field="franchiseAllYear" checked /> Every week (52)</label>
+                <label class="inline-flex items-center gap-2"><input type="radio" name="franchiseAllYear" value="0" data-field="franchiseAllYear" /> Only weeks I work</label>
+              </div>
+            </fieldset>
+            <label class="block">
+              <span class={labelCls}>Car costs (£ per month)</span>
+              <input data-field="carCostsMonthly" type="number" inputmode="decimal" min="0" step="10" value={d.carCostsMonthly} class={inputCls} autocomplete="off" />
+              <span class={hintCls}>Lease or finance, insurance, servicing, tyres, road tax. Leave at 0 if your franchise supplies the car.</span>
+            </label>
+            <label class="block">
+              <span class={labelCls}>Fuel (£ per week worked)</span>
+              <input data-field="fuelWeekly" type="number" inputmode="decimal" min="0" step="5" value={d.fuelWeekly} class={inputCls} autocomplete="off" />
+            </label>
+            <label class="block sm:col-span-2">
+              <span class={labelCls}>Other costs (£ per year)</span>
+              <input data-field="otherCostsYearly" type="number" inputmode="decimal" min="0" step="50" value={d.otherCostsYearly} class={inputCls} autocomplete="off" />
+              <span class={hintCls}>ADI registration, CPD, phone, software, accountant, marketing.</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="lg:col-span-2">
+          <div class="bg-brand-navy text-white rounded-xl p-6 lg:sticky lg:top-32" aria-live="polite">
+            <h2 class="text-xl font-bold mb-4">Your {TAX_YEAR} estimate</h2>
+            <dl class="space-y-2 text-sm">
+              <div class="flex justify-between"><dt class="text-gray-300">Gross lesson income</dt><dd class="font-semibold" data-out="gross">{gbp(initial.gross)}</dd></div>
+              <div class="flex justify-between pl-3"><dt class="text-gray-400">Franchise fee</dt><dd data-out="franchise">−{gbp(initial.franchise)}</dd></div>
+              <div class="flex justify-between pl-3"><dt class="text-gray-400">Car costs</dt><dd data-out="car">−{gbp(initial.car)}</dd></div>
+              <div class="flex justify-between pl-3"><dt class="text-gray-400">Fuel</dt><dd data-out="fuel">−{gbp(initial.fuel)}</dd></div>
+              <div class="flex justify-between pl-3"><dt class="text-gray-400">Other costs</dt><dd data-out="other">−{gbp(initial.other)}</dd></div>
+              <div class="flex justify-between border-t border-white/20 pt-2"><dt class="text-gray-300">Total costs</dt><dd class="font-semibold" data-out="costs">−{gbp(initial.costs)}</dd></div>
+              <div class="flex justify-between text-base"><dt>Estimated profit</dt><dd class="font-bold" data-out="profit">{gbp(initial.profit)}</dd></div>
+              <div class="flex justify-between border-t border-white/20 pt-2"><dt class="text-gray-300">Income Tax</dt><dd data-out="incomeTax">−{gbp(initial.incomeTax)}</dd></div>
+              <div class="flex justify-between"><dt class="text-gray-300">Class 4 National Insurance</dt><dd data-out="class4">−{gbp(initial.class4)}</dd></div>
+            </dl>
+            <div class="mt-5 rounded-lg bg-white/10 p-4">
+              <p class="text-sm text-gray-300">Estimated take-home after tax and NI</p>
+              <p class="text-3xl font-bold" data-out="takeHome">{gbp(initial.takeHome)}</p>
+              <p class="text-sm text-gray-300 mt-1">
+                about <span data-out="takeHomeMonthly">{gbp(initial.takeHome / 12)}</span> a month.
+                Set aside about <span data-out="setAsideMonthly">{gbp((initial.incomeTax + initial.class4) / 12)}</span> a month for tax and NI
+                (<span data-out="effectiveRate">{(initial.effectiveRate * 100).toFixed(1)}%</span> of profit).
+              </p>
+            </div>
+            <p class="text-xs text-gray-400 mt-4" data-out="mtdNote" hidden>
+              Your gross income is over £30,000. Making Tax Digital for Income Tax applies to self-employed people
+              with qualifying income over £30,000 from 6 April 2027 (GOV.UK). Qualifying income is turnover, before costs.{' '}
+              <a href="/blog/making-tax-digital-driving-instructors/" class="underline text-white">Read the guide</a>.
+            </p>
+            <p class="text-xs text-gray-400 mt-4">
+              An estimate, not tax advice. Assumes instructing is your only income, you are a sole trader and you are not a Scottish taxpayer.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">How the estimate is worked out</h2>
+        <ol class="list-decimal pl-5 space-y-3 text-gray-700 mb-8">
+          <li><strong>Gross income</strong> = hourly rate × lessons per week × lesson length × weeks worked.</li>
+          <li><strong>Costs</strong> = franchise fee (× 52 or × weeks worked) + car costs × 12 + fuel × weeks worked + other yearly costs.</li>
+          <li><strong>Profit</strong> = gross income − costs. This is the figure HMRC taxes, not your turnover.</li>
+          <li><strong>Income Tax</strong> on profit, using the {TAX_YEAR} rates below.</li>
+          <li><strong>Class 4 National Insurance</strong> on profit, using the {TAX_YEAR} rates below.</li>
+        </ol>
+
+        <h3 class="text-xl font-bold text-brand-navy mb-3">{TAX_YEAR} rates used (England, Wales and Northern Ireland)</h3>
+        <div class="overflow-x-auto mb-6">
+          <table class="w-full text-sm border border-gray-200">
+            <thead class="bg-gray-50 text-left">
+              <tr><th class="p-3 border-b border-gray-200">Band</th><th class="p-3 border-b border-gray-200">Profit</th><th class="p-3 border-b border-gray-200">Rate</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="p-3 border-b border-gray-100">Personal Allowance</td><td class="p-3 border-b border-gray-100">Up to £{fmt(RATES.personalAllowance)}</td><td class="p-3 border-b border-gray-100">0%</td></tr>
+              <tr><td class="p-3 border-b border-gray-100">Basic rate</td><td class="p-3 border-b border-gray-100">£{fmt(RATES.personalAllowance + 1)} to £{fmt(RATES.personalAllowance + RATES.basicRateLimit)}</td><td class="p-3 border-b border-gray-100">20%</td></tr>
+              <tr><td class="p-3 border-b border-gray-100">Higher rate</td><td class="p-3 border-b border-gray-100">£{fmt(RATES.personalAllowance + RATES.basicRateLimit + 1)} to £{fmt(RATES.additionalRateThreshold)}</td><td class="p-3 border-b border-gray-100">40%</td></tr>
+              <tr><td class="p-3 border-b border-gray-100">Additional rate</td><td class="p-3 border-b border-gray-100">Over £{fmt(RATES.additionalRateThreshold)}</td><td class="p-3 border-b border-gray-100">45%</td></tr>
+              <tr><td class="p-3 border-b border-gray-100">Class 4 NI (main rate)</td><td class="p-3 border-b border-gray-100">£{fmt(RATES.class4LowerProfitsLimit)} to £{fmt(RATES.class4UpperProfitsLimit)}</td><td class="p-3 border-b border-gray-100">6%</td></tr>
+              <tr><td class="p-3">Class 4 NI (upper rate)</td><td class="p-3">Over £{fmt(RATES.class4UpperProfitsLimit)}</td><td class="p-3">2%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-gray-700 mb-4">
+          The Personal Allowance shrinks by £1 for every £2 of income over £{fmt(RATES.taperThreshold)}, and is nil from £{fmt(RATES.additionalRateThreshold)}.
+          The estimator applies that taper. Class 2 National Insurance is not shown: since April 2024 it is no longer a compulsory payment
+          for the self-employed.
+        </p>
+        <p class="text-gray-700">
+          It does not account for pension contributions, student loan repayments, other income, capital allowances on a car you buy,
+          or payments on account, which HMRC usually asks for once your Self Assessment bill is over £1,000.
+        </p>
+
+        <h3 class="text-xl font-bold text-brand-navy mt-10 mb-3">Sources</h3>
+        <ul class="space-y-3 text-sm">
+          {SOURCES.map((s) => (
+            <li>
+              <a href={s.href} class="text-brand-red hover:underline" target="_blank" rel="noopener noreferrer">GOV.UK: {s.label}</a>
+              <span class="block text-gray-500">{s.note}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related / money pages -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Getting the income side right</h2>
+        <p class="text-gray-700 mb-4">
+          An estimate is only as good as the lesson income you put into it. DriveSchoolPro records every lesson, invoice and payment
+          (card, cash, bank transfer or cheque) against the pupil it belongs to, and reports revenue by period, so you can see what
+          you have actually earned rather than reconstruct it from a diary. It does not track expenses, log mileage or file anything
+          with HMRC: for that you still want accounting software or an accountant.
+          See <a href="/driving-instructor-accounting-software/" class="text-brand-red hover:underline">driving instructor accounting software</a> for
+          how the two fit together.
+        </p>
+        <ul class="grid sm:grid-cols-2 gap-3 mb-8 text-sm">
+          <li><a href="/blog/making-tax-digital-driving-instructors/" class="block bg-white rounded-lg border border-gray-100 p-4 hover:border-brand-red"><strong class="text-brand-navy">Making Tax Digital for driving instructors</strong><span class="block text-gray-500 mt-1">Thresholds, dates and quarterly updates.</span></a></li>
+          <li><a href="/driving-school-calculator/" class="block bg-white rounded-lg border border-gray-100 p-4 hover:border-brand-red"><strong class="text-brand-navy">Driving school revenue calculator</strong><span class="block text-gray-500 mt-1">Plan pricing, utilisation and growth.</span></a></li>
+          <li><a href="/blog/driving-school-franchise-guide/" class="block bg-white rounded-lg border border-gray-100 p-4 hover:border-brand-red"><strong class="text-brand-navy">Franchise or independent?</strong><span class="block text-gray-500 mt-1">What a franchise fee buys you.</span></a></li>
+          <li><a href="/driving-instructor-software/" class="block bg-white rounded-lg border border-gray-100 p-4 hover:border-brand-red"><strong class="text-brand-navy">Software for solo ADIs</strong><span class="block text-gray-500 mt-1">Booking, payments and pupil progress.</span></a></li>
+        </ul>
+        <div class="bg-white rounded-xl border border-gray-100 p-6">
+          <p class="text-gray-700 mb-4">
+            {OFFER.long}. See <a href="/pricing/" class="text-brand-red hover:underline">pricing</a> for the plans that follow.
+          </p>
+          <a href={OFFER.ctaPrimary.href} class="btn-primary">{OFFER.ctaPrimary.label}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-8">Driving instructor income and tax: common questions</h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="group bg-white rounded-xl border border-gray-100 shadow-sm">
+              <summary class="flex items-center justify-between px-5 py-4 cursor-pointer font-medium text-gray-900 list-none">
+                {faq.question}
+                <svg class="w-5 h-5 text-gray-400 flex-shrink-0 ml-3 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed border-t border-gray-50 pt-3">
+                {faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Runs in the browser only. Reads the inputs, writes the results. It does not
+  // send, store (no localStorage, cookies or URL) or log anything.
+  import { estimate, DEFAULT_INPUTS, type EstimatorInputs } from '../../utils/adi-tax';
+
+  const root = document.getElementById('adi-estimator');
+  if (root) {
+    const gbp = (n: number) => (n < 0 ? '−£' : '£') + Math.round(Math.abs(n)).toLocaleString('en-GB');
+    const out = (key: string) => root.querySelector<HTMLElement>(`[data-out="${key}"]`);
+    const num = (field: keyof EstimatorInputs) => {
+      const el = root.querySelector<HTMLInputElement | HTMLSelectElement>(`[data-field="${field}"]`);
+      const v = el ? parseFloat(el.value) : NaN;
+      return Number.isFinite(v) ? v : 0;
+    };
+
+    const update = () => {
+      const allYear = root.querySelector<HTMLInputElement>('input[name="franchiseAllYear"]:checked');
+      const e = estimate({
+        ...DEFAULT_INPUTS,
+        hourlyRate: num('hourlyRate'),
+        lessonsPerWeek: num('lessonsPerWeek'),
+        lessonLength: num('lessonLength'),
+        weeksWorked: num('weeksWorked'),
+        franchiseFeeWeekly: num('franchiseFeeWeekly'),
+        franchiseAllYear: allYear ? allYear.value === '1' : true,
+        carCostsMonthly: num('carCostsMonthly'),
+        fuelWeekly: num('fuelWeekly'),
+        otherCostsYearly: num('otherCostsYearly'),
+      });
+      const set = (key: string, text: string) => { const el = out(key); if (el) el.textContent = text; };
+      set('gross', gbp(e.gross));
+      for (const k of ['franchise', 'car', 'fuel', 'other', 'costs', 'incomeTax', 'class4'] as const)
+        set(k, '−' + gbp(e[k]));
+      set('profit', gbp(e.profit));
+      set('takeHome', gbp(e.takeHome));
+      set('takeHomeMonthly', gbp(e.takeHome / 12));
+      set('setAsideMonthly', gbp((e.incomeTax + e.class4) / 12));
+      set('effectiveRate', (e.effectiveRate * 100).toFixed(1) + '%');
+      const mtd = out('mtdNote');
+      if (mtd) mtd.hidden = e.gross <= 30_000;
+    };
+
+    root.addEventListener('input', update);
+    root.addEventListener('change', update);
+    update();
+  }
+</script>
