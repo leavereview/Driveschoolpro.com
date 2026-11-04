@@ -19,6 +19,13 @@
  *      "when the file was last written" really is the honest answer
  *   5. nothing — omit lastmod rather than invent one
  *
+ * Fail safe: git dates (2) and mtimes (4) are only trusted in a FULL clone. In a
+ * shallow clone (actions/checkout defaults to fetch-depth: 1) every file's "last
+ * commit" is the one grafted HEAD commit, so every page would get the deploy's merge
+ * time — that is exactly what put 2026-11-04T08:47 on 94 of 118 URLs (issue #16).
+ * Without git, mtime is just the checkout time, which is equally wrong. In both cases
+ * we skip those sources and fall through to frontmatter dates or no lastmod at all.
+ *
  * Usage in astro.config.mjs:
  *
  *     import { buildLastmodMap, lastmodSerializer } from '../scripts/sitemap-lastmod.mjs';
@@ -42,6 +49,35 @@ function walk(dir, out = []) {
     else out.push(full);
   }
   return out;
+}
+
+/**
+ * Can git history be trusted for per-file dates here?
+ * Returns 'full', 'shallow' or 'none'. Cached per site root.
+ */
+const historyCache = new Map();
+export function gitHistoryState(cwd) {
+  if (historyCache.has(cwd)) return historyCache.get(cwd);
+  let state;
+  try {
+    const out = execFileSync('git', ['rev-parse', '--is-shallow-repository'], {
+      cwd,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim();
+    state = out === 'false' ? 'full' : 'shallow';
+  } catch {
+    state = 'none';
+  }
+  if (state !== 'full') {
+    console.warn(
+      `[sitemap-lastmod] git history is ${state === 'shallow' ? 'SHALLOW' : 'MISSING'} in ${cwd}: ` +
+        'not using git or file-mtime dates (they would all read as the deploy time). ' +
+        'Pages without a frontmatter date get no lastmod. Use a full clone (fetch-depth: 0) for real dates.',
+    );
+  }
+  historyCache.set(cwd, state);
+  return state;
 }
 
 /** Last commit date for a file, ISO 8601, or null if untracked / not a repo. */
@@ -117,6 +153,27 @@ function toIso(value) {
 }
 
 /**
+ * The honest last-modified date for one source file, or null if there isn't one.
+ * Same rules as the sitemap, so visible "Updated" dates and schema dateModified
+ * always agree with <lastmod>.
+ * @param {string} file absolute path to the page/content source file
+ * @param {string} siteRoot absolute path to the site folder
+ * @returns {string|null} ISO 8601
+ */
+export function pageLastModified(file, siteRoot) {
+  const { updated, published } = frontmatterDates(file);
+  const historyOk = gitHistoryState(siteRoot) === 'full';
+  const gitDate = historyOk ? toIso(gitLastModified(file, siteRoot)) : null;
+  return (
+    toIso(updated) ||
+    gitDate ||
+    toIso(published) ||
+    // mtime only for files a full repo has never seen (new, uncommitted pages).
+    (historyOk ? toIso(fileMtime(file)) : null)
+  );
+}
+
+/**
  * Build a Map of route key -> ISO date for one site.
  * @param {string} siteRoot absolute path to the site folder (contains src/, astro.config.mjs)
  * @returns {Map<string,string>}
@@ -126,12 +183,7 @@ export function buildLastmodMap(siteRoot) {
 
   const record = (routeKey, file) => {
     if (routeKey === null) return;
-    const { updated, published } = frontmatterDates(file);
-    const date =
-      toIso(updated) ||
-      toIso(gitLastModified(file, siteRoot)) ||
-      toIso(published) ||
-      toIso(fileMtime(file));
+    const date = pageLastModified(file, siteRoot);
     if (date) map.set(routeKey, date);
   };
 
