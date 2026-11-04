@@ -42,7 +42,8 @@ const breadcrumbItems: BreadcrumbItem[] = items.map((item, index) => ({
   position: index + 1
 }));
 
-const schemaMarkup = schemaGen.getBreadcrumbSchema(breadcrumbItems);
+// Standalone <script> block, so it needs its own @context (without it the block is not schema.org data)
+const schemaMarkup = { '@context': 'https://schema.org', ...schemaGen.getBreadcrumbSchema(breadcrumbItems) };
 ---
 
 <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
