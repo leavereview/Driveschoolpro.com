@@ -36,6 +36,15 @@ jobs:
       - name: Build site
         run: npm run build
 
+      # IndexNow (issue #16): keep the live manifest from the previous deploy, then write
+      # this build's into dist/ so it ships with the site. A missing live copy (first run)
+      # means every sitemap URL is submitted once.
+      - name: Prepare IndexNow list
+        run: |
+          curl -fsS --max-time 20 https://driveschoolpro.com/indexnow-manifest.json \
+            -o "$RUNNER_TEMP/indexnow-previous.json" || echo '{}' > "$RUNNER_TEMP/indexnow-previous.json"
+          node scripts/indexnow.mjs manifest
+
       - name: Set up SSH
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
@@ -62,6 +71,11 @@ jobs:
             --filter='P /.DS_Store' \
             -e "ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes" \
             dist/ "ubuntu@${SERVER_IP}:/var/www/driveschoolpro.com/"
+
+      # Tell Bing and the other IndexNow engines which pages changed. Never fails the deploy.
+      - name: Notify IndexNow
+        continue-on-error: true
+        run: node scripts/indexnow.mjs submit "$RUNNER_TEMP/indexnow-previous.json"
 
       - name: Remove SSH key
         if: always()
