@@ -31,10 +31,15 @@ function makeSite() {
   writeFileSync(join(pages, 'new.astro'), '<p>new</p>');
   git(['add', '.']);
   git(['commit', '-q', '-m', 'two'], '2026-03-20T10:00:00Z');
+  // A non-content sweep over every page, marked so it doesn't count as an update.
+  writeFileSync(join(pages, 'old.astro'), '<p>old</p>\n');
+  writeFileSync(join(pages, 'new.astro'), '<p>new</p>\n');
+  git(['add', '.']);
+  git(['commit', '-q', '-m', 'sweep\n\nAdd date line.\nLastmod: skip'], '2026-04-01T10:00:00Z');
   return { root, site };
 }
 
-test('full clone: each page gets its own last-commit date; frontmatter wins', () => {
+test('full clone: each page gets its own last-commit date, Lastmod: skip commits ignored, frontmatter wins', () => {
   const { root, site } = makeSite();
   try {
     const map = buildLastmodMap(site);

@@ -1,0 +1,17 @@
+---
+/**
+ * Visible "Updated <date>" line for money and compare pages. Renders nothing when
+ * there's no trustworthy date, so the page never shows a wrong one. Pass the same
+ * ISO string used for the page's schema dateModified (src/utils/lastModified.ts).
+ */
+import { formatUkDate } from '../utils/lastModified';
+
+interface Props {
+  iso: string | null;
+  class?: string;
+}
+const { iso, class: className = 'text-sm text-gray-400 mb-4' } = Astro.props;
+---
+{iso && (
+  <p class={className}>Updated <time datetime={iso}>{formatUkDate(iso)}</time></p>
+)}

@@ -7,6 +7,11 @@ import ComparisonTable from '../components/seo/ComparisonTable.astro';
 import FAQEnhanced from '../components/seo/FAQEnhanced.astro';
 import MarketingScreenshot from '../components/MarketingScreenshot.astro';
 import { OFFER } from '../config/offer';
+import UpdatedDate from '../components/UpdatedDate.astro';
+import { lastModifiedFor } from '../utils/lastModified';
+
+// Same source as the sitemap <lastmod>; null (no date shown) if history is unavailable.
+const updated = lastModifiedFor(Astro.url.pathname);
 
 const freeStats = [
   {
@@ -195,7 +200,7 @@ const schemaMarkup = {
     "name": "DriveSchoolPro"
   },
   "datePublished": "2026-01-18",
-  "dateModified": "2026-01-18"
+  ...(updated ? { dateModified: updated } : {})
 };
 ---
 
@@ -221,6 +226,7 @@ const schemaMarkup = {
       <div class="max-w-3xl">
         <span class="inline-block px-4 py-1 bg-brand-red/20 text-brand-red-light rounded-full text-sm font-medium mb-4">Free Software Guide</span>
         <h1 class="text-4xl md:text-5xl font-bold mb-4">Free Driving School Software: What's Actually Available?</h1>
+        <UpdatedDate iso={updated} />
         <p class="text-xl text-gray-300 mb-8">
           Searching for free driving school software? Good news: DriveSchoolPro is the full product, free until 31 March 2027 while we're in early access. This honest guide also covers what other "free" options really offer — and their hidden costs.
         </p>

@@ -13,6 +13,8 @@
  */
 import { OFFER } from '../../config/offer';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import UpdatedDate from '../UpdatedDate.astro';
+import { lastModifiedFor } from '../../utils/lastModified';
 import BreadcrumbsEnhanced from '../seo/BreadcrumbsEnhanced.astro';
 import FeaturedAnswer from '../seo/FeaturedAnswer.astro';
 import ComparisonTable from '../seo/ComparisonTable.astro';
@@ -30,7 +32,7 @@ interface Props {
     description: string;
     schemaDescription: string;
     datePublished: string;
-    dateModified: string;
+    // dateModified is not passed in: it comes from git, same as the sitemap <lastmod>.
   };
   checkedOn: string;
   heroIntro: string;
@@ -57,6 +59,8 @@ const {
 const alternatives = alternativesKey ? alternativesTo(alternativesKey) : [];
 
 const pageUrl = `https://driveschoolpro.com/compare/${competitor.slug}/`;
+// Same source as the sitemap <lastmod>; null (no date shown) if history is unavailable.
+const updated = lastModifiedFor(Astro.url.pathname);
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -66,7 +70,7 @@ const schemaMarkup = {
   author: { '@type': 'Organization', name: 'DriveSchoolPro' },
   publisher: { '@type': 'Organization', name: 'DriveSchoolPro' },
   datePublished: seo.datePublished,
-  dateModified: seo.dateModified,
+  ...(updated ? { dateModified: updated } : {}),
   about: [
     { '@type': 'SoftwareApplication', name: 'DriveSchoolPro', applicationCategory: 'BusinessApplication' },
     {
@@ -96,6 +100,7 @@ const schemaMarkup = {
       <div class="max-w-3xl">
         <span class="inline-block px-4 py-1 bg-brand-red/20 text-brand-red-light rounded-full text-sm font-medium mb-4">Platform Comparison</span>
         <h1 class="text-4xl md:text-5xl font-bold mb-4">{h1 ?? `DriveSchoolPro vs ${competitor.name}`}</h1>
+        <UpdatedDate iso={updated} />
         <p class="text-xl text-gray-300 mb-8">{heroIntro}</p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label}</a>

@@ -14,6 +14,7 @@
  *
  *   1. frontmatter `updatedDate` — an explicit author statement, most authoritative
  *   2. git last-commit date for the source file — reflects actual edits
+ *      (commits with a "Lastmod: skip" line in the message are ignored)
  *   3. frontmatter `date` / `pubDate` — publish date, correct when never edited
  *   4. filesystem mtime — only reached for files git doesn't know about yet, where
  *      "when the file was last written" really is the honest answer
@@ -80,10 +81,18 @@ export function gitHistoryState(cwd) {
   return state;
 }
 
+/**
+ * Commits whose message has a line "Lastmod: skip" are ignored. Use it for commits
+ * that touch pages without changing what a reader sees as content (e.g. adding the
+ * "Updated" date line itself, link-only or formatting sweeps), so they don't make
+ * every page look freshly updated.
+ */
+const SKIP_TRAILER = '^Lastmod: skip';
+
 /** Last commit date for a file, ISO 8601, or null if untracked / not a repo. */
 function gitLastModified(file, cwd) {
   try {
-    const out = execFileSync('git', ['log', '-1', '--format=%cI', '--', file], {
+    const out = execFileSync('git', ['log', '-1', '--format=%cI', '--invert-grep', `--grep=${SKIP_TRAILER}`, '--', file], {
       cwd,
       encoding: 'utf8',
       stdio: ['ignore', 'pipe', 'ignore'],

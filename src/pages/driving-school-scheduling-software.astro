@@ -7,6 +7,11 @@ import ComparisonTable from '../components/seo/ComparisonTable.astro';
 import FAQEnhanced from '../components/seo/FAQEnhanced.astro';
 import MarketingScreenshot from '../components/MarketingScreenshot.astro';
 import { OFFER, PRICING, PRICE_LINE } from '../config/offer';
+import UpdatedDate from '../components/UpdatedDate.astro';
+import { lastModifiedFor } from '../utils/lastModified';
+
+// Same source as the sitemap <lastmod>; null (no date shown) if history is unavailable.
+const updated = lastModifiedFor(Astro.url.pathname);
 
 // Target: 'driving school booking software' (GSC 90 days to 31 Oct 2026: 428 impressions at 49, the
 // site's biggest booking query), 'driving school booking system', 'driving school booking app',
@@ -230,7 +235,7 @@ const schemaMarkup = {
     "name": "DriveSchoolPro"
   },
   "datePublished": "2025-01-01",
-  "dateModified": "2026-11-02"
+  ...(updated ? { dateModified: updated } : {})
 };
 ---
 
@@ -239,7 +244,7 @@ const schemaMarkup = {
   description="Driving school booking software that lets pupils book online and checks pupil, instructor and car before every lesson. Shared diary, email reminders. Free until 31 March 2027."
   image="/images/marketing/calendar-week-view.webp"
   publishedDate="2025-01-01"
-  modifiedDate="2026-11-02"
+  modifiedDate={updated ?? undefined}
 >
   <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
 
@@ -258,6 +263,7 @@ const schemaMarkup = {
       <div class="max-w-3xl">
         <span class="inline-block bg-brand-red/20 text-brand-red-light px-3 py-1 rounded-full text-sm mb-4">Ultimate Guide</span>
         <h1 class="text-4xl md:text-5xl font-bold mb-4">Driving School Booking and Scheduling Software</h1>
+        <UpdatedDate iso={updated} />
         <p class="text-xl text-gray-300 mb-4">
           <strong>Driving school booking software</strong> lets pupils book lessons online into the times your instructors are free, and gives the office one shared diary with clash checks across every pupil, instructor and car. DriveSchoolPro adds AI-generated lesson briefings so every lesson starts with context, and Google review requests when a pupil passes.
         </p>

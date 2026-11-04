@@ -6,6 +6,11 @@ import ComparisonTable from '../components/seo/ComparisonTable.astro';
 import FAQEnhanced from '../components/seo/FAQEnhanced.astro';
 import ProductDemo from '../components/ProductDemo.astro';
 import { OFFER } from '../config/offer';
+import UpdatedDate from '../components/UpdatedDate.astro';
+import { lastModifiedFor } from '../utils/lastModified';
+
+// Same source as the sitemap <lastmod>; null (no date shown) if history is unavailable.
+const updated = lastModifiedFor(Astro.url.pathname);
 
 // Target: 'driving instructor booking' (vol 260, no page), 'driving instructor booking software'
 // (vol 50, GSC 23.6), 'driving instructor booking system', 'instructor booking system' and
@@ -90,7 +95,7 @@ const articleSchema = {
   author: { '@type': 'Organization', name: 'DriveSchoolPro' },
   publisher: { '@type': 'Organization', name: 'DriveSchoolPro' },
   datePublished: '2026-11-02',
-  dateModified: '2026-11-02',
+  ...(updated ? { dateModified: updated } : {}),
   mainEntityOfPage: pageUrl,
 };
 
@@ -111,7 +116,7 @@ const softwareSchema = {
   description="A driving instructor booking system that lets pupils book lessons online, from your website or their app, only into times you're free. Free until 31 March 2027, no card."
   image="/images/marketing/portal-book-lesson-type-mobile.webp"
   publishedDate="2026-11-02"
-  modifiedDate="2026-11-02"
+  modifiedDate={updated ?? undefined}
 >
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
@@ -129,6 +134,7 @@ const softwareSchema = {
       <div class="max-w-3xl">
         <span class="inline-block bg-brand-red/20 text-brand-red-light px-3 py-1 rounded-full text-sm mb-4">Online booking for ADIs</span>
         <h1 class="text-4xl md:text-5xl font-bold mb-4">A Driving Instructor Booking System That Only Offers Times You're Free</h1>
+        <UpdatedDate iso={updated} />
         <p class="text-xl text-gray-300 mb-4">
           Pupils book their own driving lessons online, from a button on your website or from their
           app, at ten at night or while you're teaching. Every booking is checked against your diary,

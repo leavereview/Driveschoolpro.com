@@ -6,6 +6,11 @@ import ComparisonTable from '../components/seo/ComparisonTable.astro';
 import FAQEnhanced from '../components/seo/FAQEnhanced.astro';
 import MarketingScreenshot from '../components/MarketingScreenshot.astro';
 import { OFFER, PRICING, PRICE_LINE } from '../config/offer';
+import UpdatedDate from '../components/UpdatedDate.astro';
+import { lastModifiedFor } from '../utils/lastModified';
+
+// Same source as the sitemap <lastmod>; null (no date shown) if history is unavailable.
+const updated = lastModifiedFor(Astro.url.pathname);
 
 // Claims on this page are limited to what the rest of the site already states
 // (features/scheduling, features/getting-paid, features/lesson-briefings,
@@ -102,7 +107,7 @@ const schemaMarkup = {
   author: { '@type': 'Organization', name: 'DriveSchoolPro' },
   publisher: { '@type': 'Organization', name: 'DriveSchoolPro' },
   datePublished: '2026-10-16',
-  dateModified: '2026-11-02',
+  ...(updated ? { dateModified: updated } : {}),
   mainEntityOfPage: pageUrl,
 };
 
@@ -123,7 +128,7 @@ const softwareSchema = {
   description="An ADI diary app that blocks double-bookings across pupil, instructor and car and reminds pupils by email. A driving instructor diary for web, iPhone and Android. Free until 31 March 2027."
   image="/images/marketing/calendar-week-view.webp"
   publishedDate="2026-10-16"
-  modifiedDate="2026-11-02"
+  modifiedDate={updated ?? undefined}
 >
   <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
   <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
@@ -141,6 +146,7 @@ const softwareSchema = {
       <div class="max-w-3xl">
         <span class="inline-block bg-brand-red/20 text-brand-red-light px-3 py-1 rounded-full text-sm mb-4">ADI diary app</span>
         <h1 class="text-4xl md:text-5xl font-bold mb-4">The Driving Instructor Diary App That Won't Let You Double-Book</h1>
+        <UpdatedDate iso={updated} />
         <p class="text-xl text-gray-300 mb-4">
           DriveSchoolPro is an ADI diary app built for UK driving instructors. Day, week and month views,
           drag-and-drop rescheduling, clash checks across the pupil, the instructor and the car, and

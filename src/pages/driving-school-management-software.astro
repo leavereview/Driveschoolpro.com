@@ -7,6 +7,11 @@ import ComparisonTable from '../components/seo/ComparisonTable.astro';
 import FAQEnhanced from '../components/seo/FAQEnhanced.astro';
 import MarketingScreenshot from '../components/MarketingScreenshot.astro';
 import { OFFER } from '../config/offer';
+import UpdatedDate from '../components/UpdatedDate.astro';
+import { lastModifiedFor } from '../utils/lastModified';
+
+// Same source as the sitemap <lastmod>; null (no date shown) if history is unavailable.
+const updated = lastModifiedFor(Astro.url.pathname);
 
 // DriveSchoolPro at a glance — verifiable product facts, not industry estimates
 const managementStats = [
@@ -228,7 +233,7 @@ const schemaMarkup = {
     "name": "DriveSchoolPro"
   },
   "datePublished": "2025-01-01",
-  "dateModified": "2026-01-15"
+  ...(updated ? { dateModified: updated } : {})
 };
 ---
 
@@ -254,6 +259,7 @@ const schemaMarkup = {
       <div class="max-w-3xl">
         <span class="inline-block bg-brand-red/20 text-brand-red-light px-3 py-1 rounded-full text-sm mb-4">Complete Guide</span>
         <h1 class="text-4xl md:text-5xl font-bold mb-4">Driving School Management Software</h1>
+        <UpdatedDate iso={updated} />
         <p class="text-xl text-gray-300 mb-4">
           <strong>Driving school student management software</strong> centralizes pupil records, DVSA progress tracking, driving test readiness, scheduling, payments, and reporting into one integrated system — purpose-built for UK ADIs.
         </p>
