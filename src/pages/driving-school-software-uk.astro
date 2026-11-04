@@ -5,6 +5,10 @@ import LandingLayout from '../layouts/LandingLayout.astro';
 const GOOGLE_ADS_ID = import.meta.env.PUBLIC_GOOGLE_ADS_ID || '';
 const GOOGLE_ADS_CONVERSION_LABEL = import.meta.env.PUBLIC_GOOGLE_ADS_CONVERSION_LABEL || '';
 
+// Google Ads landing page: noindex (links still followed) and kept out of the sitemap,
+// so it doesn't compete with the homepage and /driving-school-management-software/
+// for organic "driving school software" searches (issue #16). Organic pages link to
+// /driving-school-management-software/ instead.
 const pageUrl = 'https://driveschoolpro.com/driving-school-software-uk/';
 
 // ── Differentiator trio (school angle) ────────────────────────────────
@@ -94,7 +98,7 @@ const softwareSchema = {
   description="Run every instructor's diary, pupils and payments from one dashboard, with DVSA tracking and reporting built in. Free during early access — until 31 March 2027. No card required."
   canonicalUrl={pageUrl}
   ogImage="/images/marketing/instructor-availability.webp"
-  robots="index, follow"
+  robots="noindex, follow"
   modifiedDate="2026-11-04"
 >
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />

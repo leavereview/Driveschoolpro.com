@@ -40,7 +40,7 @@ Choosing driving school software is mostly a question of fit: a solo ADI, a thre
 - **Solo ADI who wants the most established UK app, with theory practice:** Total Drive.
 - **Solo ADI on the lowest monthly price:** LessonBuddy or Lesson Diary, both £9.99 a month.
 - **Instructor who wants text reminders included:** MyDriveTime or GoRoadie Pro.
-- **Multi-car school that wants vehicle clash checks and MOT, tax and insurance dates:** [DriveSchoolPro](/driving-school-software-uk/).
+- **Multi-car school that wants vehicle clash checks and MOT, tax and insurance dates:** [DriveSchoolPro](/driving-school-management-software/).
 - **School with 10 or more instructors on a budget:** MyDriveTime, whose extra instructors fall to £5 a month each.
 - **Franchise or white-label:** Driving School Office.
 - **Just online booking on a light diary:** SimplyBook.me or Reservio on a free plan.
