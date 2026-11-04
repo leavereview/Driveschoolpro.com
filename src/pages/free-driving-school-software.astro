@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { PRICING } from '../config/offer';
 import BreadcrumbsEnhanced from '../components/seo/BreadcrumbsEnhanced.astro';
 import FeaturedAnswer from '../components/seo/FeaturedAnswer.astro';
 import StatisticsSection from '../components/seo/StatisticsSection.astro';
@@ -10,173 +11,165 @@ import { OFFER } from '../config/offer';
 
 const freeStats = [
   {
-    label: 'DriveSchoolPro Today',
+    label: 'Price today',
     value: '£0',
-    context: 'The full product, free during early access — no per-student fees'
+    context: 'Every feature, during early access'
   },
   {
-    label: 'Free Until',
+    label: 'Free until',
     value: '31 Mar 2027',
-    context: 'Full access, no card required'
+    context: 'No card required to sign up'
   },
   {
-    label: 'Students',
-    value: 'Unlimited',
-    context: 'No caps — even while free'
+    label: 'Free plan from 1 Apr 2027',
+    value: '£0',
+    context: `For ever: ${PRICING.free.instructors} instructor, up to ${PRICING.free.lessonsPerMonth} lessons a month`
   },
   {
-    label: 'DVSA Skills Tracked',
+    label: 'Solo plan',
+    value: `£${PRICING.solo.price}`,
+    context: 'A month, unlimited lessons, no VAT charged'
+  },
+  {
+    label: 'School plan',
+    value: `£${PRICING.school.price}`,
+    context: `A month, plus £${PRICING.school.perExtraInstructor} per extra instructor`
+  },
+  {
+    label: 'DVSA skills tracked',
     value: '27',
-    context: 'Across 8 categories — more than free tools track'
-  },
-  {
-    label: 'Conflict Detection',
-    value: '3-way',
-    context: 'Student, instructor and vehicle'
-  },
-  {
-    label: 'Admin Time Saved',
-    value: '10+ hrs',
-    context: 'Per week — based on early user feedback'
+    context: 'Across 8 categories, on every plan'
   }
 ];
 
+const P = PRICING;
+
+// "How it compares" rows. Other vendors are described by type, not by name or price:
+// named, dated competitor details live only on /blog/best-driving-school-software/.
 const comparisonData = [
   {
-    label: 'Drag-and-Drop Scheduling',
-    values: [true, false, false],
+    label: 'What it costs',
+    values: ['£0 until 31 March 2027', '£0 for ever', '£0', 'Monthly fee after the trial', '£0'],
     highlight: true
   },
   {
-    label: 'Automated Email Reminders',
-    values: [true, false, false],
-    highlight: true
+    label: 'Time limit',
+    values: ['Free until 31 March 2027', 'None', 'None', 'Usually 14 to 60 days', 'None']
   },
   {
-    label: 'Unlimited Students',
-    values: [true, false, false]
+    label: 'Usage limit',
+    values: ['None', `${P.free.instructors} instructor, ${P.free.lessonsPerMonth} lessons a month`, 'Capped bookings each month', 'Varies', 'None']
   },
   {
-    label: 'Invoicing & Payment Recording',
-    values: [true, false, false]
+    label: 'DVSA 27-skill progress tracking',
+    values: [true, true, false, 'Varies', false]
   },
   {
-    label: 'DVSA Competency Tracking',
-    values: [true, false, false]
+    label: 'Automatic lesson reminders',
+    values: ['Email', 'Email', 'Varies', 'Varies', false]
   },
   {
-    label: 'Responsive Web App',
-    values: [true, false, false]
+    label: 'Pupils book online',
+    values: [true, true, true, 'Varies', false]
   },
   {
-    label: 'Customer Support',
-    values: [true, false, false]
-  },
-  {
-    label: 'GDPR Compliance',
-    values: [true, true, false]
-  },
-  {
-    label: 'Data Backup',
-    values: [true, false, false]
-  },
-  {
-    label: 'No Usage Limits',
-    values: [true, false, false]
+    label: 'Built for UK driving instructors',
+    values: [true, true, false, 'Mostly', false]
   }
 ];
 
 const faqItems = [
   {
-    question: "Is there truly free driving school software?",
-    answer: "Yes — DriveSchoolPro is genuinely free right now. The full product — unlimited students, scheduling, DVSA tracking, invoicing, and automated reminders — is free until 31 March 2027 while we're in early access, with no card required. Most other 'free' options are freemium plans with severe limitations: 5-10 student caps, no online booking, no automated email reminders, no payment recording.",
+    question: "Is there a free version of driving school software?",
+    answer: `Yes. DriveSchoolPro is free while it's in early access, until 31 March 2027. You get every feature, for solo instructors and multi-instructor schools, with no card required. From ${P.startDate} there's a permanent Free plan for ${P.free.instructors} instructor and up to ${P.free.lessonsPerMonth} lessons a month, with every feature including AI lesson briefings.`,
     links: [
-      { text: "See what's included", url: '/pricing/' },
+      { text: 'See pricing', url: '/pricing/' },
+      { text: OFFER.ctaPrimary.labelShort, url: OFFER.ctaPrimary.href }
+    ]
+  },
+  {
+    question: "What's included in DriveSchoolPro for free?",
+    answer: "Until 31 March 2027, everything: the diary with drag-and-drop rescheduling, email lesson reminders, online booking and the pupil portal, DVSA progress tracking across all 27 skills, AI lesson briefings, invoicing and payment recording, and multi-instructor accounts with vehicle tracking. There are no setup fees and no VAT.",
+    links: [
       { text: 'All features', url: '/' }
     ]
   },
   {
-    question: "What features are typically included in free driving school software?",
-    answer: "Free plans usually include basic scheduling (5-10 students max), simple calendar views, manual reminders, and limited storage. Premium features excluded from free plans: drag-and-drop scheduling, automated email reminders, invoicing, DVSA competency tracking, multi-instructor support, student portal access, and customer support. These limitations make free plans impractical beyond hobby-level use.",
+    question: "What are the limits of the free version?",
+    answer: `During early access there's no lesson or pupil limit. From ${P.startDate} the Free plan covers ${P.free.instructors} instructor and up to ${P.free.lessonsPerMonth} lessons a month, with email reminders. Cancelled lessons and no-shows don't count towards the limit. Text and WhatsApp reminders are coming soon and will be on Solo and School, because each message costs us money.`,
     links: [
-      { text: 'Feature comparison', url: '/' }
+      { text: 'Plan details', url: '/pricing/' }
     ]
   },
   {
-    question: "Can I run a driving school on free software alone?",
-    answer: "With DriveSchoolPro, yes — because you get the full product free until 31 March 2027, not a stripped-back tier. With typical freemium tools the limitations quickly appear: no drag-and-drop scheduling means clunky diary management, manual reminders lead to no-shows, student limits block growth, and no invoicing requires separate tools. Free only works when it's the whole product.",
+    question: "What happens if I go over 60 lessons a month on the Free plan?",
+    answer: "Nothing breaks and nothing is deleted. We'll let you know when you're close, and once you're regularly over the limit we'll ask you to move to Solo.",
     links: [
-      { text: 'ROI calculator', url: '/pricing/' },
-      { text: 'Management features', url: '/driving-school-management-software/' }
+      { text: 'Solo and School plans', url: '/pricing/' }
     ]
   },
   {
-    question: "What's the difference between free trials, free plans, and DriveSchoolPro's early access?",
-    answer: "Free trials give full access for 14-30 days, then require payment or you lose access. Free plans offer permanent access to extremely limited features (5-10 students, basic calendar, no automation). DriveSchoolPro is different: the full product is free until 31 March 2027 with no card required, and from 1 April 2027 the permanent Free plan keeps every feature, including AI lesson briefings, for 1 instructor and up to 60 lessons a month. The limit is on how busy you are, not on which features you get.",
+    question: "What happens on 1 April 2027 if I do nothing?",
+    answer: "Your account moves to the Free plan. Nothing is charged unless you choose Solo or School, and your pupils, lessons and progress records all stay where they are.",
     links: [
-      { text: OFFER.ctaPrimary.labelShort, url: OFFER.ctaPrimary.href },
       { text: 'See pricing', url: '/pricing/' }
     ]
   },
   {
-    question: "Is free driving school software secure?",
-    answer: "Security varies dramatically. Free software from established companies (offering paid plans too) typically maintains good security standards. Free-only tools often lack proper data encryption, GDPR compliance, regular backups, or security audits. Storing student personal data (names, addresses, licence details) in insecure systems creates liability. Always verify security credentials before storing student data.",
+    question: "How much does DriveSchoolPro cost after the free period?",
+    answer: `From ${P.startDate}: Free (£0, ${P.free.instructors} instructor, up to ${P.free.lessonsPerMonth} lessons a month), Solo at £${P.solo.price} a month, or School at £${P.school.price} a month plus £${P.school.perExtraInstructor} for each extra instructor. We're not VAT-registered, so no VAT is added. Plans are monthly with no contract. If you add a card by ${P.founding.cardBy}, you pay the founding price of £${P.founding.price} a month (School: £${P.founding.price} plus £${P.founding.perExtraInstructor} per extra instructor), locked for ${P.founding.lockMonths} months.`,
     links: [
-      { text: 'Security features', url: '/' }
+      { text: 'Full pricing', url: '/pricing/' }
     ]
   },
   {
-    question: "Can I upgrade from free to paid without losing data?",
-    answer: "With reputable software providers, yes. Your student records, lesson history, and settings transfer seamlessly when upgrading. This is why choosing software from established companies is safer than obscure free-only tools. With DriveSchoolPro there's nothing to upgrade from — you're on the full product from day one, free until 31 March 2027, with all your data intact whenever pricing launches.",
+    question: "Are there any fees while it's free?",
+    answer: `There's no subscription fee and no card needed to sign up. If you take card payments from pupils through DriveSchoolPro invoice pay-links, we charge ${P.cardFeePercent}% and Stripe's standard processing fee applies on top. Cash and bank transfers carry no fee.`,
     links: [
-      { text: 'Upgrade path', url: '/pricing/' },
+      { text: 'How payments work', url: '/pricing/' }
+    ]
+  },
+  {
+    question: "Is it a free trial?",
+    answer: "No. A trial ends after a set number of days and then asks you to pay. DriveSchoolPro is free until 31 March 2027, and after that the Free plan stays free for as long as you're within its limits. Nothing is charged automatically, because we don't ask for a card.",
+    links: [
       { text: OFFER.ctaPrimary.labelShort, url: OFFER.ctaPrimary.href }
     ]
   },
   {
-    question: "What are the hidden costs of free driving school software?",
-    answer: "Hidden costs include: 6+ hours weekly on manual admin (scheduling calls, manual reminders, spreadsheet updates), 15-25% no-show rate without automated reminders (£3,000+ annual lost revenue for 500 lessons/month), double-bookings and scheduling errors without conflict detection, and opportunity cost of capped student limits blocking growth.",
+    question: "How does it compare with other free options?",
+    answer: "General booking tools such as SimplyBook.me and Reservio have free plans, but they cap bookings each month and don't track the DVSA driving skills. Most driving instructor apps offer a free trial rather than a free plan, usually 14 to 60 days. Our best driving school software guide lists each one, checked against the vendors' own sites.",
     links: [
-      { text: 'Cost analysis', url: '/pricing/' },
-      { text: 'No-show reduction', url: '/blog/reduce-driving-lesson-no-shows/' }
+      { text: 'Best driving school software UK', url: '/blog/best-driving-school-software/' },
+      { text: 'Compare DriveSchoolPro', url: '/compare/' }
     ]
   },
   {
-    question: "How much does driving school software actually cost?",
-    answer: "Driving school software typically costs £15-100+ per month. DriveSchoolPro is currently free — until 31 March 2027 — while we're in early access, for solo ADIs and multi-instructor schools alike. Compare that with the hidden costs of limited free tools (6+ hours weekly at £20/hour = £520/month in time, plus no-show losses) and the value is clear. From 1 April 2027 there's a permanent Free plan for 1 instructor and up to 60 lessons a month, and Solo is £22 a month with no VAT charged.",
+    question: "How do I switch to DriveSchoolPro?",
+    answer: "Sign up with no card, set your working hours, lesson prices and reminder timing, then add your current pupils. A name and phone number is enough to start. Enter next week's lessons and keep your old diary running alongside for a couple of weeks. There's no bulk import yet, so pupils are added one at a time.",
     links: [
-      { text: 'Full pricing', url: '/pricing/' },
-      { text: 'Feature comparison', url: '/' }
+      { text: 'Switching guide', url: '/blog/switch-paper-diary-to-driving-school-software/' }
     ]
   },
   {
-    question: "Should I use spreadsheets as free driving school software?",
-    answer: "Spreadsheets work for tracking but fail at automation. They can't send automated reminders (causing no-shows), don't offer conflict detection (risk of double-bookings), have no student portal (more phone calls), and become unmanageable beyond 15-20 students. Spreadsheets are 'free' but cost 6+ hours weekly in manual work.",
+    question: "Can I get my data out if I leave?",
+    answer: "Yes. The account owner can download a copy of everything held for the school from Settings, then Profile: pupil records, lesson history, payments and skill records. It's a JSON file, so it's a complete record rather than a spreadsheet ready to load into another product.",
     links: [
-      { text: 'Spreadsheets vs software', url: '/driving-school-management-software/' }
-    ]
-  },
-  {
-    question: "What's the best free alternative to paid driving school software?",
-    answer: "Right now, it's DriveSchoolPro itself. The full product — unlimited students, DVSA tracking, scheduling, invoicing, and automated reminders — is free until 31 March 2027 while we're in early access, with no card required. That beats both limited 'free forever' plans that block growth and time-boxed trials that expire just as you're settled in.",
-    links: [
-      { text: OFFER.ctaPrimary.labelShort, url: OFFER.ctaPrimary.href },
-      { text: 'Solo plan details', url: '/pricing/' }
+      { text: 'Privacy policy', url: '/privacy-policy/' }
     ]
   },
   {
     question: "Is there a free driving instructor app?",
-    answer: "Yes. DriveSchoolPro is free until 31 March 2027 while in early access: the diary, online booking, email lesson reminders, payments and DVSA 27-skill progress tracking, with no card required. Some general booking tools also have permanent free plans, but these cap bookings or clients and don't track the DVSA driving skills.",
+    answer: "Yes. DriveSchoolPro is free on the App Store and Google Play, and works in a web browser too. You run your diary from the app, and your pupils use the same app, or any browser, to see their lessons and progress, book and pay.",
     links: [
-      { text: 'DriveSchoolPro for driving instructors', url: '/driving-instructor-software/' },
-      { text: 'Compare instructor apps', url: '/blog/best-driving-school-software/' }
+      { text: 'DriveSchoolPro for driving instructors', url: '/driving-instructor-software/' }
     ]
   },
   {
-    question: "Can I download driving school software for free?",
-    answer: "DriveSchoolPro is free to download on the App Store and Google Play. You run your diary from the app, and your pupils use the same app, or any web browser, to see their lessons and progress, book and pay. There's no desktop software to install, and it's free until 31 March 2027.",
+    question: "Is my data safe on free software?",
+    answer: "DriveSchoolPro is run by JOHN POWELL LTD, a UK company and the data controller under UK GDPR. Your data is encrypted at rest, and payments are handled by Stripe (PCI DSS Level 1). Lesson briefings are written by Claude (Anthropic), and your data is not used to train any AI model.",
     links: [
-      { text: OFFER.ctaPrimary.labelShort, url: OFFER.ctaPrimary.href }
+      { text: 'Privacy policy', url: '/privacy-policy/' }
     ]
   }
 ];
@@ -184,8 +177,8 @@ const faqItems = [
 const schemaMarkup = {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Free Driving School Software: Complete Guide for ADIs",
-  "description": "Comprehensive guide to free driving school software options. Compare free plans, trials, and freemium models to find the right solution for your driving instruction business.",
+  "headline": "Free Driving School Software: What's Free, the Limits and How to Switch",
+  "description": "What the free version of DriveSchoolPro includes today, the Free plan limits from 1 April 2027, how it compares with free plans and trials, and how to switch.",
   "author": {
     "@type": "Organization",
     "name": "DriveSchoolPro"
@@ -200,8 +193,8 @@ const schemaMarkup = {
 ---
 
 <BaseLayout
-  title="Free Driving School Software for UK Driving Instructors"
-  description="Free driving school software for UK ADIs. Compare free plans, trials, and freemium options for scheduling, student tracking, and invoicing — built for independent driving instructors."
+  title="Free Driving School Software UK: What's Free and the Limits"
+  description="DriveSchoolPro's free version: every feature free until 31 March 2027, then a Free plan for 1 instructor and 60 lessons a month. Limits, comparison and switching."
   image="/images/marketing/dashboard-overview.webp"
 >
   <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
@@ -222,52 +215,28 @@ const schemaMarkup = {
         <span class="inline-block px-4 py-1 bg-brand-red/20 text-brand-red-light rounded-full text-sm font-medium mb-4">Free Software Guide</span>
         <h1 class="text-4xl md:text-5xl font-bold mb-4">Free Driving School Software: What's Actually Available?</h1>
         <p class="text-xl text-gray-300 mb-8">
-          Searching for free driving school software? Good news: DriveSchoolPro is the full product, free until 31 March 2027 while we're in early access. This honest guide also covers what other "free" options really offer — and their hidden costs.
+          DriveSchoolPro is free while we're in early access, until 31 March 2027: every feature, no card required. After that there's a permanent Free plan for {P.free.instructors} instructor and up to {P.free.lessonsPerMonth} lessons a month. This page sets out what's free, the limits, how it compares and how to switch.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label}</a>
-          <a href="#comparison" class="btn-secondary text-lg px-8 py-4">Compare Options</a>
+          <a href="#compare" class="btn-secondary text-lg px-8 py-4">Compare Options</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Featured Answer -->
-  <FeaturedAnswer question="Is there truly free driving school software?">
-    Yes — DriveSchoolPro is the full product, free until 31 March 2027 while we're in early access: unlimited students, scheduling, DVSA tracking, invoicing, and automated reminders, with no card required. Most other "free" options are freemium plans restricted to 5-10 students with no automation.
+  <FeaturedAnswer question="Is there a free version of driving school software?">
+    Yes. DriveSchoolPro is free until 31 March 2027 while it's in early access, with every feature and no card required. From 1 April 2027 there's a permanent Free plan for {P.free.instructors} instructor and up to {P.free.lessonsPerMonth} lessons a month, Solo at £{P.solo.price} a month, and School at £{P.school.price} a month plus £{P.school.perExtraInstructor} per extra instructor. No VAT is charged.
   </FeaturedAnswer>
 
-  <!-- Statistics Section -->
+  <!-- Key facts -->
   <StatisticsSection
     site="driveschool"
     pageUrl="https://driveschoolpro.com/free-driving-school-software/"
-    title="DriveSchoolPro vs free tools"
+    title="DriveSchoolPro pricing at a glance"
     stats={freeStats}
   />
-
-  <!-- Stats Section -->
-  <section class="py-8 bg-white border-b border-gray-100">
-    <div class="container-custom">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        <div>
-          <div class="text-3xl font-bold text-brand-red">£0</div>
-          <div class="text-sm text-gray-600">Starting Cost</div>
-        </div>
-        <div>
-          <div class="text-3xl font-bold text-brand-red">31 Mar 2027</div>
-          <div class="text-sm text-gray-600">DriveSchoolPro Free Until</div>
-        </div>
-        <div>
-          <div class="text-3xl font-bold text-brand-red">5-10</div>
-          <div class="text-sm text-gray-600">Free Plan Student Limit</div>
-        </div>
-        <div>
-          <div class="text-3xl font-bold text-brand-red">60%</div>
-          <div class="text-sm text-gray-600">ADIs Start with Free Tools</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Table of Contents -->
   <section class="section bg-gray-50">
@@ -276,13 +245,11 @@ const schemaMarkup = {
         <h2 class="text-2xl font-bold text-brand-navy mb-4">In This Guide</h2>
         <nav class="bg-white rounded-xl p-6 shadow-sm">
           <ul class="grid md:grid-cols-2 gap-3">
-            <li><a href="#types" class="text-brand-red hover:underline">Types of Free Software Options</a></li>
-            <li><a href="#comparison" class="text-brand-red hover:underline">Feature Comparison</a></li>
-            <li><a href="#free-vs-paid" class="text-brand-red hover:underline">Free vs Paid: Real Costs</a></li>
-            <li><a href="#limitations" class="text-brand-red hover:underline">Common Limitations</a></li>
-            <li><a href="#when-upgrade" class="text-brand-red hover:underline">When to Upgrade</a></li>
-            <li><a href="#choosing" class="text-brand-red hover:underline">How to Choose</a></li>
-            <li><a href="#alternatives" class="text-brand-red hover:underline">DIY Alternatives</a></li>
+            <li><a href="#whats-free" class="text-brand-red hover:underline">What's free today</a></li>
+            <li><a href="#limits" class="text-brand-red hover:underline">The limits</a></li>
+            <li><a href="#plans" class="text-brand-red hover:underline">Plans from 1 April 2027</a></li>
+            <li><a href="#compare" class="text-brand-red hover:underline">How it compares</a></li>
+            <li><a href="#switch" class="text-brand-red hover:underline">How to switch</a></li>
             <li><a href="#faqs" class="text-brand-red hover:underline">FAQs</a></li>
           </ul>
         </nav>
@@ -295,266 +262,44 @@ const schemaMarkup = {
     <div class="container-custom">
       <div class="max-w-4xl mx-auto">
 
-        <!-- Introduction -->
-        <div class="prose prose-lg max-w-none mb-12">
-          <p class="text-xl text-gray-600">
-            When you're starting out as a driving instructor, every penny counts. The idea of free <a href="/" class="text-brand-red hover:underline">driving school software</a> is appealing—but what do you actually get for nothing? And more importantly, what are you giving up?
-          </p>
-          <p class="text-gray-600">
-            This guide cuts through the marketing speak to give you an honest look at free driving school software options, their limitations, and when it makes sense to invest in paid tools instead.
-          </p>
-        </div>
-
-        <!-- Types of Free Software -->
-        <div id="types" class="mb-16">
-          <h2 class="text-3xl font-bold text-brand-navy mb-6">Types of Free Driving School Software</h2>
-
-          <div class="space-y-8">
-            <div class="bg-gray-50 rounded-xl p-6">
-              <h3 class="text-xl font-bold text-brand-navy mb-3">1. Genuinely Free Plans (Freemium)</h3>
-              <p class="text-gray-600 mb-4">
-                Some software providers offer a permanently free tier with basic features. These plans typically include:
-              </p>
-              <ul class="space-y-2">
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                  <span class="text-gray-700">Limited student capacity (typically 5-10)</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                  <span class="text-gray-700">Basic scheduling calendar</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                  <span class="text-gray-700">Manual data entry</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-13a1 1 0 112 0v4a1 1 0 11-2 0V5zm1 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" /></svg>
-                  <span class="text-gray-700">No online booking or payments</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-13a1 1 0 112 0v4a1 1 0 11-2 0V5zm1 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" /></svg>
-                  <span class="text-gray-700">No automated reminders</span>
-                </li>
-              </ul>
-              <p class="text-sm text-gray-500 mt-4">
-                <strong>Best for:</strong> Brand new instructors testing the waters, or those with very few regular students.
-              </p>
-            </div>
-
-            <div class="bg-gray-50 rounded-xl p-6">
-              <h3 class="text-xl font-bold text-brand-navy mb-3">2. Free Trials (Full Features, Limited Time)</h3>
-              <p class="text-gray-600 mb-4">
-                Most professional driving school software offers free trials, typically 14-30 days with full feature access, then a monthly fee:
-              </p>
-              <ul class="space-y-2">
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                  <span class="text-gray-700">All features unlocked</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                  <span class="text-gray-700">Unlimited students during trial</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                  <span class="text-gray-700">Scheduling, invoicing, and student-facing tools</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                  <span class="text-gray-700">Automated reminders</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-13a1 1 0 112 0v4a1 1 0 11-2 0V5zm1 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" /></svg>
-                  <span class="text-gray-700">Requires payment after trial period</span>
-                </li>
-              </ul>
-              <p class="text-sm text-gray-500 mt-4">
-                <strong>Best for:</strong> Serious instructors ready to commit who want to test drive the full system first.
-              </p>
-            </div>
-
-            <div class="bg-gray-50 rounded-xl p-6">
-              <h3 class="text-xl font-bold text-brand-navy mb-3">3. Open Source Software</h3>
-              <p class="text-gray-600 mb-4">
-                Free to use but requires technical knowledge to set up and maintain:
-              </p>
-              <ul class="space-y-2">
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                  <span class="text-gray-700">No licensing fees</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                  <span class="text-gray-700">Full customisation possible</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-13a1 1 0 112 0v4a1 1 0 11-2 0V5zm1 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" /></svg>
-                  <span class="text-gray-700">Requires web hosting (cost involved)</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-13a1 1 0 112 0v4a1 1 0 11-2 0V5zm1 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" /></svg>
-                  <span class="text-gray-700">Technical skills needed</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-13a1 1 0 112 0v4a1 1 0 11-2 0V5zm1 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" /></svg>
-                  <span class="text-gray-700">No support or updates guaranteed</span>
-                </li>
-              </ul>
-              <p class="text-sm text-gray-500 mt-4">
-                <strong>Best for:</strong> Technically minded instructors or those with IT support available.
-              </p>
-            </div>
-
-            <div class="bg-brand-red-light rounded-xl p-6 border-2 border-brand-red">
-              <h3 class="text-xl font-bold text-brand-navy mb-3">4. DriveSchoolPro Early Access — the Full Product, Free</h3>
-              <p class="text-gray-700 mb-4">
-                DriveSchoolPro doesn't fit any of the categories above right now. While we're in early access, the entire product is free until 31 March 2027 — not a limited tier, not a time-boxed trial:
-              </p>
-              <ul class="space-y-2">
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                  <span class="text-gray-700">Unlimited pupils and lessons — no caps</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                  <span class="text-gray-700">Scheduling, DVSA tracking, invoicing, and automated reminders included</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                  <span class="text-gray-700">No card required — nothing is charged automatically</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                  <span class="text-gray-700">From 1 April 2027: free for ever up to 60 lessons a month, or Solo at £22 a month</span>
-                </li>
-              </ul>
-              <p class="text-sm text-gray-600 mt-4">
-                <strong>Why free?</strong> Because it's early — we're building with founding schools, and your feedback shapes the product.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Feature Comparison -->
-        <div id="comparison" class="mb-16">
-          <h2 class="text-3xl font-bold text-brand-navy mb-6">Feature Comparison: Free vs Paid</h2>
-
-          <div class="overflow-x-auto">
-            <table class="w-full border-collapse">
-              <thead>
-                <tr class="bg-brand-navy text-white">
-                  <th class="p-4 text-left">Feature</th>
-                  <th class="p-4 text-center">Typical Free Plans</th>
-                  <th class="p-4 text-center">Typical Paid Plans</th>
-                  <th class="p-4 text-center">DriveSchoolPro (free until 31 Mar 2027)</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-200">
-                <tr>
-                  <td class="p-4 font-medium">Student Limit</td>
-                  <td class="p-4 text-center">5-10</td>
-                  <td class="p-4 text-center">Unlimited</td>
-                  <td class="p-4 text-center">Unlimited</td>
-                </tr>
-                <tr class="bg-gray-50">
-                  <td class="p-4 font-medium">Online Booking</td>
-                  <td class="p-4 text-center text-red-500">✗</td>
-                  <td class="p-4 text-center text-green-500">✓</td>
-                  <td class="p-4 text-center text-green-500">✓</td>
-                </tr>
-                <tr>
-                  <td class="p-4 font-medium">Invoicing & Payment Recording</td>
-                  <td class="p-4 text-center text-red-500">✗</td>
-                  <td class="p-4 text-center text-green-500">✓</td>
-                  <td class="p-4 text-center text-green-500">✓</td>
-                </tr>
-                <tr class="bg-gray-50">
-                  <td class="p-4 font-medium">Email Reminders</td>
-                  <td class="p-4 text-center text-red-500">✗</td>
-                  <td class="p-4 text-center text-green-500">✓</td>
-                  <td class="p-4 text-center text-green-500">✓</td>
-                </tr>
-                <tr>
-                  <td class="p-4 font-medium">DVSA Competency Tracking</td>
-                  <td class="p-4 text-center">Basic</td>
-                  <td class="p-4 text-center">Full (27 skills)</td>
-                  <td class="p-4 text-center">Full (27 skills)</td>
-                </tr>
-                <tr class="bg-gray-50">
-                  <td class="p-4 font-medium">Student Portal</td>
-                  <td class="p-4 text-center text-red-500">✗</td>
-                  <td class="p-4 text-center text-green-500">✓</td>
-                  <td class="p-4 text-center text-green-500">✓</td>
-                </tr>
-                <tr>
-                  <td class="p-4 font-medium">Reporting</td>
-                  <td class="p-4 text-center text-red-500">✗</td>
-                  <td class="p-4 text-center text-green-500">✓</td>
-                  <td class="p-4 text-center text-green-500">✓</td>
-                </tr>
-                <tr class="bg-gray-50">
-                  <td class="p-4 font-medium">Support</td>
-                  <td class="p-4 text-center">Email only</td>
-                  <td class="p-4 text-center">Full</td>
-                  <td class="p-4 text-center">Priority</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Free vs Paid Real Costs -->
-        <div id="free-vs-paid" class="mb-16">
-          <h2 class="text-3xl font-bold text-brand-navy mb-6">The Real Cost of "Free" Software</h2>
-
+        <!-- What's free today -->
+        <div id="whats-free" class="mb-16">
+          <h2 class="text-3xl font-bold text-brand-navy mb-6">What's free today</h2>
           <p class="text-gray-600 mb-6">
-            Free software has hidden costs that aren't immediately obvious. Here's what you're actually trading when you choose free over paid:
+            Until 31 March 2027, DriveSchoolPro is free for every instructor and every school, whatever the size. It isn't a cut-down tier: everyone gets the whole product, with unlimited pupils and lessons. You don't need a card to sign up, there are no setup fees, and we're not VAT-registered, so nothing is added on top.
           </p>
-
-          <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-red-50 rounded-xl p-6 border border-red-100">
-              <h3 class="text-xl font-bold text-red-800 mb-4">Hidden Costs of Free</h3>
-              <ul class="space-y-3">
-                <li class="flex items-start gap-3">
-                  <span class="text-red-500 font-bold">•</span>
-                  <span class="text-gray-700"><strong>Time spent on admin:</strong> Manual data entry, phone calls for bookings, chasing payments—easily 5+ hours/week</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span class="text-red-500 font-bold">•</span>
-                  <span class="text-gray-700"><strong>Lost revenue from no-shows:</strong> Without automated reminders, no-show rates are 15-25% higher</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span class="text-red-500 font-bold">•</span>
-                  <span class="text-gray-700"><strong>Disorganised scheduling:</strong> Without proper conflict detection, double-bookings and gaps damage your reputation</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span class="text-red-500 font-bold">•</span>
-                  <span class="text-gray-700"><strong>Unprofessional image:</strong> Basic tools can make your business look amateur</span>
-                </li>
-              </ul>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-gray-50 rounded-xl p-5">
+              <h3 class="font-bold text-brand-navy mb-2">Diary and scheduling</h3>
+              <p class="text-gray-600 text-sm">Day, week and month views, with drag-and-drop rescheduling and one diary view across your team.</p>
             </div>
-
-            <div class="bg-green-50 rounded-xl p-6 border border-green-100">
-              <h3 class="text-xl font-bold text-green-800 mb-4">Value of Paid Software</h3>
-              <ul class="space-y-3">
-                <li class="flex items-start gap-3">
-                  <span class="text-green-500 font-bold">•</span>
-                  <span class="text-gray-700"><strong>Time saved:</strong> Automation saves 5-10 hours per week on admin</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span class="text-green-500 font-bold">•</span>
-                  <span class="text-gray-700"><strong>Reduced no-shows:</strong> Automated reminders cut no-shows by 50-80%</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span class="text-green-500 font-bold">•</span>
-                  <span class="text-gray-700"><strong>Student portal:</strong> Pupils check lessons and progress themselves — fewer phone calls</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span class="text-green-500 font-bold">•</span>
-                  <span class="text-gray-700"><strong>Professional image:</strong> DVSA tracking and a student portal build trust</span>
-                </li>
-              </ul>
+            <div class="bg-gray-50 rounded-xl p-5">
+              <h3 class="font-bold text-brand-navy mb-2">Email lesson reminders</h3>
+              <p class="text-gray-600 text-sm">Sent automatically, with timing you choose, per-pupil preferences and a delivery log.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-5">
+              <h3 class="font-bold text-brand-navy mb-2">Online booking and pupil portal</h3>
+              <p class="text-gray-600 text-sm">Pupils book from a widget on your website, and log in to see their lessons, progress and package balance.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-5">
+              <h3 class="font-bold text-brand-navy mb-2">DVSA progress tracking</h3>
+              <p class="text-gray-600 text-sm">All <a href="/dvsa-27-driving-skills/" class="text-brand-red hover:underline">27 DVSA skills</a> across 8 categories, on a 6-level scale from Not Started to Reflection.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-5">
+              <h3 class="font-bold text-brand-navy mb-2">AI lesson briefings</h3>
+              <p class="text-gray-600 text-sm">A short briefing for each lesson, written from your own lesson notes.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-5">
+              <h3 class="font-bold text-brand-navy mb-2">Invoices and payments</h3>
+              <p class="text-gray-600 text-sm">Record cash, bank transfer and cheque payments, and send invoices with Stripe card pay-links.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-5">
+              <h3 class="font-bold text-brand-navy mb-2">Multi-instructor schools</h3>
+              <p class="text-gray-600 text-sm">Add instructors with role-based access, and track your vehicles.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-5">
+              <h3 class="font-bold text-brand-navy mb-2">Phone apps and web</h3>
+              <p class="text-gray-600 text-sm">Free on the App Store and Google Play, and the same account works in any web browser.</p>
             </div>
           </div>
 
@@ -565,214 +310,153 @@ const schemaMarkup = {
               height={900}
               alt="DriveSchoolPro Today screen showing the day's lessons per instructor and the day's lesson value"
             />
-            <p class="text-sm text-gray-500 text-center mt-3">What paid driving school software looks like: the DriveSchoolPro dashboard</p>
+            <p class="text-sm text-gray-500 text-center mt-3">The DriveSchoolPro Today screen, included free</p>
           </div>
+        </div>
 
-          <div class="bg-brand-navy text-white rounded-xl p-6 mt-8">
-            <h3 class="text-xl font-bold mb-3">Quick Calculation</h3>
-            <p class="text-gray-300 mb-4">
-              If your hourly rate is £35 and free software costs you 5 extra hours of admin per week, that's £175/week or £700/month in lost teaching time. Most paid software costs £30-50/month.
+        <!-- The limits -->
+        <div id="limits" class="mb-16">
+          <h2 class="text-3xl font-bold text-brand-navy mb-6">The limits</h2>
+          <p class="text-gray-600 mb-6">
+            Free software is only useful if you know where it stops. Here's what to know, now and after 31 March 2027.
+          </p>
+
+          <h3 class="text-xl font-bold text-brand-navy mb-3">During early access (until 31 March 2027)</h3>
+          <ul class="space-y-3 mb-8">
+            <li class="border-l-4 border-amber-500 pl-4 py-1 text-gray-700"><strong>Card payments carry a fee.</strong> If pupils pay by card through DriveSchoolPro, we charge {P.cardFeePercent}%, and Stripe's standard processing fee applies on top. Cash and bank transfers carry no fee.</li>
+            <li class="border-l-4 border-amber-500 pl-4 py-1 text-gray-700"><strong>Reminders are email only for now.</strong> Text and WhatsApp reminders are coming soon.</li>
+            <li class="border-l-4 border-amber-500 pl-4 py-1 text-gray-700"><strong>Some features are still on the way.</strong> Recurring lesson series are coming soon. Test bookings, test results and pass-rate reporting are coming soon too.</li>
+            <li class="border-l-4 border-amber-500 pl-4 py-1 text-gray-700"><strong>No bulk import yet.</strong> You add pupils one at a time. A name and phone number is enough to start.</li>
+          </ul>
+
+          <h3 class="text-xl font-bold text-brand-navy mb-3">On the Free plan (from 1 April 2027)</h3>
+          <ul class="space-y-3">
+            <li class="border-l-4 border-amber-500 pl-4 py-1 text-gray-700"><strong>{P.free.instructors} instructor.</strong> Schools with more instructors use the School plan.</li>
+            <li class="border-l-4 border-amber-500 pl-4 py-1 text-gray-700"><strong>Up to {P.free.lessonsPerMonth} lessons a month.</strong> Cancelled lessons and no-shows don't count. If you go over, nothing breaks and nothing is deleted; once you're regularly over, we'll ask you to move to Solo.</li>
+            <li class="border-l-4 border-amber-500 pl-4 py-1 text-gray-700"><strong>Email reminders.</strong> Text and WhatsApp reminders, when they launch, will be on Solo and School, because each message costs us money.</li>
+            <li class="border-l-4 border-green-500 pl-4 py-1 text-gray-700"><strong>Every feature otherwise.</strong> Online booking, invoicing, the pupil portal, DVSA tracking and AI lesson briefings are all on the Free plan.</li>
+          </ul>
+        </div>
+
+        <!-- Plans from 1 April 2027 -->
+        <div id="plans" class="mb-16">
+          <h2 class="text-3xl font-bold text-brand-navy mb-6">Plans from 1 April 2027</h2>
+          <p class="text-gray-600 mb-6">
+            Prices are per month, with no contract. We're not VAT-registered, so the price you see is the price you pay.
+          </p>
+          <div class="overflow-x-auto mb-6">
+            <table class="w-full border-collapse text-sm">
+              <thead>
+                <tr class="bg-brand-navy text-white">
+                  <th scope="col" class="p-3 text-left">Plan</th>
+                  <th scope="col" class="p-3 text-left">Price</th>
+                  <th scope="col" class="p-3 text-left">Who it's for</th>
+                  <th scope="col" class="p-3 text-left">What you get</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <tr>
+                  <th scope="row" class="p-3 text-left font-bold text-brand-navy">Free</th>
+                  <td class="p-3">£0, for ever</td>
+                  <td class="p-3">Part-time and new instructors</td>
+                  <td class="p-3">{P.free.instructors} instructor, up to {P.free.lessonsPerMonth} lessons a month, every feature including AI lesson briefings, email reminders</td>
+                </tr>
+                <tr class="bg-gray-50">
+                  <th scope="row" class="p-3 text-left font-bold text-brand-navy">Solo</th>
+                  <td class="p-3">£{P.solo.price} a month</td>
+                  <td class="p-3">Full-time independent ADIs</td>
+                  <td class="p-3">1 instructor, unlimited lessons, every feature, text and WhatsApp reminders (coming soon)</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="p-3 text-left font-bold text-brand-navy">School</th>
+                  <td class="p-3">£{P.school.price} a month + £{P.school.perExtraInstructor} per extra instructor</td>
+                  <td class="p-3">Multi-instructor schools</td>
+                  <td class="p-3">Everything in Solo, plus role-based access, vehicle tracking and one diary view across the team</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="bg-brand-red-light rounded-xl p-6">
+            <h3 class="font-bold text-brand-navy mb-2">Founding member price</h3>
+            <p class="text-gray-700 text-sm">
+              Add a card by {P.founding.cardBy} and pay £{P.founding.price} a month instead of £{P.solo.price} (School: £{P.founding.price} + £{P.founding.perExtraInstructor} per extra instructor), locked for {P.founding.lockMonths} months from {P.startDate}. Nothing is charged before {P.startDate}, and you can cancel before then. If you do nothing, your account simply moves to the Free plan, and your pupils, lessons and progress records stay where they are.
             </p>
-            <p class="font-bold text-brand-red-light">
-              The maths rarely favours free software once you have more than a handful of students.
-            </p>
           </div>
+          <p class="text-gray-600 mt-4 text-sm">Full details are on the <a href="/pricing/" class="text-brand-red hover:underline">pricing page</a>.</p>
         </div>
 
-        <!-- Common Limitations -->
-        <div id="limitations" class="mb-16">
-          <h2 class="text-3xl font-bold text-brand-navy mb-6">Common Limitations of Free Plans</h2>
+      </div>
+    </div>
+  </section>
 
-          <div class="space-y-6">
-            <div class="border-l-4 border-amber-500 pl-6 py-2">
-              <h3 class="font-bold text-brand-navy mb-2">Student Limits</h3>
-              <p class="text-gray-600">Most free plans cap active students at 5-10. Once you exceed this, you'll need to delete old students to add new ones—losing valuable lesson history and progress records.</p>
+  <!-- How it compares -->
+  <section id="compare" class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto mb-8">
+        <h2 class="text-3xl font-bold text-brand-navy mb-4">How it compares</h2>
+        <p class="text-gray-600 mb-4">
+          "Free" covers four quite different things. Free plans from general booking tools, such as SimplyBook.me and Reservio, are permanent but cap your bookings each month, and they aren't built for driving lessons, so there's no DVSA progress tracking. Most driving instructor apps offer a free trial instead, usually 14 to 60 days, and then charge a monthly fee. Spreadsheets and a paper diary cost nothing, but they can't remind pupils or let them book.
+        </p>
+        <p class="text-gray-600">
+          For named apps, with their trials and published prices checked against each vendor's own site, see our guide to the <a href="/blog/best-driving-school-software/" class="text-brand-red hover:underline">best driving school software in the UK</a>, or the side-by-side <a href="/compare/" class="text-brand-red hover:underline">comparison pages</a>.
+        </p>
+      </div>
+      <ComparisonTable
+        title="DriveSchoolPro free vs other free options"
+        headers={['DriveSchoolPro (until 31 Mar 2027)', 'DriveSchoolPro Free plan (from 1 Apr 2027)', 'General booking tools (free plans)', 'Instructor apps (free trials)', 'Spreadsheet or paper diary']}
+        rows={comparisonData}
+      />
+    </div>
+  </section>
+
+  <!-- How to switch -->
+  <section id="switch" class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-brand-navy mb-6">How to switch</h2>
+        <p class="text-gray-600 mb-6">
+          Whether you're moving from paper, WhatsApp, a spreadsheet or another app, the safe way is to run both side by side for a couple of weeks.
+        </p>
+        <ol class="space-y-4">
+          <li class="flex items-start gap-3">
+            <div class="flex-shrink-0 w-8 h-8 bg-brand-red text-white rounded-full flex items-center justify-center font-bold">1</div>
+            <div>
+              <strong class="text-brand-navy">Sign up free</strong>
+              <p class="text-gray-600 text-sm">No card needed. Setting up takes about two minutes.</p>
             </div>
-
-            <div class="border-l-4 border-amber-500 pl-6 py-2">
-              <h3 class="font-bold text-brand-navy mb-2">No Proper Scheduling</h3>
-              <p class="text-gray-600">Free tools lack drag-and-drop calendars and conflict detection. This means more time managing your diary and a higher risk of double-bookings and scheduling errors.</p>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="flex-shrink-0 w-8 h-8 bg-brand-red text-white rounded-full flex items-center justify-center font-bold">2</div>
+            <div>
+              <strong class="text-brand-navy">Set your basics</strong>
+              <p class="text-gray-600 text-sm">Your working days and hours, lesson prices and when reminders go out.</p>
             </div>
-
-            <div class="border-l-4 border-amber-500 pl-6 py-2">
-              <h3 class="font-bold text-brand-navy mb-2">Manual Reminders</h3>
-              <p class="text-gray-600">You'll need to send your own text or email reminders before lessons. Miss one, and you risk a no-show—costing you an hour of income plus wasted travel time.</p>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="flex-shrink-0 w-8 h-8 bg-brand-red text-white rounded-full flex items-center justify-center font-bold">3</div>
+            <div>
+              <strong class="text-brand-navy">Add your current pupils</strong>
+              <p class="text-gray-600 text-sm">One at a time, as there's no bulk import yet. A name and phone number is enough to start; add progress levels and test dates as you go. You don't need to type in old lesson history.</p>
             </div>
-
-            <div class="border-l-4 border-amber-500 pl-6 py-2">
-              <h3 class="font-bold text-brand-navy mb-2">Limited Support</h3>
-              <p class="text-gray-600">Free plan users typically get email-only support with slow response times. If something breaks on a busy Monday morning, you're on your own until someone gets around to your ticket.</p>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="flex-shrink-0 w-8 h-8 bg-brand-red text-white rounded-full flex items-center justify-center font-bold">4</div>
+            <div>
+              <strong class="text-brand-navy">Enter next week's lessons</strong>
+              <p class="text-gray-600 text-sm">Then reminders go out automatically, and you can log DVSA skills after each lesson.</p>
             </div>
-
-            <div class="border-l-4 border-amber-500 pl-6 py-2">
-              <h3 class="font-bold text-brand-navy mb-2">No Invoicing</h3>
-              <p class="text-gray-600">Free tools can't generate invoices, track payment status, or manage lesson packages. You're left chasing payments manually and losing track of who owes what.</p>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="flex-shrink-0 w-8 h-8 bg-brand-red text-white rounded-full flex items-center justify-center font-bold">5</div>
+            <div>
+              <strong class="text-brand-navy">Keep your old system for a couple of weeks</strong>
+              <p class="text-gray-600 text-sm">If you're leaving another app, export your records from it before you cancel the subscription.</p>
             </div>
-
-            <div class="border-l-4 border-amber-500 pl-6 py-2">
-              <h3 class="font-bold text-brand-navy mb-2">Branding & Ads</h3>
-              <p class="text-gray-600">Many free plans include the software provider's branding on student-facing pages, or may show ads. This can undermine your professional image.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- When to Upgrade -->
-        <div id="when-upgrade" class="mb-16">
-          <h2 class="text-3xl font-bold text-brand-navy mb-6">When Should You Upgrade from Free?</h2>
-
-          <p class="text-gray-600 mb-6">
-            Free software makes sense when you're just starting out. But there are clear signals that it's time to invest in proper tools:
-          </p>
-
-          <div class="bg-gray-50 rounded-xl p-6">
-            <h3 class="text-xl font-bold text-brand-navy mb-4">Signs It's Time to Upgrade</h3>
-            <ul class="space-y-4">
-              <li class="flex items-start gap-3">
-                <div class="flex-shrink-0 w-8 h-8 bg-brand-red text-white rounded-full flex items-center justify-center font-bold">1</div>
-                <div>
-                  <strong class="text-brand-navy">You have more than 10 active students</strong>
-                  <p class="text-gray-600 text-sm">Once you hit this threshold, the admin time saved by proper software easily covers the cost.</p>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <div class="flex-shrink-0 w-8 h-8 bg-brand-red text-white rounded-full flex items-center justify-center font-bold">2</div>
-                <div>
-                  <strong class="text-brand-navy">You're losing students to no-shows</strong>
-                  <p class="text-gray-600 text-sm">One prevented no-show per month typically covers a month's software subscription.</p>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <div class="flex-shrink-0 w-8 h-8 bg-brand-red text-white rounded-full flex items-center justify-center font-bold">3</div>
-                <div>
-                  <strong class="text-brand-navy">Evening admin is eating into family time</strong>
-                  <p class="text-gray-600 text-sm">If you're spending evenings coordinating lessons instead of relaxing, automation is worth the investment.</p>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <div class="flex-shrink-0 w-8 h-8 bg-brand-red text-white rounded-full flex items-center justify-center font-bold">4</div>
-                <div>
-                  <strong class="text-brand-navy">Students are asking for online booking</strong>
-                  <p class="text-gray-600 text-sm">Modern students expect to book online. If they're asking, they might go elsewhere if you can't provide it.</p>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <div class="flex-shrink-0 w-8 h-8 bg-brand-red text-white rounded-full flex items-center justify-center font-bold">5</div>
-                <div>
-                  <strong class="text-brand-navy">You're ready to grow</strong>
-                  <p class="text-gray-600 text-sm">Scaling a driving school on free tools is nearly impossible. Paid software provides the infrastructure for growth.</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="mt-10">
-            <MarketingScreenshot
-              src="/images/marketing/calendar-week-view.webp"
-              width={1440}
-              height={900}
-              alt="Interactive weekly calendar with colour-coded lessons across multiple instructors and drag-and-drop scheduling"
-            />
-            <p class="text-sm text-gray-500 text-center mt-3">Professional scheduling that free tools can't match: drag-and-drop calendars with conflict detection</p>
-          </div>
-        </div>
-
-        <!-- How to Choose -->
-        <div id="choosing" class="mb-16">
-          <h2 class="text-3xl font-bold text-brand-navy mb-6">How to Choose the Right Software</h2>
-
-          <p class="text-gray-600 mb-6">
-            Whether you start with free or go straight to paid, here's what to evaluate:
-          </p>
-
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="bg-white border border-gray-200 rounded-xl p-6">
-              <h3 class="font-bold text-brand-navy mb-3">Must-Have Features</h3>
-              <ul class="space-y-2 text-gray-600">
-                <li>• Easy-to-use scheduling calendar</li>
-                <li>• Student contact management</li>
-                <li>• Mobile-friendly interface</li>
-                <li>• Secure data storage</li>
-                <li>• GDPR compliance</li>
-              </ul>
-            </div>
-
-            <div class="bg-white border border-gray-200 rounded-xl p-6">
-              <h3 class="font-bold text-brand-navy mb-3">Nice-to-Have Features</h3>
-              <ul class="space-y-2 text-gray-600">
-                <li>• Drag-and-drop scheduling</li>
-                <li>• Automated reminders</li>
-                <li>• Invoicing & packages</li>
-                <li>• DVSA competency tracking</li>
-                <li>• Student portal</li>
-              </ul>
-            </div>
-
-            <div class="bg-white border border-gray-200 rounded-xl p-6">
-              <h3 class="font-bold text-brand-navy mb-3">Questions to Ask</h3>
-              <ul class="space-y-2 text-gray-600">
-                <li>• What happens to my data if I cancel?</li>
-                <li>• Can I export my student records?</li>
-                <li>• Is there a contract or can I cancel anytime?</li>
-                <li>• What support is included?</li>
-                <li>• Are updates included in the price?</li>
-              </ul>
-            </div>
-
-            <div class="bg-white border border-gray-200 rounded-xl p-6">
-              <h3 class="font-bold text-brand-navy mb-3">Red Flags to Watch</h3>
-              <ul class="space-y-2 text-gray-600">
-                <li>• Long-term contracts required upfront</li>
-                <li>• Hidden fees for essential features</li>
-                <li>• No way to export your data</li>
-                <li>• Poor or non-existent mobile experience</li>
-                <li>• No security certifications</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- DIY Alternatives -->
-        <div id="alternatives" class="mb-16">
-          <h2 class="text-3xl font-bold text-brand-navy mb-6">DIY Alternatives to Dedicated Software</h2>
-
-          <p class="text-gray-600 mb-6">
-            Some instructors piece together free tools instead of using dedicated driving school software. Here's an honest look at this approach:
-          </p>
-
-          <div class="space-y-4">
-            <div class="bg-gray-50 rounded-lg p-4">
-              <h3 class="font-bold text-brand-navy">Google Calendar + Spreadsheets</h3>
-              <p class="text-gray-600 text-sm mb-2">Free, but students can't book themselves. No reminders, no progress tracking, no payments.</p>
-              <div class="flex gap-4 text-sm">
-                <span class="text-green-600">Cost: Free</span>
-                <span class="text-red-600">Time cost: High</span>
-              </div>
-            </div>
-
-            <div class="bg-gray-50 rounded-lg p-4">
-              <h3 class="font-bold text-brand-navy">Calendly + Notion</h3>
-              <p class="text-gray-600 text-sm mb-2">Basic online booking with Calendly free plan, student notes in Notion. Limited to 1 event type on free Calendly.</p>
-              <div class="flex gap-4 text-sm">
-                <span class="text-green-600">Cost: Free (limited)</span>
-                <span class="text-amber-600">Time cost: Medium</span>
-              </div>
-            </div>
-
-            <div class="bg-gray-50 rounded-lg p-4">
-              <h3 class="font-bold text-brand-navy">Square Appointments</h3>
-              <p class="text-gray-600 text-sm mb-2">Free plan includes online booking and payments. Not designed for driving schools, so no progress tracking or lesson-specific features.</p>
-              <div class="flex gap-4 text-sm">
-                <span class="text-green-600">Cost: Free</span>
-                <span class="text-amber-600">Functionality: Limited</span>
-              </div>
-            </div>
-          </div>
-
-          <p class="text-gray-600 mt-6">
-            These workarounds can function for a few students, but they don't scale. You'll spend more time maintaining the system than a dedicated solution would cost.
-          </p>
-        </div>
-
+          </li>
+        </ol>
+        <p class="text-gray-600 mt-6">
+          If you ever leave DriveSchoolPro, the account owner can download a copy of the school's data from Settings. The <a href="/blog/switch-paper-diary-to-driving-school-software/" class="text-brand-red hover:underline">full switching guide</a> goes through each step.
+        </p>
       </div>
     </div>
   </section>
@@ -792,8 +476,7 @@ const schemaMarkup = {
               Plan Your Driving School Finances
             </h3>
             <p class="text-gray-600 mb-4">
-              Before investing in software, understand your potential earnings and costs. Our free calculator
-              shows your effective hourly rate, break-even utilisation, and profit projections with UK industry benchmarks.
+              Our free calculator shows your effective hourly rate, break-even utilisation and profit projections.
             </p>
             <a href="/driving-school-calculator/" class="btn-primary inline-flex items-center">
               <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -807,17 +490,6 @@ const schemaMarkup = {
     </div>
   </section>
 
-  <!-- Comparison Table -->
-  <section class="section bg-gray-50">
-    <div class="container-custom">
-      <ComparisonTable
-        title="DriveSchoolPro vs Free Plans vs DIY Solutions"
-        headers={['DriveSchoolPro (free until 31 Mar 2027)', 'Free Plans', 'Spreadsheets/DIY']}
-        rows={comparisonData}
-      />
-    </div>
-  </section>
-
   <!-- FAQ Section -->
   <section id="faqs">
     <FAQEnhanced
@@ -828,27 +500,21 @@ const schemaMarkup = {
     />
   </section>
 
-  <!-- Remaining Content -->
+  <!-- Related Resources -->
   <section class="section bg-white">
     <div class="container-custom">
       <div class="max-w-4xl mx-auto">
-
-        <!-- Related Resources -->
         <div class="mb-16">
           <h2 class="text-3xl font-bold text-brand-navy mb-6">Related Resources</h2>
 
           <div class="grid md:grid-cols-2 gap-4">
             <a href="/" class="block bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors">
               <h3 class="font-bold text-brand-navy mb-2">Driving School Software</h3>
-              <p class="text-gray-600 text-sm">Complete guide to driving school software features and benefits.</p>
-            </a>
-            <a href="/blog/" class="block bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors">
-              <h3 class="font-bold text-brand-navy mb-2">Driving School Blog</h3>
-              <p class="text-gray-600 text-sm">Tips, guides, and resources for driving instructors.</p>
+              <p class="text-gray-600 text-sm">Every DriveSchoolPro feature in one place.</p>
             </a>
             <a href="/pricing/" class="block bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors">
-              <h3 class="font-bold text-brand-navy mb-2">Pricing Plans</h3>
-              <p class="text-gray-600 text-sm">View our affordable pricing options for every business size.</p>
+              <h3 class="font-bold text-brand-navy mb-2">Pricing</h3>
+              <p class="text-gray-600 text-sm">Free until 31 March 2027, then Free, Solo and School plans.</p>
             </a>
             <a href="/blog/best-driving-school-software/" class="block bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors">
               <h3 class="font-bold text-brand-navy mb-2">Best Driving School Software UK</h3>
@@ -858,13 +524,16 @@ const schemaMarkup = {
               <h3 class="font-bold text-brand-navy mb-2">Compare Driving School Software</h3>
               <p class="text-gray-600 text-sm">DriveSchoolPro side by side with Total Drive, Passly, LessonBuddy and others.</p>
             </a>
-            <a href="/about/" class="block bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors">
-              <h3 class="font-bold text-brand-navy mb-2">About Us</h3>
-              <p class="text-gray-600 text-sm">Learn about our mission to help driving instructors succeed.</p>
+            <a href="/blog/switch-paper-diary-to-driving-school-software/" class="block bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors">
+              <h3 class="font-bold text-brand-navy mb-2">Switching From a Paper Diary</h3>
+              <p class="text-gray-600 text-sm">A step-by-step guide to moving your diary and pupils across.</p>
+            </a>
+            <a href="/blog/" class="block bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors">
+              <h3 class="font-bold text-brand-navy mb-2">Driving School Blog</h3>
+              <p class="text-gray-600 text-sm">Tips, guides and resources for driving instructors.</p>
             </a>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -872,9 +541,9 @@ const schemaMarkup = {
   <!-- CTA Section -->
   <section class="section bg-gradient-to-r from-brand-red to-brand-red-dark text-white">
     <div class="container-custom text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">The Full Product, Free Until 31 March 2027</h2>
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Every Feature, Free Until 31 March 2027</h2>
       <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-        Get full access to every feature — no card required. See for yourself what DriveSchoolPro can do for your school.
+        No card required. After that, stay on the Free plan or choose Solo or School.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href={OFFER.ctaPrimary.href} class="btn bg-white text-brand-red hover:bg-gray-100 text-lg px-8 py-4">{OFFER.ctaPrimary.label}</a>
