@@ -138,3 +138,4 @@ DriveSchoolPro is free until 31 March 2027. From 1 April 2027 there's a permanen
 - [Taking driving lesson payments online](/features/getting-paid/): card payments, lesson blocks and keeping track of who has paid
 - [How to start a driving school](/blog/starting-driving-school-guide/): registering as self-employed, insurance and setting your prices
 - [Driving school revenue calculator](/driving-school-calculator/): work out your yearly lesson income before you check the threshold
+- [ADI income and tax estimator](/tools/adi-income-tax-calculator/): estimate your profit, Income Tax and Class 4 National Insurance for 2026/27
