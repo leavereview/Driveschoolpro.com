@@ -42,6 +42,13 @@ This is a static marketing site built with **Astro 4** and **Tailwind CSS**. It 
 - Standard pages (about, contact, pricing)
 - Blog index and dynamic `[slug].astro` for posts
 
+**"Updated" dates** (issue #16): commercial pages set `modifiedDate="YYYY-MM-DD"` (plus `showUpdated` on
+`BaseLayout`; `LandingLayout` shows it automatically). Change the date by hand when the page's
+content changes, never for refactors or schema fixes, and never compute it at build time. The same
+literal feeds the visible "Updated" line, `dateModified` and the sitemap `<lastmod>`
+(`scripts/sitemap-lastmod.mjs`). Pages without one fall back to their last git commit, which is why
+`deploy.yml` checks out with `fetch-depth: 0`.
+
 ## Deployment
 
 **Auto-deploy: every merge to `main` deploys via GitHub Actions** (`.github/workflows/deploy.yml`;
