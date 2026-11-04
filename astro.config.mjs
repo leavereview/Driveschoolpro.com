@@ -18,6 +18,8 @@ export default defineConfig({
         !page.includes('/ads/') &&
         !/\/start\//.test(page) &&
         !/\/(changelog|early-access|get-started)\/$/.test(page) &&
+        // Google Ads landing page (noindex, follow) — competes with the homepage otherwise
+        !/\/driving-school-software-uk\/$/.test(page) &&
         // US drivers-ed posts (noindex: true in frontmatter)
         !/\/blog\/(driver-ed-cars-guide|drivers-ed-franchise-guide)\/$/.test(page),
       serialize: lastmodSerializer(lastmod),
