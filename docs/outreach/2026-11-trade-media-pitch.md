@@ -54,13 +54,13 @@ Send to the DIA, MSA GB and ADINJC first, then local ADI associations. Use each 
 
 ## B. Magazine or newsletter: Making Tax Digital explainer
 
-For an ADI magazine's news or business section, an association newsletter or a trainer's blog. MTD is what most ADIs need to understand before 6 April 2027, so it's the most newsworthy thing we can offer. The story is the guide, not the product.
+For an ADI magazine's news or business section, an association newsletter or a trainer's blog. Most full-time ADIs join MTD on 6 April 2027 (the £30,000 group; the £50,000 group started in April 2026), so it's the most newsworthy thing we can offer. The story is the guide, not the product.
 
 **Subject:** Making Tax Digital for ADIs: a plain-English explainer your readers can use
 
 > Hello,
 >
-> From 6 April 2027, self-employed instructors with income over £30,000 must keep digital records and send HMRC quarterly updates under Making Tax Digital. The threshold drops to £20,000 a year later. Most full-time ADIs will be in the first group, and many don't know yet.
+> Making Tax Digital for Income Tax started in April 2026 for sole traders with income over £50,000. The next group is much bigger: from 6 April 2027, self-employed instructors with lesson income over £30,000 must keep digital records and send HMRC quarterly updates, and the threshold drops to £20,000 a year later. Most full-time ADIs earn over £30,000 before expenses, so they start in April 2027, and many don't know yet.
 >
 > We've written a free, plain-English guide for instructors: who is in, what counts as lesson income, the quarterly deadlines and a step-by-step checklist. It's at https://driveschoolpro.com/blog/making-tax-digital-driving-instructors/. You're welcome to quote it, link it, or have me write a shorter original version for your readers. I'd send that to you first, with no product pitch in it.
 >
