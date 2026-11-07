@@ -2,65 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { OFFER, PROMO, PRICING } from '../config/offer';
+import { planOffers } from '../utils/schema/plan-offers';
 
 const P = PRICING;
-const offerBase = {
-  "@context": "https://schema.org",
-  "@type": "Offer",
-  "priceCurrency": "GBP",
-  "availability": "https://schema.org/InStock",
-  "url": OFFER.ctaPrimary.href,
-  "seller": { "@type": "Organization", "name": "DriveSchoolPro" },
-  "itemOffered": { "@id": "https://driveschoolpro.com/#software" },
-};
-const monthly = (price: number) => ({
-  "@type": "UnitPriceSpecification",
-  "price": String(price),
-  "priceCurrency": "GBP",
-  "unitText": "month",
-  "billingIncrement": 1,
-  "valueAddedTaxIncluded": false,
-});
-
-// Offer schema: early access now, then the three plans from 1 April 2027
-const offerSchemas = [
-  {
-    ...offerBase,
-    "@id": "https://driveschoolpro.com/pricing/#early-access",
-    "name": "Early access — free until 31 March 2027",
-    "description": "Every feature free for solo ADIs and multi-instructor schools until 31 March 2027. No card required, no setup fees.",
-    "price": "0",
-    "priceSpecification": monthly(0),
-    "priceValidUntil": "2027-03-31",
-  },
-  {
-    ...offerBase,
-    "@id": "https://driveschoolpro.com/pricing/#free",
-    "name": "Free plan",
-    "description": `${P.free.summary}. Email reminders included.`,
-    "price": "0",
-    "priceSpecification": monthly(0),
-    "validFrom": "2027-04-01",
-  },
-  {
-    ...offerBase,
-    "@id": "https://driveschoolpro.com/pricing/#solo",
-    "name": "Solo plan",
-    "description": `For one instructor: unlimited lessons, every feature, text and WhatsApp reminders when they launch (coming soon). £${P.solo.price} a month, no VAT charged.`,
-    "price": String(P.solo.price),
-    "priceSpecification": monthly(P.solo.price),
-    "validFrom": "2027-04-01",
-  },
-  {
-    ...offerBase,
-    "@id": "https://driveschoolpro.com/pricing/#school",
-    "name": "School plan",
-    "description": `For multi-instructor schools: £${P.school.price} a month plus £${P.school.perExtraInstructor} for each extra instructor, no VAT charged.`,
-    "price": String(P.school.price),
-    "priceSpecification": monthly(P.school.price),
-    "validFrom": "2027-04-01",
-  },
-];
+// Offer schema: early access now, then the three plans from 1 April 2027 (shared with the homepage)
+const offerSchemas = planOffers().map((offer) => ({ "@context": "https://schema.org", ...offer }));
 
 // FAQ — rendered on the page and as FAQPage schema from the same array
 const faqs = [
@@ -163,7 +109,7 @@ const plans = [
 ];
 ---
 
-<BaseLayout title="Driving School Software Pricing: Free Plan, Solo £22" description={`Driving school software pricing: free until 31 March 2027, then a permanent Free plan (60 lessons a month) or Solo at £22 a month. No VAT charged. No card required.`} image="/images/marketing/payments.webp" modifiedDate="2026-10-19" showUpdated>
+<BaseLayout title="Driving School Software Pricing: Free Plan, Solo £22" description={`Driving school software pricing: free until 31 March 2027, then a permanent Free plan (60 lessons a month) or Solo at £22 a month. No VAT, no card needed.`} image="/images/marketing/payments.webp" modifiedDate="2026-10-19" showUpdated>
   <Fragment slot="head">
     {offerSchemas.map(offerSchema => (
       <script type="application/ld+json" set:html={JSON.stringify(offerSchema)} />

@@ -149,6 +149,8 @@ function buildLinkGraph(htmlFiles, siteUrl) {
   return { inboundLinks, outboundLinks };
 }
 
+const MAX_DESCRIPTION_LENGTH = 160;
+
 // ─── Checks ───────────────────────────────────────────────────────────────────
 
 function checkPage(filePath, pagePath, siteUrl, sitemapPaths, inboundLinks, outboundLinks, htmlPageSet) {
@@ -189,8 +191,18 @@ function checkPage(filePath, pagePath, siteUrl, sitemapPaths, inboundLinks, outb
   }
 
   // 4. Meta description
-  if (!/<meta\s[^>]*\bname=["']description["']/i.test(html)) {
+  const descTag = html.match(/<meta\s[^>]*\bname=["']description["'][^>]*>/i);
+  if (!descTag) {
     failures.push('Missing meta description');
+  } else {
+    // Google cuts snippets off at roughly 155-160 characters; past that the end of the
+    // description (often the offer) is lost. Decode entities before counting.
+    const content = (descTag[0].match(/\bcontent=["']([^"']*)["']/i) || [])[1] || '';
+    const text = content.replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)))
+      .replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&'); // &amp; last, so it can't create a new entity
+    if (text.length > MAX_DESCRIPTION_LENGTH) {
+      failures.push(`Meta description too long (${text.length} > ${MAX_DESCRIPTION_LENGTH} characters)`);
+    }
   }
 
   // 5. Inbound links ≥ 2 (homepage exempt — nothing links "to" it by path)

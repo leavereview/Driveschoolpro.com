@@ -1,6 +1,6 @@
 ---
 title: "Switching from Paper Diary to Driving School Software: An ADI's Honest Guide"
-description: "Thinking of ditching your paper diary and WhatsApp? Here's a practical, honest guide to switching to driving school software — what changes, what gets easier, and how to make the transition without losing a single student record."
+description: "Switching from a paper diary or WhatsApp to driving school software: what changes, what gets easier and how to move without losing a pupil record."
 date: "2026-04-11"
 updatedDate: "2026-11-02"
 tags: ["business", "guide"]

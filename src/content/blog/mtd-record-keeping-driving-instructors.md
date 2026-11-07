@@ -1,6 +1,6 @@
 ---
 title: "MTD Record Keeping for Driving Instructors: What Digital Records You Need"
-description: "Under Making Tax Digital every ADI income and expense needs a date, an amount and a category, kept for 5 years. See the records to keep, typical instructor expenses and the mileage choice."
+description: "Making Tax Digital records for ADIs: a date, amount and category for every income and expense, kept 5 years, plus typical costs and the mileage choice."
 date: "2026-10-16"
 tags: ["business", "guide", "tax"]
 author: "John Powell"

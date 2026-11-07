@@ -1,6 +1,6 @@
 ---
 title: "Making Tax Digital for Driving Instructors: Do You Need It in 2027?"
-description: "Most full-time ADIs pass the £30,000 Making Tax Digital threshold and must start on 6 April 2027. See if you're in, what counts as income, the quarterly deadlines and a step-by-step checklist."
+description: "Most full-time ADIs pass the £30,000 Making Tax Digital threshold and start on 6 April 2027. Check if you're in, the quarterly deadlines and a checklist."
 date: "2026-10-16"
 updatedDate: "2026-11-02"
 tags: ["business", "guide", "tax"]

@@ -1,6 +1,6 @@
 ---
 title: "MTD Timeline 2027–2028 for Driving Instructors: Every Date You Need"
-description: "Making Tax Digital starts for ADIs over £30,000 on 6 April 2027. See every date from October 2026 to your first MTD tax return, the 7th-of-the-month quarterly deadlines and when penalty points start."
+description: "Making Tax Digital starts for ADIs over £30,000 on 6 April 2027. Every date to your first MTD return, the quarterly deadlines and when penalties start."
 date: "2026-10-16"
 tags: ["business", "guide", "tax"]
 author: "John Powell"
