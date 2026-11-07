@@ -199,7 +199,7 @@ function checkPage(filePath, pagePath, siteUrl, sitemapPaths, inboundLinks, outb
     // description (often the offer) is lost. Decode entities before counting.
     const content = (descTag[0].match(/\bcontent=["']([^"']*)["']/i) || [])[1] || '';
     const text = content.replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)))
-      .replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+      .replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&'); // &amp; last, so it can't create a new entity
     if (text.length > MAX_DESCRIPTION_LENGTH) {
       failures.push(`Meta description too long (${text.length} > ${MAX_DESCRIPTION_LENGTH} characters)`);
     }
