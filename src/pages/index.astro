@@ -5,6 +5,7 @@ import FAQEnhanced from '../components/seo/FAQEnhanced.astro';
 import BusinessNameCapture from '../components/BusinessNameCapture.astro';
 import OnYourPhone from '../components/marketing/OnYourPhone.astro';
 import { OFFER } from '../config/offer';
+import { planOffers } from '../utils/schema/plan-offers';
 
 // SoftwareApplication Schema
 const softwareApplicationSchema = {
@@ -17,19 +18,7 @@ const softwareApplicationSchema = {
   "description": "Complete driving school management software for driving instructors and schools. Lesson scheduling, student management, automated billing, and instructor allocation in one platform.",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web, iOS, Android",
-  "offers": [
-    {
-      "@type": "Offer",
-      "@id": "https://driveschoolpro.com/#early-access",
-      "name": "Early Access — Free until 31 March 2027",
-      "description": "DriveSchoolPro is free during early access — until 31 March 2027. Unlimited students, DVSA progress tracking, scheduling, and invoicing. No card required.",
-      "price": "0",
-      "priceCurrency": "GBP",
-      "availability": "https://schema.org/InStock",
-      "url": OFFER.ctaPrimary.href,
-      "priceValidUntil": "2027-03-31"
-    }
-  ],
+  "offers": planOffers(),
   "featureList": [
     "Lesson Scheduling with Conflict Detection",
     "Student Management",

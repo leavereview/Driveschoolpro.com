@@ -1,6 +1,6 @@
 ---
 title: "DriveScout vs DrivingSchoolSoftware"
-description: "DriveScout vs DrivingSchoolSoftware.com compared from their own websites: scheduling, reminders, payments and who each is built for. What UK instructors should know."
+description: "DriveScout vs DrivingSchoolSoftware.com, compared from their own websites: scheduling, reminders, payments and who each one suits."
 image: /images/blog/app-dashboard-overview.jpg
 imageAlt: "The DriveSchoolPro Today screen showing the day's lessons for each instructor and the day's lesson value"
 date: "2025-12-27"

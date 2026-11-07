@@ -1,6 +1,6 @@
 ---
 title: "How to Stop Driving Lesson No-Shows: 8 ADI Strategies"
-description: "UK driving instructors lose £2,000+ per year to no-shows. Here are 8 proven strategies to reduce missed lessons — from automated reminders to deposit policies and smart scheduling."
+description: "UK driving instructors lose £2,000+ a year to no-shows. 8 ways to cut missed lessons, from automated reminders to deposit policies and smart scheduling."
 date: "2026-04-11"
 tags: ["business", "guide"]
 author: "John Powell"

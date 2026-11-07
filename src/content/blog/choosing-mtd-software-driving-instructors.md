@@ -1,6 +1,6 @@
 ---
 title: "Choosing MTD Software as a Driving Instructor: A Practical Checklist"
-description: "HMRC recognises the software but doesn't recommend any of it. Use this 8-point checklist to pick MTD software as an ADI: bank feeds, receipts, mileage, quarterly updates and your tax return."
+description: "Pick Making Tax Digital software as an ADI with this 8-point checklist: bank feeds, receipts, mileage, quarterly updates and your tax return."
 date: "2026-10-16"
 tags: ["business", "guide", "tax"]
 author: "John Powell"

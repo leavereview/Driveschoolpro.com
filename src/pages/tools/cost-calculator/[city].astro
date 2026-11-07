@@ -46,7 +46,7 @@ const breadcrumbSchema = {
 
 <BaseLayout
   title={`Cost of Learning to Drive in ${city.name} 2026 | DriveSchoolPro`}
-  description={`How much does it cost to learn to drive in ${city.name}? Lesson prices from £${city.avgLessonPriceRange[0]}–£${city.avgLessonPriceRange[1]}/hour. Estimated total cost £${estLow.toLocaleString()}–£${estHigh.toLocaleString()}. Calculate your personalised estimate.`}
+  description={`How much does it cost to learn to drive in ${city.name}? Lesson prices £${city.avgLessonPriceRange[0]}–£${city.avgLessonPriceRange[1]}/hour. Estimated total cost £${estLow.toLocaleString()}–£${estHigh.toLocaleString()}. Calculate your own estimate.`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 

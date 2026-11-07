@@ -1,6 +1,6 @@
 ---
 title: "How to Start a Driving School in the UK: Costs and Steps"
-description: "Start a driving school in the UK: the 8 DVSA steps, £603 in official fees (£743 with a trainee licence), what else to budget for, insurance, the car, pricing and your first pupils."
+description: "Start a driving school in the UK: the 8 DVSA steps, £603 in official fees (£743 with a trainee licence), insurance, the car, pricing and first pupils."
 image: /images/blog/app-calendar-week.jpg
 imageAlt: "The DriveSchoolPro week calendar showing colour-coded driving lessons across four instructors"
 date: "2026-02-13"
