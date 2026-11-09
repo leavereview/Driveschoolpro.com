@@ -5,6 +5,7 @@ import BreadcrumbsEnhanced from '../../components/seo/BreadcrumbsEnhanced.astro'
 import FeaturedAnswer from '../../components/seo/FeaturedAnswer.astro';
 import ComparisonTable from '../../components/seo/ComparisonTable.astro';
 import FAQEnhanced from '../../components/seo/FAQEnhanced.astro';
+import CompareMethodNote from '../../components/compare/CompareMethodNote.astro';
 
 // Three-way comparison. Same comparative-advertising rules as CompetitorComparison.astro
 // (ASA CAP 3.33-3.41):
@@ -21,35 +22,48 @@ import FAQEnhanced from '../../components/seo/FAQEnhanced.astro';
 //                  Diary Gaps, Diary Sharing export, student app, syllabus, test outcomes incl.
 //                  theory and fault details, Free Data Transfer, SMS on individual plan,
 //                  Schools & Teams, 30-day trial, support)
-const checkedOn = '16 October 2026';
+// 9 Nov 2026: re-checked against each vendor's help guides, blog, release notes and app store
+//   listings, not just marketing pages.
+//   Total Drive help guides (totaldrive.freshdesk.com): Lesson Clashes, Lesson reminders overview
+//     (free in-app; SMS needs a paid text bundle), Online Booking set-up (Book & Pay link for your
+//     website), Updating driving test results (faults), Offline Mode. /ai-info-page/: DVSA syllabus,
+//     Apple CarPlay and Android Auto. /knowledge-base/getting-started-for-instructors/ now 404s.
+//   My Drive Time: /lesson-management/ (starts from the standard DVSA syllabus, customisable;
+//     Journey Tracking), /driving-instructor-app/ (works offline), /blog/web-diary-update/ (drag and
+//     drop on the web), /blog/how-to-use-multiple-devices/ (app "cannot interface" with CarPlay or
+//     Android Auto), Google Play listing com.mydrivetime.two (Android app).
+const checkedOn = '9 November 2026';
 const pageUrl = 'https://driveschoolpro.com/compare/total-drive-vs-mydrivetime/';
 
 const rows = [
-  { label: 'Diary with drag-and-drop rescheduling', values: [true, 'Yes (drag between days and times)', 'Diary listed; drag-and-drop not stated'] },
+  { label: 'Diary with drag-and-drop rescheduling', values: [true, 'Yes (drag between days and times)', 'Yes (drag and drop in the web diary)'] },
   { label: 'Repeating weekly lessons', values: ['Coming soon', 'Yes (weekly repeats)', 'Yes (Enhanced Recurrence)'] },
-  { label: 'Clash checks', values: ['Pupil, instructor and vehicle', 'Not listed', 'Yes (Clash Resolution; scope not stated)'] },
+  { label: 'Clash checks', values: ['Pupil, instructor and vehicle', 'Yes (lesson clash alerts; scope not stated)', 'Yes (Clash Resolution; scope not stated)'] },
   { label: 'Google / Apple Calendar', values: [false, 'Two-way sync listed', 'Export listed (Diary Sharing)'] },
-  { label: 'Automatic lesson reminders', values: ['Email (text and WhatsApp coming soon)', 'Yes (channel not stated)', 'SMS included on individual plan'] },
+  { label: 'Automatic lesson reminders', values: ['Email (text and WhatsApp coming soon)', 'Free app notifications; SMS with a paid text bundle', 'App notifications; SMS included on individual plan'] },
   { label: 'Cancellation-gap broadcast to pupils', values: [false, 'Yes (Smart Gaps)', 'Yes (Diary Gaps)'] },
   { label: 'Pupil app', values: ['Yes (iPhone, Android, web)', 'Yes (free, brandable)', 'Yes (student app and feed)'] },
-  { label: 'Progress framework', values: ['DVSA 27 skills, 8 categories', 'DVSA syllabus pre-filled, customisable', 'Syllabus manager; DVSA default not stated'] },
+  { label: 'Progress framework', values: ['DVSA 27 skills, 8 categories', 'DVSA syllabus, customisable', 'Starts from the DVSA syllabus, customisable'] },
   { label: 'AI lesson briefings', values: [true, 'Not listed', 'Not listed'] },
-  { label: 'Recording practical test results', values: ['Coming soon', 'Yes (mock and practical tests)', 'Yes (with fault details)'] },
-  { label: 'Card payments', values: ['Yes (Stripe)', 'Take Payments listed', 'Payment tracking listed; card payments not listed'] },
-  { label: 'Pupil self-booking online', values: ['Portal and website widget', 'Online Booking listed', 'Not listed'] },
+  { label: 'Recording practical test results', values: ['Coming soon', 'Yes (mock and practical tests, with faults)', 'Yes (with fault details)'] },
+  { label: 'Card payments', values: ['Yes (Stripe)', 'Yes (in-app card, Apple Pay, Google Pay)', 'Payment tracking listed; card payments not listed'] },
+  { label: 'Pupil self-booking online', values: ['Portal and website widget', 'Yes (Online Booking, with a link for your website)', 'Not listed'] },
   { label: 'Vehicle MOT, tax and insurance tracking', values: [true, 'Not listed', 'Not listed'] },
   { label: 'Google review requests at each test pass', values: [true, 'Not listed', 'Not listed'] },
   { label: 'Theory content for pupils', values: [false, 'Yes (Theory Suite)', 'Not listed'] },
   { label: 'Help moving records from another system', values: [false, 'Migration support listed', 'Yes (Free Data Transfer)'] },
   { label: 'Multi-instructor schools', values: ['Yes (School plan)', true, 'Yes (Schools & Teams)'] },
-  { label: 'Platforms', values: ['Web, iPhone, Android', 'Web, Apple and Android apps', 'Web and App Store app; Android not listed'] },
+  { label: 'Works offline', values: ['Not advertised', 'Yes (Offline Mode)', 'Yes (mobile app)'] },
+  { label: 'Apple CarPlay and Android Auto', values: [false, 'Yes', "No (MyDriveTime says its app can't interface with them)"] },
+  { label: 'Recording the route driven on a lesson', values: [false, 'Listed as coming soon', 'Yes (Journey Tracking)'] },
+  { label: 'Platforms', values: ['Web, iPhone, Android', 'Web, Apple and Android apps', 'Web, iPhone and Android apps'] },
   { label: 'How to try it', values: ['Free until 31 March 2027, no card', '30-day free trial, no card', '30-day free trial, no card'] },
 ];
 
 const faqs = [
   {
     question: 'Which is better, Total Drive or My Drive Time?',
-    answer: "Neither is better across the board. On their own websites, Total Drive leans towards breadth: a theory suite, two-way Google and Apple Calendar sync, a brandable pupil app and online booking. My Drive Time leans towards service and admin: SMS reminders included on its individual plan, clash highlighting, detailed test-outcome records, free data transfer and support it describes as award-winning. If you want the most features in one app, start with Total Drive's trial. If you want hand-holding and SMS, start with My Drive Time's.",
+    answer: "Neither is better across the board. On their own websites, Total Drive leans towards breadth: a theory suite, two-way Google and Apple Calendar sync, a brandable pupil app, online booking with card payments, and Apple CarPlay and Android Auto. My Drive Time leans towards service and admin: SMS reminders included on its individual plan, journey tracking, an income and expense report with receipts, free data transfer and support it describes as award-winning. If you want the most features in one app, start with Total Drive's trial. If you want hand-holding and SMS included in the subscription, start with My Drive Time's.",
     links: [{ text: 'DriveSchoolPro vs Total Drive', url: '/compare/total-drive/' }],
   },
   {
@@ -64,7 +78,7 @@ const faqs = [
   },
   {
     question: 'Which one sends SMS lesson reminders?',
-    answer: "My Drive Time's pricing page says SMS text messages are included on its individual plan. Total Drive's app page lists free lesson reminders 24 or 48 hours before a lesson but does not say which channel they use. DriveSchoolPro sends automatic email reminders today, on every plan; text and WhatsApp reminders are coming soon on its paid Solo and School plans.",
+    answer: "Both do. My Drive Time's pricing page says SMS text messages are included on its individual plan, and its app also sends reminders as notifications. Total Drive's help guides say its free reminders are in-app notifications, and SMS reminders need a text bundle bought separately. DriveSchoolPro sends automatic email reminders today, on every plan; text and WhatsApp reminders are coming soon on its paid Solo and School plans.",
     links: [{ text: 'DriveSchoolPro scheduling', url: '/features/scheduling/' }],
   },
   {
@@ -74,12 +88,12 @@ const faqs = [
   },
   {
     question: 'Where does DriveSchoolPro fit?',
-    answer: "DriveSchoolPro is the newer option. It adds AI lesson briefings, progress built on the official DVSA 27 skills, clash checks that include the vehicle, MOT, tax and insurance tracking, and Google review requests when a pupil passes. It doesn't yet have a theory suite, cancellation-gap broadcasts, repeating lessons, calendar sync or bulk migration. It is free until 31 March 2027, so you can try it alongside either app.",
+    answer: "DriveSchoolPro is the newer option. It adds AI lesson briefings, clash checks that include the vehicle, MOT, tax and insurance tracking, and Google review requests when a pupil passes, and tracks progress on the official DVSA 27 skills as a fixed framework. It doesn't yet have a theory suite, cancellation-gap broadcasts, repeating lessons, calendar sync, SMS reminders, Apple CarPlay or Android Auto, or bulk migration. It is free until 31 March 2027, so you can try it alongside either app.",
     links: [{ text: 'Driving instructor diary app', url: '/driving-instructor-diary-app/' }],
   },
   {
     question: 'Is this comparison fair?',
-    answer: `We've tried to make it so, but we are one of the three vendors, so read it sceptically. Every Total Drive and My Drive Time entry comes from that vendor's own public website, checked ${checkedOn}. Where we couldn't find a feature we say "Not listed", not "No", because it may exist. If anything is wrong or out of date, email info@driveschoolpro.com and we'll correct it.`,
+    answer: `We've tried to make it so, but we are one of the three vendors, so read it sceptically. Every Total Drive and My Drive Time entry comes from that vendor's own public website, help guides and app-store listings, checked ${checkedOn}. Where we couldn't find a feature we say "Not listed", not "No", because it may exist. If anything is wrong or out of date, email info@driveschoolpro.com and we'll correct it.`,
     links: [{ text: 'All comparisons', url: '/compare/' }],
   },
 ];
@@ -92,7 +106,7 @@ const schemaMarkup = {
   author: { '@type': 'Organization', name: 'DriveSchoolPro' },
   publisher: { '@type': 'Organization', name: 'DriveSchoolPro' },
   datePublished: '2026-10-16',
-  dateModified: '2026-10-16',
+  dateModified: '2026-11-09',
   mainEntityOfPage: pageUrl,
   about: [
     { '@type': 'SoftwareApplication', name: 'Total Drive', url: 'https://totaldrive.co.uk/' },
@@ -104,10 +118,10 @@ const schemaMarkup = {
 
 <BaseLayout
   title="Total Drive vs My Drive Time: Neutral Comparison | DriveSchoolPro"
-  description="Total Drive vs MyDriveTime feature by feature, from each vendor's own site (checked Oct 2026), plus where DriveSchoolPro fits. No prices quoted."
+  description="Total Drive vs MyDriveTime feature by feature, from each vendor's own site and help guides (checked Nov 2026), plus where DriveSchoolPro fits. No prices quoted."
   image="/images/marketing/dashboard-overview.webp"
   publishedDate="2026-10-16"
-  modifiedDate="2026-10-16"
+  modifiedDate="2026-11-09"
 >
   <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
 
@@ -140,10 +154,11 @@ const schemaMarkup = {
 
   <FeaturedAnswer question="How does Total Drive compare with My Drive Time?">
     Total Drive and My Drive Time (MyDriveTime) are both established UK apps for driving instructors,
-    with a diary, a pupil app, syllabus-based progress tracking, test recording and support for
-    multi-instructor schools. Total Drive lists a theory suite, two-way Google and Apple Calendar sync
-    and online booking. My Drive Time lists SMS reminders on its individual plan, clash highlighting,
-    free data transfer and support it calls award-winning. Both offer a 30-day free trial.
+    with a diary, clash warnings, a pupil app, progress tracking that starts from the DVSA syllabus,
+    test recording and support for multi-instructor schools. Total Drive lists a theory suite, two-way
+    Google and Apple Calendar sync, online booking and Apple CarPlay and Android Auto. My Drive Time
+    lists SMS reminders included on its individual plan, journey tracking, free data transfer and
+    support it calls award-winning. Both offer a 30-day free trial.
     DriveSchoolPro is a newer, free-until-March-2027 alternative with AI lesson briefings and DVSA
     27-skill tracking.
   </FeaturedAnswer>
@@ -191,11 +206,13 @@ const schemaMarkup = {
       highlightColumn={0}
     />
     <div class="container-custom pb-12">
-      <p class="max-w-5xl mx-auto text-sm text-gray-500">
-        <strong>"Not listed"</strong> means we could not find the feature on that vendor's public website on {checkedOn}.
-        It may exist. "No" appears only in the DriveSchoolPro column, where we know. If anything here is out of date, email
-        <a href="mailto:info@driveschoolpro.com" class="text-brand-red hover:underline">info@driveschoolpro.com</a> and we'll correct it.
-      </p>
+      <div class="max-w-5xl mx-auto">
+        <CompareMethodNote
+          competitors={['Total Drive', 'My Drive Time']}
+          checkedOn={checkedOn}
+          updates={[{ date: '9 November 2026', text: 'checked again, including both vendors\' help guides and app-store listings. Total Drive warns of lesson clashes and sells SMS reminders as a text bundle; My Drive Time starts from the DVSA syllabus, is on Android, and supports drag and drop in its web diary. We added offline use, Apple CarPlay and Android Auto, and route recording.' }]}
+        />
+      </div>
     </div>
   </section>
 
@@ -215,9 +232,12 @@ const schemaMarkup = {
         Around the diary, Total Drive lists a free pupil app that a school can brand with its own
         name, logo and colours; a message centre with broadcasts to all or selected pupils; Smart
         Gaps for filling last-minute cancellations first come, first served; reflective logs; and a
-        progress syllabus that its help pages say is pre-filled with the DVSA syllabus and can be
-        customised. It also lists a Theory Suite, online booking, a Take Payments feature and
-        migration of your existing pupils and diary after you start the trial. For schools, it
+        progress syllabus that it says tracks against the DVSA syllabus and can be
+        customised. It also lists a Theory Suite, online booking, a Take Payments feature,
+        Apple CarPlay and Android Auto, and migration of your existing pupils and diary after you
+        start the trial. Its help guides add clash alerts for overlapping lessons, free in-app
+        lesson reminders with SMS reminders available as a paid text bundle, and test results
+        recorded with faults. For schools, it
         describes adding instructors, allocating new pupils and tracking instructor performance.
       </p>
       <p>
@@ -232,32 +252,36 @@ const schemaMarkup = {
         My Drive Time's pitch is service. Its website describes award-winning help by email, phone
         or chat, one-to-one start-up sessions and a UK team that includes qualified ADIs. It offers
         Free Data Transfer, so records from another system are moved for you, and its pricing page
-        says SMS text messages are included on the individual plan. For schools and teams it lists
+        says SMS text messages are included on the individual plan. Its apps run on iPhone,
+        Android and the web, and the mobile app works offline. For schools and teams it lists
         a shared diary and student access, enquiry management, tailored setup and training, and free
         admin accounts.
       </p>
       <p>
         The diary side is more detailed than it first appears. My Drive Time lists Clash Resolution
-        for highlighting conflicts, Enhanced Recurrence for repeating lesson sequences, Diary Gaps for
+        for highlighting conflicts, drag-and-drop moves in the web diary, Enhanced Recurrence for
+        repeating lesson sequences, Diary Gaps for
         advertising open slots to chosen students, Diary Sharing to export to Outlook, Google and
         Apple calendars, and a Privacy Mode. On the admin side it lists payment status per lesson,
         prepaid lesson tracking, an income and expense report with receipt attachments, and test
-        outcomes covering practical and theory results with fault details. Pupils get a student app
-        with a feed showing their progress against a syllabus manager, though the site doesn't say
-        whether the DVSA structure is the default.
+        outcomes covering practical and theory results with fault details. Lessons can be recorded
+        with Journey Tracking, so pupils see the route they drove. Pupils get a student app with a
+        feed showing their progress against a syllabus that starts from the standard DVSA syllabus
+        and can be fully customised.
       </p>
       <p>
-        If you want SMS reminders, someone to move your data for you and a support team you can
-        phone, My Drive Time is the stronger fit of the two. See
+        If you want SMS reminders included in the subscription, someone to move your data for you
+        and a support team you can phone, My Drive Time is the stronger fit of the two. See
         <a href="/compare/my-drive-time/" class="text-brand-red hover:underline">DriveSchoolPro vs My Drive Time</a>
         for a closer look.
       </p>
 
       <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mt-12 mb-4">What they have in common</h2>
       <p>
-        On their own sites, both apps offer a diary with pick-up locations, automatic lesson
-        reminders, a pupil app, syllabus-based progress, reflective logs, test recording, income
-        tracking and support for multi-instructor schools. Both broadcast cancelled or open slots to
+        On their own sites, both apps offer a diary with pick-up locations and clash warnings,
+        automatic lesson reminders with an SMS option, a pupil app, progress that starts from the
+        DVSA syllabus, reflective logs, test recording with faults, income tracking, offline use,
+        calendar sharing and support for multi-instructor schools. Both broadcast cancelled or open slots to
         pupils (Smart Gaps and Diary Gaps). Both offer a 30-day free trial without a card, and both
         offer a money-back guarantee after you start paying. For a solo ADI who simply needs a
         reliable diary with reminders, either will do the job, and the deciding factor is often
@@ -269,8 +293,9 @@ const schemaMarkup = {
         DriveSchoolPro is newer than both, and it shows in the gaps. It has no theory content, no way
         to broadcast a cancelled slot, no repeating lessons yet (coming soon), no Google or Apple
         Calendar sync and no bulk migration. Lesson reminders go out by email today; text and
-        WhatsApp reminders are coming soon on the paid Solo and School plans. Recording practical test results is coming soon. Total
-        Drive says its diary works offline; DriveSchoolPro does not advertise offline use.
+        WhatsApp reminders are coming soon on the paid Solo and School plans. Recording practical test results is coming soon. Both
+        competitors say their apps work offline; DriveSchoolPro does not advertise offline use. Total Drive
+        lists Apple CarPlay and Android Auto and My Drive Time lists journey tracking; DriveSchoolPro has neither.
       </p>
       <p>
         What it adds is a different emphasis:
@@ -278,8 +303,8 @@ const schemaMarkup = {
       <ul>
         <li><strong>AI lesson briefings.</strong> Before each lesson, a short briefing written by Claude from your last notes and the pupil's skill ratings. We couldn't find an equivalent on either competitor's site. <a href="/features/lesson-briefings/" class="text-brand-red hover:underline">How briefings work</a>.</li>
         <li><strong>Progress on the DVSA framework.</strong> All 27 skills in 8 categories, which pupils see in their own app. <a href="/features/progress-tracking/" class="text-brand-red hover:underline">Progress tracking</a>.</li>
-        <li><strong>Clash checks that include the car.</strong> Every booking is checked against the pupil, the instructor and the vehicle, and MOT, tax and insurance dates are tracked. <a href="/features/scheduling/" class="text-brand-red hover:underline">Scheduling</a>.</li>
-        <li><strong>Review requests when a pupil passes.</strong> Prompted on your Today screen, not sent automatically: you decide.</li>
+        <li><strong>Clash checks that include the car.</strong> Both competitors warn you about clashing lessons; DriveSchoolPro also checks every booking against the vehicle, and tracks MOT, tax and insurance dates. <a href="/features/scheduling/" class="text-brand-red hover:underline">Scheduling</a>.</li>
+        <li><strong>Review requests when a pupil passes.</strong> Emailed to the pupil once when you mark a pass, on by default once your Google listing is linked. You can switch it off in settings.</li>
         <li><strong>Price.</strong> {PRICE_LINE}</li>
       </ul>
       <p>
@@ -291,8 +316,8 @@ const schemaMarkup = {
 
       <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mt-12 mb-4">Which should you choose?</h2>
       <ul>
-        <li><strong>Choose Total Drive</strong> if you want the broadest feature set, calendar sync, theory content for pupils or a pupil app branded as your own school.</li>
-        <li><strong>Choose My Drive Time</strong> if SMS reminders, free data transfer and phone support matter most, or you want detailed test-outcome records.</li>
+        <li><strong>Choose Total Drive</strong> if you want the broadest feature set, calendar sync, theory content for pupils, Apple CarPlay or Android Auto, or a pupil app branded as your own school.</li>
+        <li><strong>Choose My Drive Time</strong> if SMS reminders included in the subscription, free data transfer and phone support matter most, or you want journey tracking.</li>
         <li><strong>Choose DriveSchoolPro</strong> if you want AI lesson prep, progress on the DVSA 27 skills and vehicle-aware clash checks, and you can live with the gaps above.</li>
       </ul>
     </div>
@@ -304,10 +329,17 @@ const schemaMarkup = {
       <ul class="space-y-1 text-sm">
         <li><a href="https://totaldrive.co.uk/" class="text-brand-red hover:underline" rel="noopener" target="_blank">Total Drive: home page</a></li>
         <li><a href="https://totaldrive.co.uk/driving-instructor-app/" class="text-brand-red hover:underline" rel="noopener" target="_blank">Total Drive: driving instructor app</a></li>
-        <li><a href="https://totaldrive.co.uk/knowledge-base/getting-started-for-instructors/" class="text-brand-red hover:underline" rel="noopener" target="_blank">Total Drive: getting started for instructors</a></li>
+        <li><a href="https://totaldrive.co.uk/ai-info-page/" class="text-brand-red hover:underline" rel="noopener" target="_blank">Total Drive: AI info page (key facts)</a></li>
+        <li><a href="https://totaldrive.freshdesk.com/support/solutions/articles/80001132440-lesson-clashes" class="text-brand-red hover:underline" rel="noopener" target="_blank">Total Drive help guide: lesson clashes</a></li>
+        <li><a href="https://totaldrive.freshdesk.com/support/solutions/articles/80001096529-lesson-reminders-overview" class="text-brand-red hover:underline" rel="noopener" target="_blank">Total Drive help guide: lesson reminders</a></li>
+        <li><a href="https://totaldrive.freshdesk.com/support/solutions/articles/80001098369-offline-mode" class="text-brand-red hover:underline" rel="noopener" target="_blank">Total Drive help guide: offline mode</a></li>
         <li><a href="https://totaldrive.co.uk/instructor-software-pricing/" class="text-brand-red hover:underline" rel="noopener" target="_blank">Total Drive: pricing</a></li>
         <li><a href="https://www.mydrivetime.co.uk/" class="text-brand-red hover:underline" rel="noopener" target="_blank">My Drive Time: home page</a></li>
         <li><a href="https://www.mydrivetime.co.uk/pricing/" class="text-brand-red hover:underline" rel="noopener" target="_blank">My Drive Time: pricing</a></li>
+        <li><a href="https://www.mydrivetime.co.uk/lesson-management/" class="text-brand-red hover:underline" rel="noopener" target="_blank">My Drive Time: lesson management</a></li>
+        <li><a href="https://www.mydrivetime.co.uk/driving-instructor-app/" class="text-brand-red hover:underline" rel="noopener" target="_blank">My Drive Time: for driving instructors</a></li>
+        <li><a href="https://www.mydrivetime.co.uk/blog/how-to-use-multiple-devices/" class="text-brand-red hover:underline" rel="noopener" target="_blank">My Drive Time: using multiple devices (CarPlay and Android Auto)</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=com.mydrivetime.two" class="text-brand-red hover:underline" rel="noopener" target="_blank">My Drive Time: Google Play listing</a></li>
       </ul>
       <p class="text-sm text-gray-500 mt-3">Checked {checkedOn}. Compare more platforms on our <a href="/compare/" class="text-brand-red hover:underline">comparison hub</a>, or go back to <a href="/" class="text-brand-red hover:underline">DriveSchoolPro</a>.</p>
     </div>

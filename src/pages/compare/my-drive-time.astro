@@ -10,13 +10,18 @@ import CompetitorComparison from '../../components/compare/CompetitorComparison.
 //   "MyDriveTime", so the page now uses that (keeping "My Drive Time" as the alternate
 //   spelling people search). Added rows from the home page feature list: Enhanced
 //   Recurrence, Expense Receipts / Income and Expense Report, Test Fault Recording.
+// 9 Nov 2026: re-checked every page in the vendor's sitemap, including blog posts, release
+//   notes and the Google Play / App Store listings. Fixed: DVSA syllabus (/lesson-management/:
+//   "We'll get you started with the standard DVSA syllabus, but you can fully customise it");
+//   reminder channels (app notifications and SMS; email reminders not found); website cell
+//   (embeddable web enquiry form for teams). Added: Journey Tracking (route recording).
 const rows = [
   { label: 'AI lesson briefings', values: [true, 'Not listed'] },
-  { label: 'DVSA 27-skill, 8-category progress tracking', values: [true, 'Syllabus manager; DVSA structure not stated'] },
+  { label: 'DVSA 27-skill, 8-category progress tracking', values: [true, 'Starts from the DVSA syllabus, fully customisable'] },
   { label: 'Google review requests at each test pass', values: [true, 'Not listed'] },
-  { label: 'Automatic lesson reminders', values: ['Email', 'Yes (email, SMS, app)'] },
+  { label: 'Automatic lesson reminders', values: ['Email', 'Yes (app notifications and SMS)'] },
   { label: 'WhatsApp reminders', values: ['Coming soon', 'Not listed'] },
-  { label: 'Booking widget for your own website', values: [true, 'Not listed'] },
+  { label: 'Booking widget for your own website', values: [true, 'Website enquiry form (teams); online booking not listed'] },
   { label: 'Clash checks across pupil, instructor and vehicle', values: [true, 'Clash Resolution listed; scope not stated'] },
   { label: 'Vehicle MOT, tax and insurance tracking', values: [true, 'Not listed'] },
   { label: 'Pupil app or portal', values: ['Yes (iOS, Android or web)', 'Yes (student app)'] },
@@ -27,6 +32,7 @@ const rows = [
   { label: 'Cancellation-gap broadcast to pupils', values: [false, 'Yes (Diary Gaps)'] },
   { label: 'Theory content', values: [false, 'Not listed'] },
   { label: 'Free migration of your existing records', values: [false, 'Yes (at no cost)'] },
+  { label: 'Recording the route driven on each lesson', values: [false, 'Yes (Journey Tracking)'] },
 ];
 
 const faqs = [
@@ -47,7 +53,7 @@ const faqs = [
   },
   {
     question: 'Does MyDriveTime track the DVSA skills?',
-    answer: "Its website describes a Syllabus Manager that shows how well each pupil is doing against all the skills, but it doesn't say whether the DVSA structure is the default. DriveSchoolPro tracks the official 27 skills in 8 categories, and pupils see their own progress in their portal.",
+    answer: "Yes. MyDriveTime's Lesson Management page says it gets you started with the standard DVSA syllabus, which you can fully customise, or you can create your own syllabus from scratch. DriveSchoolPro tracks the official 27 skills in 8 categories as a fixed framework, and pupils see their own progress in their portal.",
     links: [{ text: 'How DriveSchoolPro tracks progress', url: '/how-progress-works/' }],
   },
   {
@@ -57,12 +63,12 @@ const faqs = [
   },
   {
     question: 'How does MyDriveTime compare with Total Drive?',
-    answer: "Both are established UK instructor apps with a diary, a pupil app, syllabus-based progress and cancellation-gap broadcasts. On their own sites, Total Drive lists a theory suite and two-way calendar sync, while MyDriveTime lists SMS reminders on its individual plan and free data transfer. Our three-way comparison sets them side by side with DriveSchoolPro.",
+    answer: "Both are established UK instructor apps with a diary, clash warnings, a pupil app, syllabus-based progress, SMS reminders and cancellation-gap broadcasts. On their own sites, Total Drive lists a theory suite, two-way calendar sync, online booking with card payments and Apple CarPlay and Android Auto, and sells SMS as a separate text bundle. MyDriveTime includes SMS on its individual plan, lists journey tracking and offers free data transfer. Our three-way comparison sets them side by side with DriveSchoolPro.",
     links: [{ text: 'Total Drive vs MyDriveTime', url: '/compare/total-drive-vs-mydrivetime/' }],
   },
   {
     question: 'Is this a fair comparison?',
-    answer: "We've tried to make it one. The MyDriveTime column only records what MyDriveTime's own public website says, first checked on 21 September 2026 and re-checked on 2 November 2026. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote MyDriveTime's prices because they change, so use their own pricing page. The gaps in DriveSchoolPro are set out above. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
+    answer: "We've tried to make it one. The MyDriveTime column only records what MyDriveTime's own public website says, first checked on 21 September 2026 and re-checked on 9 November 2026, including its blog, release notes and app store listings. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote MyDriveTime's prices because they change, so use their own pricing page. The gaps in DriveSchoolPro are set out above. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
     links: [{ text: "MyDriveTime's current pricing", url: 'https://www.mydrivetime.co.uk/pricing/' }],
   },
   {
@@ -81,19 +87,19 @@ const faqs = [
     description: 'MyDriveTime (My Drive Time) vs DriveSchoolPro, plus UK MyDriveTime alternatives: Total Drive, GoRoadie Pro and Lesson Diary. Free until 31 March 2027.',
     schemaDescription: 'Feature-by-feature comparison of DriveSchoolPro and MyDriveTime for UK driving instructors, including what DriveSchoolPro does not do yet.',
     datePublished: '2026-09-21',
-    dateModified: '2026-11-03',
+    dateModified: '2026-11-09',
   }}
-  checkedOn="2 November 2026"
+  checkedOn="9 November 2026"
   heroIntro="A plain, feature-by-feature comparison for instructors already using MyDriveTime (sometimes written My Drive Time). It covers what's different, and what DriveSchoolPro doesn't do yet."
-  featuredAnswer="DriveSchoolPro and MyDriveTime are both UK platforms for driving instructors, with a diary, pupil progress tracking and a pupil app. DriveSchoolPro adds AI lesson briefings, Google review requests at each test pass, progress tracking on the official DVSA 27 skills, clash checks that include the vehicle, and vehicle compliance tracking. MyDriveTime lists SMS reminders, diary-gap broadcasts and free migration that DriveSchoolPro doesn't have yet."
+  featuredAnswer="DriveSchoolPro and MyDriveTime are both UK platforms for driving instructors, with a diary, pupil progress tracking that starts from the DVSA syllabus, and a pupil app. DriveSchoolPro adds AI lesson briefings, Google review requests at each test pass, clash checks that include the vehicle, and vehicle compliance tracking. MyDriveTime lists SMS reminders, diary-gap broadcasts, expenses, journey tracking and free migration that DriveSchoolPro doesn't have yet."
   intro="This page is for an instructor who uses MyDriveTime today and is wondering whether DriveSchoolPro is worth a look. MyDriveTime is well liked and its support is a real strength, so this isn't a case for leaving. It's a list of what's different."
   rows={rows}
   switchHeading="Where DriveSchoolPro differs"
   switchIntro="MyDriveTime's support is a strength we can't match on track record. These are the differences that exist today, from the table above."
   switchItems={[
     {
-      title: 'Progress tracking built on the DVSA framework',
-      body: "DriveSchoolPro tracks the official 27 skills across 8 categories, and pupils see their own progress in their portal. MyDriveTime's site describes a Syllabus Manager but doesn't say whether the DVSA structure is the default.",
+      title: 'A fixed DVSA framework',
+      body: "DriveSchoolPro tracks the official 27 skills across 8 categories, and pupils see their own progress in their portal. MyDriveTime also starts you on the standard DVSA syllabus but lets you customise it or build your own, so the difference is a fixed framework versus a flexible one.",
     },
     {
       title: 'Lesson prep written for you',
@@ -105,7 +111,7 @@ const faqs = [
     },
     {
       title: 'Clash checks and vehicle tracking',
-      body: 'Bookings are checked against the pupil, the instructor and the vehicle together, and MOT, tax and insurance dates are tracked with alerts.',
+      body: "Bookings are checked against the pupil, the instructor and the vehicle together, and MOT, tax and insurance dates are tracked with alerts. MyDriveTime's diary also warns you of clashes; its site doesn't say whether vehicles are included.",
     },
     {
       title: 'Free while in early access',
@@ -113,14 +119,19 @@ const faqs = [
     },
   ]}
   gapsHeading="What DriveSchoolPro doesn't do yet"
-  gapsBody="There's no theory content in DriveSchoolPro, and no way to broadcast a cancelled slot to your pupils, which MyDriveTime lists as Diary Gaps. We don't offer free bulk migration of your records yet, and MyDriveTime does. We don't track expenses or produce an income and expense report, so you'd pair DriveSchoolPro with accounting software. Repeating weekly bookings are coming soon; MyDriveTime lists them today. Lesson reminders go out by email only today (WhatsApp is coming soon), and recording test bookings and results is coming soon. MyDriveTime has also been around longer. If any of these decides it for you, that's a fair reason to stay where you are."
+  gapsBody="There's no theory content in DriveSchoolPro, and no way to broadcast a cancelled slot to your pupils, which MyDriveTime lists as Diary Gaps. We don't offer free bulk migration of your records yet, and MyDriveTime does. We don't track expenses or produce an income and expense report, so you'd pair DriveSchoolPro with accounting software. Repeating weekly bookings are coming soon; MyDriveTime lists them today. Lesson reminders go out by email only today (WhatsApp is coming soon), and recording test bookings and results is coming soon. MyDriveTime also records the route driven on each lesson (Journey Tracking) and says its mobile app works offline; DriveSchoolPro doesn't offer route recording or advertise offline use. MyDriveTime has also been around longer. If any of these decides it for you, that's a fair reason to stay where you are."
   sources={[
     { label: 'MyDriveTime — home page', url: 'https://www.mydrivetime.co.uk/' },
     { label: 'MyDriveTime — pricing', url: 'https://www.mydrivetime.co.uk/pricing/' },
     { label: "MyDriveTime — what's in the student app", url: 'https://www.mydrivetime.co.uk/blog/whats-in-the-student-app/' },
+    { label: 'MyDriveTime — lesson management (DVSA syllabus, journey tracking)', url: 'https://www.mydrivetime.co.uk/lesson-management/' },
+    { label: 'MyDriveTime — diary management (clashes, reminders, sharing)', url: 'https://www.mydrivetime.co.uk/diary-management/' },
+    { label: 'MyDriveTime — for driving instructors (works offline)', url: 'https://www.mydrivetime.co.uk/driving-instructor-app/' },
+    { label: 'MyDriveTime — web enquiry form for teams', url: 'https://www.mydrivetime.co.uk/blog/web-enquiry-form/' },
     { label: 'Lesson Diary home page (alternatives list, checked 3 November 2026)', url: 'https://lessondiary.co.uk/' },
   ]}
   alternativesKey="mydrivetime"
   faqs={faqs}
   faqTitle="DriveSchoolPro vs MyDriveTime — common questions"
+  updates={[{ date: '9 November 2026', text: 'checked again. MyDriveTime starts from the standard DVSA syllabus, which you can customise, and the page now says so. We also corrected the reminders and website cells and added its Journey Tracking and offline app.' }]}
 />

@@ -13,7 +13,7 @@
  *  - mydrivetime.co.uk/: "Diary & Admin App for Driving Instructors & Schools";
  *    student app; "SMS text messages included" (individual plan); Diary Gaps;
  *    free data transfer; Expense Receipts.
- *  - goroadie.com/pro: iPhone and Android app (no web version listed); free
+ *  - goroadie.com/pro: iPhone and Android app (Web Dashboard mentioned for finances/mileage, 9 Nov 2026; diary on web not stated); free
  *    companion learner app; reminders with no text fees; in-app payment requests;
  *    receipt scanning, "Making Tax Digital, ready"; Theory Test Pro / 4 in 1 sync.
  *    goroadie.com: learner marketplace (pay per pupil).

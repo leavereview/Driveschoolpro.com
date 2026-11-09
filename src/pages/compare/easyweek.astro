@@ -9,37 +9,44 @@ import CompetitorComparison from '../../components/compare/CompetitorComparison.
 //   /business/pricing (permanent free tier; 14-day trial on paid plans)
 //   /business/ai (AI receptionist beta, AI agent integration)
 //   /business/about (EasyWeek GmbH, Germany; multi-industry)
+// Re-checked 9 Nov 2026, incl. help centre (support.easyweek.io/hc/en-us):
+//   /business/features/resources ("automatically checks the availability of required resources
+//     during booking, preventing conflicts and double bookings"); help article 10164195112337 Resources
+//   help 29104969139089 + pricing payload: Basic (free) plan = up to 30 bookings a month, email,
+//     Telegram and in-app reminders, Google Calendar, client app; SMS and WhatsApp on paid plans.
+//     (The pricing-page FAQ still says automated reminders need a paid plan; the plan list says otherwise.)
+//   help 7454714493841 two-way Google Calendar sync; help 23703919405073 automatic review requests
 // Paid prices are never quoted. "Not listed" = not found on those pages; never "No" unless the vendor says so.
 const rows = [
   { label: 'Built specifically for UK driving instructors', values: [true, 'General booking tool for many industries'] },
   { label: 'AI lesson briefings', values: [true, 'Not listed (AI receptionist in beta)'] },
   { label: 'DVSA 27-skill, 8-category progress tracking', values: [true, 'General learning progress tracker; DVSA not listed'] },
-  { label: 'Automatic lesson reminders', values: ['Email', 'Yes (email, SMS, WhatsApp, Telegram, push; paid plans)'] },
+  { label: 'Automatic lesson reminders', values: ['Email', 'Yes (email, Telegram, app; SMS and WhatsApp on paid plans)'] },
   { label: 'Booking widget for your own website', values: [true, 'Yes'] },
-  { label: 'Clash checks across pupil, instructor and vehicle', values: [true, 'Not listed'] },
+  { label: 'Clash checks across pupil, instructor and vehicle', values: [true, 'Staff and shared resources (such as a car); pupil clashes not listed'] },
   { label: 'Vehicle MOT, tax and insurance tracking', values: [true, 'Not listed'] },
   { label: 'Pupil app or portal', values: ['Yes (iOS, Android or web)', 'Yes (EasyWeek customer app)'] },
   { label: 'Card payments', values: ['Yes (Stripe)', 'Yes (Stripe, PayPal, deposits)'] },
   { label: 'Multi-instructor schools', values: [true, 'Yes'] },
   { label: 'Test bookings and results recording (coming soon)', values: ['Coming soon', 'Exam scheduling listed; no DVSA link'] },
   { label: 'Website builder and gift cards', values: [false, 'Yes'] },
-  { label: 'Permanent free plan', values: ['Yes, from 1 April 2027 (60 lessons a month; free and unlimited until then)', 'Yes (basic booking)'] },
+  { label: 'Permanent free plan', values: ['Yes, from 1 April 2027 (60 lessons a month; free and unlimited until then)', 'Yes (up to 30 bookings a month)'] },
 ];
 
 const faqs = [
   {
     question: 'Is EasyWeek good for driving schools?',
-    answer: "It's a capable general booking tool with a driving-school page, lots of reminder channels and a free tier. What it isn't built for is UK driving instruction: we couldn't find DVSA skill tracking, vehicle MOT and insurance tracking or clash checks that include the car. If you only need bookings and payments, it can work. If you're tracking pupils towards a test, DriveSchoolPro is built for that.",
+    answer: "It's a capable general booking tool with a driving-school page, lots of reminder channels and a free tier. What it isn't built for is UK driving instruction: we couldn't find DVSA skill tracking or vehicle MOT and insurance tracking. It can stop a shared resource, such as a car, being double-booked. If you only need bookings and payments, it can work. If you're tracking pupils towards a test, DriveSchoolPro is built for that.",
     links: [{ text: 'The DVSA 27 driving skills', url: '/dvsa-27-driving-skills/' }],
   },
   {
     question: 'Which has the better free plan?',
-    answer: "EasyWeek has a permanent free tier for basic booking; automated reminders need a paid plan. DriveSchoolPro is free with every feature until 31 March 2027, then keeps a permanent Free plan with every feature, including AI lesson briefings and email reminders, for 1 instructor and up to 60 lessons a month.",
+    answer: "EasyWeek has a permanent free Basic plan. Its plan list shows up to 30 bookings a month with email, Telegram and in-app reminders; SMS and WhatsApp reminders need a paid plan. DriveSchoolPro is free with every feature until 31 March 2027, then keeps a permanent Free plan with every feature, including AI lesson briefings and email reminders, for 1 instructor and up to 60 lessons a month.",
     links: [{ text: 'Free driving school software options', url: '/free-driving-school-software/' }],
   },
   {
     question: 'Is this a fair comparison?',
-    answer: "We've tried to make it one. The EasyWeek column only records what EasyWeek's own website says, checked on 16 October 2026. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote its paid prices because they change, so use its own pricing page. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
+    answer: "We've tried to make it one. The EasyWeek column only records what EasyWeek's own website and help centre say, checked on 9 November 2026. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote its paid prices because they change, so use its own pricing page. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
     links: [{ text: "EasyWeek's current pricing", url: 'https://easyweek.io/business/pricing' }],
   },
 ];
@@ -52,11 +59,11 @@ const faqs = [
     description: 'DriveSchoolPro vs EasyWeek for UK driving schools: DVSA tracking, reminders, vehicle checks and free plans. Free until 31 March 2027, then a Free plan.',
     schemaDescription: 'Comparison of DriveSchoolPro and EasyWeek, a general booking tool, for UK driving instructors and schools.',
     datePublished: '2026-10-16',
-    dateModified: '2026-10-16',
+    dateModified: '2026-11-09',
   }}
-  checkedOn="16 October 2026"
+  checkedOn="9 November 2026"
   heroIntro="A plain comparison for UK instructors weighing up EasyWeek, a booking tool used by many kinds of business, against software built for driving instruction."
-  featuredAnswer="EasyWeek is a general booking tool from Germany used by salons, gyms, clinics and driving schools, with online booking, card payments, many reminder channels and a permanent free tier. DriveSchoolPro is built for UK driving instruction: all 27 DVSA skills tracked lesson by lesson, AI lesson briefings, clash checks that include the vehicle, and MOT, tax and insurance tracking. EasyWeek offers more reminder channels, a website builder and gift cards."
+  featuredAnswer="EasyWeek is a general booking tool from Germany used by salons, gyms, clinics and driving schools, with online booking, card payments, many reminder channels and a permanent free tier. DriveSchoolPro is built for UK driving instruction: all 27 DVSA skills tracked lesson by lesson, AI lesson briefings, and MOT, tax and insurance tracking. Both can stop a car being double-booked. EasyWeek offers more reminder channels, two-way Google Calendar sync, a website builder and gift cards."
   intro="This page is for an instructor looking at EasyWeek because it's cheap or free and does online booking well. That's a fair reason to look. Here's what's different."
   rows={rows}
   switchHeading="Where DriveSchoolPro differs"
@@ -72,7 +79,7 @@ const faqs = [
     },
     {
       title: 'The car is part of the booking',
-      body: 'Bookings are checked against the pupil, the instructor and the vehicle together, and MOT, tax and insurance dates are tracked with alerts.',
+      body: "Bookings are checked against the pupil, the instructor and the vehicle together, and MOT, tax and insurance dates are tracked with alerts. EasyWeek can reserve a shared resource such as a car; we couldn't find pupil clash checks or MOT, tax and insurance tracking on its site.",
     },
     {
       title: 'A free plan with every feature',
@@ -80,14 +87,18 @@ const faqs = [
     },
   ]}
   gapsHeading="What DriveSchoolPro doesn't do"
-  gapsBody="EasyWeek sends reminders by SMS, WhatsApp, Telegram and push as well as email, where DriveSchoolPro sends email only for now (WhatsApp is coming soon). EasyWeek also has a website builder, gift cards and point-of-sale, which we don't. If those matter more than DVSA tracking, EasyWeek is a fair choice."
+  gapsBody="EasyWeek sends reminders by SMS, WhatsApp, Telegram and push as well as email, where DriveSchoolPro sends email only for now (WhatsApp is coming soon). It syncs two-way with Google Calendar, where DriveSchoolPro has no calendar sync yet (pupils who book online get an add-to-calendar link for their own lesson). EasyWeek also has a website builder, gift cards and point-of-sale, which we don't. If those matter more than DVSA tracking, EasyWeek is a fair choice."
   sources={[
     { label: 'EasyWeek: driving school software', url: 'https://easyweek.io/business/solutions/driving-school' },
     { label: 'EasyWeek: notifications and reminders', url: 'https://easyweek.io/business/features/notifications-and-reminders' },
     { label: 'EasyWeek: online payments', url: 'https://easyweek.io/business/features/online-payments' },
     { label: 'EasyWeek: pricing', url: 'https://easyweek.io/business/pricing' },
     { label: 'EasyWeek: AI', url: 'https://easyweek.io/business/ai' },
+    { label: 'EasyWeek: resource management', url: 'https://easyweek.io/business/features/resources' },
+    { label: 'EasyWeek help: pricing plans', url: 'https://support.easyweek.io/hc/en-us/articles/29104969139089-EasyWeek-Pricing-Plans-Update' },
+    { label: 'EasyWeek help: Google Calendar integration', url: 'https://support.easyweek.io/hc/en-us/articles/7454714493841-Google-Calendar-EasyWeek-integration' },
   ]}
   faqs={faqs}
   faqTitle="DriveSchoolPro vs EasyWeek: common questions"
+  updates={[{ date: '9 November 2026', text: 'checked again, including EasyWeek\'s help centre. We corrected two cells: EasyWeek checks shared resources such as a car for double bookings, and its free plan includes email, Telegram and in-app reminders. We also added its two-way Google Calendar sync.' }]}
 />

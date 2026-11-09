@@ -1,17 +1,22 @@
 ---
 import CompetitorComparison from '../../components/compare/CompetitorComparison.astro';
 
-// Competitor cells reflect Driving School Manager's own public pages, checked 16 Oct 2026:
+// Competitor cells reflect Driving School Manager's own public pages, first checked 16 Oct 2026,
+// re-checked 9 Nov 2026 (whole sitemap incl. blog; no help centre or docs site exists):
 //   drivingschoolmanager.com (branded school website on own domain, Stripe to the school's account)
-//   /features (calendar, double-booking prevention, student portal, email + push reminders,
-//     instructor assignment modes, revenue reporting; native app, SMS, DVSA test booking
-//     integration and MTD/Xero listed as "coming Q3 2026")
+//   /features (calendar, double-booking prevention, student portal, email + push notifications,
+//     instructor assignment modes, revenue reporting). Its comparison table marks SMS reminders,
+//     DVSA test booking integration, MTD and Google/Apple Calendar sync "Q3 2026"; native mobile app,
+//     Xero/QuickBooks and offline mode are marked not available (9 Nov 2026 - native app was no longer "Q3 2026").
+//   /compare/total-drive FAQ: "Total Drive has a native iOS/Android pupil app and we don't."
+//   /blog/retain-students-reduce-cancellations: "automated notifications that handle reminders,
+//     confirmations, and cancellation alerts"
 //   /pricing (per active student, three tiers, 14-day trial; top tier quote only)
-// No app-store listing found. "Not listed" = not found on those pages; never "No" unless the vendor says so.
+// No app-store listing found (UK App Store search, 9 Nov 2026). "Not listed" = not found on those pages; never "No" unless the vendor says so.
 const rows = [
   { label: 'AI lesson briefings', values: [true, 'Not listed'] },
   { label: 'DVSA 27-skill, 8-category progress tracking', values: [true, 'Progress tracking listed; DVSA skills not listed'] },
-  { label: 'Native iPhone and Android apps', values: [true, 'Listed as coming (Q3 2026)'] },
+  { label: 'Native iPhone and Android apps', values: [true, 'No (its own comparison table marks it not available)'] },
   { label: 'Pupil app or portal', values: ['Yes (iOS, Android or web)', 'Yes (web portal)'] },
   { label: 'Automatic lesson reminders', values: ['Email', 'Yes (email and push; SMS listed as coming)'] },
   { label: 'WhatsApp reminders', values: ['Coming soon', 'Not listed'] },
@@ -31,7 +36,7 @@ const rows = [
 const faqs = [
   {
     question: 'Does Driving School Manager have a mobile app?',
-    answer: "Not yet, according to its own features page, which lists a native mobile app as coming in Q3 2026. Pupils use a web portal today. DriveSchoolPro has apps on the App Store and Google Play for instructors and pupils, and works in any web browser too.",
+    answer: "No, according to its own site: its comparison table marks a native mobile app as not available, and its Total Drive comparison says pupils book through a mobile-optimised website instead. Pupils use a web portal today. DriveSchoolPro has apps on the App Store and Google Play for instructors and pupils, and works in any web browser too.",
     links: [{ text: 'DriveSchoolPro for driving instructors', url: '/driving-instructor-software/' }],
   },
   {
@@ -46,7 +51,7 @@ const faqs = [
   },
   {
     question: 'Is this a fair comparison?',
-    answer: "We've tried to make it one. The Driving School Manager column only records what Driving School Manager's own public website says, checked on 16 October 2026. Where we couldn't find a feature we say \"Not listed\", not \"No\". Features it lists as coming are marked that way. We don't quote its prices because they change, so use its own pricing page. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
+    answer: "We've tried to make it one. The Driving School Manager column only records what Driving School Manager's own public website says, last checked on 9 November 2026. Where we couldn't find a feature we say \"Not listed\", and we only say \"No\" where its own site says so. Features it lists as coming are marked that way. We don't quote its prices because they change, so use its own pricing page. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
     links: [{ text: "Driving School Manager's current pricing", url: 'https://drivingschoolmanager.com/pricing' }],
   },
   {
@@ -64,9 +69,9 @@ const faqs = [
     description: 'DriveSchoolPro vs Driving School Manager: apps, DVSA 27-skill tracking, reminders, vehicle checks and school websites. Free until 31 March 2027.',
     schemaDescription: 'Feature-by-feature comparison of DriveSchoolPro and Driving School Manager for UK driving schools, including what DriveSchoolPro does not do.',
     datePublished: '2026-10-16',
-    dateModified: '2026-10-16',
+    dateModified: '2026-11-09',
   }}
-  checkedOn="16 October 2026"
+  checkedOn="9 November 2026"
   heroIntro="A plain, feature-by-feature comparison for UK driving schools weighing up Driving School Manager. It covers what's different, and what DriveSchoolPro doesn't do."
   featuredAnswer="DriveSchoolPro and Driving School Manager are both UK software for multi-instructor driving schools, with online booking, Stripe card payments and a pupil portal. DriveSchoolPro adds iPhone and Android apps, DVSA 27-skill tracking, AI lesson briefings and vehicle MOT, tax and insurance tracking. Driving School Manager adds a branded school website on your own domain, an instructor recruitment pipeline and automatic pupil-to-instructor assignment, and it prices by active student rather than by instructor."
   intro="This page is for a school owner looking at Driving School Manager and wondering whether DriveSchoolPro is worth a look too. Driving School Manager is a UK product with some features we don't have, so this isn't a case against it. It's a list of what's different."
@@ -76,7 +81,7 @@ const faqs = [
   switchItems={[
     {
       title: 'Apps for instructors and pupils now',
-      body: "DriveSchoolPro is on the App Store and Google Play, and works in a web browser too. Driving School Manager's features page lists its native app as coming.",
+      body: "DriveSchoolPro is on the App Store and Google Play, and works in a web browser too. Driving School Manager's own comparison table marks a native mobile app as not available; its pupils book through a mobile-optimised website.",
     },
     {
       title: 'The full DVSA framework',
@@ -101,7 +106,10 @@ const faqs = [
     { label: 'Driving School Manager: home', url: 'https://drivingschoolmanager.com/' },
     { label: 'Driving School Manager: features', url: 'https://drivingschoolmanager.com/features' },
     { label: 'Driving School Manager: pricing', url: 'https://drivingschoolmanager.com/pricing' },
+    { label: 'Driving School Manager vs Total Drive (its own page)', url: 'https://drivingschoolmanager.com/compare/total-drive' },
+    { label: 'Driving School Manager blog: reducing cancellations', url: 'https://drivingschoolmanager.com/blog/retain-students-reduce-cancellations' },
   ]}
   faqs={faqs}
   faqTitle="DriveSchoolPro vs Driving School Manager: common questions"
+  updates={[{ date: '9 November 2026', text: 'checked again. Driving School Manager\'s own comparison now says it doesn\'t have a native mobile app, so the page no longer lists one as coming.' }]}
 />

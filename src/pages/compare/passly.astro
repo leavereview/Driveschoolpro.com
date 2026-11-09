@@ -9,8 +9,14 @@ import CompetitorComparison from '../../components/compare/CompetitorComparison.
 //   /instructor/features/lesson-calendar ("blocks clashes automatically")
 //   /instructor/features/pupil-portal (web app, nothing to install)
 //   /instructor/driving-school-management-software (multi-instructor, school-wide conflict detection)
-// Passly's site contradicts itself on a native app and on card processing, so we
-// state neither. "Not listed" = not found on those pages; never "No" unless the vendor says so.
+// 9 Nov 2026: re-checked every /instructor/features page, /support and the App Store:
+//   iPhone app live (App Store id6790004452, "Passly: Driving Lessons App"; /support: "Passly runs on
+//     iPhone and iPad"), alongside the web portal
+//   /instructor/features/lesson-calendar (weekly or fortnightly recurring lessons; private ICS feed for
+//     Google/Apple Calendar, one-way)
+//   /instructor/features/income-and-expenses ("record expenses and log business mileage", CSV export)
+// Passly's site still contradicts itself on card processing ("doesn't process cards" vs 1.5% Stripe fee),
+// so we state neither. "Not listed" = not found on those pages; never "No" unless the vendor says so.
 const rows = [
   { label: 'AI lesson briefings', values: [true, 'Not listed'] },
   { label: 'DVSA 27-skill, 8-category progress tracking', values: [true, 'DVSA-aligned scoring; skill count not stated'] },
@@ -20,10 +26,13 @@ const rows = [
   { label: 'Booking widget for your own website', values: [true, 'Yes'] },
   { label: 'Clash checks across pupil, instructor and vehicle', values: [true, 'Clash checks listed; vehicles not stated'] },
   { label: 'Vehicle MOT, tax and insurance tracking', values: [true, 'Not listed'] },
-  { label: 'Pupil app or portal', values: ['Yes (iOS, Android or web)', 'Yes (web portal)'] },
+  { label: 'Pupil app or portal', values: ['Yes (iOS, Android or web)', 'Yes (web portal and iPhone app)'] },
   { label: 'Multi-instructor schools', values: [true, true] },
   { label: 'Test bookings and results recording (coming soon)', values: ['Coming soon', 'Yes (test results logged)'] },
   { label: 'Cancellation-gap broadcast to pupils', values: [false, 'Yes (push gap alerts)'] },
+  { label: 'Repeating weekly bookings', values: ['Coming soon', 'Yes (weekly or fortnightly series)'] },
+  { label: 'Google / Apple Calendar', values: [false, 'Yes (one-way calendar feed)'] },
+  { label: 'Expenses and mileage', values: [false, 'Yes (expenses, mileage, CSV export)'] },
   { label: 'Learner marketplace and leads', values: [false, 'Yes'] },
   { label: 'Theory content', values: [false, 'Not listed'] },
   { label: 'Free migration of your existing records', values: [false, 'Not listed'] },
@@ -47,7 +56,7 @@ const faqs = [
   },
   {
     question: 'Is this a fair comparison?',
-    answer: "We've tried to make it one. The Passly column only records what Passly's own public website says, checked on 8 October 2026. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote Passly's prices because they change, so use their own pricing page. The gaps in DriveSchoolPro are set out above. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
+    answer: "We've tried to make it one. The Passly column only records what Passly's own public website, support page and App Store listing say, first checked on 8 October 2026 and re-checked on 9 November 2026. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote Passly's prices because they change, so use their own pricing page. The gaps in DriveSchoolPro are set out above. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
     links: [{ text: "Passly's current pricing", url: 'https://passly.co.uk/instructor/pricing' }],
   },
   {
@@ -65,11 +74,11 @@ const faqs = [
     description: 'DriveSchoolPro vs Passly feature by feature: DVSA tracking, AI lesson briefings, reminders, gap alerts and test results. Free until 31 March 2027.',
     schemaDescription: 'Feature-by-feature comparison of DriveSchoolPro and Passly for UK driving instructors, including what DriveSchoolPro does not do yet.',
     datePublished: '2026-10-08',
-    dateModified: '2026-10-08',
+    dateModified: '2026-11-09',
   }}
-  checkedOn="8 October 2026"
+  checkedOn="9 November 2026"
   heroIntro="A plain, feature-by-feature comparison for UK instructors weighing up Passly. It covers what's different, and what DriveSchoolPro doesn't do yet."
-  featuredAnswer="DriveSchoolPro and Passly are both UK platforms for driving instructors, with a diary, a booking widget, DVSA-based progress tracking and multi-instructor support. DriveSchoolPro adds AI lesson briefings, Google review requests at each test pass, clash checks that include the vehicle, and MOT, tax and insurance tracking. Passly lists cancellation-gap push alerts, practical test result logging and a learner marketplace that DriveSchoolPro doesn't have."
+  featuredAnswer="DriveSchoolPro and Passly are both UK platforms for driving instructors, with a diary, a booking widget, DVSA-based progress tracking and multi-instructor support. DriveSchoolPro adds AI lesson briefings, Google review requests at each test pass, clash checks that include the vehicle, and MOT, tax and insurance tracking. Passly lists cancellation-gap push alerts, repeating lessons, a Google and Apple Calendar feed, expense and mileage tracking, practical test result logging and a learner marketplace that DriveSchoolPro doesn't have."
   intro="This page is for an instructor looking at Passly and wondering whether DriveSchoolPro is worth a look too. Passly is a capable UK product with a marketplace that brings in learners, so this isn't a case against it. It's a list of what's different."
   rows={rows}
   switchHeading="Where DriveSchoolPro differs"
@@ -97,15 +106,20 @@ const faqs = [
     },
   ]}
   gapsHeading="What DriveSchoolPro doesn't do yet"
-  gapsBody="DriveSchoolPro has no learner marketplace, so it won't bring you new pupils the way Passly's can. We can't broadcast a cancelled slot to your other pupils, which Passly does with push alerts, and recording test bookings and results is coming soon, where Passly logs them today. Lesson reminders go out by email only for now (WhatsApp is coming soon), and we don't offer free bulk migration of your records yet. If any of these decides it for you, that's a fair reason to choose Passly."
+  gapsBody="DriveSchoolPro has no learner marketplace, so it won't bring you new pupils the way Passly's can. We can't broadcast a cancelled slot to your other pupils, which Passly does with push alerts, and recording test bookings and results is coming soon, where Passly logs them today. Repeating weekly bookings are coming soon too; Passly lists weekly and fortnightly series. We have no Google or Apple Calendar sync yet, and we don't track expenses or mileage, which Passly does. Lesson reminders go out by email only for now (WhatsApp is coming soon), and we don't offer free bulk migration of your records yet. If any of these decides it for you, that's a fair reason to choose Passly."
   sources={[
     { label: 'Passly — for instructors', url: 'https://passly.co.uk/instructor' },
     { label: 'Passly — messaging and reminders', url: 'https://passly.co.uk/instructor/features/messaging-and-reminders' },
     { label: 'Passly — progress tracking', url: 'https://passly.co.uk/instructor/features/progress-tracking' },
     { label: 'Passly — online booking', url: 'https://passly.co.uk/instructor/features/online-booking' },
+    { label: 'Passly — lesson calendar', url: 'https://passly.co.uk/instructor/features/lesson-calendar' },
+    { label: 'Passly — income and expenses', url: 'https://passly.co.uk/instructor/features/income-and-expenses' },
+    { label: 'Passly — support', url: 'https://passly.co.uk/support' },
+    { label: 'Passly on the App Store', url: 'https://apps.apple.com/gb/app/passly-driving-lessons-app/id6790004452' },
     { label: 'Passly — driving school management software', url: 'https://passly.co.uk/instructor/driving-school-management-software' },
     { label: 'Passly — pricing', url: 'https://passly.co.uk/instructor/pricing' },
   ]}
   faqs={faqs}
   faqTitle="DriveSchoolPro vs Passly — common questions"
+  updates={[{ date: '9 November 2026', text: 'checked again, including Passly\'s support pages and App Store listing. We added its iPhone app, repeating weekly bookings, calendar feed, and expenses and mileage tracking.' }]}
 />

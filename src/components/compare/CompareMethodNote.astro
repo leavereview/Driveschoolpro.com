@@ -1,0 +1,46 @@
+---
+/**
+ * "How we checked" note for every /compare/ page, plus the trademark line and
+ * any dated correction notes. Shared so the wording can't drift between pages.
+ * Written for ASA CAP 3.33–3.41: say where competitor facts came from and when,
+ * that "Not listed" isn't "No", and fix reported errors fast and openly.
+ */
+interface Props {
+  /** Competitor names as shown on the page, e.g. ['LessonBuddy'] or ['Total Drive', 'MyDriveTime']. */
+  competitors: string[];
+  checkedOn: string;
+  /** Dated public correction notes, newest first. */
+  updates?: { date: string; text: string }[];
+}
+
+const { competitors, checkedOn, updates = [] } = Astro.props;
+const list = (names: string[]) =>
+  names.length <= 1 ? names.join('') : `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}`;
+const names = list(competitors);
+const many = competitors.length > 1;
+const own = many ? "each vendor's" : `${competitors[0]}'s`;
+const columns = many ? `The ${names} columns come` : `The ${names} column comes`;
+const trademarks = many ? `${names} are trademarks of their owners.` : `${names} is a trademark of its owner.`;
+---
+
+<div class="text-sm text-gray-500 space-y-3">
+  {updates.map(({ date, text }) => (
+    <p class="rounded-lg border border-gray-200 bg-white p-3 text-gray-700">
+      <strong>Updated {date}:</strong> {text}
+    </p>
+  ))}
+  <p>
+    <strong>How we checked:</strong> {columns} only from {own} own public website, help guides and
+    app-store listings, checked on {checkedOn}. {`We haven't used ${many ? 'their' : `${competitors[0]}'s`} software.`}
+    <strong>"Not listed"</strong> means we couldn't find the feature in those sources. It may still exist, so we
+    never write "No" unless the vendor says so. The DriveSchoolPro column describes our software on the same date.
+    Features change, so check with each vendor before you decide.
+  </p>
+  <p>
+    Spotted an error? Email <a href="mailto:info@driveschoolpro.com" class="text-brand-red hover:underline">info@driveschoolpro.com</a>.
+    We aim to check and correct it within 5 working days.
+  </p>
+  <p>
+    {`${trademarks} This page is written by DriveSchoolPro, which isn't affiliated with or endorsed by ${many ? 'them' : competitors[0]}.`}
+  </p>
+</div>
