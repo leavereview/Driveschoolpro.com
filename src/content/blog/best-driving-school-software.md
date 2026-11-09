@@ -19,11 +19,11 @@ faqs:
   - question: "Is there free driving school software?"
     answer: "Yes, with limits. DriveSchoolPro is free until 31 March 2027 and keeps a permanent free plan for 1 instructor and up to 60 lessons a month after that. Lesson Diary has a free account for up to 3 pupils and 12 lessons. SimplyBook.me and Reservio have free booking plans capped at 50 and 40 bookings a month, without DVSA progress tracking."
   - question: "Which driving school software tracks the DVSA driving skills?"
-    answer: "DriveSchoolPro tracks all 27 DVSA skills in 8 categories. Bitepoint (bitepoint.co.uk) says it tracks all 27 DVSA competencies across 5 levels. MyDriveTime and Lesson Diary say they use the DVSA syllabus, and Passly describes DVSA-aligned scoring. Generic booking tools such as Teachworks, SimplyBook.me and Reservio don't track DVSA skills."
+    answer: "DriveSchoolPro tracks all 27 DVSA skills in 8 categories. Bitepoint (bitepoint.co.uk) says it tracks all 27 DVSA competencies across 5 levels. Total Drive, MyDriveTime and Lesson Diary say they use the DVSA syllabus, and Passly describes DVSA-aligned scoring. Generic booking tools such as Teachworks, SimplyBook.me and Reservio don't track DVSA skills."
   - question: "What is the best driving school software for multi-car schools?"
     answer: "Look for shared pupil records, one diary across instructors, clash checks that include the car, and the price per extra instructor. DriveSchoolPro checks every booking against the pupil, the instructor and the vehicle and tracks MOT, tax and insurance dates; School is £22 a month plus £10 per extra instructor from 1 April 2027 (free until then). MyDriveTime's extra instructors fall to £5 a month each from the 11th, which suits bigger schools, and Driving School Office lists white-labelling and franchise management."
   - question: "Does driving school software sync with Google Calendar?"
-    answer: "Some do. Total Drive lists two-way sync with Google and Apple Calendar, and LessonBuddy syncs with both. MyDriveTime, Passly, GoRoadie Pro, SimplyBook.me and Reservio list a calendar connection without always saying which direction. DriveSchoolPro doesn't sync with Google Calendar yet; pupils who book online can add their lesson to their own calendar."
+    answer: "Some do. Total Drive lists two-way sync with Google and Apple Calendar, and LessonBuddy syncs with both. Reservio's paid plans sync two-way with Google Calendar and one-way to Outlook and iCal. MyDriveTime exports your diary to Google, Apple and Outlook calendars; Passly, GoRoadie Pro and SimplyBook.me list a calendar connection without always saying which direction. DriveSchoolPro doesn't sync with Google Calendar yet; pupils who book online can add their lesson to their own calendar."
   - question: "Can I try driving school software before paying?"
     answer: "Usually. According to their own sites, Total Drive and MyDriveTime offer 30-day free trials, LessonBuddy 60 days for ADIs, Teachworks 21 days, and Passly and Lesson Diary 14 days. DriveSchoolPro is free until 31 March 2027 with no card required."
 ---
@@ -54,7 +54,7 @@ Prices as published on each vendor's site on 2 November 2026. "Per month" unless
 | **DriveSchoolPro** | Free until 31 March 2027. Then Free plan (1 instructor, 60 lessons a month), Solo £22, School £22 + £10 per extra instructor. No VAT charged | Free now, no card | iPhone and Android app, web |
 | **Total Drive** | Four plans, £18 to £26, VAT included | 30 days, no payment details | iPhone and Android app, web |
 | **MyDriveTime** | Individuals £19 (SMS included). Schools from £19, extra instructors £15, £10 or £5 each depending on team size | 30 days, no card | Mobile app and web browser |
-| **GoRoadie Pro** | £17 | Free trial, no card (site says both 60 days and 1 month); free for PDIs | iPhone and Android app |
+| **GoRoadie Pro** | £17 | Free trial, no card (site says both 60 days and 1 month); free for PDIs | iPhone and Android app; Web Dashboard for finances |
 | **Passly** | £14.99 (£7.50 for the first 3 months); extra instructors £8.99 on its pricing page | 14 days, no card | Mobile app and web |
 | **LessonBuddy** | £9.99, or £89.99 a year | 60 days for ADIs, up to 6 months for PDIs, no card | iPhone and Android app |
 | **Lesson Diary** | Solo £9.99; free account for up to 3 pupils and 12 lessons | 14 days (payment details at checkout) | Web, iPhone app; Android on request |
@@ -69,17 +69,17 @@ Prices as published on each vendor's site on 2 November 2026. "Per month" unless
 | Software | DVSA progress tracking | Lesson reminders | Card payments | Multi-instructor | Best for |
 |----------|------------------------|------------------|---------------|------------------|----------|
 | **DriveSchoolPro** | All 27 skills, 8 categories; pupils see their own | Email (text and WhatsApp coming soon) | Stripe; 3% platform fee + Stripe's fee | Yes, with clash checks across pupil, instructor and car, and MOT, tax and insurance dates | DVSA-led solo ADIs and small-to-medium schools |
-| **Total Drive** | Syllabus tracking with custom syllabuses and skill sets | Free lesson and payment reminders; channels not stated | Yes; fee not stated | Yes, including pass rate per instructor | An established app with theory practice |
+| **Total Drive** | DVSA syllabus, editable, with custom syllabuses | Free app reminders; SMS with a paid text bundle | Yes; fee not stated | Yes, including pass rate per instructor | An established app with theory practice |
 | **MyDriveTime** | "The standard DVSA syllabus", customisable | Automated, with delivery shown in the diary | Not stated | Yes, cheaper per head as the team grows | Support-led solo ADIs and bigger schools |
 | **GoRoadie Pro** | Pupil progress tracking; DVSA not named | Text, email and in-app, included | Stripe; 1.9% service fee | Not stated on the Pro page | Included texts and an enquiry manager |
 | **Passly** | "DVSA-aligned" scoring | Email, in-app and push; no SMS | Stripe; 1.5% + Stripe's fee | Yes | Low price plus a leads marketplace |
 | **LessonBuddy** | Five-level skills matrix; DVSA not named | Automated; channels not stated | Stripe top-ups | Yes, with sponsored seats | Parent access and a low annual price |
 | **Lesson Diary** | DVSA syllabus, lesson by lesson; DL25-style mock tests | Email only | Doesn't take cards; records payments | Not stated | Browser-first solo ADIs |
 | **Bitepoint** | All 27 DVSA competencies, 5 levels | WhatsApp assistant | Stripe | Yes | Instructors who live in WhatsApp |
-| **Driving School Office** | Pupil progress tracker; DVSA not named | Automated notifications; channels not stated | Yes; provider not stated | Yes, plus white-labelling and franchise manager | Franchises |
+| **Driving School Office** | DVSA-recommended progress topics | Email and text-message reminders (texts extra) | Yes (Stripe Connect) | Yes, plus white-labelling and franchise manager | Franchises |
 | **Teachworks** | None | Email; SMS as a paid add-on | Stripe | Unlimited teachers; vehicle add-on | Large schools wanting integrations |
 | **SimplyBook.me** | None | Email and SMS (SMS credits paid) | Several providers | Yes | Booking only |
-| **Reservio** | None | Email free; SMS credits paid | Yes | Instructors and vehicles on one calendar | Booking only, light diary |
+| **Reservio** | None | Email free; SMS credits paid | Yes | Instructors and vehicles on one calendar (one staff member per booking) | Booking only, light diary |
 
 Two things the tables show that headline prices hide. First, card fees differ: Passly lists 1.5% and GoRoadie Pro 1.9% on top of card processing, and DriveSchoolPro's 3% is the highest of the three. If most of your pupils pay by card, work that into the monthly cost. Second, the cost of extra instructors varies far more than the solo price does.
 
@@ -103,7 +103,7 @@ Solo, the extra-instructor price doesn't matter. From two instructors up, check 
 
 ### 5. Phone, browser or both?
 
-You're in the car between lessons, so the instructor app has to be quick on a phone. Some platforms are app-only (GoRoadie Pro, LessonBuddy), some browser-first (Lesson Diary, Driving School Office, Teachworks) and some both.
+You're in the car between lessons, so the instructor app has to be quick on a phone. Some platforms are mainly app-based (GoRoadie Pro, LessonBuddy), some browser-first (Lesson Diary, Driving School Office, Teachworks) and some both.
 
 ## Driving school management system or booking tool?
 
@@ -165,7 +165,7 @@ Running since October 2014, MyDriveTime describes itself as twice "Professional 
 
 GoRoadie Pro lists three reminders per lesson by text, email and in-app with "zero text costs", Stripe card payments (with a 1.9% service fee on payments you request, and pupils covering Stripe's fee), an Enquiry Manager with a request link and waiting list, filling nearby open slots, pupils' theory test progress from partner apps, lessons added to your phone's calendar, and a free pupil app. It's free for PDIs. GoRoadie also runs a separate learner referral service where instructors pay per pupil.
 
-**Worth knowing:** the site doesn't name DVSA skills, and we couldn't find a web version or multi-instructor features on the Pro page. [GoRoadie vs DriveSchoolPro →](/compare/goroadie/)
+**Worth knowing:** the site doesn't name DVSA skills, and while it lists a Web Dashboard for finances, mileage and messaging, we couldn't find the diary in a browser; multi-instructor schools use a separate GoRoadie Schools product. [GoRoadie vs DriveSchoolPro →](/compare/goroadie/)
 
 ### Passly
 
@@ -203,7 +203,7 @@ Two different UK products use this name. **Bitepoint at bitepoint.co.uk** is a W
 
 Driving School Office lists a pupil progress tracker, automated notifications and bulk messaging, in-app card payments, free online pupil accounts, instructor expenses, an audit log, white-labelling and a franchise manager. It says it has booked over 1 million lessons.
 
-**Worth knowing:** its pricing and benefits pages didn't load when we checked, so ask for a quote and a demo. It's still the only platform here listing franchise management. [DriveSchoolPro vs Driving School Office →](/compare/driving-school-office/)
+**Worth knowing:** its pricing and benefits pages didn't load when we checked, and its online sign-up page says it is not currently accepting new school sign ups, so contact them directly. It's still the only platform here listing franchise management. [DriveSchoolPro vs Driving School Office →](/compare/driving-school-office/)
 
 ### Teachworks
 
@@ -225,7 +225,7 @@ SimplyBook.me has a [driving school booking page](https://simplybook.me/en/drivi
 
 **Best for:** part-time instructors who only need booking on a light diary. **Price:** free for 40 bookings per 30 days; paid plans £7 to £29 a month plus VAT, with a 6-month minimum term ([pricing](https://www.reservio.com/pricing)).
 
-Reservio's [driving school page](https://www.reservio.com/driving-school-software) lists assigning instructors and vehicles on one calendar, avoiding double-booking and tracking a pupil's history. Email reminders are free and SMS uses paid credits. It syncs bookings to Google, iCal and Outlook.
+Reservio's [driving school page](https://www.reservio.com/driving-school-software) lists assigning instructors and vehicles on one calendar, avoiding double-booking (its help centre says each booking takes one staff member, with cars set up as staff) and tracking a pupil's history. Email reminders are free and SMS uses paid credits. It syncs bookings to Google, iCal and Outlook.
 
 **Worth knowing:** no DVSA tracking or test recording, and its free plan also charges a higher fee on online payments. [DriveSchoolPro vs Reservio →](/compare/reservio/)
 
@@ -306,7 +306,7 @@ Yes, with limits. DriveSchoolPro is free until 31 March 2027 and keeps a permane
 
 ### Which driving school software tracks the DVSA driving skills?
 
-DriveSchoolPro tracks all [27 DVSA skills](/dvsa-27-driving-skills/) in 8 categories. Bitepoint (bitepoint.co.uk) says it tracks all 27 DVSA competencies across 5 levels. MyDriveTime and Lesson Diary say they use the DVSA syllabus, and Passly describes DVSA-aligned scoring. Generic booking tools such as Teachworks, SimplyBook.me and Reservio don't track DVSA skills.
+DriveSchoolPro tracks all [27 DVSA skills](/dvsa-27-driving-skills/) in 8 categories. Bitepoint (bitepoint.co.uk) says it tracks all 27 DVSA competencies across 5 levels. Total Drive, MyDriveTime and Lesson Diary say they use the DVSA syllabus, and Passly describes DVSA-aligned scoring. Generic booking tools such as Teachworks, SimplyBook.me and Reservio don't track DVSA skills.
 
 ### What is the best driving school software for multi-car schools?
 
@@ -314,7 +314,7 @@ Look for shared pupil records, one diary across instructors, clash checks that i
 
 ### Does driving school software sync with Google Calendar?
 
-Some do. Total Drive lists two-way sync with Google and Apple Calendar, and LessonBuddy syncs with both. MyDriveTime, Passly, GoRoadie Pro, SimplyBook.me and Reservio list a calendar connection without always saying which direction. DriveSchoolPro doesn't sync with Google Calendar yet; pupils who book online can add their lesson to their own calendar.
+Some do. Total Drive lists two-way sync with Google and Apple Calendar, and LessonBuddy syncs with both. Reservio's paid plans sync two-way with Google Calendar and one-way to Outlook and iCal. MyDriveTime exports your diary to Google, Apple and Outlook calendars; Passly, GoRoadie Pro and SimplyBook.me list a calendar connection without always saying which direction. DriveSchoolPro doesn't sync with Google Calendar yet; pupils who book online can add their lesson to their own calendar.
 
 ### Can I try driving school software before paying?
 

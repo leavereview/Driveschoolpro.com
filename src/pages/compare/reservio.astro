@@ -9,6 +9,13 @@ import CompetitorComparison from '../../components/compare/CompetitorComparison.
 //   /about-us (HQ Brno, Czech Republic; multi-industry)
 // Free-plan LIMITS are stated (not a price); paid plan prices are never quoted.
 // Key phrases re-checked against raw HTML 8 Oct 2026.
+// Re-checked 9 Nov 2026 against the help centre too (help.reservio.com/en):
+//   6534721 WhatsApp reminders "currently not possible" (email and SMS only)
+//   8679438 "only one employee to be assigned to each booking"; 8687607 cars "set up as employees";
+//   12762757 no separate "rooms" feature; 8509869 no waiting list yet
+//   5113828 two-way Google Calendar sync, one-way Outlook/iCal (Starter, Standard, Pro)
+//   8524189 + /mobile-app: clients book on the booking website; marketplace client app CZ/SK only
+//   (10130232); branded client app on request
 // "Not listed" = not found on those pages; never "No" unless the vendor says so.
 const rows = [
   { label: 'Built specifically for UK driving instructors', values: [true, 'General booking tool for many industries'] },
@@ -16,14 +23,14 @@ const rows = [
   { label: 'DVSA 27-skill, 8-category progress tracking', values: [true, 'Not listed'] },
   { label: 'Google review requests at each test pass', values: [true, 'Not listed (feedback requests listed)'] },
   { label: 'Automatic lesson reminders', values: ['Email', 'Yes (email; SMS add-on)'] },
-  { label: 'WhatsApp reminders', values: ['Coming soon', 'Not listed'] },
+  { label: 'WhatsApp reminders', values: ['Coming soon', 'No (its help centre says not currently possible)'] },
   { label: 'Booking widget for your own website', values: [true, 'Yes'] },
-  { label: 'Clash checks across pupil, instructor and vehicle', values: [true, 'Double-booking checks via calendar sync; vehicles not stated'] },
+  { label: 'Clash checks across pupil, instructor and vehicle', values: [true, 'Per staff member; help centre says one staff member per booking, with cars set up as staff'] },
   { label: 'Vehicle MOT, tax and insurance tracking', values: [true, 'Not listed'] },
-  { label: 'Pupil app or portal', values: ['Yes (iOS, Android or web)', 'Yes (client booking app)'] },
+  { label: 'Pupil app or portal', values: ['Yes (iOS, Android or web)', 'Booking website and client account (client app in Czech Republic and Slovakia, or branded on request)'] },
   { label: 'Multi-instructor schools', values: [true, 'Yes'] },
   { label: 'Test bookings and results recording (coming soon)', values: ['Coming soon', 'Not listed'] },
-  { label: 'Cancellation-gap broadcast to pupils', values: [false, 'Not listed'] },
+  { label: 'Cancellation-gap broadcast to pupils', values: [false, 'Not listed (help centre says no waiting list yet)'] },
   { label: 'Theory content', values: [false, 'Not listed'] },
   { label: 'Permanent free plan', values: ['Yes, from 1 April 2027 (60 lessons a month; free and unlimited until then)', 'Yes (40 bookings per 30 days, 100 clients)'] },
 ];
@@ -46,7 +53,7 @@ const faqs = [
   },
   {
     question: 'Is this a fair comparison?',
-    answer: "We've tried to make it one. The Reservio column only records what Reservio's own public website says, checked on 8 October 2026. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote Reservio's paid prices because they change, so use their own pricing page. The gaps in DriveSchoolPro are set out above. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
+    answer: "We've tried to make it one. The Reservio column only records what Reservio's own public website and help centre say, checked on 9 November 2026. Where we couldn't find a feature we say \"Not listed\", and we only say \"No\" where Reservio itself says so. We don't quote Reservio's paid prices because they change, so use their own pricing page. The gaps in DriveSchoolPro are set out above. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
     links: [{ text: "Reservio's current pricing", url: 'https://www.reservio.com/pricing' }],
   },
   {
@@ -64,11 +71,11 @@ const faqs = [
     description: "DriveSchoolPro vs Reservio's free plan for UK instructors: DVSA tracking, booking caps, reminders and clash checks. DriveSchoolPro is free until 31 March 2027.",
     schemaDescription: 'Feature-by-feature comparison of DriveSchoolPro and Reservio for UK driving instructors, including what DriveSchoolPro does not do yet.',
     datePublished: '2026-10-08',
-    dateModified: '2026-10-16',
+    dateModified: '2026-11-09',
   }}
-  checkedOn="8 October 2026"
+  checkedOn="9 November 2026"
   heroIntro="A plain, feature-by-feature comparison for UK instructors weighing up Reservio's booking system. It covers what's different, and what DriveSchoolPro doesn't do yet."
-  featuredAnswer="Reservio is a general online booking tool used by many kinds of business, with a driving-school page and a free plan capped at 40 bookings per 30 days; DriveSchoolPro is built only for UK driving instructors. Both take online bookings and payments and send reminders. DriveSchoolPro adds progress tracking on the official DVSA 27 skills, AI lesson briefings, clash checks across pupil, instructor and vehicle, MOT, tax and insurance tracking, and Google review requests at each test pass. Reservio lists SMS reminders, a client booking app and a permanent free plan."
+  featuredAnswer="Reservio is a general online booking tool used by many kinds of business, with a driving-school page and a free plan capped at 40 bookings per 30 days; DriveSchoolPro is built only for UK driving instructors. Both take online bookings and payments and send reminders. DriveSchoolPro adds progress tracking on the official DVSA 27 skills, AI lesson briefings, clash checks across pupil, instructor and vehicle, MOT, tax and insurance tracking, and Google review requests at each test pass. Reservio lists SMS reminders, two-way Google Calendar sync on paid plans and a permanent free plan."
   intro="This page is for an instructor who has found Reservio's free plan and wants to know what a driving-specific tool adds. Reservio is a polished booking system, so this isn't a case against it. It's a list of what's different."
   rows={rows}
   switchHeading="Where DriveSchoolPro differs"
@@ -96,14 +103,19 @@ const faqs = [
     },
   ]}
   gapsHeading="What DriveSchoolPro doesn't do yet"
-  gapsBody="Both have a permanent free plan: from 1 April 2027 DriveSchoolPro's covers 1 instructor and up to 60 lessons a month. Reservio offers SMS reminders as an add-on, where DriveSchoolPro sends email reminders only for now (WhatsApp is coming soon). Reservio also has point-of-sale, vouchers and memberships, which we don't. If any of these decides it for you, that's a fair reason to choose Reservio."
+  gapsBody="Both have a permanent free plan: from 1 April 2027 DriveSchoolPro's covers 1 instructor and up to 60 lessons a month. Reservio offers SMS reminders as an add-on, where DriveSchoolPro sends email reminders only for now (WhatsApp is coming soon). Its paid plans sync two-way with Google Calendar; DriveSchoolPro has no calendar sync yet (pupils who book online get an add-to-calendar link for their own lesson). Reservio also has point-of-sale, vouchers and memberships, which we don't. If any of these decides it for you, that's a fair reason to choose Reservio."
   sources={[
     { label: 'Reservio — driving school software', url: 'https://www.reservio.com/driving-school-software' },
     { label: 'Reservio — pricing', url: 'https://www.reservio.com/pricing' },
     { label: 'Reservio — reminders', url: 'https://www.reservio.com/features/reminders' },
     { label: 'Reservio — client management', url: 'https://www.reservio.com/features/client-management' },
     { label: 'Reservio — about us', url: 'https://www.reservio.com/about-us' },
+    { label: 'Reservio help — WhatsApp reminders', url: 'https://help.reservio.com/en/articles/6534721-can-i-send-automatic-reminders-to-my-customers-via-whatsapp' },
+    { label: 'Reservio help — two employees on one booking', url: 'https://help.reservio.com/en/articles/8679438-can-i-assign-two-employees-to-a-single-booking' },
+    { label: 'Reservio help — calendar sync', url: 'https://help.reservio.com/en/articles/5113828-how-to-sync-calendar' },
+    { label: 'Reservio help — waiting list', url: 'https://help.reservio.com/en/articles/8509869-is-there-a-waiting-list-feature-available-in-reservio' },
   ]}
   faqs={faqs}
   faqTitle="DriveSchoolPro vs Reservio — common questions"
+  updates={[{ date: '9 November 2026', text: 'checked again against Reservio\'s help centre. We corrected the clash-check and client-app cells, added its two-way Google Calendar sync, and noted that it doesn\'t offer WhatsApp reminders or a waiting list.' }]}
 />

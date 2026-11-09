@@ -17,6 +17,7 @@ import BreadcrumbsEnhanced from '../seo/BreadcrumbsEnhanced.astro';
 import FeaturedAnswer from '../seo/FeaturedAnswer.astro';
 import ComparisonTable from '../seo/ComparisonTable.astro';
 import FAQEnhanced from '../seo/FAQEnhanced.astro';
+import CompareMethodNote from './CompareMethodNote.astro';
 import { ALTERNATIVES_CHECKED, alternativesTo, type AltKey } from '../../data/alternatives';
 
 interface Item { title: string; body: string }
@@ -45,6 +46,8 @@ interface Props {
   sources: { label: string; url: string }[];
   faqs: { question: string; answer: string; links?: { text: string; url: string }[] }[];
   faqTitle: string;
+  /** Dated public correction notes, newest first (shown under the table). */
+  updates?: { date: string; text: string }[];
   /** Key in src/data/alternatives.ts: renders "Alternatives to {name}" near the top. */
   alternativesKey?: AltKey;
 }
@@ -52,7 +55,7 @@ interface Props {
 const {
   competitor, h1, seo, checkedOn, heroIntro, featuredAnswer, intro, rows,
   switchHeading, switchIntro, switchItems, gapsHeading, gapsBody, sources, faqs, faqTitle,
-  alternativesKey,
+  alternativesKey, updates = [],
 } = Astro.props;
 const alternatives = alternativesKey ? alternativesTo(alternativesKey) : [];
 
@@ -161,18 +164,16 @@ const schemaMarkup = {
   <section id="comparison" class="bg-gray-50">
     <ComparisonTable
       title="Feature comparison"
-      description={`Features only, no pricing. ${competitor.name} entries reflect what their public website lists, checked ${checkedOn}.`}
+      description={`Features only, no pricing. ${competitor.name} entries reflect what their public website and help guides list, checked ${checkedOn}.`}
       headers={['DriveSchoolPro', competitor.name]}
       rows={rows}
       rowHeader="Feature"
       highlightColumn={0}
     />
     <div class="container-custom pb-12">
-      <p class="max-w-5xl mx-auto text-sm text-gray-500">
-        <strong>"Not listed"</strong> means we could not find the feature on {competitor.name}'s public website on {checkedOn}.
-        It may exist. We use "Not listed" rather than "No" so we never say a competitor lacks something we haven't seen them say.
-        If anything here is out of date, email <a href="mailto:info@driveschoolpro.com" class="text-brand-red hover:underline">info@driveschoolpro.com</a> and we'll correct it.
-      </p>
+      <div class="max-w-5xl mx-auto">
+        <CompareMethodNote competitors={[competitor.name]} checkedOn={checkedOn} updates={updates} />
+      </div>
     </div>
   </section>
 
