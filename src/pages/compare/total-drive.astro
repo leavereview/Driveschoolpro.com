@@ -9,24 +9,35 @@ import CompetitorComparison from '../../components/compare/CompetitorComparison.
 //   DVSA syllabus, editable for local anomalies"). Fixed: clash checks (help guide "Lesson
 //   Clashes"), reminder channels (free in-app; SMS needs a paid text bundle), website booking
 //   link (Book & Pay widget). Added: expenses / Making Tax Digital, Apple CarPlay and Android Auto.
+// 10 Nov 2026: checked hands-on in a Total Drive Elite trial (web app and iPhone app 4.1.5).
+//   Cells marked "tested" come from that trial, not from Total Drive's marketing pages.
+//   Default syllabus is TD's own 34 skills in 5 groups; the web diary saved a clashing lesson
+//   with no warning and the phone app flagged it only after saving; TD's pupil app can't open,
+//   cancel or move a lesson; calendar is a one-way ICS feed out; self-serve export is finance
+//   CSV (the pupil/lesson export has no menu link). Card fee from TD's help guide.
 // "Not listed" = not found on those pages; never "No" unless the vendor says so.
 const rows = [
   { label: 'AI lesson briefings', values: [true, 'Not listed'] },
-  { label: 'DVSA 27-skill, 8-category progress tracking', values: [true, 'Yes (customisable)'] },
+  { label: 'DVSA 27-skill, 8-category progress tracking', values: [true, 'Own 34-skill syllabus in 5 groups (editable), not the DVSA 27 skills (tested)'] },
   { label: 'Google review requests at each test pass', values: [true, 'Not listed'] },
   { label: 'Automatic lesson reminders', values: ['Email', 'Yes (free app notifications; SMS with a paid text bundle)'] },
   { label: 'WhatsApp reminders', values: ['Coming soon', 'Not listed'] },
   { label: 'Booking widget for your own website', values: [true, 'Yes (Book & Pay link or button, on its Online Booking plans)'] },
-  { label: 'Clash checks across pupil, instructor and vehicle', values: [true, 'Lesson clash alerts in the diary; vehicle not stated'] },
+  { label: 'Clash checks across pupil, instructor and vehicle', values: [true, "Flags a clash after it's saved (phone app); the web diary gives no warning (tested 10 Nov 2026)"] },
   { label: 'Vehicle MOT, tax and insurance tracking', values: [true, 'Not listed'] },
   { label: 'Pupil app or portal', values: ['Yes (iOS, Android or web)', 'Yes'] },
   { label: 'Multi-instructor schools', values: [true, true] },
   { label: 'Test bookings and results recording (coming soon)', values: ['Coming soon', 'Yes'] },
   { label: 'Cancellation-gap broadcast to pupils', values: [false, 'Yes (Smart Gaps)'] },
   { label: 'Theory content', values: [false, 'Yes (Theory Suite)'] },
-  { label: 'Free migration of your existing records', values: [false, 'Migration support listed'] },
+  { label: 'Free migration of your existing records', values: ['Pupil import from Total Drive and MyDriveTime spreadsheets (pupils, not lesson history)', 'Imports for you; self-serve export is finance CSV only (tested)'] },
   { label: 'Expenses and Making Tax Digital links', values: [false, 'Yes (QuickBooks, Xero, FreeAgent, Sage, FBTC, CSV)'] },
   { label: 'Apple CarPlay and Android Auto', values: [false, 'Yes'] },
+  { label: 'Pupils can move or cancel their own lesson', values: ['Yes (you can switch it off)', "No (tested in Total Drive's pupil app, 10 Nov 2026)"] },
+  { label: 'Card payment fee', values: ["3% plus Stripe's standard fee, paid by you", '£1.69 per payment under £100, 1.7% + 15p over; paid by the pupil by default'] },
+  { label: 'Calendar feed to Google, Apple and Outlook', values: [false, "Feed out to Google, Apple and Outlook; the phone app can show your phone calendar's events, but they don't block bookings"] },
+  { label: 'Waiting list and enquiry form', values: [false, true] },
+  { label: 'Mileage log', values: [false, true] },
 ];
 
 const faqs = [
@@ -37,7 +48,7 @@ const faqs = [
   },
   {
     question: 'Does Total Drive use the DVSA syllabus?',
-    answer: "Yes. Total Drive's own site says it tracks pupil progress against the DVSA syllabus, \"editable for local anomalies\", and its help guide shows you can create your own syllabuses and add, edit or delete skills and categories. DriveSchoolPro tracks the official 27 skills in 8 categories, so both start from the same framework.",
+    answer: "Not by default. Total Drive's site says it tracks progress against the DVSA syllabus, but in a trial on 10 November 2026 its default syllabus was its own list of 34 skills in 5 groups. You can edit it or create your own, so you could rebuild the DVSA list by hand. DriveSchoolPro tracks the official DVSA 27 skills in 8 categories from the start.",
     links: [{ text: 'How DriveSchoolPro tracks progress', url: '/how-progress-works/' }],
   },
   {
@@ -47,12 +58,12 @@ const faqs = [
   },
   {
     question: 'How does Total Drive compare with My Drive Time?',
-    answer: "Both are established UK instructor apps with a diary, clash warnings, a pupil app, syllabus-based progress, SMS reminders and cancellation-gap broadcasts. On their own sites, Total Drive lists a theory suite, two-way calendar sync, online booking with card payments and Apple CarPlay and Android Auto, and sells SMS as a separate text bundle. My Drive Time includes SMS on its individual plan, lists journey tracking and offers free data transfer. Our three-way comparison sets them side by side with DriveSchoolPro.",
+    answer: "Both are established UK instructor apps with a diary, clash warnings, a pupil app, syllabus-based progress, SMS reminders and cancellation-gap broadcasts. On their own sites, Total Drive lists a theory suite, a calendar feed to Google, Apple and Outlook, online booking with card payments and Apple CarPlay and Android Auto, and sells SMS as a separate text bundle. My Drive Time includes SMS on its individual plan, lists journey tracking and offers free data transfer. Our three-way comparison sets them side by side with DriveSchoolPro.",
     links: [{ text: 'Total Drive vs My Drive Time', url: '/compare/total-drive-vs-mydrivetime/' }],
   },
   {
     question: 'Is this a fair comparison?',
-    answer: "We've tried to make it one. The Total Drive column only records what Total Drive's own public website says, first checked on 21 September 2026 and re-checked on 9 November 2026, including its help guides. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote Total Drive's prices because they change, so use their own pricing page. The gaps in DriveSchoolPro are set out above. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
+    answer: "We've tried to make it one. The Total Drive column records what Total Drive's own public website and help guides say, first checked on 21 September 2026 and re-checked on 9 November 2026. On 10 November 2026 we also used a Total Drive trial on the web and in its iPhone app; cells marked \"tested\" come from that. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote Total Drive's prices because they change, so use their own pricing page. The gaps in DriveSchoolPro are set out above. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
     links: [{ text: "Total Drive's current pricing", url: 'https://totaldrive.co.uk/instructor-software-pricing/' }],
   },
   {
@@ -70,11 +81,11 @@ const faqs = [
     description: 'Total Drive vs DriveSchoolPro feature by feature, plus UK Total Drive alternatives: MyDriveTime, GoRoadie Pro and Lesson Diary. Free until 31 March 2027.',
     schemaDescription: 'Feature-by-feature comparison of DriveSchoolPro and Total Drive for UK driving instructors, including what DriveSchoolPro does not do yet.',
     datePublished: '2026-04-19',
-    dateModified: '2026-11-09',
+    dateModified: '2026-11-10',
   }}
-  checkedOn="9 November 2026"
+  checkedOn="10 November 2026"
   heroIntro="A plain, feature-by-feature comparison for instructors already using Total Drive. It covers what's different, and what DriveSchoolPro doesn't do yet."
-  featuredAnswer="DriveSchoolPro and Total Drive are both UK driving school platforms with DVSA-based progress tracking, diary, reminders and a pupil app. DriveSchoolPro adds AI lesson briefings, Google review requests at each test pass, clash checks that include the vehicle, and vehicle compliance tracking. Total Drive is the more established platform and lists a theory suite, cancellation-gap broadcasts, SMS reminders, Apple CarPlay and Android Auto, Making Tax Digital links and migration support that DriveSchoolPro doesn't have yet."
+  featuredAnswer="DriveSchoolPro and Total Drive are both UK driving school platforms with progress tracking, diary, reminders and a pupil app. DriveSchoolPro tracks the DVSA's own 27 skills and adds AI lesson briefings, Google review requests at each test pass, clash checks that include the vehicle, and vehicle compliance tracking. Total Drive is the more established platform and lists a theory suite, cancellation-gap broadcasts, SMS reminders, Apple CarPlay and Android Auto, and Making Tax Digital links that DriveSchoolPro doesn't have yet."
   intro="This page is for an instructor who uses Total Drive today and is wondering whether DriveSchoolPro is worth a look. You don't have to leave: you can run both side by side and decide after a week of real lessons."
   rows={rows}
   switchHeading="Why some instructors try DriveSchoolPro"
@@ -90,7 +101,7 @@ const faqs = [
     },
     {
       title: 'Clash checks and vehicle tracking',
-      body: "Bookings are checked against the pupil, the instructor and the vehicle together, and MOT, tax and insurance dates are tracked with alerts. Total Drive's help guides describe clash alerts for overlapping lessons in your diary, but don't mention vehicles or MOT, tax and insurance dates.",
+      body: "Bookings are checked against the pupil, the instructor and the vehicle together, and MOT, tax and insurance dates are tracked with alerts. When we tried Total Drive on 10 November 2026, its web diary saved a lesson on top of another for the same pupil with no warning, and its phone app flagged the clash only after saving. Its help guides don't mention vehicles or MOT, tax and insurance dates.",
     },
     {
       title: 'Free while in early access',
@@ -98,7 +109,7 @@ const faqs = [
     },
   ]}
   gapsHeading="What DriveSchoolPro doesn't do yet"
-  gapsBody="There's no theory content in DriveSchoolPro, and no way to broadcast a cancelled slot to your pupils. We don't offer free bulk migration of your records yet. Lesson reminders go out by email only today (WhatsApp is coming soon), and recording test bookings and results is coming soon. We don't track expenses or link to accounting software for Making Tax Digital, and DriveSchoolPro doesn't work with Apple CarPlay or Android Auto; Total Drive lists both, and says its diary works offline, which DriveSchoolPro doesn't advertise. Total Drive has also been in the UK market longer. If any of these decides it for you, that's a fair reason to stay where you are."
+  gapsBody="There's no theory content in DriveSchoolPro, and no way to broadcast a cancelled slot to your pupils. Lesson reminders go out by email only today (WhatsApp is coming soon), and recording test bookings and results is coming soon. We don't track expenses or mileage or link to accounting software for Making Tax Digital, there's no waiting list or enquiry form and no calendar feed to Google, Apple or Outlook yet, and DriveSchoolPro doesn't work with Apple CarPlay or Android Auto; Total Drive lists both, and says its diary works offline, which DriveSchoolPro doesn't advertise. Total Drive has also been in the UK market longer. If any of these decides it for you, that's a fair reason to stay where you are."
   sources={[
     { label: "Total Drive — app overview", url: 'https://totaldrive.co.uk/driving-instructor-app/' },
     { label: "Total Drive — AI info page (key facts, DVSA syllabus, CarPlay)", url: 'https://totaldrive.co.uk/ai-info-page/' },
@@ -113,5 +124,5 @@ const faqs = [
   alternativesKey="total-drive"
   faqs={faqs}
   faqTitle="DriveSchoolPro vs Total Drive — common questions"
-  updates={[{ date: '9 November 2026', text: 'checked again, including Total Drive\'s help centre. We corrected the clash-check cell (its diary alerts you to lesson clashes), said how reminders are sent (free app notifications, SMS with a paid text bundle), and added its website booking button, accounting links, offline diary, and Apple CarPlay and Android Auto support.' }]}
+  updates={[{ date: '10 November 2026', text: 'checked hands-on in a Total Drive trial (web and iPhone app). We corrected the DVSA progress, clash-check, migration and calendar cells, and added rows for pupil self-service, card fees, the calendar feed, a waiting list and a mileage log. DriveSchoolPro now imports pupils from a Total Drive or MyDriveTime spreadsheet.' }, { date: '9 November 2026', text: 'checked again, including Total Drive\'s help centre. We corrected the clash-check cell (its diary alerts you to lesson clashes), said how reminders are sent (free app notifications, SMS with a paid text bundle), and added its website booking button, accounting links, offline diary, and Apple CarPlay and Android Auto support.' }]}
 />
