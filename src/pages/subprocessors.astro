@@ -1,0 +1,67 @@
+---
+// Sub-processor list referenced by the Terms Schedule (para 6) and the privacy policy.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { SUBPROCESSORS, SUBPROCESSORS_UPDATED } from '../config/subprocessors';
+
+const app = SUBPROCESSORS.filter((s) => s.scope === 'app');
+const website = SUBPROCESSORS.filter((s) => s.scope === 'website');
+---
+
+<BaseLayout
+  title="Sub-processors"
+  description="Every company that processes personal data for DriveSchoolPro: what each one does and where it is based, plus how we protect transfers outside the UK."
+  modifiedDate="2026-11-11"
+>
+  <div class="bg-gray-100 py-3">
+    <div class="container-custom">
+      <Breadcrumbs items={[
+        { label: 'Home', href: '/' },
+        { label: 'Sub-processors' }
+      ]} />
+    </div>
+  </div>
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-bold text-brand-navy mb-4">Sub-processors</h1>
+        <p class="text-sm text-gray-500 mb-8">Last updated: {SUBPROCESSORS_UPDATED}</p>
+        <div class="prose max-w-none">
+
+<p>These are the companies that process personal data for DriveSchoolPro, run by JOHN POWELL LTD. For pupil records, the driving school or instructor is the controller and we are their processor; the companies in the first table are our sub-processors under the <a href="/terms/#data-processing">Data Processing Terms</a>. We give account owners at least 30 days' notice by email before adding a new one.</p>
+
+<h2>In the DriveSchoolPro app</h2>
+<div class="overflow-x-auto">
+<table>
+  <thead><tr><th>Company</th><th>What it does</th><th>Where</th></tr></thead>
+  <tbody>
+    {app.map((s) => (
+      <tr><td><strong>{s.name}</strong></td><td>{s.purpose}{s.consentOnly && ' (only if you accept analytics cookies)'}</td><td>{s.where}</td></tr>
+    ))}
+  </tbody>
+</table>
+</div>
+
+<h2>On this website</h2>
+<div class="overflow-x-auto">
+<table>
+  <thead><tr><th>Company</th><th>What it does</th><th>Where</th></tr></thead>
+  <tbody>
+    {website.map((s) => (
+      <tr><td><strong>{s.name}</strong></td><td>{s.purpose}{s.consentOnly && ' (only if you click Accept All)'}</td><td>{s.where}</td></tr>
+    ))}
+  </tbody>
+</table>
+</div>
+
+<h2>Transfers outside the UK</h2>
+<p>Where a company processes personal data outside the UK, we rely on UK adequacy regulations (for the EU), the UK Extension to the EU-US Data Privacy Framework, or the UK International Data Transfer Addendum in the provider's data processing terms. Ask <a href="mailto:privacy@driveschoolpro.com">privacy@driveschoolpro.com</a> for details of the safeguard for any provider.</p>
+
+<p>See also our <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms/">Terms of Service</a>.</p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

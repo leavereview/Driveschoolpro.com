@@ -1,0 +1,47 @@
+---
+// Pupil Terms — consumer-facing terms for pupils and parents using the pupil app.
+// Source draft: reference/driveschoolpro/legal-review-2026-11-09/terms-v2-and-saas-checklist.md (Part 3).
+// The pupil app should link here instead of /terms/ (driveschoolpro PortalLegalFooter.tsx, PortalAvatarMenu.tsx).
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+---
+
+<BaseLayout
+  title="Pupil Terms"
+  description="Terms for pupils and parents using the DriveSchoolPro pupil app: the app is free, lessons are agreed with your instructor, and your consumer rights stay intact."
+  modifiedDate="2026-11-11"
+>
+  <div class="bg-gray-100 py-3">
+    <div class="container-custom">
+      <Breadcrumbs items={[
+        { label: 'Home', href: '/' },
+        { label: 'Pupil Terms' }
+      ]} />
+    </div>
+  </div>
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-bold text-brand-navy mb-4">Pupil Terms</h1>
+        <p class="text-sm text-gray-500 mb-8">Last updated: 11 November 2026</p>
+        <div class="prose max-w-none">
+
+<p>These terms are for pupils and parents who use the DriveSchoolPro pupil app. If you're a driving instructor or driving school, see our <a href="/terms/">Terms of Service</a> instead.</p>
+
+<ol>
+<li>Your instructor or driving school uses DriveSchoolPro, made by JOHN POWELL LTD (company 05408918, 124 City Road, London EC1V 2NX), and has given you access to the pupil app. The app is free to you.</li>
+<li>Your lessons, prices, payments, cancellations and refunds are agreed with your instructor or school, not with us. Please take any questions about them to your instructor or school first.</li>
+<li>Card payments are processed securely by Stripe for your instructor. We never add a fee to what you pay.</li>
+<li>Your instructor or school controls your lesson records. Our <a href="/privacy-policy/">Privacy Policy</a> explains how your data is used and how to contact us.</li>
+<li>Please don't misuse the app: for example, don't try to access other people's accounts, and don't send abusive messages. You can report a message to us at <a href="mailto:support@driveschoolpro.com">support@driveschoolpro.com</a>. We may suspend access if the app is misused.</li>
+<li>We'll try to keep the app working, but it may sometimes be unavailable.</li>
+<li>Nothing in these terms affects your legal rights as a consumer.</li>
+<li>These terms are governed by the law of England and Wales. If you live in Scotland or Northern Ireland, you can also bring proceedings in your local courts.</li>
+</ol>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -19,14 +19,16 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
     <div class="container-custom">
       <div class="max-w-4xl mx-auto">
         <h1 class="text-4xl md:text-5xl font-bold text-brand-navy mb-4">Privacy Policy</h1>
-        <p class="text-sm text-gray-500 mb-8">Last updated: 15 October 2026</p>
+        <p class="text-sm text-gray-500 mb-8">Last updated: 11 November 2026</p>
         <div class="prose max-w-none">
 
 <h2>1. Who We Are</h2>
 
 <p>DriveSchoolPro is operated by <strong>JOHN POWELL LTD</strong> (Company No. 05408918), a company registered in England and Wales with its registered office at 124 City Road, London, England, EC1V 2NX.</p>
 
-<p>For the purposes of UK data protection legislation, JOHN POWELL LTD is the <strong>data controller</strong> for the personal data described in this policy.</p>
+<p>For the purposes of UK data protection legislation, JOHN POWELL LTD is the <strong>data controller</strong> for your account details, website visits and our own marketing.</p>
+
+<p>For pupil records that a driving school or instructor adds to DriveSchoolPro, the school or instructor is the <strong>controller</strong> and JOHN POWELL LTD is their <strong>processor</strong>. We process those records only on their instructions and under our <a href="/terms/#data-processing">Data Processing Terms</a>. Pupils should contact their driving school about their data; we will pass on any request we receive.</p>
 
 <p>If you have any questions about this policy or how we handle your data, please contact us at <a href="mailto:privacy@driveschoolpro.com">privacy@driveschoolpro.com</a>.</p>
 
@@ -38,7 +40,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 <p>When you register for DriveSchoolPro, we collect your name, email address, phone number, and business details (such as your driving school name and address).</p>
 
 <h3>Student records</h3>
-<p>Driving instructors and school administrators use DriveSchoolPro to manage student data, which may include a student's name, date of birth, driving licence details, learning progress notes, and lesson history. This data is entered by the account holder and is their responsibility to obtain appropriate consent for.</p>
+<p>Driving instructors and school administrators use DriveSchoolPro to manage pupil data, which may include a pupil's name, contact details, date of birth, driving licence details, learning progress notes and lesson history. Where the school chooses to record them, this can also include health information (medical notes and medical certificates) and uploaded ID documents. The school or instructor decides what pupil data to add and must have a lawful basis for it (usually contract or legitimate interests, and an Article 9 condition for any health information).</p>
 
 <h3>Payment information</h3>
 <p>Payments are processed securely by <strong>Stripe</strong>. We never store your full card number, CVV, or other sensitive payment credentials. Stripe provides us with a tokenised reference and basic transaction details (amount, date, last four digits of card).</p>
@@ -68,7 +70,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 <p>Under UK GDPR Article 6, we rely on the following legal bases:</p>
 
 <ul>
-<li><strong>Contract (Art. 6(1)(b))</strong> — processing your account information and student records is necessary to provide the service you have signed up for</li>
+<li><strong>Contract (Art. 6(1)(b))</strong> — processing your account information is necessary to provide the service you have signed up for</li>
 <li><strong>Legitimate interests (Art. 6(1)(f))</strong> — analysing usage patterns to improve the platform, fraud prevention, and security monitoring, where these do not override your rights</li>
 <li><strong>Legal obligation (Art. 6(1)(c))</strong> — retaining financial records for HMRC requirements and other regulatory compliance</li>
 <li><strong>Consent (Art. 6(1)(a))</strong> — loading analytics cookies and sending optional marketing communications, where you have explicitly agreed</li>
@@ -76,18 +78,29 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 
 <h2>5. Data Sharing</h2>
 
-<p>We share personal data only with the following third-party service providers, who process data on our behalf under appropriate data processing agreements:</p>
+<p>We share personal data only with service providers who process it for us under written contracts. The main ones are below; the full list, with what each does and where it is based, is on our <a href="/subprocessors/">sub-processors page</a>.</p>
 
 <ul>
 <li><strong>Stripe</strong> — payment processing (see <a href="https://stripe.com/gb/privacy" target="_blank" rel="noopener noreferrer">Stripe's Privacy Policy</a>)</li>
 <li><strong>Neon</strong> — cloud database hosting (data stored encrypted at rest)</li>
-<li><strong>Vercel</strong> — website hosting and content delivery</li>
+<li><strong>Vercel</strong> — hosting for the DriveSchoolPro app (servers in London), document storage and the AI gateway</li>
+<li><strong>Amazon Web Services</strong> — hosting for this website (London)</li>
+<li><strong>Sentry</strong> — error reports and masked screen recordings of a sample of app sessions (EU)</li>
+<li><strong>Google Firebase</strong> and <strong>Google Maps</strong> — app push notifications, and address search and maps in the app</li>
+<li><strong>Upstash</strong> — rate limiting to protect logins</li>
+<li><strong>Mailchimp</strong> — product news to account holders who opted in</li>
+<li><strong>Formspree</strong> — delivers messages sent through our contact form (US)</li>
+<li><strong>Google Fonts</strong> — supplies this website's typeface; your browser sends your IP address to Google</li>
+<li><strong>Arcade</strong> — interactive product demos on some feature pages (US)</li>
 <li><strong>Resend</strong> — transactional email delivery (lesson reminders, receipts, notifications)</li>
 <li><strong>Google</strong> — website analytics (Google Analytics) and advert measurement and remarketing (Google Ads), only if you click <strong>Accept All</strong>; Google may process this data outside the UK (see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>)</li>
 <li><strong>Metricool</strong> — website visit statistics for our social media reporting (pages viewed and where visitors came from), only if you click <strong>Accept All</strong>; Metricool is based in Spain, in the EU (see <a href="https://metricool.com/privacy-policy/" target="_blank" rel="noopener noreferrer">Metricool's Privacy Policy</a>)</li>
 <li><strong>PostHog</strong> — product analytics and session recordings of the DriveSchoolPro app (sign-up, onboarding and school-side screens, never pupil or parent pages), only if you click <strong>Accept All</strong>; data is hosted in the EU, and recordings mask everything you type and all text on screens showing pupil details (see <a href="https://posthog.com/privacy" target="_blank" rel="noopener noreferrer">PostHog's Privacy Policy</a>)</li>
 <li><strong>Anthropic</strong> — AI lesson briefings (Claude); lesson data is processed to generate briefings and is <strong>not</strong> used to train AI models</li>
 </ul>
+
+<h3>Transfers outside the UK</h3>
+<p>Some providers process data outside the UK, mainly in the US (Stripe, Vercel, Resend, Anthropic, Formspree, Mailchimp, Google and Arcade). We only use them where the transfer is protected by UK adequacy regulations, the UK Extension to the EU-US Data Privacy Framework, or the UK International Data Transfer Addendum in the provider's data processing terms. Ask <a href="mailto:privacy@driveschoolpro.com">privacy@driveschoolpro.com</a> for details of the safeguard for any provider.</p>
 
 <p>We do <strong>not</strong> sell, rent, or trade personal data with any third party for their own marketing purposes.</p>
 
@@ -98,7 +111,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 <ul>
 <li><strong>Active account data</strong> — retained for as long as your account is active</li>
 <li><strong>Financial records</strong> — retained for 6 years following the end of the relevant tax year, as required by HMRC</li>
-<li><strong>Deleted accounts</strong> — personal data is anonymised within 30 days of account deletion; financial records are retained for the period above to meet legal obligations</li>
+<li><strong>Deleted accounts</strong> — kept for 30 days so the account can be restored or exported, then deleted; financial records are retained for the period above, and backups expire on their normal cycle, which takes up to 12 months</li>
 <li><strong>Usage analytics</strong> — aggregated and anonymised after 26 months</li>
 </ul>
 
@@ -115,6 +128,9 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 <li><strong>Right to object (Art. 21)</strong> — you can object to processing based on legitimate interests</li>
 <li><strong>Right to withdraw consent</strong> — where processing is based on consent, you can withdraw it at any time without affecting the lawfulness of prior processing</li>
 </ul>
+
+<h3>Pupils, including pupils under 18</h3>
+<p>Your driving school or instructor controls your lesson records. Ask your instructor first; if you can't, email <a href="mailto:privacy@driveschoolpro.com">privacy@driveschoolpro.com</a> and we'll help. We don't use your data for advertising. The terms for using the pupil app are in our <a href="/pupil-terms/">Pupil Terms</a>.</p>
 
 <p>To exercise any of these rights, contact us at <a href="mailto:privacy@driveschoolpro.com">privacy@driveschoolpro.com</a>. We will respond within one calendar month.</p>
 

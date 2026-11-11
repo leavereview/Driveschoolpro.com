@@ -88,7 +88,7 @@ const homeFaqs = [
   },
   {
     question: "How is my data kept secure, and where is it hosted?",
-    answer: "DriveSchoolPro is run by JOHN POWELL LTD, a UK company and the data controller under UK GDPR. Payments are handled by Stripe (PCI DSS Level 1) and your data is encrypted at rest. Our sub-processors are Stripe, Neon, Vercel and Resend.",
+    answer: "DriveSchoolPro is run by JOHN POWELL LTD, a UK company. We are the data controller for your account and your processor for the pupil records you add, under our Data Processing Terms. Payments are handled by Stripe (PCI DSS Level 1) and your data is encrypted at rest. Our main sub-processors are Stripe (payments), Neon (database), Vercel (app hosting and AI gateway), Resend (email) and Anthropic (AI lesson briefings); the full list is on our sub-processors page.",
     links: [{ text: "Privacy policy", url: "/privacy-policy/" }],
   },
   {
@@ -131,7 +131,7 @@ const homeFaqs = [
 ];
 ---
 
-<BaseLayout title="Driving School Software UK | DriveSchoolPro, Free Until 2027" description={`UK driving school software: DVSA 27-skill progress tracking, online booking, clash checks and lesson reminders. ${OFFER.short}, no card needed.`} image="/images/marketing/dashboard-overview.webp" modifiedDate="2026-11-04" showUpdated>
+<BaseLayout title="Driving School Software UK | DriveSchoolPro, Free Until 2027" description={`UK driving school software: DVSA 27-skill progress tracking, online booking, clash checks and lesson reminders. ${OFFER.short}, no card needed.`} image="/images/marketing/dashboard-overview.webp" modifiedDate="2026-11-11" showUpdated>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(softwareApplicationSchema)} />
   </Fragment>

@@ -1,11 +1,22 @@
 ---
-// Terms of Service Page
+// Terms of Service — version 2026-11.
+// Source draft: reference/driveschoolpro/legal-review-2026-11-09/terms-v2-and-saas-checklist.md (Part 2).
+// Not yet solicitor-reviewed (JP decision, 11 Nov 2026: publish best attempt until funds allow review).
+// When this text changes: bump TERMS_VERSION below, the date, and the app's CURRENT_TERMS_VERSION
+// (driveschoolpro src/lib/config/launch.ts). Git history holds every published version.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const TERMS_VERSION = '2026-11';
+const UPDATED = '11 November 2026';
+const EXISTING_ACCOUNTS_FROM = '11 December 2026';
 ---
 
-<BaseLayout title="Terms of Service" description="Terms of Service for DriveSchoolPro. Read our terms and conditions for using our driving school management platform.">
-  <!-- Breadcrumbs -->
+<BaseLayout
+  title="Terms of Service"
+  description="DriveSchoolPro's Terms of Service for driving instructors and schools: plans and fees, card payments through Stripe, your data, our liability and data processing terms."
+  modifiedDate="2026-11-11"
+>
   <div class="bg-gray-100 py-3">
     <div class="container-custom">
       <Breadcrumbs items={[
@@ -18,67 +29,159 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
   <section class="section bg-white">
     <div class="container-custom">
       <div class="max-w-4xl mx-auto">
-        <h1 class="text-4xl md:text-5xl font-bold text-brand-navy mb-8">Terms of Service</h1>
+        <h1 class="text-4xl md:text-5xl font-bold text-brand-navy mb-4">Terms of Service</h1>
+        <p class="text-sm text-gray-500 mb-8">Version {TERMS_VERSION} · Last updated: {UPDATED}</p>
         <div class="prose max-w-none">
-<p><strong>Effective Date: September 25, 2025</strong></p>
 
-<p>These Terms of Service ("Terms") govern your use of DriveSchoolPro, a trading name of JOHN POWELL LTD (Company Number: 05408918), a company registered in England and Wales.</p>
+<p>These Terms are a contract between <strong>JOHN POWELL LTD</strong> (company 05408918, registered in England and Wales, registered office 124 City Road, London EC1V 2NX), trading as DriveSchoolPro ("we", "us"), and the driving instructor or driving school that opens a DriveSchoolPro account ("you").</p>
 
-<h2>1. Acceptance of Terms</h2>
+<p>If you opened your account before {UPDATED}, these Terms replace our previous Terms on {EXISTING_ACCOUNTS_FROM}. Until then the previous Terms apply, except that anything in these Terms that only gives you more rights applies straight away.</p>
 
-<p>By accessing or using DriveSchoolPro (the "Service"), you agree to be bound by these Terms. If you do not agree to these Terms, you may not use the Service.</p>
+<p><strong>If you're a pupil or parent, these Terms don't apply to you.</strong> See our <a href="/pupil-terms/">Pupil Terms</a>.</p>
 
-<h2>2. Description of Service</h2>
+<h2>1. Who these Terms are for</h2>
+<p>1.1 DriveSchoolPro is software for driving instructors and driving schools to run their business. By accepting these Terms you confirm you are using it for your business.</p>
+<p>1.2 If you accept these Terms for a company or partnership, you confirm you have authority to bind it.</p>
+<p>1.3 We provide software only. We are not a driving school. We don't employ, supervise or vouch for instructors. Nothing in these Terms makes us your partner, agent or employer.</p>
 
-<p>DriveSchoolPro provides driving school management software for driving instructors and schools. The Service includes scheduling, student management, instructor allocation, payment processing, and business analytics tools.</p>
+<h2>2. The Service</h2>
+<p>2.1 We will provide the Service with reasonable skill and care.</p>
+<p>2.2 We aim to keep the Service available at all times, but we don't promise it will be uninterrupted or error-free. We may take it offline for maintenance, and we'll try to do planned work outside UK working hours.</p>
+<p>2.3 We may change, add or remove features. If we remove a feature that is a main part of a paid plan you're on, we'll tell you at least 30 days before. You may then cancel, and we'll refund any fees paid for the period after the change.</p>
+<p>2.4 Features marked "early access", "beta" or "coming soon" are provided as they are and may change or be withdrawn.</p>
 
-<h2>3. User Accounts</h2>
-
-<p>You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You agree to notify us immediately of any unauthorised use of your account.</p>
-
-<h2>4. Acceptable Use</h2>
-
-<p>You agree not to use the Service to:</p>
-
+<h2>3. Your account and your team</h2>
+<p>3.1 You're responsible for keeping logins secure, and for everything done under your account by anyone you give access to, including instructors and staff. Tell us straight away at <a href="mailto:support@driveschoolpro.com">support@driveschoolpro.com</a> if you think your account has been misused.</p>
+<p>3.2 You must not:</p>
 <ul>
-<li>Violate any applicable laws or regulations</li>
-<li>Infringe upon the rights of others</li>
-<li>Transmit harmful or malicious code</li>
-<li>Attempt to gain unauthorised access to any systems</li>
-<li>Interfere with the proper functioning of the Service</li>
+<li>put unlawful, harmful or offensive content into the Service;</li>
+<li>introduce malicious code;</li>
+<li>try to break security or access other accounts;</li>
+<li>reverse engineer the Service;</li>
+<li>use it to build a competing product;</li>
+<li>send messages through it that you don't have the right to send.</li>
 </ul>
+<p>3.3 <strong>Schools and instructors.</strong> The person who opened the account (the "account owner") controls it and all the data in it. Instructors and staff added to a school account use it on the account owner's behalf. If an instructor leaves, what happens to pupil records and contact with pupils is a matter between the instructor and the school. We'll follow the account owner's instructions, unless a court orders otherwise.</p>
 
-<h2>5. Payment Terms</h2>
+<h2>4. Your judgement as an instructor</h2>
+<p>4.1 DriveSchoolPro helps you organise and record your teaching. It doesn't teach, assess or decide anything for you.</p>
+<p>4.2 AI lesson briefings, DVSA skill ratings, progress summaries and test-readiness indicators are aids only, and can be incomplete or wrong. You remain responsible for every teaching, safety and test-booking decision, and for checking anything you rely on.</p>
+<p>4.3 AI briefings are written by a third-party AI model (currently Anthropic's Claude) from your lesson notes and the pupil's progress. Your data is not used to train AI models. Don't put information in lesson notes that a briefing doesn't need, especially health information: use the separate medical notes field, which is not sent to the AI.</p>
+<p>4.4 You're responsible for holding the qualifications, insurance and vehicle documents your work requires. Vehicle and document reminders in the Service are a convenience, not a substitute for your own checks.</p>
 
-<p>Subscription fees are billed in advance on a monthly or annual basis. All fees are non-refundable except as expressly stated in these Terms or required by law.</p>
+<h2>5. Plans, fees and payment</h2>
+<p>5.1 Until 31 March 2027 the Service is free, and no subscription fee is charged.</p>
+<p>5.2 From 1 April 2027 you can use:</p>
+<ul>
+<li><strong>Free:</strong> one instructor, up to 60 completed lessons a month. If you go over 60 completed lessons in three months out of any six, we may ask you to move to a paid plan. If you don't move within 30 days, we may limit new bookings, but we won't delete your data.</li>
+<li><strong>Solo:</strong> £22 a month.</li>
+<li><strong>School:</strong> £22 a month plus £10 a month for each extra instructor.</li>
+</ul>
+<p>We are not VAT-registered, so no VAT is added. If we register, we'll tell you at least 30 days before VAT is added.</p>
+<p>5.3 We may change or withdraw the Free plan in future. We'll give you at least 90 days' notice by email, and you'll always be able to export your data.</p>
+<p>5.4 <strong>Founding price and card authorisation.</strong> If you add a card by 1 March 2027, you pay £15 a month (School: £15 plus £8 a month for each extra instructor) for 24 months from 1 April 2027. After that you pay our standard price at the time, and we'll tell you at least 30 days before it changes. By saving your card you authorise us to charge it monthly in advance, starting on 1 April 2027, until you cancel. We won't charge it earlier, and we'll email you at least 7 days before the first charge.</p>
+<p>5.5 Paid plans are billed monthly in advance. You can cancel at any time in Settings &gt; Billing, or by emailing <a href="mailto:support@driveschoolpro.com">support@driveschoolpro.com</a>. Your plan then runs to the end of the month you've paid for and is not renewed. Fees already paid are not refunded, except under clauses 2.3, 12.2 and 13, or where the law requires it.</p>
+<p>5.6 If a payment is still unpaid 14 days after we've told you it failed, we may suspend paid features until it's paid. We won't delete your data because of a late payment without giving you at least 30 days' notice.</p>
+<p>5.7 We'll give you at least 30 days' notice by email before we change any fee in clauses 5 or 6.</p>
 
-<h2>6. Data and Privacy</h2>
+<h2>6. Taking payments from your pupils</h2>
+<p>6.1 If you connect a Stripe account, card payments your pupils make to you through DriveSchoolPro (invoice pay-links, online booking, the pupil app and package purchases) are processed on your own Stripe account. Stripe provides that service under its Connected Account Agreement, which you accept when you connect, and Stripe deducts its own processing fee.</p>
+<p>6.2 For card payments taken through DriveSchoolPro, we deduct the platform fee shown in your payment settings (currently 3% of each payment). There's no DriveSchoolPro fee on cash, bank transfer or cheque payments you record. You must not add a card surcharge to what your pupils pay.</p>
+<p>6.3 Your lessons, packages and prices are a contract between you and your pupil, not with us. You're responsible for your own terms with pupils, for refunds, and for handling chargebacks and disputes. We'll help by providing the records we hold.</p>
+<p>6.4 You can show your own terms to pupils when they book online (in your online booking settings), and we record when each pupil accepts them. We don't check or take responsibility for what your terms say.</p>
+<p>6.5 If you refund a card payment through DriveSchoolPro, we refund our platform fee in proportion to the amount refunded.</p>
 
-<p>Your use of the Service is also governed by our Privacy Policy. You retain ownership of all data you submit to the Service. We will process your data in accordance with our Privacy Policy and applicable data protection laws.</p>
+<h2>7. Your data</h2>
+<p>7.1 You own the data that you, your team and your pupils put into DriveSchoolPro ("Your Data"). You're responsible for its accuracy, and for having the right to collect it and put it in.</p>
+<p>7.2 You can export Your Data at any time from Settings &gt; Profile.</p>
+<p>7.3 If you close your account, we keep Your Data for 30 days so you can change your mind or export it, and then delete it, with two exceptions:</p>
+<ul>
+<li>records we must keep by law, such as financial records for 6 years, are kept for that period;</li>
+<li>backups expire on their normal cycle, which takes up to 12 months.</li>
+</ul>
+<p>7.4 We back up the Service regularly. If Your Data is lost or damaged because of a fault on our side, we'll use reasonable efforts to restore it from our most recent backup. This is your only remedy for lost or damaged data, except where clause 9.1 says otherwise.</p>
+<p>7.5 We may use anonymised, aggregated data (for example, average lessons per instructor) to run and improve the Service. It will never identify you or any pupil.</p>
+<p>7.6 Only record health information or upload ID or medical documents where you need them, for example to make a reasonable adjustment for a pupil, and only with a lawful basis. Keep that information in the fields provided for it, not in lesson notes.</p>
+<p>7.7 The <a href="#data-processing">Data Processing Terms</a> in the Schedule below apply whenever we handle personal data on your behalf.</p>
 
-<h2>7. Intellectual Property</h2>
+<h2>8. Messages sent through DriveSchoolPro</h2>
+<p>8.1 Reminders, review requests and other messages are sent on your behalf. You're responsible for having a lawful basis to contact each recipient, and for your review requests complying with Google's policies and consumer law.</p>
+<p>8.2 We send messages promptly, but delivery depends on networks and providers we don't control. We're not responsible for messages that are delayed, filtered or undelivered, or for missed or late lessons that result.</p>
+<p>8.3 Text and WhatsApp messages, when available, may be limited or charged as described on our <a href="/pricing/">pricing page</a>. We may limit messaging that looks like spam or abuse.</p>
 
-<p>The Service and its original content, features, and functionality are owned by JOHN POWELL LTD and are protected by international copyright, trademark, and other intellectual property laws.</p>
+<h2>9. Our liability</h2>
+<p>9.1 Nothing in these Terms limits our liability for death or personal injury caused by our negligence, for fraud or fraudulent misrepresentation, or for anything else the law doesn't allow us to limit.</p>
+<p>9.2 Except for the promise in clause 2.1 and the promises these Terms make expressly, all terms implied by law are excluded as far as the law allows.</p>
+<p>9.3 We're not liable, whether in contract, tort (including negligence), breach of statutory duty or otherwise, for:</p>
+<ul>
+<li>loss of profits, revenue, income or lesson fees;</li>
+<li>loss of business, contracts or goodwill;</li>
+<li>loss or corruption of data, except as set out in clause 7.4;</li>
+<li>any indirect or consequential loss.</li>
+</ul>
+<p>9.4 Subject to clause 9.1, our total liability to you for all claims arising in any 12-month period is limited to the greater of (a) the fees you paid us in the 12 months before the first event giving rise to a claim, including platform fees, and (b) £500. Clause 11.3 is not subject to this limit.</p>
+<p>9.5 We're not liable for delays or failures caused by events outside our reasonable control, including failures of the internet, hosting, payment, messaging or AI providers we rely on. We'll tell you if such an event significantly affects the Service, and do what we reasonably can to limit it.</p>
 
-<h2>8. Termination</h2>
+<h2>10. Your responsibility to us</h2>
+<p>You'll compensate us for losses, reasonable legal costs and fines we incur because of a third-party claim arising from:</p>
+<ul>
+<li>Your Data, or your lack of a right to collect or share it;</li>
+<li>your contracts with your pupils, including refunds and chargebacks;</li>
+<li>messages you send through the Service in breach of clause 8.1.</li>
+</ul>
+<p>We'll tell you promptly about any such claim, let you take part in defending it, and take reasonable steps to limit the loss.</p>
 
-<p>We may terminate or suspend your account at any time for violations of these Terms. Upon termination, your right to use the Service will immediately cease.</p>
+<h2>11. Intellectual property</h2>
+<p>11.1 We own the Service and everything in it apart from Your Data. You may use it for your business while your account is open.</p>
+<p>11.2 We'll only name you or show your logo as a customer if you agree in writing.</p>
+<p>11.3 If someone claims that your normal use of the Service infringes their UK intellectual property rights, we'll defend the claim at our cost and pay any damages awarded or settlement we agree. You must tell us promptly and let us control the defence. We may change the Service to avoid the infringement or, if that isn't reasonable, end your account and refund any prepaid fees.</p>
+<p>11.4 If you send us suggestions or feedback, we may use them freely.</p>
 
-<h2>9. Limitation of Liability</h2>
+<h2>12. Ending the contract</h2>
+<p>12.1 You can close your account at any time.</p>
+<p>12.2 We may close your account if you seriously or repeatedly break these Terms, if you don't fix a breach within 14 days of us telling you, or if you become insolvent. We'll give you 30 days' notice if we close your account for any other reason, or if we stop providing the Service, and we'll refund any fees paid for the period after closure.</p>
+<p>12.3 We may suspend access straight away if we reasonably believe it's needed to protect the Service, other users or pupils, or to comply with the law. We'll tell you why, and restore access as soon as the reason has gone.</p>
+<p>12.4 On closure, clause 7.3 applies. Clauses 6.3 to 6.5, 7, 9, 10, 11 and 16 continue after the contract ends.</p>
 
-<p>To the maximum extent permitted by law, JOHN POWELL LTD shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Service.</p>
+<h2>13. Changes to these Terms</h2>
+<p>We may update these Terms. We'll email you at least 30 days before a change that affects fees, your rights or our liability takes effect. We may ask you to accept the new version in the app. If you don't agree, you can cancel before it takes effect, and we'll refund any fees paid for the period after the change. Minor changes, such as correcting mistakes or reflecting a change in the law, take effect when we publish them.</p>
 
-<h2>10. Changes to Terms</h2>
+<h2>14. Confidentiality</h2>
+<p>We'll keep Your Data confidential and use it only to provide the Service, except where the law requires us to disclose it.</p>
 
-<p>We reserve the right to modify these Terms at any time. We will notify users of material changes by posting the updated Terms on the Service.</p>
+<h2>15. Pupils and parents</h2>
+<p>Pupils and parents use DriveSchoolPro under our <a href="/pupil-terms/">Pupil Terms</a>, not these Terms. You must not tell pupils that we are responsible for your lessons, prices or refunds.</p>
 
-<h2>11. Governing Law</h2>
+<h2>16. General</h2>
+<p>16.1 These Terms, the Schedule and our <a href="/privacy-policy/">Privacy Policy</a> are the whole agreement between us about the Service. You confirm you haven't relied on any statement that isn't set out in them. This doesn't limit liability for fraud.</p>
+<p>16.2 We may transfer this contract to another business that takes over DriveSchoolPro. You may not transfer it without our agreement.</p>
+<p>16.3 No one other than you and us has any right to enforce these Terms.</p>
+<p>16.4 If a court finds part of these Terms unenforceable, the rest still applies.</p>
+<p>16.5 If we delay in enforcing a right, we can still enforce it later.</p>
+<p>16.6 We'll send notices to the email address on your account. Send yours to <a href="mailto:support@driveschoolpro.com">support@driveschoolpro.com</a>.</p>
+<p>16.7 If you have a complaint, email <a href="mailto:support@driveschoolpro.com">support@driveschoolpro.com</a> and we'll reply within 10 working days. Both of us will try to resolve any dispute this way for 30 days before starting court proceedings, except for urgent applications.</p>
+<p>16.8 These Terms are governed by the law of England and Wales, and the courts of England and Wales have exclusive jurisdiction.</p>
 
-<p>These Terms shall be governed by the laws of England and Wales, without regard to conflict of law principles.</p>
+<h2 id="data-processing">Schedule: Data Processing Terms (UK GDPR Article 28)</h2>
+<p>1. <strong>Roles.</strong> For personal data about your pupils, their parents, and your instructors and staff that is put into DriveSchoolPro, you are the controller and we are your processor.</p>
+<p>2. <strong>Details of the processing.</strong></p>
+<ul>
+<li><em>Subject matter and duration:</em> providing the Service for as long as your account is open, plus the periods in clause 7.3.</li>
+<li><em>Nature and purpose:</em> scheduling, pupil records and progress tracking, messaging, payments, document storage and AI lesson briefings.</li>
+<li><em>Types of data:</em> names, contact details and dates of birth; lesson, progress and payment records; notes you add; driving licence and ID documents you upload; and <strong>special category data</strong>: health information in medical notes and medical certificates, where you choose to record it.</li>
+<li><em>Data subjects:</em> pupils (including some aged 16 to 17), parents, instructors and staff.</li>
+</ul>
+<p>3. <strong>Instructions.</strong> We process the data only to provide the Service, on your documented instructions (these Terms and your use of the Service), unless the law requires otherwise. If it does, we'll tell you first unless the law forbids that.</p>
+<p>4. <strong>Confidentiality.</strong> Everyone who handles the data for us is bound by confidentiality.</p>
+<p>5. <strong>Security.</strong> We take appropriate technical and organisational measures, including encryption in transit and at rest, role-based access, logging and backups.</p>
+<p>6. <strong>Sub-processors.</strong> You authorise the sub-processors listed on our <a href="/subprocessors/">sub-processors page</a>. We'll give at least 30 days' notice of any new one by email. If you object, you may cancel before the change and receive a refund of prepaid fees for the period after it. Each sub-processor is bound by data protection terms that give at least the same protection, and we remain responsible for them. Health data in medical notes is not sent to our AI provider.</p>
+<p>7. <strong>International transfers.</strong> Where personal data is transferred outside the UK, we use a lawful mechanism: UK adequacy regulations, the UK Extension to the EU-US Data Privacy Framework, or the UK International Data Transfer Addendum.</p>
+<p>8. <strong>Assistance.</strong> We'll help you, as far as reasonably possible, with requests from people exercising their data rights (we'll pass on any request we receive), security, breach notification and data protection impact assessments.</p>
+<p>9. <strong>Breaches.</strong> We'll tell you without undue delay, and in any case within 48 hours, after becoming aware of a personal data breach affecting your data.</p>
+<p>10. <strong>End of the account.</strong> When your account closes, clause 7.3 of the Terms applies.</p>
+<p>11. <strong>Audits.</strong> We'll make available the information you reasonably need to show compliance, and allow a reasonable audit not more than once a year, on 30 days' notice, at your cost.</p>
+<p>12. <strong>Your obligations.</strong> You confirm that you have a lawful basis for the personal data you put into the Service, that you have an Article 9 condition for any health data, and that you have told pupils how their data is used.</p>
 
-<h2>12. Contact</h2>
-
-<p>For questions about these Terms, please contact us at info@driveschoolpro.com.</p>
         </div>
       </div>
     </div>
