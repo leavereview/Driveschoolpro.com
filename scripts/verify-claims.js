@@ -105,12 +105,8 @@ const FORBIDDEN = [
   ['no commission', 'platform commission is 3% (connect-fees.ts, JP 2026-08-24)'],
   ['0% of your payments', 'platform commission is 3% (connect-fees.ts, JP 2026-08-24)'],
   ['take no commission', 'platform commission is 3% (connect-fees.ts, JP 2026-08-24)'],
-  // No pupil import exists (checked 2026-10-05: no CSV/bulk-import UI in driveschoolpro/src/app;
-  // pupils are added one at a time via students/new). The /ads lander claimed one.
-  ['import pupils', 'no pupil import feature exists in the app'],
-  ['import your pupils', 'no pupil import feature exists in the app'],
-  ['import students', 'no pupil import feature exists in the app'],
-  ['import your students', 'no pupil import feature exists in the app'],
+  // Pupil CSV import shipped in the app (driveschoolpro bae40c1f3, Settings > Import Pupils), so the
+  // 2026-10-05 'no pupil import' rule was removed on 2026-11-11.
   ['inc vat', 'JOHN POWELL LTD is not VAT-registered'],
   ['including vat', 'JOHN POWELL LTD is not VAT-registered'],
   ['#ff385c', 'not a brand token'],

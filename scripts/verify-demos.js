@@ -40,6 +40,20 @@ const VIDEO_RULES = [
   [/data-src="[^"]+"/, 'data-src — the real source, swapped in by the observer'],
 ];
 
+/**
+ * Voiced how-to videos (marked data-howto, e.g. /start/first-pupil/) are watched on purpose, with sound and
+ * native controls, so the silent-loop rules (muted, loop, lazy data-src) do not apply. They still need the
+ * accessibility and layout attributes, plus controls.
+ */
+const HOWTO_RULES = [
+  [/\bcontrols\b/, 'controls — a voiced how-to must be playable and pausable'],
+  [/\bplaysinline\b/, 'playsinline — iOS Safari goes fullscreen without it'],
+  [/poster="[^"]+"/, 'poster — the fallback still, shown before load'],
+  [/\bwidth="\d+"/, 'width — prevents layout shift'],
+  [/\bheight="\d+"/, 'height — prevents layout shift'],
+  [/aria-label="[^"]+"/, 'aria-label — <video> has no alt attribute'],
+];
+
 /** Anchors the homepage hero CTA and section navigation depend on. */
 const HOME_ANCHORS = [
   'the-week',
@@ -56,11 +70,12 @@ for (const file of files) {
   const rel = path.relative(distDir, file);
 
   for (const tag of html.match(/<video\b[^>]*>/g) || []) {
-    for (const [re, why] of VIDEO_RULES) {
+    const howto = /\bdata-howto\b/.test(tag);
+    for (const [re, why] of howto ? HOWTO_RULES : VIDEO_RULES) {
       if (!re.test(tag)) errors.push(`${rel}: <video> missing ${why}`);
     }
     // A literal src= would defeat preload="none" and download on parse.
-    if (/\ssrc="/.test(tag)) {
+    if (!howto && /\ssrc="/.test(tag)) {
       errors.push(`${rel}: <video> has a literal src= — use data-src so preload="none" holds`);
     }
     // The poster must actually exist, or the fallback is a broken image.
