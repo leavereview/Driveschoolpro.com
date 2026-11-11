@@ -1,0 +1,66 @@
+---
+// /start/first-pupil — how-to videos linked from the onboarding emails (driveschoolpro#2247). For signed-up
+// schools, not a landing page, so noindex. Videos recorded 11 Nov 2026 on a demo school (made-up pupils only).
+import LandingLayout from '../../layouts/LandingLayout.astro';
+
+const APP = 'https://app.driveschoolpro.com';
+const CALL = 'https://calendly.com/johnpowell-hey/30min';
+---
+<LandingLayout
+  title="Add your first pupil | DriveSchoolPro"
+  description="A 45-second video showing how to add your first pupil and book their first lesson in DriveSchoolPro, plus how to import your pupil list from a spreadsheet."
+  robots="noindex, follow"
+>
+  <section class="section bg-white">
+    <div class="container-custom max-w-3xl">
+      <h1 class="text-3xl md:text-4xl font-bold text-brand-navy mb-4">Add your first pupil</h1>
+      <p class="text-lg text-gray-600 mb-8">
+        All you need is their name. Here's the whole thing, from adding a pupil to seeing their first lesson in
+        your diary, in 45 seconds.
+      </p>
+
+      <div class="flex justify-center mb-8">
+        <video
+          data-howto
+          class="rounded-3xl shadow-xl border border-gray-200 w-full max-w-[360px] h-auto"
+          src="/videos/add-your-first-pupil.mp4"
+          poster="/images/marketing/add-your-first-pupil-poster.webp"
+          width="720" height="1564"
+          controls playsinline preload="metadata"
+          aria-label="On a phone: tap Students, then Add Student, type the pupil's name, mobile and email, tap Add Student, then Book First Lesson, pick a free slot and tap Book Lesson. The lesson then appears in the diary."
+        ></video>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3 justify-center mb-16">
+        <a href={`${APP}/students/new`} class="btn-primary text-center">Add your first pupil</a>
+        <a href={CALL} class="btn-outline text-center">Book a free setup call with John</a>
+      </div>
+
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Got a list already? Import it</h2>
+      <p class="text-lg text-gray-600 mb-8">
+        Moving from another app or a spreadsheet? Upload a CSV and DriveSchoolPro matches up the columns. Pupils
+        you already have are skipped.
+      </p>
+
+      <div class="flex justify-center mb-8">
+        <video
+          data-howto
+          class="rounded-3xl shadow-xl border border-gray-200 w-full max-w-[360px] h-auto"
+          src="/videos/import-your-pupils.mp4"
+          poster="/images/marketing/import-your-pupils-poster.webp"
+          width="720" height="1564"
+          controls playsinline preload="metadata"
+          aria-label="On a phone: open the menu, tap Settings, then Import Pupils, choose a CSV file, check the matched columns, tap Check rows, then Import 8 pupils. The new pupils appear in the Students list."
+        ></video>
+      </div>
+
+      <div class="flex justify-center mb-8">
+        <a href={`${APP}/settings/import-pupils`} class="btn-secondary text-center">Import your pupils</a>
+      </div>
+
+      <p class="text-gray-600 text-center">
+        Stuck? Reply to any of our emails, or <a href={CALL} class="text-brand-red underline">book a free 30-minute call</a>{' '}and we'll set it up together.
+      </p>
+    </div>
+  </section>
+</LandingLayout>
