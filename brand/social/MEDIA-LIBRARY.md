@@ -53,7 +53,7 @@ Style: dry UK humour, laughing *with* instructors, never at learners or the DVSA
 | Raw skit takes (Block1 at home / sofa / can we move Thursday) and the long desk talk-through | iCloud `videos/` |
 | s4 and s10 "before" options A and B (A was used) | iCloud `videos/Options to choose/` |
 | Longer edited cuts (Accounting, Clean records, Gets you paid, Less admin, More pupils, Saves time, Things ADIs hear 81 s) | iCloud `videos/Done/` |
-| App screen recordings made on the local demo, 11 Nov 2026: pay now (card), diary reschedule, desktop drag, DVSA tick, pupil progress 63%, quick booking, Money "who owes me" £0 | `~/Projects-code/reference/driveschoolpro/dsp-marketing-assets/footage/app/`. The `README.md` there lists timings and which seconds to avoid. |
+| App screen recordings made on the local demo, 11 Nov 2026: pay now (card), diary reschedule, desktop drag, DVSA tick, pupil progress 63%, quick booking, Money "who owes me" £0; plus the how-to clips "add your first pupil" and "import pupils" (raw, tap-marker and Andy voice-over versions; the voiced ones are live on `/start/first-pupil/`) | `~/Projects-code/reference/driveschoolpro/dsp-marketing-assets/footage/app/`. The `README.md` there lists timings and which seconds to avoid. |
 | John's drop folder for new filming (raw originals; AirDrop, then move here from Downloads) | `~/Projects-code/reference/driveschoolpro/DSP-social-videos/` (moved from the Desktop on 11 Nov 2026). The social autopost job mirrors it to the box nightly and uses new clips from it. |
 
 ## 4. Sound effects (John's recordings)
