@@ -27,7 +27,7 @@ All paths are on John's Mac. iCloud = `~/Library/Mobile Documents/com~apple~Clou
 - **Settings:** model `eleven_v4`, `mp3_44100_128`, default voice settings. Use the `/with-timestamps` endpoint to get word-synced captions.
 - **Direction:** warm, friendly British English, like a confident instructor talking to a colleague. Not salesy.
 - **Audio tags:** `[sighs]` and `[whispers]` are not read aloud, but they have little audible effect. Use punctuation and inserted silence for timing.
-- **Account:** ElevenLabs Starter plan. The key is `ELEVENLABS_API_KEY` in `~/Projects-code/agentbox/.env.local` (Mac) or `~/agentbox-secrets/claude.env` (box). Never print it.
+- **Account:** ElevenLabs annual subscription, paid for a year from 11 Nov 2026. Be generous with renders and retakes; John approved this. The key is `ELEVENLABS_API_KEY` in `~/Projects-code/agentbox/.env.local` (Mac) or `~/agentbox-secrets/claude.env` (box). Never print it.
 - **Usage terms:** these are shared-library voices, so a creator can withdraw one. Keep the rendered MP3 of every live ad, and check commercial-use terms before an ad goes live.
 - Full record: agentbox `docs/voiceover.md`. Test renders: `~/Projects-code/archive/voiceovers/2026-11-10/` (deleted after 11 Dec 2026).
 
@@ -89,4 +89,4 @@ Style: dry UK humour, laughing *with* instructors, never at learners or the DVSA
 - Claim only features that exist: diary, reminders, card payments (including pay at booking), DVSA 27-skill progress, briefings, invoices.
 - Use made-up names in fake chats.
 - Offer wording: "Free until 31 March 2027". Check `src/config/offer.ts` before use.
-- Nothing is published without John's OK.
+- **Auto-publishing is approved** (John, 11 Nov 2026). The posting job may publish directly to Metricool, as long as every post passes the checks above. John gets a summary after each run.
