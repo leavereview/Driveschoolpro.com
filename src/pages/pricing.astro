@@ -40,7 +40,7 @@ const faqs = [
   },
   {
     q: "How is my data kept secure, and where is it hosted?",
-    a: "DriveSchoolPro is run by JOHN POWELL LTD, a UK company and the data controller under UK GDPR. Payments are handled by Stripe (PCI DSS Level 1) and your data is encrypted at rest. Our sub-processors are Stripe, Neon, Vercel and Resend.",
+    a: "DriveSchoolPro is run by JOHN POWELL LTD, a UK company. We are the data controller for your account and your processor for the pupil records you add, under our Data Processing Terms. Payments are handled by Stripe (PCI DSS Level 1) and your data is encrypted at rest. Our main sub-processors are Stripe (payments), Neon (database), Vercel (app hosting and AI gateway), Resend (email) and Anthropic (AI lesson briefings); the full list is on our sub-processors page.",
   },
   {
     q: "Is my data used to train AI?",
@@ -109,7 +109,7 @@ const plans = [
 ];
 ---
 
-<BaseLayout title="Driving School Software Pricing: Free Plan, Solo £22" description={`Driving school software pricing: free until 31 March 2027, then a permanent Free plan (60 lessons a month) or Solo at £22 a month. No VAT, no card needed.`} image="/images/marketing/payments.webp" modifiedDate="2026-10-19" showUpdated>
+<BaseLayout title="Driving School Software Pricing: Free Plan, Solo £22" description={`Driving school software pricing: free until 31 March 2027, then a permanent Free plan (60 lessons a month) or Solo at £22 a month. No VAT, no card needed.`} image="/images/marketing/payments.webp" modifiedDate="2026-11-11" showUpdated>
   <Fragment slot="head">
     {offerSchemas.map(offerSchema => (
       <script type="application/ld+json" set:html={JSON.stringify(offerSchema)} />
