@@ -25,6 +25,8 @@ This is a static marketing site built with **Astro 4** and **Tailwind CSS**. It 
 
 ### Key Patterns
 
+**Social posts, ads and videos:** read `brand/social/MEDIA-LIBRARY.md` first. It lists every recording, footage folder, sound effect and voice decision (John's own voice lines and the ElevenLabs voices).
+
 **Brand Colors** (defined in `tailwind.config.mjs`):
 - `brand-navy`: #1A1A2E (primary dark)
 - `brand-red`: #E94560 (accent/CTA)
