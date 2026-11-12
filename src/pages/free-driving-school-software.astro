@@ -146,7 +146,7 @@ const faqItems = [
   },
   {
     question: "How do I switch to DriveSchoolPro?",
-    answer: "Sign up with no card, set your working hours, lesson prices and reminder timing, then add your current pupils. A name and phone number is enough to start. Enter next week's lessons and keep your old diary running alongside for a couple of weeks. There's no bulk import yet, so pupils are added one at a time.",
+    answer: "Sign up with no card, set your working hours, lesson prices and reminder timing, then add your current pupils. A name and phone number is enough to start. Enter next week's lessons and keep your old diary running alongside for a couple of weeks. If you already have a pupil list, import it from a CSV file (Total Drive and MyDriveTime exports work as they are).",
     links: [
       { text: 'Switching guide', url: '/blog/switch-paper-diary-to-driving-school-software/' }
     ]
@@ -326,7 +326,7 @@ const schemaMarkup = {
             <li class="border-l-4 border-amber-500 pl-4 py-1 text-gray-700"><strong>Card payments carry a fee.</strong> If pupils pay by card through DriveSchoolPro, we charge {P.cardFeePercent}%, and Stripe's standard processing fee applies on top. Cash and bank transfers carry no fee.</li>
             <li class="border-l-4 border-amber-500 pl-4 py-1 text-gray-700"><strong>Reminders are email only for now.</strong> Text and WhatsApp reminders are coming soon.</li>
             <li class="border-l-4 border-amber-500 pl-4 py-1 text-gray-700"><strong>Some features are still on the way.</strong> Recurring lesson series are coming soon. Test bookings, test results and pass-rate reporting are coming soon too.</li>
-            <li class="border-l-4 border-amber-500 pl-4 py-1 text-gray-700"><strong>No bulk import yet.</strong> You add pupils one at a time. A name and phone number is enough to start.</li>
+            <li class="border-l-4 border-amber-500 pl-4 py-1 text-gray-700"><strong>Pupils only on import.</strong> You can import your pupil list from a CSV file, but lesson history and payments don't come across.</li>
           </ul>
 
           <h3 class="text-xl font-bold text-brand-navy mb-3">On the Free plan (from 1 April 2027)</h3>
@@ -436,7 +436,7 @@ const schemaMarkup = {
             <div class="flex-shrink-0 w-8 h-8 bg-brand-red text-white rounded-full flex items-center justify-center font-bold">3</div>
             <div>
               <strong class="text-brand-navy">Add your current pupils</strong>
-              <p class="text-gray-600 text-sm">One at a time, as there's no bulk import yet. A name and phone number is enough to start; add progress levels and test dates as you go. You don't need to type in old lesson history.</p>
+              <p class="text-gray-600 text-sm">Import them from a CSV file (Total Drive and MyDriveTime exports work as they are), or add them one at a time: a name and phone number is enough to start; add progress levels and test dates as you go. You don't need to type in old lesson history.</p>
             </div>
           </li>
           <li class="flex items-start gap-3">

@@ -138,7 +138,7 @@ What each platform's own site says it does, where it's the better fit, and what 
 **What it doesn't do yet:**
 - No text reminders yet (text and WhatsApp coming soon), no theory content, no cancellation-gap broadcast and no parent accounts
 - Recording test bookings and results is coming soon
-- No Google Calendar sync, no enquiry list and no bulk import of pupils (pupils are added by hand)
+- No Google Calendar sync and no enquiry list. Pupils can be imported from a CSV file (Total Drive and MyDriveTime exports are read directly), but lesson history and payments don't come across
 - No white-labelling or franchise tools
 - Its 3% card fee is higher than Passly's or GoRoadie Pro's
 - Newer than the established platforms, so less track record
@@ -275,7 +275,7 @@ On those assumptions the difference is about £230 a week. Even at half that, it
 
 ## Switching: what to expect
 
-- **Week 1:** create your account, add instructors and pupils, set lesson types and prices, connect card payments, set reminder timing. Ask each vendor what migration help they offer; MyDriveTime and Lesson Diary list free migration, and DriveSchoolPro has no bulk import yet.
+- **Week 1:** create your account, add instructors and pupils, set lesson types and prices, connect card payments, set reminder timing. Ask each vendor what migration help they offer; MyDriveTime and Lesson Diary list free migration, and DriveSchoolPro imports your pupil list from a CSV file.
 - **Week 2:** instructors install the app, set availability and log a few real lessons.
 - **Week 3:** send pupils their booking link and add the booking widget to your website.
 - **Week 4:** check no-shows and reminder timing.
