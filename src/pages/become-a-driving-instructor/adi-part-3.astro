@@ -1,0 +1,235 @@
+---
+// /become-a-driving-instructor/adi-part-3/ (issue #85): part 3 and the trainee licence.
+// Pass rate source: DVSA table DRT521C (GOV.UK, updated 3 Sep 2026): 3,784 / 13,606 = 27.8% for 2025/26.
+// Calendar 2025 also rounds to 27.8%. Issue #85's 27.7% matches no current DVSA period, so we quote the primary dataset.
+import InstructorGuideLayout from '../../components/guide/InstructorGuideLayout.astro';
+import { FEES, GOVUK } from '../../data/instructor-guide';
+
+const faqs = [
+  {
+    question: 'What is the ADI part 3 test?',
+    answer: 'ADI part 3 is the instructional ability test, the last of the three ADI qualifying tests. A DVSA examiner watches you give a client-centred driving lesson of about 45 minutes to one of your own pupils, and marks you on 17 competencies in three categories: lesson planning, risk management, and teaching and learning strategies.',
+  },
+  {
+    question: 'What is the ADI part 3 pass rate?',
+    answer: 'DVSA data shows 27.8% of ADI part 3 tests conducted in Great Britain were passed in 2025/26 (3,784 passes from 13,606 tests), down from 28.9% in 2024/25 and 34.2% in 2023/24. These count tests, not people, so retakes are included.',
+  },
+  {
+    question: 'How is ADI part 3 scored?',
+    answer: 'Each of the 17 competencies is scored from 0 to 3, giving a maximum of 51. A total of 0 to 30 is a fail, 31 to 42 is grade B and 43 to 51 is grade A. Both B and A let you join the register. You also fail automatically if you score 7 or less in risk management, or if the examiner stops the lesson because you put yourself or someone else in danger.',
+  },
+  {
+    question: 'How many times can I take ADI part 3?',
+    answer: 'You get 3 attempts. After a third fail you must stop giving paid lessons immediately, any trainee licence becomes invalid, and you must retake and pass ADI part 1 and part 2, waiting 2 years from when you first passed part 1 before retaking it.',
+  },
+  {
+    question: 'What is a trainee driving instructor licence?',
+    answer: `A trainee driving instructor licence, often called the pink badge, lets you give lessons and charge for them to cover costs such as insurance and vehicle costs while you prepare for part 3. It costs £${FEES.traineeLicence}, lasts 6 months and needs part 2 passed, part 1 passed within the last 2 years and at least 40 hours of training from a qualified ADI.`,
+  },
+  {
+    question: 'Do I have to do 40 hours of training for the trainee licence?',
+    answer: 'Yes, to apply for the licence. GOV.UK requires at least 40 hours of training from a qualified ADI, at least 10 of them in a car, recorded on form ADI 21T. The page we checked does not say how the other 30 hours must be split, so ask your trainer.',
+  },
+  {
+    question: 'What happens when my trainee licence runs out?',
+    answer: 'You must stop being paid for lessons because you cannot be paid without a valid licence. You can apply for another licence and pay the fee again, but GOV.UK says it is unlikely you will get one just to have more time to pass part 3.',
+  },
+  {
+    question: 'Who can be my pupil on the ADI part 3 test?',
+    answer: 'A partly trained learner, a fully trained learner or a full licence holder. A partly trained learner should be able to drive for 40 minutes without frequently stopping. Your pupil cannot be an ADI or someone preparing for their own ADI part 3 test.',
+  },
+  {
+    question: 'How many hours of lessons does a trainee need to be supervised?',
+    answer: 'It depends on the option you choose when you get the licence, and you cannot switch. Option 1 means your sponsoring ADI supervises 20% of the lessons you give. Option 2 means at least 20 hours of extra training within 3 months, with at least 25% practical in-car training.',
+  },
+];
+
+const sources = [
+  GOVUK.part3,
+  GOVUK.part3What,
+  { label: 'ADI part 3: what to take to your test (GOV.UK)', href: 'https://www.gov.uk/adi-part-3-test/what-to-take', note: 'Rules on who your pupil can be.' },
+  GOVUK.part3Result,
+  GOVUK.part3Car,
+  GOVUK.trainee,
+  { label: 'Apply for a trainee driving instructor licence (GOV.UK)', href: 'https://www.gov.uk/apply-for-a-trainee-driving-instructor-licence' },
+  GOVUK.nationalStandard,
+  { label: 'ADI part 3 test: marking sheet (DVSA, PDF)', href: 'https://assets.publishing.service.gov.uk/media/6390a78be90e071dfd1e6710/adi-part-3-test-report-form.pdf', note: 'The form that lists all 17 competencies.' },
+  { ...GOVUK.stats, note: 'Table DRT521C: 13,606 tests and 3,784 passes in 2025/26, a pass rate of 27.8%. Updated 3 September 2026.' },
+];
+---
+<InstructorGuideLayout
+  title="ADI Part 3: 17 Competencies, Pass Rate, Trainee Licence"
+  description={`ADI part 3 explained: all 17 competencies, how the 51 marks are graded, the 27.8% pass rate for 2025/26 and the £${FEES.traineeLicence} trainee licence rules.`}
+  h1="ADI part 3 and the trainee licence (pink badge)"
+  lead="ADI part 3 is the test most trainees find hardest, and the trainee licence is how you can teach and charge while you prepare for it. This guide covers both: what the examiner marks, the numbers, and the rules you have to follow."
+  crumb="ADI part 3 and trainee licence"
+  path="/become-a-driving-instructor/adi-part-3/"
+  faqs={faqs}
+  sources={sources}
+>
+  <h2 class="!mt-0">What ADI part 3 is</h2>
+  <p>
+    ADI part 3 is the instructional ability test, the last of the <a href="/become-a-driving-instructor/">three qualifying tests</a>. You can book it after passing <a href="/become-a-driving-instructor/adi-part-2/">ADI part 2</a>. It costs £{FEES.part3} per attempt and you get 3 attempts. Unlike parts 1 and 2 it assesses teaching, not knowledge or driving.
+  </p>
+  <p>
+    A DVSA examiner watches you give a client-centred driving lesson to one of your own pupils. It is a real pupil, not role play. Ask your trainer which of your pupils suits the test.
+  </p>
+
+  <h2>What happens in the test</h2>
+  <ul>
+    <li><strong>Length:</strong> about 45 minutes of lesson.</li>
+    <li><strong>Start:</strong> you and your pupil agree the lesson goals and talk through risk management, taking no more than 3 minutes.</li>
+    <li><strong>Driving:</strong> your pupil drives for about 40 minutes.</li>
+    <li><strong>Manoeuvres:</strong> you cannot spend the whole lesson on one manoeuvre, though you can include a short recap of one taught earlier.</li>
+    <li><strong>Feedback:</strong> you can stop safely to give your pupil immediate feedback.</li>
+    <li><strong>End:</strong> your pupil has no more than 3 minutes to reflect on how they did.</li>
+    <li><strong>After:</strong> the examiner discusses your performance, and your grade and report are emailed to you at the end of the test.</li>
+  </ul>
+
+  <h2>Choosing your pupil</h2>
+  <p>GOV.UK says your pupil can be a partly trained learner, a fully trained learner or a full licence holder. Two rules:</p>
+  <ul>
+    <li>A partly trained learner should be able to drive for 40 minutes without frequently stopping.</li>
+    <li>Your pupil cannot be an ADI, or someone who is preparing to take the ADI part 3 test.</li>
+  </ul>
+  <p>
+    Bring your trainee licence if you have one; otherwise bring your UK driving licence or passport. Without the right documents the test is cancelled and you lose the fee.
+  </p>
+
+  <h2>The 17 competencies</h2>
+  <p>
+    You are marked on 17 areas of competence in three categories. The examiner scores each from 0 to 3 on the ADI part 3 test report form, which DVSA publishes: 0 means no evidence, 1 demonstrated in a few elements, 2 in most elements and 3 in all elements. The questions below are the form's own wording.
+  </p>
+  <h3>Lesson planning (4 competencies, up to 12 points)</h3>
+  <ol>
+    <li>Did the trainer identify the pupil's learning goals and needs?</li>
+    <li>Was the agreed lesson structure appropriate for the pupil's experience and ability?</li>
+    <li>Were the practice areas suitable?</li>
+    <li>Was the lesson plan adapted, when appropriate, to help the pupil work towards their learning goals?</li>
+  </ol>
+  <h3>Risk management (5 competencies, up to 15 points)</h3>
+  <ol>
+    <li>Did the trainer ensure that the pupil fully understood how the responsibility for risk would be shared?</li>
+    <li>Were directions and instructions given to the pupil clear and given in good time?</li>
+    <li>Was the trainer aware of the surroundings and the pupil's actions?</li>
+    <li>Was any verbal or physical intervention by the trainer timely and appropriate?</li>
+    <li>Was sufficient feedback given to help the pupil understand any potential safety critical incidents?</li>
+  </ol>
+  <p>A score of 7 or less out of 15 in this category is an automatic fail, whatever your total.</p>
+  <h3>Teaching and learning strategies (8 competencies, up to 24 points)</h3>
+  <ol>
+    <li>Was the teaching and learning style suited to the pupil's learning style and current ability?</li>
+    <li>Was the pupil encouraged to analyse problems and take responsibility for their learning?</li>
+    <li>Were opportunities and examples used to clarify learning outcomes?</li>
+    <li>Was the technical information given comprehensive, appropriate and accurate?</li>
+    <li>Was the pupil given appropriate and timely feedback during the session?</li>
+    <li>Were the pupil's queries followed up and answered?</li>
+    <li>Did the trainer maintain an appropriate non-discriminatory manner throughout the session?</li>
+    <li>At the end of the session, was the pupil encouraged to reflect on their own performance?</li>
+  </ol>
+  <p>
+    The form also records the lesson theme you chose, such as junctions, town and city driving, dual carriageways, rural roads, motorways, eco-safe driving, independent driving or a recap of a manoeuvre, and whether your trainer is ORDIT-registered. The standard behind it is DVSA's <a href="https://www.gov.uk/government/publications/national-standard-for-driver-and-rider-training" target="_blank" rel="noopener noreferrer">national standard for driver and rider training</a>. The same three categories and 17 competencies are used in the ADI standards check once you are qualified.
+  </p>
+  <p>
+    To rehearse against the competencies, use the <a href="/tools/part-3-standards-check-self-assessment/">Part 3 and standards check self-assessment</a> after a practice lesson.
+  </p>
+
+  <h2>Scoring and grades</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Total (out of 51)</th><th>Result</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><td>0 to 30</td><td>Fail</td><td>Unsatisfactory. You do not join the register.</td></tr>
+        <tr><td>31 to 42</td><td>Grade B</td><td>You can join the ADI register.</td></tr>
+        <tr><td>43 to 51</td><td>Grade A</td><td>A high standard of instruction. You can join the register.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>Automatic fails:</strong> a score of 7 or less in the risk management category, or the examiner stopping the lesson because you put yourself or someone else in danger.</p>
+
+  <h2>The pass rate, honestly</h2>
+  <p>
+    DVSA's published statistics show how many ADI part 3 tests were conducted and passed in Great Britain:
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Financial year</th><th>Tests conducted</th><th>Passed</th><th>Pass rate</th></tr></thead>
+      <tbody>
+        <tr><td>2022 to 2023</td><td>7,887</td><td>2,864</td><td>36.3%</td></tr>
+        <tr><td>2023 to 2024</td><td>8,609</td><td>2,945</td><td>34.2%</td></tr>
+        <tr><td>2024 to 2025</td><td>11,749</td><td>3,395</td><td>28.9%</td></tr>
+        <tr><td>2025 to 2026</td><td>13,606</td><td>3,784</td><td>27.8%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    That is roughly one test in four passed in the latest year. Two cautions. These count tests, not people, so a trainee who takes it twice is counted twice. And they say nothing about you: a well-prepared trainee with a good pupil is not "27.8% likely" to pass. They are a reason to budget for a possible retake and not to book before your trainer thinks you are ready.
+  </p>
+  <p>
+    The figures are DVSA's own, from table DRT521C on GOV.UK, updated 3 September 2026. The first quarter of 2026/27 (April to June 2026) shows a similar picture: 28.2%, from 3,474 tests. The number of part 3 tests has also grown quickly, from 7,887 in 2022/23 to 13,606 in 2025/26, so expect test dates to be in demand.
+  </p>
+
+  <h2>If you fail part 3</h2>
+  <ul>
+    <li>You can retake after a first or second fail. Book within 2 years of passing part 1.</li>
+    <li>If you chose extra training (option 2) for your trainee licence, you must complete 5 hours of extra training before retaking.</li>
+    <li>After a third fail you must stop giving paid lessons immediately, and it is illegal to carry on. Any trainee licence becomes invalid, and you must retake and pass parts 1 and 2, waiting 2 years from when you first passed part 1 before retaking it.</li>
+    <li>You can appeal only if you can show the examiner did not follow the law: 6 months from the test in England and Wales, or 21 days in Scotland. A successful appeal cannot change your result, but may bring a refund or a free retest.</li>
+  </ul>
+
+  <h2>The trainee licence (pink badge)</h2>
+  <p>
+    GOV.UK calls it the trainee driving instructor licence. The trade calls it the pink badge, a name GOV.UK's pages do not use. It lets you give lessons and charge to cover the cost of things like insurance and vehicle costs while you work towards part 3.
+  </p>
+  <h3>Who can apply</h3>
+  <ul>
+    <li>You have passed ADI part 2.</li>
+    <li>You passed ADI part 1 in the last 2 years.</li>
+    <li>You have had at least 40 hours of training from a qualified ADI in providing driving instruction, at least 10 of them in a car, recorded on form ADI 21T.</li>
+    <li>You are eligible to take ADI part 3.</li>
+  </ul>
+  <p>It costs £{FEES.traineeLicence} and lasts 6 months.</p>
+
+  <h3>Choose a supervision option</h3>
+  <p>When you get the licence you pick one option, and you cannot switch later.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th></th><th>Option 1: supervision</th><th>Option 2: extra training</th></tr></thead>
+      <tbody>
+        <tr><td>What you do</td><td>Your sponsoring ADI supervises 20% of all the lessons you give</td><td>At least 20 hours of extra training on the programme topics</td></tr>
+        <tr><td>Timing</td><td>While the licence is valid</td><td>Within 3 months of getting the licence and before booking part 3</td></tr>
+        <tr><td>Practical content</td><td>Not applicable</td><td>At least 25% practical in-car training</td></tr>
+        <tr><td>Records</td><td>Form ADI 21S, signed by you and your ADI, sent to DVSA when the licence runs out</td><td>The instructor training declaration form, sent to DVSA when you finish</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Rules for using the licence</h3>
+  <ul>
+    <li>Display it on the nearside edge of the front windscreen while you give lessons.</li>
+    <li>You can only instruct from the training establishment named on your licence. You cannot set up your own school.</li>
+    <li>In adverts, describe yourself as a "trainee driving instructor". GOV.UK says not to use "PDI" or "potential driving instructor". Name your training establishment, and give only its contact details, not your own.</li>
+    <li>You must be a fit and proper person, and you must complete the required supervision or extra training while the licence is valid.</li>
+    <li>To change school, apply for a new licence. There is no fee, and you can keep teaching while you wait.</li>
+    <li>DVSA can revoke the licence early if you break the rules, if it was issued by mistake or fraud, or if you fail 3 part 3 attempts.</li>
+    <li>A lost or stolen licence costs £3 to replace if you lose it or cannot give a crime reference number.</li>
+  </ul>
+
+  <h3>When the licence runs out</h3>
+  <p>
+    You must stop being paid for lessons, because you cannot be paid without a valid licence. You can apply for another and pay the fee again, but GOV.UK says it is unlikely you will get one just to have more time to pass part 3, or if you did not follow the rules on your previous licence. If you stop using the licence for a good reason, such as a long illness, return it to DVSA: there is no refund, but it makes another licence more likely. If you are refused another licence you can appeal to the General Regulatory Chamber.
+  </p>
+  <p>
+    If you chose extra training (option 2), two further rules apply: if you have not booked part 3 within 3 months of getting the licence you must do 5 hours of extra training before booking, and after a failed attempt you must do 5 hours of extra training before the next one. Each 5 hours goes on a new instructor training declaration form.
+  </p>
+
+  <h2>The car for part 3</h2>
+  <p>
+    The car rules are similar to part 2: no warning lights, legal tyres, an extra interior rear-view mirror, a passenger seatbelt and head restraint, 62mph and an mph speedometer, and no soft-top convertibles. For part 3 the car needs three full-size rear seats, L plates on front and rear if your pupil is a learner, and your own car must be taxed, have a current MOT if over 3 years old and be insured for the test. A hire car is allowed only if it has dual controls. See <a href="/become-a-driving-instructor/car-dual-controls-insurance/">car, dual controls and insurance</a>.
+  </p>
+
+  <h2>After part 3</h2>
+  <p>
+    Apply for your first ADI certificate within 12 months of passing, or you will have to pass all three tests again. It costs £{FEES.firstCertificate}. For what comes next, including whether to join a school, see <a href="/become-a-driving-instructor/franchise-or-independent/">franchise or independent</a>, and for the terms used here, the <a href="/become-a-driving-instructor/glossary/">glossary</a>. A new instructor can run their diary on the <a href="/free-driving-school-software/">free driving school software</a> plan.
+  </p>
+</InstructorGuideLayout>

@@ -232,6 +232,8 @@ When you are ready to take your first bookings, [get started free](https://app.d
 
 - [Best Driving School Software 2026: UK ADI Comparison](/blog/best-driving-school-software/)
 - [Driving School Insurance Guide](/blog/driving-school-insurance-guide/)
+- [How to Become a Driving Instructor](/become-a-driving-instructor/)
+- [ADI Part 3 and the Trainee Licence](/become-a-driving-instructor/adi-part-3/)
 - [Driving School Franchise Guide](/blog/driving-school-franchise-guide/)
 - [Making Tax Digital for Driving Instructors](/blog/making-tax-digital-driving-instructors/)
 - [How to Reduce Driving Lesson No-Shows](/blog/reduce-driving-lesson-no-shows/)

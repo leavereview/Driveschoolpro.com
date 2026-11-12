@@ -1,0 +1,171 @@
+---
+// /become-a-driving-instructor/car-dual-controls-insurance/ (issue #85).
+// No lease or insurance prices: none are published on GOV.UK. Test car rules are from GOV.UK (12 Nov 2026).
+import InstructorGuideLayout from '../../components/guide/InstructorGuideLayout.astro';
+import { GOVUK } from '../../data/instructor-guide';
+
+const faqs = [
+  {
+    question: 'Do I need a dual control car to become a driving instructor?',
+    answer: 'For the ADI part 2 test, GOV.UK says your own car does not need dual controls, but a hire car must have them. For the ADI part 3 test, GOV.UK says a hire car is allowed only if it has dual controls. Whether you need them to teach lessons is a question for your insurer and trainer, so check before you buy or lease.',
+  },
+  {
+    question: 'What car can I use for the ADI part 2 test?',
+    answer: 'A roadworthy car with no warning lights, legal tyres, 4 wheels, a top speed of at least 62mph and an mph speedometer, an extra interior rear-view mirror and a passenger seatbelt and head restraint for the examiner. Panel vans, left-hand drive cars, convertibles, the Smart Fortwo (2-door) and the Toyota iQ cannot be used.',
+  },
+  {
+    question: 'What car can I use for the ADI part 3 test?',
+    answer: 'The rules are similar, plus: three full-size rear seats, no soft-top convertibles, L plates front and rear if your pupil is a learner, and a passenger head restraint (slip-on types not allowed). Your own car must be taxed, have a current MOT if over 3 years old and be insured for the test.',
+  },
+  {
+    question: 'What insurance does a driving instructor need?',
+    answer: 'Your insurer needs to know you are teaching for payment, and for the ADI part 3 test GOV.UK says your car must be insured for the test, so check with your insurer. Beyond that, the right cover depends on your situation, so get quotes from specialist providers and read what is covered. Our insurance guide lists the types of cover and questions to ask.',
+  },
+  {
+    question: 'How much does it cost to lease a driving instructor car?',
+    answer: 'It varies by car, term, provider and whether dual controls are fitted, and GOV.UK publishes no figures, so we do not quote one. Get written quotes that show the monthly price, any deposit, mileage limits, what servicing and insurance are included, and what you pay if you end the agreement early.',
+  },
+  {
+    question: 'Can I take the ADI test in an automatic car?',
+    answer: 'Yes. Whichever licence you hold decides it: a manual licence lets you use a manual or an automatic car, while an automatic licence means you must use an automatic.',
+  },
+];
+
+const sources = [
+  GOVUK.part2Car,
+  GOVUK.part3Car,
+  GOVUK.trainee,
+  GOVUK.part3,
+  { label: 'Expenses if you are self-employed (GOV.UK)', href: 'https://www.gov.uk/expenses-if-youre-self-employed' },
+];
+---
+<InstructorGuideLayout
+  title="Driving Instructor Car, Dual Controls and Insurance"
+  description="Choosing a driving instructor car: GOV.UK's ADI test car rules, whether you need dual controls, and what to ask an insurer and a lease provider."
+  h1="Choosing a car, dual controls and insurance"
+  lead="Your car is your biggest running cost and it has to pass an examiner's check on test day. This guide sets out GOV.UK's rules for the ADI part 2 and part 3 test car, what is and is not required, and the questions to ask an insurer and a lease provider."
+  crumb="Car, dual controls and insurance"
+  path="/become-a-driving-instructor/car-dual-controls-insurance/"
+  faqs={faqs}
+  sources={sources}
+>
+  <h2 class="!mt-0">Start with the test, not the showroom</h2>
+  <p>
+    You have to take two of the <a href="/become-a-driving-instructor/">qualifying tests</a> in a car, and both have rules. If your car does not meet them, the test is cancelled and you pay again (£111 for each of part 2 and part 3). That is the expensive way to find out, so check the car against the rules before you book.
+  </p>
+
+  <h2>GOV.UK's rules for the part 2 test car</h2>
+  <ul>
+    <li>No warning lights showing, and the car must be roadworthy.</li>
+    <li>No tyre damage, legal tread depth on each tyre, no space-saver spare.</li>
+    <li>4 wheels, and within the maximum authorised mass (MAM) in the handbook.</li>
+    <li>Able to reach at least 62mph, with an mph speedometer.</li>
+    <li>An extra interior rear-view mirror for the examiner.</li>
+    <li>A passenger seatbelt and head restraint for the examiner. Slip-on head restraints are not allowed.</li>
+    <li>Taxed, with a current MOT if over 3 years old, and insured for an ADI part 2 test.</li>
+    <li>Windscreen and front side windows within the rules for tinted windows. The test may be cancelled if rear windows are too dark for the examiner to see clearly.</li>
+    <li>Smoke-free and tidy, with unnecessary items cleared from the dashboard, footwells, door pockets, cup holders and seats. A dashcam must face outside and not record audio from inside.</li>
+  </ul>
+  <p>
+    <strong>Cars you cannot use for part 2:</strong> panel vans, left-hand drive cars, convertibles, the Smart Fortwo (2-door) and the Toyota iQ. Coupes should be checked with DVSA before booking.
+  </p>
+
+  <h2>GOV.UK's rules for the part 3 test car</h2>
+  <p>The part 3 rules overlap, with some differences:</p>
+  <ul>
+    <li>The same safety basics: no warning lights, legal tyres and no space-saver spare, 4 wheels within MAM, 62mph and an mph speedometer, an extra interior rear-view mirror, and a passenger seatbelt and head restraint.</li>
+    <li><strong>Three full-size rear seats.</strong> Cars with only two rear seats are not allowed.</li>
+    <li><strong>No soft-top convertibles.</strong></li>
+    <li><strong>L plates</strong> ("D" in Wales) on the front and rear if your pupil is a learner.</li>
+    <li>Your own car must be taxed, have a current MOT if over 3 years old, and be insured for the ADI part 3 test. GOV.UK tells you to check with your insurer.</li>
+    <li>Smoke-free. A dashcam is allowed if it faces outside, does not film the inside and does not record audio from inside.</li>
+    <li>A car subject to a safety recall needs proof that it is safe, brought to the test.</li>
+  </ul>
+
+  <h2>Dual controls: what the test rules say</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Situation</th><th>Dual controls</th></tr></thead>
+      <tbody>
+        <tr><td>Own car, ADI part 2</td><td>Not required</td></tr>
+        <tr><td>Hire car, ADI part 2</td><td>Required</td></tr>
+        <tr><td>Hire car, ADI part 3</td><td>Allowed only if it has dual controls</td></tr>
+        <tr><td>Own car, ADI part 3</td><td>The page we checked does not say. Ask DVSA or your trainer.</td></tr>
+        <tr><td>Teaching paid lessons</td><td>Not covered by the test rules. Ask your insurer and trainer.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    The test rules are only part of the question, because you will use the car for months of lessons after the test. A second set of pedals lets an instructor step in, so check whether your insurer requires them, and get the answer in writing rather than assuming.
+  </p>
+
+  <h2>Manual or automatic</h2>
+  <p>
+    The licence you hold decides it. With a manual licence you can take the part 2 and part 3 tests in a manual or an automatic car. With an automatic licence you must use an automatic. It also decides what you can teach: GOV.UK's part 3 car rules say that if you take part 3 with a manual licence you can train people in both types of car once qualified, but with an automatic licence you can only train people in an automatic.
+  </p>
+
+  <h2>Lease, buy or use a franchise car</h2>
+  <p>
+    There are three common routes, and GOV.UK publishes no prices for any of them, so get written quotes:
+  </p>
+  <ul>
+    <li><strong>Lease:</strong> a monthly payment, often with dual controls fitted. Ask about mileage limits, deposits, what servicing and insurance include, and the cost of ending early. Compare it with a period in which you may be teaching few hours.</li>
+    <li><strong>Buy:</strong> you carry depreciation, servicing and repairs. Check the car meets the test rules, and the cost of fitting dual controls and an extra mirror.</li>
+    <li><strong>Franchise car:</strong> some schools supply a car as part of the fee. See <a href="/become-a-driving-instructor/franchise-or-independent/">franchise or independent</a> for questions to ask, including what happens to the car if you leave.</li>
+  </ul>
+  <p>
+    Whichever you choose, put the real figure into the <a href="/tools/adi-income-tax-calculator/">ADI income and tax estimator</a> so you can see what the car does to your profit. GOV.UK's <a href="https://www.gov.uk/expenses-if-youre-self-employed" target="_blank" rel="noopener noreferrer">expenses guidance</a> explains how car costs are treated for tax.
+  </p>
+
+  <h2>Insurance: what to ask</h2>
+  <p>
+    We cannot tell you which cover you need, and GOV.UK's trainee and test pages do not set out insurance products. What the official pages do say is that your own car must be insured for the test, and that the trainee licence lets you charge for lessons to cover things like insurance costs. Practical steps:
+  </p>
+  <ol>
+    <li><strong>Tell the insurer what you are doing.</strong> Say you are training, taking a test or teaching for payment, and get the answer in writing.</li>
+    <li><strong>Ask specifically about the tests.</strong> GOV.UK says to check with your insurer that the car is insured for the ADI test.</li>
+    <li><strong>Ask about the trainee licence.</strong> Is cover available while you hold a trainee licence, and does it change when you qualify?</li>
+    <li><strong>Check the cover for pupils.</strong> Ask how it applies to learners, and what the excess is.</li>
+    <li><strong>Check what happens if you stop work.</strong> Ask about cancellation terms, and about illness or lost income cover as a separate decision.</li>
+    <li><strong>Compare quotes from specialist providers,</strong> not just one.</li>
+  </ol>
+  <p>
+    Our longer <a href="/blog/driving-school-insurance-guide/">driving school insurance guide</a> covers the types of cover, what to compare and how claims work.
+  </p>
+
+  <h2>Running costs to budget for</h2>
+  <p>
+    Whichever route you choose, list these separately so none are forgotten when you work out your profit. GOV.UK gives no figures for them, so use your own quotes:
+  </p>
+  <ul>
+    <li>Lease or finance payments, or depreciation if you buy.</li>
+    <li>Instructor insurance, and breakdown cover.</li>
+    <li>Servicing, tyres, road tax and MOT. The test rules require legal tyre tread and no warning lights, so maintenance is not optional.</li>
+    <li>Fuel, which rises and falls with the hours you teach.</li>
+    <li>The cost of fitting or removing dual controls and an extra mirror, if you own the car.</li>
+    <li>Cleaning: the test rules ask for a tidy, smoke-free car.</li>
+  </ul>
+
+  <h3>Questions for a lease provider</h3>
+  <ol>
+    <li>What is the total monthly price, and what is the deposit?</li>
+    <li>Are dual controls fitted, and who is responsible for them if they fail?</li>
+    <li>What is the mileage limit, and what is the charge for exceeding it?</li>
+    <li>Are servicing, tyres, insurance or breakdown cover included?</li>
+    <li>What is the minimum term, and the cost of ending early, for example if you decide instructing is not for you?</li>
+    <li>Does the car meet the ADI test car rules above, including the rear-view mirror for the examiner?</li>
+  </ol>
+
+  <h2>A checklist before you book a test</h2>
+  <ul>
+    <li>No warning lights, legal tyres, and no space-saver spare.</li>
+    <li>Extra interior mirror, and a passenger seatbelt and head restraint (not slip-on).</li>
+    <li>Tax and MOT in date, and written confirmation that the insurer covers the test.</li>
+    <li>For part 3: three full-size rear seats, and L plates if your pupil is a learner.</li>
+    <li>Car clean, tidy and smoke-free.</li>
+    <li>Not on the banned list, and not subject to an unresolved safety recall.</li>
+  </ul>
+  <p>
+    The <a href="/become-a-driving-instructor/glossary/">glossary</a> explains the terms used here, and the <a href="/become-a-driving-instructor/earnings/">earnings guide</a> shows how car costs feed into profit.
+  </p>
+</InstructorGuideLayout>

@@ -1,0 +1,149 @@
+---
+// /become-a-driving-instructor/franchise-or-independent/ (issue #85).
+// No franchise prices are quoted: GOV.UK publishes none and fees differ by company and change. The page gives
+// the questions to ask and the maths to run instead. Trainee-licence rules are from GOV.UK (12 Nov 2026).
+import InstructorGuideLayout from '../../components/guide/InstructorGuideLayout.astro';
+import { GOVUK } from '../../data/instructor-guide';
+
+const faqs = [
+  {
+    question: 'Is it better to join a driving school franchise or go independent?',
+    answer: 'Neither is better for everyone. A franchise usually trades a regular fee for leads, a brand and sometimes a car, so it can shorten the time to a full diary. Independent means you keep more of each lesson but find your own pupils and carry your own costs. Compare profit after all costs under each model, using your own local numbers.',
+  },
+  {
+    question: 'How much does a driving instructor franchise cost?',
+    answer: 'It varies by company and changes, and GOV.UK publishes no figures, so we do not quote a price. Ask each franchise for the full weekly or monthly fee in writing, what it covers (car, insurance, leads, admin), what it does not, and whether the fee is charged in weeks you do not work. Then put the numbers into the ADI income and tax estimator.',
+  },
+  {
+    question: 'Can a trainee instructor work for a franchise?',
+    answer: 'A trainee licence ties you to the training establishment named on it, and GOV.UK says you can only instruct from that establishment and cannot set up your own school. A franchise or driving school can be that establishment. You can change school by applying for a new licence, which has no fee.',
+  },
+  {
+    question: 'Can I go independent as soon as I pass part 3?',
+    answer: 'Once you pass part 3 you register for your first ADI certificate within 12 months and can then charge for lessons, either by joining a driving school or setting up your own business. Going independent as a new ADI is allowed. The difficulty is filling a diary without a brand behind you, not the rules.',
+  },
+  {
+    question: 'Are franchise fees tax deductible?',
+    answer: 'Costs incurred wholly and exclusively for your instructing business are generally allowable expenses, and a franchise fee usually qualifies if you are self-employed. GOV.UK sets out the rules in "Expenses if you\'re self-employed". Confirm your own position with an accountant.',
+  },
+  {
+    question: 'What should I ask a franchise before signing?',
+    answer: 'Ask for the full fee and what it covers, the contract length and exit terms, whether the fee is due when you are ill or on holiday, whether you can charge your own rates, who owns the pupil relationship and data, how many leads you can expect in writing, and what happens to your pupils if you leave.',
+  },
+];
+
+const sources = [
+  GOVUK.trainee,
+  GOVUK.apply1st,
+  GOVUK.selfEmployed,
+  { label: 'Expenses if you are self-employed (GOV.UK)', href: 'https://www.gov.uk/expenses-if-youre-self-employed' },
+  GOVUK.register,
+];
+---
+<InstructorGuideLayout
+  title="Driving Instructor Franchise or Independent? What to Ask"
+  description="Driving instructor franchise or independent? The questions to ask before signing, how to compare profit after fees, and the trainee licence rules."
+  h1="Franchise or independent: which route for a new driving instructor?"
+  lead="Once you are training or newly qualified, you choose between joining a driving school (often called a franchise) and working for yourself. This guide gives you the questions to ask and a way to compare the two on profit, not on headline price."
+  crumb="Franchise or independent"
+  path="/become-a-driving-instructor/franchise-or-independent/"
+  faqs={faqs}
+  sources={sources}
+>
+  <h2 class="!mt-0">The two models in plain terms</h2>
+  <p>
+    <strong>A franchise or driving school</strong> lets you teach under its brand, usually for a regular fee. What you get differs by company: some supply pupils, some a car, some training or admin support, some only a name. <strong>Independent</strong> means you run your own business: you find the pupils, set your prices and cover every cost yourself.
+  </p>
+  <p>
+    Neither is a legal requirement. Once you have <a href="/become-a-driving-instructor/adi-part-3/">passed part 3</a> and registered for your first ADI certificate, GOV.UK says you can charge for lessons either by joining a driving school or by setting up your own business.
+  </p>
+
+  <h2>The trainee licence changes the choice</h2>
+  <p>
+    If you plan to use a trainee licence, the decision is partly made for you. GOV.UK's rules say:
+  </p>
+  <ul>
+    <li>You can only instruct from the <strong>training establishment named on your licence</strong>. You cannot set up your own school while you hold it.</li>
+    <li>In adverts you must call yourself a "trainee driving instructor", name the training establishment, and give only its contact details, not your own. GOV.UK says not to use "PDI" or "potential driving instructor".</li>
+    <li>You choose a supervision option: either your sponsoring ADI supervises 20% of your lessons, or you complete at least 20 hours of extra training.</li>
+    <li>You can change school by applying for a new licence. There is no fee, and you can keep teaching while you wait.</li>
+  </ul>
+  <p>
+    So a trainee usually works through a school or a sponsoring ADI, even if the plan is to go independent after qualifying. That is a good moment to ask a school what happens to your pupils when you leave. The licence details are in the <a href="/become-a-driving-instructor/adi-part-3/">part 3 and trainee licence guide</a>.
+  </p>
+
+  <h2>How to compare them properly</h2>
+  <p>
+    Do not compare the franchise fee with nothing. Compare <strong>profit</strong> under each model. For each option, work out:
+  </p>
+  <ol>
+    <li><strong>Paid hours you can realistically fill.</strong> A franchise that supplies pupils may fill more hours sooner. Independent can take months to build.</li>
+    <li><strong>Your hourly rate.</strong> Can you set it, or does the school set it?</li>
+    <li><strong>All costs</strong>: the fee, the car, insurance, fuel, marketing, and any joining or exit charges.</li>
+    <li><strong>Weeks the fee is due.</strong> Some fees are fixed every week of the year, including holidays and illness. Check the contract.</li>
+  </ol>
+  <p>
+    The <a href="/tools/adi-income-tax-calculator/">ADI income and tax estimator</a> has a franchise fee field with a switch for "every week" or "only weeks I work", so you can model a fixed fee against a quieter diary. The <a href="/tools/driving-instructor-earnings-calculator/">driving instructor earnings calculator</a> puts the two models side by side. See also the <a href="/become-a-driving-instructor/earnings/">earnings guide</a>.
+  </p>
+
+  <h2>Side by side</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Question</th><th>Franchise or school</th><th>Independent</th></tr></thead>
+      <tbody>
+        <tr><td>Pupils</td><td>May supply leads, depending on the company</td><td>You find them (local marketing, referrals, search)</td></tr>
+        <tr><td>Fixed costs</td><td>A regular fee, sometimes with a car</td><td>You pay for the car, insurance and everything else directly</td></tr>
+        <tr><td>Prices</td><td>May be set or capped by the company</td><td>You set them</td></tr>
+        <tr><td>Brand</td><td>Their name and reputation</td><td>You build your own</td></tr>
+        <tr><td>Who owns the pupil relationship</td><td>Check the contract</td><td>You do</td></tr>
+        <tr><td>Leaving</td><td>Check notice, exit fees and what happens to your pupils</td><td>No one to leave</td></tr>
+        <tr><td>Trainee licence</td><td>The school can be your training establishment</td><td>You still need a named training establishment while you hold a trainee licence</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    The columns say "may" and "check" on purpose: franchises differ a great deal, and we do not generalise about named companies. Read each contract.
+  </p>
+
+  <h2>What to ask a franchise before you sign</h2>
+  <ul>
+    <li>What is the <strong>total cost per week or month</strong>, in writing, and what exactly does it include?</li>
+    <li>Is the fee due in weeks I am ill, on holiday, or without a pupil?</li>
+    <li>Is there a joining fee, a deposit, a car lease tie-in or an early-exit charge?</li>
+    <li>How long is the contract, and how do I end it?</li>
+    <li>How many new pupils can I expect, and is that promised in the contract or only in the sales pitch?</li>
+    <li>Can I set my own prices and lesson lengths?</li>
+    <li>Who owns the pupil list, the phone number and any reviews if I leave?</li>
+    <li>Can I teach for anyone else, or take private pupils?</li>
+    <li>Do I use their booking and payment system, and can I take my records with me?</li>
+    <li>Does the company supply training for part 3, and does it act as my training establishment for a trainee licence? If so, on what terms?</li>
+    <li>If I am a trainee, who is my sponsoring ADI, and who does the supervision?</li>
+  </ul>
+  <p>
+    Be wary of any answer that is not in writing, and of income claims you cannot check. Ask existing instructors in your area what the arrangement is really like, and ask them what they would do differently.
+  </p>
+
+  <h2>Questions to ask yourself if you go independent</h2>
+  <ul>
+    <li>Can I fill enough hours to cover the costs of the car and insurance without a supplier of pupils?</li>
+    <li>Do I have the time and appetite for marketing, answering enquiries and chasing payments?</li>
+    <li>Have I set up as self-employed? See GOV.UK on <a href={GOVUK.selfEmployed.href} target="_blank" rel="noopener noreferrer">setting up as self-employed</a>.</li>
+    <li>How will I keep a diary, take payments and track pupil progress? A simple tool is enough at first: the <a href="/free-driving-school-software/">free plan</a> is designed for a new instructor with a small diary.</li>
+  </ul>
+
+  <h2>A decision rule</h2>
+  <p>
+    If you cannot yet fill a diary on your own and a school can credibly bring you pupils, a fee may buy you time. If you have a local network, enough savings to cover a slow start and the confidence to market yourself, independence keeps more of each lesson. Test both against the same inputs, and make sure the fee is still affordable in your quietest realistic month, because a fixed fee does not shrink when your diary does.
+  </p>
+  <p>
+    Whichever you pick, get it in writing, keep a copy of the contract, and keep your own records of lessons and payments so your numbers do not depend on the other party.
+  </p>
+
+  <h2>You can change your mind</h2>
+  <p>
+    Instructors can move between the two models. Going independent after a franchise is mostly about whether your pupils come with you, which depends on your contract. Going from independent to a franchise is mostly about the fee being worth the pupils it brings. Our longer <a href="/blog/driving-school-franchise-guide/">driving school franchise guide</a> covers both moves, and the <a href="/blog/starting-driving-school-guide/">starting a driving school guide</a> covers the business setup.
+  </p>
+  <p>
+    If a term here is new, the <a href="/become-a-driving-instructor/glossary/">glossary</a> explains PDI, ADI, ORDIT and the rest. Choosing a car comes next: <a href="/become-a-driving-instructor/car-dual-controls-insurance/">car, dual controls and insurance</a>.
+  </p>
+</InstructorGuideLayout>

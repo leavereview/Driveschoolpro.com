@@ -1,0 +1,186 @@
+---
+// /become-a-driving-instructor/adi-part-2/ (issue #85).
+import InstructorGuideLayout from '../../components/guide/InstructorGuideLayout.astro';
+import { FEES, GOVUK } from '../../data/instructor-guide';
+
+const faqs = [
+  {
+    question: 'What is the ADI part 2 test?',
+    answer: 'ADI part 2 is the driving ability test, the second of the three ADI qualifying tests. It takes around one hour and covers an eyesight check, 5 vehicle safety questions, general driving ability, 2 manoeuvres and about 20 minutes of independent driving. You can book it once you have passed part 1.',
+  },
+  {
+    question: 'How many faults can you have in the ADI part 2 test?',
+    answer: 'You pass with no more than six driving faults and no serious or dangerous faults. A driving fault is not potentially dangerous, but repeating it could make it a serious fault. A serious fault is something potentially dangerous, and a dangerous fault involves actual danger.',
+  },
+  {
+    question: 'How many attempts do I get at ADI part 2?',
+    answer: 'Three. The GOV.UK test page says a failed eyesight test counts as one of them. After a third fail you must retake and pass ADI part 1 again, and wait 2 years from when you first passed it before retaking it.',
+  },
+  {
+    question: 'How much does ADI part 2 cost?',
+    answer: `The test costs £${FEES.part2}. You pay again for each attempt.`,
+  },
+  {
+    question: 'Can I use my own car for the ADI part 2 test?',
+    answer: 'Yes. Your own car does not need dual controls, but it must meet GOV.UK\'s rules: no warning lights, legal tyres, an extra interior rear-view mirror and a passenger seatbelt and head restraint for the examiner, 4 wheels, and a top speed of at least 62mph with an mph speedometer. A hire car must have dual controls and meet all the other rules. If the car does not meet the rules the test is cancelled and you pay again.',
+  },
+  {
+    question: 'Can I take ADI part 2 in an automatic?',
+    answer: 'Yes, but the licence you hold decides it. With a manual licence you can take the test in a manual or an automatic car. With an automatic licence you must use an automatic.',
+  },
+  {
+    question: 'What happens after I pass ADI part 2?',
+    answer: 'You can book ADI part 3, or apply for a trainee driving instructor licence so you can charge for lessons while you prepare. The examiner gives you a copy of your driving test report.',
+  },
+];
+
+const sources = [
+  GOVUK.part2,
+  GOVUK.part2What,
+  GOVUK.part2Faults,
+  GOVUK.part2Car,
+  { label: 'ADI part 2: what to take to your test (GOV.UK)', href: 'https://www.gov.uk/adi-part-2-test/what-to-take' },
+  GOVUK.register,
+  GOVUK.stats,
+];
+---
+<InstructorGuideLayout
+  title="ADI Part 2 Driving Test: Format, Faults, Car Rules"
+  description={`ADI part 2 explained: a one-hour driving test, 5 safety questions, 2 manoeuvres, a maximum of six driving faults, 3 attempts and the £${FEES.part2} fee.`}
+  h1="ADI part 2 (driving ability test)"
+  lead="ADI part 2 checks that you drive to a high standard. This guide covers what happens on the day, how the test is marked, the car rules and how many attempts you get, using GOV.UK's pages."
+  crumb="ADI part 2"
+  path="/become-a-driving-instructor/adi-part-2/"
+  faqs={faqs}
+  sources={sources}
+>
+  <h2 class="!mt-0">What ADI part 2 is</h2>
+  <p>
+    ADI part 2 is the driving ability test, the second of the <a href="/become-a-driving-instructor/">three qualifying tests</a>. You can book it once you have passed <a href="/become-a-driving-instructor/adi-part-1/">ADI part 1</a>. It costs £{FEES.part2} and you get 3 attempts.
+  </p>
+  <p>
+    Remember the clock: after you pass part 1 you must pass the other parts within 2 years or start again.
+  </p>
+  <p>
+    <strong>What to bring:</strong> your UK driving licence and a suitable car. With a paper licence, bring a valid passport as well; with a Northern Ireland licence, bring the photocard and paper counterpart. If you do not bring the right things the test is cancelled and you lose the fee. A replacement licence can take up to 15 days to arrive.
+  </p>
+
+  <h2>What happens during the test</h2>
+  <p>GOV.UK says the test takes around one hour. It has five parts:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Part</th><th>What happens</th></tr></thead>
+      <tbody>
+        <tr><td>1. Eyesight check</td><td>You read a number plate from 27 metres (new-style plate) or 27.5 metres (old-style plate). Failing it fails the test.</td></tr>
+        <tr><td>2. Vehicle safety questions</td><td>5 questions: 3 "tell me" questions before you drive and 2 "show me" questions while driving. Each wrong answer is a driving fault.</td></tr>
+        <tr><td>3. General driving ability</td><td>Driving in varying road and traffic conditions, including motorways or dual carriageways where possible. You might be asked to do an emergency stop.</td></tr>
+        <tr><td>4. Manoeuvres</td><td>2 of 4 reversing exercises, chosen by the examiner.</td></tr>
+        <tr><td>5. Independent driving</td><td>About 20 minutes, following either sat nav directions or traffic signs, as the examiner specifies.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>What the examiner wants to see in your driving</h3>
+  <p>GOV.UK lists six things you must show throughout the drive:</p>
+  <ul>
+    <li>expert handling of the controls;</li>
+    <li>use of correct road procedure;</li>
+    <li>anticipation of the actions of other road users, and then taking appropriate action;</li>
+    <li>sound judgement of distance, speed and timing;</li>
+    <li>consideration for the convenience and safety of other road users;</li>
+    <li>driving in an environmentally friendly manner.</li>
+  </ul>
+  <p>
+    GOV.UK's advice is to take the test only when you can do everything without instruction. This is a higher bar than the learner test: "expert" handling and eco-friendly driving are marked, not just safe driving.
+  </p>
+
+  <h3>The four manoeuvres</h3>
+  <p>The examiner asks for 2 of these:</p>
+  <ol>
+    <li>parallel park at the side of the road;</li>
+    <li>reverse into a parking bay and drive out;</li>
+    <li>drive into a parking bay and reverse out;</li>
+    <li>pull up on the right-hand side of the road, reverse for around 2 car lengths, and rejoin the traffic.</li>
+  </ol>
+
+  <h2>How the test is marked</h2>
+  <p>GOV.UK describes three kinds of fault:</p>
+  <ul>
+    <li><strong>Driving fault:</strong> not potentially dangerous, but if you keep making the same fault it could become a serious fault.</li>
+    <li><strong>Serious fault:</strong> something potentially dangerous.</li>
+    <li><strong>Dangerous fault:</strong> actual danger to you, the examiner, the public or property.</li>
+  </ul>
+  <p>
+    <strong>You pass with no more than six driving faults and no serious or dangerous faults.</strong> That is stricter than it sounds, because the safety questions count too: each wrong answer is a driving fault, so five wrong answers would use five of your six before you have driven anywhere.
+  </p>
+  <p>You fail outright if:</p>
+  <ul>
+    <li>you do not pass the eyesight test;</li>
+    <li>you answer all 5 vehicle safety questions incorrectly;</li>
+    <li>you lose control of the car while answering a "show me" question;</li>
+    <li>you make a serious or dangerous fault; or</li>
+    <li>the examiner stops the test because your driving is a danger to other road users.</li>
+  </ul>
+
+  <h2>Common faults, and how to avoid them</h2>
+  <p>
+    GOV.UK does not publish a ranked list of the faults most often made on ADI part 2, and we have not found official data on it, so we do not quote one. What the rules above do tell you is where marks go:
+  </p>
+  <ul>
+    <li><strong>Repeating a minor fault.</strong> One driving fault is allowed several times over, but GOV.UK warns that making the same one repeatedly can become a serious fault. Ask your trainer to point out habits, not only one-off errors.</li>
+    <li><strong>Giving away driving faults on the safety questions.</strong> They are the easiest marks to protect. Learn the vehicle checks until the answers are automatic.</li>
+    <li><strong>Independent driving.</strong> For about 20 minutes you follow sat nav or traffic signs. Practise both, because the examiner chooses.</li>
+    <li><strong>Manoeuvres.</strong> Any 2 of 4 reversing exercises can come up, so practise all four.</li>
+    <li><strong>The car itself.</strong> A car that does not meet the rules gets the test cancelled, and you pay again.</li>
+  </ul>
+  <p>
+    The standard you are being held to is set out in DVSA's <a href="https://www.gov.uk/government/publications/national-standard-for-driver-and-rider-training" target="_blank" rel="noopener noreferrer">national standard for driver and rider training</a>, which is worth reading alongside your lessons.
+  </p>
+
+  <h2>The car you use</h2>
+  <p>
+    You can use your own car, a hire car, or a taxi or private hire vehicle if it meets the rules. GOV.UK's requirements for part 2 include:
+  </p>
+  <ul>
+    <li>no warning lights showing, and the car must be roadworthy;</li>
+    <li>no tyre damage, legal tread depth on each tyre, and no space-saver spare;</li>
+    <li>4 wheels, within the maximum authorised mass (MAM) in the handbook;</li>
+    <li>able to reach at least 62mph, with an mph speedometer;</li>
+    <li>an extra interior rear-view mirror for the examiner;</li>
+    <li>a passenger seatbelt and head restraint for the examiner (slip-on types are not allowed);</li>
+    <li>taxed, with a current MOT if over 3 years old, and insured for an ADI part 2 test;</li>
+    <li>smoke-free, tidy, and any dashcam must face outside and not record audio from inside.</li>
+  </ul>
+  <p>
+    <strong>Dual controls:</strong> your own car does not need them for part 2. A hire car must have dual controls. Panel vans, left-hand drive cars, convertibles, the Smart Fortwo (2-door) and the Toyota iQ cannot be used, and coupes should be checked with DVSA before you book. If your car does not meet the rules, the test is cancelled and you pay again. For choosing a car for teaching, see <a href="/become-a-driving-instructor/car-dual-controls-insurance/">car, dual controls and insurance</a>.
+  </p>
+  <p>
+    <strong>Manual or automatic:</strong> with a manual licence you can take the test in either; with an automatic licence you must use an automatic.
+  </p>
+
+  <h2>How to prepare</h2>
+  <ol>
+    <li><strong>Work through the five parts in order with your trainer.</strong> Eyesight, safety questions, general driving, manoeuvres and independent driving each have their own rules, so rehearse each one, not just "driving".</li>
+    <li><strong>Practise the vehicle safety questions until they are automatic.</strong> There are 5 per test, 3 asked before you drive and 2 while driving, and a wrong answer is a driving fault.</li>
+    <li><strong>Practise all four reversing exercises.</strong> The examiner picks two.</li>
+    <li><strong>Practise both ways of independent driving.</strong> About 20 minutes by sat nav or by traffic signs, as the examiner specifies.</li>
+    <li><strong>Use the car you will test in.</strong> Check it against the car rules early. A car that fails the check costs you the test fee.</li>
+    <li><strong>Book when your trainer agrees you are ready.</strong> You have 3 attempts, and a failed eyesight test counts as one.</li>
+  </ol>
+  <p>
+    Pace yourself against the 2-year limit from part 1. If you are running short of time, talk to your trainer before booking rather than rushing an attempt.
+  </p>
+
+  <h2>If you fail</h2>
+  <p>
+    The examiner tells you your faults. You can retake after a first or second fail, but you pay again. You can appeal only if you can prove the examiner did not follow the law (within 6 months in England and Wales, or 21 days in Scotland), and even then the result stands: the most you can get is a refund or a free retest. After a third fail you must retake and pass ADI part 1, and you must wait until 2 years after you originally passed part 1 before retaking it. Because a failed eyesight test counts as an attempt, do not book while your eyesight is in doubt.
+  </p>
+  <p>
+    DVSA's published figures put the part 2 pass rate at 55.3% of tests conducted in 2025/26 (7,529 passes from 13,605 tests). That counts tests rather than people, so it includes retakes.
+  </p>
+
+  <h2>After you pass part 2</h2>
+  <p>
+    You can book ADI part 3, or apply for a trainee driving instructor licence (£{FEES.traineeLicence}, 6 months) so you can charge for lessons while you prepare. The trainee licence and part 3 are covered in the <a href="/become-a-driving-instructor/adi-part-3/">ADI part 3 guide</a>, and the <a href="/become-a-driving-instructor/glossary/">glossary</a> explains the terms. Once you are teaching paid lessons, the <a href="/free-driving-school-software/">free driving school software</a> page shows what DriveSchoolPro covers for a new instructor.
+  </p>
+</InstructorGuideLayout>
