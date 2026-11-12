@@ -41,6 +41,10 @@ export const OFFER = {
 
 export type OfferConfig = typeof OFFER;
 
+/** Signup link for /free-for-trainee-instructors/: `?trainee=1` pre-ticks the app's "I'm a trainee instructor" box
+ *  (driveschoolpro src/lib/signup/instructor-status.ts). Not dsp_ref, which carries the referrer host. */
+export const TRAINEE_SIGNUP_URL = `${OFFER.ctaPrimary.href}?trainee=1`;
+
 /**
  * Time-boxed promotion — rendered as the site-wide banner and the pricing-page
  * callout. On-page only; never include in meta/OG tags or JSON-LD.
@@ -66,7 +70,8 @@ export type PromoConfig = typeof PROMO;
  * Plans from 1 April 2027 — single source of truth for published prices.
  * Decided 16 Oct 2026. JOHN POWELL LTD is not VAT-registered, so no VAT is charged.
  * Competitor prices: only on /blog/best-driving-school-software/, dated and sourced from each vendor's
- * own site (JP, 2 Nov 2026). Re-check them every quarter (next: Feb 2027). Compare pages stay price-free.
+ * own site (JP, 2 Nov 2026), plus the dated tables on /switch/* and /free-for-trainee-instructors/ (issues #68, #69
+ * asked for them; checked 12 Nov 2026). Re-check them every quarter (next: Feb 2027). Compare pages stay price-free.
  */
 export const PRICING = {
   startDate: "1 April 2027",
@@ -89,6 +94,15 @@ export const PRICING = {
     perExtraInstructor: 10,
     summary: "£22 a month plus £10 for each extra instructor",
   },
+  /** Free for trainee instructors (Experiment E3, issue #68; app: driveschoolpro #2219 signup tick box, #2168 plan
+   *  flag due before 1 Apr 2027). Everything in Solo for 1 instructor, free while the account is a trainee, also after
+   *  1 April 2027. On passing Part 3 the instructor chooses Free or Solo; never an automatic charge. */
+  trainee: {
+    name: "Trainee instructor",
+    price: 0,
+    instructors: 1,
+    summary: "Everything in Solo for 1 instructor, free while you're a trainee instructor, including after 1 April 2027",
+  },
   founding: {
     price: 15,
     perExtraInstructor: 8,
@@ -104,3 +118,7 @@ export const PRICING = {
 /** One-line plain-English price summary for body copy and FAQs */
 export const PRICE_LINE =
   "From 1 April 2027 there's a permanent Free plan (1 instructor, up to 60 lessons a month, every feature including AI), Solo at £22 a month, and School at £22 a month plus £10 per extra instructor. No VAT is charged.";
+
+/** One line for trainee instructors, shared by /pricing/, /about/facts/ and the schema offer. Keep llms.txt in step. */
+export const TRAINEE_LINE =
+  "Trainee instructors (sometimes called PDIs) get everything in Solo free, for 1 instructor, while they're training, including after 1 April 2027. When they pass Part 3 they choose the Free plan or Solo; nothing is charged automatically.";

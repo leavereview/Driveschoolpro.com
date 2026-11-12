@@ -1,0 +1,190 @@
+---
+// /free-for-trainee-instructors/ — Experiment E3 landing page (issue #68), for trainee-group posts and trainer emails.
+// Wording: "trainee instructor" throughout; "PDI" appears once, as "sometimes called a PDI" (GOV.UK trainee licence
+// rules; see /become-a-driving-instructor/glossary/). Competitor product names that contain "PDI" are quoted as-is.
+// App side: driveschoolpro #2219 (shipped) adds the signup tick box, pre-ticked by /signup?trainee=1 (NOT dsp_ref,
+// which carries the referrer host; see driveschoolpro src/lib/signup/instructor-status.ts). The trainee plan flag and
+// the Part 3 prompt are driveschoolpro #2168, due before 1 Apr 2027; until then every account is free anyway, so the
+// page promises nothing that isn't true today. Plan decided in #68/#2168: everything in Solo, 1 instructor, free while
+// a trainee, also after 1 Apr 2027; no auto-charge on qualifying.
+// Competitor offers checked 12 Nov 2026 on their own pages: Total Drive /become-driving-instructor/ ("free until you
+// pass your Part 3 or for up to 12 months", send a copy of your PDI badge) and /instructor-software-pricing/ (from
+// £18, "Incl. VAT"); MyDriveTime /pricing/ (PDI Best Start "FREE until you qualify", "Start your trial & apply to
+// extend"; Individuals £19); GoRoadie /pro ("PDIs receive unlimited FREE access"; "£17 per month").
+// FAQ questions come from trainee posts in UK instructor Facebook groups (Nov 2026 export in
+// ~/Projects-code/reference/driveschoolpro/Facebookgroups-driving-instructors and trainers/): long Part 3 waits and
+// licence renewals, franchise apps, advertising rules, taking payments.
+import { OFFER, PRICING as P, TRAINEE_SIGNUP_URL } from '../config/offer';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BreadcrumbsEnhanced from '../components/seo/BreadcrumbsEnhanced.astro';
+import FAQEnhanced from '../components/seo/FAQEnhanced.astro';
+
+const CHECKED = '12 November 2026';
+
+const offers = [
+  { app: 'Total Drive', name: 'PDI Head Start', length: 'Until you pass Part 3, or up to 12 months', how: 'Start a trial and send a copy of your trainee licence', after: 'Plans from £18 a month, VAT included', url: 'https://totaldrive.co.uk/become-driving-instructor/' },
+  { app: 'MyDriveTime', name: 'PDI Best Start', length: 'Until you qualify', how: 'Start the 30-day trial and apply to extend it', after: '£19 a month for individuals, VAT included', url: 'https://www.mydrivetime.co.uk/pricing/' },
+  { app: 'GoRoadie Pro', name: 'Free Pro access', length: 'Not stated ("unlimited free access")', how: 'Not stated on its page', after: '£17 a month', url: 'https://www.goroadie.com/pro' },
+  { app: 'DriveSchoolPro', name: 'Free for trainee instructors', length: 'While you are a trainee instructor, including after 31 March 2027', how: 'Tick "I\'m a trainee instructor" when you sign up', after: `Stay on the Free plan (up to ${P.free.lessonsPerMonth} lessons a month) or move to Solo at £${P.solo.price} a month. No VAT charged.`, url: '/pricing/' },
+];
+
+const faqs = [
+  {
+    question: "I'm waiting months for a Part 3 date. Does the free plan run out?",
+    answer: "No. There's no 6- or 12-month limit: it stays free for as long as you're a trainee instructor, however long the Part 3 wait is and whether you're on your first trainee licence or your second. Your pupils, lessons and progress records stay put the whole time.",
+    links: [{ text: 'Part 3 and the trainee licence', url: '/become-a-driving-instructor/adi-part-3/' }],
+  },
+  {
+    question: 'Do I have to send in my trainee licence?',
+    answer: 'No. You tick "I\'m a trainee instructor" when you sign up, and that\'s it. We don\'t ask for your licence number or a photo of your badge. When you pass Part 3, you choose whether to stay on the Free plan or move to Solo.',
+    links: [],
+  },
+  {
+    question: 'I train with a franchise that has its own app. Can I still use this?',
+    answer: "Ask your training establishment first. A trainee licence only lets you teach through the school named on it, and some franchises require every pupil to be booked and paid through their own system. If yours is happy for you to keep your own diary and records, DriveSchoolPro works for that, and your records are ready if you go independent after qualifying.",
+    links: [{ text: 'Franchise or independent?', url: '/become-a-driving-instructor/franchise-or-independent/' }],
+  },
+
+  {
+    question: 'Can I take card payments from pupils as a trainee?',
+    answer: `Yes. Pupils can pay by card through Stripe, the same as on every plan. A ${P.cardFeePercent}% DriveSchoolPro fee plus Stripe's standard fee applies to card payments; there's no charge for cash or bank transfer that you record yourself. The trainee licence lets you charge for lessons to cover costs such as insurance and the car.`,
+    links: [{ text: 'How getting paid works', url: '/features/getting-paid/' }],
+  },
+  {
+    question: 'Can I share a booking link with pupils while I\'m a trainee?',
+    answer: 'Check the advertising rules first. GOV.UK says adverts must describe you as a "trainee driving instructor", name your training establishment and give only its contact details, not your own. Your DriveSchoolPro booking page and pupil app show the business name you choose, so set them up to match, and agree it with your training establishment.',
+    links: [{ text: 'Trainee licence rules', url: '/become-a-driving-instructor/adi-part-3/' }],
+  },
+
+];
+---
+
+<BaseLayout
+  title="Free Software for Trainee Driving Instructors | DriveSchoolPro"
+  description="Free diary, DVSA progress tracking and pupil app for trainee driving instructors: no 12-month limit, no card, free until you pass Part 3. Sign up free."
+  publishedDate="2026-11-12"
+  modifiedDate="2026-11-12"
+  showUpdated
+>
+  <BreadcrumbsEnhanced items={[{ label: 'Home', href: '/' }, { label: 'Pricing', href: '/pricing/' }, { label: 'Free for trainee instructors' }]} site="driveschool" />
+
+  <section class="section bg-white">
+    <div class="container-custom max-w-4xl">
+      <p class="text-sm uppercase tracking-wider text-gray-400 mb-3">For trainee instructors</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-brand-navy leading-tight mb-6">
+        Free for trainee instructors, for as long as you're training
+      </h1>
+      <p class="text-xl text-gray-600 leading-relaxed mb-8">
+        Training on the pink badge as a trainee instructor (sometimes called a PDI)? DriveSchoolPro gives you a diary, DVSA
+        progress tracking, a pupil app and card payments with no subscription fee while you train. It stays free after 1 April 2027,
+        when paid plans start, and there's no 12-month cut-off if your Part 3 date is a long way off.
+      </p>
+      <a href={TRAINEE_SIGNUP_URL} class="btn-primary text-lg px-8 py-4 inline-block">Sign up as a trainee &rarr;</a>
+      <p class="mt-4 text-sm text-gray-500">No card. No licence number. Tick "I'm a trainee instructor" and you're in.</p>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50 border-t border-gray-100">
+    <div class="container-custom max-w-4xl space-y-12">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Who it's for</h2>
+        <p class="text-lg text-gray-600 mb-4">
+          Anyone who has passed ADI part 2 and is teaching on a trainee driving instructor licence while preparing for
+          Part 3. That licence lets you charge pupils to cover costs such as insurance and the car, which means you
+          already have a diary to keep, pupils to remind and payments to chase. Keeping it in a paper diary and your
+          phone's messages works for three pupils. It stops working at ten.
+        </p>
+        <p class="text-lg text-gray-600">
+          Still on Part 1 or Part 2? You can sign up now and get used to it, but there's not much to put in a diary
+          until you have pupils. Our <a href="/become-a-driving-instructor/" class="text-brand-red font-semibold hover:underline">guide to becoming a driving instructor</a> covers each step, and the <a href="/become-a-driving-instructor/adi-part-3/" class="text-brand-red font-semibold hover:underline">Part 3 and trainee licence guide</a> sets out the rules.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">What you get</h2>
+        <p class="text-lg text-gray-600 mb-4">Everything in Solo, for one instructor, with no lesson limit:</p>
+        <ul class="list-disc pl-6 space-y-2 text-lg text-gray-600">
+          <li>A diary that checks every booking for clashes, on your phone or a computer</li>
+          <li>Progress tracking against the <a href="/dvsa-27-driving-skills/" class="text-brand-red font-semibold hover:underline">DVSA's 27 driving skills</a>, which your pupils can see in their own app</li>
+          <li><a href="/features/lesson-briefings/" class="text-brand-red font-semibold hover:underline">AI lesson briefings</a>: a short briefing before each lesson, written from your last notes and the pupil's ratings</li>
+          <li>A <a href="/features/pupil-app/" class="text-brand-red font-semibold hover:underline">pupil app</a> for iPhone, Android or web, where pupils can book, move or cancel within limits you set</li>
+          <li>Card payments through Stripe, and lesson packages</li>
+          <li>Email lesson reminders, with text and WhatsApp reminders coming soon</li>
+          <li>A Google review request to each pupil who passes their practical test</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">When you pass Part 3</h2>
+        <p class="text-lg text-gray-600 mb-4">
+          Congratulations, and nothing breaks. You choose what happens next: stay on the permanent Free plan (1
+          instructor, up to {P.free.lessonsPerMonth} lessons a month, every feature), or move to Solo at £{P.solo.price} a month for unlimited
+          lessons. Nothing is charged automatically, and we don't ask for a card until you choose a paid plan.
+        </p>
+        <p class="text-lg text-gray-600">
+          Your pupils, their progress and your lesson history stay exactly where they are, so qualifying doesn't mean
+          moving apps in your busiest month. See the <a href="/pricing/" class="text-brand-red font-semibold hover:underline">pricing page</a> for every plan.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white border-t border-gray-100">
+    <div class="container-custom max-w-5xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-2">How the free trainee offers compare</h2>
+      <p class="text-gray-600 mb-6">Total Drive, MyDriveTime and GoRoadie also give trainee instructors their apps free. Each offer below is from the vendor's own website, checked on {CHECKED}. Offers change, so check theirs before you decide.</p>
+      <div class="overflow-x-auto -mx-4 px-4">
+        <table class="w-full min-w-[720px] text-left border-collapse text-sm">
+          <thead>
+            <tr class="border-b-2 border-gray-200">
+              <th scope="col" class="p-3 font-semibold text-gray-500">App</th>
+              <th scope="col" class="p-3 font-semibold text-brand-navy">How long it's free</th>
+              <th scope="col" class="p-3 font-semibold text-brand-navy">What you do</th>
+              <th scope="col" class="p-3 font-semibold text-brand-navy">After you qualify</th>
+            </tr>
+          </thead>
+          <tbody>
+            {offers.map((o) => (
+              <tr class={`border-b border-gray-100 align-top ${o.app === 'DriveSchoolPro' ? 'bg-brand-red-light/40' : ''}`}>
+                <th scope="row" class="p-3 font-semibold text-brand-navy">
+                  {o.url.startsWith('http')
+                    ? <a href={o.url} rel="nofollow noopener" target="_blank" class="hover:underline">{o.app}</a>
+                    : o.app}
+                  <span class="block font-normal text-gray-500">{o.name}</span>
+                </th>
+                <td class="p-3 text-gray-700">{o.length}</td>
+                <td class="p-3 text-gray-700">{o.how}</td>
+                <td class="p-3 text-gray-700">{o.after}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-gray-500 mt-4">
+        Sources, checked {CHECKED}: <a href="https://totaldrive.co.uk/become-driving-instructor/" rel="nofollow noopener" target="_blank" class="underline">Total Drive PDI Head Start</a> and <a href="https://totaldrive.co.uk/instructor-software-pricing/" rel="nofollow noopener" target="_blank" class="underline">pricing</a>; <a href="https://www.mydrivetime.co.uk/pricing/" rel="nofollow noopener" target="_blank" class="underline">MyDriveTime pricing</a>; <a href="https://www.goroadie.com/pro" rel="nofollow noopener" target="_blank" class="underline">GoRoadie Pro</a>. For a wider look at instructor apps, see <a href="/blog/best-driving-school-software/" class="underline">the best driving school software compared</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQEnhanced faqs={faqs} site="driveschool" pageUrl="https://driveschoolpro.com/free-for-trainee-instructors/" title="Questions trainee instructors ask" />
+
+  <section class="section bg-brand-navy text-white">
+    <div class="container-custom text-center max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Get your diary sorted before Part 3</h2>
+      <p class="text-lg text-gray-300 mb-8">Free while you're a trainee instructor. No card, no licence number, no 12-month limit.</p>
+      <a href={TRAINEE_SIGNUP_URL} class="btn-primary text-lg px-8 py-4">Sign up as a trainee &rarr;</a>
+      <p class="mt-6 text-sm text-gray-400">Already qualified? <a href={OFFER.ctaPrimary.href} class="underline">Every feature is free until 31 March 2027</a>.</p>
+    </div>
+  </section>
+
+  <section class="section bg-white border-t border-gray-100">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-xl font-bold text-brand-navy mb-6">Related</h2>
+      <ul class="space-y-3 text-lg">
+        <li><a href="/become-a-driving-instructor/adi-part-3/" class="text-brand-red font-semibold hover:underline">ADI Part 3 and the trainee licence &rarr;</a> <span class="text-gray-500">— the rules, the test and the supervision options</span></li>
+        <li><a href="/driving-instructor-software/" class="text-brand-red font-semibold hover:underline">Driving instructor software &rarr;</a> <span class="text-gray-500">— what a solo instructor gets once qualified</span></li>
+        <li><a href="/pricing/" class="text-brand-red font-semibold hover:underline">Pricing &rarr;</a> <span class="text-gray-500">— Free, Solo and School plans from 1 April 2027</span></li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
