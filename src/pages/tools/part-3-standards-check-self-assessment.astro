@@ -1,0 +1,384 @@
+---
+// /tools/part-3-standards-check-self-assessment/ — issue #87.
+// Client-side only: scores are never sent, saved or put in the URL. The only thing
+// sent is an anonymous GA4 event with the total and band when a result is shown.
+// No <form> element on purpose, so analytics form-interaction events have nothing to hook.
+// Scoring and competency data live in src/utils/part3-check.ts (tested in tests/part3-check.test.ts).
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { OFFER } from '../../config/offer';
+import {
+  AREAS, COMPETENCIES, SCORE_LABELS, MAX_TOTAL, LAST_CHECKED, LAST_CHECKED_LABEL,
+  BAND_FAIL_MAX, BAND_B_MAX, RISK_AUTO_FAIL_AT_OR_BELOW,
+} from '../../utils/part3-check';
+
+const updated = '2026-11-12';
+
+const SOURCES = [
+  { label: 'ADI part 3 test: marking sheet (the test report form)', href: 'https://www.gov.uk/government/publications/approved-driving-instructor-adi-part-3-test-report' },
+  { label: 'ADI part 3 test: your test result', href: 'https://www.gov.uk/adi-part-3-test/test-result' },
+  { label: 'ADI standards check: your standards check grade', href: 'https://www.gov.uk/adi-standards-check/your-standards-check-grade' },
+  { label: 'National standard for driver and rider training', href: 'https://www.gov.uk/government/publications/national-standard-for-driver-and-rider-training' },
+];
+
+const faqs = [
+  {
+    question: 'How is the ADI Part 3 test marked?',
+    answer: `The examiner scores 17 areas of competence, grouped into lesson planning (4), risk management (5) and teaching and learning strategies (8). Each is scored 0 to 3, giving a total out of ${MAX_TOTAL}. According to GOV.UK, 0 to ${BAND_FAIL_MAX} is a fail, ${BAND_FAIL_MAX + 1} to ${BAND_B_MAX} is grade B and ${BAND_B_MAX + 1} to ${MAX_TOTAL} is grade A.`,
+  },
+  {
+    question: 'What is an automatic fail on the Part 3 test or standards check?',
+    answer: `GOV.UK gives two: you score ${RISK_AUTO_FAIL_AT_OR_BELOW} or less in the risk management category, or the examiner has to stop the lesson because you put yourself or someone else in danger. Either one is a fail whatever your total is.`,
+  },
+  {
+    question: 'Is the standards check marked the same way as the Part 3?',
+    answer: 'On GOV.UK the grades and automatic fail rules for the standards check are the same as for the Part 3: a total out of 51, 0 to 30 fail, 31 to 42 grade B, 43 to 51 grade A, and the same two automatic fails. Check the GOV.UK pages linked on this page for the current wording.',
+  },
+  {
+    question: 'What are the 17 competencies?',
+    answer: 'They are the 17 questions on the ADI part 3 test report form: four on lesson planning, five on risk management and eight on teaching and learning strategies, covering things like identifying the pupil\'s goals, clear and timely instructions, timely intervention, feedback, and getting the pupil to reflect at the end. The list on this page gives each one in our own words, in the same order as the form.',
+  },
+  {
+    question: 'Is this an official DVSA tool?',
+    answer: 'No. It is a free practice aid from DriveSchoolPro. It uses the same 17 areas, 0 to 3 scale and thresholds that GOV.UK publishes, but a self-score is your own judgement, so treat the result as a prompt for what to practise, not a prediction of what an examiner will give you.',
+  },
+  {
+    question: 'How should I score a lesson?',
+    answer: 'Use the form\'s scale: 0 if there was no evidence of the competence, 1 if it was shown in a few elements, 2 if in most elements and 3 if in all elements. Be honest and score what happened rather than what you intended. It helps to have your trainer, or a recording of the lesson, to check your scores against.',
+  },
+  {
+    question: 'Does DriveSchoolPro store my scores?',
+    answer: 'No. The tool runs in your browser. Your scores are not sent to us, saved, or put in the page address, and they are gone when you close the page. The only thing we record is an anonymous count that someone viewed a result, with the total and grade, and nothing that identifies you. To keep a copy, print it or save it as a PDF.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+};
+
+const appSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'ADI Part 3 and standards check self-assessment',
+  url: 'https://driveschoolpro.com/tools/part-3-standards-check-self-assessment/',
+  applicationCategory: 'EducationalApplication',
+  operatingSystem: 'Any (runs in a web browser)',
+  isAccessibleForFree: true,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'GBP' },
+  publisher: { '@id': 'https://driveschoolpro.com/#organization' },
+};
+
+---
+
+<BaseLayout
+  title="ADI Part 3 & Standards Check Self-Assessment | 17 Competencies"
+  description="Free ADI Part 3 and standards check self-assessment. Score the 17 competencies 0 to 3, see your total out of 51, grade and weakest areas, then print the result."
+  modifiedDate={updated}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+
+  <div class="bg-gray-100 py-3 no-print">
+    <div class="container-custom">
+      <Breadcrumbs items={[
+        { label: 'Home', href: '/' },
+        { label: 'Part 3 and standards check self-assessment' },
+      ]} />
+    </div>
+  </div>
+
+  <section class="section bg-white border-b border-gray-100 no-print">
+    <div class="container-custom">
+      <div class="max-w-3xl">
+        <h1 class="text-3xl md:text-4xl font-bold text-brand-navy mb-4">
+          ADI Part 3 and standards check self-assessment
+        </h1>
+        <p class="text-lg text-gray-600 mb-3">
+          Score a lesson (yours, or a mock) against the 17 competencies used to mark the ADI Part 3 test and the standards check.
+          You get a total out of {MAX_TOTAL}, the grade it would fall in, the automatic fail rules, and your three weakest areas
+          with a tip for each. Free, no login.
+        </p>
+        <p class="text-sm text-gray-500">
+          Your scores stay in your browser: nothing you tick is sent to us or saved.
+          Thresholds and competencies last checked against GOV.UK on <time datetime={LAST_CHECKED}>{LAST_CHECKED_LABEL}</time>.
+          This is a practice aid, not an official DVSA tool.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto" id="p3-check">
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 mb-6 no-print">
+          <h2 class="text-xl font-bold text-brand-navy mb-2">How to score</h2>
+          <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-1 text-sm text-gray-700">
+            {SCORE_LABELS.map((l, i) => <li><strong class="text-brand-navy">{i}</strong>: {l}</li>)}
+          </ul>
+          <p class="text-sm text-gray-500 mt-3">Score what happened in the lesson, not what you meant to do.</p>
+        </div>
+
+        <div class="no-print" id="p3-questions">
+          {AREAS.map((a) => (
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 mb-6">
+              <h2 class="text-xl font-bold text-brand-navy mb-4">
+                {a.name} <span class="text-sm font-normal text-gray-500">(<span data-area-score={a.id}>0</span> of {a.maxScore})</span>
+              </h2>
+              <div class="space-y-5">
+                {COMPETENCIES.filter((c) => c.area === a.id).map((c) => (
+                  <fieldset class="border-t border-gray-100 pt-4 first:border-0 first:pt-0">
+                    <legend class="font-medium text-gray-900">{c.id}. {c.name}</legend>
+                    <p class="text-sm text-gray-500 mb-2">{c.looksLike}</p>
+                    <div class="grid grid-cols-4 gap-2">
+                      {[0, 1, 2, 3].map((s) => (
+                        <label class="cursor-pointer">
+                          <input type="radio" name={`c${c.id}`} value={s} class="peer sr-only" />
+                          <span class="block text-center rounded-lg border border-gray-300 py-2 text-gray-700 peer-checked:bg-brand-navy peer-checked:text-white peer-checked:border-brand-navy peer-focus-visible:ring-2 peer-focus-visible:ring-brand-red" title={SCORE_LABELS[s]}>
+                            {s}
+                          </span>
+                        </label>
+                      ))}
+                    </div>
+                  </fieldset>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 mb-6">
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" id="p3-stopped" class="mt-1 h-5 w-5" />
+              <span class="text-gray-800">
+                The lesson would have been stopped because I put myself, the pupil or someone else in immediate danger.
+                <span class="block text-sm text-gray-500">GOV.UK lists this as an automatic fail.</span>
+              </span>
+            </label>
+          </div>
+
+          <p id="p3-error" class="hidden text-red-700 font-medium mb-3" role="alert"></p>
+          <button type="button" id="p3-show" class="btn-primary">Show my result</button>
+          <button type="button" id="p3-reset" class="btn-secondary ml-2">Start again</button>
+        </div>
+
+        <!-- Result (this block is also what prints) -->
+        <div id="p3-result" class="hidden mt-8" tabindex="-1" aria-live="polite">
+          <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+            <h2 class="text-2xl font-bold text-brand-navy mb-1">Your result</h2>
+            <p class="text-sm text-gray-500 mb-4">
+              Self-assessment <span id="p3-date"></span>. Practice aid based on the GOV.UK ADI part 3 marking sheet (checked {LAST_CHECKED_LABEL}). Not an official result.
+            </p>
+            <div class="grid sm:grid-cols-2 gap-4 mb-5">
+              <div class="rounded-lg bg-gray-50 p-4">
+                <div class="text-sm text-gray-500">Total score</div>
+                <div class="text-4xl font-bold text-brand-navy"><span id="p3-total">0</span> <span class="text-lg font-normal text-gray-500">of {MAX_TOTAL}</span></div>
+              </div>
+              <div class="rounded-lg bg-gray-50 p-4">
+                <div class="text-sm text-gray-500">Outcome</div>
+                <div class="text-2xl font-bold" id="p3-band"></div>
+              </div>
+            </div>
+            <p id="p3-fail-reasons" class="hidden rounded-lg bg-brand-red-light text-brand-navy p-4 mb-5 text-sm"></p>
+            <h3 class="font-semibold text-brand-navy mb-2">By area</h3>
+            <ul class="mb-5 text-gray-700" id="p3-areas"></ul>
+            <h3 class="font-semibold text-brand-navy mb-2">Your weakest competencies</h3>
+            <ol class="list-decimal pl-5 space-y-3 mb-5 text-gray-700" id="p3-weakest"></ol>
+            <details class="mb-5" open>
+              <summary class="font-semibold text-brand-navy cursor-pointer">All 17 scores</summary>
+              <ol class="mt-2 text-sm text-gray-700 columns-1 sm:columns-2" id="p3-all"></ol>
+            </details>
+            <p class="text-xs text-gray-500 mb-4">
+              Bands per GOV.UK: 0 to {BAND_FAIL_MAX} fail, {BAND_FAIL_MAX + 1} to {BAND_B_MAX} grade B, {BAND_B_MAX + 1} to {MAX_TOTAL} grade A.
+              Automatic fail if risk management is {RISK_AUTO_FAIL_AT_OR_BELOW} or less, or the lesson is stopped for danger.
+              A self-score is your own judgement. Made with DriveSchoolPro, driveschoolpro.com.
+            </p>
+            <div class="no-print flex flex-wrap gap-3">
+              <button type="button" id="p3-print" class="btn-primary">Print or save as PDF</button>
+              <button type="button" id="p3-edit" class="btn-secondary">Change my scores</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white no-print">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">How the Part 3 and standards check are marked</h2>
+        <p class="text-gray-700 mb-4">
+          An examiner watches you teach a pupil and scores {COMPETENCIES.length} areas of competence from 0 to 3, which gives a total out of {MAX_TOTAL}.
+          The areas fall into lesson planning (4), risk management (5) and teaching and learning strategies (8).
+          According to GOV.UK, a total of 0 to {BAND_FAIL_MAX} is a fail, {BAND_FAIL_MAX + 1} to {BAND_B_MAX} is grade B and {BAND_B_MAX + 1} to {MAX_TOTAL} is grade A.
+          Two things are an automatic fail whatever the total: a risk management score of {RISK_AUTO_FAIL_AT_OR_BELOW} or less, and a lesson the examiner has to stop because of danger.
+        </p>
+        <p class="text-gray-700 mb-6">
+          The same grades and fail rules are published for the standards check that qualified ADIs take. Use the tool to find the competencies to work on,
+          ideally with your trainer scoring the same lesson so you can compare. If you are still getting started, our guide on
+          <a href="/tools/adi-income-tax-calculator/" class="text-brand-red hover:underline">what an instructor can earn after tax</a> is a useful next read.
+        </p>
+        <h3 class="text-lg font-semibold text-brand-navy mb-2">Sources, last checked {LAST_CHECKED_LABEL}</h3>
+        <ul class="list-disc pl-5 space-y-1 text-sm mb-4">
+          {SOURCES.map((s) => <li><a href={s.href} class="text-brand-red hover:underline" rel="noopener">{s.label}</a> (GOV.UK)</li>)}
+        </ul>
+        <p class="text-sm text-gray-500">
+          The competency names and tips here are our own wording of what each question on the form asks. They are not DVSA text.
+          Rules can change, so check GOV.UK before you rely on them.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50 no-print">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Once you are teaching</h2>
+        <p class="text-gray-700 mb-4">
+          The standards check looks at how you plan, manage risk and teach, and it is easier when each pupil's progress is recorded as you go.
+          DriveSchoolPro keeps lesson notes and progress against the DVSA 27 skills, with booking and payments, for solo ADIs and driving schools.
+        </p>
+        <div class="bg-white rounded-xl border border-gray-100 p-6">
+          <p class="text-gray-700 mb-4">
+            {OFFER.long}. See <a href="/pricing/" class="text-brand-red hover:underline">pricing</a> for the plans that follow, or
+            <a href="/driving-instructor-software/" class="text-brand-red hover:underline">software for solo ADIs</a>.
+          </p>
+          <a href={OFFER.ctaPrimary.href} class="btn-primary">{OFFER.ctaPrimary.label}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white no-print">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-6">Frequently asked questions</h2>
+        <div class="space-y-6">
+          {faqs.map((f) => (
+            <div>
+              <h3 class="font-semibold text-brand-navy mb-1">{f.question}</h3>
+              <p class="text-gray-700">{f.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style is:global>
+  @media print {
+    header, nav, footer, .no-print { display: none !important; }
+    #p3-questions { display: none !important; }
+    #p3-result { display: block !important; margin-top: 0; }
+    #p3-result > div { border: 0; box-shadow: none; }
+    .section { padding: 0 !important; background: #fff !important; }
+    details > summary { display: none; }
+    details:not([open]) > *:not(summary) { display: block; }
+  }
+</style>
+
+<script>
+  // Browser only. Reads the ticks, writes the result. Nothing is stored, put in the URL or sent
+  // except one anonymous GA4 event (total and grade) when a result is shown.
+  import { assess, AREAS, COMPETENCIES, MAX_TOTAL } from '../../utils/part3-check';
+
+  const root = document.getElementById('p3-check');
+  if (root) {
+    const $ = (id: string) => document.getElementById(id) as HTMLElement;
+    const radios = () => Array.from(root.querySelectorAll<HTMLInputElement>('#p3-questions input[type="radio"]'));
+    const read = (): (number | null)[] =>
+      COMPETENCIES.map((c) => {
+        const el = root.querySelector<HTMLInputElement>(`input[name="c${c.id}"]:checked`);
+        return el ? Number(el.value) : null;
+      });
+
+    const refreshAreaTotals = () => {
+      const scores = read();
+      for (const a of AREAS) {
+        let sum = 0;
+        COMPETENCIES.forEach((c, i) => { if (c.area === a.id) sum += scores[i] ?? 0; });
+        const el = root.querySelector<HTMLElement>(`[data-area-score="${a.id}"]`);
+        if (el) el.textContent = String(sum);
+      }
+    };
+    radios().forEach((r) => r.addEventListener('change', refreshAreaTotals));
+
+    const li = (text: string) => { const e = document.createElement('li'); e.textContent = text; return e; };
+
+    $('p3-show').addEventListener('click', () => {
+      const scores = read();
+      const err = $('p3-error');
+      const firstMissing = scores.findIndex((s) => s === null);
+      if (firstMissing !== -1) {
+        const missing = scores.filter((s) => s === null).length;
+        err.textContent = `Please score every competency. ${missing} still to do, starting at number ${firstMissing + 1}.`;
+        err.classList.remove('hidden');
+        root.querySelector<HTMLInputElement>(`input[name="c${firstMissing + 1}"]`)?.closest('fieldset')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      err.classList.add('hidden');
+      const stopped = (document.getElementById('p3-stopped') as HTMLInputElement).checked;
+      const r = assess(scores as number[], stopped);
+
+      $('p3-total').textContent = String(r.total);
+      const band = $('p3-band');
+      band.textContent = r.band === 'fail' ? 'Fail' : r.band === 'B' ? 'Grade B' : 'Grade A';
+      band.className = 'text-2xl font-bold ' + (r.band === 'fail' ? 'text-brand-red' : 'text-brand-navy');
+
+      const fr = $('p3-fail-reasons');
+      const reasons: string[] = [];
+      if (r.failReasons.includes('risk-management')) reasons.push(`Automatic fail: risk management scored ${r.areaTotals['risk-management']}, and 7 or less is an automatic fail whatever the total.`);
+      if (r.failReasons.includes('lesson-stopped')) reasons.push('Automatic fail: a lesson stopped because of immediate danger is a fail whatever the total.');
+      if (r.failReasons.includes('total')) reasons.push(`The total of ${r.total} is in the 0 to 30 fail range.`);
+      if (reasons.length) { fr.textContent = reasons.join(' '); fr.classList.remove('hidden'); } else { fr.classList.add('hidden'); }
+
+      const areas = $('p3-areas'); areas.replaceChildren();
+      for (const a of AREAS) areas.appendChild(li(`${a.name}: ${r.areaTotals[a.id]} of ${a.maxScore}`));
+
+      const weak = $('p3-weakest'); weak.replaceChildren();
+      if (r.weakest.length === 0) {
+        const e = document.createElement('li'); e.textContent = 'You scored 3 on everything. Check your scores with your trainer, as it is rare to be that consistent.'; e.style.listStyle = 'none';
+        weak.appendChild(e);
+      }
+      for (const c of r.weakest) {
+        const e = document.createElement('li');
+        const b = document.createElement('strong'); b.textContent = `${c.id}. ${c.name} (scored ${scores[c.id - 1]}). `;
+        e.appendChild(b); e.appendChild(document.createTextNode(c.tip));
+        weak.appendChild(e);
+      }
+
+      const all = $('p3-all'); all.replaceChildren();
+      COMPETENCIES.forEach((c, i) => all.appendChild(li(`${c.name}: ${scores[i]}`)));
+      $('p3-date').textContent = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
+      const res = $('p3-result');
+      res.classList.remove('hidden');
+      res.focus({ preventScroll: true });
+      res.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      const w = window as unknown as { gtag?: (...a: unknown[]) => void };
+      if (typeof w.gtag === 'function') {
+        w.gtag('event', 'part3_self_assessment_result', { total_score: r.total, outcome: r.band, max_score: MAX_TOTAL });
+      }
+    });
+
+    $('p3-print').addEventListener('click', () => window.print());
+    $('p3-edit').addEventListener('click', () => {
+      $('p3-result').classList.add('hidden');
+      $('p3-questions').scrollIntoView({ behavior: 'smooth' });
+    });
+    $('p3-reset').addEventListener('click', () => {
+      radios().forEach((r) => { r.checked = false; });
+      (document.getElementById('p3-stopped') as HTMLInputElement).checked = false;
+      $('p3-error').classList.add('hidden');
+      $('p3-result').classList.add('hidden');
+      refreshAreaTotals();
+    });
+  }
+</script>
