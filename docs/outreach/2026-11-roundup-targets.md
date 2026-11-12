@@ -2,7 +2,7 @@
 
 Issues #16 and #77. Goal: DriveSchoolPro (DSP) named in AI answers for "best driving instructor app UK" (28 of 76 panel answers by 13 Dec 2026).
 
-The [4 Nov research](../research/2026-11-04-ai-visibility.md) found the gap is third-party "best X" lists, not our site. This doc lists the UK pages that rank or list instructor apps, with a short email for each. **Sent so far (12 Nov 2026):** Collingwood (emailed 5 Nov, replied 10 Nov: will add DSP), PassReady (StagHill email, 12 Nov; earlier note to hello@passready.co.uk 5 Nov), Lesson Diary and Passly (contact forms, 12 Nov). Rows 5 onwards not sent yet.
+The [4 Nov research](../research/2026-11-04-ai-visibility.md) found the gap is third-party "best X" lists, not our site. This doc lists the UK pages that rank or list instructor apps, with a short email for each. **Sent so far (12 Nov 2026):** Collingwood (emailed 5 Nov, replied 10 Nov: will add DSP), PassReady (StagHill email, 12 Nov; earlier note to hello@passready.co.uk 5 Nov), Lesson Diary and Passly (contact forms, 12 Nov; Lesson Diary auto-acknowledged). Rows 5 onwards not sent yet. Mail checked 12 Nov 14:30: no human replies yet from StagHill, Lesson Diary or Passly.
 
 **Refreshed 12 Nov 2026.** Every page below was opened on 12 Nov (Capterra and G2 block fetches, so those two rows are from search results). The 4 Nov version was written from search snippets only, and several of its rows were wrong.
 
@@ -139,6 +139,14 @@ Rated Driving (competitor, no roundup), ADI forums and Reddit (no ranking thread
 - **Last updated:** rival figures "checked 21 October 2026".
 - **Contact route:** form at https://lessondiary.co.uk/contact-us (the page's "tell us" link). support@lessondiary.co.uk is also published, but for diary moves.
 - **Confirmed:** 12 Nov 2026.
+- **Sent 12 Nov** via the form; auto-acknowledged by support@lessondiary.co.uk at 14:05.
+- **Same wrong facts on 5 more Lesson Diary pages (checked 12 Nov, all "checked 21 October 2026"):**
+  - /compare/lesson-diary-vs-driveschoolpro: no native app, "Free early access, then a 14-day trial", "Stripe fees only, no platform cut".
+  - /best-driving-instructor-apps (DSP 9th of 9): "Browser only — no app to install yet", 14-day trial.
+  - /compare/driveschoolpro-alternatives: "No native mobile app"; "No Trustpilot, Capterra or G2 reviews turned up".
+  - /best-driving-instructor-software (DSP 2nd): 14-day trial.
+  - /free-vs-paid-driving-instructor-apps (DSP 2nd): 14-day trial, "no platform cut".
+  - A one-email follow-up listing these is drafted in Mail (reply to their acknowledgement), waiting for John to send. Lesson Diary probably feeds every page from one data row, so one correction should fix all of them.
 
 **Subject:** DriveSchoolPro on your Total Drive alternatives page: three small corrections
 
