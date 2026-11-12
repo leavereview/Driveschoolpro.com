@@ -67,12 +67,12 @@ const faqs = [
   },
   {
     question: 'How does MyDriveTime compare with Total Drive?',
-    answer: "Both are established UK instructor apps with a diary, clash warnings, a pupil app, syllabus-based progress, SMS reminders and cancellation-gap broadcasts. On their own sites, Total Drive lists a theory suite, two-way calendar sync, online booking with card payments and Apple CarPlay and Android Auto, and sells SMS as a separate text bundle. MyDriveTime includes SMS on its individual plan, lists journey tracking and offers free data transfer. Our three-way comparison sets them side by side with DriveSchoolPro.",
+    answer: "Both are established UK instructor apps with a diary, clash warnings, a pupil app, syllabus-based progress, SMS reminders and cancellation-gap broadcasts. On their own sites, Total Drive lists a theory suite, a calendar feed to Google, Apple and Outlook, online booking with card payments and Apple CarPlay and Android Auto, and sells SMS as a separate text bundle. MyDriveTime includes SMS on its individual plan, lists journey tracking and offers free data transfer. Our three-way comparison sets them side by side with DriveSchoolPro.",
     links: [{ text: 'Total Drive vs MyDriveTime', url: '/compare/total-drive-vs-mydrivetime/' }],
   },
   {
     question: 'Is this a fair comparison?',
-    answer: "We've tried to make it one. The MyDriveTime column only records what MyDriveTime's own public website says, first checked on 21 September 2026 and re-checked on 9 November 2026, including its blog, release notes and app store listings. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote MyDriveTime's prices because they change, so use their own pricing page. The gaps in DriveSchoolPro are set out above. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
+    answer: "We've tried to make it one. The MyDriveTime column only records what MyDriveTime's own public website says, first checked on 21 September 2026 and re-checked on 9 November 2026 (including its blog, release notes and app store listings) and 12 November 2026. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote MyDriveTime's prices because they change, so use their own pricing page. The gaps in DriveSchoolPro are set out above. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
     links: [{ text: "MyDriveTime's current pricing", url: 'https://www.mydrivetime.co.uk/pricing/' }],
   },
   {
@@ -87,8 +87,8 @@ const faqs = [
   competitor={{ name: 'MyDriveTime', alternateName: 'My Drive Time', slug: 'my-drive-time', pricingUrl: 'https://www.mydrivetime.co.uk/pricing/' }}
   h1="MyDriveTime vs DriveSchoolPro"
   seo={{
-    title: 'MyDriveTime vs DriveSchoolPro: 17 Features Compared',
-    description: 'MyDriveTime vs DriveSchoolPro on 17 features, checked 12 Nov 2026, with what we lack and how to import your pupils. Free until 31 March 2027. Compare now.',
+    title: `MyDriveTime vs DriveSchoolPro: ${rows.length} Features Compared`,
+    description: `MyDriveTime (My Drive Time) vs DriveSchoolPro on ${rows.length} features, checked 12 Nov 2026, with what we lack and how to import your pupils. Free to 31 March 2027.`,
     schemaDescription: 'Feature-by-feature comparison of DriveSchoolPro and MyDriveTime for UK driving instructors, including what DriveSchoolPro does not do yet.',
     datePublished: '2026-09-21',
     dateModified: '2026-11-12',
@@ -138,12 +138,12 @@ const faqs = [
     heading: 'Switching from MyDriveTime',
     intro: "You don't have to move everything at once. You can bring your pupil list across and run both diaries side by side until you're sure.",
     steps: [
-      "Export your pupils from MyDriveTime as a spreadsheet (CSV). We haven't used MyDriveTime's software, so check its help for how.",
-      'In DriveSchoolPro, open Settings, then Import Pupils (account owners and managers).',
-      'Upload the file and choose the MyDriveTime option. Check the matched columns, then tap Check rows.',
-      "Review the preview and tap Import. Pupils you already have are skipped, and you see how many were added.",
+      'In the MyDriveTime app, go to Students, tap the three-dot menu and choose Export to CSV.',
+      'In DriveSchoolPro, open Settings, then Import Pupils (the account owner can do this).',
+      'Choose MyDriveTime export and upload the file as it is. DriveSchoolPro reads its columns for you.',
+      'Check the preview and tap Import. Pupils you already have are skipped, and you see how many were added.',
     ],
-    note: "The import covers pupils only: no lesson history, payments or credit. Book your upcoming lessons into DriveSchoolPro by hand, and keep MyDriveTime for your records for as long as you need them. MyDriveTime says it offers free data transfer if you want a full migration, so that is a fair reason to stay.",
+    note: 'The import covers pupil details only: no lesson history, payments or prepaid hours yet. Book your upcoming lessons into DriveSchoolPro by hand, and keep MyDriveTime for your records for as long as you need them.',
     link: { text: 'See how importing pupils works', href: '/start/first-pupil/' },
   }}
   alternativesKey="mydrivetime"
