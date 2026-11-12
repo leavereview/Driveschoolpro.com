@@ -1,0 +1,299 @@
+---
+// /tools/driving-instructor-earnings-calculator/ — issue #28 (earnings widening).
+// Client-side only: the figures someone types are never sent, saved or put in the URL.
+// Maths: src/utils/adi-earnings.ts (reuses adi-tax.ts), tested in tests/adi-earnings.test.ts.
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { OFFER } from '../../../config/offer';
+import { RATES, TAX_YEAR } from '../../../utils/adi-tax';
+import { compare, gapText, gbp, gbp2, EXAMPLE_SHARED as S, EXAMPLE_FRANCHISE as F, EXAMPLE_INDEPENDENT as I } from '../../../utils/adi-earnings';
+
+const updated = '2026-11-12';
+const initial = compare(F, I, S);
+const fmt = (n: number) => n.toLocaleString('en-GB');
+
+const SOURCES = [
+  { label: 'Income Tax rates and allowances for current and previous tax years', href: 'https://www.gov.uk/income-tax-rates', note: 'Personal Allowance, 20%, 40% and 45% bands, the £100,000 taper.' },
+  { label: 'Rates and allowances: National Insurance contributions', href: 'https://www.gov.uk/government/publications/rates-and-allowances-national-insurance-contributions/rates-and-allowances-national-insurance-contributions', note: 'Class 4 limits and the 6% and 2% rates.' },
+  { label: 'Expenses if you\'re self-employed', href: 'https://www.gov.uk/expenses-if-youre-self-employed', note: 'What counts as an allowable business expense.' },
+  { label: 'Scottish Income Tax', href: 'https://www.gov.uk/scottish-income-tax', note: 'Scottish bands differ and are not modelled here.' },
+];
+
+const faqs = [
+  {
+    question: 'How much do driving instructors earn?',
+    answer: `There is no single figure, because it comes down to your hourly rate, how many hours a week you are paid for, how many weeks you work and what the car and any franchise fee cost you. As a worked example only, not an average: £${F.hourlyRate} an hour, ${F.hoursPerWeek} paid hours a week for ${S.weeksWorked} weeks with a £${F.franchiseFeeWeekly} weekly franchise fee leaves ${gbp(initial.franchise.takeHome)} a year after costs, Income Tax and Class 4 NI. Change the numbers above to match your own situation.`,
+  },
+  {
+    question: 'What is the real hourly rate of a driving instructor?',
+    answer: 'The rate you charge is not what you keep. Take-home pay divided by paid hours is the effective hourly rate, and it is lower than the lesson price once car, fuel, insurance, franchise fees and tax are taken off. It is still higher than pay per hour worked would be, because this calculator does not count unpaid time such as travel between pupils, admin and cancellations.',
+  },
+  {
+    question: 'Is a driving instructor franchise worth it?',
+    answer: 'It depends on what the fee buys you. A franchise charges a weekly fee, and in return may supply pupils, a branded car or support. If your fee includes the car, tick that box on the franchise side so the car, dual controls and insurance are not counted twice. Independent instructors keep the fee but have to find their own pupils and pay for their own marketing and booking tools. The calculator lets you set different hourly rates and paid hours for each route, because the gap usually comes from those two numbers as much as from the fee itself. Check the fee and terms in your own agreement.',
+  },
+  {
+    question: 'How is tax worked out?',
+    answer: `On profit, meaning lesson income minus allowable costs. For ${TAX_YEAR} in England, Wales and Northern Ireland the first £${fmt(RATES.personalAllowance)} is tax-free, the next £${fmt(RATES.basicRateLimit)} is taxed at 20% and profit above £${fmt(RATES.personalAllowance + RATES.basicRateLimit)} at 40%. Class 4 National Insurance is 6% between £${fmt(RATES.class4LowerProfitsLimit)} and £${fmt(RATES.class4UpperProfitsLimit)} and 2% above. Rates were checked against GOV.UK on 12 November 2026.`,
+  },
+  {
+    question: 'Can I deduct my car, fuel, dual controls and franchise fee?',
+    answer: 'Generally, costs incurred wholly and exclusively for instructing are allowable, and car costs, fuel, dual controls, insurance and franchise fees usually qualify. If the car is also used privately, only the business share counts. GOV.UK sets out the rules under "Expenses if you\'re self-employed", and an accountant can confirm what applies to you.',
+  },
+  {
+    question: 'Does this include unpaid time, holidays or cancellations?',
+    answer: 'Only through the figures you enter. Use paid hours, not hours in the car, and set weeks worked to 52 minus holidays, illness and quiet weeks. If your franchise charges the fee every week of the year, leave the "every week" option ticked.',
+  },
+  {
+    question: 'Does DriveSchoolPro see or store the figures I enter?',
+    answer: 'No. The calculator runs in your browser. The numbers you type are not sent to us, not saved and not added to the page address. If you accept analytics cookies we record only that the calculator was used, never what you entered.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+};
+const appSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Driving instructor earnings calculator',
+  url: 'https://driveschoolpro.com/tools/driving-instructor-earnings-calculator/',
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'Any (runs in a web browser)',
+  isAccessibleForFree: true,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'GBP' },
+  publisher: { '@id': 'https://driveschoolpro.com/#organization' },
+};
+
+const inputCls = 'w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-brand-red focus:ring-1 focus:ring-brand-red';
+const labelCls = 'block text-sm font-medium text-gray-800 mb-1';
+const hintCls = 'block text-xs text-gray-500 mt-1';
+const rows: ['gross' | 'franchise' | 'costs' | 'profit' | 'incomeTax' | 'class4', string][] = [
+  ['gross', 'Lesson income'], ['franchise', 'Franchise fee'], ['costs', 'Total costs'], ['profit', 'Profit'],
+  ['incomeTax', 'Income Tax'], ['class4', 'Class 4 NI'],
+];
+---
+
+<BaseLayout
+  title={`How Much Do Driving Instructors Earn? ${TAX_YEAR} Calculator`}
+  description={`Free ${TAX_YEAR} calculator for UK driving instructors: compare franchise and independent take-home after car, fuel, tax and NI. Try your own numbers.`}
+  modifiedDate={updated}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+
+  <div class="bg-gray-100 py-3">
+    <div class="container-custom">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Driving instructor earnings calculator' }]} />
+    </div>
+  </div>
+
+  <section class="section bg-white border-b border-gray-100">
+    <div class="container-custom">
+      <div class="max-w-3xl">
+        <h1 class="text-3xl md:text-4xl font-bold text-brand-navy mb-4">How much do driving instructors earn? A calculator for {TAX_YEAR}</h1>
+        <p class="text-lg text-gray-600 mb-3">
+          Put in your hourly rate, paid hours and costs to see take-home pay after the car, fuel, insurance, tax and National Insurance,
+          and compare a franchise with going independent side by side.
+        </p>
+        <p class="text-sm text-gray-500 mb-2">
+          The starting numbers are <strong>examples to show how it works</strong>. They are not averages and not a claim about what any instructor earns.
+          Change every box to match you. Nothing you type is sent to us or saved.
+        </p>
+        <p class="text-sm text-gray-500">
+          Tax and NI rates checked against GOV.UK on <time datetime="2026-11-12">12 November 2026</time>. England, Wales and Northern Ireland.
+          Already know your profit? Use the <a href="/tools/adi-income-tax-calculator/" class="text-brand-red hover:underline">ADI income and tax estimator</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-6xl mx-auto" id="earnings-calc">
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 mb-8">
+          <h2 class="text-xl font-bold text-brand-navy mb-1">Costs and weeks you share either way</h2>
+          <p class="text-sm text-gray-500 mb-5">Business costs only. Use 0 for anything that does not apply.</p>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <label class="block"><span class={labelCls}>Weeks worked a year</span>
+              <input data-s="weeksWorked" type="number" inputmode="numeric" min="0" max="52" step="1" value={S.weeksWorked} class={inputCls} autocomplete="off" />
+              <span class={hintCls}>52 minus holidays, illness and quiet weeks.</span></label>
+            <label class="block"><span class={labelCls}>Car: lease, finance or running costs (£ a month)</span>
+              <input data-s="carMonthly" type="number" inputmode="decimal" min="0" step="10" value={S.carMonthly} class={inputCls} autocomplete="off" />
+              <span class={hintCls}>Leased: the payment. Owned: finance plus servicing, tyres, road tax, or your own estimate.</span></label>
+            <label class="block"><span class={labelCls}>Fuel (£ per paid hour)</span>
+              <input data-s="fuelPerHour" type="number" inputmode="decimal" min="0" step="0.25" value={S.fuelPerHour} class={inputCls} autocomplete="off" /></label>
+            <label class="block"><span class={labelCls}>Dual controls (£ a year)</span>
+              <input data-s="dualControlsYearly" type="number" inputmode="decimal" min="0" step="10" value={S.dualControlsYearly} class={inputCls} autocomplete="off" />
+              <span class={hintCls}>Fitting, servicing and inspection.</span></label>
+            <label class="block"><span class={labelCls}>Instructor insurance (£ a year)</span>
+              <input data-s="insuranceYearly" type="number" inputmode="decimal" min="0" step="50" value={S.insuranceYearly} class={inputCls} autocomplete="off" /></label>
+            <fieldset class="block"><legend class={labelCls}>Franchise fee charged</legend>
+              <div class="flex flex-col gap-1 text-sm text-gray-700 mt-1">
+                <label class="inline-flex items-center gap-2"><input type="radio" name="franchiseAllYear" value="1" data-s="franchiseAllYear" checked /> Every week (52)</label>
+                <label class="inline-flex items-center gap-2"><input type="radio" name="franchiseAllYear" value="0" data-s="franchiseAllYear" /> Only weeks I work</label>
+              </div></fieldset>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          {([['f', 'Franchise', F, initial.franchise], ['i', 'Independent', I, initial.independent]] as const).map(([k, title, v, r]) => (
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <div class="p-6">
+                <h2 class="text-xl font-bold text-brand-navy mb-4">{title}</h2>
+                <div class="grid grid-cols-2 gap-4">
+                  <label class="block"><span class={labelCls}>Hourly rate (£)</span>
+                    <input data-k={k} data-f="hourlyRate" type="number" inputmode="decimal" min="0" step="0.5" value={v.hourlyRate} class={inputCls} autocomplete="off" /></label>
+                  <label class="block"><span class={labelCls}>Paid hours a week</span>
+                    <input data-k={k} data-f="hoursPerWeek" type="number" inputmode="decimal" min="0" step="1" value={v.hoursPerWeek} class={inputCls} autocomplete="off" /></label>
+                  <label class="block"><span class={labelCls}>Franchise fee (£ a week)</span>
+                    <input data-k={k} data-f="franchiseFeeWeekly" type="number" inputmode="decimal" min="0" step="5" value={v.franchiseFeeWeekly} class={inputCls} autocomplete="off" /></label>
+                  <label class="block"><span class={labelCls}>Other costs (£ a year)</span>
+                    <input data-k={k} data-f="otherCostsYearly" type="number" inputmode="decimal" min="0" step="50" value={v.otherCostsYearly} class={inputCls} autocomplete="off" /></label>
+                </div>
+                {k === 'f' && (
+                  <label class="mt-4 inline-flex items-start gap-2 text-sm text-gray-700">
+                    <input type="checkbox" data-k="f" data-f="carIncluded" class="mt-1" />
+                    <span>The fee includes a car, dual controls and insurance (so the shared car, dual controls and insurance costs are left out here)</span>
+                  </label>
+                )}
+                <p class="text-xs text-gray-500 mt-3">
+                  {k === 'f'
+                    ? 'Other costs: phone, ADI badge, CPD, anything the franchise does not cover.'
+                    : 'Other costs: your own marketing, booking software, accountant, ADI badge, CPD, phone. Set the fee to 0 unless you pay one.'}
+                </p>
+              </div>
+              <dl class="bg-brand-navy text-white p-6 text-sm space-y-2">
+                {rows.map(([key, label]) => (
+                  <div class="flex justify-between"><dt class="text-gray-300">{label}</dt><dd data-o={`${k}.${key}`}>{key === 'gross' || key === 'profit' ? gbp(r[key]) : '−' + gbp(r[key])}</dd></div>
+                ))}
+                <div class="border-t border-white/20 pt-3">
+                  <p class="text-gray-300">Take-home after costs, tax and NI</p>
+                  <p class="text-3xl font-bold" data-o={`${k}.takeHome`}>{gbp(r.takeHome)}</p>
+                  <p class="text-gray-300 mt-1">about <span data-o={`${k}.monthly`}>{gbp(r.takeHome / 12)}</span> a month</p>
+                  <p class="mt-2">Effective hourly rate: <strong data-o={`${k}.effectiveHourly`}>{gbp2(r.effectiveHourly)}</strong> per paid hour</p>
+                </div>
+              </dl>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-8 bg-white rounded-xl border-2 border-brand-red p-6" aria-live="polite">
+          <h2 class="text-xl font-bold text-brand-navy mb-2">The gap</h2>
+          <p class="text-gray-700" data-o="gapText">{gapText(initial)}</p>
+          <p class="text-xs text-gray-500 mt-3">
+            An estimate, not tax advice. Assumes instructing is your only income, you are a sole trader and not a Scottish taxpayer. It ignores pensions,
+            student loans, capital allowances and payments on account. Effective hourly rate counts paid hours only, not travel, admin or unpaid cancellations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">How it is worked out</h2>
+        <ol class="list-decimal pl-5 space-y-3 text-gray-700 mb-8">
+          <li><strong>Lesson income</strong> = hourly rate × paid hours a week × weeks worked.</li>
+          <li><strong>Costs</strong> = franchise fee (× 52, or × weeks worked) + car × 12 + fuel per hour × paid hours + dual controls + insurance + other costs. If the franchise fee includes the car, the car, dual controls and insurance are left out of the franchise column.</li>
+          <li><strong>Profit</strong> = income − costs. This, not turnover, is what HMRC taxes.</li>
+          <li><strong>Income Tax and Class 4 NI</strong> on profit at the {TAX_YEAR} rates: Personal Allowance £{fmt(RATES.personalAllowance)}, 20% to £{fmt(RATES.personalAllowance + RATES.basicRateLimit)}, 40% to £{fmt(RATES.additionalRateThreshold)}, 45% above; Class 4 at 6% from £{fmt(RATES.class4LowerProfitsLimit)} to £{fmt(RATES.class4UpperProfitsLimit)} and 2% above.</li>
+          <li><strong>Take-home</strong> = profit − Income Tax − Class 4 NI. <strong>Effective hourly rate</strong> = take-home ÷ paid hours.</li>
+        </ol>
+        <p class="text-gray-700 mb-6">Class 2 National Insurance is no longer compulsory for the self-employed, so it is not shown. With profits above £7,105 you get National Insurance credits automatically; below that you can choose to pay voluntary Class 2 (£3.65 a week in {TAX_YEAR}) to protect your State Pension record. The <a href="/tools/adi-income-tax-calculator/" class="text-brand-red hover:underline">ADI income and tax estimator</a> uses the same rates and adds a Making Tax Digital note.</p>
+        <h3 class="text-xl font-bold text-brand-navy mb-3">Sources, checked 12 November 2026</h3>
+        <ul class="space-y-3 text-sm">
+          {SOURCES.map((s) => (
+            <li><a href={s.href} class="text-brand-red hover:underline" target="_blank" rel="noopener noreferrer">GOV.UK: {s.label}</a><span class="block text-gray-500">{s.note}</span></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Know what you actually earn</h2>
+        <p class="text-gray-700 mb-4">
+          The calculator is only as good as the numbers you give it. DriveSchoolPro records every lesson and payment against the pupil it belongs to and reports revenue by period,
+          so your real hours and income are in one place. It does not track expenses or file anything with HMRC.
+          See <a href="/blog/driving-school-franchise-guide/" class="text-brand-red hover:underline">franchise or independent</a> for more on that choice.
+        </p>
+        <div class="bg-white rounded-xl border border-gray-100 p-6">
+          <p class="text-gray-700 mb-4">{OFFER.long}. See <a href="/pricing/" class="text-brand-red hover:underline">pricing</a> for the plans that follow, including a permanent free plan.</p>
+          <a href={OFFER.ctaPrimary.href} class="btn-primary" data-earnings-cta>{OFFER.ctaPrimary.label}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-8">Driving instructor earnings: common questions</h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="group bg-white rounded-xl border border-gray-100 shadow-sm">
+              <summary class="flex items-center justify-between px-5 py-4 cursor-pointer font-medium text-gray-900 list-none">
+                {faq.question}
+                <svg class="w-5 h-5 text-gray-400 flex-shrink-0 ml-3 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed border-t border-gray-50 pt-3">{faq.answer}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Browser only. Reads inputs, writes results. Nothing is sent, stored or put in the URL.
+  // The one analytics event (GA4, via the consent-gated gtag in BaseLayout) carries no figures.
+  import { compare, gapText, gbp, gbp2, type ScenarioInputs, type SharedInputs } from '../../../utils/adi-earnings';
+
+  const root = document.getElementById('earnings-calc');
+  if (root) {
+    const set = (key: string, text: string) => { const el = root.querySelector<HTMLElement>(`[data-o="${key}"]`); if (el) el.textContent = text; };
+    const val = (sel: string) => { const el = root.querySelector<HTMLInputElement>(sel); const v = el ? parseFloat(el.value) : NaN; return Number.isFinite(v) ? v : 0; };
+    const scen = (k: string): ScenarioInputs => {
+      const f = (n: keyof ScenarioInputs) => val(`[data-k="${k}"][data-f="${n}"]`);
+      const inc = root.querySelector<HTMLInputElement>(`[data-k="${k}"][data-f="carIncluded"]`);
+      return { hourlyRate: f('hourlyRate'), hoursPerWeek: f('hoursPerWeek'), franchiseFeeWeekly: f('franchiseFeeWeekly'), otherCostsYearly: f('otherCostsYearly'), carIncluded: !!inc?.checked };
+    };
+    const shared = (): SharedInputs => {
+      const s = (n: string) => val(`[data-s="${n}"]`);
+      const all = root.querySelector<HTMLInputElement>('input[name="franchiseAllYear"]:checked');
+      return { weeksWorked: s('weeksWorked'), carMonthly: s('carMonthly'), fuelPerHour: s('fuelPerHour'), dualControlsYearly: s('dualControlsYearly'), insuranceYearly: s('insuranceYearly'), franchiseAllYear: all ? all.value === '1' : true };
+    };
+
+    const update = () => {
+      const c = compare(scen('f'), scen('i'), shared());
+      for (const [k, r] of [['f', c.franchise], ['i', c.independent]] as const) {
+        set(`${k}.gross`, gbp(r.gross)); set(`${k}.profit`, gbp(r.profit));
+        for (const n of ['franchise', 'costs', 'incomeTax', 'class4'] as const) set(`${k}.${n}`, '−' + gbp(r[n]));
+        set(`${k}.takeHome`, gbp(r.takeHome)); set(`${k}.monthly`, gbp(r.takeHome / 12)); set(`${k}.effectiveHourly`, gbp2(r.effectiveHourly));
+      }
+      set('gapText', gapText(c));
+    };
+
+    let tracked = false;
+    const track = () => {
+      if (tracked) return;
+      tracked = true;
+      const w = window as unknown as { gtag?: (...a: unknown[]) => void };
+      if (typeof w.gtag === 'function') w.gtag('event', 'earnings_calculator_used', { tool: 'driving_instructor_earnings' });
+    };
+    root.addEventListener('input', () => { update(); track(); });
+    root.addEventListener('change', update);
+    document.querySelector('[data-earnings-cta]')?.addEventListener('click', () => {
+      const w = window as unknown as { gtag?: (...a: unknown[]) => void };
+      if (typeof w.gtag === 'function') w.gtag('event', 'earnings_calculator_cta_click', { tool: 'driving_instructor_earnings' });
+    });
+    update();
+  }
+</script>
