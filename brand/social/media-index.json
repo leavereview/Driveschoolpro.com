@@ -1,0 +1,497 @@
+[
+  {
+    "id": "excuse-montage",
+    "type": "video",
+    "path": "assets/comedy-ads/montage/excuse-montage-draft.mp4",
+    "url": null,
+    "duration": 19.83,
+    "topics": [
+      "getting-paid"
+    ],
+    "joke": "transfer-tonight",
+    "voice": "Andy",
+    "created": "2026-11-11",
+    "firstPublished": null,
+    "aiVoiced": true
+  },
+  {
+    "id": "understatement",
+    "type": "video",
+    "path": "assets/comedy-ads/understatement/understatement-draft.mp4",
+    "url": null,
+    "duration": 19.44,
+    "topics": [
+      "cancellations"
+    ],
+    "joke": "cancellations",
+    "voice": "Ryan",
+    "created": "2026-11-11",
+    "firstPublished": null,
+    "aiVoiced": true
+  },
+  {
+    "id": "nature-doc",
+    "type": "video",
+    "path": "assets/comedy-ads/nature-doc/nature-doc-draft.mp4",
+    "url": null,
+    "duration": 21.08,
+    "topics": [
+      "getting-paid"
+    ],
+    "joke": "sunday-night-admin",
+    "voice": "Steven",
+    "created": "2026-11-11",
+    "firstPublished": null,
+    "aiVoiced": true
+  },
+  {
+    "id": "excuse-carousel",
+    "type": "carousel",
+    "path": "assets/comedy-ads/carousel",
+    "url": null,
+    "duration": null,
+    "topics": [
+      "getting-paid"
+    ],
+    "joke": null,
+    "voice": null,
+    "created": "2026-11-11",
+    "firstPublished": null,
+    "aiVoiced": false
+  },
+  {
+    "id": "s1",
+    "type": "video",
+    "path": "public/social/video/s1.mp4",
+    "url": "https://driveschoolpro.com/social/video/s1.mp4",
+    "duration": null,
+    "topics": [
+      "getting-paid"
+    ],
+    "joke": "transfer-tonight",
+    "voice": "John",
+    "created": "2026-10-31",
+    "firstPublished": "2026-11-04",
+    "aiVoiced": false,
+    "title": "I'll transfer it tonight"
+  },
+  {
+    "id": "s4",
+    "type": "video",
+    "path": "public/social/video/s4.mp4",
+    "url": "https://driveschoolpro.com/social/video/s4.mp4",
+    "duration": null,
+    "topics": [
+      "scheduling"
+    ],
+    "joke": null,
+    "voice": "John",
+    "created": "2026-10-31",
+    "firstPublished": null,
+    "aiVoiced": false,
+    "title": "Can we move Thursday"
+  },
+  {
+    "id": "s6",
+    "type": "video",
+    "path": "public/social/video/s6.mp4",
+    "url": "https://driveschoolpro.com/social/video/s6.mp4",
+    "duration": null,
+    "topics": [
+      "progress-tracking"
+    ],
+    "joke": null,
+    "voice": "John",
+    "created": "2026-10-31",
+    "firstPublished": "2026-11-25",
+    "aiVoiced": false,
+    "title": "Two taps at the kerb"
+  },
+  {
+    "id": "s7",
+    "type": "video",
+    "path": "public/social/video/s7.mp4",
+    "url": "https://driveschoolpro.com/social/video/s7.mp4",
+    "duration": null,
+    "topics": [
+      "progress-tracking"
+    ],
+    "joke": null,
+    "voice": "John",
+    "created": "2026-10-31",
+    "firstPublished": "2026-11-13",
+    "aiVoiced": false,
+    "title": "Am I ready"
+  },
+  {
+    "id": "s8",
+    "type": "video",
+    "path": "public/social/video/s8.mp4",
+    "url": "https://driveschoolpro.com/social/video/s8.mp4",
+    "duration": null,
+    "topics": [
+      "lesson-briefings"
+    ],
+    "joke": null,
+    "voice": "John",
+    "created": "2026-10-31",
+    "firstPublished": "2026-11-19",
+    "aiVoiced": false,
+    "title": "You remembered"
+  },
+  {
+    "id": "s9",
+    "type": "video",
+    "path": "public/social/video/s9.mp4",
+    "url": "https://driveschoolpro.com/social/video/s9.mp4",
+    "duration": null,
+    "topics": [
+      "scheduling"
+    ],
+    "joke": null,
+    "voice": "John",
+    "created": "2026-10-31",
+    "firstPublished": "2026-11-12",
+    "aiVoiced": false,
+    "title": "Double booking saved"
+  },
+  {
+    "id": "s10",
+    "type": "video",
+    "path": "public/social/video/s10.mp4",
+    "url": "https://driveschoolpro.com/social/video/s10.mp4",
+    "duration": null,
+    "topics": [
+      "getting-paid"
+    ],
+    "joke": "sunday-night-admin",
+    "voice": "John",
+    "created": "2026-10-31",
+    "firstPublished": null,
+    "aiVoiced": false,
+    "title": "Sunday night"
+  },
+  {
+    "id": "s11",
+    "type": "video",
+    "path": "public/social/video/s11.mp4",
+    "url": "https://driveschoolpro.com/social/video/s11.mp4",
+    "duration": null,
+    "topics": [
+      "getting-paid"
+    ],
+    "joke": null,
+    "voice": "John",
+    "created": "2026-10-31",
+    "firstPublished": "2026-11-16",
+    "aiVoiced": false,
+    "title": "Cash recorded"
+  },
+  {
+    "id": "s13",
+    "type": "video",
+    "path": "public/social/video/s13.mp4",
+    "url": "https://driveschoolpro.com/social/video/s13.mp4",
+    "duration": null,
+    "topics": [
+      "reviews"
+    ],
+    "joke": null,
+    "voice": "John",
+    "created": "2026-10-31",
+    "firstPublished": "2026-11-23",
+    "aiVoiced": false,
+    "title": "Pass day"
+  },
+  {
+    "id": "s14",
+    "type": "video",
+    "path": "public/social/video/s14.mp4",
+    "url": "https://driveschoolpro.com/social/video/s14.mp4",
+    "duration": null,
+    "topics": [],
+    "joke": "things-adis-hear",
+    "voice": "John",
+    "created": "2026-10-31",
+    "firstPublished": "2026-11-07",
+    "aiVoiced": false,
+    "title": "Things ADIs hear"
+  },
+  {
+    "id": "n09",
+    "type": "video",
+    "path": "public/social/video/n09.mp4",
+    "url": "https://driveschoolpro.com/social/video/n09.mp4",
+    "duration": null,
+    "topics": [
+      "mtd"
+    ],
+    "joke": null,
+    "voice": "John",
+    "created": null,
+    "firstPublished": null,
+    "aiVoiced": false,
+    "title": "MTD 19-hour rule"
+  },
+  {
+    "id": "n15",
+    "type": "video",
+    "path": "public/social/video/n15.mp4",
+    "url": "https://driveschoolpro.com/social/video/n15.mp4",
+    "duration": null,
+    "topics": [
+      "founder"
+    ],
+    "joke": null,
+    "voice": "John",
+    "created": null,
+    "firstPublished": null,
+    "aiVoiced": false,
+    "title": "why I built DriveSchoolPro, the founder piece"
+  },
+  {
+    "id": "n39",
+    "type": "video",
+    "path": "public/social/video/n39.mp4",
+    "url": "https://driveschoolpro.com/social/video/n39.mp4",
+    "duration": null,
+    "topics": [
+      "offer"
+    ],
+    "joke": null,
+    "voice": "John",
+    "created": null,
+    "firstPublished": null,
+    "aiVoiced": false,
+    "title": "no Black Friday tricks"
+  },
+  {
+    "id": "n03",
+    "type": "video",
+    "path": "public/social/video/n03.mp4",
+    "url": "https://driveschoolpro.com/social/video/n03.mp4",
+    "duration": 36.7,
+    "topics": [
+      "app-demo"
+    ],
+    "joke": null,
+    "voice": "John",
+    "created": null,
+    "firstPublished": "2026-11-02",
+    "aiVoiced": false,
+    "title": "How-to: online booking from your website",
+    "cover": "https://driveschoolpro.com/social/video/n03-cover.png",
+    "voiceoverUrl": "https://driveschoolpro.com/social/video/n03-vo2.mp4"
+  },
+  {
+    "id": "n07",
+    "type": "video",
+    "path": "public/social/video/n07.mp4",
+    "url": "https://driveschoolpro.com/social/video/n07.mp4",
+    "duration": 33.2,
+    "topics": [
+      "app-demo"
+    ],
+    "joke": null,
+    "voice": "John",
+    "created": null,
+    "firstPublished": "2026-11-05",
+    "aiVoiced": false,
+    "title": "How-to: email reminders with one-click confirm",
+    "cover": "https://driveschoolpro.com/social/video/n07-cover.png",
+    "voiceoverUrl": "https://driveschoolpro.com/social/video/n07-vo2.mp4"
+  },
+  {
+    "id": "n14",
+    "type": "video",
+    "path": "public/social/video/n14.mp4",
+    "url": "https://driveschoolpro.com/social/video/n14.mp4",
+    "duration": 35.7,
+    "topics": [
+      "app-demo"
+    ],
+    "joke": null,
+    "voice": "John",
+    "created": null,
+    "firstPublished": "2026-11-09",
+    "aiVoiced": false,
+    "title": "How-to: record progress on the 27 skills",
+    "cover": "https://driveschoolpro.com/social/video/n14-cover.png",
+    "voiceoverUrl": "https://driveschoolpro.com/social/video/n14-vo2.mp4"
+  },
+  {
+    "id": "n17",
+    "type": "video",
+    "path": "public/social/video/n17.mp4",
+    "url": "https://driveschoolpro.com/social/video/n17.mp4",
+    "duration": 30.7,
+    "topics": [
+      "app-demo"
+    ],
+    "joke": null,
+    "voice": "John",
+    "created": null,
+    "firstPublished": "2026-11-12",
+    "aiVoiced": false,
+    "title": "How-to: AI lesson briefings",
+    "cover": "https://driveschoolpro.com/social/video/n17-cover.png",
+    "voiceoverUrl": "https://driveschoolpro.com/social/video/n17-vo2.mp4"
+  },
+  {
+    "id": "n20",
+    "type": "video",
+    "path": "public/social/video/n20.mp4",
+    "url": "https://driveschoolpro.com/social/video/n20.mp4",
+    "duration": 39,
+    "topics": [
+      "app-demo"
+    ],
+    "joke": null,
+    "voice": null,
+    "created": null,
+    "firstPublished": "2026-11-14",
+    "aiVoiced": false,
+    "title": "Tip: the first 3 minutes of a standards check",
+    "cover": "https://driveschoolpro.com/social/video/n20-cover.png"
+  },
+  {
+    "id": "n24",
+    "type": "video",
+    "path": "public/social/video/n24.mp4",
+    "url": "https://driveschoolpro.com/social/video/n24.mp4",
+    "duration": 21.9,
+    "topics": [
+      "app-demo"
+    ],
+    "joke": null,
+    "voice": "John",
+    "created": null,
+    "firstPublished": "2026-11-16",
+    "aiVoiced": false,
+    "title": "How-to: clash checks (pupil, instructor, car)",
+    "cover": "https://driveschoolpro.com/social/video/n24-cover.png",
+    "voiceoverUrl": "https://driveschoolpro.com/social/video/n24-vo2.mp4"
+  },
+  {
+    "id": "n26",
+    "type": "video",
+    "path": "public/social/video/n26.mp4",
+    "url": "https://driveschoolpro.com/social/video/n26.mp4",
+    "duration": 36,
+    "topics": [
+      "app-demo"
+    ],
+    "joke": null,
+    "voice": "John",
+    "created": null,
+    "firstPublished": "2026-11-18",
+    "aiVoiced": false,
+    "title": "Tip: ice and stopping distances",
+    "cover": "https://driveschoolpro.com/social/video/n26-cover.png",
+    "voiceoverUrl": "https://driveschoolpro.com/social/video/n26-vo.mp4"
+  },
+  {
+    "id": "n28",
+    "type": "video",
+    "path": "public/social/video/n28.mp4",
+    "url": "https://driveschoolpro.com/social/video/n28.mp4",
+    "duration": 29.1,
+    "topics": [
+      "app-demo"
+    ],
+    "joke": null,
+    "voice": "John",
+    "created": null,
+    "firstPublished": "2026-11-19",
+    "aiVoiced": false,
+    "title": "How-to: card payments and invoices",
+    "cover": "https://driveschoolpro.com/social/video/n28-cover.png",
+    "voiceoverUrl": "https://driveschoolpro.com/social/video/n28-vo2.mp4"
+  },
+  {
+    "id": "n31",
+    "type": "video",
+    "path": "public/social/video/n31.mp4",
+    "url": "https://driveschoolpro.com/social/video/n31.mp4",
+    "duration": 44,
+    "topics": [
+      "app-demo"
+    ],
+    "joke": null,
+    "voice": null,
+    "created": null,
+    "firstPublished": "2026-11-21",
+    "aiVoiced": false,
+    "title": "Tip: the winter \"show me tell me\" questions",
+    "cover": "https://driveschoolpro.com/social/video/n31-cover.png"
+  },
+  {
+    "id": "n33",
+    "type": "video",
+    "path": "public/social/video/n33.mp4",
+    "url": "https://driveschoolpro.com/social/video/n33.mp4",
+    "duration": 42.9,
+    "topics": [
+      "app-demo"
+    ],
+    "joke": null,
+    "voice": "John",
+    "created": null,
+    "firstPublished": "2026-11-23",
+    "aiVoiced": false,
+    "title": "How-to: running a multi-instructor school",
+    "cover": "https://driveschoolpro.com/social/video/n33-cover.png",
+    "voiceoverUrl": "https://driveschoolpro.com/social/video/n33-vo2.mp4"
+  },
+  {
+    "id": "n37",
+    "type": "video",
+    "path": "public/social/video/n37.mp4",
+    "url": "https://driveschoolpro.com/social/video/n37.mp4",
+    "duration": 32.8,
+    "topics": [
+      "app-demo"
+    ],
+    "joke": null,
+    "voice": "John",
+    "created": null,
+    "firstPublished": "2026-11-25",
+    "aiVoiced": false,
+    "title": "How-to: what your pupils see in their app",
+    "cover": "https://driveschoolpro.com/social/video/n37-cover.png",
+    "voiceoverUrl": "https://driveschoolpro.com/social/video/n37-vo2.mp4"
+  },
+  {
+    "id": "n45",
+    "type": "video",
+    "path": "public/social/video/n45.mp4",
+    "url": "https://driveschoolpro.com/social/video/n45.mp4",
+    "duration": 38.8,
+    "topics": [
+      "app-demo"
+    ],
+    "joke": null,
+    "voice": "John",
+    "created": null,
+    "firstPublished": "2026-11-30",
+    "aiVoiced": false,
+    "title": "How-to: moving from a paper diary in 2 minutes",
+    "cover": "https://driveschoolpro.com/social/video/n45-cover.png",
+    "voiceoverUrl": "https://driveschoolpro.com/social/video/n45-vo2.mp4"
+  },
+  {
+    "id": "car-001",
+    "type": "carousel",
+    "path": "renders/2026-11-16/make/2026-11-16-1",
+    "url": "https://driveschoolpro.com/social/video/auto/car-001-01.png",
+    "duration": null,
+    "topics": [
+      "MTD"
+    ],
+    "joke": null,
+    "voice": null,
+    "created": "2026-11-12",
+    "firstPublished": "2026-11-16",
+    "aiVoiced": false
+  }
+]
