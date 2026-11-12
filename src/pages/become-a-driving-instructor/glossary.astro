@@ -1,0 +1,89 @@
+---
+// /become-a-driving-instructor/glossary/ (issue #85): one anchor id per term.
+// Definitions use GOV.UK wording where GOV.UK uses the term; trade-only terms are labelled as such.
+import InstructorGuideLayout from '../../components/guide/InstructorGuideLayout.astro';
+import { FEES, GOVUK } from '../../data/instructor-guide';
+
+interface Term { id: string; term: string; body: string; }
+
+const terms: Term[] = [
+  { id: 'adi', term: 'ADI (approved driving instructor)', body: `Someone on the DVSA register who is allowed to charge for car driving lessons in Great Britain. You qualify by passing three tests and registering for your first ADI certificate (£${FEES.firstCertificate}). Registration lasts 4 years.` },
+  { id: 'adi-21s', term: 'ADI 21S', body: 'The form for recording the hours you give lessons and the hours you are supervised, if you chose supervision (option 1) on your trainee licence. You and your ADI both sign it and send it to DVSA when the licence runs out.' },
+  { id: 'adi-21t', term: 'ADI 21T', body: 'The declaration form on which your 40 hours of training before a trainee licence is recorded. At least 10 of the hours must be in a car.' },
+  { id: 'adi-part-1', term: 'ADI part 1', body: `The theory test: 100 multiple-choice questions and a 14-clip hazard perception test, booked and taken as one test. £${FEES.part1}. See <a href="/become-a-driving-instructor/adi-part-1/">ADI part 1</a>.` },
+  { id: 'adi-part-2', term: 'ADI part 2', body: `The driving ability test, about an hour long, with 3 attempts. £${FEES.part2}. See <a href="/become-a-driving-instructor/adi-part-2/">ADI part 2</a>.` },
+  { id: 'adi-part-3', term: 'ADI part 3', body: `The instructional ability test: about 45 minutes teaching one of your own pupils, marked on 17 competencies, with 3 attempts. £${FEES.part3}. See <a href="/become-a-driving-instructor/adi-part-3/">ADI part 3</a>.` },
+  { id: 'adi-register', term: 'ADI register', body: 'DVSA\'s register of approved driving instructors. You must be on it to charge for lessons, and you renew every 4 years.' },
+  { id: 'ccl', term: 'CCL (client-centred learning)', body: 'Trade shorthand for client-centred learning, the coaching approach behind the part 3 lesson, where you agree goals with your pupil and encourage them to reflect. GOV.UK does not use "CCL", but it does describe the part 3 test as a client-centred driving lesson.' },
+  { id: 'dbs', term: 'DBS check', body: `A Disclosure and Barring Service criminal record check. You need a new one to start your application, even if you already have one, and again at each renewal. It costs £${FEES.dbs} online, or £${FEES.dbsPostOffice} if you verify your identity at a Post Office.` },
+  { id: 'dual-controls', term: 'Dual controls', body: 'A second set of pedals for the passenger. GOV.UK says your own car does not need them for the ADI part 2 test, but a hire car does. See <a href="/become-a-driving-instructor/car-dual-controls-insurance/">car, dual controls and insurance</a>.' },
+  { id: 'dvsa', term: 'DVSA', body: 'The Driver and Vehicle Standards Agency, which runs the ADI tests, the register and the trainee licence.' },
+  { id: 'fit-and-proper', term: 'Fit and proper', body: 'You must be a "fit and proper" person to be an ADI and to hold a trainee licence. The law does not define the term, so DVSA assesses each case.' },
+  { id: 'hazard-perception', term: 'Hazard perception', body: 'The video part of ADI part 1: 14 clips, each with at least one developing hazard, scored up to 5 points per hazard, with a pass mark of 57 out of 75.' },
+  { id: 'mam', term: 'MAM (maximum authorised mass)', body: 'A weight limit listed in the car\'s handbook. A test car must be within it.' },
+  { id: 'national-standard', term: 'National standard', body: 'DVSA\'s <a href="https://www.gov.uk/government/publications/national-standard-for-driver-and-rider-training" target="_blank" rel="noopener noreferrer">national standard for driver and rider training</a>, which sets out the skills and knowledge instructors need. The part 3 and standards check competencies are linked to it.' },
+  { id: 'ordit', term: 'ORDIT', body: 'The official register of driving instructor training, run by DVSA. It is voluntary for trainers: it lets them show they meet DVSA\'s training standard and appear in the GOV.UK course finder. GOV.UK tells you to use a registered trainer.' },
+  { id: 'pink-badge', term: 'Pink badge', body: 'Trade name for the trainee driving instructor licence. GOV.UK does not use the term: it calls it the trainee driving instructor licence, which you display on the nearside edge of the front windscreen. See <a href="#trainee-licence">trainee licence</a>.' },
+  { id: 'pdi', term: 'PDI (potential driving instructor)', body: 'Trade term for a trainee instructor. GOV.UK says that in adverts you must describe yourself as a "trainee driving instructor", and not use "PDI" or "potential driving instructor".' },
+  { id: 'sc1', term: 'SC1', body: 'Trade shorthand for the ADI standards check, which is usually how instructors refer to the check or its report form. GOV.UK\'s pages call it the "ADI standards check" and the "ADI standards check report form" and do not use the name SC1. See <a href="#standards-check">standards check</a>.' },
+  { id: 'sponsoring-adi', term: 'Sponsoring ADI', body: 'The qualified ADI who supervises a trainee. Under supervision option 1 they supervise 20% of the lessons you give.' },
+  { id: 'standards-check', term: 'Standards check', body: 'A check of an ADI\'s teaching: usually every 4 years, and sometimes sooner. A DVSA examiner watches a client-centred lesson of about 45 minutes with one of your pupils and scores the same 17 competencies as part 3, giving grade A (43 to 51), grade B (31 to 42) or a fail (0 to 30). A fail gives you up to 2 more attempts, and 3 fails mean removal from the register.' },
+  { id: 'trainee-licence', term: 'Trainee licence', body: `The trainee driving instructor licence: £${FEES.traineeLicence}, 6 months, available after passing part 2 with 40 hours of training. It lets you charge for lessons to cover costs like insurance and vehicle costs. You can only teach from the training establishment named on it. See <a href="/become-a-driving-instructor/adi-part-3/">ADI part 3 and the trainee licence</a>.` },
+  { id: 'training-establishment', term: 'Training establishment', body: 'The driving school or organisation named on your trainee licence. You can only instruct from it, and you cannot set up your own school while you hold the licence.' },
+];
+
+const faqs = [
+  {
+    question: 'What does PDI mean for driving instructors?',
+    answer: 'PDI is trade shorthand for potential driving instructor: someone training to qualify as an ADI. GOV.UK says that in advertising a trainee must say "trainee driving instructor", not "PDI".',
+  },
+  {
+    question: 'What is the pink badge?',
+    answer: 'The pink badge is the trade name for the trainee driving instructor licence. It costs £140, lasts 6 months and lets you charge for lessons to cover costs such as insurance and vehicle costs while you prepare for ADI part 3. GOV.UK calls it the trainee driving instructor licence.',
+  },
+  {
+    question: 'What does ORDIT stand for?',
+    answer: 'ORDIT is the DVSA\'s official register of driving instructor training, a voluntary register that trainers can join to show they meet DVSA\'s training standard.',
+  },
+  {
+    question: 'What is SC1 in driving instruction?',
+    answer: 'SC1 is trade shorthand for the ADI standards check, the periodic check of a qualified instructor\'s teaching. GOV.UK calls it the ADI standards check and does not use the name SC1.',
+  },
+];
+
+const sources = [GOVUK.route, GOVUK.trainee, GOVUK.standardsCheck, GOVUK.standardsGrade, GOVUK.ordit, GOVUK.register, GOVUK.dbs];
+---
+<InstructorGuideLayout
+  title="Driving Instructor Glossary: PDI, ADI, ORDIT, SC1"
+  description="Plain-English glossary for trainee driving instructors: PDI, ADI, ORDIT, pink badge, SC1, standards check, CCL, DBS, ADI 21T and more."
+  h1="Driving instructor glossary: PDI, ADI, ORDIT, pink badge, SC1 and more"
+  lead="The trade has a lot of abbreviations, and some are DVSA terms while others are only used in the trade. Each entry says which, and each has its own link so you can send someone straight to a term."
+  crumb="Glossary"
+  path="/become-a-driving-instructor/glossary/"
+  faqs={faqs}
+  sources={sources}
+>
+  <h2 class="!mt-0">Jump to a term</h2>
+  <p>
+    {terms.map((t, i) => (
+      <>
+        <a href={`#${t.id}`}>{t.term.split(' (')[0]}</a>{i < terms.length - 1 ? ' · ' : ''}
+      </>
+    ))}
+  </p>
+
+  <h2>Terms</h2>
+  <dl>
+    {terms.map((t) => (
+      <>
+        <dt id={t.id}><a href={`#${t.id}`} class="!no-underline !text-brand-navy">{t.term}</a></dt>
+        <dd set:html={t.body} />
+      </>
+    ))}
+  </dl>
+
+  <h2>Where to go next</h2>
+  <p>
+    The <a href="/become-a-driving-instructor/">how to become a driving instructor</a> guide explains the route these terms belong to. A note on wording: where GOV.UK avoids a trade term, such as PDI, pink badge and SC1, this glossary says so, because the official pages are what DVSA will hold you to. If you are weighing up where to work, see <a href="/become-a-driving-instructor/franchise-or-independent/">franchise or independent</a>.
+  </p>
+</InstructorGuideLayout>

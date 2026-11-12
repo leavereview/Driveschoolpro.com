@@ -442,4 +442,5 @@ Whatever path you choose, [DriveSchoolPro](/) helps you manage scheduling, stude
 
 - [Driving School Software](/)
 - [Starting a Driving School Guide](/blog/starting-driving-school-guide/)
+- [Franchise or Independent: Questions to Ask a New Instructor](/become-a-driving-instructor/franchise-or-independent/)
 - [Driving School Insurance Guide](/blog/driving-school-insurance-guide/)

@@ -1,0 +1,163 @@
+---
+// /become-a-driving-instructor/earnings/ (issue #85).
+// No invented earnings data: the only market figures are the National Careers Service's, quoted as theirs.
+// The rate x hours table is arithmetic, labelled as such.
+import InstructorGuideLayout from '../../components/guide/InstructorGuideLayout.astro';
+import { GOVUK } from '../../data/instructor-guide';
+import { incomeTax, class4, TAX_YEAR } from '../../utils/adi-tax';
+
+const gbp = (n: number) => '£' + Math.round(n).toLocaleString('en-GB');
+const gbp2 = (n: number) => '£' + n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+const WEEKS = 45;
+const rates = [30, 40, 50];
+const hours = [15, 20, 25, 30];
+
+const exampleProfit = 30000;
+const exTax = incomeTax(exampleProfit);
+const exNi = class4(exampleProfit);
+
+const faqs = [
+  {
+    question: 'How much do driving instructors earn in the UK?',
+    answer: 'The National Careers Service gives a starting salary of £32,000 and an experienced salary of £45,000 a year, for 20 to 40 hours a week, but its page does not say where those figures come from. In practice an instructor who works for themselves earns what their rate, paid hours and weeks worked produce, minus costs, so use your own numbers rather than an average.',
+  },
+  {
+    question: 'How do I work out what a driving instructor earns?',
+    answer: 'Multiply your hourly rate by the paid hours you teach a week and by the weeks you work in a year. That is gross income. Subtract the car, fuel, insurance, any franchise fee and other costs to get profit. Profit, not turnover, is what you pay tax on and what you live on.',
+  },
+  {
+    question: 'Do trainee driving instructors earn money?',
+    answer: 'A trainee licence lets you charge for lessons to cover costs such as insurance and vehicle costs, according to GOV.UK. It is not framed as a way to earn a full income, and you may only teach from the training establishment named on your licence. Plan on part 3 being the point where income starts.',
+  },
+  {
+    question: 'Is a franchise or going independent more profitable?',
+    answer: 'Neither is always better. A franchise fee is a fixed cost that can bring pupils and a car, while going independent saves the fee but means you find your own pupils. Compare the profit after the fee, not the hourly rate, and ask what happens to the fee in weeks you do not work.',
+  },
+  {
+    question: 'How much tax does a driving instructor pay?',
+    answer: `A self-employed instructor pays Income Tax and Class 4 National Insurance on profit. On ${gbp(exampleProfit)} of profit in ${TAX_YEAR} in England, Wales and Northern Ireland, our estimator gives ${gbp2(exTax)} Income Tax and ${gbp2(exNi)} Class 4 NI. Scottish rates differ. This is an estimate, not tax advice.`,
+  },
+  {
+    question: 'Do I have to register as self-employed?',
+    answer: 'If you work for yourself as an ADI you will normally need to register as self-employed with HMRC. GOV.UK has a step-by-step page on setting up. If you work as an employee of a school, check your contract. An accountant can confirm which applies to you.',
+  },
+];
+
+const sources = [
+  { ...GOVUK.careers, note: 'Source of the £32,000 and £45,000 figures. The page does not state where they come from or what year they are for.' },
+  GOVUK.selfEmployed,
+  { label: 'Expenses if you are self-employed (GOV.UK)', href: 'https://www.gov.uk/expenses-if-youre-self-employed' },
+  { label: 'Self-employed National Insurance rates (GOV.UK)', href: 'https://www.gov.uk/self-employed-national-insurance-rates' },
+  { label: 'Income Tax rates and allowances (GOV.UK)', href: 'https://www.gov.uk/government/publications/rates-and-allowances-income-tax/income-tax-rates-and-allowances-current-and-past' },
+  GOVUK.trainee,
+];
+---
+<InstructorGuideLayout
+  title="How Much Do Driving Instructors Earn? UK Guide"
+  description="How much a UK driving instructor earns: the National Careers Service range, how to work out profit from your rate and hours, costs and tax."
+  h1="How much do driving instructors earn?"
+  lead="There is no single answer, because most instructors are self-employed and earn what their rate, hours and costs produce. This guide gives the one official range we could find, then shows how to work out your own figure."
+  crumb="Earnings"
+  path="/become-a-driving-instructor/earnings/"
+  faqs={faqs}
+  sources={sources}
+>
+  <h2 class="!mt-0">The official range, and its limits</h2>
+  <p>
+    The National Careers Service job profile for driving instructors gives a starting salary of <strong>£32,000 a year</strong> and an experienced salary of <strong>£45,000 a year</strong>, with working hours of 20 to 40 a week that vary. It adds that instructors normally charge by the hour, so pay depends on the hours you work and local demand.
+  </p>
+  <div class="note">
+    <p><strong>Treat these as a guide, not a promise.</strong> The profile does not say where the figures come from or which year they are for, and "salary" is an awkward word for someone who is self-employed. We have not found a DVSA or ONS figure for what ADIs actually take home, so we do not quote one.</p>
+  </div>
+  <p>
+    What the profile does tell you is that the job is paid by the hour and that the hours are yours to build. That is why the useful question is not "what do instructors earn?" but "what would I earn at my rate, with the hours I can fill?"
+  </p>
+
+  <h2>Step 1: gross income from your rate and hours</h2>
+  <p>
+    Gross income is your hourly rate multiplied by paid hours a week and by the weeks you work. The table below is only that arithmetic, using {WEEKS} working weeks a year (52 minus holidays, illness and quiet weeks). The rates and hours are examples to show the shape, not market rates or survey data. Swap in your own.
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Paid hours a week</th>
+          {rates.map((r) => <th>At £{r} an hour</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {hours.map((h) => (
+          <tr>
+            <td>{h}</td>
+            {rates.map((r) => <td>{gbp(r * h * WEEKS)}</td>)}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Two things move this more than the rate. The first is how many of your hours are actually paid: gaps between lessons, cancellations and travel do not earn anything. The second is weeks worked: school holidays and winter can thin a diary out.
+  </p>
+
+  <h2>Step 2: take off your costs to get profit</h2>
+  <p>
+    Gross income is turnover. Profit is what is left once the costs of working are paid, and it is profit that HMRC taxes and that you live on. The costs to list are:
+  </p>
+  <ul>
+    <li><strong>The car:</strong> lease or finance payments, or depreciation if you buy; servicing, tyres, road tax and MOT. See <a href="/become-a-driving-instructor/car-dual-controls-insurance/">car, dual controls and insurance</a>.</li>
+    <li><strong>Insurance:</strong> instructor motor insurance and any liability cover.</li>
+    <li><strong>Fuel:</strong> it rises and falls with the hours you teach.</li>
+    <li><strong>Franchise fee:</strong> if you join a school. Check whether it is charged in weeks you do not work. See <a href="/become-a-driving-instructor/franchise-or-independent/">franchise or independent</a>.</li>
+    <li><strong>Registration and checks:</strong> the ADI registration fee is £300 every 4 years, with a new DBS check, which averages out to a small monthly amount.</li>
+    <li><strong>Everything else:</strong> phone, software, accountant, marketing, training and CPD, and your own diary and payment tools.</li>
+  </ul>
+  <p>
+    GOV.UK's guidance on <a href="https://www.gov.uk/expenses-if-youre-self-employed" target="_blank" rel="noopener noreferrer">expenses if you are self-employed</a> explains what counts as an allowable business cost, including how car costs are treated. If a car is also used privately, only the business share counts.
+  </p>
+
+  <h2>Step 3: tax and National Insurance</h2>
+  <p>
+    A self-employed ADI pays Income Tax and Class 4 National Insurance on profit. As a worked example, our estimator's maths for {TAX_YEAR} (England, Wales and Northern Ireland, instructing as your only income) gives <strong>{gbp2(exTax)} Income Tax</strong> and <strong>{gbp2(exNi)} Class 4 NI</strong> on {gbp(exampleProfit)} of profit. Scottish Income Tax bands differ and are not modelled.
+  </p>
+  <p>
+    Try your own figures in the <a href="/tools/adi-income-tax-calculator/">ADI income and tax estimator</a>: it takes your rate, hours, franchise fee and car costs and shows profit, tax and take-home. It runs in your browser and does not store what you type.
+  </p>
+  <p>
+    <!-- TODO(issue #85): /tools/driving-instructor-earnings-calculator/ is being built on a parallel branch and will 404 until that branch merges. Remove this note once it is live. -->
+    For a quicker look at what a weekly diary could earn, there is also the <a href="/tools/driving-instructor-earnings-calculator/">driving instructor earnings calculator</a>.
+  </p>
+  <p>
+    Making Tax Digital for Income Tax will apply to self-employed people with qualifying income over £30,000 from 6 April 2027 and over £20,000 from 6 April 2028, according to GOV.UK (the threshold is judged on income in an earlier tax year, so check the dates for your own case). Qualifying income is turnover before costs, so a full-time instructor can be inside it. See <a href="/blog/making-tax-digital-driving-instructors/">Making Tax Digital for driving instructors</a>.
+  </p>
+
+  <h2>What changes while you are training</h2>
+  <p>
+    Until you pass part 3 your income will usually be lower and your costs higher: test fees, training, and the car. A trainee licence lets you charge for lessons "to cover the cost of things like your insurance and vehicle costs", which is GOV.UK's wording, and you can only teach from the training establishment named on the licence. The first licence lasts 6 months. Working out your budget for the whole route, including a possible retake, is covered in <a href="/become-a-driving-instructor/">how to become a driving instructor</a>.
+  </p>
+  <p>
+    A useful habit from the first paid lesson is to record every lesson, payment and cost, because you will need those figures for your tax return and to know your real profit. A diary that stores lessons and payments against each pupil does that as a by-product. DriveSchoolPro does the lesson and payment side; for expenses and tax filing you still want accounting software or an accountant, as described in <a href="/driving-instructor-accounting-software/">driving instructor accounting software</a>.
+  </p>
+
+  <h2>A simple method to run with your own numbers</h2>
+  <ol>
+    <li>Write down the hourly rate you expect to charge in your area. Look at what local instructors advertise rather than relying on a national figure.</li>
+    <li>Write down the paid hours a week you could realistically fill in your first six months, which is usually fewer than you will teach once established.</li>
+    <li>Multiply by the weeks you will work, allowing for holidays and illness.</li>
+    <li>Subtract every cost in step 2, using real quotes for the car and insurance.</li>
+    <li>Subtract tax and National Insurance using the estimator, then divide by 12.</li>
+    <li>Compare the result with what you need to live on. If it falls short, change one input at a time to see which matters most.</li>
+  </ol>
+  <p>
+    Repeat the exercise for a franchise and for going independent, and for a quiet diary as well as a full one.
+  </p>
+
+  <h2>Things that change what you take home</h2>
+  <ul>
+    <li><strong>Lesson length and mix:</strong> longer lessons mean fewer gaps and less time travelling per paid hour.</li>
+    <li><strong>Cancellations:</strong> a clear cancellation policy, and a way to fill a gap, protects your paid hours.</li>
+    <li><strong>Area:</strong> demand and local competition vary, so look at what instructors near you charge rather than a national figure.</li>
+    <li><strong>Model:</strong> a franchise can fill your diary at the cost of a weekly fee. Independent means more of each lesson is yours but you find the pupils.</li>
+    <li><strong>Pass rates and delays:</strong> a failed part 3 means a further fee and more time before full income. The <a href="/become-a-driving-instructor/adi-part-3/">part 3 guide</a> has the numbers.</li>
+  </ul>
+</InstructorGuideLayout>

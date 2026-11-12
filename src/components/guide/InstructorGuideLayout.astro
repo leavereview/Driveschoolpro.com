@@ -1,0 +1,148 @@
+---
+// Shared shell for the /become-a-driving-instructor/ section (issue #85):
+// breadcrumbs, H1, "last checked" line, FAQ JSON-LD, section nav, sources and a soft CTA.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../Breadcrumbs.astro';
+import UpdatedLine from '../UpdatedLine.astro';
+import { OFFER, PRICING } from '../../config/offer';
+import { CHECKED, CHECKED_LABEL, GUIDE_PAGES, type Source } from '../../data/instructor-guide';
+
+interface Props {
+  title: string;
+  description: string;
+  h1: string;
+  lead: string;
+  crumb: string;
+  path: string;
+  faqs?: { question: string; answer: string }[];
+  sources: Source[];
+  showCta?: boolean;
+}
+const { title, description, h1, lead, crumb, path, faqs = [], sources, showCta = true } = Astro.props;
+
+const isHub = path === '/become-a-driving-instructor/';
+const crumbs = isHub
+  ? [{ label: 'Home', href: '/' }, { label: 'Become a driving instructor' }]
+  : [
+      { label: 'Home', href: '/' },
+      { label: 'Become a driving instructor', href: '/become-a-driving-instructor/' },
+      { label: crumb },
+    ];
+
+const faqSchema = faqs.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      })),
+    }
+  : null;
+---
+<BaseLayout title={title} description={description} modifiedDate={CHECKED} schemaType="Article" type="article">
+  {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+  <div class="bg-gray-100 py-3">
+    <div class="container-custom">
+      <Breadcrumbs items={crumbs} />
+    </div>
+  </div>
+
+  <section class="section bg-white border-b border-gray-100">
+    <div class="container-custom">
+      <div class="max-w-3xl">
+        <h1 class="text-3xl md:text-4xl font-bold text-brand-navy mb-4">{h1}</h1>
+        <p class="text-lg text-gray-600 mb-3">{lead}</p>
+        <p class="text-sm text-gray-500">
+          Last checked <time datetime={CHECKED}>{CHECKED_LABEL}</time> against GOV.UK. Applies to England, Scotland and Wales:
+          Northern Ireland has its own rules.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="grid lg:grid-cols-4 gap-10 max-w-6xl mx-auto">
+        <aside class="lg:col-span-1 order-2 lg:order-1">
+          <nav aria-label="Become a driving instructor guides" class="lg:sticky lg:top-28 text-sm">
+            <p class="font-semibold text-brand-navy mb-3">In this guide</p>
+            <ul class="space-y-2">
+              {GUIDE_PAGES.map((p) => (
+                <li>
+                  {p.href === path ? (
+                    <span class="font-semibold text-brand-red">{p.label}</span>
+                  ) : (
+                    <a href={p.href} class="text-gray-600 hover:text-brand-red">{p.label}</a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
+
+        <div class="lg:col-span-3 order-1 lg:order-2 guide-body">
+          <article class="prose max-w-none">
+            <slot />
+          </article>
+
+          {faqs.length > 0 && (
+            <section class="mt-12" id="faq">
+              <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-6">Frequently asked questions</h2>
+              <div class="space-y-3">
+                {faqs.map((f) => (
+                  <details class="bg-gray-50 border border-gray-100 rounded-lg p-4">
+                    <summary class="font-semibold text-brand-navy cursor-pointer">{f.question}</summary>
+                    <p class="mt-3 text-gray-700">{f.answer}</p>
+                  </details>
+                ))}
+              </div>
+            </section>
+          )}
+
+          <section class="mt-12" id="sources">
+            <h2 class="text-2xl font-bold text-brand-navy mb-4">Official sources</h2>
+            <p class="text-sm text-gray-500 mb-3">Checked on {CHECKED_LABEL}. Rules and fees can change, so confirm on the live page before you book or pay.</p>
+            <ul class="space-y-2 text-sm">
+              {sources.map((s) => (
+                <li>
+                  <a href={s.href} class="text-brand-red hover:underline" target="_blank" rel="noopener noreferrer">{s.label}</a>
+                  {s.note && <span class="block text-gray-500">{s.note}</span>}
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {showCta && (
+            <section class="mt-12 bg-brand-navy text-white rounded-xl p-6 md:p-8">
+              <h2 class="text-xl md:text-2xl font-bold mb-3">Qualifying? Sort your diary before you need it</h2>
+              <p class="text-gray-200 mb-4">
+                {OFFER.short}: every feature while we are in early access. From {PRICING.startDate} the Free plan covers {PRICING.free.instructors} instructor and up to
+                {' '}{PRICING.free.lessonsPerMonth} lessons a month, which is enough to start with as a trainee. There is no
+                trainee-only plan today, and nothing to pay or enter a card for.
+              </p>
+              <div class="flex flex-wrap gap-3">
+                <a href={OFFER.ctaPrimary.href} class="btn-primary">{OFFER.ctaPrimary.label}</a>
+                <a href="/free-driving-school-software/" class="btn-secondary !text-white !border-white">See what the free plan includes</a>
+              </div>
+            </section>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+  <UpdatedLine date={CHECKED} />
+</BaseLayout>
+
+<style is:global>
+  .guide-body table { width: 100%; font-size: 0.875rem; border: 1px solid #e5e7eb; border-collapse: collapse; margin-bottom: 1.5rem; }
+  .guide-body thead { background: #f9fafb; text-align: left; }
+  .guide-body th, .guide-body td { padding: 0.75rem; border-bottom: 1px solid #f3f4f6; vertical-align: top; }
+  .guide-body .table-wrap { overflow-x: auto; }
+  .guide-body .note { background: #fff7f8; border-left: 4px solid #e94560; padding: 1rem 1.25rem; margin-bottom: 1.5rem; border-radius: 0.25rem; }
+  .guide-body .note p { margin-bottom: 0.5rem; }
+  .guide-body .note p:last-child { margin-bottom: 0; }
+  .guide-body dl dt { font-weight: 700; color: #1a1a2e; margin-top: 1.5rem; scroll-margin-top: 7rem; }
+  .guide-body dl dd { margin-left: 0; margin-bottom: 0.5rem; }
+</style>

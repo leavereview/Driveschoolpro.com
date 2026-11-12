@@ -1,0 +1,163 @@
+---
+// /become-a-driving-instructor/adi-part-1/ (issue #85). No question-bank content: DVSA's is licensed.
+import InstructorGuideLayout from '../../components/guide/InstructorGuideLayout.astro';
+import { FEES, GOVUK } from '../../data/instructor-guide';
+
+const faqs = [
+  {
+    question: 'What is the ADI part 1 test?',
+    answer: 'ADI part 1 is the first of the three qualifying tests for approved driving instructors. It is a theory test in two parts, multiple-choice questions and a hazard perception video test, booked and taken as a single test. You must pass both parts to pass.',
+  },
+  {
+    question: 'What is the pass mark for ADI part 1?',
+    answer: 'For the multiple-choice part you need at least 85 out of 100 overall and at least 20 out of 25 in each of the 4 question categories. For hazard perception you need at least 57 out of 75. If you reach 85 overall but fall short in one category you still fail that part.',
+  },
+  {
+    question: 'How many questions are in the ADI theory test?',
+    answer: 'There are 100 multiple-choice questions, 25 in each of 4 categories, and you have 1 hour and 30 minutes. The hazard perception part has 14 video clips.',
+  },
+  {
+    question: 'How many times can I take ADI part 1?',
+    answer: 'The ADI register guide lists unlimited attempts for part 1. You must wait at least 3 working days between tests, and every attempt costs the full fee. The 2-year clock to pass the other parts starts when you pass part 1.',
+  },
+  {
+    question: 'How much does the ADI part 1 test cost?',
+    answer: `The test costs £${FEES.part1}. You can book once your application to start the ADI qualifying process has been accepted.`,
+  },
+  {
+    question: 'What do I take to the ADI theory test?',
+    answer: 'You must take your UK photocard driving licence. If you have a paper licence you need a valid passport as well, and a Northern Ireland licence needs the paper counterpart. If you do not bring the right items your test will be cancelled and you will not get your money back.',
+  },
+  {
+    question: 'Can I use a question bank to revise?',
+    answer: 'GOV.UK says you can use books and software to revise and lists the sources the questions are based on, and it points to DVSA\'s official theory test kit e-Learning for ADIs. We do not reproduce any question bank on this site, because DVSA\'s is licensed.',
+  },
+];
+
+const sources = [
+  GOVUK.part1,
+  GOVUK.part1Mcq,
+  GOVUK.part1Hpt,
+  GOVUK.part1Pass,
+  GOVUK.part1Revision,
+  GOVUK.part1Take,
+  GOVUK.register,
+  GOVUK.stats,
+];
+---
+<InstructorGuideLayout
+  title="ADI Part 1 Theory Test: Format, Pass Mark, Revision"
+  description={`ADI part 1 explained: 100 questions in 90 minutes, a 14-clip hazard perception test, the 85/100 and 57/75 pass marks, the £${FEES.part1} fee and how to revise.`}
+  h1="ADI part 1 (theory and hazard perception)"
+  lead="ADI part 1 is the first of the three tests that qualify you as an approved driving instructor. This guide covers what is in it, how it is passed, what it costs and how to revise using official sources."
+  crumb="ADI part 1"
+  path="/become-a-driving-instructor/adi-part-1/"
+  faqs={faqs}
+  sources={sources}
+>
+  <h2 class="!mt-0">What ADI part 1 is</h2>
+  <p>
+    Part 1 is the theory test for people training to be driving instructors. It has two parts, multiple-choice questions and a hazard perception video test, and you book and take them as a single test. GOV.UK is clear that you must pass both parts to pass the test.
+  </p>
+  <p>
+    It is the first of the <a href="/become-a-driving-instructor/">three qualifying tests</a>, and it starts a clock: once you pass part 1, you must pass the other parts within 2 years or start the whole process again. The register guide words the rule as having booked part 3 within 2 years of passing part 1. Do not pass part 1 until you are ready to follow through on parts 2 and 3.
+  </p>
+
+  <h2>Booking, cost and what to bring</h2>
+  <ul>
+    <li><strong>Cost:</strong> £{FEES.part1}.</li>
+    <li><strong>When you can book:</strong> once your application to start the ADI qualifying process has been accepted, which includes a new DBS check.</li>
+    <li><strong>Attempts:</strong> the ADI register guide lists unlimited attempts for part 1. After a fail you must wait at least 3 working days before the next test, and each attempt costs the full fee.</li>
+    <li><strong>Photo ID:</strong> you must take your UK photocard driving licence. A paper licence needs a valid passport as well, and a Northern Ireland licence needs the paper counterpart. A changed name needs proof, such as a marriage certificate or deed poll.</li>
+    <li><strong>If you turn up without the right items,</strong> your test is cancelled and you do not get your money back. A replacement licence can take up to 15 days to arrive, so check early.</li>
+  </ul>
+
+  <h2>Part one: multiple-choice questions</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Detail</th><th>What GOV.UK says</th></tr></thead>
+      <tbody>
+        <tr><td>Questions</td><td>100, one at a time on screen</td></tr>
+        <tr><td>Time allowed</td><td>1 hour and 30 minutes</td></tr>
+        <tr><td>Categories</td><td>25 questions in each of 4 categories</td></tr>
+        <tr><td>Pass mark</td><td>At least 85 out of 100, and at least 20 out of 25 in each category</td></tr>
+        <tr><td>On the day</td><td>You can flag questions to come back to, and change answers until you finish</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The four categories are:</p>
+  <ol>
+    <li>Road procedure.</li>
+    <li>Traffic signs and signals, car control, pedestrians and mechanical knowledge.</li>
+    <li>Driving test, disabilities and the law.</li>
+    <li>Publications and instructional techniques.</li>
+  </ol>
+  <p>
+    The category rule matters. Reaching 85 overall is not enough if you fall below 20 in any one category. Revise all four categories evenly rather than concentrating on the ones you already know.
+  </p>
+
+  <h2>Part two: hazard perception</h2>
+  <p>
+    You watch 14 video clips. Each contains at least one developing hazard, and one clip has two. You score up to 5 points for each developing hazard by clicking as soon as it starts to develop. You get one attempt per clip and cannot review or change your responses.
+  </p>
+  <ul>
+    <li><strong>Pass mark:</strong> at least 57 out of 75.</li>
+    <li><strong>Wrong clicks:</strong> they do not cost you points.</li>
+    <li><strong>Pattern clicking scores nothing:</strong> clicking continuously, or in a pattern, earns no points on that clip. The skill being tested is noticing when something starts to become a hazard, not clicking a lot.</li>
+  </ul>
+  <p>
+    GOV.UK recommends DVSA's official theory test kit e-Learning to "learn hazard perception skills and then test them". It is sold on the Safe Driving for Life website.
+  </p>
+
+  <h2>How to revise for ADI part 1</h2>
+  <p>
+    GOV.UK lists the sources the multiple-choice questions are based on. Study these to learn the rules and skills you will be tested on, rather than learning answers:
+  </p>
+  <ul>
+    <li>The Highway Code and Know your traffic signs.</li>
+    <li><em>Driving: the essential skills</em> and <em>The Official DVSA Guide to Learning to Drive</em>.</li>
+    <li><em>Driving Instructor's Handbook</em> and <em>Practical Teaching Skills for Driving Instructors</em>.</li>
+    <li>The <a href="https://www.gov.uk/government/publications/national-standard-for-driver-and-rider-training" target="_blank" rel="noopener noreferrer">national standard for driver and rider training</a>, and the national standard for driving cars and light vans.</li>
+    <li>The driving instructor code of practice.</li>
+    <li>DVSA's examiner guidance, <em>Carrying out driving tests</em> (excluding sections 2, 3, 4, 5 and 15).</li>
+  </ul>
+  <p>
+    The books are sold online and in most high street bookshops. GOV.UK also points to the official DVSA theory test kit for ADIs, an e-Learning product.
+  </p>
+  <div class="note">
+    <p><strong>No question bank here.</strong> DVSA's question bank is licensed, so we do not reproduce or paraphrase questions. Use the official DVSA kit that GOV.UK points to.</p>
+  </div>
+
+  <h3>A sensible revision plan</h3>
+  <ol>
+    <li><strong>Split revision by category.</strong> Because you need 20 out of 25 in each, give equal time to all four, with extra to your weakest.</li>
+    <li><strong>Read the standard, not just the books.</strong> Category 4 is about publications and instructional techniques, which the national standard and the teaching books cover directly.</li>
+    <li><strong>Practise hazard perception separately.</strong> It is a different skill and a different pass mark, so do not leave it to the last week.</li>
+    <li><strong>Ask your trainer.</strong> If you are on a course, they will know what trainees struggle with. See <a href="/become-a-driving-instructor/">choosing a trainer</a>.</li>
+    <li><strong>Book when you are consistently passing practice material,</strong> not before. The test costs £{FEES.part1} each time and starts your 2-year clock.</li>
+  </ol>
+
+  <h2>How hard is it?</h2>
+  <p>
+    DVSA publishes pass rates for the qualifying tests. For 2025/26 (April 2025 to March 2026), 37.0% of ADI part 1 tests conducted in Great Britain were passed, from 31,081 tests. These are counts of tests, so someone who retakes appears more than once, and they cannot tell you your own odds. They do show that part 1 is not a formality. The same data puts part 2 at 55.3% and part 3 at 27.8% for that year.
+  </p>
+
+  <h2>Test day</h2>
+  <ul>
+    <li>Bring the right photo ID, as listed above. Without it the test is cancelled and the fee is lost.</li>
+    <li>Pace the multiple-choice part. You have 1 hour and 30 minutes for 100 questions, and you can flag questions and revisit them before you finish, so do not stall on one.</li>
+    <li>Treat each hazard perception clip as a one-off. You cannot go back, so a missed hazard in one clip does not mean you should start clicking constantly in the next.</li>
+    <li>If you fail, you can rebook once at least 3 working days have passed. Look at which category let you down before you pay again.</li>
+  </ul>
+  <p>
+    If you pass, the 2-year clock is running. That is the moment to book your <a href="/become-a-driving-instructor/adi-part-2/">part 2</a> training, not the moment to take a break.
+  </p>
+
+  <h2>What happens next</h2>
+  <p>
+    After part 1 you move on to <a href="/become-a-driving-instructor/adi-part-2/">ADI part 2</a>, the driving ability test. Remember the 2-year clock, and do not leave long gaps. If you want a view of what the whole route costs, the <a href="/become-a-driving-instructor/">hub guide</a> has the full fee table. Once you are qualifying and teaching, you will need a way to run your diary: see the <a href="/free-driving-school-software/">free driving school software</a> page.
+  </p>
+  <p>
+    Look up the <a href="/become-a-driving-instructor/glossary/">glossary</a> if any of the terms (ADI, ORDIT, PDI) are new.
+  </p>
+</InstructorGuideLayout>
