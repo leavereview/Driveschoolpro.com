@@ -13,8 +13,10 @@ import CompetitorComparison from '../../components/compare/CompetitorComparison.
 //   Cells marked "tested" come from that trial, not from Total Drive's marketing pages.
 //   Default syllabus is TD's own 34 skills in 5 groups; the web diary saved a clashing lesson
 //   with no warning and the phone app flagged it only after saving; TD's pupil app can't open,
-//   cancel or move a lesson; calendar is a one-way ICS feed out; self-serve export is finance
-//   CSV (the pupil/lesson export has no menu link). Card fee from TD's help guide.
+//   cancel or move a lesson; calendar is a one-way ICS feed out. Card fee from TD's help guide.
+// 12 Nov 2026 (review): the export cell said "self-serve export is finance CSV only", but DSP's importer
+//   fixtures are real Total Drive pupil, lesson and finance CSVs exported on 7 Nov 2026 from
+//   Learners › Import › Export Pupil / Lesson / Finances, and the DSP app tells users that path. Cell corrected.
 // "Not listed" = not found on those pages; never "No" unless the vendor says so.
 const rows = [
   { label: 'AI lesson briefings', values: [true, 'Not listed'] },
@@ -30,7 +32,7 @@ const rows = [
   { label: 'Test bookings and results recording (coming soon)', values: ['Coming soon', 'Yes'] },
   { label: 'Cancellation-gap broadcast to pupils', values: [false, 'Yes (Smart Gaps)'] },
   { label: 'Theory content', values: [false, 'Yes (Theory Suite)'] },
-  { label: 'Free migration of your existing records', values: ['Pupil import from Total Drive and MyDriveTime spreadsheets (pupils, not lesson history)', 'Imports for you; self-serve export is finance CSV only (tested)'] },
+  { label: 'Moving your existing records across', values: ['Pupil import from a Total Drive or MyDriveTime export (pupils only, not lessons or payments)', 'Imports your data for you; exports pupils, lessons and finances as CSV files'] },
   { label: 'Expenses and Making Tax Digital links', values: [false, 'Yes (QuickBooks, Xero, FreeAgent, Sage, FBTC, CSV)'] },
   { label: 'Apple CarPlay and Android Auto', values: [false, 'Yes'] },
   { label: 'Pupils can move or cancel their own lesson', values: ['Yes (you can switch it off)', "No (tested in Total Drive's pupil app, 10 Nov 2026)"] },
@@ -63,7 +65,7 @@ const faqs = [
   },
   {
     question: 'Is this a fair comparison?',
-    answer: "We've tried to make it one. The Total Drive column records what Total Drive's own public website and help guides say, first checked on 21 September 2026 and re-checked on 9 November 2026. On 10 November 2026 we also used a Total Drive trial on the web and in its iPhone app; cells marked \"tested\" come from that. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote Total Drive's prices because they change, so use their own pricing page. The gaps in DriveSchoolPro are set out above. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
+    answer: "We've tried to make it one. The Total Drive column records what Total Drive's own public website and help guides say, first checked on 21 September 2026 and re-checked on 9 and 12 November 2026. On 10 November 2026 we also used a Total Drive trial on the web and in its iPhone app; cells marked \"tested\" come from that. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote Total Drive's prices because they change, so use their own pricing page. The gaps in DriveSchoolPro are set out above. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
     links: [{ text: "Total Drive's current pricing", url: 'https://totaldrive.co.uk/instructor-software-pricing/' }],
   },
   {
@@ -77,18 +79,18 @@ const faqs = [
 <CompetitorComparison
   competitor={{ name: 'Total Drive', slug: 'total-drive', pricingUrl: 'https://totaldrive.co.uk/instructor-software-pricing/' }}
   seo={{
-    title: 'Total Drive vs DriveSchoolPro, and Alternatives (UK, 2026)',
-    description: 'Total Drive vs DriveSchoolPro feature by feature, plus UK Total Drive alternatives: MyDriveTime, GoRoadie Pro and Lesson Diary. Free until 31 March 2027.',
+    title: `Total Drive Driving School App vs DriveSchoolPro: ${rows.length} Features`,
+    description: `Total Drive vs DriveSchoolPro on ${rows.length} features, checked 12 Nov 2026, with what we lack and how to import your pupils. Free until 31 March 2027. Compare now.`,
     schemaDescription: 'Feature-by-feature comparison of DriveSchoolPro and Total Drive for UK driving instructors, including what DriveSchoolPro does not do yet.',
     datePublished: '2026-04-19',
-    dateModified: '2026-11-10',
+    dateModified: '2026-11-12',
   }}
-  checkedOn="10 November 2026"
-  heroIntro="A plain, feature-by-feature comparison for instructors already using Total Drive. It covers what's different, and what DriveSchoolPro doesn't do yet."
+  checkedOn="12 November 2026"
+  heroIntro="Looking at Total Drive, the driving instructor and driving school software? This is a plain, feature-by-feature comparison with DriveSchoolPro for UK instructors. It covers what's different, and what we don't do yet."
   featuredAnswer="DriveSchoolPro and Total Drive are both UK driving school platforms with progress tracking, diary, reminders and a pupil app. DriveSchoolPro tracks the DVSA's own 27 skills and adds AI lesson briefings, Google review requests at each test pass, clash checks that include the vehicle, and vehicle compliance tracking. Total Drive is the more established platform and lists a theory suite, cancellation-gap broadcasts, SMS reminders, Apple CarPlay and Android Auto, and Making Tax Digital links that DriveSchoolPro doesn't have yet."
   intro="This page is for an instructor who uses Total Drive today and is wondering whether DriveSchoolPro is worth a look. You don't have to leave: you can run both side by side and decide after a week of real lessons."
   rows={rows}
-  switchHeading="Why some instructors try DriveSchoolPro"
+  switchHeading="Why some Total Drive users try DriveSchoolPro"
   switchIntro="These are the differences that exist today, from the table above. None of them is a reason to switch on its own."
   switchItems={[
     {
@@ -108,7 +110,7 @@ const faqs = [
       body: "DriveSchoolPro has no subscription fee until 31 March 2027 and doesn't ask for a card. From 1 April 2027 there's a permanent Free plan (1 instructor, up to 60 lessons a month), Solo at £22 a month, or School at £22 a month plus £10 per extra instructor, with no VAT charged.",
     },
   ]}
-  gapsHeading="What DriveSchoolPro doesn't do yet"
+  gapsHeading="What Total Drive does that DriveSchoolPro doesn't yet"
   gapsBody="There's no theory content in DriveSchoolPro, and no way to broadcast a cancelled slot to your pupils. Lesson reminders go out by email only today (WhatsApp is coming soon), and recording test bookings and results is coming soon. We don't track expenses or mileage or link to accounting software for Making Tax Digital, there's no waiting list or enquiry form and no calendar feed to Google, Apple or Outlook yet, and DriveSchoolPro doesn't work with Apple CarPlay or Android Auto; Total Drive lists both, and says its diary works offline, which DriveSchoolPro doesn't advertise. Total Drive has also been in the UK market longer. If any of these decides it for you, that's a fair reason to stay where you are."
   sources={[
     { label: "Total Drive — app overview", url: 'https://totaldrive.co.uk/driving-instructor-app/' },
@@ -121,8 +123,20 @@ const faqs = [
     { label: "Total Drive — pricing", url: 'https://totaldrive.co.uk/instructor-software-pricing/' },
     { label: 'Lesson Diary home page (alternatives list, checked 3 November 2026)', url: 'https://lessondiary.co.uk/' },
   ]}
+  switching={{
+    heading: 'Switching from Total Drive',
+    intro: "You don't have to move everything at once. You can bring your pupil list across and run both diaries side by side until you're sure.",
+    steps: [
+      'In Total Drive, go to Learners, then Import, then Export Pupil. Total Drive only exports Active pupils, so set any Passed, Inactive or Waiting pupils you want to bring across to Active first.',
+      'In DriveSchoolPro, open Settings, then Import Pupils (the account owner can do this).',
+      'Choose Total Drive export and upload the file as it is. DriveSchoolPro reads its columns for you.',
+      'Check the preview and tap Import. Pupils you already have are skipped, and you see how many were added.',
+    ],
+    note: 'The import covers pupil details only: no lesson history, payments or prepaid hours yet. Book your upcoming lessons into DriveSchoolPro by hand, and keep Total Drive for your records for as long as you need them.',
+    link: { text: 'See how importing pupils works', href: '/start/first-pupil/' },
+  }}
   alternativesKey="total-drive"
   faqs={faqs}
   faqTitle="DriveSchoolPro vs Total Drive — common questions"
-  updates={[{ date: '10 November 2026', text: 'checked hands-on in a Total Drive trial (web and iPhone app). We corrected the DVSA progress, clash-check, migration and calendar cells, and added rows for pupil self-service, card fees, the calendar feed, a waiting list and a mileage log. DriveSchoolPro now imports pupils from a Total Drive or MyDriveTime spreadsheet.' }, { date: '9 November 2026', text: 'checked again, including Total Drive\'s help centre. We corrected the clash-check cell (its diary alerts you to lesson clashes), said how reminders are sent (free app notifications, SMS with a paid text bundle), and added its website booking button, accounting links, offline diary, and Apple CarPlay and Android Auto support.' }]}
+  updates={[{ date: '12 November 2026', text: 're-checked Total Drive\'s app overview, AI info page and membership page (diary that works offline, Smart Gaps, Theory Suite, migration support, CarPlay and Android Auto, four plans from Basic to Elite). We corrected the export cell (Total Drive does export pupils, lessons and finances as CSV files) and added a Switching from Total Drive section.' }, { date: '10 November 2026', text: 'checked hands-on in a Total Drive trial (web and iPhone app). We corrected the DVSA progress, clash-check, migration and calendar cells, and added rows for pupil self-service, card fees, the calendar feed, a waiting list and a mileage log. DriveSchoolPro now imports pupils from a Total Drive or MyDriveTime spreadsheet.' }, { date: '9 November 2026', text: 'checked again, including Total Drive\'s help centre. We corrected the clash-check cell (its diary alerts you to lesson clashes), said how reminders are sent (free app notifications, SMS with a paid text bundle), and added its website booking button, accounting links, offline diary, and Apple CarPlay and Android Auto support.' }]}
 />
