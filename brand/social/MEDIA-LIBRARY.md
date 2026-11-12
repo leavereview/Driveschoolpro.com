@@ -36,14 +36,14 @@ Style: dry UK humour, laughing *with* instructors, never at learners or the DVSA
 
 | Ad | File | Voice |
 |---|---|---|
-| Excuse montage (fake chat of payment excuses → card payment) | `~/Projects-code/archive/comedy-ad-pilots/montage/excuse-montage-draft.mp4` | Andy |
+| Excuse montage (fake chat of payment excuses → card payment) | `~/Projects-code/reference/driveschoolpro/dsp-marketing-assets/comedy-ads/montage/excuse-montage-draft.mp4` | Andy |
 | Understatement ("Bit annoying… Bit more annoying", cancellations counter → reminders) | `…/understatement/understatement-draft.mp4` | Ryan |
 | Nature documentary ("*Instructus exhausticus*", Sunday 21:04 → payments) | `…/nature-doc/nature-doc-draft.mp4` | Steven |
 | "Pupil payment excuses, ranked" carousel (6 slides, 4:5) | `…/carousel/01–06.png`, caption in `NOTES.md` | none |
 
 - **Build code:** `~/Projects-code/reference/driveschoolpro/dsp-marketing-assets/social-videos/`. It contains `adkit.py`, `compose_vo.py`, `compose_understatement.py`, `compose_naturedoc.py`, `scenes/` and `payoff/payoff.json`.
 - **Payoff clip:** the shared payment shot is `payoff/owner-pay-now.mp4`, John's real card payment.
-- **Archive:** the `archive/` drafts expire on 11 Dec 2026. Move the final versions to `public/social/video/` (protected on the server; see CLAUDE.md) or to `reference/` before then.
+- **Copies:** the drafts were copied from `archive/comedy-ad-pilots/` (deleted after 11 Dec 2026) to `reference/driveschoolpro/dsp-marketing-assets/comedy-ads/` on 11 Nov 2026. The media mirror carries that folder to the box as `assets/comedy-ads/`, which is where the social-autopost job reads them. Move final versions to `public/social/video/` as before.
 
 ## 3. John's own video footage
 
@@ -84,9 +84,45 @@ Style: dry UK humour, laughing *with* instructors, never at learners or the DVSA
   - iCloud `DSP phone screens/` (23 PNGs) and `Logos+Screenshots/`.
 - **Older Playwright screen recordings** (n03–n45 source): `reference/.../social-videos/recordings/`.
 
+## 7. Made by the autopost job
+
+| id | type | voice | joke | URL |
+|---|---|---|---|---|
+| excuse-montage | video | Andy | transfer-tonight | - |
+| understatement | video | Ryan | cancellations | - |
+| nature-doc | video | Steven | sunday-night-admin | - |
+| excuse-carousel | carousel | - | - | - |
+| s1 | video | John | transfer-tonight | https://driveschoolpro.com/social/video/s1.mp4 |
+| s4 | video | John | - | https://driveschoolpro.com/social/video/s4.mp4 |
+| s6 | video | John | - | https://driveschoolpro.com/social/video/s6.mp4 |
+| s7 | video | John | - | https://driveschoolpro.com/social/video/s7.mp4 |
+| s8 | video | John | - | https://driveschoolpro.com/social/video/s8.mp4 |
+| s9 | video | John | - | https://driveschoolpro.com/social/video/s9.mp4 |
+| s10 | video | John | sunday-night-admin | https://driveschoolpro.com/social/video/s10.mp4 |
+| s11 | video | John | - | https://driveschoolpro.com/social/video/s11.mp4 |
+| s13 | video | John | - | https://driveschoolpro.com/social/video/s13.mp4 |
+| s14 | video | John | things-adis-hear | https://driveschoolpro.com/social/video/s14.mp4 |
+| n09 | video | John | - | https://driveschoolpro.com/social/video/n09.mp4 |
+| n15 | video | John | - | https://driveschoolpro.com/social/video/n15.mp4 |
+| n39 | video | John | - | https://driveschoolpro.com/social/video/n39.mp4 |
+| n03 | video | John | - | https://driveschoolpro.com/social/video/n03.mp4 |
+| n07 | video | John | - | https://driveschoolpro.com/social/video/n07.mp4 |
+| n14 | video | John | - | https://driveschoolpro.com/social/video/n14.mp4 |
+| n17 | video | John | - | https://driveschoolpro.com/social/video/n17.mp4 |
+| n20 | video | - | - | https://driveschoolpro.com/social/video/n20.mp4 |
+| n24 | video | John | - | https://driveschoolpro.com/social/video/n24.mp4 |
+| n26 | video | John | - | https://driveschoolpro.com/social/video/n26.mp4 |
+| n28 | video | John | - | https://driveschoolpro.com/social/video/n28.mp4 |
+| n31 | video | - | - | https://driveschoolpro.com/social/video/n31.mp4 |
+| n33 | video | John | - | https://driveschoolpro.com/social/video/n33.mp4 |
+| n37 | video | John | - | https://driveschoolpro.com/social/video/n37.mp4 |
+| n45 | video | John | - | https://driveschoolpro.com/social/video/n45.mp4 |
+| car-001 | carousel | - | - | https://driveschoolpro.com/social/video/auto/car-001-01.png |
+
 ## Rules that apply to every post
 - Follow the house rules in `november-2026.md`: UK English, plain words, no hype, and no emojis in body text (one is fine in an Instagram first line). Label acted skits as "acted".
 - Claim only features that exist: diary, reminders, card payments (including pay at booking), DVSA 27-skill progress, briefings, invoices.
 - Use made-up names in fake chats.
 - Offer wording: "Free until 31 March 2027". Check `src/config/offer.ts` before use.
 - **Auto-publishing is approved** (John, 11 Nov 2026). The posting job may publish directly to Metricool, as long as every post passes the checks above. John gets a summary after each run.
+- **The social-autopost job** (agentbox `social-autopost/`, Thursdays 06:00 on the box) picks existing media from `media-index.json` and adds every new ad and carousel it publishes to §7 and `media-index.json` through one rolling PR (branch `social-autopost/<date>`; later runs add to it until it is merged). When you add or remove media by hand, update `media-index.json` in the same change (paths relative to the media mirror, or `public/…` for files in this repo), or the job cannot use it. Stop it: `ssh agentbox 'touch ~/agentbox-secrets/social-autopost.off'`. Details: agentbox `docs/social-autopost.md`.

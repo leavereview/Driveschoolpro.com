@@ -72,6 +72,8 @@ adding new server-only files, add a matching protect filter here and in the work
 `rsync -avzn --delete <same filters> dist/ lightsail:/var/www/driveschoolpro.com/ | grep deleting`.
 Always use the `lightsail` SSH alias, not the raw IP.
 
+`social/video/auto/` on the server is written by the social-autopost job (videos, stills and covers). Deploys must never delete or overwrite it: it is covered by the `P /social/**` protect filter.
+
 ## PPC Landing Pages (external contracts — do not rename or noindex)
 
 Two pages are **Google Ads landing pages** (they also double as indexable SEO pages). Their
