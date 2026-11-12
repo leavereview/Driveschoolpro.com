@@ -25,11 +25,11 @@ const faqs = [
   },
   {
     question: 'How old do I need to be to become a driving instructor?',
-    answer: 'The National Careers Service lists the requirements as being over 21 and holding a full UK or EU driving licence for at least 3 years. You also cannot apply if you have been banned from driving in the last 4 years, and DVSA must consider you a fit and proper person.',
+    answer: 'DVSA\'s ADI register guide says that to accompany a learner you must be 21 or over and have held a full licence for at least 3 years, and the National Careers Service lists the same for instructors. You also cannot apply if you have been banned from driving in the last 4 years, and DVSA must consider you a fit and proper person.',
   },
   {
     question: 'Do I have to use an ORDIT trainer?',
-    answer: 'GOV.UK tells you to use a registered trainer to prepare for the three tests, and its course finder lists trainers on the official register of driving instructor training (ORDIT). The pages we checked do not say that a trainer must be on ORDIT, so check what DVSA says for your situation and ask any trainer whether they are registered.',
+    answer: 'No. GOV.UK tells you to get a registered trainer, and DVSA describes ORDIT (the official register of driving instructor training) as voluntary: many organisations offer training. An ORDIT trainer has passed a DVSA assessment, scoring at least 43 out of 51, and is listed in GOV.UK\'s course finder, so it is a useful check when you compare trainers.',
   },
   {
     question: 'Is it worth becoming a driving instructor?',
@@ -46,7 +46,8 @@ const sources = [
   GOVUK.apply1st,
   GOVUK.standardsCheck,
   GOVUK.selfEmployed,
-  { ...GOVUK.careers, note: 'Source for the age and licence-length requirements. The page does not say where its salary figures come from.' },
+  GOVUK.ordit,
+  { ...GOVUK.careers, note: 'Gives the same age and licence-length requirements as the register guide. The page does not say where its salary figures come from.' },
 ];
 ---
 <InstructorGuideLayout
@@ -78,14 +79,14 @@ const sources = [
   <h2>Who can become a driving instructor?</h2>
   <p>
     GOV.UK's own route page does not list age or licence rules; it sends you to DVSA's suitability assessment and the
-    <a href={GOVUK.register.href} target="_blank" rel="noopener noreferrer">ADI register guide</a>. Put together from the official sources we checked:
+    <a href={GOVUK.register.href} target="_blank" rel="noopener noreferrer">ADI register guide</a>, which you must declare you have read when you apply. From the register guide and the other official pages we checked:
   </p>
   <ul>
-    <li><strong>Age and licence:</strong> the National Careers Service says you need to be over 21 and have held a full UK or EU driving licence for at least 3 years.</li>
-    <li><strong>Driving bans:</strong> the register guide says you cannot apply if you have been banned from driving in the last 4 years.</li>
-    <li><strong>Fit and proper:</strong> you must be a "fit and proper" person to be an ADI. The law does not define the term, so DVSA looks at each case.</li>
+    <li><strong>Age and licence:</strong> the register guide says that to accompany a learner driver you must be 21 or over and have held a full licence for that category of vehicle for at least 3 years. The National Careers Service gives the same two requirements for instructors.</li>
+    <li><strong>Driving bans:</strong> you cannot apply if you have been banned from driving in the last 4 years.</li>
+    <li><strong>Fit and proper:</strong> you must be a "fit and proper" person to be an ADI. The register guide says this cannot be defined exactly, so the ADI Registrar weighs the risk you pose to pupils. It checks cautions, convictions and fixed penalties, pending court cases and any bar on working with children. A criminal record does not automatically stop you.</li>
     <li><strong>Criminal record check:</strong> you must get a new DBS check to start your application, even if you already have one. It costs {gbp(FEES.dbs)} online, or {gbp(FEES.dbsPostOffice)} if you have to verify your identity at a Post Office.</li>
-    <li><strong>Eyesight:</strong> the National Careers Service lists reading a number plate at 27.5 metres (90 feet), with glasses or contact lenses if you need them.</li>
+    <li><strong>Eyesight:</strong> ADI part 2 starts with reading a number plate from 27 metres (new-style plate), with glasses or contact lenses if you need them. Failing it fails the test and uses one of your 3 attempts.</li>
   </ul>
   <p>
     Because the exact wording of these criteria sits in documents that change, read the live pages before you pay for anything.
@@ -119,10 +120,23 @@ const sources = [
 
   <h2>Choosing a trainer</h2>
   <p>
-    GOV.UK's step 3 is to get a registered trainer. Its <a href={GOVUK.training.href} target="_blank" rel="noopener noreferrer">find driving instructor training</a> service lists trainers on the DVSA register of driving instructor training, known as ORDIT. ORDIT is voluntary for trainers: it lets them show they meet DVSA's training standard and appear in the course finder.
+    GOV.UK's step 3 is to get a registered trainer. The register guide adds that many organisations offer training, and that you can find trainers who have joined the voluntary official register of driving instructor training (ORDIT) through GOV.UK's <a href={GOVUK.training.href} target="_blank" rel="noopener noreferrer">find driving instructor training</a> service.
   </p>
   <p>
-    GOV.UK does not publish course prices, so compare quotes. Useful questions to ask: what is included (part 1 materials, part 2 training, part 3 training, the 40 trainee hours), whether a trainee licence is offered and under what arrangement, how many hours of in-car training are included, and what happens if you need extra hours.
+    What ORDIT tells you: to join, a trainer must pass a DVSA assessment scored on 17 competencies, with at least 43 out of 51 needed, and registration lasts 4 years. It is voluntary, so a trainer who is not on ORDIT is not breaking any rule, but an ORDIT trainer has been assessed against DVSA's standard and the part 3 report form records whether your trainer is ORDIT-registered.
+  </p>
+  <p>
+    GOV.UK does not publish course prices, so compare quotes. Questions worth asking any trainer:
+  </p>
+  <ul>
+    <li>Are you on ORDIT, and can I see you in the GOV.UK course finder?</li>
+    <li>What is included: part 1 materials, part 2 training, part 3 training, and the 40 hours needed for a trainee licence?</li>
+    <li>How many hours are in the car, and what does an extra hour cost if I need more?</li>
+    <li>Do you offer a trainee licence, and if so as the training establishment, under which supervision option, and on what terms if I leave?</li>
+    <li>Is the fee paid up front or in stages, and what is refunded if I stop?</li>
+  </ul>
+  <p>
+    If you are unhappy with the training, the register guide says to complain to the training organisation first, then write to DVSA's ORDIT Secretary if you cannot settle it.
   </p>
 
   <h2>ADI part 1, part 2 and part 3</h2>
@@ -152,21 +166,42 @@ const sources = [
     <li><strong>4 years:</strong> registration lasts 4 years. You renew it for {gbp(FEES.renewal)} with a new DBS check, and you have at least one standards check in that time.</li>
   </ul>
 
+  <h2>How long does it take to become a driving instructor?</h2>
+  <p>
+    GOV.UK gives no typical total time, and we have not found an official figure, so we do not quote one. What is fixed is this set of limits and waits:
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Rule</th><th>Time</th></tr></thead>
+      <tbody>
+        <tr><td>Wait before retaking a failed part 1</td><td>At least 3 working days</td></tr>
+        <tr><td>Pass parts 2 and 3 after passing part 1</td><td>Within 2 years (part 3 booked within 2 years)</td></tr>
+        <tr><td>Trainee licence (optional, after part 2)</td><td>Lasts 6 months</td></tr>
+        <tr><td>Extra training, if you choose option 2 on a trainee licence</td><td>20 hours within 3 months of getting the licence</td></tr>
+        <tr><td>Register after passing part 3</td><td>Within 12 months</td></tr>
+        <tr><td>If you use up your attempts at part 2 or part 3</td><td>Wait until 2 years after you first passed part 1, then start again</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    So the outer limit is about 2 years from passing part 1 to passing part 3, plus up to 12 months to register. Most of the real variation comes from how quickly you get through training, test availability near you, and whether you need a retake. Part 3 is where most people lose time: fewer than 3 in 10 part 3 tests were passed in 2025/26.
+  </p>
+
   <h2>Planning your timeline</h2>
   <p>
-    GOV.UK gives no typical total time, so build your own plan backwards from the limits. Decide when you could realistically sit part 1, then check you can fit parts 2 and 3 into the 2 years that follow, including a retake of each. Test dates depend on availability near you, and a failed attempt means booking and paying again, so leave slack rather than planning a single clean run.
+    Build your own plan backwards from those limits. Decide when you could realistically sit part 1, then check you can fit parts 2 and 3 into the 2 years that follow, including a retake of each. Test dates depend on availability near you, and a failed attempt means booking and paying again, so leave slack rather than planning a single clean run.
   </p>
   <ul>
     <li><strong>Before you pay for training:</strong> do the suitability assessment, confirm you meet the age, licence and driving ban rules, and apply for the DBS check.</li>
     <li><strong>Before you book part 1:</strong> be consistently passing practice material in every category, and have your photocard licence ready.</li>
     <li><strong>Before you apply for a trainee licence:</strong> confirm your 40 hours are recorded on form ADI 21T and that you passed part 1 within the last 2 years.</li>
-    <li><strong>Before part 3:</strong> have a pupil who is ready, a car that meets the rules, and a trainer who thinks you are ready.</li>
+    <li><strong>Before part 3:</strong> have a pupil who is ready, a car that meets the rules, and a trainer who thinks you are ready. Score a practice lesson with the <a href="/tools/part-3-standards-check-self-assessment/">part 3 self-assessment</a> to see which of the 17 competencies need work.</li>
     <li><strong>After part 3:</strong> register within 12 months.</li>
   </ul>
 
   <h2>After you qualify</h2>
   <p>
-    Once registered you can charge for lessons by joining a driving school or setting up your own business. Joining a school (often called a franchise) trades a weekly fee for leads and support; going independent means you find your own pupils and carry your own costs. See <a href="/become-a-driving-instructor/franchise-or-independent/">franchise or independent</a> for the questions to ask. If you work for yourself you will need to <a href={GOVUK.selfEmployed.href} target="_blank" rel="noopener noreferrer">register as self-employed</a>, and the <a href="/tools/adi-income-tax-calculator/">ADI income and tax estimator</a> shows what is left after costs and tax.
+    Once registered you can charge for lessons by joining a driving school or setting up your own business. Joining a school (often called a franchise) trades a weekly fee for leads and support; going independent means you find your own pupils and carry your own costs. See <a href="/become-a-driving-instructor/franchise-or-independent/">franchise or independent</a> for the questions to ask. If you work for yourself you will need to <a href={GOVUK.selfEmployed.href} target="_blank" rel="noopener noreferrer">register as self-employed</a>, and the <a href="/tools/adi-income-tax-calculator/">ADI income and tax estimator</a> shows what is left after costs and tax. To compare a franchise with going independent, use the <a href="/tools/driving-instructor-earnings-calculator/">driving instructor earnings calculator</a>, and see <a href="/become-a-driving-instructor/earnings/">how much driving instructors earn</a> for the method behind it.
   </p>
   <p>
     As an ADI you will also keep a record of pupils, lessons and payments. Our <a href="/blog/starting-driving-school-guide/">guide to starting a driving school</a> covers the business side in full.

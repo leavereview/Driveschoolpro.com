@@ -38,6 +38,13 @@ export const GUIDE_PAGES: GuidePage[] = [
   { href: '/become-a-driving-instructor/glossary/', label: 'Glossary', blurb: 'PDI, ADI, ORDIT, pink badge, SC1 and more.' },
 ];
 
+/** Free tools listed in the guide's side navigation on every page. */
+export const GUIDE_TOOLS: { href: string; label: string }[] = [
+  { href: '/tools/driving-instructor-earnings-calculator/', label: 'Driving instructor earnings calculator' },
+  { href: '/tools/part-3-standards-check-self-assessment/', label: 'Part 3 and standards check self-assessment' },
+  { href: '/tools/adi-income-tax-calculator/', label: 'ADI income and tax estimator' },
+];
+
 export interface Source {
   label: string;
   href: string;

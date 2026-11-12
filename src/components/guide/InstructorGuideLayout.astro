@@ -5,7 +5,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../Breadcrumbs.astro';
 import UpdatedLine from '../UpdatedLine.astro';
 import { OFFER, PRICING } from '../../config/offer';
-import { CHECKED, CHECKED_LABEL, GUIDE_PAGES, type Source } from '../../data/instructor-guide';
+import { CHECKED, CHECKED_LABEL, GUIDE_PAGES, GUIDE_TOOLS, type Source } from '../../data/instructor-guide';
 
 interface Props {
   title: string;
@@ -77,6 +77,12 @@ const faqSchema = faqs.length
                     <a href={p.href} class="text-gray-600 hover:text-brand-red">{p.label}</a>
                   )}
                 </li>
+              ))}
+            </ul>
+            <p class="font-semibold text-brand-navy mt-8 mb-3">Free tools</p>
+            <ul class="space-y-2">
+              {GUIDE_TOOLS.map((t) => (
+                <li><a href={t.href} class="text-gray-600 hover:text-brand-red">{t.label}</a></li>
               ))}
             </ul>
           </nav>

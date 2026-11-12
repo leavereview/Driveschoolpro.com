@@ -1,7 +1,7 @@
 ---
 // /become-a-driving-instructor/adi-part-3/ (issue #85): part 3 and the trainee licence.
-// Pass rate source: DVSA table DRT521C (GOV.UK), which gives 27.8% for 2025/26. The issue text said
-// 27.7% (Parliament written answer); we could not find that answer, so we quote the primary dataset.
+// Pass rate source: DVSA table DRT521C (GOV.UK, updated 3 Sep 2026): 3,784 / 13,606 = 27.8% for 2025/26.
+// Calendar 2025 also rounds to 27.8%. Issue #85's 27.7% matches no current DVSA period, so we quote the primary dataset.
 import InstructorGuideLayout from '../../components/guide/InstructorGuideLayout.astro';
 import { FEES, GOVUK } from '../../data/instructor-guide';
 
@@ -35,6 +35,10 @@ const faqs = [
     answer: 'You must stop being paid for lessons because you cannot be paid without a valid licence. You can apply for another licence and pay the fee again, but GOV.UK says it is unlikely you will get one just to have more time to pass part 3.',
   },
   {
+    question: 'Who can be my pupil on the ADI part 3 test?',
+    answer: 'A partly trained learner, a fully trained learner or a full licence holder. A partly trained learner should be able to drive for 40 minutes without frequently stopping. Your pupil cannot be an ADI or someone preparing for their own ADI part 3 test.',
+  },
+  {
     question: 'How many hours of lessons does a trainee need to be supervised?',
     answer: 'It depends on the option you choose when you get the licence, and you cannot switch. Option 1 means your sponsoring ADI supervises 20% of the lessons you give. Option 2 means at least 20 hours of extra training within 3 months, with at least 25% practical in-car training.',
   },
@@ -43,6 +47,7 @@ const faqs = [
 const sources = [
   GOVUK.part3,
   GOVUK.part3What,
+  { label: 'ADI part 3: what to take to your test (GOV.UK)', href: 'https://www.gov.uk/adi-part-3-test/what-to-take', note: 'Rules on who your pupil can be.' },
   GOVUK.part3Result,
   GOVUK.part3Car,
   GOVUK.trainee,
@@ -53,8 +58,8 @@ const sources = [
 ];
 ---
 <InstructorGuideLayout
-  title="ADI Part 3 and the Trainee Licence: Guide"
-  description={`ADI part 3 explained: the 17 competencies, scoring, 27.8% pass rate in 2025/26, and the £${FEES.traineeLicence} trainee licence with its 40 hours of training.`}
+  title="ADI Part 3: 17 Competencies, Pass Rate, Trainee Licence"
+  description={`ADI part 3 explained: all 17 competencies, how the 51 marks are graded, the 27.8% pass rate for 2025/26 and the £${FEES.traineeLicence} trainee licence rules.`}
   h1="ADI part 3 and the trainee licence (pink badge)"
   lead="ADI part 3 is the test most trainees find hardest, and the trainee licence is how you can teach and charge while you prepare for it. This guide covers both: what the examiner marks, the numbers, and the rules you have to follow."
   crumb="ADI part 3 and trainee licence"
@@ -81,24 +86,50 @@ const sources = [
     <li><strong>After:</strong> the examiner discusses your performance, and your grade and report are emailed to you at the end of the test.</li>
   </ul>
 
+  <h2>Choosing your pupil</h2>
+  <p>GOV.UK says your pupil can be a partly trained learner, a fully trained learner or a full licence holder. Two rules:</p>
+  <ul>
+    <li>A partly trained learner should be able to drive for 40 minutes without frequently stopping.</li>
+    <li>Your pupil cannot be an ADI, or someone who is preparing to take the ADI part 3 test.</li>
+  </ul>
+  <p>
+    Bring your trainee licence if you have one; otherwise bring your UK driving licence or passport. Without the right documents the test is cancelled and you lose the fee.
+  </p>
+
   <h2>The 17 competencies</h2>
   <p>
-    You are marked on 17 areas of competence in three categories. Each is scored from 0 to 3 and the scores are added up. The examiner records them on the ADI part 3 report form, which DVSA publishes; the full wording of each competency is on that form, so we link to it rather than paraphrase it.
+    You are marked on 17 areas of competence in three categories. The examiner scores each from 0 to 3 on the ADI part 3 test report form, which DVSA publishes: 0 means no evidence, 1 demonstrated in a few elements, 2 in most elements and 3 in all elements. The questions below are the form's own wording.
   </p>
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Category</th><th>What it covers</th></tr></thead>
-      <tbody>
-        <tr><td>Lesson planning</td><td>Scored with the rest. The lesson starts with agreeing goals with your pupil.</td></tr>
-        <tr><td>Risk management</td><td>How you manage risk during the lesson. A score of 7 or less here is an automatic fail.</td></tr>
-        <tr><td>Teaching and learning strategies</td><td>Scored with the rest. See the marking sheet for each competency.</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <h3>Lesson planning (4 competencies, up to 12 points)</h3>
+  <ol>
+    <li>Did the trainer identify the pupil's learning goals and needs?</li>
+    <li>Was the agreed lesson structure appropriate for the pupil's experience and ability?</li>
+    <li>Were the practice areas suitable?</li>
+    <li>Was the lesson plan adapted, when appropriate, to help the pupil work towards their learning goals?</li>
+  </ol>
+  <h3>Risk management (5 competencies, up to 15 points)</h3>
+  <ol>
+    <li>Did the trainer ensure that the pupil fully understood how the responsibility for risk would be shared?</li>
+    <li>Were directions and instructions given to the pupil clear and given in good time?</li>
+    <li>Was the trainer aware of the surroundings and the pupil's actions?</li>
+    <li>Was any verbal or physical intervention by the trainer timely and appropriate?</li>
+    <li>Was sufficient feedback given to help the pupil understand any potential safety critical incidents?</li>
+  </ol>
+  <p>A score of 7 or less out of 15 in this category is an automatic fail, whatever your total.</p>
+  <h3>Teaching and learning strategies (8 competencies, up to 24 points)</h3>
+  <ol>
+    <li>Was the teaching and learning style suited to the pupil's learning style and current ability?</li>
+    <li>Was the pupil encouraged to analyse problems and take responsibility for their learning?</li>
+    <li>Were opportunities and examples used to clarify learning outcomes?</li>
+    <li>Was the technical information given comprehensive, appropriate and accurate?</li>
+    <li>Was the pupil given appropriate and timely feedback during the session?</li>
+    <li>Were the pupil's queries followed up and answered?</li>
+    <li>Did the trainer maintain an appropriate non-discriminatory manner throughout the session?</li>
+    <li>At the end of the session, was the pupil encouraged to reflect on their own performance?</li>
+  </ol>
   <p>
-    The standard behind the form is DVSA's <a href="https://www.gov.uk/government/publications/national-standard-for-driver-and-rider-training" target="_blank" rel="noopener noreferrer">national standard for driver and rider training</a>. The same three categories and 17 competencies are used in the ADI standards check once you are qualified.
+    The form also records the lesson theme you chose, such as junctions, town and city driving, dual carriageways, rural roads, motorways, eco-safe driving, independent driving or a recap of a manoeuvre, and whether your trainer is ORDIT-registered. The standard behind it is DVSA's <a href="https://www.gov.uk/government/publications/national-standard-for-driver-and-rider-training" target="_blank" rel="noopener noreferrer">national standard for driver and rider training</a>. The same three categories and 17 competencies are used in the ADI standards check once you are qualified.
   </p>
-  {/* TODO(issue #85): /tools/part-3-standards-check-self-assessment/ is built on a parallel branch and will 404 until that branch merges. */}
   <p>
     To rehearse against the competencies, use the <a href="/tools/part-3-standards-check-self-assessment/">Part 3 and standards check self-assessment</a> after a practice lesson.
   </p>
@@ -135,7 +166,7 @@ const sources = [
     That is roughly one test in four passed in the latest year. Two cautions. These count tests, not people, so a trainee who takes it twice is counted twice. And they say nothing about you: a well-prepared trainee with a good pupil is not "27.8% likely" to pass. They are a reason to budget for a possible retake and not to book before your trainer thinks you are ready.
   </p>
   <p>
-    The figures are DVSA's own, from table DRT521C on GOV.UK, updated 3 September 2026.
+    The figures are DVSA's own, from table DRT521C on GOV.UK, updated 3 September 2026. The first quarter of 2026/27 (April to June 2026) shows a similar picture: 28.2%, from 3,474 tests. The number of part 3 tests has also grown quickly, from 7,887 in 2022/23 to 13,606 in 2025/26, so expect test dates to be in demand.
   </p>
 
   <h2>If you fail part 3</h2>
@@ -157,7 +188,7 @@ const sources = [
     <li>You have had at least 40 hours of training from a qualified ADI in providing driving instruction, at least 10 of them in a car, recorded on form ADI 21T.</li>
     <li>You are eligible to take ADI part 3.</li>
   </ul>
-  <p>It costs £{FEES.traineeLicence} and lasts 6 months. If DVSA refuses your application you can appeal to the General Regulatory Chamber.</p>
+  <p>It costs £{FEES.traineeLicence} and lasts 6 months.</p>
 
   <h3>Choose a supervision option</h3>
   <p>When you get the licence you pick one option, and you cannot switch later.</p>
@@ -186,7 +217,10 @@ const sources = [
 
   <h3>When the licence runs out</h3>
   <p>
-    You must stop being paid for lessons, because you cannot be paid without a valid licence. You can apply for another and pay the fee again, but GOV.UK says it is unlikely you will get one just to have more time to pass part 3, or if you did not follow the rules on your previous licence. Tell DVSA if you stop using the licence for a good reason such as illness, as that makes another licence more likely. If you have not booked part 3 within 3 months of getting the licence, you must complete 5 hours of extra training before booking.
+    You must stop being paid for lessons, because you cannot be paid without a valid licence. You can apply for another and pay the fee again, but GOV.UK says it is unlikely you will get one just to have more time to pass part 3, or if you did not follow the rules on your previous licence. If you stop using the licence for a good reason, such as a long illness, return it to DVSA: there is no refund, but it makes another licence more likely. If you are refused another licence you can appeal to the General Regulatory Chamber.
+  </p>
+  <p>
+    If you chose extra training (option 2), two further rules apply: if you have not booked part 3 within 3 months of getting the licence you must do 5 hours of extra training before booking, and after a failed attempt you must do 5 hours of extra training before the next one. Each 5 hours goes on a new instructor training declaration form.
   </p>
 
   <h2>The car for part 3</h2>
