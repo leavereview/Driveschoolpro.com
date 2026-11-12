@@ -1,0 +1,133 @@
+---
+// /switch/mydrivetime/ — target page for "MyDriveTime alternative" (issue #69). The feature table lives on
+// /compare/my-drive-time/; this page is about moving across. Built on SwitchPage (see its rules).
+// MyDriveTime facts checked 12 Nov 2026 on its own pricing page (read in a browser; it blocks scripts):
+// Individuals £19/mo, "30 day FREE trial", "SMS text messages included"; Schools & Teams from £19, instructors 2–3
+// £15 each, 4–10 £10, 11+ £5, "Includes VAT"; PDI Best Start "FREE until you qualify", "Start your trial & apply to
+// extend". Syllabus, reminders and migration wording from the checks recorded in src/pages/compare/my-drive-time.astro.
+// Import facts: driveschoolpro src/lib/import/sources/mydrivetime.ts (Students › ⋮ › Export to CSV, header row,
+// columns read listed below) and src/lib/actions/pupil-import.ts (duplicates skipped, no emails sent).
+import SwitchPage from '../../components/switch/SwitchPage.astro';
+import { PRICING as P } from '../../config/offer';
+
+const rows = [
+  { label: 'Price today', them: 'Individuals £19 a month, SMS included. Schools and teams from £19, then £15 each for instructors 2 and 3, £10 for 4 to 10 and £5 from the 11th. VAT included.', us: `£0 until 31 March 2027. From ${P.startDate}: Free plan (1 instructor, up to ${P.free.lessonsPerMonth} lessons a month), Solo £${P.solo.price} a month, School £${P.school.price} + £${P.school.perExtraInstructor} per extra instructor. No VAT charged.` },
+  { label: 'Trainee instructors', them: 'PDI Best Start: free until you qualify. You start a trial and apply to extend it.', us: 'Free while you are a trainee instructor, including after 31 March 2027. Tick a box when you sign up.' },
+  { label: 'Free trial', them: '30 days', us: 'No trial needed: every feature is free until 31 March 2027, no card asked for' },
+  { label: 'Lesson reminders', them: 'App notifications and SMS (SMS included on the Individuals plan)', us: 'Email today; text and WhatsApp coming soon' },
+  { label: 'DVSA progress tracking', them: 'Starts from the standard DVSA syllabus, which you can fully customise', us: 'The DVSA 27 skills in 8 categories, as a fixed framework' },
+  { label: 'Moving your records', them: 'Says it migrates your records from any other system at no cost. Exports students as a CSV file.', us: 'Reads the MyDriveTime students export as it is. Pupils only, not lessons or payments.' },
+];
+
+const faqs = [
+  {
+    question: 'Can I run MyDriveTime and DriveSchoolPro at the same time?',
+    answer: "Yes, and we'd suggest it. Import your pupils, book next week's lessons in DriveSchoolPro, and keep MyDriveTime open for history and payments until you're happy. DriveSchoolPro is free until 31 March 2027 and doesn't ask for a card, so running both costs you nothing extra.",
+    links: [{ text: 'Get started free', url: 'https://app.driveschoolpro.com/signup' }],
+  },
+  {
+    question: 'Will my pupils get an email when I import them?',
+    answer: "No. Importing doesn't email or text anyone, so you can tidy the list before your pupils hear from DriveSchoolPro. They start getting lesson reminders once you book them a lesson, and you choose when to invite them to the pupil app.",
+    links: [{ text: 'The pupil app', url: '/features/pupil-app/' }],
+  },
+  {
+    question: 'Do my passed and inactive pupils come across?',
+    answer: "Yes. MyDriveTime's students export includes each pupil's status, and DriveSchoolPro keeps it: Active, Inactive or Passed. Your past pupils' contact details are there if they come back for a refresher or Pass Plus.",
+    links: [],
+  },
+  {
+    question: 'Is there a limit on how many pupils I can import?',
+    answer: 'Up to 1,000 pupils per file, which covers almost any solo instructor or school. Pupils already in DriveSchoolPro with the same email or mobile are skipped, so importing the same file twice does no harm.',
+    links: [],
+  },
+  {
+    question: 'MyDriveTime will migrate my data for free. Why would I import it myself?',
+    answer: "MyDriveTime's free migration is for moving into MyDriveTime. Moving out, you export your students list and upload it to DriveSchoolPro yourself, which takes a few minutes. If the import trips over your file, email it to info@driveschoolpro.com and we'll help.",
+    links: [{ text: 'Contact us', url: '/contact/' }],
+  },
+  {
+    question: "What does MyDriveTime do that DriveSchoolPro doesn't?",
+    answer: "SMS reminders, Diary Gaps for filling cancelled slots, expenses and an income and expense report, repeating weekly bookings, journey tracking and a mobile app that works offline. MyDriveTime's support also has a long track record. If you rely on any of those, it's a fair reason to stay. The full list is on our MyDriveTime comparison.",
+    links: [{ text: 'MyDriveTime vs DriveSchoolPro', url: '/compare/my-drive-time/' }],
+  },
+];
+---
+
+<SwitchPage
+  competitor={{ name: 'MyDriveTime', slug: 'mydrivetime', compareUrl: '/compare/my-drive-time/' }}
+  seo={{
+    title: 'MyDriveTime Alternative: Import Your Pupils in Minutes | DriveSchoolPro',
+    description: 'A MyDriveTime (My Drive Time) alternative for UK instructors: upload your students export as it is and book this week\'s lessons. Free until 31 March 2027. See the steps.',
+  }}
+  publishedDate="2026-11-12"
+  modifiedDate="2026-11-12"
+  checkedOn="12 November 2026"
+  h1="A MyDriveTime alternative you can move to in an evening"
+  heroIntro="If you're looking for a MyDriveTime (or My Drive Time) alternative, the hard part is rarely choosing the app. It's moving your pupils. DriveSchoolPro reads MyDriveTime's own students export, so your list comes across in a few minutes and you can book this week's lessons straight away."
+  directAnswer={{
+    question: 'Is DriveSchoolPro a good MyDriveTime alternative?',
+    answer: "It is if you want AI lesson briefings, a fixed DVSA 27-skill framework, clash checks that include the car and Stripe card payments, and email reminders are enough for now. It is free until 31 March 2027. It isn't if you depend on MyDriveTime's included SMS, Diary Gaps or expenses, which DriveSchoolPro doesn't have.",
+    body: [
+      "MyDriveTime is well liked, and its support is a real strength. Instructors who look around usually have a specific reason: they want card payments built in, lesson prep written for them, or one diary that checks the car as well as the pupil. This page shows what moving involves, so you can judge whether that reason is worth an evening.",
+      'For the full feature-by-feature table, including everything MyDriveTime does that we don\'t, see <a href="/compare/my-drive-time/" class="text-brand-red font-semibold hover:underline">MyDriveTime vs DriveSchoolPro</a>. If you\'re also weighing up Total Drive, there\'s a <a href="/compare/total-drive-vs-mydrivetime/" class="text-brand-red font-semibold hover:underline">three-way comparison</a>.',
+    ],
+  }}
+  rows={rows}
+  sources={[
+    { label: 'MyDriveTime pricing', url: 'https://www.mydrivetime.co.uk/pricing/' },
+    { label: 'MyDriveTime home page (migration, SMS)', url: 'https://www.mydrivetime.co.uk/' },
+    { label: 'MyDriveTime lesson management (DVSA syllabus)', url: 'https://www.mydrivetime.co.uk/lesson-management/' },
+    { label: 'MyDriveTime diary management (reminders)', url: 'https://www.mydrivetime.co.uk/diary-management/' },
+  ]}
+  stepsQuestion="How long does it take to switch from MyDriveTime?"
+  stepsAnswer="Exporting from MyDriveTime and importing into DriveSchoolPro takes a few minutes for a typical pupil list. The slower part is booking your upcoming lessons by hand, because lesson history doesn't come across yet. You can be running next week's diary in DriveSchoolPro the same evening."
+  steps={[
+    { title: 'Export your students from MyDriveTime', time: 'about 2 minutes', body: 'In the MyDriveTime app, go to <strong>Students</strong>, tap the three-dot menu and choose <strong>Export to CSV</strong>. Save the file somewhere you can find it, and don\'t edit it.' },
+    { title: 'Create your DriveSchoolPro account', time: 'about 2 minutes', body: 'Sign up with your email. There\'s no card to enter and nothing to pay until 31 March 2027.' },
+    { title: 'Upload the file', time: 'a few minutes', body: 'Open <strong>Settings</strong>, then <strong>Import Pupils</strong>, and choose <strong>MyDriveTime export</strong>. DriveSchoolPro reads MyDriveTime\'s columns for you and shows a preview with anything it couldn\'t read. Tap Import and you see how many pupils were added and how many were skipped as already there.' },
+    { title: 'Book this week\'s lessons', time: 'depends on your diary', body: 'Book your upcoming lessons into the DriveSchoolPro diary. Each booking is checked against the pupil, the instructor and the car. Reminders go out by email from then on.' },
+    { title: 'Run both for a week', time: 'optional', body: 'Keep MyDriveTime for lesson history and payments until you\'ve settled up. When you\'re sure, cancel your Direct Debit with MyDriveTime.' },
+  ]}
+  sections={[
+    {
+      question: 'What comes across from MyDriveTime?',
+      answer: "Your pupils' details come across from MyDriveTime's students export: names, phone numbers, email, address, date of birth, licence number, status, theory and practical test status, emergency contact, medical or learning needs, driving experience, gearbox and notes. Pupils already in DriveSchoolPro with the same email or mobile are skipped, and nobody is emailed.",
+      list: [
+        'First name and surname',
+        'Mobile, home phone and email',
+        'Address, town and postcode',
+        'Date of birth and licence number',
+        'Status: Active, Inactive or Passed',
+        'Emergency contact and their mobile',
+        'Medical or learning needs, and previous driving experience',
+        'Theory and practical test status (added to the pupil\'s notes), and your notes',
+        'Manual or automatic',
+      ],
+    },
+    {
+      question: "What doesn't come across from MyDriveTime?",
+      answer: "Lesson history, payments, balances and progress ratings stay in MyDriveTime for now, because DriveSchoolPro's importer reads the students file only. Your reminder settings, lesson prices and pupils' MyDriveTime student app logins don't transfer either. You set those up once in DriveSchoolPro, and your pupils use its pupil app instead.",
+      list: [
+        'Past lessons and upcoming bookings: book the upcoming ones by hand',
+        'Payments and balances: settle these in MyDriveTime or note them on the pupil',
+        'Syllabus and progress ratings: DriveSchoolPro uses the DVSA 27 skills, so you rate pupils afresh at their next lesson',
+        'Reminder timings and lesson prices: set once in Settings',
+      ],
+      body: ['Keep any other exports MyDriveTime gives you, such as your finances spreadsheet. They are your records, and you\'ll want them for your tax return.'],
+    },
+    {
+      question: 'What will be different day to day?',
+      answer: 'Before each lesson you get a short AI briefing written from your last notes and the pupil\'s skill ratings. Progress is tracked against the DVSA\'s 27 skills, pupils can see it in their app, and a pupil who passes their practical test is asked once to review you on Google. Reminders are email only for now.',
+      body: [
+        'Pupils can book, move or cancel their own lessons in the pupil app, within limits you set, and you can switch that off. Card payments go through Stripe. See <a href="/how-progress-works/" class="text-brand-red font-semibold hover:underline">how progress tracking works</a> and <a href="/features/getting-paid/" class="text-brand-red font-semibold hover:underline">getting paid</a>.',
+      ],
+    },
+  ]}
+  faqs={faqs}
+  related={[
+    { href: '/compare/my-drive-time/', text: 'MyDriveTime vs DriveSchoolPro', note: 'every feature side by side, including our gaps' },
+    { href: '/switch/total-drive/', text: 'Switching from Total Drive', note: 'the same steps for a Total Drive export' },
+    { href: '/compare/total-drive-vs-mydrivetime/', text: 'Total Drive vs MyDriveTime', note: 'the two established apps compared' },
+    { href: '/pricing/', text: 'Pricing', note: 'free until 31 March 2027, then Free, Solo or School' },
+  ]}
+/>

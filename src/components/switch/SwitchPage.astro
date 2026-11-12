@@ -1,0 +1,177 @@
+---
+/**
+ * "Switching from X" page, shared by /switch/total-drive/ and /switch/mydrivetime/ (issue #69) so the
+ * two cannot drift apart. Each page targets one search ("Total Drive alternative", "MyDriveTime
+ * alternative"); the matching /compare/ page is the feature-by-feature table.
+ *
+ * Rules (as /compare/, ASA CAP 3.33–3.41, plus the issue brief):
+ *  - Unlike /compare/, the table states competitor prices, because the brief asks for "price today".
+ *    Every price is copied from the vendor's own page, with the date it was checked and a source link.
+ *    Re-check with the blog roundup each quarter (see PRICING in src/config/offer.ts).
+ *  - Every DriveSchoolPro claim must be live today; upcoming items say "coming soon".
+ *  - Each question heading starts with a 40–60 word direct answer.
+ *  - Import facts come from the app (driveschoolpro src/lib/import/sources/*, src/lib/actions/pupil-import.ts).
+ *  - No knocking copy. No comment on the vendor's owner, motives or price history.
+ */
+import { OFFER } from '../../config/offer';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BreadcrumbsEnhanced from '../seo/BreadcrumbsEnhanced.astro';
+import FAQEnhanced from '../seo/FAQEnhanced.astro';
+
+interface Row { label: string; them: string; us: string }
+interface Faq { question: string; answer: string; links?: Array<{ text: string; url: string }> }
+interface Section { question: string; answer: string; body?: string[]; list?: string[] }
+
+interface Props {
+  competitor: { name: string; slug: string; compareUrl: string };
+  seo: { title: string; description: string };
+  modifiedDate: string;
+  publishedDate: string;
+  checkedOn: string;
+  h1: string;
+  heroIntro: string;
+  directAnswer: Section;
+  rows: Row[];
+  sources: Array<{ label: string; url: string }>;
+  stepsQuestion: string;
+  stepsAnswer: string;
+  steps: Array<{ title: string; body: string; time: string }>;
+  sections: Section[];
+  faqs: Faq[];
+  related: Array<{ href: string; text: string; note: string }>;
+}
+
+const p = Astro.props;
+const pageUrl = `https://driveschoolpro.com/switch/${p.competitor.slug}/`;
+---
+
+<BaseLayout
+  title={p.seo.title}
+  description={p.seo.description}
+  publishedDate={p.publishedDate}
+  modifiedDate={p.modifiedDate}
+  showUpdated
+  image="/images/marketing/import-your-pupils-poster.webp"
+>
+  <BreadcrumbsEnhanced items={[{ label: 'Home', href: '/' }, { label: 'Compare', href: '/compare/' }, { label: `${p.competitor.name} alternative` }]} site="driveschool" />
+
+  <section class="section bg-white">
+    <div class="container-custom max-w-4xl">
+      <p class="text-sm uppercase tracking-wider text-gray-400 mb-3">Switching from {p.competitor.name}</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-brand-navy leading-tight mb-6">{p.h1}</h1>
+      <p class="text-xl text-gray-600 leading-relaxed mb-8">{p.heroIntro}</p>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4 text-center">{OFFER.ctaPrimary.label} &rarr;</a>
+        <a href="#steps" class="btn-secondary text-lg px-8 py-4 text-center">See the steps</a>
+      </div>
+      <p class="mt-4 text-sm text-gray-500">{OFFER.short}. No card needed. Keep {p.competitor.name} running while you try it.</p>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50 border-t border-gray-100">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">{p.directAnswer.question}</h2>
+      <p class="text-lg text-gray-700 leading-relaxed mb-4 font-medium">{p.directAnswer.answer}</p>
+      {p.directAnswer.body?.map((para) => <p class="text-lg text-gray-600 leading-relaxed mb-4" set:html={para} />)}
+    </div>
+  </section>
+
+  <section class="section bg-white border-t border-gray-100" id="comparison">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-2">{p.competitor.name} and DriveSchoolPro at a glance</h2>
+      <p class="text-gray-600 mb-6">{p.competitor.name}'s column is from its own website, checked on {p.checkedOn}. Prices change, so check its pricing page before you decide.</p>
+      <div class="overflow-x-auto -mx-4 px-4">
+        <table class="w-full min-w-[560px] text-left border-collapse">
+          <thead>
+            <tr class="border-b-2 border-gray-200">
+              <th scope="col" class="p-3 text-sm font-semibold text-gray-500 w-1/4"></th>
+              <th scope="col" class="p-3 text-sm font-semibold text-brand-navy w-[37%]">{p.competitor.name}</th>
+              <th scope="col" class="p-3 text-sm font-semibold text-brand-navy bg-brand-red-light w-[37%]">DriveSchoolPro</th>
+            </tr>
+          </thead>
+          <tbody>
+            {p.rows.map((r) => (
+              <tr class="border-b border-gray-100 align-top">
+                <th scope="row" class="p-3 text-sm font-semibold text-brand-navy">{r.label}</th>
+                <td class="p-3 text-sm text-gray-700">{r.them}</td>
+                <td class="p-3 text-sm text-gray-700 bg-brand-red-light/40">{r.us}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-gray-500 mt-4">
+        Sources, checked {p.checkedOn}:{' '}
+        {p.sources.map((s, i) => (
+          <><a href={s.url} rel="nofollow noopener" target="_blank" class="underline hover:text-brand-red">{s.label}</a>{i < p.sources.length - 1 ? '; ' : '.'}</>
+        ))}
+        {' '}DriveSchoolPro prices are on our <a href="/pricing/" class="underline hover:text-brand-red">pricing page</a>. The full feature table is on <a href={p.competitor.compareUrl} class="underline hover:text-brand-red">{p.competitor.name} vs DriveSchoolPro</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50 border-t border-gray-100" id="steps">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">{p.stepsQuestion}</h2>
+      <p class="text-lg text-gray-700 leading-relaxed mb-8 font-medium">{p.stepsAnswer}</p>
+      <div class="grid md:grid-cols-[1fr_auto] gap-10 items-start">
+        <ol class="space-y-6">
+          {p.steps.map((s, i) => (
+            <li class="flex gap-4">
+              <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">{i + 1}</span>
+              <div>
+                <h3 class="font-bold text-brand-navy mb-1">{s.title} <span class="font-normal text-sm text-gray-500">({s.time})</span></h3>
+                <p class="text-gray-600" set:html={s.body} />
+              </div>
+            </li>
+          ))}
+        </ol>
+        <video
+          data-howto
+          class="rounded-3xl shadow-xl border border-gray-200 w-full max-w-[280px] h-auto mx-auto"
+          src="/videos/import-your-pupils.mp4"
+          poster="/images/marketing/import-your-pupils-poster.webp"
+          width="720" height="1564"
+          controls playsinline preload="metadata"
+          aria-label="On a phone: open the menu, tap Settings, then Import Pupils, choose a CSV file, check the matched columns, tap Check rows, then Import 8 pupils. The new pupils appear in the Students list."
+        ></video>
+      </div>
+    </div>
+  </section>
+
+  {p.sections.map((s, i) => (
+    <section class={`section border-t border-gray-100 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
+      <div class="container-custom max-w-4xl">
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">{s.question}</h2>
+        <p class="text-lg text-gray-700 leading-relaxed mb-4 font-medium">{s.answer}</p>
+        {s.list && (
+          <ul class="list-disc pl-6 space-y-2 text-lg text-gray-600 mb-4">
+            {s.list.map((item) => <li set:html={item} />)}
+          </ul>
+        )}
+        {s.body?.map((para) => <p class="text-lg text-gray-600 leading-relaxed mb-4" set:html={para} />)}
+      </div>
+    </section>
+  ))}
+
+  <FAQEnhanced faqs={p.faqs} site="driveschool" pageUrl={pageUrl} title={`Switching from ${p.competitor.name}: common questions`} />
+
+  <section class="section bg-brand-navy text-white">
+    <div class="container-custom text-center max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Bring your pupil list across tonight</h2>
+      <p class="text-lg text-gray-300 mb-8">{OFFER.short}. No card, no contract. Run it next to {p.competitor.name} for a week of real lessons, then decide.</p>
+      <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label} &rarr;</a>
+    </div>
+  </section>
+
+  <section class="section bg-white border-t border-gray-100">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-xl font-bold text-brand-navy mb-6">Related</h2>
+      <ul class="space-y-3 text-lg">
+        {p.related.map((r) => (
+          <li><a href={r.href} class="text-brand-red font-semibold hover:underline">{r.text} &rarr;</a> <span class="text-gray-500">— {r.note}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

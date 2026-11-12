@@ -1,0 +1,132 @@
+---
+// /switch/total-drive/ — target page for "Total Drive alternative" (issue #69). The feature table lives on
+// /compare/total-drive/; this page is about moving across. Built on SwitchPage (see its rules).
+// Total Drive facts checked 12 Nov 2026 on its own pages: /instructor-software-pricing/ (Basic £18, Ultimate £23,
+// Pro £24, Elite £26, "Incl. VAT"; "30 day free trial"), /become-driving-instructor/ (PDI Head Start: free "until
+// you pass your Part 3 or for up to 12 months", send a copy of your PDI badge). Reminders, syllabus and export
+// paths are from the 9–10 Nov 2026 checks and hands-on trial recorded in src/pages/compare/total-drive.astro.
+// Import facts: driveschoolpro src/lib/import/sources/totaldrive.ts (43-column header-less pupil file, Active
+// pupils only, columns read listed below) and src/lib/actions/pupil-import.ts (duplicates skipped, no emails sent).
+import SwitchPage from '../../components/switch/SwitchPage.astro';
+import { PRICING as P } from '../../config/offer';
+
+const rows = [
+  { label: 'Price today', them: 'Four plans: Basic £18, Ultimate £23, Pro £24 and Elite £26 a month, VAT included. Online booking starts on Ultimate.', us: `£0 until 31 March 2027. From ${P.startDate}: Free plan (1 instructor, up to ${P.free.lessonsPerMonth} lessons a month), Solo £${P.solo.price} a month, School £${P.school.price} + £${P.school.perExtraInstructor} per extra instructor. No VAT charged.` },
+  { label: 'Trainee instructors', them: 'PDI Head Start: free until you pass Part 3 or for up to 12 months. You send a copy of your trainee licence.', us: 'Free while you are a trainee instructor, including after 31 March 2027. Tick a box when you sign up.' },
+  { label: 'Free trial', them: '30 days, full access', us: 'No trial needed: every feature is free until 31 March 2027, no card asked for' },
+  { label: 'Lesson reminders', them: 'Free app notifications; SMS with a paid text bundle', us: 'Email today; text and WhatsApp coming soon' },
+  { label: 'DVSA progress tracking', them: 'Its own 34-skill syllabus in 5 groups by default, which you can edit (tested 10 Nov 2026)', us: 'The DVSA 27 skills in 8 categories, from the start' },
+  { label: 'Moving your records', them: 'Exports pupils, lessons and finances as CSV files. Says it imports your data for you when you join.', us: 'Reads the Total Drive pupil export as it is. Pupils only, not lessons or payments.' },
+];
+
+const faqs = [
+  {
+    question: 'Can I run Total Drive and DriveSchoolPro at the same time?',
+    answer: "Yes, and we'd suggest it. Import your pupils, book next week's lessons in DriveSchoolPro, and keep Total Drive open for history and payments until you're happy. DriveSchoolPro is free until 31 March 2027 and doesn't ask for a card, so running both costs you nothing extra.",
+    links: [{ text: 'Get started free', url: 'https://app.driveschoolpro.com/signup' }],
+  },
+  {
+    question: 'Will my pupils get an email when I import them?',
+    answer: "No. Importing doesn't email or text anyone, so you can tidy the list before your pupils hear from DriveSchoolPro. They start getting lesson reminders once you book them a lesson, and you choose when to invite them to the pupil app.",
+    links: [{ text: 'The pupil app', url: '/features/pupil-app/' }],
+  },
+  {
+    question: "Why are some of my Total Drive pupils missing from the export?",
+    answer: "Total Drive's Export Pupil only includes pupils marked Active. If you want Passed, Inactive or Waiting pupils in DriveSchoolPro too, set them to Active in Total Drive first, export, then set them back.",
+    links: [],
+  },
+  {
+    question: 'I opened the export in Excel and now it won\'t import. Why?',
+    answer: "Total Drive's file has no header row, so DriveSchoolPro reads it by column position and refuses a file with the wrong number of columns rather than guess. Saving it from Excel or Numbers can change that. Download it again from Total Drive and upload it untouched. If it still fails, email it to info@driveschoolpro.com and we'll look.",
+    links: [{ text: 'Contact us', url: '/contact/' }],
+  },
+  {
+    question: 'Is there a limit on how many pupils I can import?',
+    answer: 'Up to 1,000 pupils per file, which covers almost any solo instructor or school. Pupils already in DriveSchoolPro with the same email or mobile are skipped, so importing the same file twice does no harm.',
+    links: [],
+  },
+  {
+    question: 'What does Total Drive do that DriveSchoolPro doesn\'t?',
+    answer: "Theory practice, broadcasting a cancelled slot to pupils (Smart Gaps), SMS reminders, expenses and Making Tax Digital links, a calendar feed, Apple CarPlay and Android Auto, and an offline diary. If you rely on any of those, it's a fair reason to stay. The full list is on our Total Drive comparison.",
+    links: [{ text: 'Total Drive vs DriveSchoolPro', url: '/compare/total-drive/' }],
+  },
+];
+---
+
+<SwitchPage
+  competitor={{ name: 'Total Drive', slug: 'total-drive', compareUrl: '/compare/total-drive/' }}
+  seo={{
+    title: 'Total Drive Alternative: Import Your Pupils in Minutes | DriveSchoolPro',
+    description: 'A Total Drive alternative for UK instructors: upload your Total Drive pupil export as it is and book this week\'s lessons. Free until 31 March 2027, no card. See the steps.',
+  }}
+  publishedDate="2026-11-12"
+  modifiedDate="2026-11-12"
+  checkedOn="12 November 2026"
+  h1="A Total Drive alternative you can move to in an evening"
+  heroIntro="If you're looking for a Total Drive alternative, the hard part is rarely choosing the app. It's moving your pupils. DriveSchoolPro reads Total Drive's own pupil export, so your list comes across in a few minutes and you can book this week's lessons straight away."
+  directAnswer={{
+    question: 'Is DriveSchoolPro a good Total Drive alternative?',
+    answer: "It is if you want DVSA 27-skill progress tracking, AI lesson briefings and clash checks that include the car, and you're happy with email reminders for now. It is free until 31 March 2027. It isn't if you rely on Total Drive's theory practice, Smart Gaps or SMS reminders, which DriveSchoolPro doesn't have.",
+    body: [
+      "Total Drive is an established app and plenty of instructors are happy on it. People who look around usually have one specific reason: the price after a rise, a syllabus that isn't the DVSA's 27 skills out of the box, or a diary that lets a clash through. This page shows what moving involves, so you can judge whether that reason is worth an evening.",
+      'For the full feature-by-feature table, including everything Total Drive does that we don\'t, see <a href="/compare/total-drive/" class="text-brand-red font-semibold hover:underline">Total Drive vs DriveSchoolPro</a>. If you\'re also weighing up MyDriveTime, there\'s a <a href="/compare/total-drive-vs-mydrivetime/" class="text-brand-red font-semibold hover:underline">three-way comparison</a>.',
+    ],
+  }}
+  rows={rows}
+  sources={[
+    { label: 'Total Drive pricing', url: 'https://totaldrive.co.uk/instructor-software-pricing/' },
+    { label: 'Total Drive PDI Head Start', url: 'https://totaldrive.co.uk/become-driving-instructor/' },
+    { label: 'Total Drive help guide: lesson reminders', url: 'https://totaldrive.freshdesk.com/support/solutions/articles/80001096529-lesson-reminders-overview' },
+    { label: 'Total Drive help guide: progress syllabus', url: 'https://totaldrive.freshdesk.com/support/solutions/articles/80001096313-progress-syllabus' },
+  ]}
+  stepsQuestion="How long does it take to switch from Total Drive?"
+  stepsAnswer="Exporting from Total Drive and importing into DriveSchoolPro takes a few minutes for a typical pupil list. The slower part is booking your upcoming lessons by hand, because lesson history doesn't come across yet. You can be running next week's diary in DriveSchoolPro the same evening."
+  steps={[
+    { title: 'Export your pupils from Total Drive', time: 'about 2 minutes', body: 'In Total Drive, go to <strong>Learners</strong>, then <strong>Import</strong>, then <strong>Export Pupil</strong>. Only Active pupils are exported, so set any Passed, Inactive or Waiting pupils you want to Active first. Don\'t open and re-save the file.' },
+    { title: 'Create your DriveSchoolPro account', time: 'about 2 minutes', body: 'Sign up with your email. There\'s no card to enter and nothing to pay until 31 March 2027.' },
+    { title: 'Upload the file', time: 'a few minutes', body: 'Open <strong>Settings</strong>, then <strong>Import Pupils</strong>, and choose <strong>Total Drive export</strong>. DriveSchoolPro reads Total Drive\'s columns for you and shows a preview with anything it couldn\'t read. Tap Import and you see how many pupils were added and how many were skipped as already there.' },
+    { title: 'Book this week\'s lessons', time: 'depends on your diary', body: 'Book your upcoming lessons into the DriveSchoolPro diary. Each booking is checked against the pupil, the instructor and the car. Reminders go out by email from then on.' },
+    { title: 'Run both for a week', time: 'optional', body: 'Keep Total Drive for lesson history, prepaid hours and payments until you\'ve settled up. When you\'re sure, cancel it from your Total Drive account.' },
+  ]}
+  sections={[
+    {
+      question: 'What comes across from Total Drive?',
+      answer: "Your pupils' contact and licence details come across from Total Drive's pupil export: names, mobile, email, address and postcode, date of birth, provisional licence number, theory test status, gearbox and your private notes. Pupils already in DriveSchoolPro with the same email or mobile are skipped, and nobody is emailed during the import.",
+      list: [
+        'First name and surname',
+        'Mobile and email',
+        'Address, town and postcode',
+        'Date of birth and provisional licence number',
+        'Theory test status (added to the pupil\'s notes)',
+        'Manual or automatic',
+        'Your private notes on the pupil',
+      ],
+      body: ['Other columns in the file, such as Total Drive\'s own IDs, lesson rates and an unlabelled login code, are ignored and never stored.'],
+    },
+    {
+      question: "What doesn't come across from Total Drive?",
+      answer: "Lesson history, payments, prepaid hours and progress ratings stay in Total Drive for now, because DriveSchoolPro's importer reads the pupil file only. Your reminder settings, lesson prices and the pupils' Total Drive app logins don't transfer either. You set those up once in DriveSchoolPro, and your pupils use its pupil app instead.",
+      list: [
+        'Past lessons and upcoming bookings: book the upcoming ones by hand',
+        'Payments, balances and prepaid hours: settle these in Total Drive or note them on the pupil',
+        'Syllabus and progress ratings: DriveSchoolPro uses the DVSA 27 skills, so you rate pupils afresh at their next lesson',
+        'Reminder timings and lesson prices: set once in Settings',
+      ],
+      body: ['Total Drive does export lessons and finances as separate CSV files. Keep them: they are your records, and DriveSchoolPro may read them in a later version.'],
+    },
+    {
+      question: 'What will be different day to day?',
+      answer: 'Before each lesson you get a short AI briefing written from your last notes and the pupil\'s skill ratings. Progress is tracked against the DVSA\'s 27 skills, pupils can see it in their app, and a pupil who passes their practical test is asked once to review you on Google. Reminders are email only for now.',
+      body: [
+        'Pupils can book, move or cancel their own lessons in the pupil app, within limits you set, and you can switch that off. Card payments go through Stripe. See <a href="/how-progress-works/" class="text-brand-red font-semibold hover:underline">how progress tracking works</a> and <a href="/features/lesson-briefings/" class="text-brand-red font-semibold hover:underline">AI lesson briefings</a>.',
+      ],
+    },
+  ]}
+  faqs={faqs}
+  related={[
+    { href: '/compare/total-drive/', text: 'Total Drive vs DriveSchoolPro', note: 'every feature side by side, including our gaps' },
+    { href: '/switch/mydrivetime/', text: 'Switching from MyDriveTime', note: 'the same steps for a MyDriveTime export' },
+    { href: '/compare/total-drive-vs-mydrivetime/', text: 'Total Drive vs MyDriveTime', note: 'the two established apps compared' },
+    { href: '/pricing/', text: 'Pricing', note: 'free until 31 March 2027, then Free, Solo or School' },
+  ]}
+/>

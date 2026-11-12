@@ -1,7 +1,7 @@
 import { OFFER, PRICING } from "../../config/offer";
 
 /**
- * schema.org Offers for every plan: early access now, then Free, Solo and School from
+ * schema.org Offers for every plan: early access now, free for trainee instructors, then Free, Solo and School from
  * 1 April 2027. Shared by /pricing/ and the homepage SoftwareApplication so the markup
  * matches the published prices everywhere (SEO plan, item 7). Built from PRICING, so a
  * price change in src/config/offer.ts updates both pages.
@@ -54,6 +54,15 @@ export function planOffers() {
       price: String(P.solo.price),
       priceSpecification: monthly(P.solo.price),
       validFrom: "2027-04-01",
+    },
+    {
+      ...common,
+      "@id": `${BASE}#trainee`,
+      name: "Free for trainee instructors",
+      description: `${P.trainee.summary}. No card needed.`,
+      price: "0",
+      priceSpecification: monthly(0),
+      url: "https://driveschoolpro.com/free-for-trainee-instructors/",
     },
     {
       ...common,
