@@ -6,12 +6,10 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import { OFFER } from '../../../config/offer';
 import { RATES, TAX_YEAR } from '../../../utils/adi-tax';
-import { compare, EXAMPLE_SHARED as S, EXAMPLE_FRANCHISE as F, EXAMPLE_INDEPENDENT as I } from '../../../utils/adi-earnings';
+import { compare, gapText, gbp, gbp2, EXAMPLE_SHARED as S, EXAMPLE_FRANCHISE as F, EXAMPLE_INDEPENDENT as I } from '../../../utils/adi-earnings';
 
 const updated = '2026-11-12';
 const initial = compare(F, I, S);
-const gbp = (n: number) => (n < 0 ? '−£' : '£') + Math.round(Math.abs(n)).toLocaleString('en-GB');
-const gbp2 = (n: number) => (n < 0 ? '−£' : '£') + Math.abs(n).toFixed(2);
 const fmt = (n: number) => n.toLocaleString('en-GB');
 
 const SOURCES = [
@@ -32,7 +30,7 @@ const faqs = [
   },
   {
     question: 'Is a driving instructor franchise worth it?',
-    answer: 'It depends on what the fee buys you. A franchise charges a weekly fee, and in return may supply pupils, a branded car or support. Independent instructors keep the fee but have to find their own pupils and pay for their own marketing and booking tools. The calculator lets you set different hourly rates and paid hours for each route, because the gap usually comes from those two numbers as much as from the fee itself. Check the fee and terms in your own agreement.',
+    answer: 'It depends on what the fee buys you. A franchise charges a weekly fee, and in return may supply pupils, a branded car or support. If your fee includes the car, tick that box on the franchise side so the car, dual controls and insurance are not counted twice. Independent instructors keep the fee but have to find their own pupils and pay for their own marketing and booking tools. The calculator lets you set different hourly rates and paid hours for each route, because the gap usually comes from those two numbers as much as from the fee itself. Check the fee and terms in your own agreement.',
   },
   {
     question: 'How is tax worked out?',
@@ -79,8 +77,8 @@ const rows: ['gross' | 'franchise' | 'costs' | 'profit' | 'incomeTax' | 'class4'
 ---
 
 <BaseLayout
-  title={`How Much Do Driving Instructors Earn? Earnings Calculator ${TAX_YEAR}`}
-  description={`Free ${TAX_YEAR} earnings calculator for UK driving instructors. Compare franchise and independent take-home after car costs, tax and NI.`}
+  title={`How Much Do Driving Instructors Earn? ${TAX_YEAR} Calculator`}
+  description={`Free ${TAX_YEAR} calculator for UK driving instructors: compare franchise and independent take-home after car, fuel, tax and NI. Try your own numbers.`}
   modifiedDate={updated}
 >
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
@@ -155,13 +153,19 @@ const rows: ['gross' | 'franchise' | 'costs' | 'profit' | 'incomeTax' | 'class4'
                   <label class="block"><span class={labelCls}>Other costs (£ a year)</span>
                     <input data-k={k} data-f="otherCostsYearly" type="number" inputmode="decimal" min="0" step="50" value={v.otherCostsYearly} class={inputCls} autocomplete="off" /></label>
                 </div>
+                {k === 'f' && (
+                  <label class="mt-4 inline-flex items-start gap-2 text-sm text-gray-700">
+                    <input type="checkbox" data-k="f" data-f="carIncluded" class="mt-1" />
+                    <span>The fee includes a car, dual controls and insurance (so the shared car, dual controls and insurance costs are left out here)</span>
+                  </label>
+                )}
                 <p class="text-xs text-gray-500 mt-3">
                   {k === 'f'
                     ? 'Other costs: phone, ADI badge, CPD, anything the franchise does not cover.'
                     : 'Other costs: your own marketing, booking software, accountant, ADI badge, CPD, phone. Set the fee to 0 unless you pay one.'}
                 </p>
               </div>
-              <dl class="bg-brand-navy text-white p-6 text-sm space-y-2" aria-live="polite">
+              <dl class="bg-brand-navy text-white p-6 text-sm space-y-2">
                 {rows.map(([key, label]) => (
                   <div class="flex justify-between"><dt class="text-gray-300">{label}</dt><dd data-o={`${k}.${key}`}>{key === 'gross' || key === 'profit' ? gbp(r[key]) : '−' + gbp(r[key])}</dd></div>
                 ))}
@@ -178,7 +182,7 @@ const rows: ['gross' | 'franchise' | 'costs' | 'profit' | 'incomeTax' | 'class4'
 
         <div class="mt-8 bg-white rounded-xl border-2 border-brand-red p-6" aria-live="polite">
           <h2 class="text-xl font-bold text-brand-navy mb-2">The gap</h2>
-          <p class="text-gray-700" data-o="gapText"></p>
+          <p class="text-gray-700" data-o="gapText">{gapText(initial)}</p>
           <p class="text-xs text-gray-500 mt-3">
             An estimate, not tax advice. Assumes instructing is your only income, you are a sole trader and not a Scottish taxpayer. It ignores pensions,
             student loans, capital allowances and payments on account. Effective hourly rate counts paid hours only, not travel, admin or unpaid cancellations.
@@ -194,12 +198,12 @@ const rows: ['gross' | 'franchise' | 'costs' | 'profit' | 'incomeTax' | 'class4'
         <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">How it is worked out</h2>
         <ol class="list-decimal pl-5 space-y-3 text-gray-700 mb-8">
           <li><strong>Lesson income</strong> = hourly rate × paid hours a week × weeks worked.</li>
-          <li><strong>Costs</strong> = franchise fee (× 52, or × weeks worked) + car × 12 + fuel per hour × paid hours + dual controls + insurance + other costs.</li>
+          <li><strong>Costs</strong> = franchise fee (× 52, or × weeks worked) + car × 12 + fuel per hour × paid hours + dual controls + insurance + other costs. If the franchise fee includes the car, the car, dual controls and insurance are left out of the franchise column.</li>
           <li><strong>Profit</strong> = income − costs. This, not turnover, is what HMRC taxes.</li>
           <li><strong>Income Tax and Class 4 NI</strong> on profit at the {TAX_YEAR} rates: Personal Allowance £{fmt(RATES.personalAllowance)}, 20% to £{fmt(RATES.personalAllowance + RATES.basicRateLimit)}, 40% to £{fmt(RATES.additionalRateThreshold)}, 45% above; Class 4 at 6% from £{fmt(RATES.class4LowerProfitsLimit)} to £{fmt(RATES.class4UpperProfitsLimit)} and 2% above.</li>
           <li><strong>Take-home</strong> = profit − Income Tax − Class 4 NI. <strong>Effective hourly rate</strong> = take-home ÷ paid hours.</li>
         </ol>
-        <p class="text-gray-700 mb-6">Class 2 National Insurance is no longer a compulsory payment for the self-employed, so it is not shown. The <a href="/tools/adi-income-tax-calculator/" class="text-brand-red hover:underline">ADI income and tax estimator</a> uses the same rates and adds a Making Tax Digital note.</p>
+        <p class="text-gray-700 mb-6">Class 2 National Insurance is no longer compulsory for the self-employed, so it is not shown. With profits above £7,105 you get National Insurance credits automatically; below that you can choose to pay voluntary Class 2 (£3.65 a week in {TAX_YEAR}) to protect your State Pension record. The <a href="/tools/adi-income-tax-calculator/" class="text-brand-red hover:underline">ADI income and tax estimator</a> uses the same rates and adds a Making Tax Digital note.</p>
         <h3 class="text-xl font-bold text-brand-navy mb-3">Sources, checked 12 November 2026</h3>
         <ul class="space-y-3 text-sm">
           {SOURCES.map((s) => (
@@ -250,17 +254,16 @@ const rows: ['gross' | 'franchise' | 'costs' | 'profit' | 'incomeTax' | 'class4'
 <script>
   // Browser only. Reads inputs, writes results. Nothing is sent, stored or put in the URL.
   // The one analytics event (GA4, via the consent-gated gtag in BaseLayout) carries no figures.
-  import { compare, type ScenarioInputs, type SharedInputs } from '../../../utils/adi-earnings';
+  import { compare, gapText, gbp, gbp2, type ScenarioInputs, type SharedInputs } from '../../../utils/adi-earnings';
 
   const root = document.getElementById('earnings-calc');
   if (root) {
-    const gbp = (n: number) => (n < 0 ? '−£' : '£') + Math.round(Math.abs(n)).toLocaleString('en-GB');
-    const gbp2 = (n: number) => (n < 0 ? '−£' : '£') + Math.abs(n).toFixed(2);
     const set = (key: string, text: string) => { const el = root.querySelector<HTMLElement>(`[data-o="${key}"]`); if (el) el.textContent = text; };
     const val = (sel: string) => { const el = root.querySelector<HTMLInputElement>(sel); const v = el ? parseFloat(el.value) : NaN; return Number.isFinite(v) ? v : 0; };
     const scen = (k: string): ScenarioInputs => {
       const f = (n: keyof ScenarioInputs) => val(`[data-k="${k}"][data-f="${n}"]`);
-      return { hourlyRate: f('hourlyRate'), hoursPerWeek: f('hoursPerWeek'), franchiseFeeWeekly: f('franchiseFeeWeekly'), otherCostsYearly: f('otherCostsYearly') };
+      const inc = root.querySelector<HTMLInputElement>(`[data-k="${k}"][data-f="carIncluded"]`);
+      return { hourlyRate: f('hourlyRate'), hoursPerWeek: f('hoursPerWeek'), franchiseFeeWeekly: f('franchiseFeeWeekly'), otherCostsYearly: f('otherCostsYearly'), carIncluded: !!inc?.checked };
     };
     const shared = (): SharedInputs => {
       const s = (n: string) => val(`[data-s="${n}"]`);
@@ -275,10 +278,7 @@ const rows: ['gross' | 'franchise' | 'costs' | 'profit' | 'incomeTax' | 'class4'
         for (const n of ['franchise', 'costs', 'incomeTax', 'class4'] as const) set(`${k}.${n}`, '−' + gbp(r[n]));
         set(`${k}.takeHome`, gbp(r.takeHome)); set(`${k}.monthly`, gbp(r.takeHome / 12)); set(`${k}.effectiveHourly`, gbp2(r.effectiveHourly));
       }
-      const g = c.takeHomeGap;
-      set('gapText', Math.abs(g) < 0.5
-        ? 'On these numbers the two routes give the same take-home pay.'
-        : `On these numbers ${g > 0 ? 'the franchise' : 'going independent'} leaves you ${gbp(Math.abs(g))} a year better off after costs, tax and NI (${gbp2(Math.abs(c.hourlyGap))} per paid hour).`);
+      set('gapText', gapText(c));
     };
 
     let tracked = false;

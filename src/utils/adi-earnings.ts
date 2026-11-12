@@ -14,6 +14,8 @@ export interface ScenarioInputs {
   franchiseFeeWeekly: number;
   /** £ per year: marketing, booking software, accountant, ADI badge, CPD, phone */
   otherCostsYearly: number;
+  /** the franchise fee includes the car, dual controls and instructor insurance, so those shared costs are not counted again */
+  carIncluded?: boolean;
 }
 
 export interface SharedInputs {
@@ -49,7 +51,7 @@ export function scenario(s: ScenarioInputs, c: SharedInputs): ScenarioResult {
     weeksWorked: weeks,
     franchiseFeeWeekly: s.franchiseFeeWeekly,
     franchiseAllYear: c.franchiseAllYear,
-    carCostsMonthly: pos(c.carMonthly) + (pos(c.dualControlsYearly) + pos(c.insuranceYearly)) / 12,
+    carCostsMonthly: s.carIncluded ? 0 : pos(c.carMonthly) + (pos(c.dualControlsYearly) + pos(c.insuranceYearly)) / 12,
     fuelWeekly: pos(c.fuelPerHour) * hours,
     otherCostsYearly: s.otherCostsYearly,
   });
@@ -77,6 +79,18 @@ export function compare(franchise: ScenarioInputs, independent: ScenarioInputs, 
   };
 }
 
+/** Whole pounds with a true minus sign, e.g. −£1,234. */
+export const gbp = (n: number) => (n < 0 ? '−£' : '£') + Math.round(Math.abs(n)).toLocaleString('en-GB');
+/** Pounds and pence, e.g. £12.34. */
+export const gbp2 = (n: number) => (n < 0 ? '−£' : '£') + Math.abs(n).toFixed(2);
+
+/** The one-line verdict under the two columns (server render and live update share it). */
+export function gapText(c: Pick<Comparison, 'takeHomeGap' | 'hourlyGap'>): string {
+  const g = c.takeHomeGap;
+  if (Math.abs(g) < 0.5) return 'On these numbers the two routes give the same take-home pay.';
+  return `On these numbers ${g > 0 ? 'the franchise' : 'going independent'} leaves you ${gbp(Math.abs(g))} a year better off after costs, tax and NI (${gbp2(Math.abs(c.hourlyGap))} per paid hour).`;
+}
+
 /** Illustrative example values only. They are not averages or claims about what instructors earn. */
 export const EXAMPLE_SHARED: SharedInputs = {
   weeksWorked: 46,
@@ -86,5 +100,5 @@ export const EXAMPLE_SHARED: SharedInputs = {
   insuranceYearly: 1_200,
   franchiseAllYear: true,
 };
-export const EXAMPLE_FRANCHISE: ScenarioInputs = { hourlyRate: 38, hoursPerWeek: 30, franchiseFeeWeekly: 150, otherCostsYearly: 400 };
+export const EXAMPLE_FRANCHISE: ScenarioInputs = { hourlyRate: 38, hoursPerWeek: 30, franchiseFeeWeekly: 150, otherCostsYearly: 400, carIncluded: false };
 export const EXAMPLE_INDEPENDENT: ScenarioInputs = { hourlyRate: 38, hoursPerWeek: 26, franchiseFeeWeekly: 0, otherCostsYearly: 900 };

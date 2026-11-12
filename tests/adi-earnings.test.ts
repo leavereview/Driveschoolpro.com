@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { scenario, compare, EXAMPLE_SHARED, EXAMPLE_FRANCHISE, EXAMPLE_INDEPENDENT } from '../src/utils/adi-earnings.ts';
+import { scenario, compare, gapText, EXAMPLE_SHARED, EXAMPLE_FRANCHISE, EXAMPLE_INDEPENDENT } from '../src/utils/adi-earnings.ts';
 import { estimate } from '../src/utils/adi-tax.ts';
 
 test('independent example adds up and reuses the tax maths', () => {
@@ -47,4 +47,27 @@ test('zero hours and bad input give zero, not NaN', () => {
 
 test('weeks worked is capped at 52', () => {
   assert.equal(scenario(EXAMPLE_INDEPENDENT, { ...EXAMPLE_SHARED, weeksWorked: 60 }).paidHours, 26 * 52);
+});
+
+test('franchise fee that includes the car drops car, dual controls and insurance only', () => {
+  const own = scenario(EXAMPLE_FRANCHISE, EXAMPLE_SHARED);
+  const inc = scenario({ ...EXAMPLE_FRANCHISE, carIncluded: true }, EXAMPLE_SHARED);
+  assert.equal(inc.car, 0);
+  assert.equal(own.car, 350 * 12 + 150 + 1_200);
+  assert.equal(inc.fuel, own.fuel); // fuel is still paid by the instructor
+  assert.equal(inc.franchise, own.franchise);
+  assert.equal(inc.costs, own.costs - own.car);
+});
+
+test('negative inputs are treated as zero', () => {
+  const r = scenario({ hourlyRate: -38, hoursPerWeek: 30, franchiseFeeWeekly: -10, otherCostsYearly: -1 }, { ...EXAMPLE_SHARED, carMonthly: -350 });
+  assert.equal(r.gross, 0);
+  assert.equal(r.franchise, 0);
+  assert.equal(r.incomeTax, 0);
+});
+
+test('gap text names the route that is ahead, or says they match', () => {
+  assert.match(gapText({ takeHomeGap: 1234.4, hourlyGap: 1 }), /the franchise leaves you £1,234 a year/);
+  assert.match(gapText({ takeHomeGap: -500, hourlyGap: -0.5 }), /going independent leaves you £500 a year .*£0\.50 per paid hour/);
+  assert.match(gapText({ takeHomeGap: 0.2, hourlyGap: 0 }), /same take-home/);
 });
