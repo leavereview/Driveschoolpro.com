@@ -2,7 +2,7 @@
 
 Issues #16 and #77. Goal: DriveSchoolPro (DSP) named in AI answers for "best driving instructor app UK" (28 of 76 panel answers by 13 Dec 2026).
 
-The [4 Nov research](../research/2026-11-04-ai-visibility.md) found the gap is third-party "best X" lists, not our site. This doc lists the UK pages that rank or list instructor apps, with a short email for each. **Nothing has been sent.**
+The [4 Nov research](../research/2026-11-04-ai-visibility.md) found the gap is third-party "best X" lists, not our site. This doc lists the UK pages that rank or list instructor apps, with a short email for each. **Sent so far (12 Nov 2026):** Collingwood (emailed 5 Nov, replied 10 Nov: will add DSP), PassReady (StagHill email, 12 Nov; earlier note to hello@passready.co.uk 5 Nov), Lesson Diary and Passly (contact forms, 12 Nov). Rows 5 onwards not sent yet.
 
 **Refreshed 12 Nov 2026.** Every page below was opened on 12 Nov (Capterra and G2 block fetches, so those two rows are from search results). The 4 Nov version was written from search snippets only, and several of its rows were wrong.
 
