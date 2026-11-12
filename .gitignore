@@ -25,3 +25,6 @@ pnpm-debug.log*
 mydojo.software
 GIT-HISTORY-ANALYSIS.md
 __pycache__/
+
+# Large social videos: served from the server (rsynced by hand, protected from --delete), not kept in git
+public/social/video/*.mp4
