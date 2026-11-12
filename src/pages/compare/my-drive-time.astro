@@ -4,6 +4,10 @@ import CompetitorComparison from '../../components/compare/CompetitorComparison.
 // Competitor cells reflect MyDriveTime's own public pages, first checked 21 Sep 2026:
 //   www.mydrivetime.co.uk/ and /pricing/ (SMS included, free migration, gaps,
 //   student app, test outcome recording, Schools & Teams plan, syllabus manager)
+// 12 Nov 2026: re-checked home page (via fetch; the pricing page is Cloudflare-blocked to scripts, so
+//   pricing details are not quoted). Home page confirms: "We'll migrate your records from any other system
+//   at no cost", SMS included on the Individual plan, Diary Gaps, Journey Tracking, Expense Receipts, student app.
+//   Pricing page: free 30-day trial, free for PDIs until qualified. No cell changed except our own import row.
 // "Not listed" = not found on those pages; never "No" unless the vendor says so.
 // 16 Oct 2026: clash row updated - home page now lists "Clash Resolution".
 // 2 Nov 2026: re-checked www.mydrivetime.co.uk/. The vendor writes its name as one word,
@@ -31,7 +35,7 @@ const rows = [
   { label: 'Expenses and receipts', values: [false, 'Yes (Expense Receipts, Income and Expense Report)'] },
   { label: 'Cancellation-gap broadcast to pupils', values: [false, 'Yes (Diary Gaps)'] },
   { label: 'Theory content', values: [false, 'Not listed'] },
-  { label: 'Free migration of your existing records', values: [false, 'Yes (at no cost)'] },
+  { label: 'Moving your existing records across', values: ['Pupil import from a MyDriveTime or Total Drive spreadsheet (pupils only, not lessons or payments)', 'Yes, free data transfer from any other system (at no cost)'] },
   { label: 'Recording the route driven on each lesson', values: [false, 'Yes (Journey Tracking)'] },
 ];
 
@@ -83,18 +87,18 @@ const faqs = [
   competitor={{ name: 'MyDriveTime', alternateName: 'My Drive Time', slug: 'my-drive-time', pricingUrl: 'https://www.mydrivetime.co.uk/pricing/' }}
   h1="MyDriveTime vs DriveSchoolPro"
   seo={{
-    title: 'MyDriveTime vs DriveSchoolPro, and Alternatives (UK, 2026)',
-    description: 'MyDriveTime (My Drive Time) vs DriveSchoolPro, plus UK MyDriveTime alternatives: Total Drive, GoRoadie Pro and Lesson Diary. Free until 31 March 2027.',
+    title: 'MyDriveTime vs DriveSchoolPro: 17 Features Compared',
+    description: 'MyDriveTime vs DriveSchoolPro on 17 features, checked 12 Nov 2026, with what we lack and how to import your pupils. Free until 31 March 2027. Compare now.',
     schemaDescription: 'Feature-by-feature comparison of DriveSchoolPro and MyDriveTime for UK driving instructors, including what DriveSchoolPro does not do yet.',
     datePublished: '2026-09-21',
-    dateModified: '2026-11-09',
+    dateModified: '2026-11-12',
   }}
-  checkedOn="9 November 2026"
-  heroIntro="A plain, feature-by-feature comparison for instructors already using MyDriveTime (sometimes written My Drive Time). It covers what's different, and what DriveSchoolPro doesn't do yet."
+  checkedOn="12 November 2026"
+  heroIntro="Searching for MyDriveTime (or My Drive Time)? This is a plain, feature-by-feature comparison with DriveSchoolPro for UK driving instructors. It covers what's different, what we don't do yet, and how to bring your pupils across."
   featuredAnswer="DriveSchoolPro and MyDriveTime are both UK platforms for driving instructors, with a diary, pupil progress tracking that starts from the DVSA syllabus, and a pupil app. DriveSchoolPro adds AI lesson briefings, Google review requests at each test pass, clash checks that include the vehicle, and vehicle compliance tracking. MyDriveTime lists SMS reminders, diary-gap broadcasts, expenses, journey tracking and free migration that DriveSchoolPro doesn't have yet."
   intro="This page is for an instructor who uses MyDriveTime today and is wondering whether DriveSchoolPro is worth a look. MyDriveTime is well liked and its support is a real strength, so this isn't a case for leaving. It's a list of what's different."
   rows={rows}
-  switchHeading="Where DriveSchoolPro differs"
+  switchHeading="How DriveSchoolPro differs from MyDriveTime"
   switchIntro="MyDriveTime's support is a strength we can't match on track record. These are the differences that exist today, from the table above."
   switchItems={[
     {
@@ -118,8 +122,8 @@ const faqs = [
       body: "DriveSchoolPro has no subscription fee until 31 March 2027 and doesn't ask for a card. From 1 April 2027 there's a permanent Free plan (1 instructor, up to 60 lessons a month), Solo at £22 a month, or School at £22 a month plus £10 per extra instructor, with no VAT charged.",
     },
   ]}
-  gapsHeading="What DriveSchoolPro doesn't do yet"
-  gapsBody="There's no theory content in DriveSchoolPro, and no way to broadcast a cancelled slot to your pupils, which MyDriveTime lists as Diary Gaps. We don't offer free bulk migration of your records yet, and MyDriveTime does. We don't track expenses or produce an income and expense report, so you'd pair DriveSchoolPro with accounting software. Repeating weekly bookings are coming soon; MyDriveTime lists them today. Lesson reminders go out by email only today (WhatsApp is coming soon), and recording test bookings and results is coming soon. MyDriveTime also records the route driven on each lesson (Journey Tracking) and says its mobile app works offline; DriveSchoolPro doesn't offer route recording or advertise offline use. MyDriveTime has also been around longer. If any of these decides it for you, that's a fair reason to stay where you are."
+  gapsHeading="What MyDriveTime does that DriveSchoolPro doesn't yet"
+  gapsBody="There's no theory content in DriveSchoolPro, and no way to broadcast a cancelled slot to your pupils, which MyDriveTime lists as Diary Gaps. We can import your pupil list from a spreadsheet, but not lesson history or payments, while MyDriveTime says it migrates your records from any other system at no cost. We don't track expenses or produce an income and expense report, so you'd pair DriveSchoolPro with accounting software. Repeating weekly bookings are coming soon; MyDriveTime lists them today. Lesson reminders go out by email only today (WhatsApp is coming soon), and recording test bookings and results is coming soon. MyDriveTime also records the route driven on each lesson (Journey Tracking) and says its mobile app works offline; DriveSchoolPro doesn't offer route recording or advertise offline use. MyDriveTime has also been around longer. If any of these decides it for you, that's a fair reason to stay where you are."
   sources={[
     { label: 'MyDriveTime — home page', url: 'https://www.mydrivetime.co.uk/' },
     { label: 'MyDriveTime — pricing', url: 'https://www.mydrivetime.co.uk/pricing/' },
@@ -130,8 +134,20 @@ const faqs = [
     { label: 'MyDriveTime — web enquiry form for teams', url: 'https://www.mydrivetime.co.uk/blog/web-enquiry-form/' },
     { label: 'Lesson Diary home page (alternatives list, checked 3 November 2026)', url: 'https://lessondiary.co.uk/' },
   ]}
+  switching={{
+    heading: 'Switching from MyDriveTime',
+    intro: "You don't have to move everything at once. You can bring your pupil list across and run both diaries side by side until you're sure.",
+    steps: [
+      "Export your pupils from MyDriveTime as a spreadsheet (CSV). We haven't used MyDriveTime's software, so check its help for how.",
+      'In DriveSchoolPro, open Settings, then Import Pupils (account owners and managers).',
+      'Upload the file and choose the MyDriveTime option. Check the matched columns, then tap Check rows.',
+      "Review the preview and tap Import. Pupils you already have are skipped, and you see how many were added.",
+    ],
+    note: "The import covers pupils only: no lesson history, payments or credit. Book your upcoming lessons into DriveSchoolPro by hand, and keep MyDriveTime for your records for as long as you need them. MyDriveTime says it offers free data transfer if you want a full migration, so that is a fair reason to stay.",
+    link: { text: 'See how importing pupils works', href: '/start/first-pupil/' },
+  }}
   alternativesKey="mydrivetime"
   faqs={faqs}
   faqTitle="DriveSchoolPro vs MyDriveTime — common questions"
-  updates={[{ date: '9 November 2026', text: 'checked again. MyDriveTime starts from the standard DVSA syllabus, which you can customise, and the page now says so. We also corrected the reminders and website cells and added its Journey Tracking and offline app.' }]}
+  updates={[{ date: '12 November 2026', text: 're-checked MyDriveTime\'s home page and pricing details. Nothing in the table changed, except that DriveSchoolPro can now import pupils from a spreadsheet, and we added a Switching from MyDriveTime section.' }, { date: '9 November 2026', text: 'checked again. MyDriveTime starts from the standard DVSA syllabus, which you can customise, and the page now says so. We also corrected the reminders and website cells and added its Journey Tracking and offline app.' }]}
 />
