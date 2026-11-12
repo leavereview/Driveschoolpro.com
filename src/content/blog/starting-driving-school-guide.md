@@ -85,7 +85,7 @@ After part 2 you can apply for a 6-month trainee licence (the "pink badge") for 
 
 ### 7. Pass ADI part 3: instructional ability
 
-Part 3 costs £111. An examiner watches you give a client-centred lesson to one of your own pupils for about 45 minutes, with the pupil driving for about 40 of them. It assesses lesson planning, risk management and your teaching and learning strategies.
+Part 3 costs £111. An examiner watches you give a client-centred lesson to one of your own pupils for about 45 minutes, with the pupil driving for about 40 of them. It assesses lesson planning, risk management and your teaching and learning strategies. To practise against the 17 competencies on the marking sheet, try our free [Part 3 and standards check self-assessment](/tools/part-3-standards-check-self-assessment/).
 
 ### 8. Register as an ADI
 

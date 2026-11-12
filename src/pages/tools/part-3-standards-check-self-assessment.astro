@@ -16,8 +16,10 @@ const updated = '2026-11-12';
 
 const SOURCES = [
   { label: 'ADI part 3 test: marking sheet (the test report form)', href: 'https://www.gov.uk/government/publications/approved-driving-instructor-adi-part-3-test-report' },
+  { label: 'ADI standards check: marking sheet (form ADI SC1)', href: 'https://www.gov.uk/government/publications/adi-standards-check-form-example' },
   { label: 'ADI part 3 test: your test result', href: 'https://www.gov.uk/adi-part-3-test/test-result' },
   { label: 'ADI standards check: your standards check grade', href: 'https://www.gov.uk/adi-standards-check/your-standards-check-grade' },
+  { label: 'ADI part 3 test: what happens during the test', href: 'https://www.gov.uk/adi-part-3-test/what-happens-during-test' },
   { label: 'National standard for driver and rider training', href: 'https://www.gov.uk/government/publications/national-standard-for-driver-and-rider-training' },
 ];
 
@@ -37,6 +39,14 @@ const faqs = [
   {
     question: 'What are the 17 competencies?',
     answer: 'They are the 17 questions on the ADI part 3 test report form: four on lesson planning, five on risk management and eight on teaching and learning strategies, covering things like identifying the pupil\'s goals, clear and timely instructions, timely intervention, feedback, and getting the pupil to reflect at the end. The list on this page gives each one in our own words, in the same order as the form.',
+  },
+  {
+    question: 'What is the SC1 form?',
+    answer: 'ADI SC1 is the standards check marking sheet that GOV.UK publishes. It has the same 17 questions in the same three groups as the Part 3 test report form, the same 0 to 3 scale, and the same two automatic fail questions on its review page. The examiner fills in a digital version during the check and you get the completed report by email.',
+  },
+  {
+    question: 'What happens if I fail?',
+    answer: 'For the Part 3, GOV.UK says you can retake it if you fail the first or second attempt, and any retake must be within 2 years of passing ADI part 1. After a third fail you must stop giving paid lessons and pass ADI parts 1 and 2 again before another Part 3. For the standards check, a fail gives you up to 2 more attempts. Fail 3 times and you are removed from the ADI register and have to retake the ADI tests to rejoin.',
   },
   {
     question: 'Is this an official DVSA tool?',
@@ -77,8 +87,8 @@ const appSchema = {
 ---
 
 <BaseLayout
-  title="ADI Part 3 & Standards Check Self-Assessment | 17 Competencies"
-  description="Free ADI Part 3 and standards check self-assessment. Score the 17 competencies 0 to 3, see your total out of 51, grade and weakest areas, then print the result."
+  title="ADI Part 3 Marking Sheet & SC1 Self-Check: 17 Competencies"
+  description="Score a lesson against the 17 ADI Part 3 and standards check (SC1) competencies. Get your total out of 51, grade, auto-fail risks and weakest areas. Free."
   modifiedDate={updated}
 >
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
@@ -100,7 +110,7 @@ const appSchema = {
           ADI Part 3 and standards check self-assessment
         </h1>
         <p class="text-lg text-gray-600 mb-3">
-          Score a lesson (yours, or a mock) against the 17 competencies used to mark the ADI Part 3 test and the standards check.
+          Score a lesson (yours, or a mock) against the 17 competencies on the ADI Part 3 marking sheet and the standards check form (ADI SC1).
           You get a total out of {MAX_TOTAL}, the grade it would fall in, the automatic fail rules, and your three weakest areas
           with a tip for each. Free, no login.
         </p>
@@ -140,7 +150,7 @@ const appSchema = {
                         <label class="cursor-pointer">
                           <input type="radio" name={`c${c.id}`} value={s} class="peer sr-only" />
                           <span class="block text-center rounded-lg border border-gray-300 py-2 text-gray-700 peer-checked:bg-brand-navy peer-checked:text-white peer-checked:border-brand-navy peer-focus-visible:ring-2 peer-focus-visible:ring-brand-red" title={SCORE_LABELS[s]}>
-                            {s}
+                            {s}<span class="sr-only">: {SCORE_LABELS[s]}</span>
                           </span>
                         </label>
                       ))}
@@ -212,15 +222,21 @@ const appSchema = {
       <div class="max-w-3xl mx-auto">
         <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">How the Part 3 and standards check are marked</h2>
         <p class="text-gray-700 mb-4">
-          An examiner watches you teach a pupil and scores {COMPETENCIES.length} areas of competence from 0 to 3, which gives a total out of {MAX_TOTAL}.
+          An examiner watches you give a client-centred lesson to one of your pupils for about 45 minutes, with the pupil driving for about 40, and scores {COMPETENCIES.length} areas of competence from 0 to 3, which gives a total out of {MAX_TOTAL}.
           The areas fall into lesson planning (4), risk management (5) and teaching and learning strategies (8).
           According to GOV.UK, a total of 0 to {BAND_FAIL_MAX} is a fail, {BAND_FAIL_MAX + 1} to {BAND_B_MAX} is grade B and {BAND_B_MAX + 1} to {MAX_TOTAL} is grade A.
           Two things are an automatic fail whatever the total: a risk management score of {RISK_AUTO_FAIL_AT_OR_BELOW} or less, and a lesson the examiner has to stop because of danger.
         </p>
+        <p class="text-gray-700 mb-4">
+          The standards check that qualified ADIs take, usually every 4 years, is marked on form ADI SC1. It has the same 17 questions, scale, grades and
+          automatic fail rules. Both forms also record the type of pupil (partly trained, trained, or a full licence holder) and the lesson theme, such as
+          junctions, town and city driving, rural roads or independent driving, so pick a theme that suits your pupil when you plan.
+        </p>
         <p class="text-gray-700 mb-6">
-          The same grades and fail rules are published for the standards check that qualified ADIs take. Use the tool to find the competencies to work on,
-          ideally with your trainer scoring the same lesson so you can compare. If you are still getting started, our guide on
-          <a href="/tools/adi-income-tax-calculator/" class="text-brand-red hover:underline">what an instructor can earn after tax</a> is a useful next read.
+          Use the tool to find the competencies to work on, ideally with your trainer scoring the same lesson so you can compare.
+          If you are still qualifying, our <a href="/blog/starting-driving-school-guide/" class="text-brand-red hover:underline">guide to qualifying and starting as a driving instructor</a>
+          covers all three ADI tests and the fees, and our <a href="/tools/adi-income-tax-calculator/" class="text-brand-red hover:underline">ADI income tax calculator</a>
+          shows what you could take home once you are teaching.
         </p>
         <h3 class="text-lg font-semibold text-brand-navy mb-2">Sources, last checked {LAST_CHECKED_LABEL}</h3>
         <ul class="list-disc pl-5 space-y-1 text-sm mb-4">
@@ -240,7 +256,7 @@ const appSchema = {
         <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Once you are teaching</h2>
         <p class="text-gray-700 mb-4">
           The standards check looks at how you plan, manage risk and teach, and it is easier when each pupil's progress is recorded as you go.
-          DriveSchoolPro keeps lesson notes and progress against the DVSA 27 skills, with booking and payments, for solo ADIs and driving schools.
+          DriveSchoolPro keeps lesson notes and progress against the <a href="/dvsa-27-driving-skills/" class="text-brand-red hover:underline">27 DVSA driving skills</a>, with booking and payments, for solo ADIs and driving schools.
         </p>
         <div class="bg-white rounded-xl border border-gray-100 p-6">
           <p class="text-gray-700 mb-4">
@@ -286,7 +302,7 @@ const appSchema = {
 <script>
   // Browser only. Reads the ticks, writes the result. Nothing is stored, put in the URL or sent
   // except one anonymous GA4 event (total and grade) when a result is shown.
-  import { assess, AREAS, COMPETENCIES, MAX_TOTAL } from '../../utils/part3-check';
+  import { assess, AREAS, COMPETENCIES, MAX_TOTAL, BAND_FAIL_MAX, RISK_AUTO_FAIL_AT_OR_BELOW } from '../../utils/part3-check';
 
   const root = document.getElementById('p3-check');
   if (root) {
@@ -307,7 +323,10 @@ const appSchema = {
         if (el) el.textContent = String(sum);
       }
     };
-    radios().forEach((r) => r.addEventListener('change', refreshAreaTotals));
+    // A shown result goes stale (and would print stale) once any answer changes, so hide it.
+    const onChange = () => { refreshAreaTotals(); $('p3-result').classList.add('hidden'); };
+    radios().forEach((r) => r.addEventListener('change', onChange));
+    document.getElementById('p3-stopped')?.addEventListener('change', onChange);
 
     const li = (text: string) => { const e = document.createElement('li'); e.textContent = text; return e; };
 
@@ -319,7 +338,9 @@ const appSchema = {
         const missing = scores.filter((s) => s === null).length;
         err.textContent = `Please score every competency. ${missing} still to do, starting at number ${firstMissing + 1}.`;
         err.classList.remove('hidden');
-        root.querySelector<HTMLInputElement>(`input[name="c${firstMissing + 1}"]`)?.closest('fieldset')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        const firstRadio = root.querySelector<HTMLInputElement>(`input[name="c${firstMissing + 1}"]`);
+        firstRadio?.closest('fieldset')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        firstRadio?.focus({ preventScroll: true });
         return;
       }
       err.classList.add('hidden');
@@ -333,9 +354,9 @@ const appSchema = {
 
       const fr = $('p3-fail-reasons');
       const reasons: string[] = [];
-      if (r.failReasons.includes('risk-management')) reasons.push(`Automatic fail: risk management scored ${r.areaTotals['risk-management']}, and 7 or less is an automatic fail whatever the total.`);
+      if (r.failReasons.includes('risk-management')) reasons.push(`Automatic fail: risk management scored ${r.areaTotals['risk-management']}, and ${RISK_AUTO_FAIL_AT_OR_BELOW} or less is an automatic fail whatever the total.`);
       if (r.failReasons.includes('lesson-stopped')) reasons.push('Automatic fail: a lesson stopped because of immediate danger is a fail whatever the total.');
-      if (r.failReasons.includes('total')) reasons.push(`The total of ${r.total} is in the 0 to 30 fail range.`);
+      if (r.failReasons.includes('total')) reasons.push(`The total of ${r.total} is in the 0 to ${BAND_FAIL_MAX} fail range.`);
       if (reasons.length) { fr.textContent = reasons.join(' '); fr.classList.remove('hidden'); } else { fr.classList.add('hidden'); }
 
       const areas = $('p3-areas'); areas.replaceChildren();
