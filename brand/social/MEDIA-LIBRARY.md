@@ -1,6 +1,6 @@
 # DriveSchoolPro media library: where everything is
 
-**Read this first when making any DriveSchoolPro social post, ad or video.** It lists every piece of media John has recorded or Claude has built, and the voice decisions. Last updated 11 Nov 2026.
+**Read this first when making any DriveSchoolPro social post, ad or video.** It lists every piece of media John has recorded or Claude has built, and the voice decisions. Last updated 13 Nov 2026.
 
 All paths are on John's Mac. iCloud = `~/Library/Mobile Documents/com~apple~CloudDocs/projects/Driving school/`.
 
@@ -54,6 +54,7 @@ Style: dry UK humour, laughing *with* instructors, never at learners or the DVSA
 | s4 and s10 "before" options A and B (A was used) | iCloud `videos/Options to choose/` |
 | Longer edited cuts (Accounting, Clean records, Gets you paid, Less admin, More pupils, Saves time, Things ADIs hear 81 s) | iCloud `videos/Done/` |
 | App screen recordings made on the local demo, 11 Nov 2026: pay now (card), diary reschedule, desktop drag, DVSA tick, pupil progress 63%, quick booking, Money "who owes me" £0; plus the how-to clips "add your first pupil" and "import pupils" (raw, tap-marker and Andy voice-over versions; the voiced ones are live on `/start/first-pupil/`) | `~/Projects-code/reference/driveschoolpro/dsp-marketing-assets/footage/app/`. The `README.md` there lists timings and which seconds to avoid. |
+| **Getting-started video** (DSP #2246, approved 13 Nov 2026): 44.8 s, 1080x2170, Andy voice-over, step captions, tap rings. Add a pupil, set working hours, book a first lesson. Unlisted on YouTube (https://www.youtube.com/watch?v=xpxbqTW-eAc); self-hosted on `/start/first-pupil/` (PR #113). Build script and voice lines in `build/`. Also two clips Claude recorded in the iOS Simulator: `availability-fast-raw.mp4` and `availability-fast-taps.mp4` (Settings > My Working Hours, Mon-Fri 08:00-17:00, Wednesday ends 12:00). Do not reuse `add-first-pupil-taps.mp4` for new edits (its tap rings are mistimed); build from `add-first-pupil-raw.mp4`. | Final and `build/`: `~/Projects-code/reference/driveschoolpro/getting-started-video/` (`getting-started-v2.mp4`). Availability clips: `~/Projects-code/reference/driveschoolpro/DSP-social-videos/`. |
 | John's drop folder for new filming (raw originals; AirDrop, then move here from Downloads) | `~/Projects-code/reference/driveschoolpro/DSP-social-videos/` (moved from the Desktop on 11 Nov 2026). The social autopost job mirrors it to the box nightly and uses new clips from it. |
 
 ## 4. Sound effects (John's recordings)
