@@ -17,6 +17,8 @@ faqs:
     answer: "Automated reminders are the most effective fix. Send two — one 24 hours before the lesson and one 2 hours before — and ask students to confirm. Driving school software like DriveSchoolPro sends these automatically by email (with WhatsApp reminders coming soon), so you set them up once and they run for every lesson without any manual effort."
   - question: "How many no-shows is normal for a driving instructor?"
     answer: "A no-show rate of 5–10% is typical for UK ADIs without any formal reminder or policy system in place. With automated reminders and a clear cancellation policy, most instructors bring this below 3%. Anything above 15% usually indicates a combination of missing reminders, no deposit requirement, and students who were never properly vetted at enquiry."
+  - question: "What should I do about a pupil who keeps cancelling at the last minute?"
+    answer: "Treat it as a pattern to fix, not a string of one-off excuses. Check your cancellation policy covers it (24 or 48 hours' notice, full charge inside that), apply it the same way every time, and have one direct conversation about whether that lesson slot suits them. If it keeps happening, ask for payment in advance, move them to a slot you can refill more easily, or stop holding a regular slot for them. Reminders will not fix a pupil who has stopped wanting the lesson, but they do catch the ones who simply forgot."
 ---
 
 No-shows aren't just annoying — they're expensive. A solo ADI teaching 30 hours a week at £35 per lesson who loses two lessons a week to no-shows is writing off **£3,640 a year**. That's not a rounding error. That's a month's income.
@@ -227,6 +229,9 @@ Automated reminders are the most effective fix. Send two — 24 hours before and
 
 **How many no-shows is normal for a driving instructor?**
 Without any system in place, 10–15% is common. With automated reminders and a clear cancellation policy, most ADIs bring this below 5%. Above 15% usually means reminders are missing, there's no deposit requirement, and students weren't vetted at enquiry.
+
+**What should I do about a pupil who keeps cancelling at the last minute?**
+Treat it as a pattern to fix, not a string of one-off excuses. Check your cancellation policy covers it (24 or 48 hours' notice, full charge inside that), apply it the same way every time, and have one direct conversation about whether that lesson slot suits them. If it keeps happening, ask for payment in advance, move them to a slot you can refill more easily, or stop holding a regular slot for them. Reminders will not fix a pupil who has stopped wanting the lesson, but they do catch the ones who simply forgot.
 
 ---
 

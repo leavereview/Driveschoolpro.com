@@ -29,6 +29,12 @@ const methods = [
     admin: 'None: the payment is matched to the pupil automatically',
   },
   {
+    name: 'A payment link on its own (Stripe, PayPal or SumUp)',
+    how: "You create a link for a lesson or a block and send it by text, email or WhatsApp. The pupil pays by card on the provider's page.",
+    cost: "Provider fee per payment; check the provider's current UK pricing",
+    admin: 'You match each payment to the pupil and lesson yourself: nothing updates your diary or their balance',
+  },
+  {
     name: 'Lesson blocks paid up front',
     how: 'Pupil buys five, ten or twenty hours at once, usually by card. Each lesson comes off the balance.',
     cost: 'One card fee for the whole block',
@@ -82,6 +88,16 @@ const faqs = [
     links: []
   },
   {
+    question: "Is a Stripe or PayPal payment link enough, or do I need driving school software?",
+    answer: "A plain payment link is enough if you have only a few pupils and are happy to match payments to lessons yourself. You create a link for a lesson or a block, send it by text or WhatsApp, and the money goes to your account. Software earns its place as the number of pupils grows, because it ties each payment to the pupil and the lesson, shows who owes what and how many lessons are left in a block, and chases unpaid invoices for you. In DriveSchoolPro the card payment runs on Stripe, so Stripe's own fee is the same either way; DriveSchoolPro adds a 3% platform fee on card payments collected through it, which a link you create yourself in Stripe does not carry. That fee is what you pay for not doing the matching by hand.",
+    links: [{ text: "Pricing", url: "/pricing/" }]
+  },
+  {
+    question: "Are lesson blocks a good idea, and what happens to lessons a pupil doesn't use?",
+    answer: "A block gives you the money before the lessons and changes the incentive to turn up, but it is also a promise: the pupil has paid for lessons you still owe them. Some instructors choose not to sell blocks for that reason. If you do, decide your policy on unused lessons before the first sale and put it in writing. In DriveSchoolPro you can set how long a package is valid. An expired package can no longer be used, and the owner can extend the date if there is a good reason. If you refund a pupil, do it in Stripe and then adjust the package yourself, because a refund made in Stripe does not remove the lessons from the package automatically.",
+    links: [{ text: "Lesson packages", url: "/features/lesson-packages/" }]
+  },
+  {
     question: "Can I take Direct Debit or a monthly subscription from pupils?",
     answer: "Not in DriveSchoolPro. There is no Direct Debit (GoCardless) and no automatic monthly charge. Pupils pay per invoice, pay when they book, or buy lesson blocks up front. Recurring lesson series is coming soon, which is the related piece most instructors ask about.",
     links: []
@@ -97,7 +113,7 @@ const faqs = [
 <BaseLayout
   title="Take Driving Lesson Payments Online (UK Guide) | DriveSchoolPro"
   description="How UK driving instructors take payments online: Stripe card payments (1.5% + 20p on standard UK cards), lesson blocks, pay-links, chasing unpaid lessons."
-  modifiedDate="2026-11-03"
+  modifiedDate="2026-11-15"
   showUpdated
 >
   <BreadcrumbsEnhanced items={[{ label: 'Home', href: '/' }, { label: 'Features', href: '/features/' }, { label: 'Getting paid' }]} site="driveschool" />
@@ -139,7 +155,7 @@ const faqs = [
 
   <section class="section bg-white">
     <div class="container-custom max-w-4xl">
-      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">The four ways pupils pay</h2>
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Five ways pupils pay</h2>
       <p class="text-lg text-gray-600 mb-6">
         Most instructors end up with a mix. The aim is that card payments and lesson blocks do the bulk of the work, so cash
         and bank transfers are the exception you record, not the system you chase.
