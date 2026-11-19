@@ -11,9 +11,11 @@ interface Props {
   checkedOn: string;
   /** Dated public correction notes, newest first. */
   updates?: { date: string; text: string }[];
+  /** Replaces "We haven't used their software." on pages that quote a hands-on trial. */
+  trialNote?: string;
 }
 
-const { competitors, checkedOn, updates = [] } = Astro.props;
+const { competitors, checkedOn, updates = [], trialNote } = Astro.props;
 const list = (names: string[]) =>
   names.length <= 1 ? names.join('') : `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}`;
 const names = list(competitors);
@@ -30,8 +32,8 @@ const trademarks = many ? `${names} are trademarks of their owners.` : `${names}
     </p>
   ))}
   <p>
-    <strong>How we checked:</strong> {columns} only from {own} own public website, help guides and
-    app-store listings, checked on {checkedOn}. {`We haven't used ${many ? 'their' : `${competitors[0]}'s`} software.`}
+    <strong>How we checked:</strong> {columns} {trialNote ? '' : 'only '}from {own} own public website, help guides and
+    app-store listings, checked on {checkedOn}. {trialNote ?? `We haven't used ${many ? 'their' : `${competitors[0]}'s`} software.`}
     <strong>"Not listed"</strong> means we couldn't find the feature in those sources. It may still exist, so we
     never write "No" unless the vendor says so. The DriveSchoolPro column describes our software on the same date.
     Features change, so check with each vendor before you decide.

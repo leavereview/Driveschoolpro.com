@@ -52,13 +52,15 @@ interface Props {
   /** Key in src/data/alternatives.ts: renders "Alternatives to {name}" near the top. */
   alternativesKey?: AltKey;
   /** Optional "Switching from {name}" section, shown after the gaps section. */
+  /** Passed to CompareMethodNote when the page quotes a hands-on trial. */
+  trialNote?: string;
   switching?: { heading: string; intro: string; steps: string[]; note: string; link: { text: string; href: string } };
 }
 
 const {
   competitor, h1, seo, checkedOn, heroIntro, featuredAnswer, intro, rows,
   switchHeading, switchIntro, switchItems, gapsHeading, gapsBody, sources, faqs, faqTitle,
-  alternativesKey, updates = [], switching,
+  alternativesKey, updates = [], switching, trialNote,
 } = Astro.props;
 const alternatives = alternativesKey ? alternativesTo(alternativesKey) : [];
 
@@ -176,7 +178,7 @@ const schemaMarkup = {
     />
     <div class="container-custom pb-12">
       <div class="max-w-5xl mx-auto">
-        <CompareMethodNote competitors={[competitor.name]} checkedOn={checkedOn} updates={updates} />
+        <CompareMethodNote competitors={[competitor.name]} checkedOn={checkedOn} updates={updates} trialNote={trialNote} />
       </div>
     </div>
   </section>
