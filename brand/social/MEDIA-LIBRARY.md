@@ -131,6 +131,9 @@ Index paths must exist on the box or the planner is never offered the asset. The
 | n37 | video | John | - | https://driveschoolpro.com/social/video/n37.mp4 |
 | n45 | video | John | - | https://driveschoolpro.com/social/video/n45.mp4 |
 | car-001 | carousel | - | - | https://driveschoolpro.com/social/video/auto/car-001-01.png |
+| car-002 | carousel | - | - | https://driveschoolpro.com/social/video/auto/car-002-01.png |
+| car-003 | carousel | - | - | https://driveschoolpro.com/social/video/auto/car-003-01.png |
+| car-004 | carousel | - | - | https://driveschoolpro.com/social/video/auto/car-004-01.png |
 
 ## Rules that apply to every post
 - Follow the house rules in `november-2026.md`: UK English, plain words, no hype, and no emojis in body text (one is fine in an Instagram first line). Label acted skits as "acted".

@@ -64,7 +64,7 @@
     "type": "video",
     "path": "icloud-videos-edited/s1-ill-transfer-it-tonight.mp4",
     "url": "https://driveschoolpro.com/social/video/s1.mp4",
-    "duration": 15.0,
+    "duration": 15,
     "topics": [
       "getting-paid"
     ],
@@ -554,6 +554,51 @@
     "voice": null,
     "created": "2026-11-12",
     "firstPublished": "2026-11-16",
+    "aiVoiced": false
+  },
+  {
+    "id": "car-002",
+    "type": "carousel",
+    "path": "renders/2026-11-23/make/2026-11-23-1",
+    "url": "https://driveschoolpro.com/social/video/auto/car-002-01.png",
+    "duration": null,
+    "topics": [
+      "seasonal winter teaching tips"
+    ],
+    "joke": null,
+    "voice": null,
+    "created": "2026-11-19",
+    "firstPublished": "2026-11-24",
+    "aiVoiced": false
+  },
+  {
+    "id": "car-003",
+    "type": "carousel",
+    "path": "renders/2026-11-23/make/2026-11-23-4",
+    "url": "https://driveschoolpro.com/social/video/auto/car-003-01.png",
+    "duration": null,
+    "topics": [
+      "DVSA progress"
+    ],
+    "joke": null,
+    "voice": null,
+    "created": "2026-11-19",
+    "firstPublished": "2026-11-28",
+    "aiVoiced": false
+  },
+  {
+    "id": "car-004",
+    "type": "carousel",
+    "path": "renders/2026-11-23/make/2026-11-23-6",
+    "url": "https://driveschoolpro.com/social/video/auto/car-004-01.png",
+    "duration": null,
+    "topics": [
+      "getting paid"
+    ],
+    "joke": null,
+    "voice": null,
+    "created": "2026-11-19",
+    "firstPublished": "2026-11-29",
     "aiVoiced": false
   }
 ]
