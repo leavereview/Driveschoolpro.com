@@ -33,7 +33,7 @@ const rows = [
   { label: 'Works in a web browser on a computer', values: [true, 'Web Dashboard listed (finances, mileage, messaging); diary in a browser not stated'] },
   { label: 'Pupil app or portal', values: ['Yes (iOS, Android or web)', 'Yes (free learner app)'] },
   { label: 'Clash checks across pupil, instructor and vehicle', values: [true, 'Conflict alerts, including connected calendars; vehicles not stated'] },
-  { label: 'Google / Apple Calendar', values: [false, 'Yes (syncs with your phone calendar)'] },
+  { label: 'Google / Apple Calendar', values: ['One-way feed (subscribe in your calendar); no two-way sync', 'Yes (syncs with your phone calendar)'] },
   { label: 'Cancellation-gap broadcast to pupils', values: [false, 'Yes (offer an open slot to nearby pupils)'] },
   { label: 'Test bookings and results recording (coming soon)', values: ['Coming soon', 'Driving and mock tests added to the diary; results not stated'] },
   { label: 'Vehicle MOT, tax and insurance tracking', values: [true, 'Not listed (vehicles can be assigned to lessons)'] },
@@ -87,7 +87,7 @@ const faqs = [
   },
   {
     question: 'Can I move my pupils from GoRoadie Pro to DriveSchoolPro?',
-    answer: "GoRoadie says it can export your data if you leave. DriveSchoolPro has no bulk import, so you add pupils one at a time, which is quick for a small list and slower for a big one. You can run both side by side until you're confident, since DriveSchoolPro is free until 31 March 2027.",
+    answer: "GoRoadie says it can export your data if you leave. Export your pupil list from GoRoadie as a spreadsheet, then bring it into DriveSchoolPro with the CSV import (Settings, Import pupils). We don't have a GoRoadie-specific preset, so you'll match the columns yourself. You can run both side by side until you're confident, since DriveSchoolPro is free until 31 March 2027.",
     links: [{ text: 'Switching guide', url: '/blog/switch-paper-diary-to-driving-school-software/' }],
   },
   {
@@ -110,7 +110,7 @@ const faqs = [
   }}
   checkedOn="19 November 2026"
   heroIntro="What GoRoadie and its instructor app GoRoadie Pro do, set against DriveSchoolPro feature by feature, with UK alternatives. It covers what's different, and what DriveSchoolPro doesn't do."
-  featuredAnswer="DriveSchoolPro and GoRoadie Pro are both UK apps for driving instructors, with a diary, a free pupil app, reminders and Stripe card payments. DriveSchoolPro adds DVSA 27-skill tracking, AI lesson briefings, online booking from your website, vehicle MOT, tax and insurance tracking, and multi-instructor schools in the same product. GoRoadie Pro adds text-message reminders, phone calendar sync, open-slot offers to nearby pupils, expense and receipt tracking, pupils' theory test progress and access to GoRoadie's learner marketplace."
+  featuredAnswer="DriveSchoolPro and GoRoadie Pro are both UK apps for driving instructors, with a diary, a free pupil app, reminders and Stripe card payments. DriveSchoolPro adds DVSA 27-skill tracking, AI lesson briefings, online booking from your website, vehicle MOT, tax and insurance tracking, and multi-instructor schools in the same product. GoRoadie Pro adds text-message reminders, two-way phone calendar sync (DriveSchoolPro has a one-way calendar feed), open-slot offers to nearby pupils, expense and receipt tracking, pupils' theory test progress and access to GoRoadie's learner marketplace."
   intro="GoRoadie is a UK driving company: its website is a marketplace where learners find instructors, and GoRoadie Pro is its iPhone and Android diary app for instructors. This page is for an instructor looking at GoRoadie Pro and wondering whether DriveSchoolPro, or another UK app, is worth a look too. GoRoadie Pro is a UK app with features we don't have, so this isn't a case against it. It's a list of what's different."
   rows={rows}
   switchHeading="Where DriveSchoolPro differs"
@@ -138,7 +138,7 @@ const faqs = [
     },
   ]}
   gapsHeading="What DriveSchoolPro doesn't do"
-  gapsBody="DriveSchoolPro has no learner marketplace, so it won't bring you new pupils the way GoRoadie can. We don't track expenses or scan receipts, so you'll need accounting software for that side of your tax return. We don't show pupils' theory test progress. We have no phone calendar sync and can't offer a cancelled slot to other pupils; GoRoadie Pro lists both. Lesson reminders go out by email only for now (WhatsApp is coming soon), where GoRoadie Pro also sends texts. Recording test bookings and results is coming soon, where GoRoadie Pro already puts driving and mock tests in the diary. If any of these decides it for you, that's a fair reason to choose GoRoadie Pro."
+  gapsBody="DriveSchoolPro has no learner marketplace, so it won't bring you new pupils the way GoRoadie can. We don't track expenses or scan receipts, so you'll need accounting software for that side of your tax return. We don't show pupils' theory test progress. Our calendar link is one-way (you subscribe to it in Google or Apple Calendar, and nothing syncs back), and we can't offer a cancelled slot to other pupils; GoRoadie Pro lists calendar sync and open-slot offers. Lesson reminders go out by email only for now (WhatsApp is coming soon), where GoRoadie Pro also sends texts. Recording test bookings and results is coming soon, where GoRoadie Pro already puts driving and mock tests in the diary. If any of these decides it for you, that's a fair reason to choose GoRoadie Pro."
   sources={[
     { label: 'GoRoadie Pro', url: 'https://goroadie.com/pro' },
     { label: 'GoRoadie Pro help and tutorials', url: 'https://www.goroadie.com/pro/help' },
