@@ -106,7 +106,7 @@ Solo, the extra-instructor price doesn't matter. From two instructors up, check 
 
 ### 5. Phone, browser or both?
 
-You're in the car between lessons, so the instructor app has to be quick on a phone. Some platforms are mainly app-based (GoRoadie Pro, LessonBuddy), some browser-first (Lesson Diary, DriveBest, Driving School Office, Teachworks) and some both.
+You're in the car between lessons, so the [driving instructor app](/driving-instructor-app/) has to be quick on a phone. Some platforms are mainly app-based (GoRoadie Pro, LessonBuddy), some browser-first (Lesson Diary, DriveBest, Driving School Office, Teachworks) and some both.
 
 ## Driving school management system or booking tool?
 
@@ -131,7 +131,7 @@ What each platform's own site says it does, where it's the better fit, and what 
 
 **What it does well:**
 - Tracks every pupil against all 27 DVSA skills in 8 categories, and pupils see their own progress ([progress tracking](/features/progress-tracking/))
-- One app on the App Store and Google Play for you and your pupils, or any web browser
+- One [driving instructor app](/driving-instructor-app/) on the App Store and Google Play for you and your pupils, or any web browser
 - Writes a short [AI lesson briefing](/features/lesson-briefings/) before each lesson from your last notes and the pupil's skill ratings
 - Checks every booking against the pupil, the instructor and the vehicle, and tracks [MOT, tax and insurance dates](/features/vehicles/)
 - Booking widget for your own website, card payments through Stripe, pupil balances and lesson packages
