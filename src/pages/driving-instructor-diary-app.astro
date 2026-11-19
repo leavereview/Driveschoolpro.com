@@ -4,6 +4,7 @@ import BreadcrumbsEnhanced from '../components/seo/BreadcrumbsEnhanced.astro';
 import FeaturedAnswer from '../components/seo/FeaturedAnswer.astro';
 import ComparisonTable from '../components/seo/ComparisonTable.astro';
 import FAQEnhanced from '../components/seo/FAQEnhanced.astro';
+import CompareMethodNote from '../components/compare/CompareMethodNote.astro';
 import MarketingScreenshot from '../components/MarketingScreenshot.astro';
 import { OFFER, PRICING, PRICE_LINE } from '../config/offer';
 
@@ -33,6 +34,58 @@ const paperVsApp = [
   { label: 'Survives being left in the car on a hot day', values: [true, 'Usually', true] },
 ];
 
+// Competitor cells below come from each vendor's own public pages, help guides and app-store
+// listings, checked 19 Nov 2026 (evidence saved off-repo in archive/compare-evidence/<vendor>/2026-11-19/).
+// Rules (compare-pages memory): never state a competitor price; "Not listed" not "No"; no "tested"
+// cells here because the shared method note says we have not used their software. DSP cells must be live today.
+const appRows = [
+  {
+    label: 'Diary',
+    values: [
+      'Day, week and month views, drag-and-drop, clash checks across pupil, instructor and vehicle, one-way calendar feed to Google Calendar, iPhone and Mac. Web, iPhone and Android.',
+      'Diary on iOS, Android and web, online or offline. Clash alert in its help guide.',
+      'Diary with clash highlighting and diary gaps. Diary export to Outlook, Google and Apple calendars.',
+      'Phone diary (iPhone and Android) with conflict alerts, synced to your phone calendar. Diary in a browser: not stated.',
+    ],
+  },
+  {
+    label: 'Pupil app',
+    values: [
+      'Yes (iOS, Android or web): lessons, progress, balance, self-booking.',
+      'Yes (iOS, Android or web), brandable with your logo.',
+      'Yes (student app).',
+      "Yes (free learner app). GoRoadie says pupils can't book into your diary.",
+    ],
+  },
+  {
+    label: 'Payments',
+    values: [
+      "Pupils pay by card through Stripe into your own account; lesson blocks; cash and bank transfers recorded. 3% platform fee plus Stripe's fee.",
+      'Pupils pay online (Book & Pay), with next-working-day payouts to the instructor.',
+      'Payment status, payment history and prepaid lessons tracked. Pupil card payments: not listed.',
+      'Request payments in-app through Stripe.',
+    ],
+  },
+  {
+    label: 'Progress tracking',
+    values: [
+      'Official DVSA 27 skills in 8 categories, rated on a six-level scale.',
+      'Syllabus-based progress, editable; reflective logs and mock tests. Its site refers to the DVSA syllabus.',
+      'Starts from the standard DVSA syllabus, fully customisable; reflective logs.',
+      'Progress tracking and reflective logs. DVSA skills not named.',
+    ],
+  },
+  {
+    label: 'Price',
+    values: [
+      'Free until 31 March 2027, no card needed (see our pricing page).',
+      'See Total Drive pricing page',
+      'See MyDriveTime pricing page',
+      'See GoRoadie Pro page',
+    ],
+  },
+];
+
 const faqs = [
   {
     question: 'What is an ADI diary app?',
@@ -48,6 +101,11 @@ const faqs = [
     question: 'What is the best driving instructor diary app in the UK?',
     answer: "The best one is the one that stops the mistakes you actually make. For most ADIs that means three things: it refuses double-bookings across the pupil, the instructor and the car; it sends lesson reminders without you lifting a finger; and it keeps the pupil's record and payments next to the lesson. DriveSchoolPro does all three, works on the web, iPhone and Android, and is free until 31 March 2027. Total Drive and MyDriveTime are the established UK alternatives, and our comparison sets out how they differ.",
     links: [{ text: 'Total Drive vs My Drive Time', url: '/compare/total-drive-vs-mydrivetime/' }],
+  },
+  {
+    question: 'How does DriveSchoolPro compare with Total Drive, MyDriveTime and GoRoadie Pro?',
+    answer: "All four are UK diary apps for driving instructors with a pupil app. On each vendor's own site, Total Drive and MyDriveTime list cancellation-gap broadcasts and expense tracking, Total Drive adds a theory suite, and GoRoadie Pro syncs lessons to your phone calendar. DriveSchoolPro tracks the official DVSA 27 skills, checks clashes across pupil, instructor and vehicle, writes an AI briefing before each lesson and works in a web browser, but it has no cancellation-gap broadcast and no two-way calendar sync (it has a one-way calendar feed). The table on this page sets them side by side, with a link to each vendor's own pricing page.",
+    links: [{ text: 'Compare the four diary apps', url: '/driving-instructor-diary-app/#compare-apps' }, { text: 'All comparisons', url: '/compare/' }],
   },
   {
     question: 'Is Google Calendar good enough for a driving instructor?',
@@ -79,7 +137,7 @@ const faqs = [
   },
   {
     question: 'Does it sync with Google Calendar or Apple Calendar?',
-    answer: "Not as a two-way feed. DriveSchoolPro is where the diary lives, and keeping it as the single source is what makes clash checking reliable. Pupils who book through your public booking page get an add-to-calendar link for their own lesson.",
+    answer: "Not two-way. Each instructor has a private calendar link they can subscribe to from Google Calendar or the iPhone and Mac calendar, which shows their lessons (pupil name, time, pick-up address and a link back to the lesson) next to the rest of their life, but changes made in the other calendar do not flow back. DriveSchoolPro is where the diary lives, and keeping it as the single source is what makes clash checking reliable. Pupils who book through your public booking page get an add-to-calendar link for their own lesson.",
     links: [{ text: 'Scheduling software guide', url: '/driving-school-scheduling-software/' }],
   },
   {
@@ -107,7 +165,7 @@ const schemaMarkup = {
   author: { '@type': 'Organization', name: 'DriveSchoolPro' },
   publisher: { '@type': 'Organization', name: 'DriveSchoolPro' },
   datePublished: '2026-10-16',
-  dateModified: '2026-11-02',
+  dateModified: '2026-11-19',
   mainEntityOfPage: pageUrl,
 };
 
@@ -128,7 +186,7 @@ const softwareSchema = {
   description="An ADI diary app for web, iPhone and Android that blocks double-bookings of pupil, instructor and car and emails reminders. Free until 31 March 2027."
   image="/images/marketing/calendar-week-view.webp"
   publishedDate="2026-10-16"
-  modifiedDate="2026-11-15"
+  modifiedDate="2026-11-19"
 >
   <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
   <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
@@ -183,6 +241,7 @@ const softwareSchema = {
           <li><a href="#schools" class="hover:text-brand-red">&rarr; Shared diaries for schools</a></li>
           <li><a href="#pricing" class="hover:text-brand-red">&rarr; What it costs</a></li>
           <li><a href="#choosing" class="hover:text-brand-red">&rarr; Which diary app UK instructors use</a></li>
+          <li><a href="#compare-apps" class="hover:text-brand-red">&rarr; DriveSchoolPro vs Total Drive, MyDriveTime and GoRoadie</a></li>
           <li><a href="#faq" class="hover:text-brand-red">&rarr; Common questions</a></li>
         </ul>
       </div>
@@ -290,7 +349,8 @@ const softwareSchema = {
           <p class="font-bold text-brand-navy mb-1">What it doesn't do yet</p>
           <p class="text-gray-700">
             A repeating weekly series for a regular pupil is coming soon; for now each lesson is booked
-            individually. There is no two-way sync with Google or Apple Calendar: the diary in
+            individually. There is no two-way sync with Google or Apple Calendar, though you can subscribe to a one-way
+            feed of your lessons from them: the diary in
             DriveSchoolPro is the single source, which is what makes the clash checks trustworthy.
           </p>
         </div>
@@ -485,6 +545,36 @@ const softwareSchema = {
           hears about it. That week tells you more than any feature list.
         </p>
 
+      </div>
+    </div>
+  </section>
+
+  <section id="compare-apps">
+    <ComparisonTable
+      title="Driving instructor diary apps compared: DriveSchoolPro, Total Drive, MyDriveTime and GoRoadie Pro"
+      description="The five things instructors ask about most, from each vendor's own public pages. Checked on 19 November 2026."
+      headers={['DriveSchoolPro', 'Total Drive', 'MyDriveTime', 'GoRoadie Pro']}
+      rows={appRows}
+      rowHeader="Feature"
+      highlightColumn={0}
+    />
+    <div class="container-custom pb-12">
+      <div class="max-w-5xl mx-auto space-y-4">
+        <p class="text-gray-700">
+          We don't quote competitor prices because they change. Check them on the vendor's own site:
+          <a href="https://totaldrive.co.uk/instructor-software-pricing/" rel="nofollow noopener" class="text-brand-red hover:underline">Total Drive pricing</a>,
+          <a href="https://www.mydrivetime.co.uk/pricing/" rel="nofollow noopener" class="text-brand-red hover:underline">MyDriveTime pricing</a> and
+          <a href="https://goroadie.com/pro" rel="nofollow noopener" class="text-brand-red hover:underline">GoRoadie Pro</a>.
+          DriveSchoolPro is free until 31 March 2027; <a href="/pricing/" class="text-brand-red hover:underline">our pricing</a> after that.
+        </p>
+        <p class="text-gray-700">
+          What the others list that we don't have yet: cancellation-gap broadcasts to pupils (Total Drive, MyDriveTime, GoRoadie Pro),
+          expense tracking (all three) and a theory suite (Total Drive), plus two-way phone-calendar sync (GoRoadie Pro; DriveSchoolPro has a one-way feed only). Full one-to-one pages:
+          <a href="/compare/total-drive/" class="text-brand-red hover:underline">Total Drive</a>,
+          <a href="/compare/my-drive-time/" class="text-brand-red hover:underline">MyDriveTime</a> and
+          <a href="/compare/goroadie/" class="text-brand-red hover:underline">GoRoadie</a>.
+        </p>
+        <CompareMethodNote competitors={['Total Drive', 'MyDriveTime', 'GoRoadie Pro']} checkedOn="19 November 2026" />
       </div>
     </div>
   </section>
