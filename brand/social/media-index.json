@@ -62,9 +62,9 @@
   {
     "id": "s1",
     "type": "video",
-    "path": "public/social/video/s1.mp4",
+    "path": "icloud-videos-edited/s1-ill-transfer-it-tonight.mp4",
     "url": "https://driveschoolpro.com/social/video/s1.mp4",
-    "duration": null,
+    "duration": 15.0,
     "topics": [
       "getting-paid"
     ],
@@ -94,9 +94,9 @@
   {
     "id": "s6",
     "type": "video",
-    "path": "public/social/video/s6.mp4",
+    "path": "icloud-videos-edited/s6-two-taps-at-the-kerb.mp4",
     "url": "https://driveschoolpro.com/social/video/s6.mp4",
-    "duration": null,
+    "duration": 13.8,
     "topics": [
       "progress-tracking"
     ],
@@ -110,9 +110,9 @@
   {
     "id": "s7",
     "type": "video",
-    "path": "public/social/video/s7.mp4",
+    "path": "icloud-videos-edited/s7-am-i-ready.mp4",
     "url": "https://driveschoolpro.com/social/video/s7.mp4",
-    "duration": null,
+    "duration": 10.8,
     "topics": [
       "progress-tracking"
     ],
@@ -126,9 +126,9 @@
   {
     "id": "s8",
     "type": "video",
-    "path": "public/social/video/s8.mp4",
+    "path": "icloud-videos-edited/s8-you-remembered.mp4",
     "url": "https://driveschoolpro.com/social/video/s8.mp4",
-    "duration": null,
+    "duration": 17.2,
     "topics": [
       "lesson-briefings"
     ],
@@ -142,9 +142,9 @@
   {
     "id": "s9",
     "type": "video",
-    "path": "public/social/video/s9.mp4",
+    "path": "icloud-videos-edited/s9-double-booking-saved.mp4",
     "url": "https://driveschoolpro.com/social/video/s9.mp4",
-    "duration": null,
+    "duration": 14.3,
     "topics": [
       "scheduling"
     ],
@@ -174,9 +174,9 @@
   {
     "id": "s11",
     "type": "video",
-    "path": "public/social/video/s11.mp4",
+    "path": "icloud-videos-edited/s11-cash-recorded.mp4",
     "url": "https://driveschoolpro.com/social/video/s11.mp4",
-    "duration": null,
+    "duration": 13.9,
     "topics": [
       "getting-paid"
     ],
@@ -190,9 +190,9 @@
   {
     "id": "s13",
     "type": "video",
-    "path": "public/social/video/s13.mp4",
+    "path": "icloud-videos-edited/s13-pass-day.mp4",
     "url": "https://driveschoolpro.com/social/video/s13.mp4",
-    "duration": null,
+    "duration": 13.9,
     "topics": [
       "reviews"
     ],
@@ -206,9 +206,9 @@
   {
     "id": "s14",
     "type": "video",
-    "path": "public/social/video/s14.mp4",
+    "path": "icloud-videos-edited/s14-things-adis-hear.mp4",
     "url": "https://driveschoolpro.com/social/video/s14.mp4",
-    "duration": null,
+    "duration": 23.8,
     "topics": [],
     "joke": "things-adis-hear",
     "voice": "John",
@@ -282,48 +282,48 @@
   {
     "id": "n09",
     "type": "video",
-    "path": "public/social/video/n09.mp4",
+    "path": "icloud-videos-edited/n09-mtd-19-hour-rule.mp4",
     "url": "https://driveschoolpro.com/social/video/n09.mp4",
-    "duration": null,
+    "duration": 38.3,
     "topics": [
       "mtd"
     ],
     "joke": null,
     "voice": "John",
     "created": null,
-    "firstPublished": null,
+    "firstPublished": "2026-11-06",
     "aiVoiced": false,
     "title": "MTD 19-hour rule"
   },
   {
     "id": "n15",
     "type": "video",
-    "path": "public/social/video/n15.mp4",
+    "path": "icloud-videos-edited/n15-why-i-built-driveschoolpro.mp4",
     "url": "https://driveschoolpro.com/social/video/n15.mp4",
-    "duration": null,
+    "duration": 45.9,
     "topics": [
       "founder"
     ],
     "joke": null,
     "voice": "John",
     "created": null,
-    "firstPublished": null,
+    "firstPublished": "2026-11-10",
     "aiVoiced": false,
     "title": "why I built DriveSchoolPro, the founder piece"
   },
   {
     "id": "n39",
     "type": "video",
-    "path": "public/social/video/n39.mp4",
+    "path": "icloud-videos-edited/n39-no-black-friday-tricks.mp4",
     "url": "https://driveschoolpro.com/social/video/n39.mp4",
-    "duration": null,
+    "duration": 28.3,
     "topics": [
       "offer"
     ],
     "joke": null,
     "voice": "John",
     "created": null,
-    "firstPublished": null,
+    "firstPublished": "2026-11-27",
     "aiVoiced": false,
     "title": "no Black Friday tricks"
   },
