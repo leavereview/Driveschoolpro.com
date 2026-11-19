@@ -218,6 +218,68 @@
     "title": "Things ADIs hear"
   },
   {
+    "id": "s16",
+    "type": "video",
+    "path": "assets/footage/skits/s16-things-adis-hear-part-2.mp4",
+    "url": null,
+    "duration": 18.2,
+    "topics": [],
+    "joke": "things-adis-hear",
+    "voice": "John",
+    "created": "2026-11-19",
+    "firstPublished": null,
+    "aiVoiced": false,
+    "title": "Things ADIs hear, part 2 (acted in the car by John and his daughter; six pupil lines; fun, no product)"
+  },
+  {
+    "id": "s17",
+    "type": "video",
+    "path": "assets/footage/skits/s17-why-i-cant-pay-today.mp4",
+    "url": null,
+    "duration": 16.9,
+    "topics": [
+      "getting-paid"
+    ],
+    "joke": "cant-pay-today",
+    "voice": "John",
+    "created": "2026-11-19",
+    "firstPublished": null,
+    "aiVoiced": false,
+    "title": "Why I can't pay today (acted in the car by John and his daughter; five pupil excuses for not paying)"
+  },
+  {
+    "id": "s18",
+    "type": "video",
+    "path": "assets/footage/skits/s18-why-i-cant-make-my-lesson.mp4",
+    "url": null,
+    "duration": 10.3,
+    "topics": [
+      "scheduling"
+    ],
+    "joke": "cant-make-my-lesson",
+    "voice": "John",
+    "created": "2026-11-19",
+    "firstPublished": null,
+    "aiVoiced": false,
+    "title": "Why I can't make my lesson (acted in the car by John and his daughter; three excuses for cancelling)"
+  },
+  {
+    "id": "s19",
+    "type": "video",
+    "path": "assets/footage/skits/s19-l-plates-off.mp4",
+    "url": null,
+    "duration": 6.3,
+    "topics": [
+      "reviews"
+    ],
+    "joke": null,
+    "voice": "John",
+    "created": "2026-11-19",
+    "firstPublished": null,
+    "aiVoiced": false,
+    "title": "L-plates off: the best day of the job (acted pass day, John's daughter takes the L-plate off; no speech)"
+  },
+  {
     "id": "n09",
     "type": "video",
     "path": "public/social/video/n09.mp4",
