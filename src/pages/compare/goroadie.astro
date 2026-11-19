@@ -18,6 +18,10 @@ import CompetitorComparison from '../../components/compare/CompetitorComparison.
 //   /pro/help (add teaching vehicles to lessons; schedule a driving test or mock test)
 //   /press/2026-09-goroadie-preps-autumn-update ("Web Dashboard > Finances > Integrations" for QuickBooks;
 //     mileage "on the web for easy access on desktop"; group messaging "from the web")
+// 19 Nov 2026: re-checked goroadie.com/pro, /pro/help, /schools, /instructors and both store listings; no
+//   changes to the features above. /pro still gives two trial lengths (60 days free at the top, "1 month" in the FAQ),
+//   says PDIs get unlimited free access, and says GoRoadie can export your data if you leave.
+//   Evidence saved off-repo: ~/Projects-code/archive/compare-evidence/goroadie/2026-11-19/
 // "Not listed" = not found on those pages; never "No" unless the vendor says so.
 const rows = [
   { label: 'AI lesson briefings', values: [true, 'Not listed'] },
@@ -29,7 +33,7 @@ const rows = [
   { label: 'Works in a web browser on a computer', values: [true, 'Web Dashboard listed (finances, mileage, messaging); diary in a browser not stated'] },
   { label: 'Pupil app or portal', values: ['Yes (iOS, Android or web)', 'Yes (free learner app)'] },
   { label: 'Clash checks across pupil, instructor and vehicle', values: [true, 'Conflict alerts, including connected calendars; vehicles not stated'] },
-  { label: 'Google / Apple Calendar', values: [false, 'Yes (syncs with your phone calendar)'] },
+  { label: 'Google / Apple Calendar', values: ['One-way feed (subscribe in your calendar); no two-way sync', 'Yes (syncs with your phone calendar)'] },
   { label: 'Cancellation-gap broadcast to pupils', values: [false, 'Yes (offer an open slot to nearby pupils)'] },
   { label: 'Test bookings and results recording (coming soon)', values: ['Coming soon', 'Driving and mock tests added to the diary; results not stated'] },
   { label: 'Vehicle MOT, tax and insurance tracking', values: [true, 'Not listed (vehicles can be assigned to lessons)'] },
@@ -72,8 +76,23 @@ const faqs = [
     links: [{ text: 'Making Tax Digital for driving instructors', url: '/blog/making-tax-digital-driving-instructors/' }],
   },
   {
+    question: 'Is GoRoadie free?',
+    answer: "Partly, going by its own site. GoRoadie Pro says trainee instructors (PDIs) get free access and that ADIs can try it free first, after which it's a monthly subscription. Its page gives two different trial lengths, so check its own pricing section for today's terms; we don't quote its prices because they change. DriveSchoolPro is free for everyone until 31 March 2027, with no card, and has a permanent Free plan after that.",
+    links: [{ text: 'GoRoadie Pro pricing', url: 'https://goroadie.com/pro' }, { text: 'Free for trainee instructors', url: '/free-for-trainee-instructors/' }],
+  },
+  {
+    question: 'Is GoRoadie on iPhone and Android?',
+    answer: "Yes. GoRoadie Pro is listed on the Apple App Store and Google Play, and GoRoadie runs a free learner app alongside it. We found no listing for a full browser version of the diary, only a Web Dashboard for some finance, mileage and messaging tasks. DriveSchoolPro is on iPhone and Android too, and also works in any web browser.",
+    links: [{ text: 'GoRoadie Pro on the App Store', url: 'https://apps.apple.com/gb/app/goroadie-pro/id1548955079' }],
+  },
+  {
+    question: 'Can I move my pupils from GoRoadie Pro to DriveSchoolPro?',
+    answer: "GoRoadie says it can export your data if you leave. Export your pupil list from GoRoadie as a spreadsheet, then bring it into DriveSchoolPro with the CSV import (Settings, Import pupils). We don't have a GoRoadie-specific preset, so you'll match the columns yourself. You can run both side by side until you're confident, since DriveSchoolPro is free until 31 March 2027.",
+    links: [{ text: 'Switching guide', url: '/blog/switch-paper-diary-to-driving-school-software/' }],
+  },
+  {
     question: 'Is this a fair comparison?',
-    answer: "We've tried to make it one. The GoRoadie column only records what GoRoadie's own website and app-store listings say, first checked on 16 October 2026 and re-checked, including its help guides, on 9 November 2026. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote GoRoadie's prices because they change, so use its own page. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
+    answer: "We've tried to make it one. The GoRoadie column only records what GoRoadie's own website and app-store listings say, first checked on 16 October 2026 and re-checked, including its help guides, on 9 and 19 November 2026. Where we couldn't find a feature we say \"Not listed\", not \"No\". We don't quote GoRoadie's prices because they change, so use its own page. If you spot an error, email info@driveschoolpro.com and we'll correct it.",
     links: [{ text: 'GoRoadie Pro', url: 'https://goroadie.com/pro' }],
   },
 ];
@@ -81,18 +100,18 @@ const faqs = [
 
 <CompetitorComparison
   competitor={{ name: 'GoRoadie', alternateName: 'GoRoadie Pro', slug: 'goroadie', pricingUrl: 'https://goroadie.com/pro' }}
-  h1="GoRoadie vs DriveSchoolPro"
+  h1="GoRoadie vs DriveSchoolPro: what GoRoadie does, and the alternatives"
   seo={{
-    title: 'GoRoadie Pro vs DriveSchoolPro, and Alternatives (UK, 2026)',
-    description: 'GoRoadie Pro vs DriveSchoolPro feature by feature, plus UK GoRoadie alternatives: Total Drive, MyDriveTime and Lesson Diary. Free until 31 March 2027.',
+    title: 'GoRoadie vs DriveSchoolPro: Features and UK Alternatives (2026)',
+    description: 'What GoRoadie and GoRoadie Pro do, compared feature by feature with DriveSchoolPro, plus UK alternatives: Total Drive, MyDriveTime and Lesson Diary.',
     schemaDescription: 'Feature-by-feature comparison of DriveSchoolPro and GoRoadie Pro for UK driving instructors, including what DriveSchoolPro does not do.',
     datePublished: '2026-10-16',
-    dateModified: '2026-11-09',
+    dateModified: '2026-11-19',
   }}
-  checkedOn="9 November 2026"
-  heroIntro="A plain, feature-by-feature comparison for UK instructors weighing up GoRoadie Pro. It covers what's different, and what DriveSchoolPro doesn't do."
-  featuredAnswer="DriveSchoolPro and GoRoadie Pro are both UK apps for driving instructors, with a diary, a free pupil app, reminders and Stripe card payments. DriveSchoolPro adds DVSA 27-skill tracking, AI lesson briefings, online booking from your website, vehicle MOT, tax and insurance tracking, and multi-instructor schools in the same product. GoRoadie Pro adds text-message reminders, phone calendar sync, open-slot offers to nearby pupils, expense and receipt tracking, pupils' theory test progress and access to GoRoadie's learner marketplace."
-  intro="This page is for an instructor looking at GoRoadie Pro and wondering whether DriveSchoolPro is worth a look too. GoRoadie Pro is a UK app with features we don't have, so this isn't a case against it. It's a list of what's different."
+  checkedOn="19 November 2026"
+  heroIntro="What GoRoadie and its instructor app GoRoadie Pro do, set against DriveSchoolPro feature by feature, with UK alternatives. It covers what's different, and what DriveSchoolPro doesn't do."
+  featuredAnswer="DriveSchoolPro and GoRoadie Pro are both UK apps for driving instructors, with a diary, a free pupil app, reminders and Stripe card payments. DriveSchoolPro adds DVSA 27-skill tracking, AI lesson briefings, online booking from your website, vehicle MOT, tax and insurance tracking, and multi-instructor schools in the same product. GoRoadie Pro adds text-message reminders, two-way phone calendar sync (DriveSchoolPro has a one-way calendar feed), open-slot offers to nearby pupils, expense and receipt tracking, pupils' theory test progress and access to GoRoadie's learner marketplace."
+  intro="GoRoadie is a UK driving company: its website is a marketplace where learners find instructors, and GoRoadie Pro is its iPhone and Android diary app for instructors. This page is for an instructor looking at GoRoadie Pro and wondering whether DriveSchoolPro, or another UK app, is worth a look too. GoRoadie Pro is a UK app with features we don't have, so this isn't a case against it. It's a list of what's different."
   rows={rows}
   switchHeading="Where DriveSchoolPro differs"
   switchIntro="These are the differences that exist today, from the table above."
@@ -119,7 +138,7 @@ const faqs = [
     },
   ]}
   gapsHeading="What DriveSchoolPro doesn't do"
-  gapsBody="DriveSchoolPro has no learner marketplace, so it won't bring you new pupils the way GoRoadie can. We don't track expenses or scan receipts, so you'll need accounting software for that side of your tax return. We don't show pupils' theory test progress. We have no phone calendar sync and can't offer a cancelled slot to other pupils; GoRoadie Pro lists both. Lesson reminders go out by email only for now (WhatsApp is coming soon), where GoRoadie Pro also sends texts. Recording test bookings and results is coming soon, where GoRoadie Pro already puts driving and mock tests in the diary. If any of these decides it for you, that's a fair reason to choose GoRoadie Pro."
+  gapsBody="DriveSchoolPro has no learner marketplace, so it won't bring you new pupils the way GoRoadie can. We don't track expenses or scan receipts, so you'll need accounting software for that side of your tax return. We don't show pupils' theory test progress. Our calendar link is one-way (you subscribe to it in Google or Apple Calendar, and nothing syncs back), and we can't offer a cancelled slot to other pupils; GoRoadie Pro lists calendar sync and open-slot offers. Lesson reminders go out by email only for now (WhatsApp is coming soon), where GoRoadie Pro also sends texts. Recording test bookings and results is coming soon, where GoRoadie Pro already puts driving and mock tests in the diary. If any of these decides it for you, that's a fair reason to choose GoRoadie Pro."
   sources={[
     { label: 'GoRoadie Pro', url: 'https://goroadie.com/pro' },
     { label: 'GoRoadie Pro help and tutorials', url: 'https://www.goroadie.com/pro/help' },
@@ -135,5 +154,5 @@ const faqs = [
   alternativesKey="goroadie"
   faqs={faqs}
   faqTitle="DriveSchoolPro vs GoRoadie Pro: common questions"
-  updates={[{ date: '9 November 2026', text: 'checked again, including GoRoadie\'s help guides and news. We corrected two cells: GoRoadie Pro flags lesson clashes, including with connected calendars, and it lists a Web Dashboard for finances and mileage. We also added its calendar sync, open-slot offers to nearby pupils and test scheduling.' }]}
+  updates={[{ date: '19 November 2026', text: 'checked again against GoRoadie\'s Pro page, help guides, schools and instructor pages and app-store listings. No feature cells changed; we added what GoRoadie is, and answers on its cost, platforms and moving pupils.' }, { date: '9 November 2026', text: 'checked again, including GoRoadie\'s help guides and news. We corrected two cells: GoRoadie Pro flags lesson clashes, including with connected calendars, and it lists a Web Dashboard for finances and mileage. We also added its calendar sync, open-slot offers to nearby pupils and test scheduling.' }]}
 />
