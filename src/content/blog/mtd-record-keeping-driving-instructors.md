@@ -1,12 +1,15 @@
 ---
-title: "MTD Record Keeping for Driving Instructors: What Digital Records You Need"
-description: "Making Tax Digital records for ADIs: a date, amount and category for every income and expense, kept 5 years, plus typical costs and the mileage choice."
+title: "Making Tax Digital for Driving Instructors: Records You Must Keep"
+description: "Making Tax Digital for driving instructors: the digital records ADIs must keep from April 2027, what counts as income and expenses, and the 5-year rule."
 date: "2026-10-16"
+updatedDate: "2026-11-19"
 tags: ["business", "guide", "tax"]
 author: "John Powell"
 image: /images/blog/app-payments.jpg
 imageAlt: "The DriveSchoolPro Money screen showing revenue this month, outstanding and overdue balances, and payment reminders"
 faqs:
+  - question: "When do driving instructors have to start Making Tax Digital?"
+    answer: "It depends on your qualifying income, which is lesson income before expenses. GOV.UK says you must start on 6 April 2026 if your 2024 to 2025 qualifying income was over £50,000, on 6 April 2027 if your 2025 to 2026 income was over £30,000, and on 6 April 2028 if your 2026 to 2027 income is over £20,000. Most full-time ADIs pass £30,000 and start in April 2027."
   - question: "What records does a driving instructor need to keep for Making Tax Digital?"
     answer: "A digital record of every business income and expense item, showing the amount, the date and a category. For most ADIs that means each lesson payment you receive and each cost you pay, such as fuel, car finance, insurance and franchise fees. You also keep the supporting documents, such as invoices, receipts and bank statements, or copies of them."
   - question: "Do I need to split my expenses into categories under MTD?"
@@ -18,14 +21,14 @@ faqs:
   - question: "Should I claim mileage or actual car costs as a driving instructor?"
     answer: "It depends on your car and how many miles you drive. The flat rate for cars is 55p a mile for the first 10,000 business miles and 25p after that for 2026 to 2027. Once you use flat rates for a vehicle you must stay with them while you use that vehicle for the business, and you can't use them if you've already claimed capital allowances on it. Ask an accountant to run both figures for your car."
   - question: "Does DriveSchoolPro keep my MTD records for me?"
-    answer: "Only the income side, and not in MTD software. DriveSchoolPro records every lesson, invoice and payment, so you have an accurate income record for each period. It does not record expenses or mileage, and it does not send anything to HMRC. You still need MTD-compatible software or an accountant for that."
+    answer: "Only the income side, and not in MTD software. DriveSchoolPro records every lesson, invoice and payment, so you have an accurate income record for each period, and you can export it as a CSV (Settings, then Income Export). It does not record expenses or mileage, and it does not send anything to HMRC. You still need MTD-compatible software or an accountant for that."
 ---
 
-Making Tax Digital for Income Tax changes how you keep your books more than it changes your tax bill. From the day you start, every business income and expense item has to be recorded digitally, in software that works with MTD. For most full-time ADIs that day is 6 April 2027.
+**Making Tax Digital for driving instructors means keeping a digital record of every lesson payment and business cost, with the amount, date and a category, in software that works with MTD.** For most full-time ADIs that starts on 6 April 2027. It changes how you keep your books more than it changes your tax bill.
 
-This guide covers what those records are for a driving instructor, which expenses usually come up, how long to keep everything and how a spreadsheet can still fit. If you haven't yet checked whether you need MTD at all, start with our main guide to [Making Tax Digital for driving instructors](/blog/making-tax-digital-driving-instructors/). It covers the £30,000 and £20,000 thresholds and the quarterly deadlines.
+Who is in depends on your qualifying income, which is your lesson income before expenses. GOV.UK says you must use MTD for Income Tax from 6 April 2026 if your 2024 to 2025 qualifying income was over £50,000, from 6 April 2027 if your 2025 to 2026 income was over £30,000, and from 6 April 2028 if your 2026 to 2027 income is over £20,000. Our main guide to [Making Tax Digital for driving instructors](/blog/making-tax-digital-driving-instructors/) walks through who is in and the quarterly deadlines. This one covers the records: what they are for an instructor, which expenses come up, how long to keep everything and how a spreadsheet can still fit.
 
-Figures here come from GOV.UK as checked on 16 October 2026. It isn't tax advice. If your situation is unusual, check GOV.UK or ask an accountant.
+Figures here come from [GOV.UK](https://www.gov.uk/guidance/check-if-youre-eligible-for-making-tax-digital-for-income-tax), last checked on 19 November 2026 (the eligibility page was last updated by GOV.UK on 26 March 2026). It isn't tax advice. If your situation is unusual, check GOV.UK or ask an accountant.
 
 ## What a digital record has to include
 
@@ -169,7 +172,7 @@ The dates for those quarterly checks are set out in our [MTD timeline for 2027 a
 
 ## Where DriveSchoolPro fits
 
-DriveSchoolPro records every lesson you book, the invoice you send and the payment you receive, whether by card, cash or bank transfer. That gives you an accurate income record for each period, which is the half of your books that's hardest to rebuild later. It does not record expenses or mileage, it is not MTD software and it does not file anything with HMRC. You will still need MTD-compatible software or an accountant. Our page on [accounting software for driving instructors](/driving-instructor-accounting-software/) explains how the two fit together.
+DriveSchoolPro records every lesson you book, the invoice you send and the payment you receive, whether by card, cash or bank transfer. That gives you an accurate income record for each period, which is the half of your books that's hardest to rebuild later. From Settings, then Income Export, you can download your income as a CSV for your accountant: one row per payment or refund, with totals by month, for the tax year or dates you choose. It does not record expenses or mileage, it is not MTD software and it does not file anything with HMRC, so you will still need MTD-compatible software or an accountant. If you want expenses and mileage in your instructor app, our comparison of the [best accounting apps for driving instructors](/driving-instructor-accounting-software/#compare-apps) sets out what GoRoadie Pro, MyDriveTime, Total Drive and DriveSchoolPro each list, as checked on 19 November 2026.
 
 DriveSchoolPro is free until 31 March 2027. From 1 April 2027 there's a permanent Free plan for one instructor and up to 60 lessons a month, or Solo at £22 a month with no VAT charged. See [pricing](/pricing/).
 
@@ -178,5 +181,5 @@ DriveSchoolPro is free until 31 March 2027. From 1 April 2027 there's a permanen
 - [Making Tax Digital for driving instructors](/blog/making-tax-digital-driving-instructors/): thresholds, qualifying income and the quarterly deadlines
 - [Choosing MTD software for driving instructors](/blog/choosing-mtd-software-driving-instructors/): what to look for and questions to ask
 - [MTD timeline for 2027 and 2028](/blog/mtd-timeline-2027-2028-driving-instructors/): month by month from now to your first tax return
-- [Accounting software for driving instructors](/driving-instructor-accounting-software/): what bookkeeping software does that driving school software doesn't
+- [Best accounting app for driving instructors](/driving-instructor-accounting-software/): which apps cover expenses and MTD, and what DriveSchoolPro does and doesn't do
 - [Taking driving lesson payments online](/features/getting-paid/): card payments, lesson blocks and tracking who has paid

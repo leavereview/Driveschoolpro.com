@@ -39,7 +39,7 @@ const faqItems = [
   {
     question: 'Is DriveSchoolPro accounting software?',
     answer:
-      'No, and we would rather say so up front. DriveSchoolPro records lesson income, issues invoices, tracks outstanding balances and reports revenue by period — the income side of your books, captured automatically as you teach. It does not categorise expenses, track mileage, reconcile a bank feed or file a Self Assessment return. For those you still want proper accounting software or an accountant. The two work well together: DriveSchoolPro is where the income data comes from, accounting software is where the tax return happens.',
+      'No, and we would rather say so up front. DriveSchoolPro records lesson income, issues invoices, tracks outstanding balances and reports revenue by period — the income side of your books, captured automatically as you teach. It can export your income as a CSV for your accountant (Settings, then Income Export). It does not categorise expenses, track mileage, reconcile a bank feed or file a Self Assessment return, and it is not Making Tax Digital software. For those you still want proper accounting software or an accountant. The two work well together: DriveSchoolPro is where the income data comes from, accounting software is where the tax return happens.',
     links: [{ text: 'What DriveSchoolPro does do', url: '/driving-school-management-software/' }],
   },
   {
@@ -51,10 +51,11 @@ const faqItems = [
   {
     question: 'What is the best accounting app for driving instructors in the UK?',
     answer:
-      "There are two kinds. General accounting software handles the tax side: expenses, mileage, bank feeds, Self Assessment and Making Tax Digital submissions, and HMRC lists the products that can file MTD updates. Some driving instructor apps also add an accounts feature: GoRoadie Pro lists photo-scanned expense receipts and says it is Making Tax Digital ready, and MyDriveTime lists an income and expense report, according to their own sites. DriveSchoolPro is not accounting software: it records every lesson, invoice and payment so the income figures are right, and you pair it with accounting software or an accountant for the return.",
+      "There are two kinds. General accounting software handles the tax side: expenses, mileage, bank feeds, Self Assessment and Making Tax Digital submissions, and HMRC lists the products that can file MTD updates. Some driving instructor apps also add an accounts feature, according to their own sites: GoRoadie Pro lists photo-scanned expense receipts, mileage and a QuickBooks link, and says it is Making Tax Digital ready; MyDriveTime lists an income and expense report and a Making Tax Digital set-up with Xero or CSV options; Total Drive links to QuickBooks, Xero, FreeAgent, Sage and FBTC or CSV. DriveSchoolPro is not accounting software: it records every lesson, invoice and payment so the income figures are right, can export that income as a CSV, and you pair it with accounting software or an accountant for the return. Features were checked on the vendors' own sites on 19 November 2026.",
     links: [
       { text: 'GoRoadie vs DriveSchoolPro', url: '/compare/goroadie/' },
       { text: 'MyDriveTime vs DriveSchoolPro', url: '/compare/my-drive-time/' },
+      { text: 'Total Drive vs DriveSchoolPro', url: '/compare/total-drive/' },
     ],
   },
   {
@@ -72,8 +73,14 @@ const faqItems = [
   {
     question: 'Do I need to worry about Making Tax Digital as a driving instructor?',
     answer:
-      'Probably, if you teach full-time. As of October 2026, GOV.UK says self-employed people must use Making Tax Digital for Income Tax from 6 April 2027 if their qualifying income is over £30,000, and from 6 April 2028 if it is over £20,000. Qualifying income is turnover before expenses, so at about £35 a lesson anyone teaching more than roughly 19 paid hours a week is over £30,000. Our guide walks through the thresholds, quarterly deadlines and a checklist.',
+      'Probably, if you teach full-time. GOV.UK (checked 19 November 2026) says self-employed people must use Making Tax Digital for Income Tax from 6 April 2026 if their qualifying income for 2024 to 2025 was over £50,000, from 6 April 2027 if it was over £30,000 for 2025 to 2026, and from 6 April 2028 if it was over £20,000 for 2026 to 2027. Qualifying income is turnover before expenses, so at about £35 a lesson anyone teaching more than roughly 19 paid hours a week is over £30,000. Our guide walks through the thresholds, quarterly deadlines and a checklist.',
     links: [{ text: 'Making Tax Digital for driving instructors', url: '/blog/making-tax-digital-driving-instructors/' }],
+  },
+  {
+    question: 'Does DriveSchoolPro submit Making Tax Digital updates to HMRC?',
+    answer:
+      'No. DriveSchoolPro is not Making Tax Digital software and does not send anything to HMRC. What it can do is export your income as a CSV file (Settings, then Income Export): one row per payment or refund, with monthly totals, for the tax year or any dates you choose. Your accountant or your MTD-compatible software can use that for the income side. Expenses and mileage are not in it.',
+    links: [{ text: 'MTD record keeping for driving instructors', url: '/blog/mtd-record-keeping-driving-instructors/' }],
   },
   {
     question: 'Does DriveSchoolPro handle cash payments?',
@@ -86,19 +93,19 @@ const faqItems = [
 const schemaMarkup = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'Driving Instructor Accounting Software: What You Actually Need',
+  headline: 'Best Accounting App for Driving Instructors in the UK',
   description:
     'What driving instructor accounting software does, what instructor management software does, and why most self-employed ADIs need both.',
   author: { '@type': 'Organization', name: 'DriveSchoolPro' },
   publisher: { '@type': 'Organization', name: 'DriveSchoolPro' },
   datePublished: '2026-08-19',
-  dateModified: '2026-08-19',
+  dateModified: '2026-11-19',
 };
 ---
 
 <BaseLayout
-  title="Driving Instructor Accounting Software and Accountants"
-  description="Accounting software vs instructor software for self-employed ADIs, when a driving instructor needs an accountant, and what to ask before you hire one."
+  title="Best Accounting App for Driving Instructors UK (2026)"
+  description="Which accounting app suits a UK driving instructor? Compare GoRoadie Pro, MyDriveTime, Total Drive and DriveSchoolPro on expenses, mileage and MTD."
 >
   <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
 
@@ -114,20 +121,20 @@ const schemaMarkup = {
     <div class="container-custom relative">
       <div class="max-w-3xl">
         <span class="inline-block px-4 py-1 bg-brand-red/20 text-brand-red-light rounded-full text-sm font-medium mb-4">Finance &amp; Admin</span>
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Driving Instructor Accounting Software</h1>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Best Accounting App for Driving Instructors in the UK</h1>
         <p class="text-xl text-gray-300 mb-8">
-          Most ADIs searching this are trying to solve two different problems with one tool. Here is which job belongs to accounting software, which belongs to instructor software, and where the join actually is.
+          Most ADIs searching this are trying to solve two different problems with one tool. Here is which job belongs to accounting software, which instructor apps include accounts features (checked 19 November 2026), and where DriveSchoolPro fits.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">Try DriveSchoolPro Free</a>
-          <a href="#two-jobs" class="btn-secondary text-lg px-8 py-4">Read the Guide</a>
+          <a href="#compare-apps" class="btn-secondary text-lg px-8 py-4">Compare the apps</a>
         </div>
       </div>
     </div>
   </section>
 
-  <FeaturedAnswer question="What is driving instructor accounting software?">
-    Strictly, accounting software for a driving instructor is general small-business bookkeeping software used by a self-employed ADI: it categorises expenses, tracks mileage, reconciles your bank feed and produces the figures for your Self Assessment return. It does not know what a pupil or a lesson is. Instructor management software sits on the other side of that line — it records which pupil paid for which lesson, issues invoices and reports revenue, but does not file your tax return. Most self-employed ADIs need both, and the useful question is not which to buy but where the handover happens.
+  <FeaturedAnswer question="What is the best accounting app for driving instructors in the UK?">
+    It depends which job you mean. For the tax return itself (expenses, mileage, bank feed, Self Assessment and Making Tax Digital updates), the answer is general accounting software that appears on HMRC's list of compatible software, or an accountant who uses it. If you would rather keep expenses inside your instructor app, three UK apps list accounts features on their own sites: GoRoadie Pro (expense and receipt tracking, mileage, QuickBooks link), MyDriveTime (income and expense report, receipts, a Making Tax Digital set-up with Xero or CSV) and Total Drive (links to QuickBooks, Xero, FreeAgent, Sage and FBTC, or CSV). DriveSchoolPro is not accounting software: it records every lesson, invoice and payment and can export that income as a CSV for your accountant, but it does not track expenses or mileage or send anything to HMRC.
   </FeaturedAnswer>
 
   <section class="section bg-white" id="two-jobs">
@@ -162,10 +169,86 @@ const schemaMarkup = {
         We would rather be clear than sell you something on a misunderstanding. DriveSchoolPro is not accounting software and does not try to be.
       </p>
       <p class="text-gray-700 mb-4">
-        <strong>It does:</strong> record payments against pupils and lessons by cash, bank transfer or cheque; create and send invoices with line items and track them through their lifecycle; manage lesson packages with configurable hours, pricing and expiry; show outstanding balances; and report revenue, lessons delivered, cancellations and no-shows by period; and take card payments through Stripe pay-links on invoices.
+        <strong>It does:</strong> record payments against pupils and lessons by cash, bank transfer or cheque; create and send invoices with line items and track them through their lifecycle; manage lesson packages with configurable hours, pricing and expiry; show outstanding balances; and report revenue, lessons delivered, cancellations and no-shows by period; take card payments through Stripe pay-links on invoices; and export your income as a CSV for your accountant (Settings, then Income Export).
       </p>
       <p class="text-gray-700 mb-8">
-        <strong>It does not:</strong> categorise business expenses, track mileage, connect to a bank feed, produce a profit-and-loss statement for HMRC, or file anything. For all of that you want accounting software or an accountant — and the revenue figures from DriveSchoolPro are what you hand them.
+        <strong>It does not:</strong> categorise business expenses, track mileage, connect to a bank feed, produce a profit-and-loss statement for HMRC, link directly to accounting software, or file anything with HMRC. It is not Making Tax Digital software. For all of that you want accounting software or an accountant — and the income figures from DriveSchoolPro are what you hand them.
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-white" id="compare-apps">
+    <div class="container-custom max-w-5xl">
+      <h2 class="text-3xl font-bold text-brand-navy mb-4">Instructor apps with accounts features: a fair comparison</h2>
+      <p class="text-gray-700 mb-4">
+        Three UK instructor apps list expense or accounting features alongside the diary. DriveSchoolPro does not, and the table says so. Everything in the competitor rows comes from each vendor's own website, checked on <strong>19 November 2026</strong>; &ldquo;Not listed&rdquo; means we could not find it on the pages we checked, not that it is missing. Pricing changes, so check each vendor's own pricing page.
+      </p>
+      <div class="overflow-x-auto mb-4">
+        <table class="w-full text-left text-sm border border-gray-200 bg-white">
+          <caption class="sr-only">Accounts features in UK driving instructor apps, from vendors' own sites, checked 19 November 2026</caption>
+          <thead class="bg-gray-100 text-brand-navy">
+            <tr>
+              <th scope="col" class="p-3">App</th>
+              <th scope="col" class="p-3">Expenses and receipts</th>
+              <th scope="col" class="p-3">Mileage</th>
+              <th scope="col" class="p-3">Getting figures to an accountant or HMRC software</th>
+              <th scope="col" class="p-3">Making Tax Digital on its own site</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700 align-top">
+            <tr class="border-t border-gray-200">
+              <th scope="row" class="p-3 font-semibold">GoRoadie Pro</th>
+              <td class="p-3">Listed: expense tracking and photo-scanned receipts</td>
+              <td class="p-3">Listed (also on its Web Dashboard)</td>
+              <td class="p-3">Spreadsheet export you choose by dates and pupils, and a QuickBooks integration</td>
+              <td class="p-3">Says &ldquo;You&rsquo;re Making Tax Digital ready&rdquo;</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <th scope="row" class="p-3 font-semibold">MyDriveTime</th>
+              <td class="p-3">Listed: income and expense report, and receipts attached to outgoing payments</td>
+              <td class="p-3">Not listed on the pages we checked</td>
+              <td class="p-3">Four routes on its Making Tax Digital set-up: managed with FBTC, hybrid or connect with Xero, or CSV export. Third-party fees are paid to those providers</td>
+              <td class="p-3">Has a Making Tax Digital set-up in Settings</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <th scope="row" class="p-3 font-semibold">Total Drive</th>
+              <td class="p-3">Listed: income and expenses, mapped to categories</td>
+              <td class="p-3">Listed: mileage log</td>
+              <td class="p-3">Connects to QuickBooks, Xero, FreeAgent, Sage and FBTC, or CSV export of income and expenses; you choose when to sync</td>
+              <td class="p-3">Has a Making Tax Digital section with accounting integrations</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <th scope="row" class="p-3 font-semibold">DriveSchoolPro</th>
+              <td class="p-3">No</td>
+              <td class="p-3">No</td>
+              <td class="p-3">Income CSV: one row per payment or refund plus monthly totals, for a tax year or dates you choose</td>
+              <td class="p-3">Not MTD software; does not submit to HMRC</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-gray-500 text-sm mb-6">
+        Sources:
+        <a href="https://www.goroadie.com/pro" rel="nofollow noopener" class="text-brand-red hover:underline">GoRoadie Pro</a>,
+        <a href="https://www.goroadie.com/press/2026-09-goroadie-preps-autumn-update" rel="nofollow noopener" class="text-brand-red hover:underline">GoRoadie autumn 2026 update</a>,
+        <a href="https://www.mydrivetime.co.uk/" rel="nofollow noopener" class="text-brand-red hover:underline">MyDriveTime</a>,
+        <a href="https://www.mydrivetime.co.uk/blog/mydrivetime-solves-making-tax-digital-for-you/" rel="nofollow noopener" class="text-brand-red hover:underline">MyDriveTime on Making Tax Digital</a>,
+        <a href="https://totaldrive.co.uk/making-tax-digital/accounting-integrations-for-driving-instructors/" rel="nofollow noopener" class="text-brand-red hover:underline">Total Drive accounting integrations</a>.
+        Whether each app files updates with HMRC itself, or leaves that to the connected software, is not something we have verified: check HMRC&rsquo;s list before you rely on it.
+      </p>
+
+      <h3 class="text-xl font-semibold text-brand-navy mb-3">How to choose</h3>
+      <ul class="list-disc pl-6 space-y-2 text-gray-700 mb-6">
+        <li><strong>You want expenses, receipts and mileage in the same app as your diary:</strong> look at GoRoadie Pro, MyDriveTime or Total Drive first. DriveSchoolPro cannot do this today.</li>
+        <li><strong>You already have an accountant or accounting software:</strong> any app that gets clean income figures to them will do. DriveSchoolPro&rsquo;s income CSV is built for that handover.</li>
+        <li><strong>You want the cleanest record of who paid for which lesson:</strong> that is what DriveSchoolPro is built around, with payments recorded against lessons, packages and invoices.</li>
+        <li><strong>You need to send Making Tax Digital updates:</strong> pick software from <a href="https://www.gov.uk/guidance/find-software-thats-compatible-with-making-tax-digital-for-income-tax" rel="nofollow noopener" class="text-brand-red hover:underline">HMRC&rsquo;s list of compatible software</a>, or ask your accountant. Our <a href="/blog/choosing-mtd-software-driving-instructors/" class="text-brand-red hover:underline">guide to choosing MTD software</a> has the questions to ask.</li>
+      </ul>
+      <p class="text-gray-700">
+        For the side-by-side detail on each app, see
+        <a href="/compare/goroadie/" class="text-brand-red hover:underline">GoRoadie Pro vs DriveSchoolPro</a>,
+        <a href="/compare/my-drive-time/" class="text-brand-red hover:underline">MyDriveTime vs DriveSchoolPro</a> and
+        <a href="/compare/total-drive/" class="text-brand-red hover:underline">Total Drive vs DriveSchoolPro</a>.
       </p>
     </div>
   </section>
@@ -193,7 +276,7 @@ const schemaMarkup = {
         <li><strong>2. Invoice from the same place.</strong> If invoices are generated from lesson records, they cannot disagree with what you taught.</li>
         <li><strong>3. Keep expenses somewhere separate and boring.</strong> Fuel, maintenance, insurance, ADI registration, CPD, and your software subscriptions. Accounting software or a spreadsheet — the tool matters far less than doing it weekly.</li>
         <li><strong>4. Reconcile monthly, not annually.</strong> Compare the revenue report to what actually hit your bank. A month of discrepancies is solvable; a year of them is a weekend you will never get back.</li>
-        <li><strong>5. Hand your accountant the revenue report.</strong> Rather than a diary and a carrier bag of receipts.</li>
+        <li><strong>5. Hand your accountant the income CSV or revenue report.</strong> Rather than a diary and a carrier bag of receipts.</li>
       </ol>
 
       <p class="text-gray-700">
