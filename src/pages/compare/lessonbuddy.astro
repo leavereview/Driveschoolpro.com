@@ -20,7 +20,7 @@ const rows = [
   { label: 'Booking widget for your own website', values: [true, 'Yes (website booking tools)'] },
   { label: 'Diary clash checks before booking', values: [true, 'Yes'] },
   { label: 'Clash checks that include the vehicle', values: [true, 'Not listed'] },
-  { label: 'Google and Apple Calendar sync', values: [false, 'Yes'] },
+  { label: 'Google and Apple Calendar sync', values: ['One-way feed (subscribe in Google, Apple or Outlook); no two-way sync', 'Yes'] },
   { label: 'Vehicle MOT, tax and insurance tracking', values: [true, 'Not listed'] },
   { label: 'Pupil app or portal', values: ['Yes (iOS, Android or web)', 'Yes (iOS and Android app)'] },
   { label: 'Parent access', values: [false, 'Yes'] },
@@ -68,11 +68,11 @@ const faqs = [
     description: 'DriveSchoolPro vs LessonBuddy feature by feature: DVSA tracking, AI lesson briefings, pupil apps, parent access and gaps. Free until 31 March 2027.',
     schemaDescription: 'Feature-by-feature comparison of DriveSchoolPro and LessonBuddy for UK driving instructors and schools, including what DriveSchoolPro does not do yet.',
     datePublished: '2026-10-08',
-    dateModified: '2026-11-09',
+    dateModified: '2026-11-19',
   }}
   checkedOn="9 November 2026"
   heroIntro="A plain, feature-by-feature comparison for UK instructors and schools weighing up LessonBuddy. It covers what's different, and what DriveSchoolPro doesn't do yet."
-  featuredAnswer="DriveSchoolPro and LessonBuddy are both UK platforms for driving instructors and schools, with a diary, online booking, skills tracking and multi-instructor support. DriveSchoolPro adds AI lesson briefings, progress tracking on the official DVSA 27 skills, Google review requests at each test pass, vehicle clash checks, and vehicle compliance tracking. Both have an app on iOS and Android for instructors and pupils, and both check the diary for clashes. LessonBuddy lists parent access, gap publishing, Google and Apple Calendar sync and test-centre route tools that DriveSchoolPro doesn't have."
+  featuredAnswer="DriveSchoolPro and LessonBuddy are both UK platforms for driving instructors and schools, with a diary, online booking, skills tracking and multi-instructor support. DriveSchoolPro adds AI lesson briefings, progress tracking on the official DVSA 27 skills, Google review requests at each test pass, vehicle clash checks, and vehicle compliance tracking. Both have an app on iOS and Android for instructors and pupils, and both check the diary for clashes. LessonBuddy lists parent access, gap publishing and test-centre route tools that DriveSchoolPro doesn't have, and syncs with Google and Apple Calendar (DriveSchoolPro has a one-way calendar feed, with no two-way sync)."
   intro="This page is for an instructor or school looking at LessonBuddy and wondering whether DriveSchoolPro is worth a look too. LessonBuddy has a broad feature set, so this isn't a case against it. It's a list of what's different."
   rows={rows}
   switchHeading="Where DriveSchoolPro differs"
@@ -100,7 +100,7 @@ const faqs = [
     },
   ]}
   gapsHeading="What DriveSchoolPro doesn't do yet"
-  gapsBody="DriveSchoolPro has no parent login, no way to publish a cancelled slot to chosen pupils, no Google or Apple Calendar sync, and no test-centre route library, all of which LessonBuddy lists. Lesson reminders go out by email only for now (WhatsApp is coming soon), recording test bookings and results is coming soon, and we don't offer free bulk migration of your records yet. If any of these decides it for you, that's a fair reason to choose LessonBuddy."
+  gapsBody="DriveSchoolPro has no parent login, no way to publish a cancelled slot to chosen pupils, no two-way Google or Apple Calendar sync (our calendar link is a one-way feed), and no test-centre route library, all of which LessonBuddy lists. Lesson reminders go out by email only for now (WhatsApp is coming soon), recording test bookings and results is coming soon, and we don't offer free bulk migration of your records yet. If any of these decides it for you, that's a fair reason to choose LessonBuddy."
   sources={[
     { label: 'LessonBuddy — home page', url: 'https://lessonbuddy.co.uk/' },
     { label: 'LessonBuddy — features', url: 'https://lessonbuddy.co.uk/features/' },
@@ -112,5 +112,5 @@ const faqs = [
   ]}
   faqs={faqs}
   faqTitle="DriveSchoolPro vs LessonBuddy — common questions"
-  updates={[{ date: '9 November 2026', text: 'corrected after LessonBuddy told us about errors. LessonBuddy checks the diary for clashes before booking and syncs with Google and Apple Calendar, and the page now says so. Its in-car support covers Apple CarPlay as well as Android Auto.' }]}
+  updates={[{ date: '19 November 2026', text: 'DriveSchoolPro now offers a one-way calendar feed (subscribe in Google, Apple or Outlook; no two-way sync), so we updated our column. Nothing in the LessonBuddy column was re-checked.' }, { date: '9 November 2026', text: 'corrected after LessonBuddy told us about errors. LessonBuddy checks the diary for clashes before booking and syncs with Google and Apple Calendar, and the page now says so. Its in-car support covers Apple CarPlay as well as Android Auto.' }]}
 />

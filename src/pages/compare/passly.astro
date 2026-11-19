@@ -31,7 +31,7 @@ const rows = [
   { label: 'Test bookings and results recording (coming soon)', values: ['Coming soon', 'Yes (test results logged)'] },
   { label: 'Cancellation-gap broadcast to pupils', values: [false, 'Yes (push gap alerts)'] },
   { label: 'Repeating weekly bookings', values: ['Coming soon', 'Yes (weekly or fortnightly series)'] },
-  { label: 'Google / Apple Calendar', values: [false, 'Yes (one-way calendar feed)'] },
+  { label: 'Google / Apple Calendar', values: ['One-way feed (subscribe in Google, Apple or Outlook); no two-way sync', 'Yes (one-way calendar feed)'] },
   { label: 'Expenses and mileage', values: [false, 'Yes (expenses, mileage, CSV export)'] },
   { label: 'Learner marketplace and leads', values: [false, 'Yes'] },
   { label: 'Theory content', values: [false, 'Not listed'] },
@@ -74,11 +74,11 @@ const faqs = [
     description: 'DriveSchoolPro vs Passly feature by feature: DVSA tracking, AI lesson briefings, reminders, gap alerts and test results. Free until 31 March 2027.',
     schemaDescription: 'Feature-by-feature comparison of DriveSchoolPro and Passly for UK driving instructors, including what DriveSchoolPro does not do yet.',
     datePublished: '2026-10-08',
-    dateModified: '2026-11-09',
+    dateModified: '2026-11-19',
   }}
   checkedOn="9 November 2026"
   heroIntro="A plain, feature-by-feature comparison for UK instructors weighing up Passly. It covers what's different, and what DriveSchoolPro doesn't do yet."
-  featuredAnswer="DriveSchoolPro and Passly are both UK platforms for driving instructors, with a diary, a booking widget, DVSA-based progress tracking and multi-instructor support. DriveSchoolPro adds AI lesson briefings, Google review requests at each test pass, clash checks that include the vehicle, and MOT, tax and insurance tracking. Passly lists cancellation-gap push alerts, repeating lessons, a Google and Apple Calendar feed, expense and mileage tracking, practical test result logging and a learner marketplace that DriveSchoolPro doesn't have."
+  featuredAnswer="DriveSchoolPro and Passly are both UK platforms for driving instructors, with a diary, a booking widget, DVSA-based progress tracking and multi-instructor support. DriveSchoolPro adds AI lesson briefings, Google review requests at each test pass, clash checks that include the vehicle, and MOT, tax and insurance tracking. Passly lists cancellation-gap push alerts, repeating lessons, expense and mileage tracking, practical test result logging and a learner marketplace that DriveSchoolPro doesn't have."
   intro="This page is for an instructor looking at Passly and wondering whether DriveSchoolPro is worth a look too. Passly is a capable UK product with a marketplace that brings in learners, so this isn't a case against it. It's a list of what's different."
   rows={rows}
   switchHeading="Where DriveSchoolPro differs"
@@ -106,7 +106,7 @@ const faqs = [
     },
   ]}
   gapsHeading="What DriveSchoolPro doesn't do yet"
-  gapsBody="DriveSchoolPro has no learner marketplace, so it won't bring you new pupils the way Passly's can. We can't broadcast a cancelled slot to your other pupils, which Passly does with push alerts, and recording test bookings and results is coming soon, where Passly logs them today. Repeating weekly bookings are coming soon too; Passly lists weekly and fortnightly series. We have no Google or Apple Calendar sync yet, and we don't track expenses or mileage, which Passly does. Lesson reminders go out by email only for now (WhatsApp is coming soon), and we don't offer free bulk migration of your records yet. If any of these decides it for you, that's a fair reason to choose Passly."
+  gapsBody="DriveSchoolPro has no learner marketplace, so it won't bring you new pupils the way Passly's can. We can't broadcast a cancelled slot to your other pupils, which Passly does with push alerts, and recording test bookings and results is coming soon, where Passly logs them today. Repeating weekly bookings are coming soon too; Passly lists weekly and fortnightly series. Our calendar link is a one-way feed too (subscribe in Google, Apple or Outlook; no two-way sync), but we don't track expenses or mileage, which Passly does. Lesson reminders go out by email only for now (WhatsApp is coming soon), and we don't offer free bulk migration of your records yet. If any of these decides it for you, that's a fair reason to choose Passly."
   sources={[
     { label: 'Passly — for instructors', url: 'https://passly.co.uk/instructor' },
     { label: 'Passly — messaging and reminders', url: 'https://passly.co.uk/instructor/features/messaging-and-reminders' },
@@ -121,5 +121,5 @@ const faqs = [
   ]}
   faqs={faqs}
   faqTitle="DriveSchoolPro vs Passly — common questions"
-  updates={[{ date: '9 November 2026', text: 'checked again, including Passly\'s support pages and App Store listing. We added its iPhone app, repeating weekly bookings, calendar feed, and expenses and mileage tracking.' }]}
+  updates={[{ date: '19 November 2026', text: 'DriveSchoolPro now offers a one-way calendar feed (subscribe in Google, Apple or Outlook; no two-way sync), so we updated our column. Nothing in the Passly column was re-checked.' }, { date: '9 November 2026', text: 'checked again, including Passly\'s support pages and App Store listing. We added its iPhone app, repeating weekly bookings, calendar feed, and expenses and mileage tracking.' }]}
 />

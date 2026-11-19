@@ -16,7 +16,7 @@ import { OFFER, PRICING, PRICE_LINE } from '../config/offer';
 // system/software', 'instructor booking system') belong to /driving-instructor-booking-system/.
 //
 // Claims: reminders are email only today (text and WhatsApp coming soon on Solo and School);
-// lesson confirmation is off, so reminders never ask pupils to confirm; no calendar sync; no parent
+// lesson confirmation is off, so reminders never ask pupils to confirm; one-way calendar feed only (no two-way sync); no parent
 // accounts; recurring series coming soon. Never quote competitor prices (src/config/offer.ts).
 
 const schedulingStats = [
@@ -206,7 +206,7 @@ const faqItems = [
   },
   {
     question: "Does scheduling software sync with Google Calendar?",
-    answer: "DriveSchoolPro has its own full-featured calendar with day, week, and month views, and drag-and-drop rescheduling, so everything lives in one place (recurring lesson series coming soon). Calendar sync with Google, Apple or Outlook is not available yet. Pupils booking through your public booking page get an add-to-calendar link for their own lesson.",
+    answer: "DriveSchoolPro has its own full-featured calendar with day, week, and month views, and drag-and-drop rescheduling, so everything lives in one place (recurring lesson series coming soon). Each instructor can also create a private calendar link and subscribe to it from Google Calendar, iPhone or Mac Calendar or Outlook, which shows their lessons (pupil name, pickup address and a link back to the lesson). It is one-way, so there is no two-way sync, and calendar apps refresh subscribed feeds on their own schedule. Pupils booking through your public booking page get an add-to-calendar link for their own lesson.",
     links: [
       { text: OFFER.ctaPrimary.labelShort, url: OFFER.ctaPrimary.href }
     ]
@@ -230,7 +230,7 @@ const schemaMarkup = {
     "name": "DriveSchoolPro"
   },
   "datePublished": "2025-01-01",
-  "dateModified": "2026-11-02"
+  "dateModified": "2026-11-19"
 };
 ---
 

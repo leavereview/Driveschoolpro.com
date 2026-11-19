@@ -25,7 +25,7 @@ const rows = [
   { label: 'Card payments', values: ['Yes (Stripe)', 'Yes (Stripe payment links; small per-payment fee)'] },
   { label: 'Invoices and pupil balances', values: [true, 'Yes (digital invoices, payment chasers, outstanding payments)'] },
   { label: 'Expense tracking', values: [false, 'Yes (money in and money out)'] },
-  { label: 'Google / Apple Calendar', values: [false, 'Yes (sync with iPhone or Google calendar)'] },
+  { label: 'Google / Apple Calendar', values: ['One-way feed (subscribe in Google, Apple or Outlook); no two-way sync', 'Yes (sync with iPhone or Google calendar)'] },
   { label: 'Vehicle MOT, tax and insurance tracking', values: [true, 'Not listed'] },
   { label: 'Multi-instructor schools', values: [true, 'Not listed'] },
   { label: 'Ready-made paid courses with test dates', values: [false, 'Yes (core of the product)'] },
@@ -64,7 +64,7 @@ const faqs = [
     description: 'DriveSchoolPro vs ADI Network, the free PassMeFast instructor app: diary, DVSA tracking, booking, payments and course jobs. Free until 31 March 2027.',
     schemaDescription: 'Comparison of DriveSchoolPro and ADI Network for UK driving instructors, including what each is built for.',
     datePublished: '2026-10-16',
-    dateModified: '2026-11-09',
+    dateModified: '2026-11-19',
   }}
   checkedOn="9 November 2026"
   heroIntro="ADI Network and DriveSchoolPro solve different problems. This page sets out what each is for, feature by feature."
@@ -92,7 +92,7 @@ const faqs = [
     },
   ]}
   gapsHeading="What DriveSchoolPro doesn't do"
-  gapsBody="DriveSchoolPro doesn't supply work. There's no jobs board or ready-made courses with test dates, so it won't fill your diary the way ADI Network's course jobs can. Recording test bookings and results is coming soon, where ADI Network lets you log a pass or fail today. We have no iPhone or Google calendar sync yet and don't track expenses; ADI Network lists both. If you mainly want paid course work, ADI Network is built for that."
+  gapsBody="DriveSchoolPro doesn't supply work. There's no jobs board or ready-made courses with test dates, so it won't fill your diary the way ADI Network's course jobs can. Recording test bookings and results is coming soon, where ADI Network lets you log a pass or fail today. Our calendar link is a one-way feed (you subscribe to it in Google, Apple or Outlook) with no two-way sync, and we don't track expenses; ADI Network lists calendar sync and expense tracking. If you mainly want paid course work, ADI Network is built for that."
   sources={[
     { label: 'ADI Network', url: 'https://www.adinetwork.co.uk/' },
     { label: 'ADI Network: why join', url: 'https://www.adinetwork.co.uk/why-join-adi' },
@@ -105,5 +105,5 @@ const faqs = [
   ]}
   faqs={faqs}
   faqTitle="DriveSchoolPro vs ADI Network: common questions"
-  updates={[{ date: '9 November 2026', text: 'checked again, including ADI Network\'s FAQ. We corrected the reminders cell (learners get an email when a lesson is scheduled or changed) and the pupil-app cell, and added its calendar sync, test results, invoices and expense tracking.' }]}
+  updates={[{ date: '19 November 2026', text: 'DriveSchoolPro now offers a one-way calendar feed (subscribe in Google, Apple or Outlook; no two-way sync), so we updated our column. Nothing in the ADI Network column was re-checked.' }, { date: '9 November 2026', text: 'checked again, including ADI Network\'s FAQ. We corrected the reminders cell (learners get an email when a lesson is scheduled or changed) and the pupil-app cell, and added its calendar sync, test results, invoices and expense tracking.' }]}
 />

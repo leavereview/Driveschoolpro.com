@@ -37,7 +37,7 @@ const rows = [
   { label: 'Apple CarPlay and Android Auto', values: [false, 'Yes'] },
   { label: 'Pupils can move or cancel their own lesson', values: ['Yes (you can switch it off)', "No (tested in Total Drive's pupil app, 10 Nov 2026)"] },
   { label: 'Card payment fee', values: ["3% plus Stripe's standard fee, paid by you", '£1.69 per payment under £100, 1.7% + 15p over; paid by the pupil by default'] },
-  { label: 'Calendar feed to Google, Apple and Outlook', values: [false, "Feed out to Google, Apple and Outlook; the phone app can show your phone calendar's events, but they don't block bookings"] },
+  { label: 'Calendar feed to Google, Apple and Outlook', values: ['One-way feed (subscribe in Google, Apple or Outlook); no two-way sync', "Feed out to Google, Apple and Outlook; the phone app can show your phone calendar's events, but they don't block bookings"] },
   { label: 'Waiting list and enquiry form', values: [false, true] },
   { label: 'Mileage log', values: [false, true] },
 ];
@@ -83,7 +83,7 @@ const faqs = [
     description: `Total Drive vs DriveSchoolPro on ${rows.length} features, checked 12 Nov 2026, with what we lack and how to import your pupils. Free until 31 March 2027. Compare now.`,
     schemaDescription: 'Feature-by-feature comparison of DriveSchoolPro and Total Drive for UK driving instructors, including what DriveSchoolPro does not do yet.',
     datePublished: '2026-04-19',
-    dateModified: '2026-11-12',
+    dateModified: '2026-11-19',
   }}
   checkedOn="12 November 2026"
   heroIntro="Looking at Total Drive, the driving instructor and driving school software? This is a plain, feature-by-feature comparison with DriveSchoolPro for UK instructors. It covers what's different, and what we don't do yet."
@@ -111,7 +111,7 @@ const faqs = [
     },
   ]}
   gapsHeading="What Total Drive does that DriveSchoolPro doesn't yet"
-  gapsBody="There's no theory content in DriveSchoolPro, and no way to broadcast a cancelled slot to your pupils. Lesson reminders go out by email only today (WhatsApp is coming soon), and recording test bookings and results is coming soon. We don't track expenses or mileage or link to accounting software for Making Tax Digital, there's no waiting list or enquiry form and no calendar feed to Google, Apple or Outlook yet, and DriveSchoolPro doesn't work with Apple CarPlay or Android Auto; Total Drive lists both, and says its diary works offline, which DriveSchoolPro doesn't advertise. Total Drive has also been in the UK market longer. If any of these decides it for you, that's a fair reason to stay where you are."
+  gapsBody="There's no theory content in DriveSchoolPro, and no way to broadcast a cancelled slot to your pupils. Lesson reminders go out by email only today (WhatsApp is coming soon), and recording test bookings and results is coming soon. We don't track expenses or mileage or link to accounting software for Making Tax Digital, there's no waiting list or enquiry form and no two-way calendar sync (our calendar link is a one-way feed, like Total Drive's), and DriveSchoolPro doesn't work with Apple CarPlay or Android Auto; Total Drive lists both, and says its diary works offline, which DriveSchoolPro doesn't advertise. Total Drive has also been in the UK market longer. If any of these decides it for you, that's a fair reason to stay where you are."
   sources={[
     { label: "Total Drive — app overview", url: 'https://totaldrive.co.uk/driving-instructor-app/' },
     { label: "Total Drive — AI info page (key facts, DVSA syllabus, CarPlay)", url: 'https://totaldrive.co.uk/ai-info-page/' },
@@ -138,5 +138,5 @@ const faqs = [
   alternativesKey="total-drive"
   faqs={faqs}
   faqTitle="DriveSchoolPro vs Total Drive — common questions"
-  updates={[{ date: '12 November 2026', text: 're-checked Total Drive\'s app overview, AI info page and membership page (diary that works offline, Smart Gaps, Theory Suite, migration support, CarPlay and Android Auto, four plans from Basic to Elite). We corrected the export cell (Total Drive does export pupils, lessons and finances as CSV files) and added a Switching from Total Drive section.' }, { date: '10 November 2026', text: 'checked hands-on in a Total Drive trial (web and iPhone app). We corrected the DVSA progress, clash-check, migration and calendar cells, and added rows for pupil self-service, card fees, the calendar feed, a waiting list and a mileage log. DriveSchoolPro now imports pupils from a Total Drive or MyDriveTime spreadsheet.' }, { date: '9 November 2026', text: 'checked again, including Total Drive\'s help centre. We corrected the clash-check cell (its diary alerts you to lesson clashes), said how reminders are sent (free app notifications, SMS with a paid text bundle), and added its website booking button, accounting links, offline diary, and Apple CarPlay and Android Auto support.' }]}
+  updates={[{ date: '19 November 2026', text: 'DriveSchoolPro now offers a one-way calendar feed (subscribe in Google, Apple or Outlook; no two-way sync), so we updated our column. Nothing in the Total Drive column was re-checked.' }, { date: '12 November 2026', text: 're-checked Total Drive\'s app overview, AI info page and membership page (diary that works offline, Smart Gaps, Theory Suite, migration support, CarPlay and Android Auto, four plans from Basic to Elite). We corrected the export cell (Total Drive does export pupils, lessons and finances as CSV files) and added a Switching from Total Drive section.' }, { date: '10 November 2026', text: 'checked hands-on in a Total Drive trial (web and iPhone app). We corrected the DVSA progress, clash-check, migration and calendar cells, and added rows for pupil self-service, card fees, the calendar feed, a waiting list and a mileage log. DriveSchoolPro now imports pupils from a Total Drive or MyDriveTime spreadsheet.' }, { date: '9 November 2026', text: 'checked again, including Total Drive\'s help centre. We corrected the clash-check cell (its diary alerts you to lesson clashes), said how reminders are sent (free app notifications, SMS with a paid text bundle), and added its website booking button, accounting links, offline diary, and Apple CarPlay and Android Auto support.' }]}
 />

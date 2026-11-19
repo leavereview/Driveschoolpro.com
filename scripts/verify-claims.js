@@ -83,13 +83,22 @@ const FORBIDDEN = [
   // emails the pupil once, after org.reviewRequestDelay (default 120 min, daily 07:00 cron batch).
   // reviewRequestEnabled defaults true; email only; fixed wording; needs a Google Place ID.
   // Do not claim: editable wording, WhatsApp requests, or a delay over 3 days (UI maximum).
-  // Found 2026-09-10 by scanning every product claim against the app. The only
-  // text/calendar response in the whole app is the PUBLIC booking-management
-  // route (a pupil's own lesson); there is no instructor diary export or feed.
-  ['export lessons to google', 'no instructor-side calendar export exists'],
-  ['export your driveschoolpro diary', 'no instructor-side calendar export exists'],
-  ['one-way calendar file', 'no instructor-side calendar export exists'],
-  ['reads an ics feed', 'no instructor-side calendar export exists'],
+  // CALENDAR: updated 2026-11-19. DriveSchoolPro now has a ONE-WAY calendar subscription feed
+  // (PR #2243, merged 9 Nov 2026): an instructor creates a private link on My Working Hours and
+  // subscribes from Google, Apple or Outlook; it carries pupil name, pickup address and lesson
+  // link, no phone numbers. It is NOT two-way sync (nothing added in Google/Apple reaches DSP)
+  // and is not instant (calendar apps refresh feeds on their own schedule). Never claim:
+  // (Phrases are written about US: competitor pages legitimately say "two-way sync".)
+  ['driveschoolpro syncs two-way', 'calendar feed is one-way only'],
+  ['driveschoolpro has two-way', 'calendar feed is one-way only'],
+  ['driveschoolpro offers two-way', 'calendar feed is one-way only'],
+  ['driveschoolpro syncs with google', 'calendar feed is one-way only'],
+  ['driveschoolpro syncs with apple', 'calendar feed is one-way only'],
+  ['syncs with your driveschoolpro', 'calendar feed is one-way only'],
+  ['two-way sync with driveschoolpro', 'calendar feed is one-way only'],
+  ['our two-way', 'calendar feed is one-way only'],
+  ['instantly updates your calendar', 'calendar apps refresh subscribed feeds on their own schedule'],
+  ['updates instantly in google calendar', 'calendar apps refresh subscribed feeds on their own schedule'],
   // No per-pupil switch for AI briefings exists anywhere in validations, config
   // or schema.prisma. Claimed on two pages before this scan.
   ['turned off per pupil', 'no per-pupil briefing toggle exists'],
