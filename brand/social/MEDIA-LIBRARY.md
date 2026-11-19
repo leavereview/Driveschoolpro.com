@@ -50,6 +50,8 @@ Style: dry UK humour, laughing *with* instructors, never at learners or the DVSA
 | What | Where |
 |---|---|
 | **Acted skits, edited** (s1 I'll transfer it tonight, s4 Can we move Thursday, s6 Two taps at the kerb, s7 Am I ready, s8 You remembered, s9 Double booking saved, s10 Sunday night, s11 Cash recorded, s13 Pass day, s14 Things ADIs hear) and talking-head videos n09 (MTD 19-hour rule), n15 (**why I built DriveSchoolPro**, the founder piece) and n39 (no Black Friday tricks) | iCloud `videos/edited/`. Captions and slots are in `brand/social/metricool/skit-posts-draft.md`. |
+| **In-car skits, filmed 19 Nov 2026 and approved by John the same day ("all very good"): use them.** s16 Things ADIs hear part 2 (18 s), s17 Why I can't pay today (17 s), s18 Why I can't make my lesson (10 s), s19 L-plates off (6 s, no speech). Acted by John and his daughter, captions burned in (s14 style). Not yet posted anywhere. They are in `media-index.json`, so the autopost job can schedule them; say "acted" in the caption. Skits with John's daughter are the best performers so far (about 1,200 to 1,400 YouTube Shorts views each against 7 to 36 for app demos, Metricool, Nov 2026), so prefer them for Laugh slots. | `~/Projects-code/reference/driveschoolpro/dsp-marketing-assets/footage/skits/` (mirror: `assets/footage/skits/`). Build scripts and chosen takes: `dsp-marketing-assets/skits-2026-11-19/build/`. |
+| **Pupil reaction and cutaway clips, 19 Nov 2026, approved for future posts and ads: use them.** Ten cleaned clips of John's daughter as the pupil (1080x1920): L-plate comes off (two), innocent and tight-lipped smiles (three), "Who, me?" (three takes, with her voice), typing a text on her phone (two). | `~/Projects-code/reference/driveschoolpro/dsp-marketing-assets/footage/pupil/` (mirror: `assets/footage/pupil/`). The `README.md` one folder up lists each clip. Raw originals, including the long in-car take `IMG_4147.MOV` (do not publish as is: off-script chat between takes), are in the drop folder. |
 | Raw skit takes (Block1 at home / sofa / can we move Thursday) and the long desk talk-through | iCloud `videos/` |
 | s4 and s10 "before" options A and B (A was used) | iCloud `videos/Options to choose/` |
 | Longer edited cuts (Accounting, Clean records, Gets you paid, Less admin, More pupils, Saves time, Things ADIs hear 81 s) | iCloud `videos/Done/` |
@@ -103,6 +105,10 @@ Style: dry UK humour, laughing *with* instructors, never at learners or the DVSA
 | s11 | video | John | - | https://driveschoolpro.com/social/video/s11.mp4 |
 | s13 | video | John | - | https://driveschoolpro.com/social/video/s13.mp4 |
 | s14 | video | John | things-adis-hear | https://driveschoolpro.com/social/video/s14.mp4 |
+| s16 | video | John | things-adis-hear | - |
+| s17 | video | John | cant-pay-today | - |
+| s18 | video | John | cant-make-my-lesson | - |
+| s19 | video | John | - | - |
 | n09 | video | John | - | https://driveschoolpro.com/social/video/n09.mp4 |
 | n15 | video | John | - | https://driveschoolpro.com/social/video/n15.mp4 |
 | n39 | video | John | - | https://driveschoolpro.com/social/video/n39.mp4 |
