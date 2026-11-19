@@ -152,7 +152,7 @@ What each platform's own site says it does, where it's the better fit, and what 
 
 Total Drive says it is used by over 8,600 driving instructors every week. Its site lists syllabus progress tracking with custom syllabuses and skill sets, free lesson and payment reminders, card payments without a card machine, Smart Gaps for filling cancelled slots, two-way Google and Apple Calendar sync, enquiry forms that feed into your account, mock and practical test records, a free pupil and parent app, and multi-instructor reports including pass rate per instructor. Its [Theory Suite](https://totaldrive.co.uk/theory-suite/) has 2,500+ DVSA questions, which pupils unlock for a one-off £4.99.
 
-**Worth knowing:** online booking and "Gaps Plus" are in the higher plans, not the £18 Basic plan. We couldn't find vehicle MOT, tax and insurance tracking or AI lesson briefings. [DriveSchoolPro vs Total Drive →](/compare/total-drive/)
+**Worth knowing:** online booking and "Gaps Plus" are in the higher plans, not the £18 Basic plan. We couldn't find vehicle MOT, tax and insurance tracking or AI lesson briefings. [DriveSchoolPro vs Total Drive →](/compare/total-drive/) Already on it? See [switching from Total Drive](/switch/total-drive/).
 
 ### MyDriveTime
 
@@ -160,7 +160,7 @@ Total Drive says it is used by over 8,600 driving instructors every week. Its si
 
 Running since October 2014, MyDriveTime describes itself as twice "Professional Support Provider of the Year". Its site lists the standard DVSA syllabus (customisable), automated reminders with delivery shown in the diary, inviting pupils to fill gaps, practical and theory test results, enquiry handling and pupil allocation for schools, sharing the diary with external calendars, spreadsheet finance export, free migration from another system, and a 6-month money-back guarantee. A PDI plan is free until you qualify.
 
-**Worth knowing:** we couldn't find card payments, vehicle tracking or AI lesson briefings on its site. [DriveSchoolPro vs MyDriveTime →](/compare/my-drive-time/)
+**Worth knowing:** we couldn't find card payments, vehicle tracking or AI lesson briefings on its site. [DriveSchoolPro vs MyDriveTime →](/compare/my-drive-time/) Already on it? See [switching from MyDriveTime](/switch/mydrivetime/).
 
 ### GoRoadie Pro
 
