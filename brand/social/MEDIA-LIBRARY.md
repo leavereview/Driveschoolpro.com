@@ -89,6 +89,8 @@ Style: dry UK humour, laughing *with* instructors, never at learners or the DVSA
 
 ## 7. Made by the autopost job
 
+Index paths must exist on the box or the planner is never offered the asset. The s-series, n09, n15 and n39 MP4s are not in git, so since 19 Nov 2026 `media-index.json` points at their mirror copies (`icloud-videos-edited/…`). s4 and s10 still point at `public/…` on purpose: they are held back until John picks the "before" cut (A or B).
+
 | id | type | voice | joke | URL |
 |---|---|---|---|---|
 | excuse-montage | video | Andy | transfer-tonight | - |
