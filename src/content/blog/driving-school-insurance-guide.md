@@ -356,6 +356,7 @@ Never compromise on insurance. The cost of coverage is insignificant compared to
 ## Related Articles
 
 - [Driving School Software](/)
+- [Learner Driver Insurance for Private Practice](/blog/learner-driver-insurance-private-practice/): what cover pupils need when they practise in a family car
 - [Starting a Driving School Guide](/blog/starting-driving-school-guide/)
 - [Choosing a Car, Dual Controls and Insurance](/become-a-driving-instructor/car-dual-controls-insurance/)
 - [Driving School Franchise Guide](/blog/driving-school-franchise-guide/)
