@@ -78,9 +78,9 @@
   {
     "id": "s4",
     "type": "video",
-    "path": "public/social/video/s4.mp4",
+    "path": "icloud-videos-edited/s4-can-we-move-thursday.mp4",
     "url": "https://driveschoolpro.com/social/video/s4.mp4",
-    "duration": null,
+    "duration": 19.4,
     "topics": [
       "scheduling"
     ],
@@ -158,9 +158,9 @@
   {
     "id": "s10",
     "type": "video",
-    "path": "public/social/video/s10.mp4",
+    "path": "icloud-videos-edited/s10-sunday-night.mp4",
     "url": "https://driveschoolpro.com/social/video/s10.mp4",
-    "duration": null,
+    "duration": 19.1,
     "topics": [
       "getting-paid"
     ],
