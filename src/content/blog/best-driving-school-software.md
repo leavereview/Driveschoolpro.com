@@ -343,6 +343,7 @@ Usually. According to their own sites, Total Drive and MyDriveTime offer 30-day 
 
 - [Driving school management software](/driving-school-management-software/)
 - [Driving instructor booking system](/driving-instructor-booking-system/)
+- [Driving instructor app](/driving-instructor-app/)
 - [Driving instructor diary app](/driving-instructor-diary-app/)
 - [Free driving school software](/free-driving-school-software/)
 - [How to choose driving school scheduling software](/blog/how-to-choose-driving-school-scheduling-software/)

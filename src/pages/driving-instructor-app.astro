@@ -1,0 +1,554 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BreadcrumbsEnhanced from '../components/seo/BreadcrumbsEnhanced.astro';
+import FeaturedAnswer from '../components/seo/FeaturedAnswer.astro';
+import ComparisonTable from '../components/seo/ComparisonTable.astro';
+import FAQEnhanced from '../components/seo/FAQEnhanced.astro';
+import CompareMethodNote from '../components/compare/CompareMethodNote.astro';
+import MarketingScreenshot from '../components/MarketingScreenshot.astro';
+import { OFFER, PRICING, PRICE_LINE, TRAINEE_LINE } from '../config/offer';
+import { instructorAppRows, instructorAppHeaders, INSTRUCTOR_APPS_CHECKED_ON } from '../data/instructor-apps';
+
+// Target: 'driving instructor app' (320 UK searches a month, difficulty 5-9), plus 'driving instructor apps',
+// 'app for driving instructors', 'best driving instructor app', 'free driving instructor app'.
+// Evidence for a dedicated page (19 Nov 2026): /features/pupil-app/ was retitled for this term on 2 Nov and
+// earned 0 impressions for it (7 in 28 days, all 'pupil app'); Google showed /blog/best-driving-school-software/
+// at 56-73 instead. Every page-one result is an exact-match page or homepage (Total Drive, LessonBuddy
+// /driving-instructor-app, ADI Network, MyDriveTime) or an app-store listing. This page is the one meant to
+// rank; /features/pupil-app/ goes back to the pupil's side.
+//
+// Claims: limited to what the feature pages already state (see the note at the top of
+// driving-instructor-diary-app.astro). No offline mode, no repeating lessons, no two-way calendar sync,
+// reminders are email only today. Competitor cells live in src/data/instructor-apps.ts.
+
+const pageUrl = 'https://driveschoolpro.com/driving-instructor-app/';
+const IOS_URL = 'https://apps.apple.com/gb/app/driveschoolpro/id6787402547';
+const ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.driveschoolpro.app';
+
+const jobs = [
+  {
+    title: 'Run the diary',
+    body: 'Day, week and month views. Book a lesson from the calendar, or drag one to a new slot, and the pupil sees the change in their own app.',
+    href: '/driving-instructor-diary-app/',
+    link: 'Diary app',
+  },
+  {
+    title: 'Stop double-bookings',
+    body: 'Every booking is checked against the pupil, the instructor and the car before it is saved, and you are told which one clashed.',
+    href: '/features/scheduling/',
+    link: 'Scheduling',
+  },
+  {
+    title: 'Open the pupil record',
+    body: 'Phone number, pick-up address, lesson history, your notes, what they owe and how many lessons are left on their block.',
+    href: '/driving-school-management-software/',
+    link: 'Pupil management',
+  },
+  {
+    title: 'Record progress at the kerb',
+    body: 'Rate the skills you worked on against the DVSA 27 driving skills, on a six-level scale, before you drive off.',
+    href: '/features/progress-tracking/',
+    link: 'Progress tracking',
+  },
+  {
+    title: 'Read a briefing before the lesson',
+    body: 'Three or four sentences written from your last notes and the pupil’s skill levels, ready before you knock on the door.',
+    href: '/features/lesson-briefings/',
+    link: 'AI lesson briefings',
+  },
+  {
+    title: 'Get paid',
+    body: 'Pupils pay by card through Stripe into your own account, or you record cash and bank transfers. Sell blocks of lessons that count down.',
+    href: '/features/getting-paid/',
+    link: 'Getting paid',
+  },
+  {
+    title: 'Let pupils book',
+    body: 'Pupils pick from the times you have made free, in their app or from a button on your website, within the notice period you set.',
+    href: '/driving-instructor-booking-system/',
+    link: 'Booking system',
+  },
+  {
+    title: 'Send reminders without thinking',
+    body: 'Email reminders go out before every lesson, as far ahead as you choose. Text and WhatsApp reminders are coming soon.',
+    href: '/blog/reduce-driving-lesson-no-shows/',
+    link: 'Cutting no-shows',
+  },
+];
+
+const faqs = [
+  {
+    question: 'What is a driving instructor app?',
+    answer: "A driving instructor app is an app an ADI uses to run the business side of teaching: the lesson diary, pupil records, progress notes, payments and reminders, on a phone instead of in a paper diary and a WhatsApp thread. Most also give the pupil an app of their own. DriveSchoolPro is a driving instructor app for UK instructors on iPhone, Android and the web.",
+    links: [{ text: 'All features', url: '/features/' }],
+  },
+  {
+    question: 'What is the best app for driving instructors in the UK?',
+    answer: "There isn't one answer, because instructors want different things. Total Drive and MyDriveTime are the long-established UK apps and list features we don't have, such as broadcasting a cancelled slot to pupils and expense tracking. DriveSchoolPro is newer: it tracks the official DVSA 27 skills, checks every booking against pupil, instructor and car, writes a briefing before each lesson, works in a web browser as well as on a phone, and is free until 31 March 2027. The fair test is a week of your real lessons in each.",
+    links: [
+      { text: 'Best driving school software compared', url: '/blog/best-driving-school-software/' },
+      { text: 'All comparisons', url: '/compare/' },
+    ],
+  },
+  {
+    question: 'Is there a free driving instructor app?',
+    answer: `Yes. DriveSchoolPro is free to download and free to use until 31 March 2027, with every feature and no card needed. ${PRICE_LINE} A free trial is different: it ends after a set number of days and then asks you to pay.`,
+    links: [
+      { text: 'What the free version includes', url: '/free-driving-school-software/' },
+      { text: 'Pricing', url: '/pricing/' },
+    ],
+  },
+  {
+    question: 'Is the driving instructor app on iPhone and Android?',
+    answer: "Yes. DriveSchoolPro is on the App Store for iPhone and on Google Play for Android. The same account also opens in any web browser, so you can plan the week on a laptop or tablet and run the day from your phone.",
+    links: [],
+  },
+  {
+    question: 'Do my pupils need a different app?',
+    answer: "No. Pupils download the same DriveSchoolPro app, or use a web browser, and sign in with their own email and password. They see only their own lessons, progress, messages and payments. They never see your notes, your briefings or other pupils.",
+    links: [{ text: 'What pupils see', url: '/features/pupil-app/' }],
+  },
+  {
+    question: 'Can I move to it from Total Drive, MyDriveTime or a paper diary?',
+    answer: "Yes. You can import your pupil list from a CSV file, and exports from Total Drive and MyDriveTime work as they are. Lesson history and payments don't come across, so keep your old records. From a paper diary, add pupils as you teach them and run both for a week or two.",
+    links: [
+      { text: 'Switching from Total Drive', url: '/switch/total-drive/' },
+      { text: 'Switching from MyDriveTime', url: '/switch/mydrivetime/' },
+      { text: 'Switching from a paper diary', url: '/blog/switch-paper-diary-to-driving-school-software/' },
+    ],
+  },
+  {
+    question: 'Does the app send text reminders to pupils?',
+    answer: `Not yet. Reminders go out automatically by email before every lesson, on every plan. Text and WhatsApp reminders are coming soon on the ${PRICING.solo.name} and ${PRICING.school.name} plans.`,
+    links: [{ text: 'Our messaging policy', url: '/whatsapp/' }],
+  },
+  {
+    question: 'Is it an app for trainee driving instructors too?',
+    answer: TRAINEE_LINE,
+    links: [{ text: 'Free for trainee instructors', url: '/free-for-trainee-instructors/' }],
+  },
+  {
+    question: 'Can a driving school with several instructors use the app?',
+    answer: `Yes. Each instructor signs in to the same app and sees their own diary, and the school's owner or office sees everyone in one shared diary. Bookings are checked across all instructors and cars. It is free until 31 March 2027; from ${PRICING.startDate} the School plan is £${PRICING.school.price} a month plus £${PRICING.school.perExtraInstructor} for each extra instructor.`,
+    links: [{ text: 'Management software for schools', url: '/driving-school-management-software/' }],
+  },
+];
+
+const schemaMarkup = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Driving Instructor App for UK ADIs: What It Does, What It Costs and How the Apps Compare',
+  description: 'What a driving instructor app does, what DriveSchoolPro does on iPhone, Android and the web, what it costs, and how it compares with Total Drive, MyDriveTime and GoRoadie Pro.',
+  author: { '@type': 'Organization', name: 'DriveSchoolPro' },
+  publisher: { '@type': 'Organization', name: 'DriveSchoolPro' },
+  datePublished: '2026-11-19',
+  dateModified: '2026-11-19',
+  mainEntityOfPage: pageUrl,
+};
+
+const softwareSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'DriveSchoolPro',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'iOS, Android, Web',
+  description: 'Driving instructor app for UK ADIs: lesson diary with clash checks, pupil records, DVSA 27-skill progress tracking, AI lesson briefings, card payments, online booking and an app for pupils.',
+  url: pageUrl,
+  downloadUrl: [IOS_URL, ANDROID_URL],
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'GBP', description: OFFER.meta },
+};
+---
+
+<BaseLayout
+  title="Driving Instructor App for UK ADIs: iPhone, Android and Web"
+  description="A driving instructor app for iPhone, Android and web: diary, pupil records, DVSA progress, payments and a pupil app. Free until 31 March 2027, no card."
+  image="/images/marketing/calendar-week-view.webp"
+  publishedDate="2026-11-19"
+  modifiedDate="2026-11-19"
+  showUpdated
+>
+  <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
+  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
+
+  <BreadcrumbsEnhanced
+    site="driveschool"
+    items={[
+      { label: 'Home', href: '/' },
+      { label: 'Driving Instructor App', href: '/driving-instructor-app/' },
+    ]}
+  />
+
+  <section class="relative overflow-hidden bg-gradient-to-br from-brand-navy to-gray-900 text-white py-16">
+    <div class="container-custom relative">
+      <div class="grid lg:grid-cols-[1fr_auto] gap-12 items-center">
+        <div class="max-w-3xl">
+          <span class="inline-block bg-brand-red/20 text-brand-red-light px-3 py-1 rounded-full text-sm mb-4">Driving instructor app</span>
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">The driving instructor app for your diary, your pupils and your payments</h1>
+          <p class="text-xl text-gray-300 mb-4">
+            DriveSchoolPro is a driving instructor app for UK ADIs. Book and move lessons, check the
+            pupil's record at the kerb, rate their progress against the DVSA skills and take payment,
+            all from your phone. Your pupils get the same app, with their own view. It is the phone
+            side of our <a href="/driving-instructor-software/" class="underline hover:text-white">driving instructor software</a>.
+          </p>
+          <p class="text-gray-400 mb-8">iPhone, Android and web &middot; {OFFER.short} &middot; No card needed</p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label}</a>
+            <a href="#download" class="btn-secondary text-lg px-8 py-4">Download the app</a>
+          </div>
+        </div>
+        <div class="hidden lg:block">
+          <MarketingScreenshot
+            src="/images/marketing/calendar-day-mobile.webp"
+            width={640}
+            height={1164}
+            alt="The DriveSchoolPro driving instructor app on a phone: the day's three lessons with pupil names, pick-up addresses and the gaps between them"
+            mobile
+            priority
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FeaturedAnswer question="What is a driving instructor app?">
+    A driving instructor app runs the business side of teaching from your phone: the lesson diary,
+    pupil records, progress, payments and reminders. A good one stops double-bookings, reminds pupils
+    for you and gives each pupil an app of their own. DriveSchoolPro does this on iPhone, Android and
+    the web, and is free until 31 March 2027.
+  </FeaturedAnswer>
+
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-sm">
+        <h2 class="text-xl font-bold text-brand-navy mb-4">On this page</h2>
+        <ul class="grid md:grid-cols-2 gap-2 text-gray-700">
+          <li><a href="#what-it-does" class="hover:text-brand-red">&rarr; What you can do from your phone</a></li>
+          <li><a href="#a-working-day" class="hover:text-brand-red">&rarr; A working day with the app</a></li>
+          <li><a href="#download" class="hover:text-brand-red">&rarr; iPhone, Android and web</a></li>
+          <li><a href="#pupils" class="hover:text-brand-red">&rarr; The app your pupils get</a></li>
+          <li><a href="#cost" class="hover:text-brand-red">&rarr; What the app costs</a></li>
+          <li><a href="#compare-apps" class="hover:text-brand-red">&rarr; Driving instructor apps compared</a></li>
+          <li><a href="#choosing" class="hover:text-brand-red">&rarr; How to choose an app</a></li>
+          <li><a href="#faq" class="hover:text-brand-red">&rarr; Common questions</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <h2 id="what-it-does" class="text-3xl font-bold text-brand-navy mb-4">What you can do from your phone</h2>
+        <p class="text-lg text-gray-600 mb-8 max-w-3xl">
+          An app for driving instructors has to work in the two minutes between lessons, one-handed,
+          parked outside someone's house. These are the eight jobs DriveSchoolPro does there.
+        </p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {jobs.map((job) => (
+            <div class="bg-gray-50 rounded-xl p-5 flex flex-col">
+              <h3 class="font-bold text-brand-navy mb-2">{job.title}</h3>
+              <p class="text-gray-600 text-sm flex-grow">{job.body}</p>
+              <a href={job.href} class="text-brand-red text-sm font-semibold hover:underline mt-3">{job.link} &rarr;</a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50 border-t border-gray-100">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto prose prose-lg">
+
+        <h2 id="a-working-day" class="text-3xl font-bold text-brand-navy mb-6">A working day with the app</h2>
+
+        <p>
+          Feature lists all look alike, so here is what the app does across one ordinary day of
+          lessons.
+        </p>
+
+        <h3 class="text-xl font-bold text-brand-navy mt-8 mb-4">Before the first lesson</h3>
+
+        <p>
+          Open the app and the day view lists your lessons in order: the time, the pupil, the pick-up
+          address and the gap before the next one, so you can see whether you have time to get across
+          town. Tap a lesson and the pupil's record is there, with their phone number, your notes
+          from last time and what they owe.
+        </p>
+
+        <p>
+          Each lesson also has a short briefing, three or four sentences written from your last notes
+          and the pupil's current skill levels. It is meant to be read in the ten seconds before you
+          knock on the door. It is written by Claude, Anthropic's AI, and your data is not used to
+          train any AI model.
+        </p>
+
+        <div class="my-8 not-prose flex justify-center">
+          <MarketingScreenshot
+            src="/images/marketing/ai-briefing-today-mobile.webp"
+            width={640}
+            height={1164}
+            alt="The Today screen in the DriveSchoolPro driving instructor app on a phone, with the next lesson and its AI lesson briefing"
+            mobile
+          />
+        </div>
+        <p class="text-sm text-gray-500 text-center -mt-4 mb-8">Today on a phone: the next lesson and its briefing</p>
+
+        <h3 class="text-xl font-bold text-brand-navy mt-8 mb-4">At the end of each lesson</h3>
+
+        <p>
+          Before you drive off, rate the skills you worked on. Progress is tracked against the
+          official <a href="/dvsa-27-driving-skills/" class="text-brand-red hover:underline">DVSA 27 driving skills</a>
+          in 8 categories, on a six-level scale from Not Started to Reflection. It takes a couple of
+          taps per skill, so it gets done at the kerb and not from memory at eleven at night. The
+          pupil sees the same levels in their app, which makes the "am I ready for my test?"
+          conversation much shorter.
+        </p>
+
+        <p>
+          Then book the next lesson. Every booking is checked three ways before it is saved: is the
+          pupil already booked, is the instructor already teaching, and is the car already out? If
+          one of them clashes, the app tells you which. If the pupil paid cash, record it against
+          the lesson. If they pay by card, they can do it from their own app.
+        </p>
+
+        <h3 class="text-xl font-bold text-brand-navy mt-8 mb-4">When something changes</h3>
+
+        <p>
+          A pupil messages at lunchtime to say they can't make Thursday. Drag the lesson to the new
+          slot. Their app shows the new time and the reminder moves with it, so there is no second
+          message to send. If you let pupils reschedule themselves, they can do it from their app,
+          but only outside the notice period you set.
+        </p>
+
+        <h3 class="text-xl font-bold text-brand-navy mt-8 mb-4">When a pupil passes</h3>
+
+        <p>
+          Mark the practical test as passed and DriveSchoolPro emails the pupil a request to review
+          you on Google, at the moment they are happiest to write one. See
+          <a href="/features/reviews/" class="text-brand-red hover:underline">review collection</a> for how that works.
+        </p>
+
+        <div class="bg-blue-50 border-l-4 border-brand-navy p-4 my-6 not-prose">
+          <p class="font-bold text-brand-navy mb-1">What the app doesn't do yet</p>
+          <p class="text-gray-700">
+            Reminders are by email only: text and WhatsApp reminders are coming soon. A repeating
+            weekly lesson series is coming soon too, so for now each lesson is booked individually.
+            There is no two-way sync with Google or Apple Calendar, only a one-way feed of your
+            lessons. There is no expense tracking and no theory-test content.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="download" class="section bg-white border-t border-gray-100">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-brand-navy mb-4">A driving instructor app for iPhone, Android and web</h2>
+        <p class="text-lg text-gray-600 mb-8">
+          The app is free to download. Sign up once and the same account works in all three places,
+          with nothing to sync by hand: a lesson you book on a laptop on Sunday night is on your
+          phone on Monday morning.
+        </p>
+        <div class="grid md:grid-cols-3 gap-5">
+          <a href={IOS_URL} rel="noopener" class="card p-6 hover:shadow-lg transition-shadow block">
+            <h3 class="font-bold text-brand-navy mb-2">iPhone</h3>
+            <p class="text-gray-600 text-sm mb-3">Download DriveSchoolPro from the App Store.</p>
+            <span class="text-brand-red font-semibold text-sm">Driving instructor app for iPhone &rarr;</span>
+          </a>
+          <a href={ANDROID_URL} rel="noopener" class="card p-6 hover:shadow-lg transition-shadow block">
+            <h3 class="font-bold text-brand-navy mb-2">Android</h3>
+            <p class="text-gray-600 text-sm mb-3">Download DriveSchoolPro from Google Play.</p>
+            <span class="text-brand-red font-semibold text-sm">Driving instructor app for Android &rarr;</span>
+          </a>
+          <a href={OFFER.ctaPrimary.href} class="card p-6 hover:shadow-lg transition-shadow block">
+            <h3 class="font-bold text-brand-navy mb-2">Web browser</h3>
+            <p class="text-gray-600 text-sm mb-3">Use it on a laptop, desktop or tablet. Nothing to install.</p>
+            <span class="text-brand-red font-semibold text-sm">Sign up in a browser &rarr;</span>
+          </a>
+        </div>
+        <p class="text-gray-600 mt-6">
+          Most instructors use both: the bigger screen for planning the week and doing the month's
+          money, and the phone for everything that happens in the car. If you run a school, the
+          office can work in a browser while instructors use their phones.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50 border-t border-gray-100">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto prose prose-lg">
+
+        <h2 id="pupils" class="text-3xl font-bold text-brand-navy mb-6">The app your pupils get</h2>
+
+        <p>
+          Most driving instructor apps come with a second app for the learner. DriveSchoolPro is one
+          app with two views. You sign in and get your diary, pupils and payments. Your pupil signs
+          in to the same app and sees their next lesson with the pick-up address and a button to
+          call you, where they stand on each DVSA skill, what they owe and how many lessons are left
+          on their block.
+        </p>
+
+        <p>
+          They can book from the times you are free, pay by card, and message you one-to-one, which
+          keeps pupil messages out of your personal WhatsApp. They cannot see your notes or
+          briefings, and they cannot change their own skill levels. The
+          <a href="/features/pupil-app/" class="text-brand-red hover:underline">pupil app page</a>
+          shows each screen.
+        </p>
+
+        <h2 id="cost" class="text-3xl font-bold text-brand-navy mt-12 mb-6">What the driving instructor app costs</h2>
+
+        <p>
+          DriveSchoolPro is a free driving instructor app until 31 March 2027, while it is in early
+          access. That means every feature on this page, for solo instructors and for schools, with
+          no card needed to sign up. It is not a trial that ends after a few weeks.
+        </p>
+
+        <p>{PRICE_LINE}</p>
+
+        <ul>
+          <li><strong>{PRICING.free.name}:</strong> £0 for {PRICING.free.instructors} instructor and up to {PRICING.free.lessonsPerMonth} lessons a month, with every feature.</li>
+          <li><strong>{PRICING.solo.name}:</strong> £{PRICING.solo.price} a month for one instructor with unlimited lessons.</li>
+          <li><strong>{PRICING.school.name}:</strong> £{PRICING.school.price} a month plus £{PRICING.school.perExtraInstructor} for each extra instructor.</li>
+          <li><strong>Trainee instructors:</strong> everything in Solo, free while you are training. See <a href="/free-for-trainee-instructors/" class="text-brand-red hover:underline">free for trainee instructors</a>.</li>
+        </ul>
+
+        <p>
+          Card payments taken through the app carry a {PRICING.cardFeePercent}% platform fee plus
+          Stripe's own processing fee; cash and bank transfers carry none. The detail is on the
+          <a href="/pricing/" class="text-brand-red hover:underline">pricing page</a>, and
+          <a href="/free-driving-school-software/" class="text-brand-red hover:underline">what the free version includes</a>
+          sets out the limits.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="compare-apps">
+    <ComparisonTable
+      title="Driving instructor apps compared: DriveSchoolPro, Total Drive, MyDriveTime and GoRoadie Pro"
+      description={`Four UK driving instructor apps, described from each vendor's own public pages. Checked on ${INSTRUCTOR_APPS_CHECKED_ON}.`}
+      headers={instructorAppHeaders}
+      rows={instructorAppRows}
+      rowHeader="Feature"
+      highlightColumn={0}
+    />
+    <div class="container-custom pb-12">
+      <div class="max-w-5xl mx-auto space-y-4">
+        <p class="text-gray-700">
+          We don't quote competitor prices because they change. Check them on the vendor's own site:
+          <a href="https://totaldrive.co.uk/instructor-software-pricing/" rel="nofollow noopener" class="text-brand-red hover:underline">Total Drive pricing</a>,
+          <a href="https://www.mydrivetime.co.uk/pricing/" rel="nofollow noopener" class="text-brand-red hover:underline">MyDriveTime pricing</a> and
+          <a href="https://goroadie.com/pro" rel="nofollow noopener" class="text-brand-red hover:underline">GoRoadie Pro</a>.
+        </p>
+        <p class="text-gray-700">
+          What the others list that we don't have yet: cancellation-gap broadcasts to pupils (Total Drive, MyDriveTime, GoRoadie Pro),
+          expense tracking (all three), a theory suite (Total Drive) and two-way phone-calendar sync (GoRoadie Pro). One-to-one pages:
+          <a href="/compare/total-drive/" class="text-brand-red hover:underline">Total Drive</a>,
+          <a href="/compare/my-drive-time/" class="text-brand-red hover:underline">MyDriveTime</a>,
+          <a href="/compare/goroadie/" class="text-brand-red hover:underline">GoRoadie</a>,
+          <a href="/compare/lessonbuddy/" class="text-brand-red hover:underline">LessonBuddy</a>,
+          <a href="/compare/adi-network/" class="text-brand-red hover:underline">ADI Network</a> and
+          <a href="/compare/passly/" class="text-brand-red hover:underline">Passly</a>.
+        </p>
+        <CompareMethodNote competitors={['Total Drive', 'MyDriveTime', 'GoRoadie Pro']} checkedOn={INSTRUCTOR_APPS_CHECKED_ON} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto prose prose-lg">
+
+        <h2 id="choosing" class="text-3xl font-bold text-brand-navy mb-6">How to choose a driving instructor app</h2>
+
+        <p>
+          <strong>The best driving instructor app is the one that removes the admin you actually do.</strong>
+          Before you compare feature lists, write down the three jobs that eat your evenings. For
+          most ADIs they are chasing payments, rearranging lessons and remembering where each pupil
+          got to. Then test each app on those three with real lessons.
+        </p>
+
+        <ol>
+          <li><strong>Try to double-book yourself.</strong> Book two pupils into one slot, then one pupil into two. A diary that lets you do either will let you do it by accident.</li>
+          <li><strong>Move a lesson and watch what the pupil sees.</strong> If you still have to send a message to tell them, the app has saved you nothing.</li>
+          <li><strong>Record a lesson at the kerb.</strong> Time it. If rating progress takes more than a minute, you will stop doing it by week three.</li>
+          <li><strong>Take a payment.</strong> Check where the money lands, how long it takes and what the fee is.</li>
+          <li><strong>Look at the pupil's side.</strong> Install it as a pupil. If you wouldn't want to use it, your learners won't either.</li>
+          <li><strong>Check how you get your data out.</strong> Ask before you put a year of pupil records in.</li>
+        </ol>
+
+        <p>
+          Run your shortlist alongside your current diary for a week. Our guide to the
+          <a href="/blog/best-driving-school-software/" class="text-brand-red hover:underline">best driving school software in the UK</a>
+          covers more apps than the table above, and the
+          <a href="/driving-instructor-diary-app/" class="text-brand-red hover:underline">driving instructor diary app</a>
+          page goes deeper on the diary itself. If you are a school owner choosing for several
+          instructors, start with the
+          <a href="/" class="text-brand-red hover:underline">driving school software</a> overview.
+        </p>
+
+        <h2 class="text-3xl font-bold text-brand-navy mt-12 mb-6">Getting started takes an evening</h2>
+
+        <ol>
+          <li><strong>Sign up.</strong> School name, your name, email and a password. No card.</li>
+          <li><strong>Download the app</strong> from the App Store or Google Play and sign in with the same details.</li>
+          <li><strong>Set your working hours and lesson prices.</strong></li>
+          <li><strong>Add your pupils.</strong> Import a CSV file, or add them one at a time: a name and a phone number is enough to start.</li>
+          <li><strong>Put next week's lessons in the diary.</strong> Reminders start going out on their own.</li>
+          <li><strong>Invite your pupils</strong> when you are ready. Each one gets an email with a link to set a password.</li>
+        </ol>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <FAQEnhanced
+      site="driveschool"
+      pageUrl={pageUrl}
+      title="Driving instructor app: common questions"
+      faqs={faqs}
+    />
+  </section>
+
+  <section class="section bg-brand-navy text-white text-center">
+    <div class="container-custom">
+      <h2 class="text-3xl font-bold mb-3">Try the app on next week's lessons</h2>
+      <p class="text-white/80 text-lg mb-8 max-w-xl mx-auto">iPhone, Android and web. Diary, pupil records, DVSA progress, payments and a pupil app in one place.</p>
+      <a href={OFFER.ctaPrimary.href} class="inline-block bg-brand-red text-white px-10 py-4 rounded-xl font-semibold text-lg hover:bg-red-700 transition-colors">
+        {OFFER.ctaPrimary.label} &rarr;
+      </a>
+      <p class="text-white/50 text-sm mt-3">{OFFER.short} &middot; No credit card required &middot; Cancel anytime</p>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <h2 class="text-2xl font-bold text-brand-navy mb-8 text-center">Related</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        <a href="/driving-instructor-diary-app/" class="card p-6 hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-brand-navy mb-2">Driving instructor diary app</h3>
+          <p class="text-gray-600 text-sm">Views, clash checks and shared diaries in detail</p>
+        </a>
+        <a href="/features/pupil-app/" class="card p-6 hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-brand-navy mb-2">Pupil app</h3>
+          <p class="text-gray-600 text-sm">What your learners see on their phone</p>
+        </a>
+        <a href="/free-driving-school-software/" class="card p-6 hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-brand-navy mb-2">Free driving school software</h3>
+          <p class="text-gray-600 text-sm">What the free version includes, and its limits</p>
+        </a>
+        <a href="/driving-instructor-booking-system/" class="card p-6 hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-brand-navy mb-2">Driving instructor booking system</h3>
+          <p class="text-gray-600 text-sm">Let pupils book online into the times you're free</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

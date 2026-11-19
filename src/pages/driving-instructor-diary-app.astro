@@ -7,6 +7,7 @@ import FAQEnhanced from '../components/seo/FAQEnhanced.astro';
 import CompareMethodNote from '../components/compare/CompareMethodNote.astro';
 import MarketingScreenshot from '../components/MarketingScreenshot.astro';
 import { OFFER, PRICING, PRICE_LINE } from '../config/offer';
+import { instructorAppRows as appRows } from '../data/instructor-apps';
 
 // Claims on this page are limited to what the rest of the site already states
 // (features/scheduling, features/getting-paid, features/lesson-briefings,
@@ -34,58 +35,6 @@ const paperVsApp = [
   { label: 'Survives being left in the car on a hot day', values: [true, 'Usually', true] },
 ];
 
-// Competitor cells below come from each vendor's own public pages, help guides and app-store
-// listings, checked 19 Nov 2026 (evidence saved off-repo in archive/compare-evidence/<vendor>/2026-11-19/).
-// Rules (compare-pages memory): never state a competitor price; "Not listed" not "No"; no "tested"
-// cells here because the shared method note says we have not used their software. DSP cells must be live today.
-const appRows = [
-  {
-    label: 'Diary',
-    values: [
-      'Day, week and month views, drag-and-drop, clash checks across pupil, instructor and vehicle, one-way calendar feed to Google Calendar, iPhone and Mac. Web, iPhone and Android.',
-      'Diary on iOS, Android and web, online or offline. Clash alert in its help guide.',
-      'Diary with clash highlighting and diary gaps. Diary export to Outlook, Google and Apple calendars.',
-      'Phone diary (iPhone and Android) with conflict alerts, synced to your phone calendar. Diary in a browser: not stated.',
-    ],
-  },
-  {
-    label: 'Pupil app',
-    values: [
-      'Yes (iOS, Android or web): lessons, progress, balance, self-booking.',
-      'Yes (iOS, Android or web), brandable with your logo.',
-      'Yes (student app).',
-      "Yes (free learner app). GoRoadie says pupils can't book into your diary.",
-    ],
-  },
-  {
-    label: 'Payments',
-    values: [
-      "Pupils pay by card through Stripe into your own account; lesson blocks; cash and bank transfers recorded. 3% platform fee plus Stripe's fee.",
-      'Pupils pay online (Book & Pay), with next-working-day payouts to the instructor.',
-      'Payment status, payment history and prepaid lessons tracked. Pupil card payments: not listed.',
-      'Request payments in-app through Stripe.',
-    ],
-  },
-  {
-    label: 'Progress tracking',
-    values: [
-      'Official DVSA 27 skills in 8 categories, rated on a six-level scale.',
-      'Syllabus-based progress, editable; reflective logs and mock tests. Its site refers to the DVSA syllabus.',
-      'Starts from the standard DVSA syllabus, fully customisable; reflective logs.',
-      'Progress tracking and reflective logs. DVSA skills not named.',
-    ],
-  },
-  {
-    label: 'Price',
-    values: [
-      'Free until 31 March 2027, no card needed (see our pricing page).',
-      'See Total Drive pricing page',
-      'See MyDriveTime pricing page',
-      'See GoRoadie Pro page',
-    ],
-  },
-];
-
 const faqs = [
   {
     question: 'What is an ADI diary app?',
@@ -95,7 +44,7 @@ const faqs = [
   {
     question: 'Is there a driving instructor diary app for iPhone and Android?',
     answer: "Yes. DriveSchoolPro is on the App Store and Google Play, and the same diary opens in any web browser, so a lesson you book on a laptop is on your phone straight away. Your pupils use the same app, with their own view of their lessons, progress and balance.",
-    links: [{ text: 'The pupil and instructor app', url: '/features/pupil-app/' }],
+    links: [{ text: 'The driving instructor app', url: '/driving-instructor-app/' }, { text: 'The pupil app', url: '/features/pupil-app/' }],
   },
   {
     question: 'What is the best driving instructor diary app in the UK?',
@@ -116,7 +65,7 @@ const faqs = [
     question: 'What is the best app for a driving instructor in the UK?',
     answer: "One that runs the whole working day, not just the diary: bookings with clash checks, reminders, the pupil's DVSA progress, payments and an app for the pupil. DriveSchoolPro does all of these on the web, iPhone and Android, tracks the official 27 DVSA skills, and is free until 31 March 2027. Other UK instructor apps people shortlist include Total Drive, MyDriveTime, GoRoadie Pro and Passly; each has strengths we don't, such as theory content or text-message reminders, so compare them on the features you use every day.",
     links: [
-      { text: 'The driving instructor app', url: '/features/pupil-app/' },
+      { text: 'The driving instructor app', url: '/driving-instructor-app/' },
       { text: 'Best driving school software compared', url: '/blog/best-driving-school-software/' },
     ],
   },
