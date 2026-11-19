@@ -4,7 +4,7 @@ description: "UK driving school management software and CRM compared: prices, ap
 image: /images/blog/app-dashboard-overview.jpg
 imageAlt: "The DriveSchoolPro Today screen showing the day's lessons for each instructor and the day's lesson value"
 date: "2026-02-24"
-updatedDate: "2026-11-12"
+updatedDate: "2026-11-19"
 tags: ["Software"]
 author: "John Powell"
 faqs:
@@ -23,7 +23,7 @@ faqs:
   - question: "What is the best driving school software for multi-car schools?"
     answer: "Look for shared pupil records, one diary across instructors, clash checks that include the car, and the price per extra instructor. DriveSchoolPro checks every booking against the pupil, the instructor and the vehicle and tracks MOT, tax and insurance dates; School is £22 a month plus £10 per extra instructor from 1 April 2027 (free until then). MyDriveTime's extra instructors fall to £5 a month each from the 11th, which suits bigger schools; DriveBest charges a flat £39 a month for the owner plus 10 instructors but doesn't take card payments; and Driving School Office lists white-labelling and franchise management."
   - question: "Does driving school software sync with Google Calendar?"
-    answer: "Some do. Total Drive lists two-way sync with Google and Apple Calendar, and LessonBuddy syncs with both. Reservio's paid plans sync two-way with Google Calendar and one-way to Outlook and iCal. MyDriveTime exports your diary to Google, Apple and Outlook calendars; Passly, GoRoadie Pro and SimplyBook.me list a calendar connection without always saying which direction. DriveSchoolPro doesn't sync with Google Calendar yet; pupils who book online can add their lesson to their own calendar."
+    answer: "Some do. Total Drive lists two-way sync with Google and Apple Calendar, and LessonBuddy syncs with both. Reservio's paid plans sync two-way with Google Calendar and one-way to Outlook and iCal. MyDriveTime exports your diary to Google, Apple and Outlook calendars; Passly, GoRoadie Pro and SimplyBook.me list a calendar connection without always saying which direction. DriveSchoolPro has a one-way feed rather than two-way sync: each instructor subscribes to a private calendar link from Google, Apple or Outlook, and pupils who book online can add their lesson to their own calendar."
   - question: "Can I try driving school software before paying?"
     answer: "Usually. According to their own sites, Total Drive and MyDriveTime offer 30-day free trials, LessonBuddy 60 days for ADIs, Teachworks 21 days, and Passly, Lesson Diary and DriveBest 14 days. DriveSchoolPro is free until 31 March 2027 with no card required."
 ---
@@ -141,7 +141,7 @@ What each platform's own site says it does, where it's the better fit, and what 
 **What it doesn't do yet:**
 - No text reminders yet (text and WhatsApp coming soon), no theory content, no cancellation-gap broadcast and no parent accounts
 - Recording test bookings and results is coming soon
-- No Google Calendar sync and no enquiry list. Pupils can be imported from a CSV file (Total Drive and MyDriveTime exports are read directly), but lesson history and payments don't come across
+- No two-way Google Calendar sync (there is a one-way calendar feed you subscribe to from Google, Apple or Outlook) and no enquiry list. Pupils can be imported from a CSV file (Total Drive and MyDriveTime exports are read directly), but lesson history and payments don't come across
 - No white-labelling or franchise tools
 - Its 3% card fee is higher than Passly's or GoRoadie Pro's
 - Newer than the established platforms, so less track record
@@ -327,7 +327,7 @@ Look for shared pupil records, one diary across instructors, clash checks that i
 
 ### Does driving school software sync with Google Calendar?
 
-Some do. Total Drive lists two-way sync with Google and Apple Calendar, and LessonBuddy syncs with both. Reservio's paid plans sync two-way with Google Calendar and one-way to Outlook and iCal. MyDriveTime exports your diary to Google, Apple and Outlook calendars; Passly, GoRoadie Pro and SimplyBook.me list a calendar connection without always saying which direction. DriveSchoolPro doesn't sync with Google Calendar yet; pupils who book online can add their lesson to their own calendar.
+Some do. Total Drive lists two-way sync with Google and Apple Calendar, and LessonBuddy syncs with both. Reservio's paid plans sync two-way with Google Calendar and one-way to Outlook and iCal. MyDriveTime exports your diary to Google, Apple and Outlook calendars; Passly, GoRoadie Pro and SimplyBook.me list a calendar connection without always saying which direction. DriveSchoolPro has a one-way feed rather than two-way sync: each instructor subscribes to a private calendar link from Google, Apple or Outlook, and pupils who book online can add their lesson to their own calendar.
 
 ### Can I try driving school software before paying?
 
