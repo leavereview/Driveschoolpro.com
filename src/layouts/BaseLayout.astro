@@ -119,12 +119,10 @@ const schemaOrg = {
       ...(modifiedDate && { "dateModified": modifiedDate }),
       ...((resolvedSchemaType === 'Article' || resolvedSchemaType === 'BlogPosting') && {
         "author": {
-          "@type": "Person",
-          "name": author,
-          "url": "https://driveschoolpro.com/about/",
-          "jobTitle": "Founder",
-          "image": "https://driveschoolpro.com/images/about-founder.jpg",
-          "sameAs": ["https://www.linkedin.com/in/johnpowellpm/"]
+          "@type": "Organization",
+          "@id": "https://driveschoolpro.com/#organization",
+          "name": "DriveSchoolPro",
+          "url": "https://driveschoolpro.com/about/"
         },
         "publisher": {
           "@id": "https://driveschoolpro.com/#organization"
