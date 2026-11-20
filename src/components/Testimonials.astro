@@ -1,70 +1,61 @@
 ---
-const testimonials = [
+// Real customer quotes, verbatim from Trustpilot (https://uk.trustpilot.com/review/driveschoolpro.com).
+// Rules: keep text exactly as published, keep name + date + Trustpilot attribution, link to the profile,
+// do NOT show the TrustScore/star rating (not allowed without a paid Trustpilot plan).
+// Re-check quotes still exist on Trustpilot before each deploy; reviewers can edit or delete them.
+interface Props {
+  heading?: string;
+  bg?: string;
+  limit?: number;
+}
+const { heading = 'What instructors say about DriveSchoolPro', bg = 'bg-gray-50', limit = 3 } = Astro.props;
+
+const PROFILE = 'https://uk.trustpilot.com/review/driveschoolpro.com';
+const quotes = [
   {
-    quote: "I ran my diary on WhatsApp and a paper book for six years. I had everything set up in about ten minutes. Now I check my next lesson from my phone between pickups instead of pulling over to flip through a diary.",
-    name: "Sarah J.",
-    location: "Birmingham",
-    role: "Independent ADI",
-    highlight: "Set up in 10 minutes"
+    quote: "This software is really helping me focus on delivering great training, rather than running a diary and finances.",
+    name: "Spencer",
+    date: "19 November 2026"
   },
   {
-    quote: "The DVSA progress tracker is what sold me. My students can see where they are across all 27 skills, and I can show parents exactly why their child isn't ready for their test yet. It's turned a difficult conversation into a five-second screen share.",
-    name: "Mark T.",
-    location: "Leeds",
-    role: "ADI, 12 years experience",
-    highlight: "DVSA progress tracking"
+    quote: "It is easy to use, can be customized for any sized business, and the support is amazing.",
+    name: "James Sandbrook",
+    date: "1 November 2026"
   },
   {
-    quote: "I was losing two or three lessons a week to no-shows. Since the automatic reminders, I've had one no-show in the last month. That's already paid for itself many times over.",
-    name: "Rachel K.",
-    location: "Manchester",
-    role: "Independent ADI",
-    highlight: "Reduced no-shows"
+    quote: "The AI briefing is what really sets it apart from everything else.",
+    name: "Alex",
+    date: "2 November 2026"
   },
   {
-    quote: "I'm not great with technology, but this genuinely works like my phone — I picked it up straightaway. If you can use WhatsApp, you can use this.",
-    name: "David P.",
-    location: "Bristol",
-    role: "ADI, 8 years experience",
-    highlight: "Easy to use"
+    quote: "The DVSA competency tracking is the standout feature \u2014 I can record progress against all 27 skills after every lesson and my students can actually see where they're at.",
+    name: "Richard Smith",
+    date: "10 April 2026"
   }
-];
+].slice(0, limit);
 ---
 
-<section class="py-16 md:py-24 bg-gray-50" id="testimonials">
+<section class={`py-16 md:py-20 ${bg}`} id="reviews">
   <div class="container-custom">
-    <div class="text-center mb-12">
-      <span class="text-brand-red font-semibold text-sm uppercase tracking-wider">
-        What instructors tell us
-      </span>
-      <h2 class="text-3xl md:text-4xl font-bold text-brand-navy mt-2">
-        Built for the way UK ADIs work
-      </h2>
-      <p class="text-gray-500 text-sm mt-3">Illustrative examples, representative of the feedback we hear from UK driving instructors.</p>
+    <div class="text-center mb-10">
+      <span class="text-brand-red font-semibold text-sm uppercase tracking-wider">Reviews</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-brand-navy mt-2">{heading}</h2>
     </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-      {testimonials.map((t) => (
-        <div class="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-gray-100">
-          <!-- Quote with semantic blockquote + cite -->
-          <blockquote>
-            <p class="text-gray-700 leading-relaxed mb-6">"{t.quote}"</p>
-            <footer class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full bg-brand-red-light flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                <span class="text-brand-red font-semibold text-sm">
-                  {t.name.split(' ').map((n: string) => n[0]).join('')}
-                </span>
-              </div>
-              <div>
-                <div class="flex items-center gap-2 flex-wrap">
-                  <cite class="not-italic font-semibold text-gray-900 text-sm">{t.name}</cite>
-                </div>
-                <div class="text-gray-500 text-sm">{t.role} · {t.location}</div>
-              </div>
-            </footer>
-          </blockquote>
-        </div>
+    <div class={`grid grid-cols-1 gap-6 ${quotes.length >= 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
+      {quotes.map((q) => (
+        <figure class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex flex-col">
+          <blockquote class="text-gray-700 leading-relaxed mb-5 flex-1">&ldquo;{q.quote}&rdquo;</blockquote>
+          <figcaption class="text-sm text-gray-500">
+            <span class="font-semibold text-gray-900">{q.name}</span>
+            <span> &middot; Trustpilot review, {q.date}</span>
+          </figcaption>
+        </figure>
       ))}
     </div>
+    <p class="text-center mt-8">
+      <a href={PROFILE} target="_blank" rel="noopener noreferrer" class="text-brand-red font-semibold hover:underline">
+        Read all our reviews on Trustpilot &rarr;
+      </a>
+    </p>
   </div>
 </section>
