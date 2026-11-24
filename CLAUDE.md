@@ -51,6 +51,8 @@ literal feeds the visible "Updated" line, `dateModified` and the sitemap `<lastm
 (`scripts/sitemap-lastmod.mjs`). Pages without one fall back to their last git commit, which is why
 `deploy.yml` checks out with `fetch-depth: 0`.
 
+**Competitor links:** links to competitor sites get `rel="nofollow noopener"` automatically at build time (`scripts/nofollow-competitors.mjs`). To cover a new competitor, add its domain to `scripts/competitor-domains.mjs`.
+
 ## Deployment
 
 **Auto-deploy: every merge to `main` deploys via GitHub Actions** (`.github/workflows/deploy.yml`;
