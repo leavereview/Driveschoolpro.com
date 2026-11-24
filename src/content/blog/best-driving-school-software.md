@@ -1,6 +1,6 @@
 ---
 title: "Best Driving School Software UK 2026: 13 Compared"
-description: "UK driving school management software and CRM compared: prices, apps, DVSA tracking, reminders and who each suits. 13 platforms, checked November 2026."
+description: "UK driving school management software compared: prices, apps, DVSA tracking, reminders and who each suits. 13 platforms, checked November 2026."
 image: /images/blog/app-dashboard-overview.jpg
 imageAlt: "The DriveSchoolPro Today screen showing the day's lessons for each instructor and the day's lesson value"
 date: "2026-02-24"
@@ -114,7 +114,7 @@ You're in the car between lessons, so the [driving instructor app](/driving-inst
 
 ## Driving school CRM: what it means for an instructor
 
-"CRM" gets used loosely. For most schools it means one pupil record everyone can trust, not a sales pipeline. Check four things:
+"CRM" gets used loosely. For most schools it means one pupil record everyone can trust, not a sales pipeline. Our [driving school CRM](/driving-school-crm/) page shows what that record holds in DriveSchoolPro; when comparing platforms, check four things:
 
 1. **One pupil record.** Contact details, pickup address, lesson history, payments, DVSA skill ratings and notes in one place. In DriveSchoolPro every instructor assigned to the pupil sees the same record, which matters for cover lessons.
 2. **Messages tied to the pupil.** Pupils can message their own instructor from the DriveSchoolPro app, and you reply from a Messages inbox, so the conversation sits with the pupil rather than in your personal WhatsApp.
