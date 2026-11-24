@@ -3,6 +3,7 @@ import sitemap from '@astrojs/sitemap';
 import compress from 'astro-compress';
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
+import nofollowCompetitors from './scripts/nofollow-competitors.mjs';
 import { buildLastmodMap, lastmodSerializer } from './scripts/sitemap-lastmod.mjs';
 
 const lastmod = buildLastmodMap(dirname(fileURLToPath(import.meta.url)));
@@ -24,6 +25,8 @@ export default defineConfig({
         !/\/blog\/(driver-ed-cars-guide|drivers-ed-franchise-guide)\/$/.test(page),
       serialize: lastmodSerializer(lastmod),
     }),
+    // Must come before compress() so it sees unminified HTML.
+    nofollowCompetitors(),
     compress({
       CSS: true,
       HTML: {
