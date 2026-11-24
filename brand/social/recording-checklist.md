@@ -72,3 +72,15 @@ AirDrop everything to the Mac and put it in `~/Projects-code/reference/drivescho
 - [ ] Frosty-morning clip, about 20 seconds: John clearing the windscreen and mirrors before a lesson, saying one winter tip to camera.
 - [ ] Phone-on-dashboard shot, about 15 seconds: ticking skills on the DVSA record at the kerb after a lesson, demo data only.
 - [ ] Two quick sound effects, about 10 seconds each: handbrake and an L-plate magnet slap, for the comedy ads.
+
+## Filming suggestions 2026-11-19
+
+- [ ] A 15 s acted skit with John's daughter as the pupil saying 'Sorry, I forgot it was today', for a reminders Laugh post (the index has no reminders skit).
+- [ ] A 20 s real clip at the kerb on a frosty morning: demisting and wiping the windscreen before a lesson, for winter Useful posts.
+- [ ] A 10 s screen recording, demo data only, of a pupil paying from a pay link on their phone, for a getting-paid Show post.
+
+## Filming suggestions 2026-11-19
+
+- [ ] A 15 s acted skit with John's daughter as the pupil saying 'Sorry, I forgot it was today', for a reminders Laugh post (the index has no reminders skit).
+- [ ] A 20 s real clip at the kerb on a frosty morning: demisting and wiping the windscreen before a lesson, for winter Useful posts.
+- [ ] A 10 s screen recording, demo data only, of a pupil paying from a pay link on their phone, for a getting-paid Show post.
