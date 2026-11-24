@@ -52,8 +52,9 @@
   const BANNER_ID = 'cookie-consent';
   const ACCEPT_BTN_ID = 'accept-cookies';
   const NECESSARY_BTN_ID = 'necessary-only-cookies';
-  // Shared with app.driveschoolpro.com so visitors answer the banner once.
-  // localStorage is per-origin; this cookie is readable by every *.driveschoolpro.com host.
+  // Readable by every *.driveschoolpro.com host, but the app does NOT read it today: the app
+  // keeps its own choice in localStorage ('dsp-app-cookie-consent'), so visitors answer twice.
+  // The privacy policy says so (#119); change it there if the app ever reads this cookie.
   // A consent-record cookie is strictly necessary, so it needs no consent itself.
   const SHARED_COOKIE = 'dsp_consent';
 
@@ -161,8 +162,17 @@
   }
   window.cookieConsent = cookieConsentAPI;
 
+  // "Cookie settings" controls (footer, landing footer, privacy policy) reopen the banner.
+  function bindSettingsButtons(): void {
+    document.querySelectorAll<HTMLElement>('[data-cookie-settings]').forEach((el) => {
+      el.addEventListener('click', () => cookieConsentAPI.revoke());
+    });
+  }
+
   // Initialize on page load
   function init(): void {
+    bindSettingsButtons();
+
     const consentData = getConsentData();
 
     // If consent already given (accept or necessary), don't show banner
