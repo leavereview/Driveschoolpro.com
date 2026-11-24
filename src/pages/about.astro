@@ -3,6 +3,7 @@
 import { OFFER } from '../config/offer';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Testimonials from '../components/Testimonials.astro';
 
 // Schema.org structured data for EEAT
 const personSchema = {
@@ -512,6 +513,8 @@ const testimonials = [
       </div>
     </div>
   </section>
+
+  <Testimonials bg="bg-white" />
 
   <!-- Listed On / Directory Badges -->
   <section class="py-12 bg-gray-50 border-y border-gray-100">

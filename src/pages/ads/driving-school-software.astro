@@ -1,6 +1,7 @@
 ---
 import { OFFER } from '../../config/offer';
 import LandingLayout from '../../layouts/LandingLayout.astro';
+import Testimonials from '../../components/Testimonials.astro';
 
 const GOOGLE_ADS_ID = import.meta.env.PUBLIC_GOOGLE_ADS_ID || '';
 const GOOGLE_ADS_CONVERSION_LABEL = import.meta.env.PUBLIC_GOOGLE_ADS_CONVERSION_LABEL || '';
@@ -305,64 +306,7 @@ const features = [
     </div>
   </section>
 
-  <!-- ── Testimonials ──────────────────────────────────────────────── -->
-  <section class="section bg-gray-50">
-    <div class="container-custom">
-      <div class="text-center mb-10">
-        <span class="text-brand-red font-semibold text-sm uppercase tracking-wider">What instructors tell us</span>
-        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mt-2">Built for the way UK ADIs work</h2>
-        <p class="text-gray-400 text-sm mt-2">Illustrative examples, representative of the feedback we hear from UK driving instructors.</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-6">
-
-        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-          <blockquote class="text-gray-700 text-sm leading-relaxed mb-5">
-            "Set up in ten minutes. Genuinely easier than my paper diary."
-          </blockquote>
-          <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-full bg-brand-red-light flex items-center justify-center flex-shrink-0">
-              <span class="text-brand-red font-semibold text-xs">SJ</span>
-            </div>
-            <div>
-              <div class="font-semibold text-gray-900 text-sm">Sarah J.</div>
-              <div class="text-gray-400 text-xs">Independent ADI · Birmingham</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-          <blockquote class="text-gray-700 text-sm leading-relaxed mb-5">
-            "One no-show in the last month. Used to be two or three a week."
-          </blockquote>
-          <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-full bg-brand-red-light flex items-center justify-center flex-shrink-0">
-              <span class="text-brand-red font-semibold text-xs">RK</span>
-            </div>
-            <div>
-              <div class="font-semibold text-gray-900 text-sm">Rachel K.</div>
-              <div class="text-gray-400 text-xs">Independent ADI · Manchester</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-          <blockquote class="text-gray-700 text-sm leading-relaxed mb-5">
-            "If you can use WhatsApp, you can use this. I picked it up straightaway."
-          </blockquote>
-          <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-full bg-brand-red-light flex items-center justify-center flex-shrink-0">
-              <span class="text-brand-red font-semibold text-xs">DP</span>
-            </div>
-            <div>
-              <div class="font-semibold text-gray-900 text-sm">David P.</div>
-              <div class="text-gray-400 text-xs">ADI, 8 years experience · Bristol</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  <Testimonials bg="bg-gray-50" />
 
   <!-- ── Feature Checklist ─────────────────────────────────────────── -->
   <section class="section bg-white">
