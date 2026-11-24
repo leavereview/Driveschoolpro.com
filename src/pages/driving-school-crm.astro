@@ -1,0 +1,447 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BreadcrumbsEnhanced from '../components/seo/BreadcrumbsEnhanced.astro';
+import FeaturedAnswer from '../components/seo/FeaturedAnswer.astro';
+import ComparisonTable from '../components/seo/ComparisonTable.astro';
+import FAQEnhanced from '../components/seo/FAQEnhanced.astro';
+import MarketingScreenshot from '../components/MarketingScreenshot.astro';
+import { OFFER, PRICE_LINE } from '../config/offer';
+
+// Target: 'driving school crm' (GSC 26 Oct to 22 Nov 2026: 82 impressions, position 17.5),
+// 'crm for driving schools' (14, 19.1), 'crm for driving schools uk' (8, 14.6),
+// 'driving school crm uk' (2, 12). Issue leavereview/Driveschoolpro.com#148.
+//
+// Cannibalisation: before this page, Google split these queries between
+// /blog/best-driving-school-software/ (its "Driving school CRM" section and FAQ, position 16.8) and
+// the homepage CRM FAQ (position 26.0). Both now link here with "driving school CRM" anchors and no
+// longer target the term in their meta descriptions, so this page is the one answer for the cluster.
+// Head term 'driving school software' stays on '/'; 'driving school management software' stays on
+// /driving-school-management-software/.
+//
+// Every claim below was checked against the app repo (leavereview/driveschoolpro) on 24 Nov 2026:
+//  - pupil record fields: src/components/students/StudentForm.tsx; emergency contact in DetailsTab
+//  - status Active / Passed / Inactive + archive: StudentStatusControl.tsx, StudentFilterMenu.tsx
+//  - search by name, email, mobile or postcode: src/lib/queries/students.ts
+//  - ONE assigned instructor per pupil (preferredInstructorId); a covering instructor gets a
+//    read-only view around their lesson (src/lib/auth/student-access.ts); owner and office staff see
+//    every pupil; instructors are always limited to their own pupils
+//  - lesson notes: outcome notes and feedback are visible to the pupil, internal notes are not
+//  - "Communication history" on each pupil (CommunicationLog) + in-app message thread
+//  - NO enquiry / lead pipeline: the Enquiry status was removed (#1135). A website-widget booking
+//    creates an Active pupil record (src/lib/availability/create-booking.ts); so does self-registration
+//    on the school's page (portal-auth-org.ts)
+//  - CSV pupil import (owner only); NO pupil CSV export; NO tags; NO SMS; WhatsApp flag-hidden
+//  - Financials tab: balance, invoices, payment history, lesson blocks, ledger; Money > Who owes me;
+//    invoice emails with pay-link, overdue reminders at 7, 14 and 30 days, payment receipts
+//  - lesson blocks are counted in LESSONS, not hours (say "lesson blocks", never "prepaid hours")
+// Never claim on this page: enquiry tracking, tags, pupil export, SMS, several instructors per
+// pupil, parent or guardian accounts, or per-pupil erasure by the school.
+
+const pageUrl = 'https://driveschoolpro.com/driving-school-crm/';
+
+const rows = [
+  { label: 'One record per pupil: contact details, pick-up address, licence, notes', values: [true, true, 'One row per pupil'] },
+  { label: 'Lesson history and lesson notes on the same record', values: [true, 'Custom fields, if you build them', 'By hand'] },
+  { label: 'DVSA 27-skill progress per pupil', values: [true, false, 'By hand'] },
+  { label: 'Balance, invoices and payments on the record', values: [true, 'Needs an add-on', 'By hand'] },
+  { label: 'Overdue invoices chased by email automatically', values: ['At 7, 14 and 30 days', 'Some, with set-up', false] },
+  { label: 'New pupils who book online arrive as a record', values: [true, 'Via a form or integration', false] },
+  { label: 'Pupils message their instructor from an app', values: [true, false, false] },
+  { label: 'Sales pipeline for enquiries who have not booked', values: [false, true, 'A separate tab'] },
+];
+
+const faqs = [
+  {
+    question: 'What is a driving school CRM?',
+    answer: "A driving school CRM is where a school keeps everything about each pupil: contact details and pick-up address, lessons booked and taught, lesson notes, DVSA progress, what they have paid and what they owe, and the messages and emails sent to them. For most UK driving schools that record lives inside their instructor software rather than in a separate sales tool, because the pupil, the diary and the payments are the same job.",
+    links: [{ text: 'Choosing driving school software', url: '/blog/best-driving-school-software/' }],
+  },
+  {
+    question: 'Is DriveSchoolPro a CRM for driving schools?',
+    answer: "For the pupils you teach, yes. Each pupil has one record with their details, pick-up address, lesson history, notes, DVSA skill ratings, balance, invoices and payments, and a communication history with their messages. It is not a sales pipeline: it does not track enquiries from people who have not booked yet.",
+    links: [],
+  },
+  {
+    question: 'Can I track enquiries and leads in DriveSchoolPro?',
+    answer: "Not as a separate list. There is no enquiry or leads pipeline. A new learner who books through the booking button on your website, or registers on your school's page, arrives as a pupil record straight away, with the details they gave. Enquiries by phone or message that have not booked stay wherever you note them today, or you add them as a pupil yourself.",
+    links: [{ text: 'Online booking', url: '/features/online-booking/' }],
+  },
+  {
+    question: 'Who can see a pupil’s record in a driving school?',
+    answer: "The owner and office staff see every pupil. Each instructor sees only the pupils assigned to them, automatically. An instructor covering a lesson for someone else gets a read-only view of that pupil around the lesson, so they can see the notes and progress without being able to change them. Each pupil has one assigned instructor at a time.",
+    links: [],
+  },
+  {
+    question: 'Can I import my pupils from another system?',
+    answer: "Yes. The account owner can import a pupil list from a CSV file, with ready-made options for Total Drive and MyDriveTime exports and a general option for any spreadsheet. The import brings in pupils only, not lesson history or payments.",
+    links: [{ text: 'Company fact sheet', url: '/about/facts/' }],
+  },
+  {
+    question: 'Does it send texts or WhatsApp messages to pupils?',
+    answer: "Not today. Lesson reminders, invoices, overdue reminders, receipts and booking confirmations go by email, and pupils can message their instructor from the DriveSchoolPro app. WhatsApp is coming soon. DriveSchoolPro keeps delivery logs of the reminders and emails it sends.",
+    links: [{ text: 'The pupil app', url: '/features/pupil-app/' }],
+  },
+  {
+    question: 'How much does a driving school CRM cost?',
+    answer: `DriveSchoolPro, with pupil records, payments and messages included, is free until 31 March 2027 with no card needed. ${PRICE_LINE} There is a 3% fee on card payments you collect through it, plus Stripe's standard processing fee; no fee on cash or bank transfer.`,
+    links: [{ text: 'Pricing', url: '/pricing/' }],
+  },
+  {
+    question: 'Is pupil data stored under UK GDPR?',
+    answer: "Yes. DriveSchoolPro is run by JOHN POWELL LTD, a UK company, and acts as your processor for the pupil records you add, under our Data Processing Terms. Data is encrypted at rest and card details are handled by Stripe. Pupils can download their own data from the app.",
+    links: [{ text: 'Sub-processors', url: '/subprocessors/' }],
+  },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Driving School CRM: Pupil Records, New Bookings and Payments in One Place',
+  description: 'What a CRM means for a UK driving school, what to check before choosing one, and how pupil records, new bookings and payments work in DriveSchoolPro.',
+  author: { '@type': 'Organization', name: 'DriveSchoolPro' },
+  publisher: { '@type': 'Organization', name: 'DriveSchoolPro' },
+  datePublished: '2026-11-24',
+  dateModified: '2026-11-24',
+  mainEntityOfPage: pageUrl,
+};
+
+const softwareSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'DriveSchoolPro',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web, iOS, Android',
+  description: 'Driving school CRM for UK instructors and schools: one record per pupil with contact details, lesson history, notes, DVSA progress, balance, invoices, payments and communication history.',
+  url: 'https://driveschoolpro.com/',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'GBP', description: OFFER.meta },
+};
+---
+
+<BaseLayout
+  title="Driving School CRM UK: Pupil Records & Payments | DriveSchoolPro"
+  description="Driving school CRM for UK instructors and schools: one record per pupil with lessons, notes, DVSA progress, balance and messages. Free until 31 March 2027."
+  image="/images/marketing/student-list.webp"
+  publishedDate="2026-11-24"
+  modifiedDate="2026-11-24"
+  showUpdated
+>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
+
+  <BreadcrumbsEnhanced
+    site="driveschool"
+    items={[
+      { label: 'Home', href: '/' },
+      { label: 'Driving School CRM', href: '/driving-school-crm/' },
+    ]}
+  />
+
+  <section class="relative overflow-hidden bg-gradient-to-br from-brand-navy to-gray-900 text-white py-16">
+    <div class="container-custom relative">
+      <div class="max-w-3xl">
+        <span class="inline-block bg-brand-red/20 text-brand-red-light px-3 py-1 rounded-full text-sm mb-4">CRM for UK driving schools</span>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Driving School CRM: Every Pupil's Details, Lessons and Payments in One Record</h1>
+        <p class="text-xl text-gray-300 mb-4">
+          A CRM for driving schools that starts from the pupil, not a sales pipeline. Contact details,
+          pick-up address, every lesson and its notes, DVSA progress, what they owe and your messages
+          with them sit on one record, in the same app you run your diary from. No spreadsheet to
+          keep in step and no scrolling back through WhatsApp to find an address.
+        </p>
+        <p class="text-gray-400 mb-8">Web, iPhone and Android &middot; {OFFER.short} &middot; No card needed</p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label}</a>
+          <a href="#pupils" class="btn-secondary text-lg px-8 py-4">See what's on a pupil record</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FeaturedAnswer question="What is a driving school CRM?">
+    A driving school CRM is the one place a school keeps everything about each learner: contact
+    details and pick-up address, lessons booked and taught, lesson notes, DVSA progress, payments and
+    balance, and the messages and emails sent. For most UK driving schools it is the pupil record
+    inside their instructor software rather than a separate sales tool. In DriveSchoolPro the owner
+    and office see every pupil, and each instructor sees the pupils assigned to them.
+  </FeaturedAnswer>
+
+  <section class="section bg-white">
+    <div class="container-custom max-w-3xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">What "CRM" means for a driving school</h2>
+      <p class="text-lg text-gray-600 mb-4">
+        Most CRMs are built for sales teams: leads move through stages until they buy, and then the CRM
+        mostly loses interest. A driving school works the other way round. The sale is the first
+        lesson, and the relationship that matters runs for the next 40 hours of driving: who the pupil
+        is, where you pick them up, what you covered last time, how close they are to test standard and
+        whether they have paid.
+      </p>
+      <p class="text-lg text-gray-600 mb-4">
+        That is why a general CRM tends to end up as a second copy of the diary that nobody updates.
+        The useful version of a CRM for driving schools is the pupil record that the diary, the progress
+        tracking and the payments all write to, so it stays true without anyone typing it twice.
+      </p>
+      <p class="text-lg text-gray-600">
+        If you run a school, it also has to answer a staffing question: when a pupil rings the office,
+        or another instructor covers a lesson, can they see the whole picture without a phone call to
+        the regular instructor? The three parts below are pupils, new pupils and payments.
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <a href="#pupils" class="card p-6 hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-brand-navy mb-2">Pupils</h3>
+          <p class="text-gray-600 text-sm">One record per learner: details, lessons, notes, DVSA progress and messages.</p>
+        </a>
+        <a href="#enquiries" class="card p-6 hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-brand-navy mb-2">New pupils and enquiries</h3>
+          <p class="text-gray-600 text-sm">Online bookings and self-registrations arrive as a record. What it doesn't do, said plainly.</p>
+        </a>
+        <a href="#payments" class="card p-6 hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-brand-navy mb-2">Payments</h3>
+          <p class="text-gray-600 text-sm">Balance, invoices, lesson blocks and payments on the record, with overdue invoices chased for you.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="pupils" class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Pupils: one record each, kept up to date by the work you already do</h2>
+        <p class="text-lg text-gray-600 mb-6">
+          Every pupil has a single record. You fill in the details once; the lessons, notes, progress
+          and payments fill themselves in as you teach and get paid.
+        </p>
+        <ul class="space-y-4 text-lg text-gray-700">
+          <li><strong class="text-brand-navy">Details.</strong> Name, email, mobile, date of birth, home and pick-up address, licence number and expiry, manual or automatic, emergency contact, where they heard about you and whether they accept marketing emails.</li>
+          <li><strong class="text-brand-navy">Lesson history.</strong> Every lesson booked and taught, with the notes from each one. Lesson outcome notes and feedback show in the pupil's app; internal notes stay with staff.</li>
+          <li><strong class="text-brand-navy">DVSA progress.</strong> All 27 DVSA driving skills in 8 categories, rated at the kerb after each lesson. See <a href="/features/progress-tracking/" class="text-brand-red hover:underline">progress tracking</a>.</li>
+          <li><strong class="text-brand-navy">Status.</strong> Active, passed or inactive, and archived pupils kept out of the way rather than deleted.</li>
+          <li><strong class="text-brand-navy">Communication history.</strong> Messages sent from the pupil's record and automatic emails such as booking confirmations and review requests, with the in-app messages between the pupil and their instructor underneath.</li>
+        </ul>
+      </div>
+      <div class="max-w-5xl mx-auto">
+        <MarketingScreenshot
+          src="/images/marketing/student-list.webp"
+          width={1440}
+          height={900}
+          alt="The Students page: a search box for name, email or mobile, a filter set to All students, and pupils grouped under Needs attention and Test ready, each with their next lesson and progress percentage."
+        />
+      </div>
+      <div class="max-w-3xl mx-auto mt-10">
+        <h3 class="text-xl font-semibold text-brand-navy mb-2">Finding the right pupil fast</h3>
+        <p class="text-lg text-gray-600 mb-6">
+          Search by name, email, mobile or postcode. Filter to current pupils, those who need attention
+          (for example, a lesson waiting for its outcome to be recorded), those who are test ready, passed or archived.
+          Sort by next lesson, longest gap since their last lesson, test date, lowest progress first or
+          most recently added, which is how you spot the pupil who has quietly stopped booking.
+        </p>
+        <h3 class="text-xl font-semibold text-brand-navy mb-2">Who sees what in a school</h3>
+        <p class="text-lg text-gray-600">
+          The owner and office staff see every pupil. Each instructor sees only the pupils assigned to
+          them, automatically, with no permissions to set up. When an instructor covers a lesson for a
+          colleague they get a read-only view of that pupil around the lesson, so they can read the notes
+          and progress before they pull up without being able to change them. Each pupil has one
+          assigned instructor at a time. For running several diaries and cars, see
+          <a href="/driving-school-management-software/" class="text-brand-red hover:underline">driving school management software</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="enquiries" class="section bg-gray-50">
+    <div class="container-custom max-w-3xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">New pupils and enquiries</h2>
+      <p class="text-lg text-gray-600 mb-4">
+        This is where driving school software differs most, so it is worth being exact about what
+        DriveSchoolPro does.
+      </p>
+      <h3 class="text-xl font-semibold text-brand-navy mb-2">What it does</h3>
+      <ul class="space-y-3 text-lg text-gray-700 mb-6 list-disc pl-6">
+        <li>A learner who books through the booking button on your website arrives as a pupil record straight away, with the name, email, phone number and pick-up address they gave, and their first lesson already in the diary. See <a href="/features/online-booking/" class="text-brand-red hover:underline">online booking</a>.</li>
+        <li>A learner who signs up on your school's own registration page also gets a record, and can then book and pay from the app.</li>
+        <li>You can add a pupil yourself in a minute, record where they heard about you, and invite them to the app by email from their record.</li>
+        <li>Moving from another system? The account owner can import a pupil list from a CSV file, with ready-made options for Total Drive and MyDriveTime exports.</li>
+      </ul>
+      <h3 class="text-xl font-semibold text-brand-navy mb-2">What it doesn't do</h3>
+      <p class="text-lg text-gray-600">
+        There is no enquiry or leads list for people who have asked about lessons but not booked, and
+        no stages to move them through. If you take a lot of enquiries by phone that need chasing before
+        they book, keep them where you note them now, or add them as a pupil and mark them inactive until
+        they start. For most instructors the simplest fix is the booking button: an enquiry that can book
+        itself does not need chasing.
+      </p>
+    </div>
+  </section>
+
+  <section id="payments" class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Payments: what each pupil has paid and what they owe</h2>
+        <p class="text-lg text-gray-600 mb-4">
+          Each pupil's record has a financial view: their outstanding balance, unpaid invoices, payment
+          history, any lesson blocks they have bought and how many lessons are left, and a running
+          account. Across the school, the Money screen shows who owes you, how much and since when, with
+          a button to send a reminder.
+        </p>
+        <ul class="space-y-3 text-lg text-gray-700 list-disc pl-6">
+          <li>Lessons are invoiced once they have been taught, and the pupil gets the invoice by email with a link to pay by card, without logging in. You can switch automatic invoice emails off.</li>
+          <li>If an invoice is still unpaid, the pupil gets an email reminder 7, 14 and 30 days after it was due.</li>
+          <li>Pupils can pay by card in the app, when they book online, or buy a block of lessons up front. Cash, bank transfer and cheque are recorded against the same balance.</li>
+          <li>Card payments go to your own Stripe account. DriveSchoolPro charges 3% on card payments you collect through it, plus Stripe's standard processing fee. There is no fee on cash or bank transfer.</li>
+        </ul>
+      </div>
+      <div class="max-w-5xl mx-auto">
+        <MarketingScreenshot
+          src="/images/marketing/payments.webp"
+          width={1440}
+          height={900}
+          alt="The Money screen on the Who owes me tab: revenue this month, outstanding, overdue and total collected, then outstanding balances by pupil with their oldest invoice and a Send Reminder button, and recent payments."
+        />
+      </div>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto mt-8">
+        More on taking payments: <a href="/features/getting-paid/" class="text-brand-red hover:underline">getting paid</a>
+        and <a href="/features/lesson-packages/" class="text-brand-red hover:underline">lesson packages</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50">
+    <div class="container-custom max-w-3xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">Messages that stay with the pupil</h2>
+      <p class="text-lg text-gray-600 mb-4">
+        Pupils can message their own instructor from the DriveSchoolPro app, on iPhone, Android or the
+        web. You get a notification and reply from the Messages inbox, so the conversation sits with the
+        pupil's record rather than in your personal WhatsApp, and it is still there when someone else
+        needs to pick it up.
+      </p>
+      <p class="text-lg text-gray-600">
+        DriveSchoolPro also emails pupils for you: lesson reminders, booking confirmations, invoices,
+        overdue reminders, payment receipts and the Google review request after a pass. Booking
+        confirmations and review requests show in the pupil's communication history, and delivery logs
+        are kept for the reminders and emails it sends. Reminders go by email today; WhatsApp is
+        coming soon. Read more about
+        <a href="/features/pupil-app/" class="text-brand-red hover:underline">the pupil app</a>.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <ComparisonTable
+      title="Driving school CRM vs a general CRM vs a spreadsheet"
+      description="What each option does for a UK driving school. A general CRM means an all-purpose sales and contacts tool; a spreadsheet means one you keep up to date by hand."
+      headers={['DriveSchoolPro', 'General CRM', 'Spreadsheet']}
+      rows={rows}
+      rowHeader="Job"
+      highlightColumn={0}
+    />
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-custom max-w-3xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">What to check before choosing a CRM for your driving school</h2>
+      <ol class="space-y-5 text-lg text-gray-700 list-decimal pl-6">
+        <li><strong class="text-brand-navy">Does the diary write to the record?</strong> If lessons, notes and payments have to be copied across, the CRM will be out of date within a month.</li>
+        <li><strong class="text-brand-navy">Can a covering instructor see the notes?</strong> Cover lessons go better when the stand-in knows what the pupil struggled with last time.</li>
+        <li><strong class="text-brand-navy">Are payments on the record?</strong> "Who owes me" should be one screen, not a reconciliation job at month end.</li>
+        <li><strong class="text-brand-navy">Is there a record of what was sent?</strong> When a pupil says they never got the reminder, you want to be able to check.</li>
+        <li><strong class="text-brand-navy">How do new pupils arrive?</strong> Check whether online bookings create a record, and whether you need an enquiry list for people who have not booked.</li>
+        <li><strong class="text-brand-navy">Can you bring your pupils with you?</strong> Look for a CSV import that understands the system you are leaving.</li>
+        <li><strong class="text-brand-navy">Is it set up for the UK?</strong> Prices in pounds, DVSA progress, pick-up addresses and pupil data handled under UK GDPR.</li>
+      </ol>
+      <p class="text-lg text-gray-600 mt-6">
+        For a side-by-side look at the platforms UK schools shortlist, see our guide to the
+        <a href="/blog/best-driving-school-software/" class="text-brand-red hover:underline">best driving school software</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50">
+    <div class="container-custom max-w-3xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-4">What DriveSchoolPro's CRM won't do</h2>
+      <p class="text-lg text-gray-600">
+        Better to know the edges now than after you've switched. There is no enquiry or leads pipeline
+        for people who haven't booked. There are no tags or custom fields, and no export of your pupil
+        list to a spreadsheet. Each pupil has one assigned instructor at a time. Messages to pupils go
+        by email or in the app; there is no text messaging, and WhatsApp is coming soon. Parent or
+        guardian accounts are not available. If any of these is central to how you work, that is worth
+        knowing before you move.
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-brand-red-light">
+    <div class="container-custom text-center max-w-3xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-3">Put every pupil on one record this week</h2>
+      <p class="text-gray-700 mb-6">Import your pupil list or add them as you go. {OFFER.short}, no card needed.</p>
+      <a href={OFFER.ctaPrimary.href} class="btn-primary text-lg px-8 py-4">{OFFER.ctaPrimary.label} &rarr;</a>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mb-8">How to set it up</h2>
+      <ol class="space-y-6">
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">1</span>
+          <div><h3 class="text-xl font-semibold text-brand-navy">Bring your pupils in</h3><p class="text-gray-600">Import a CSV from your current system or spreadsheet, or add pupils one at a time.</p></div>
+        </li>
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">2</span>
+          <div><h3 class="text-xl font-semibold text-brand-navy">Assign instructors and invite pupils</h3><p class="text-gray-600">Give each pupil their instructor, then invite them to the app by email so they can see their lessons, progress and invoices.</p></div>
+        </li>
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-red text-white font-bold flex items-center justify-center">3</span>
+          <div><h3 class="text-xl font-semibold text-brand-navy">Teach as normal</h3><p class="text-gray-600">Lessons, notes, progress and payments land on each record as you go. Add the <a href="/driving-instructor-booking-system/" class="text-brand-red hover:underline">booking button</a> to your website and new pupils arrive with a record already made.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <FAQEnhanced faqs={faqs} site="driveschool" pageUrl={pageUrl} title="Driving school CRM: common questions" />
+
+  <section class="section bg-brand-navy text-white text-center">
+    <div class="container-custom">
+      <h2 class="text-3xl font-bold mb-3">One record per pupil, from first booking to test pass</h2>
+      <p class="text-white/80 text-lg mb-8 max-w-xl mx-auto">Details, lessons, notes, progress, payments and messages in the app you already teach from.</p>
+      <a href={OFFER.ctaPrimary.href} class="inline-block bg-brand-red text-white px-10 py-4 rounded-xl font-semibold text-lg hover:bg-red-700 transition-colors">
+        {OFFER.ctaPrimary.label} &rarr;
+      </a>
+      <p class="text-white/50 text-sm mt-3">{OFFER.short} &middot; No credit card required &middot; Cancel anytime</p>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <h2 class="text-2xl font-bold text-brand-navy mb-8 text-center">Related</h2>
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <a href="/driving-school-management-software/" class="card p-6 hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-brand-navy mb-2">Driving school management software</h3>
+          <p class="text-gray-600 text-sm">Diaries, instructors, cars and pupils for a whole school</p>
+        </a>
+        <a href="/features/getting-paid/" class="card p-6 hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-brand-navy mb-2">Getting paid</h3>
+          <p class="text-gray-600 text-sm">Card payments, invoices, lesson blocks and overdue reminders</p>
+        </a>
+        <a href="/features/progress-tracking/" class="card p-6 hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-brand-navy mb-2">DVSA progress tracking</h3>
+          <p class="text-gray-600 text-sm">All 27 skills on every pupil's record</p>
+        </a>
+        <a href="/features/online-booking/" class="card p-6 hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-brand-navy mb-2">Online booking</h3>
+          <p class="text-gray-600 text-sm">How new pupils book and arrive as a record</p>
+        </a>
+        <a href="/features/pupil-app/" class="card p-6 hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-brand-navy mb-2">The pupil app</h3>
+          <p class="text-gray-600 text-sm">Messages, lessons, progress and payments for pupils</p>
+        </a>
+        <a href="/blog/student-management-driving-schools/" class="card p-6 hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-brand-navy mb-2">Student management for driving schools</h3>
+          <p class="text-gray-600 text-sm">Running pupil records well, whatever you use</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

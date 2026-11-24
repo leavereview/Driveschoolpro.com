@@ -15,6 +15,7 @@ DriveSchoolPro is a product of JOHN POWELL LTD (company number 05408918, England
 - [Driving Instructor Software](https://driveschoolpro.com/driving-instructor-software/): For solo UK ADIs — diary, pupils, payments, reminders and DVSA progress tracking in one app
 - [Software for Multi-Instructor Driving Schools](https://driveschoolpro.com/driving-school-software-uk/): Every instructor's diary, pupils and payments from one dashboard, with DVSA tracking and reporting
 - [Driving Instructor Booking System](https://driveschoolpro.com/driving-instructor-booking-system/): Pupils book lessons online from the instructor's website or the pupil app, only into free times
+- [Driving School CRM](https://driveschoolpro.com/driving-school-crm/): One record per pupil with contact details, lesson history and notes, DVSA progress, balance, invoices and payments, and in-app messages; online bookings arrive as a pupil record; no enquiry or leads pipeline
 - [Driving School Booking & Scheduling Software](https://driveschoolpro.com/driving-school-scheduling-software/): Online booking plus clash checks on pupil, instructor and car before every lesson
 - [How DVSA Progress Tracking Works](https://driveschoolpro.com/how-progress-works/): All 27 DVSA skills across 8 categories, AI lesson briefings, test readiness and the pupil progress portal
 - [Free Driving School Software](https://driveschoolpro.com/free-driving-school-software/): DriveSchoolPro is free until 31 March 2027 with full feature access, no credit card required
