@@ -1,0 +1,28 @@
+---
+// One provider on /subprocessors/ (sections A and B), readable at phone width.
+import type { Subprocessor } from '../config/subprocessors';
+
+interface Props {
+  s: Subprocessor;
+}
+
+const { s } = Astro.props;
+const dt = 'font-semibold text-gray-900 mt-2 md:mt-0';
+---
+
+<article class="border border-gray-200 rounded-xl p-4 md:p-5">
+  <h3 class="text-lg font-bold text-brand-navy">{s.name}</h3>
+  {s.entity && <p class="text-sm text-gray-500 mb-3">{s.entity}</p>}
+  <dl class="grid grid-cols-1 md:grid-cols-[11rem_1fr] gap-x-4 gap-y-1 md:gap-y-2 text-sm text-gray-700">
+    <dt class={dt}>What it does for us</dt><dd>{s.purpose}</dd>
+    {s.data && <><dt class={dt}>Data it can receive</dt><dd>{s.data}</dd></>}
+    <dt class={dt}>Where the data is</dt><dd>{s.where}</dd>
+    {s.transfer && <><dt class={dt}>Transfer protection</dt><dd>{s.transfer}</dd></>}
+    <dt class={dt}>Its data processing terms</dt>
+    <dd>
+      {s.terms
+        ? <a href={s.terms.href} target="_blank" rel="noopener noreferrer" class="text-red-600 hover:text-red-700 underline break-words">{s.terms.label}</a>
+        : 'None published that we could find'}
+    </dd>
+  </dl>
+</article>

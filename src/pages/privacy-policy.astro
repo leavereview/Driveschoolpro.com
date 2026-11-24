@@ -1,11 +1,18 @@
 ---
-// Privacy Policy Page
+// Privacy notice. Source: the approved drafts for issue #119 (approved by John, 24 Nov 2026).
+// Every statement here is either checked against the app code or the provider's own page, or
+// worded so it is true whichever way an unconfirmed fact falls. Before adding a claim, check it.
+// The date below is set by hand when the text changes (see src/config/legal.ts).
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { LEGAL_UPDATED } from '../config/legal';
 ---
 
-<BaseLayout title="Privacy Policy" description="Privacy Policy for DriveSchoolPro. Learn how we collect, use, and protect your personal information when using our driving school management platform.">
-  <!-- Breadcrumbs -->
+<BaseLayout
+  title="Privacy Policy"
+  description="How DriveSchoolPro (JOHN POWELL LTD) uses personal data: account holders, the pupil records schools keep, cookies, AI, how long we keep data and your rights."
+  modifiedDate="2026-11-24"
+>
   <div class="bg-gray-100 py-3">
     <div class="container-custom">
       <Breadcrumbs items={[
@@ -19,195 +26,229 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
     <div class="container-custom">
       <div class="max-w-4xl mx-auto">
         <h1 class="text-4xl md:text-5xl font-bold text-brand-navy mb-4">Privacy Policy</h1>
-        <p class="text-sm text-gray-500 mb-8">Last updated: 12 November 2026</p>
+        <p class="text-sm text-gray-500 mb-8">Last updated: {LEGAL_UPDATED} · <a href="#changes" class="underline">What changed</a></p>
         <div class="prose max-w-none">
 
-<h2>1. Who We Are</h2>
+<h2 id="who-we-are">1. Who we are, and the two roles we play</h2>
 
-<p>DriveSchoolPro is operated by <strong>JOHN POWELL LTD</strong> (Company No. 05408918), a company registered in England and Wales with its registered office at 124 City Road, London, England, EC1V 2NX.</p>
+<p>DriveSchoolPro is run by <strong>JOHN POWELL LTD</strong>, company number 05408918, registered in England and Wales, registered office 124 City Road, London, England, EC1V 2NX. "We" and "us" mean JOHN POWELL LTD.</p>
 
-<p>For the purposes of UK data protection legislation, JOHN POWELL LTD is the <strong>data controller</strong> for your account details, website visits and our own marketing.</p>
+<p>We play two different roles, and which one applies depends on whose data it is.</p>
 
-<p>For pupil records that a driving school or instructor adds to DriveSchoolPro, the school or instructor is the <strong>controller</strong> and JOHN POWELL LTD is their <strong>processor</strong>. We process those records only on their instructions and under our <a href="/terms/#data-processing">Data Processing Terms</a>. Pupils should contact their driving school about their data; we will pass on any request we receive.</p>
-
-<p>If you have any questions about this policy or how we handle your data, please contact us at <a href="mailto:privacy@driveschoolpro.com">privacy@driveschoolpro.com</a>.</p>
-
-<h2>2. What Data We Collect</h2>
-
-<p>We collect the following categories of personal data:</p>
-
-<h3>Account information</h3>
-<p>When you register for DriveSchoolPro, we collect your name, email address, phone number, and business details (such as your driving school name and address).</p>
-
-<h3>Student records</h3>
-<p>Driving instructors and school administrators use DriveSchoolPro to manage pupil data, which may include a pupil's name, contact details, date of birth, driving licence details, learning progress notes and lesson history. Where the school chooses to record them, this can also include health information (medical notes and medical certificates) and uploaded ID documents. The school or instructor decides what pupil data to add and must have a lawful basis for it (usually contract or legitimate interests, and an Article 9 condition for any health information).</p>
-
-<h3>Payment information</h3>
-<p>Payments are processed securely by <strong>Stripe</strong>. We never store your full card number, CVV, or other sensitive payment credentials. Stripe provides us with a tokenised reference and basic transaction details (amount, date, last four digits of card).</p>
-
-<h3>Usage data</h3>
-<p>We automatically collect information about how you use the platform, including pages visited, features used, session duration, browser type, device type, and IP address. This helps us understand how the service is used and where improvements can be made.</p>
-
-<h3>Cookies and similar technologies</h3>
-<p>We use cookies and local storage to manage your session, remember your preferences, and (with your consent) analyse how visitors use our website and measure and show our Google ads. See Section 8 for full details.</p>
-
-<h2>3. How We Use Your Data</h2>
-
-<p>We use personal data for the following purposes:</p>
-
+<p><strong>Where we are the controller.</strong> We decide why and how we use the data about:</p>
 <ul>
-<li><strong>Providing and improving the service</strong> — to deliver the DriveSchoolPro platform, maintain your account, and develop new features</li>
-<li><strong>Processing payments</strong> — to handle subscription billing and invoicing via Stripe</li>
-<li><strong>Transactional communications</strong> — to send lesson reminders, receipts, account notifications, and important service updates</li>
-<li><strong>Analysing usage</strong> — to understand how the platform is used so we can improve it (analytics only loaded with your consent)</li>
-<li><strong>Legal and regulatory obligations</strong> — to meet our obligations under HMRC, DVSA record-keeping requirements, and other applicable law</li>
+<li>people who sign up for a DriveSchoolPro account (the owner of a driving school, or a solo instructor) and the staff they invite;</li>
+<li>people who visit our website or app, or contact us;</li>
+<li>people who receive our own marketing or setup messages.</li>
 </ul>
 
-<p>We do not sell your data. With your consent, we use Google Ads cookies to measure our adverts and to show our adverts to people who have visited our website.</p>
+<p><strong>Where we are a processor.</strong> When a driving school or instructor adds a pupil, a parent or other records to DriveSchoolPro, <strong>that school or instructor is the controller</strong> and we process the data for them, on their instructions, under our <a href="/data-processing-terms/">Data Processing Terms</a>. The school decides what to record, why, and for how long it is needed. We do not use pupil data for our own purposes, for advertising or to sell to anyone.</p>
 
-<h2>4. Legal Basis for Processing</h2>
+<p><strong>If you are a pupil or a parent:</strong> your driving school or instructor is responsible for your lesson records. Ask them first about your data. If you cannot, email <a href="mailto:privacy@driveschoolpro.com">privacy@driveschoolpro.com</a> and we will pass your request to them. Sections 5 and 11 explain more.</p>
 
-<p>Under UK GDPR Article 6, we rely on the following legal bases:</p>
+<p>Contact for anything in this notice: <a href="mailto:privacy@driveschoolpro.com"><strong>privacy@driveschoolpro.com</strong></a>. We have not appointed a data protection officer because we are not required to.</p>
+
+<h2 id="what-we-collect">2. What we collect when we are the controller</h2>
+
+<div class="overflow-x-auto">
+<table>
+  <thead><tr><th>What</th><th>Examples</th><th>Where it comes from</th></tr></thead>
+  <tbody>
+    <tr><td>Account details</td><td>Name, email address, phone and mobile number, school name and address, business type, team size, a hashed password</td><td>You, when you sign up and set up your school</td></tr>
+    <tr><td>Sign-in and security data</td><td>Last login time, failed sign-in attempts, the IP address and browser type recorded in our audit log</td><td>Your device</td></tr>
+    <tr><td>Billing</td><td>Plan, Stripe customer and subscription references, payment status. Card numbers go to Stripe and never reach us</td><td>You and Stripe</td></tr>
+    <tr><td>Sign-up source</td><td>The advert, page or website that brought you to us (for example campaign tags and ad click identifiers in the link)</td><td>The link you followed</td></tr>
+    <tr><td>Your answers to optional questions</td><td>What nearly stopped you signing up, how you found us, your current diary tool, how many pupils you teach</td><td>You</td></tr>
+    <tr><td>Support and contact</td><td>Messages you send us through the contact form, email, text or our support desk, and our replies</td><td>You</td></tr>
+    <tr><td>Usage</td><td>Pages and features used, in aggregate, plus a few account-level events our servers record (for example "first pupil added"), linked to your school by an internal school ID</td><td>Your use of the app</td></tr>
+    <tr><td>Marketing choices</td><td>Whether you opted in to product news, and where you said so</td><td>You</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>If you are a <strong>sole-trader instructor</strong>, your school's account data is also your personal data.</p>
+
+<h2 id="why-we-use-it">3. Why we use it, and our lawful basis</h2>
+
+<div class="overflow-x-auto">
+<table>
+  <thead><tr><th>Purpose</th><th>Lawful basis (UK GDPR Article 6)</th></tr></thead>
+  <tbody>
+    <tr><td>Set up and run your account, send service messages (receipts, password resets, security notices, changes to our terms)</td><td>Contract: Article 6(1)(b)</td></tr>
+    <tr><td>Take payment from you and keep our accounts</td><td>Contract; legal obligation (Article 6(1)(c)) for HMRC records</td></tr>
+    <tr><td>Keep the service secure, prevent abuse and fix faults (error reports, rate limiting, audit log)</td><td>Legitimate interests: Article 6(1)(f). Our interest is a safe, working service</td></tr>
+    <tr><td>Understand how schools use DriveSchoolPro, using account-level events from our servers</td><td>Legitimate interests. You can object: see section 11</td></tr>
+    <tr><td>Analytics and screen recordings in the app, and Google Analytics, Google Ads and Metricool on our website</td><td>Consent: Article 6(1)(a), only if you click "Accept All"</td></tr>
+    <tr><td>Send you product news</td><td>Consent, where you opted in. Every message has an unsubscribe link</td></tr>
+    <tr><td>Send you up to two text messages about finishing your setup, if you gave a mobile number and we send these texts</td><td>Legitimate interests: it is a service message about the account you have just made, with a STOP reply</td></tr>
+    <tr><td>Answer your questions and support requests</td><td>Legitimate interests; contract</td></tr>
+    <tr><td>Defend a legal claim, meet legal requests</td><td>Legal obligation; legitimate interests</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>We do not use your data for fully automated decisions that have legal or similarly significant effects on you.</p>
+
+<h2 id="pupil-data">4. Pupil data: what we process on a school's behalf</h2>
+
+<p>A school or instructor can record, for each pupil: name, contact details, date of birth, address and pickup addresses, driving licence number and expiry, theory-test details, lesson history and outcomes, progress against the DVSA skills, notes, payment and balance records, messages, and uploaded documents. They can also record an emergency contact and a parent's details.</p>
+
+<p>A school can choose to record <strong>health information</strong> (a medical notes field, and uploaded medical certificates) and <strong>ID documents</strong>. Health information is special category data. The school needs a condition under UK GDPR Article 9 for it (for example, to make a reasonable adjustment for a pupil with a disability) and should record only what it needs. Our terms ask schools to keep health details out of free-text lesson notes.</p>
+
+<p>We act only on the school's instructions. Our <a href="/data-processing-terms/">Data Processing Terms</a> set out the rules and the security measures.</p>
+
+<h2 id="pupils-under-18">5. Pupils under 18</h2>
+
+<p>Pupils aged 16 and 17 learn to drive and use the pupil app and portal. Some pupils may be 17 or younger when a parent books for them.</p>
 
 <ul>
-<li><strong>Contract (Art. 6(1)(b))</strong> — processing your account information is necessary to provide the service you have signed up for</li>
-<li><strong>Legitimate interests (Art. 6(1)(f))</strong> — analysing usage patterns to improve the platform (including the account-level usage events our servers send, see Section 8), fraud prevention, and security monitoring, where these do not override your rights</li>
-<li><strong>Legal obligation (Art. 6(1)(c))</strong> — retaining financial records for HMRC requirements and other regulatory compliance</li>
-<li><strong>Consent (Art. 6(1)(a))</strong> — loading analytics cookies and sending optional marketing communications, where you have explicitly agreed</li>
+<li>Your school (not us) decides what is recorded about you and relies on its own lawful basis. For a driving lesson booking that is usually contract (you have asked for lessons) or legitimate interests.</li>
+<li>We do not use pupil data for advertising and we do not profile pupils for marketing.</li>
+<li>Our product analytics and screen recordings (PostHog) never run on pupil or parent pages. If Google Analytics is switched on in the app, it loads on every page of the app, including pupil and parent pages, but only after the person using it clicks "Accept All" in the app's cookie banner. Choosing "Necessary Only" stops it.</li>
+<li>We want the notice to be understandable by someone aged 16. If any part is not, tell us at <a href="mailto:privacy@driveschoolpro.com">privacy@driveschoolpro.com</a>.</li>
 </ul>
 
-<h2>5. Data Sharing</h2>
+<p>The terms for using the pupil app are in our <a href="/pupil-terms/">Pupil Terms</a>.</p>
 
-<p>We share personal data only with service providers who process it for us under written contracts. The main ones are below; the full list, with what each does and where it is based, is on our <a href="/subprocessors/">sub-processors page</a>.</p>
+<h2 id="ai">6. AI features</h2>
+
+<p>DriveSchoolPro uses an AI model (Claude, made by Anthropic) to write:</p>
+<ul>
+<li>a short <strong>briefing</strong> for the instructor before a lesson;</li>
+<li>short <strong>lesson and pupil summaries</strong> for the instructor;</li>
+<li>draft replies to <strong>support requests</strong>, and wording for some of our <strong>setup emails</strong>.</li>
+</ul>
+
+<p>What is sent for a briefing or summary: the pupil's <strong>first name only</strong>, the competencies practised and the level reached, the instructor's lesson outcome notes (up to three earlier lessons for a briefing) and the pupil learning notes the instructor wrote. <strong>The medical notes field is never sent.</strong> Free-text notes are sent as the instructor wrote them, so instructors are asked not to put health details in them.</p>
+
+<p>The request goes through the Vercel AI Gateway to the Claude model, run by Anthropic in the US. If Anthropic is unavailable, the gateway can send the request to the same Claude model run by Amazon Bedrock or Google Vertex AI. A person reviews every output: the briefing is advice to the instructor, not a decision about the pupil, and nothing decides anything about a pupil automatically.</p>
 
 <ul>
-<li><strong>Stripe</strong> — payment processing (see <a href="https://stripe.com/gb/privacy" target="_blank" rel="noopener noreferrer">Stripe's Privacy Policy</a>)</li>
-<li><strong>Neon</strong> — cloud database hosting (data stored encrypted at rest)</li>
-<li><strong>Vercel</strong> — hosting for the DriveSchoolPro app (servers in London), document storage and the AI gateway</li>
-<li><strong>Amazon Web Services</strong> — hosting for this website (London)</li>
-<li><strong>Sentry</strong> — error reports and masked screen recordings of a sample of app sessions (EU)</li>
-<li><strong>Google Firebase</strong> and <strong>Google Maps</strong> — app push notifications, and address search and maps in the app</li>
-<li><strong>Upstash</strong> — rate limiting to protect logins</li>
-<li><strong>Mailchimp</strong> — product news to account holders who opted in</li>
-<li><strong>Formspree</strong> — delivers messages sent through our contact form (US)</li>
-<li><strong>Google Fonts</strong> — supplies this website's typeface; your browser sends your IP address to Google</li>
-<li><strong>Arcade</strong> — interactive product demos on some feature pages (US)</li>
-<li><strong>Resend</strong> — transactional email delivery (lesson reminders, receipts, notifications)</li>
-<li><strong>Google</strong> — website analytics (Google Analytics) and advert measurement and remarketing (Google Ads), only if you click <strong>Accept All</strong>; Google may process this data outside the UK (see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>)</li>
-<li><strong>Metricool</strong> — website visit statistics for our social media reporting (pages viewed and where visitors came from), only if you click <strong>Accept All</strong>; Metricool is based in Spain, in the EU (see <a href="https://metricool.com/privacy-policy/" target="_blank" rel="noopener noreferrer">Metricool's Privacy Policy</a>)</li>
-<li><strong>PostHog</strong> — product analytics and session recordings of the DriveSchoolPro app (sign-up, onboarding and school-side screens, never pupil or parent pages), only if you click <strong>Accept All</strong>, plus a few account-level usage events sent from our servers without cookies (see Section 8); data is hosted in the EU, and recordings mask everything you type and all text on screens showing pupil details (see <a href="https://posthog.com/privacy" target="_blank" rel="noopener noreferrer">PostHog's Privacy Policy</a>)</li>
-<li><strong>Anthropic</strong> — AI lesson briefings (Claude); lesson data is processed to generate briefings and is <strong>not</strong> used to train AI models</li>
+<li><strong>Training.</strong> We do not use your data to train AI models. Vercel states that its AI Gateway does not use prompts or responses for training and does not keep them.</li>
+<li><strong>Retention.</strong> Anthropic states that by default it deletes API inputs and outputs within 30 days.</li>
+<li><strong>Switching it off.</strong> There is no setting to turn AI briefings off for a school or a pupil. The briefing job runs for every school. A school that objects should email <a href="mailto:privacy@driveschoolpro.com">privacy@driveschoolpro.com</a>.</li>
 </ul>
 
-<h3>Transfers outside the UK</h3>
-<p>Some providers process data outside the UK, mainly in the US (Stripe, Vercel, Resend, Anthropic, Formspree, Mailchimp, Google and Arcade). We only use them where the transfer is protected by UK adequacy regulations, the UK Extension to the EU-US Data Privacy Framework, or the UK International Data Transfer Addendum in the provider's data processing terms. Ask <a href="mailto:privacy@driveschoolpro.com">privacy@driveschoolpro.com</a> for details of the safeguard for any provider.</p>
-
-<p>We do <strong>not</strong> sell, rent, or trade personal data with any third party for their own marketing purposes.</p>
-
-<h2>6. Data Retention</h2>
-
-<p>We retain personal data for the following periods:</p>
+<h2 id="messages">7. Text messages, WhatsApp and email</h2>
 
 <ul>
-<li><strong>Active account data</strong> — retained for as long as your account is active</li>
-<li><strong>Financial records</strong> — retained for 6 years following the end of the relevant tax year, as required by HMRC</li>
-<li><strong>Deleted accounts</strong> — kept for 30 days so the account can be restored or exported, then deleted; financial records are retained for the period above, and backups expire on their normal cycle, which takes up to 12 months</li>
-<li><strong>Usage analytics</strong> — aggregated and anonymised after 26 months</li>
-<li><strong>Product usage events sent from our servers</strong> — kept by PostHog for up to 7 years</li>
+<li><strong>Email.</strong> Lesson reminders, receipts and account notices go out through Resend. Pupils and parents have preferences for reminders, lesson emails and marketing, and every marketing email has an unsubscribe link.</li>
+<li><strong>Text messages to pupils.</strong> Text reminders to pupils are not available in DriveSchoolPro today.</li>
+<li><strong>WhatsApp.</strong> WhatsApp reminders are not yet offered to schools. Our <a href="/whatsapp/">WhatsApp policy</a> explains how opt-in works. Where a pupil opts in to WhatsApp messages, their mobile number is used only to send transactional messages about their lessons, and they can reply STOP at any time. We do not share, sell or rent mobile numbers or messaging opt-in consent to any third party for its own marketing.</li>
+<li><strong>Texts to school owners.</strong> If you give a UK mobile number while setting up your school, we may send up to two texts about finishing setup, from a DriveSchoolPro number, via Twilio. Reply STOP to stop them. We keep a record that you opted out.</li>
 </ul>
 
-<h2>7. Your Rights</h2>
+<h2 id="sharing">8. Who we share data with</h2>
 
-<p>Under UK GDPR, you have the following rights regarding your personal data:</p>
+<p>We share personal data with service providers who process it for us under their written terms. Each one is listed with its purpose, location and transfer protection on our <a href="/subprocessors/">sub-processors page</a>. In summary:</p>
 
 <ul>
-<li><strong>Right of access (Art. 15)</strong> — you can request a copy of the personal data we hold about you</li>
-<li><strong>Right to rectification (Art. 16)</strong> — you can ask us to correct inaccurate or incomplete data</li>
-<li><strong>Right to erasure (Art. 17)</strong> — you can request that we delete your personal data ("right to be forgotten"), subject to legal retention obligations</li>
-<li><strong>Right to restrict processing (Art. 18)</strong> — you can ask us to pause processing your data in certain circumstances</li>
-<li><strong>Right to data portability (Art. 20)</strong> — you can request your data in a structured, machine-readable format</li>
-<li><strong>Right to object (Art. 21)</strong> — you can object to processing based on legitimate interests</li>
-<li><strong>Right to withdraw consent</strong> — where processing is based on consent, you can withdraw it at any time without affecting the lawfulness of prior processing</li>
+<li><strong>Hosting, database and file storage:</strong> Vercel, Neon, Amazon Web Services (backups).</li>
+<li><strong>Payments:</strong> Stripe.</li>
+<li><strong>Email, push and text messages:</strong> Resend, Google Firebase, Twilio.</li>
+<li><strong>AI:</strong> Anthropic, through Vercel (and, if Anthropic is unavailable, the same model run by Amazon Bedrock or Google Vertex AI).</li>
+<li><strong>Errors, analytics and security:</strong> Sentry, PostHog, Upstash.</li>
+<li><strong>Support and internal alerts:</strong> Freshworks (Freshdesk), Slack.</li>
+<li><strong>Maps, addresses and car pictures:</strong> Google Maps, Imagin Studio.</li>
+<li><strong>Marketing:</strong> Mailchimp (account owners who opted in), Google Analytics and Google Ads, Metricool (website only, with consent).</li>
+<li><strong>This website:</strong> Amazon Web Services (hosting), Formspree (contact form), Google Fonts, Arcade (product demos).</li>
 </ul>
 
-<h3>Pupils, including pupils under 18</h3>
-<p>Your driving school or instructor controls your lesson records. Ask your instructor first; if you can't, email <a href="mailto:privacy@driveschoolpro.com">privacy@driveschoolpro.com</a> and we'll help. We don't use your data for advertising. The terms for using the pupil app are in our <a href="/pupil-terms/">Pupil Terms</a>.</p>
+<p>A pupil's data is also visible to their own school and instructors. If a school connects its own Stripe account, Stripe is also in a direct relationship with that school and with the person paying.</p>
 
-<p>To exercise any of these rights, contact us at <a href="mailto:privacy@driveschoolpro.com">privacy@driveschoolpro.com</a>. We will respond within one calendar month.</p>
+<p>We may share data where the law requires, with a regulator or the police, or to protect people. We do not sell personal data.</p>
 
-<p>You also have the right to <strong>lodge a complaint</strong> with the Information Commissioner's Office (ICO) at <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">ico.org.uk</a> or by calling 0303 123 1113.</p>
+<h2 id="cookies">9. Cookies and similar technologies</h2>
 
-<h2>8. Cookies</h2>
+<p><strong>Strictly necessary</strong> (always on): a sign-in cookie, security tokens, and a record of your cookie choice. They are needed to run the service.</p>
 
-<p>We use two categories of cookies:</p>
+<p>This website and the DriveSchoolPro app (app.driveschoolpro.com) each ask for your cookie choice and remember it separately. Answering the banner on one does not answer it on the other. On this website your choice is kept in your browser's storage and in a cookie called <code>dsp_consent</code> for up to 12 months; the app keeps its own record in your browser's storage.</p>
 
-<h3>Essential cookies</h3>
-<p>These are always active and are necessary for the website and application to function correctly. They handle session management, authentication, and security. They do not track you across other websites and cannot be disabled.</p>
-<p>One of them, <code>dsp_consent</code>, records your cookie choice (Accept All or Necessary Only) for up to 12 months and is shared between driveschoolpro.com and app.driveschoolpro.com, so you only answer the banner once.</p>
+<p><strong>Optional</strong> (only after you click <strong>Accept All</strong>):</p>
+<ul>
+<li>Google Analytics and Google Ads on our website, to measure how visitors use it and which adverts led to a sign-up, and to show our adverts to past visitors;</li>
+<li>Metricool, a website statistics tag;</li>
+<li>in the app, PostHog product analytics and screen recordings of <strong>school-side</strong> screens, with on-screen text masked (apart from parts of our own screens we have marked as holding no personal data) and everything you type hidden, never on pupil or parent pages;</li>
+<li>in the app, Google Analytics, if it is switched on. Unlike PostHog, it is not limited to school-side screens: after "Accept All" it loads on every page of the app, including pupil and parent pages.</li>
+</ul>
+
+<p><strong>Without cookies</strong> (whatever you choose): Vercel counts page visits and page speed without cookies; our servers send a few account-level usage events to PostHog (see below); Sentry records errors, and masked recordings of a sample of sessions (about one in ten, and every session with an error). Sentry's recordings are not tied to your choice in the cookie banner.</p>
+
 <p>When you click through to sign up, the link to app.driveschoolpro.com can carry the campaign details from the page you landed on (for example which advert or website sent you). This is passed in the web address, not stored on your device, and is saved with your account so we know which marketing works.</p>
 
-<h3>Analytics and advertising cookies</h3>
-<p>We use Google Analytics and Metricool to understand how visitors use our website — for example, which pages are visited most often and where visitors come from. These cookies are only loaded if you click <strong>Accept All</strong> on the cookie consent banner. No analytics cookies are set if you choose <strong>Necessary Only</strong>.</p>
-
-<p>With the same consent, the DriveSchoolPro app (not this website) loads PostHog, which records how school users move through sign-up, onboarding and the app so we can fix confusing screens. It never runs on pupil or parent pages, never records what you type, and hides on-screen text wherever pupil details appear. Recordings are kept for 30 days.</p>
-
-<p>With the same consent we load the Google Ads tag, which lets us measure which adverts led to a sign-up and show our adverts to past visitors on Google. We aim to stop showing these adverts to people who already have an account. Choosing <strong>Necessary Only</strong> loads none of these.</p>
-
 <h3>Product usage events sent from our servers</h3>
-<p>To understand how schools use DriveSchoolPro and to improve it, our servers send a small number of account-level usage events to PostHog, our analytics processor. PostHog stores this data in the EU (eu.i.posthog.com). The events record steps such as signing up, adding a first pupil, booking a first lesson, finishing setup, starting a subscription and importing pupils (the number imported only).</p>
-<p>Each event is linked to your school's account by a pseudonymous identifier (an internal school ID), not by your name or email address. We can link that identifier back to your school, so these events are personal data. If you are a sole-trader instructor, your school's account is you. Each event also includes your plan, the number of days since you signed up, and a short tag for how you found us (the marketing source in the link you followed, or the website you came from). The events contain no names, email addresses, phone numbers or pupil details.</p>
-<p>These events are sent from our servers, not your browser. They use no cookies and store nothing on your device, so they are sent whatever you choose in the cookie banner.</p>
-<p>Lawful basis: legitimate interests (understanding and improving our product).</p>
-<p>Retention: PostHog keeps these events for up to 7 years.</p>
-<p>To object, email <a href="mailto:info@driveschoolpro.com">info@driveschoolpro.com</a> and we will stop sending these events for your school.</p>
+<p>To understand how schools use DriveSchoolPro and to improve it, our servers send a small number of account-level usage events to PostHog, which stores them in the EU. The events record steps such as signing up, adding a first pupil, booking a first lesson, finishing setup, starting a subscription and importing pupils (the number imported only). Each event is linked to your school's account by an internal school ID, not by your name or email address, and includes your plan, the number of days since you signed up, and a short tag for how you found us. The events contain no names, email addresses, phone numbers or pupil details. They use no cookies and store nothing on your device. Lawful basis: legitimate interests. To object, email <a href="mailto:privacy@driveschoolpro.com">privacy@driveschoolpro.com</a> and we will stop sending these events for your school.</p>
 
-<h3>Changing your cookie preferences</h3>
-<p>You can change your cookie preferences at any time by clicking the button below to re-open the consent banner:</p>
+<h3>Changing your choice</h3>
+<p>On this website, use <strong>Cookie settings</strong> at the foot of any page, or the button below, to see the banner again and choose again. In the app, clear the stored data for app.driveschoolpro.com in your browser settings and the app's banner will ask again.</p>
 
 <p>
   <button
-    onclick="window.cookieConsent && window.cookieConsent.revoke()"
+    type="button"
+    data-cookie-settings
     class="text-sm px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors cursor-pointer"
   >
-    Manage cookie preferences
+    Cookie settings
   </button>
 </p>
 
-<p>You can also install the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a> to prevent Google Analytics from collecting data about your visits across any website.</p>
+<p>You can also install the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.</p>
 
-<h2>9. Data Security</h2>
+<h2 id="retention">10. How long we keep data</h2>
 
-<p>We take the security of your data seriously and use the following measures to protect it:</p>
+<p>As controller:</p>
 
-<ul>
-<li><strong>Encryption in transit</strong> — all data between your browser and our servers is encrypted using HTTPS/TLS</li>
-<li><strong>Encryption at rest</strong> — data stored in our database is encrypted at rest</li>
-<li><strong>Multi-tenant data isolation</strong> — your organisation's data is logically separated from other accounts; no other DriveSchoolPro user can access your data</li>
-<li><strong>PCI DSS compliant payment processing</strong> — all card payments are handled by Stripe, which is certified to PCI DSS Level 1</li>
-<li><strong>Access controls</strong> — access to production systems is restricted to authorised personnel only, and reviewed regularly</li>
-</ul>
+<div class="overflow-x-auto">
+<table>
+  <thead><tr><th>Data</th><th>How long</th></tr></thead>
+  <tbody>
+    <tr><td>Account details of an active account</td><td>While the account is open</td></tr>
+    <tr><td>Closed accounts</td><td>Kept 30 days after you ask to close, so you can export or change your mind. Then personal details are replaced with placeholders. Financial records stay for 6 years (HMRC)</td></tr>
+    <tr><td>Financial and audit records</td><td>6 years</td></tr>
+    <tr><td>Records of completed erasure requests</td><td>6 years</td></tr>
+    <tr><td>Email, text and WhatsApp delivery logs</td><td>90 days</td></tr>
+    <tr><td>Setup and webhook queues</td><td>30 days</td></tr>
+    <tr><td>Read in-app notifications</td><td>180 days</td></tr>
+    <tr><td>Message content in the communication log</td><td>Anonymised after 2 years</td></tr>
+    <tr><td>Marketing list</td><td>Until you unsubscribe, then removed</td></tr>
+    <tr><td>Backups</td><td>Daily copies for 30 days; one copy a month for 12 months. Copies expire on that cycle, so a deleted record can stay in a backup until then</td></tr>
+  </tbody>
+</table>
+</div>
 
-<p>No method of transmission over the internet is completely secure. If you believe your data has been compromised, please contact us immediately at <a href="mailto:privacy@driveschoolpro.com">privacy@driveschoolpro.com</a>.</p>
+<p>Our analytics, error-reporting and contact-form providers (PostHog, Sentry and Formspree) keep data for the periods set in those services. Ask <a href="mailto:privacy@driveschoolpro.com">privacy@driveschoolpro.com</a> if you want to know a current period.</p>
 
-<h2>10. Changes to This Policy</h2>
+<p>As processor, we keep pupil data for as long as the school's account is open and then as the <a href="/data-processing-terms/">Data Processing Terms</a> say. Uploaded document files are not removed from storage automatically when an account is erased today; we delete them by hand within 30 days of a written request.</p>
 
-<p>We may update this Privacy Policy from time to time to reflect changes in the law, our services, or our data practices. When we make material changes, we will update the "Last updated" date at the top of this page.</p>
+<h2 id="your-rights">11. Your rights, and how to use them</h2>
 
-<p>We encourage you to review this page periodically. Continued use of DriveSchoolPro after changes are posted constitutes your acceptance of the updated policy.</p>
+<p>You can ask us to: give you a copy of your data; correct it; erase it; restrict its use; give it to you in a portable form; or stop using it where we rely on legitimate interests. Where we rely on consent, you can withdraw it at any time. Withdrawing does not affect what we did before.</p>
 
-<h2>11. WhatsApp Messaging</h2>
+<p><strong>If we are the controller</strong>, email <a href="mailto:privacy@driveschoolpro.com">privacy@driveschoolpro.com</a>. We aim to reply within one month. We may ask you to prove who you are.</p>
 
-<p>When you provide your mobile number and opt in to WhatsApp notifications, DriveSchoolPro (operated by JOHN POWELL LTD) uses your number solely to send you transactional messages about your driving lessons — such as lesson reminders, booking confirmations, cancellations, and payment receipts. Message frequency varies. You can reply STOP at any time to opt out, or HELP for assistance. We do not share, sell, or rent your mobile number or your messaging opt-in consent to any third parties or affiliates for their own marketing or promotional purposes.</p>
+<p><strong>If your data is a pupil record,</strong> the school or instructor decides. Email them, or email us and we will pass it on within 5 working days and help them answer within the month. An account owner can export the whole school's data from Settings &gt; Profile in the app, and a pupil who uses the pupil app can download their own data from their profile there. Archiving a pupil in the app hides the pupil but does not erase them. To erase one pupil completely, the school asks us at <a href="mailto:privacy@driveschoolpro.com">privacy@driveschoolpro.com</a>.</p>
 
-<p>For full details of how WhatsApp notifications work and how consent is collected, see our <a href="/whatsapp/">WhatsApp Messaging Policy</a>.</p>
+<p>You can complain to us first, at <a href="mailto:privacy@driveschoolpro.com">privacy@driveschoolpro.com</a>, and we will acknowledge a complaint within 30 days. You can also complain to the <strong>Information Commissioner's Office</strong>: <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">ico.org.uk</a>, 0303 123 1113.</p>
 
-<h2>12. Contact Us</h2>
+<h2 id="transfers">12. Where your data goes</h2>
 
-<p>For any data protection queries, to exercise your rights, or to raise a concern:</p>
+<p>Our app servers and main database are in London, and our database backups are in Ireland. Uploaded files are stored by Vercel. Some providers are US companies. Where data goes outside the UK, we rely on UK adequacy regulations, the UK Extension to the EU-US Data Privacy Framework, or the UK International Data Transfer Addendum or Agreement in the provider's terms. The <a href="/subprocessors/">sub-processors page</a> shows what each provider's own terms say. Ask for details at <a href="mailto:privacy@driveschoolpro.com">privacy@driveschoolpro.com</a>.</p>
+
+<h2 id="security">13. Security</h2>
+
+<p>Encryption in transit (HTTPS) and at rest in the database; passwords stored as bcrypt hashes; school accounts kept separate by organisation checks in our code; role-based access; login throttling; an audit log; nightly encrypted backups with a weekly test restore. No system is perfectly secure. If a breach affects pupil data, we tell the school, as our <a href="/data-processing-terms/">Data Processing Terms</a> set out. Where we are the controller, we tell you and the ICO as the law requires.</p>
+
+<h2 id="changes">14. Changes to this notice</h2>
+
+<p>If we make a material change, we update the date above, and email account owners at least 30 days ahead for anything that affects them.</p>
+
+<p><strong>What changed on {LEGAL_UPDATED}:</strong> we rewrote this notice in plainer terms and added more detail. It now explains our two roles, lists what we collect and the lawful basis for each use, and covers pupils under 18, AI features, text and WhatsApp messages, and how long we keep each kind of data. It corrects two points in the previous version: the website and the app keep separate cookie choices (they are not shared), and Google Analytics in the app, if switched on, can load on pupil and parent pages after "Accept All". Our Data Processing Terms now have their own page, and the sub-processors page lists more providers.</p>
+
+<h2 id="contact">15. Contact</h2>
 
 <p>
   <strong>Email:</strong> <a href="mailto:privacy@driveschoolpro.com">privacy@driveschoolpro.com</a><br />
-  <strong>Data Controller:</strong> JOHN POWELL LTD<br />
+  <strong>Company:</strong> JOHN POWELL LTD<br />
   <strong>Registered address:</strong> 124 City Road, London, England, EC1V 2NX<br />
   <strong>Company number:</strong> 05408918
 </p>

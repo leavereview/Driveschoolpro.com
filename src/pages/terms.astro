@@ -4,8 +4,11 @@
 // Not yet solicitor-reviewed (JP decision, 11 Nov 2026: publish best attempt until funds allow review).
 // When this text changes: bump TERMS_VERSION below, the date, and the app's CURRENT_TERMS_VERSION
 // (driveschoolpro src/lib/config/launch.ts). Git history holds every published version.
+// The Schedule (Data Processing Terms) lives at /data-processing-terms/ from 24 Nov 2026 (#119);
+// its dates are in src/config/legal.ts. That change did not bump TERMS_VERSION (see PR for #119).
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { LEGAL_UPDATED, DPA_EXISTING_ACCOUNTS_FROM } from '../config/legal';
 
 const TERMS_VERSION = '2026-11';
 const UPDATED = '11 November 2026';
@@ -15,7 +18,7 @@ const EXISTING_ACCOUNTS_FROM = '18 December 2026';
 <BaseLayout
   title="Terms of Service"
   description="DriveSchoolPro's Terms of Service for driving instructors and schools: plans and fees, card payments through Stripe, your data, our liability and data processing terms."
-  modifiedDate="2026-11-16"
+  modifiedDate="2026-11-24"
 >
   <div class="bg-gray-100 py-3">
     <div class="container-custom">
@@ -30,7 +33,7 @@ const EXISTING_ACCOUNTS_FROM = '18 December 2026';
     <div class="container-custom">
       <div class="max-w-4xl mx-auto">
         <h1 class="text-4xl md:text-5xl font-bold text-brand-navy mb-4">Terms of Service</h1>
-        <p class="text-sm text-gray-500 mb-8">Version {TERMS_VERSION} · Last updated: {UPDATED}</p>
+        <p class="text-sm text-gray-500 mb-8">Version {TERMS_VERSION} · Last updated: {UPDATED} · <a href="#data-processing" class="underline">Schedule updated: {LEGAL_UPDATED}</a></p>
         <div class="prose max-w-none">
 
 <p>These Terms are a contract between <strong>JOHN POWELL LTD</strong> (company 05408918, registered in England and Wales, registered office 124 City Road, London EC1V 2NX), trading as DriveSchoolPro ("we", "us"), and the driving instructor or driving school that opens a DriveSchoolPro account ("you").</p>
@@ -102,7 +105,7 @@ const EXISTING_ACCOUNTS_FROM = '18 December 2026';
 <p>7.4 We back up the Service regularly. If Your Data is lost or damaged because of a fault on our side, we'll use reasonable efforts to restore it from our most recent backup. This is your only remedy for lost or damaged data, except where clause 9.1 says otherwise.</p>
 <p>7.5 We may use anonymised, aggregated data (for example, average lessons per instructor) to run and improve the Service. It will never identify you or any pupil.</p>
 <p>7.6 Only record health information or upload ID or medical documents where you need them, for example to make a reasonable adjustment for a pupil, and only with a lawful basis. Keep that information in the fields provided for it, not in lesson notes.</p>
-<p>7.7 The <a href="#data-processing">Data Processing Terms</a> in the Schedule below apply whenever we handle personal data on your behalf.</p>
+<p>7.7 Our <a href="/data-processing-terms/">Data Processing Terms</a> (the Schedule below) apply whenever we handle personal data on your behalf.</p>
 
 <h2>8. Messages sent through DriveSchoolPro</h2>
 <p>8.1 Reminders, review requests and other messages are sent on your behalf. You're responsible for having a lawful basis to contact each recipient, and for your review requests complying with Google's policies and consumer law.</p>
@@ -163,6 +166,10 @@ const EXISTING_ACCOUNTS_FROM = '18 December 2026';
 <p>16.8 These Terms are governed by the law of England and Wales, and the courts of England and Wales have exclusive jurisdiction.</p>
 
 <h2 id="data-processing">Schedule: Data Processing Terms (UK GDPR Article 28)</h2>
+<p>Our <a href="/data-processing-terms/">Data Processing Terms</a> are this Schedule and form part of these Terms. They apply whenever we process personal data on your behalf.</p>
+<p><strong>Change on {LEGAL_UPDATED}:</strong> the Data Processing Terms moved to their own page and were expanded. If you opened your account on or after {LEGAL_UPDATED}, they apply now. If you opened it before then, they replace the earlier version of this Schedule on {DPA_EXISTING_ACCOUNTS_FROM}, and we will email you at least 30 days before. Until then the earlier version below applies, except that anything in the new Data Processing Terms that only gives you more rights applies straight away.</p>
+<details class="mt-4">
+<summary class="cursor-pointer font-semibold">Earlier version of this Schedule (applies to accounts opened before {LEGAL_UPDATED}, until {DPA_EXISTING_ACCOUNTS_FROM})</summary>
 <p>1. <strong>Roles.</strong> For personal data about your pupils, their parents, and your instructors and staff that is put into DriveSchoolPro, you are the controller and we are your processor.</p>
 <p>2. <strong>Details of the processing.</strong></p>
 <ul>
@@ -181,6 +188,7 @@ const EXISTING_ACCOUNTS_FROM = '18 December 2026';
 <p>10. <strong>End of the account.</strong> When your account closes, clause 7.3 of the Terms applies.</p>
 <p>11. <strong>Audits.</strong> We'll make available the information you reasonably need to show compliance, and allow a reasonable audit not more than once a year, on 30 days' notice, at your cost.</p>
 <p>12. <strong>Your obligations.</strong> You confirm that you have a lawful basis for the personal data you put into the Service, that you have an Article 9 condition for any health data, and that you have told pupils how their data is used.</p>
+</details>
 
         </div>
       </div>
